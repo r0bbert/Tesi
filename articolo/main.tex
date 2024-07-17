@@ -3,11 +3,14 @@
 
 \usepackage[english]{babel}
 
-\theoremstyle{definition}
-\newtheorem{definition}{Definizione}
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{obs}[theorem]{Osservazione}
+\newtheorem{prop}[theorem]{Proposizione}
 
 \theoremstyle{definition}
-\newtheorem{example}{Esempio}
+\newtheorem{definition}[theorem]{Definizione}
+\newtheorem{example}[theorem]{Esempio}
 
 \newcommand{\id}[1]{id_{#1}}
 
