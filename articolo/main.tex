@@ -14,6 +14,9 @@
 
 \newcommand{\id}[1]{id_{#1}}
 
+\tikzcdset{row sep/normal=5em}
+\tikzcdset{column sep/normal=5em}
+
 \begin{document}
 
 \section{Concetti di di base}
@@ -22,13 +25,19 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 
 \subsection{Categorie}
 
-	\begin{definition}[Categorie]
+	\begin{definition}[Categorie, sottocategorie]
 		Una \emph{categoria $\mathcal{C}$} è composta da:
 		\begin{enumerate}
 			\item una collezione di \emph{oggetti} $Ob(\mathcal{C})$;
 			\item una collezione di \emph{morfismi} $Mor(\mathcal{C})$;
-			\item due operazioni che assegnano ad ogni morfismo $f$ un oggetto $dom\ f$, detto \emph{dominio} e un oggetto $cod\ f$, detto \emph{codominio}, denotando con $f: A \rightarrow B$ il fatto che $dom\ f = A \text{ e } cod\ f = B$; la collezione di tutti i morfismi da un oggetto $A$ ad un oggetto $B$ in $\mathcal{C}$ è denotato con $\mathcal{C}(A, B)$;
-			\item un operatore di composizione che assegna ad ogni coppia di morfismi $f$, $g$ tali che $dom\ g = cod\ f$, un morfismo \emph{composto} $g \circ f: dom\ f \rightarrow cod\ g$, tale da soddisfare
+			\item due operazioni che assegnano ad ogni morfismo $f$ un 
+				oggetto $dom\ f$, detto \emph{dominio} e un oggetto $cod\ f$, detto \emph{codominio}, 
+				denotando con $f: A \rightarrow B$ il fatto che $dom\ f = A \text{ e } cod\ f = B$; 
+				la collezione di tutti i morfismi da un oggetto $A$ ad un oggetto $B$ in $\mathcal{C}$ è 
+				denotato con $\mathcal{C}(A, B)$;
+			\item un operatore di composizione che assegna ad ogni coppia di morfismi $f$, $g$ tali che 
+				$dom\ g = cod\ f$, un morfismo \emph{composto} $g \circ f: dom\ f \rightarrow cod\ g$, 
+				tale da soddisfare
 				\[
 					h \circ (g \circ f) = (h \circ g) \circ f
 				\]
@@ -39,6 +48,13 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 				\]
 				per ogni $f: A \rightarrow B$.
 		\end{enumerate}
+
+		Una categoria $\mathcal{B}$ è una \emph{sottocategoria} di $\mathcal{C}$ se
+		\begin{enumerate}
+			\item ogni oggetto di $\mathcal{B}$ è un oggetto di $\mathcal{C}$;
+			\item se $B$ e $B'$ sono oggetti di $\mathcal{B}$, $\mathcal{B}(B, B') \subseteq \mathcal{C}(B, B')$;
+			\item morfismi composti e identità di $\mathcal{B}$ sono gli stessi di $\mathcal{C}$.
+		\end{enumerate}
 	\end{definition}
 
 	[puntualizzazione sull'utilizzo improprio del temine "collezione" nella definizione].
@@ -46,9 +62,42 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 	Un primo esempio interessante è il seguente, nonché fonte di intuizioni per buona parte di questa presentazione della teoria delle categorie.
 
 	\begin{example}
-		La categoria $\textbf{Set}$ è la categoria degli insiemi e delle funzioni totali tra essi. La composizione di morfismi corrisponde alla composizione di funzioni, e i morfismi identità corrispondono alle funzioni identità.
+		La categoria $\textbf{Set}$ è la categoria degli insiemi e delle funzioni totali tra essi. 
+		La composizione di morfismi corrisponde alla composizione di funzioni, e i morfismi identità corrispondono alle funzioni identità.
 	\end{example}
 
+	Un modo di rappresentare una categoria $\mathcal{C}$ è mediante \emph{diagrammi}, come illustrato di seguito,
+	i cui vertici sono etichettati con oggetti di $\mathcal{C}$, e le frecce con morfismi di $f$, dove una 
+	freccia $f$ da $A$ a $B$ rappresenta il morfismo $f: A \rightarrow B$. 
+	Un diagramma è detto \emph{commutativo} se, per ogni coppia di vertici $A$, $C$, 
+	ogni percorso da $A$ a $C$ determina lo stesso morfismo:
+	\[
+		\begin{tikzcd}
+			A \arrow[r, "f"] \arrow[rd, "h" swap] & B  \arrow[d, "g"] \\
+			& C 
+		\end{tikzcd}
+	\]
+	in questo caso, la commutatività di tale diagramma esprime l'uguaglianza $f \circ g = h$.
 
+	\begin{definition}[Monomorfismi, epimorfismi, isomorfismi]
+		Un morfismo $m:B \rightarrow C$ in una categoria $\mathcal{C}$ è un \emph{monomorfismo}
+		(oppure è \emph{mono}) se, per ogni coppia di morfismi $f, g: A \rightarrow B$ in $\mathcal{C}$, 
+		l'uguaglianaza $m \circ f = m \circ g$ implica $f = g$. \-
+		Un morfismo $e: C \rightarrow D$ in $\mathcal{C}$ è un \emph{epimorfismo} (oppure è \emph{epi}) se
+		l'uguaglianza $f \circ e = g \circ e$ implica $f = g$. \-
+		Un morfismo $\phi: A \rightarrow B$ in $\mathcal{C}$ è un \emph{isomorfismo} se esiste in $\mathcal{C}$
+		un morfismo $\psi: B \rightarrow A$ tale che $\psi \circ \phi = \id{A}$ e $\phi \circ \psi = \id B$.
+
+	\end{definition}
+
+	Ancora una volta, è possibile utilizzare la categoria degli insiemi per avere un'intuizione efficace.
+
+	\begin{example}
+		In $\textbf{Set}$, un monomorfismo $m: A \rightarrow B$ è una funzione iniettiva dall'inieme $A$ all'insieme $B$,
+		un epimorfismo $e: C \rightarrow D$ è una funzione surgettiva da $C$ a $D$, mentre un isomorfismo $\phi: E \rightarrow F$
+		è una corripondenza biunivoca tra gli insiemi $E$ ed $F$
+	\end{example}
+
+	[Non andrei troppo nel dettaglio con gli esempi]
 
 \end{document}
