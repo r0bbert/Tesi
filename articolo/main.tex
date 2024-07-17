@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx, amssymb,amsthm, amsmath, tikz-cd}
+
+\usepackage[english]{babel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}
+
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}
+
+\newcommand{\id}[1]{id_{#1}}
+
+\begin{document}
+
+\section{Concetti di di base}
+
+Questa sezione presenta i concetti di base di teoria delle cateogrie [...] 
+
+\subsection{Categorie}
+
+	\begin{definition}[Categorie]
+		Una \emph{categoria $\mathcal{C}$} è composta da:
+		\begin{enumerate}
+			\item una collezione di \emph{oggetti} $Ob(\mathcal{C})$;
+			\item una collezione di \emph{morfismi} $Mor(\mathcal{C})$;
+			\item due operazioni che assegnano ad ogni morfismo $f$ un oggetto $dom\ f$, detto \emph{dominio} e un oggetto $cod\ f$, detto \emph{codominio}, denotando con $f: A \rightarrow B$ il fatto che $dom\ f = A \text{ e } cod\ f = B$; la collezione di tutti i morfismi da un oggetto $A$ ad un oggetto $B$ in $\mathcal{C}$ è denotato con $\mathcal{C}(A, B)$;
+			\item un operatore di composizione che assegna ad ogni coppia di morfismi $f$, $g$ tali che $dom\ g = cod\ f$, un morfismo \emph{composto} $g \circ f: dom\ f \rightarrow cod\ g$, tale da soddisfare
+				\[
+					h \circ (g \circ f) = (h \circ g) \circ f
+				\]
+				per ogni $f$, $g$, $h$ tali che $dom\ g = cod\ f \text{e} dom\ h = cod\ f$;
+			\item per ogni oggetto $A$, un morfismo \emph{identità} $\id{A}: A \rightarrow A$ tale che:
+				\[
+					\id{B} \circ f = f = f \circ \id{A}
+				\]
+				per ogni $f: A \rightarrow B$.
+		\end{enumerate}
+	\end{definition}
+
+	[puntualizzazione sull'utilizzo improprio del temine "collezione" nella definizione].
+	
+	Un primo esempio interessante è il seguente, nonché fonte di intuizioni per buona parte di questa presentazione della teoria delle categorie.
+
+	\begin{example}
+		La categoria $\textbf{Set}$ è la categoria degli insiemi e delle funzioni totali tra essi. La composizione di morfismi corrisponde alla composizione di funzioni, e i morfismi identità corrispondono alle funzioni identità.
+	\end{example}
+
+
+
+\end{document}
