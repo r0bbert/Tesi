@@ -52,18 +52,24 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 		Una categoria $\mathcal{B}$ è una \emph{sottocategoria} di $\mathcal{C}$ se
 		\begin{enumerate}
 			\item ogni oggetto di $\mathcal{B}$ è un oggetto di $\mathcal{C}$;
-			\item se $B$ e $B'$ sono oggetti di $\mathcal{B}$, $\mathcal{B}(B, B') \subseteq \mathcal{C}(B, B')$;
+			\item se $A$ e $B$ sono oggetti di $\mathcal{B}$, $\mathcal{B}(A, B) \subseteq \mathcal{C}(A, B)$;
 			\item morfismi composti e identità di $\mathcal{B}$ sono gli stessi di $\mathcal{C}$.
 		\end{enumerate}
+		
+		Una sottocategoria $\mathcal{B}$ di $\mathcal{C}$ si dice \emph{completa} se, per ogni coppia di oggetti $A$, $B$,si ha
+		$\mathcal{B}(A, B) = \mathcal{C}(A, B)$.
+
 	\end{definition}
 
 	[puntualizzazione sull'utilizzo improprio del temine "collezione" nella definizione].
 	
-	Un primo esempio interessante è il seguente, nonché fonte di intuizioni per buona parte di questa presentazione della teoria delle categorie.
+	Un primo esempio interessante è il seguente, nonché fonte di intuizioni per buona parte 
+	di questa presentazione della teoria delle categorie.
 
 	\begin{example}
 		La categoria $\textbf{Set}$ è la categoria degli insiemi e delle funzioni totali tra essi. 
-		La composizione di morfismi corrisponde alla composizione di funzioni, e i morfismi identità corrispondono alle funzioni identità.
+		La composizione di morfismi corrisponde alla composizione di funzioni, 
+		e i morfismi identità corrispondono alle funzioni identità.
 	\end{example}
 
 	Un modo di rappresentare una categoria $\mathcal{C}$ è mediante \emph{diagrammi}, come illustrato di seguito,
@@ -77,7 +83,7 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 			& C 
 		\end{tikzcd}
 	\]
-	in questo caso, la commutatività di tale diagramma esprime l'uguaglianza $f \circ g = h$.
+	in questo caso, la commutatività di tale diagramma esprime l'uguaglianza $g \circ f = h$.
 
 	\begin{definition}[Monomorfismi, epimorfismi, isomorfismi]
 		Un morfismo $m:B \rightarrow C$ in una categoria $\mathcal{C}$ è un \emph{monomorfismo}
@@ -90,14 +96,20 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 
 	\end{definition}
 
-	Ancora una volta, è possibile utilizzare la categoria degli insiemi per avere un'intuizione efficace.
+	Le definizioni di monomorfismo, epimorfismo e isomorfismo sono una generalizzazione di un concetto ben noto
+	in teoria degli insiemi, come illustra il seguente esempio.
 
 	\begin{example}
-		In $\textbf{Set}$, un monomorfismo $m: A \rightarrow B$ è una funzione iniettiva dall'inieme $A$ all'insieme $B$,
-		un epimorfismo $e: C \rightarrow D$ è una funzione surgettiva da $C$ a $D$, mentre un isomorfismo $\phi: E \rightarrow F$
+		In $\textbf{Set}$, un monomorfismo $m: A \rightarrow B$ è una 
+		funzione iniettiva dall'inieme $A$ all'insieme $B$,
+		un epimorfismo $e: C \rightarrow D$ è una funzione surgettiva 
+		da $C$ a $D$, mentre un isomorfismo $\phi: E \rightarrow F$
 		è una corripondenza biunivoca tra gli insiemi $E$ ed $F$
 	\end{example}
 
 	[Non andrei troppo nel dettaglio con gli esempi]
+
+	
+
 
 \end{document}
