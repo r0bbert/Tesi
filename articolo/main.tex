@@ -120,8 +120,32 @@ Questa sezione presenta i concetti di base di teoria delle cateogrie [...]
 		esiste un unico morfismo da $A$ ad $1$ in $\mathcal{C}$.  
 	\end{definition}
 
-		
-	
+
+	[...]
+
+\section{Funtori, trasformazioni naturali e categorie funtore}
+
+	Date due categorie $\mathcal{C}$ e $\mathcal{D}$, 
+	un funtore $F: \mathcal{C} \rightarrow \mathcal{D}$ 
+	è una mappa tra categorie, mappando ogni oggetto $A$ di $\mathcal{C}$ in un oggetto $F(A)$ di $\mathcal{D}$
+	e ogni morfismo $f: A \rightarrow B$ di $\mathcal{C}$ in un morfismo $F(f): F(A) \rightarrow F(B)$ in $\mathcal{D}$ e tale che:
+	\begin{itemize}
+		\item $F(\id{A}) = \id{F(A)}$;
+		\item $F(g \circ f) = F(g) \circ F(f)$.
+	\end{itemize}
+
+	Dati due funtori $F \text{,} G : \mathcal{C} \rightarrow \mathcal{D}$, una \emph{trasformazione naturale}
+	$\eta: F \rightarrow G$ è una mappa tra funtori che 
+	che assegna ad ogni oggetto $A$ di $\mathcal{C}$ un morfismo $\eta_A:F(A)\rightarrow G(A)$ in $\mathcal D$ tale che
+	per ogni morfismo $f: A \rightarrow B$ in $\mathcal C$ il seguente diagramma in $\mathcal D$ commuti: 
+	\[
+		\begin{tikzcd}
+			F(A) \arrow[r, "{\eta_A}"] \arrow[d, "F(f)" swap]& G(A) \arrow[d, "G(f)"] \\
+			F(B) \arrow[r, "{\eta_B}" swap] & G(B)
+		\end{tikzcd}
+	\]
+
+
 
 
 \end{document}
