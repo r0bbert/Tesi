@@ -1,0 +1,14 @@
+\begin{thebibliography}{Pie91}
+
+\bibitem[HS79]{Herrlich_Strecker_1979}
+Horst Herrlich and George~E. Strecker.
+\newblock {\em Category Theory}, volume~1 of {\em Sigma Series in Pure
+  Mathematics}.
+\newblock Heldermann Verlag Berlin, 2 edition, 1979.
+
+\bibitem[Pie91]{pierce91}
+Benjamin~C. Pierce.
+\newblock {\em Basic Category Theory for Computer Scientists}.
+\newblock The MIT Press, 1991.
+
+\end{thebibliography}
