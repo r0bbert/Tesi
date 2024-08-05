@@ -121,7 +121,7 @@ Between all morphisms of a category, it is possible to distinguish some that hav
 \end{definition}
 
 \begin{example}
-    In $\Set$, monomorphisms are injective functions, epimorphism are surjective functions and ismorphisms are bijections.
+    In $\Set$, monomorphisms are injective functions, epimorphism are surjective functions and isomorphisms are bijections.
 \end{example}
 
 \subsection{Categories from other categories}
@@ -207,7 +207,7 @@ Once defined what is a functor, we can give a more rigorous definition of diagra
 Functor are often used to generalize some structural behaviour that constructions in categories have. An important example of this fact is the universal property. The definition is not straightforward, but it gives the abstraction of a property that will be useful in further definitions.~\cite{Herrlich_Strecker_1979}
 
 \begin{definition}[Universal property]\label{def:univ_prop}
-    Let $F: \cat{C \rightarrow D}$ be a functor, and let $B \in \Ob(\cat D)$. A pair $(u, A)$, with $A \in \Ob(\cat C)$ and $u: B \rightarrow F(A)$ is said to be an \emph{universal map for $B$ with respect to $F$} if, for each $A' \in \Ob(\cat C)$ and each $f: B \rightarrow F(A')$ there exists a unique morphism $h \in \cat C(A, A')$ such that the following triangle commute:
+    Let $F: \cat{C \rightarrow D}$ be a functor, and let $B \in \Ob(\cat D)$. A pair $(u, A)$, with $A \in \Ob(\cat C)$ and $u: B \rightarrow F(A)$ is said to be an \emph{universal map for $B$ with respect to $F$} if for each $A' \in \Ob(\cat C)$ and each $f: B \rightarrow F(A')$ there exists a unique morphism $h \in \cat C(A, A')$ such that the following triangle commute:
     \[
         \begin{tikzcd}
             B \arrow[r, "u"] \arrow[dr, "f" swap] & F(A) \arrow[d, dashed, "F(h)"] & A \arrow[d, dashed, "h"]\\
@@ -324,7 +324,7 @@ At the same way, it is possible to define coslice categories in terms of comma c
 
 \subsection{Initial and Terminal Objects}
 
-The next definitions are about \emph{universal constructions}. The simplest are the notion of initial and, dually, terminal objects.
+The next definitions are about \emph{universal constructions}. The simplest ones are the notion of initial and, dually, terminal objects.
 
 \begin{definition}[Initial and terminal object]
     An object $A$ of a category $\cat C$ is said to be \emph{initial} if, for each other object $B$ of $\cat C$, there exists a unique morphism from $A$ to $B$.
@@ -333,7 +333,7 @@ The next definitions are about \emph{universal constructions}. The simplest are 
 \end{definition}
 
 \begin{obs}\label{obs:terminal_are_isomorph}
-    It make sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose indeed that $\initial$ and $\initial'$ are two distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. At the same way, it must exists a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
+    It makes sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose indeed that $\initial$ and $\initial'$ are two distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. At the same way, it must exist a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
     The reason why this argument works is because initial and terminal objects have the \emph{universal property} (Definition~\ref{def:univ_prop}), [Integrare qui!]
 \end{obs}
 
@@ -381,43 +381,42 @@ In particular, every presheaf has an initial and a terminal object, because $\Se
 More complex constructions are products (and, dually, coproducts).
 
 \begin{definition}[Product]
-    A \emph{product} of two objects $A$ an $B$ is an object $A \times B$ together with two \emph{projection arrows} $\pi_1:A\times B \rightarrow A$ and $\pi_2: A \times B \rightarrow B$ such that, for every object $C$ and pair of arrows $f: C \rightarrow A$, $g: C \rightarrow B$, there is exactly one arrow $\langle f, g \rangle : c \rightarrow A \times B$ making the diagram
+    A \emph{product} of two objects $A$ an $B$ is an object $A \times B$ together with two \emph{projection arrows} $\pi_1:A\times B \rightarrow A$ and $\pi_2: A \times B \rightarrow B$ such that, for every object $C$ and pair of arrows $f: C \rightarrow A$, $g: C \rightarrow B$, there is exactly one arrow $\langle f, g \rangle : c \rightarrow A \times B$ making the diagram commutes
     \[
         \begin{tikzcd}
                     & C \arrow[dl, "f" swap] \arrow[d, dashed, "{\langle f, g \rangle}" description] \arrow[dr, "g"] & \\
                 A   & A \times B  \arrow[l, "{\pi_1}"] \arrow[r, "{\pi_2}" swap]    &  B    
         \end{tikzcd}
     \]
-
-    commute -- i.e., such that $\pi_1 \circ \langle f, g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle  = g$.
+   -- i.e., such that $\pi_1 \circ \langle f, g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle  = g$.
     
 \end{definition}
 
 
 \begin{definition}[Coproduct]
     The dual of the product is the \emph{coproduct}.
-    A coproduct of two objects $A$ and $B$ is an object $A + B$ together with two arrows $\iota_1:A\rightarrow A+B$, $\iota_2: B \rightarrow A + B$ such that, for every object $C$ and pair of arrows $f:A \rightarrow C$, $g:B \rightarrow C$, there is a unique arrow $[f, g] : A + B \rightarrow C$ such that the diagram
+    A coproduct of two objects $A$ and $B$ is an object $A + B$ together with two arrows $\iota_1:A\rightarrow A+B$, $\iota_2: B \rightarrow A + B$ such that, for every object $C$ and pair of arrows $f:A \rightarrow C$, $g:B \rightarrow C$, there is a unique arrow $[f, g] : A + B \rightarrow C$ such that the diagram commutes
     \[
         \begin{tikzcd}
             A \arrow[r, "{\iota_1}"] \arrow[dr, "f" swap] & A+B \arrow[d, dashed, "{[f,g]}" description] & B \arrow[l, "{\iota_2}" swap] \arrow[dl, "g"] \\
             & C & 
         \end{tikzcd}
     \]
-    commutes -- i.e., such that $[f, g] \circ \iota_1 = f$ and $[f, g] \circ \iota_2 = g$.
+    -- i.e., such that $[f, g] \circ \iota_1 = f$ and $[f, g] \circ \iota_2 = g$.
 \end{definition}
 
 \begin{example}
-    $\Set$ have both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic catesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A + B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+    $\Set$ have both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A + B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
 \end{example}
 
-Both the notion of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrow for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
+The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrow for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
 
 Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction owns the universal property.
 
 \subsection{Equalizers and Coequalzers}
 
-The next notion is about a construction that make parallel arrows (i.e., two possibly distinct morphisms whit the same domain and codomain) equal. In $\Set$, given two functions $f, g: A \rightarrow B$, such construction corresponds exactly to the restriction of the domain to the set of elements on which $f$ and $g$ are equal. Specifically, if we take the set $E = \{x \in A \mid f(x) = g(x)\}$, and we take the function $e: E \rightarrow A$ defined by $e(x) = x$, we obtain what is called an \emph{equalizer} for $f$ and $g$. In fact, $e$ is that function that make $f$ and $g$ be the same function -- i.e., $f \circ e = g \circ e$.
-This concept can be generalized as it follows.
+The next notion is about a construction that make parallel arrows (i.e., two possibly distinct morphisms with the same domain and codomain) equal. In $\Set$, given two functions $f, g: A \rightarrow B$, such construction corresponds exactly to the restriction of the domain to the set of elements on which $f$ and $g$ are equal. Specifically, if we take the set $E = \{x \in A \mid f(x) = g(x)\}$, and we take the function $e: E \rightarrow A$ defined by $e(x) = x$, we obtain what is called an \emph{equalizer} for $f$ and $g$. In fact, $e$ is that function that make $f$ and $g$ be the same function -- i.e., $f \circ e = g \circ e$.
+This concept can be generalized as follows.
 
 \begin{definition}[Equalizer and Coequalizer]
     Let $f, g: A \rightarrow B$ be two arrows of a category $\cat C$. An \emph{equalizer} for $f$ and $g$ is pair $(E, e)$, where $E$ is an object and $e: E \rightarrow A$ is an arrow in $\cat C$ such that:
