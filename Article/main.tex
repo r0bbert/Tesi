@@ -558,7 +558,7 @@ To define what a limit is, we first need to define cones.
             & D(i) &
         \end{tikzcd}
     \]
-    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$.
+    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Such limit is denoted as $(X, f_i)_{i \in \cat I}$
 \end{definition}
 
 \begin{obs}
@@ -643,7 +643,7 @@ The connection between constructions as products and equalizers and limits is ma
     defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
     Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
     
-    What we want now is to show that $(L, (p_i)_{i \in \Ob(\cat I)})$ is the limit of $D$, namely, show that conditions given at the beginning are valid.
+    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, show that conditions given at the beginning are valid.
 
     For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
     \begin{align*}
@@ -700,6 +700,20 @@ All examples done about limits are still valid, in their dual form, for what reg
 \begin{remark}
     Since a diagram is nothing more than a functor form a "shape" category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
 \end{remark}
+
+In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behave whit respect to the constructions defined so far.
+
+\begin{definition}
+    Let $D : \cat{I \rightarrow C}$ be a diagram, and $F: \cat{C \rightarrow D}$ a functor. We say that $F$:
+    \begin{enumerate}
+        \item \emph{preserves limits} of $D$ if, given a limit $(L, l_i)_{i \in \cat I}$ for $D$, then $(F(L), F(l_i))_{i \in \cat I}$ is a limit for $F \circ D$.
+        \item \emph{reflects limits} of $D$ if a cone $(L, l_i)_{i \in \cat I}$ is a limit for $D$ whenever $(F(L), F(l_i))_{i \in \cat I}$ is a limit for $F \circ D$.
+        \item \emph{lifts limits} of $D$ if, given a limit $(L, l_i)_{i \in \cat I}$ for $F \circ D$, there exists a limit $(L', l_i')_{i \in \cat I}$ such that $(F(L'), F(l_i'))_{i \in \cat I} = (L, l_i)_{i \in \cat I}$.
+        \item \emph{creates limits} of $D$ if $D$ has a limit and $F$ preserves and reflects limits along it.
+    \end{enumerate}
+    The dual notions are obtained in the obvious way, namely, substituting the words \textit{"limits"} and \textit{"cones"} with \textit{"colimits"} and \textit{"cocones"}.
+\end{definition}
+
 
 \section{Adhesivity}
 
