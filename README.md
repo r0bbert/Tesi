@@ -2,7 +2,7 @@
 
 Index:
 
-- 1. Background
+1. Background
     - 1.1. Basic Notions    
         - 1.1.1. Categories
         - 1.1.2. Mono, Epi and Iso 
@@ -19,7 +19,7 @@ Index:
         - 1.3.4. Pullbacks and Pushouts
         - 1.3.5. Limits and Colimits 
     - 1.4. Adhesivity
-- 2. Categories of Graphs
+2. Categories of Graphs
     - 2.1. Set-Theoretic Definition of Graphs
             - 2.1.1. Simple Graphs
             - 2.1.2. Graph with Equivalences
