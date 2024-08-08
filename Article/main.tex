@@ -52,13 +52,13 @@
 In this chapter will be defined the building blocks for this work, almost entirely based on categories.
 The aim of what follows is not only to introduce concepts that will be used later, but also to understand how category theory is general enough to give the abstraction of known notions (mainly from set theory) to reuse them in different contexts. This is not a complete tutorial on categories, but instead a sufficient compendium of definitions to make clear what will be done in the next chapters.
 
-\section{Basic Notions}
+\section{Basic Notions}\label{sect:basic_nots}
 
 %The very fist concept to get familiar with is what is a category. We can see a category as a general construction that can provide any level of abstraction needed. In fact, the definition is not about what the category represents, but instead a more general scheme that \emph{may} represent something. The definition is about what a category is composed by, and how the objects in it interact between themselves.
 
 This section is all about basic definitions and examples, to get familiar with the formalism of categories.
 
-\subsection{Categories}
+\subsection{Categories}\label{ssect:cats}
 
 \begin{definition}[Category]\label{def:category}
     A \emph{category} $\cat{C}$ comprises:
@@ -104,7 +104,7 @@ A more rigorous definition of what a diagram is will be given later (Definition~
     Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, $\Set(A, B)$ is also a set. A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
 \end{remark}
 
-\subsection{Mono, Epi and Iso}
+\subsection{Mono, Epi and Iso}\label{ssect:Mono_epi_iso}
 
 Between all morphisms of a category, it is possible to distinguish some that have certain properties, as well as functions between sets can be surjective, injective or bijective.
 
@@ -124,7 +124,7 @@ Between all morphisms of a category, it is possible to distinguish some that hav
     In $\Set$, monomorphisms are injective functions, epimorphism are surjective functions and isomorphisms are bijections.
 \end{example}
 
-\subsection{Categories from other categories}
+\subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
 Starting from a category $\cat{C}$, it is possible to construct some other categories with interesting property.
 An example is the \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
@@ -172,7 +172,7 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 
 \end{definition}
 
-\section{Functors, Natural transformations and Beyond}
+\section{Functors, Natural transformations and Beyond}\label{sect:funct_nats}
 
 A functor is a structure preserving map between categories. 
 
@@ -321,7 +321,7 @@ It is easy to see that $(Id_\cat C \downarrow !_X)$ is exactly the same of $\cat
 At the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C$.
 
 
-\section{Universal Constructions}
+\section{Universal Constructions}\label{sect:univ_constr}
 
 \subsection{Initial and Terminal Objects}
 
@@ -715,10 +715,60 @@ In the next sections, we will work on a special kind of diagrams with certain pr
 \end{definition}
 
 
-\section{Adhesivity}
+\section{Adhesivity}\label{sect:adh}
 
+\chapter{Categories of Graphs}
+This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
 
+\section{Set-Theoretic Definition of Graphs}
 
+A first obvious definition of graph is given via sets and set-theoretic tools. The next definition recalls how a graph intuitively is.
+
+\begin{definition}[Graph]
+    A \emph{graph} $G$ is a tuple $(V, E, s, t)$, where $V$ and $E$ are sets (respectively, the set of vertices, or nodes, and the set of edges, or arcs), and $s, t: E \rightarrow V$ are two functions (respectively, the source and the target of an edge).
+    In general, given a graph $G$, we write $V(G)$ to denote the set of vertices and $E(G)$ the set of edges of $G$.
+\end{definition}
+
+\begin{definition}[Graph Homomorphism]
+    Given two graphs $G=(V_G, E_G, s_G, t_G)$ and $H=(V_H, E_H, s_H, t_H)$, a \emph{graph homomorphism} $h: G \rightarrow H$ is a pair of functions $h = (h_V: V_G \rightarrow V_H, h_E: E_G \rightarrow E_H)$ such that
+    \[
+        h_V \circ s_G = s_H \circ h_E
+    \]
+    and
+    \[
+        h_V \circ t_G = t_H \circ h_E
+    \]
+    that is, a structure preserving map.
+    Given two graph homomorphisms $h = (h_V, h_E): G \rightarrow H$, $k = (k_V, k_E): H \rightarrow I$, the homomorphism $ k \circ h = (k_V \circ h_V, k_E \circ h_E): G \rightarrow I$ is the \emph{composite} of $h$ and $k$.
+\end{definition}
+
+Graphs together with graph homomorphisms from a category.
+
+\begin{definition}[Category of Graphs]
+    $\mathbf{Graph}$ is the category in which objects are graphs and arrows are graph homomorphisms.
+\end{definition}
+
+All the constructions defined in Section~\ref{sect:univ_constr} exists in $\mathbf{Graph}$, and they are very similar to construction in $\Set$, intuitively because of the set-theoretic nature of graphs. The next examples try to make this point clear.
+
+\begin{example}
+    The initial object in $\mathbf{Graph}$ is the empty graph, i.e., the graph with an empty set of vertices and an empty set of edges. The initial object instead is the graph with exactly one node and a single edge from that node to itself.
+\end{example}
+
+\begin{example}
+    Given two graphs $G = (V_G, E_G, s_G, t_G)$ and $H=(V_H, E_H, s_H, t_H)$, the graph $G \times H = (V_G\times V_H, E_G \times E_H, (s_G, s_H), (t_G, t_H))$, where $(s_G, s_H), (t_G, t_H):V_G\times V_H \rightarrow E_G \times E_H$ are the pairwise sources and targets, is the categorical product in $\mathbf{Graph}$, together with the two projections $\pi_G: G \times H \rightarrow G$, $\pi_H : G \times H \rightarrow H$ defined in the obvious way.
+\end{example}
+
+\begin{example}
+    Equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ which is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
+\end{example}
+
+\subsection{Graph with Equivalences}
+
+It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with a relation of that kind of relation defined over its set of vertices.
+
+\begin{definition}[Graph with Equivalence]
+    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes.
+\end{definition}
 
 
 % ---------------- Bibliography ---------------- %
