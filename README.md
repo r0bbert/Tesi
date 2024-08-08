@@ -21,7 +21,7 @@ Index:
     - 1.4. Adhesivity
 2. Categories of Graphs
     - 2.1. Set-Theoretic Definition of Graphs
-            - 2.1.1. Simple Graphs
-            - 2.1.2. Graph with Equivalences
+        - 2.1.1. Simple Graphs
+        - 2.1.2. Graph with Equivalences
 
 
