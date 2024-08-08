@@ -2,7 +2,7 @@
 
 Index:
 
-1 Background 3
+1 Background
 
     1.1 Basic Notions
         
@@ -25,7 +25,7 @@ Index:
     
     1.4 Adhesivity
 
-2 Categories of Graphs 21
+2 Categories of Graphs
 
     2.1 Set-Theoretic Definition of Graphs
         
