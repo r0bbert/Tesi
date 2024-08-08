@@ -2,7 +2,7 @@
 
 Index:
 
-1 Background 3
+1 Background
 
     1.1 Basic Notions
         
