@@ -318,7 +318,7 @@ Thus, the slice category $\cat C / X$ is the comma category given by the two fun
 \]
 It is easy to see that $(Id_\cat C \downarrow !_X)$ is exactly the same of $\cat C / X$.
 
-At the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C$.
+In the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C$.
 
 
 \section{Universal Constructions}\label{sect:univ_constr}
@@ -335,7 +335,7 @@ The next definitions are about \emph{universal constructions}. The simplest ones
 
 \begin{obs}\label{obs:terminal_are_isomorph}
     It makes sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose indeed that $\initial$ and $\initial'$ are two distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. At the same way, it must exist a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
-    The reason why this argument works is because initial and terminal objects have the \emph{universal property} (Definition~\ref{def:univ_prop}), [Integrare qui!]
+    The reason why this argument works is because initial and terminal objects have the \emph{universal property} (Definition~\ref{def:univ_prop}), i.e., 
 \end{obs}
 
 \begin{example}\label{ex:set_init_term}
@@ -746,7 +746,7 @@ First obvious definitions of graph are given via sets and set-theoretic tools, r
 
 Graphs together with graph homomorphisms from a category.
 
-\begin{definition}[Category of Graphs]
+\begin{definition}[Category of Graphs]\label{def:cat_of_graph}
     $\mathbf{Graph}$ is the category in which objects are graphs and arrows are graph homomorphisms.
 \end{definition}
 
@@ -768,8 +768,22 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
 
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with a relation of that kind of relation defined over its set of vertices.
 
-\begin{definition}[Graph with Equivalence]
-    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes.
+\begin{definition}[Graph with Equivalence~\cite{concur2006}]
+    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
+\end{definition}
+
+The next consideration will be useful later.
+
+\begin{remark}
+    It is possible to define an equivalence relation $\sim \ \subseteq S\times S$ as a surjective function mapping each $s \in S$ to a partition of $S$ in which each element is equivalent according to $\sim$, that is, its \emph{equivalence class}. Formally, an equivalence relation $\sim \ \subseteq S\times S$ is fully described by a function $f_\sim : S \rightarrow \{[s]_\sim \mid s \in S \}$, where $[s]_\sim = \{t \in S \mid t \sim s\}$, defined by $f_{\sim}(s) = [s]_\sim$. 
+\end{remark}
+
+\begin{obs}
+    $\mathbf{Graph}$, defined in Definition~\ref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
+\end{obs}
+
+\begin{definition}[Quotient functor]
+    The functor $Q: \mathbf{EqGrph \rightarrow Graph}$, which maps each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$ is called \emph{quotient functor}.
 \end{definition}
 
 
