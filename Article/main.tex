@@ -49,7 +49,7 @@
 % [TODO]
 
 \chapter{Background}
-In this chapter will be defined the building blocks for this work, almost entirely based on categories.
+In this chapter the building blocks for this work, almost entirely based on categories, will be defined.
 The aim of what follows is not only to introduce concepts that will be used later, but also to understand how category theory is general enough to give the abstraction of known notions (mainly from set theory) to reuse them in different contexts. This is not a complete tutorial on categories, but instead a sufficient compendium of definitions to make clear what will be done in the next chapters.
 
 \section{Basic Notions}\label{sect:basic_nots}
@@ -66,7 +66,7 @@ This section is all about basic definitions and examples, to get familiar with t
         \item A collection of \emph{objects} $\Ob(\cat{C})$;
         \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$.
     \end{enumerate}
-    For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ which map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of all morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
+    For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ that map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
     An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
     $$
         h \circ (g \circ f) = (h\circ g) \circ f
@@ -95,21 +95,25 @@ A more rigorous definition of what a diagram is will be given later (Definition~
 
 \begin{example}
     It is easy to see that taking sets as objects and total functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $\forall a \in A: id_A(a) = a$.
-    This category is usually denoted as $\Set$.
+    This category is denoted as $\Set$.
 \end{example}
 
 \begin{remark}\label{rem:small_cats}
-    It is important to note that the Definition~\ref{def:category} above does not specify what kind of collections are, for a category $\cat{C}$, $\Ob(\cat{C})$ and $\Hom(\cat{C})$.
+    It is important to note that the Definition~\ref{def:category} above does not specify what kind of collections
+    %for a category $\cat{C}$, 
+    $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are.
     Taking $\Set$ as example, the collection $\Ob(\Set)$ cannot be a set itself, due to Russel's paradox. It would be more appropriate referring to a category $\cat{C}$ which $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are both sets as a \emph{small category}, but it is assumed in this work, except where it is made explicit, for a category to be small.
-    Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, $\Set(A, B)$ is also a set. A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
+    Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, $\Set(A, B)$ is also a set.
+    {\color{red}{non esattamente}}
+    A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
 \end{remark}
 
 \subsection{Mono, Epi and Iso}\label{ssect:Mono_epi_iso}
 
-Between all morphisms of a category, it is possible to distinguish some that have certain properties, as well as functions between sets can be surjective, injective or bijective.
+Between the morphisms of a category, it is possible to distinguish some that have certain properties, as functions between sets can be surjective, injective or bijective.
 
 \begin{definition}[Monomorphism]\label{def:mono}
-    An arrow $f:B\rightarrow C$ in a category $\cat{C}$ is a \emph{monomorphism} if, for any pair of arrows of $\cat{C}$ $g:A \rightarrow B$, $h: A \rightarrow B$, the equality $f \circ g = f \circ h$ implies $g = h$. The class of all monomorphisms of $\cat C$ is denoted $\Mono(\cat C)$.
+    An arrow $f:B\rightarrow C$ in a category $\cat{C}$ is a \emph{monomorphism} if, for any pair of arrows of $\cat{C}$ $g:A \rightarrow B$, $h: A \rightarrow B$, the equality $f \circ g = f \circ h$ implies $g = h$. The class of monomorphisms of $\cat C$ is denoted $\Mono(\cat C)$.
 \end{definition}
 
 \begin{definition}[Epimorphism]\label{def:epi}
@@ -121,14 +125,14 @@ Between all morphisms of a category, it is possible to distinguish some that hav
 \end{definition}
 
 \begin{example}
-    In $\Set$, monomorphisms are injective functions, epimorphism are surjective functions and isomorphisms are bijections.
+    In $\Set$, monomorphisms are injective functions, epimorphisms are surjective functions and isomorphisms are bijections.
 \end{example}
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
-Starting from a category $\cat{C}$, it is possible to construct some other categories with interesting property.
+Starting from a category $\cat{C}$, it is possible to construct other categories with interesting property.
 An example is the \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
-Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}.
+Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}. {\color{red} la discussione sul duale temo confonda}
 
 Another important notion is that of subcategory.
 \begin{definition}[Subcategory]
@@ -140,13 +144,13 @@ Another important notion is that of subcategory.
     \end{enumerate}
 
     If the inclusion at~\ref{inc} is an equality (i.e. $\cat{D}(A, B) = \cat{C}(A, B)$ for each couple of objects $A$, $B$ of $\cat{D}$), then $\cat{D}$ is said to be a \emph{full subcategory} of $\cat{C}$.
-    Another way to express that composites are the same (point~\ref{comp}) is to say that if $f, g \in \Hom(\cat D)$ are composable, then $g \circ g \in \Hom(\cat D)$, i.e., $\Hom(\cat D)$ is \emph{closed under composition}.
+    Another way to express that composites are the same (point~\ref{comp}) is to say that if $f, g \in \Hom(\cat D)$ are composable, then $g \circ f \in \Hom(\cat D)$, i.e., $\Hom(\cat D)$ is \emph{closed under composition}.
 \end{definition}
 
 An object of a category marks out a category itself. This is the case of slice (and coslice) categories.
 
 \begin{definition}[Slice Category]\label{def:slice_cat}
-    Given a category $\cat{C}$ and an object $X \in \Ob(\cat{C})$, the \emph{slice category} $\cat{C}/X$ is the category that has pairs $(A, f)$ as objects, where $A$ is an object of $C$ and $f: A \rightarrow X$ is an arrow in $\cat{C}$, and arrows $\phi: (A, f) \rightarrow (B, g)$ is given by a morphism $\phi: A \rightarrow B$ of $\cat{C}$ such that the following diagram commutes:
+    Given a category $\cat{C}$ and an object $X \in \Ob(\cat{C})$, the \emph{slice category} $\cat{C}/X$ is the category that has pairs $(A, f)$ as objects, where $A$ is an object of $C$ and $f: A \rightarrow X$ is an arrow in $\cat{C}$, and arrows $\phi: (A, f) \rightarrow (B, g)$ are given by a morphism $\phi: A \rightarrow B$ of $\cat{C}$ such that the following diagram commutes:
     \[
         \begin{tikzcd}
             A \arrow[r, "{\phi}"] \arrow[dr, "f" swap] & B \arrow[d, "g"] \\
@@ -162,7 +166,7 @@ An object of a category marks out a category itself. This is the case of slice (
         \end{tikzcd}
     \]
 
-    The dual definition is \emph{coslice category}, noted $X/\cat{C}$ (where $X \in \Ob(\cat{C})$), obtained by taking as objects all the morhisms of $\cat{C}$ with domain $X$ and as arrows the morphisms $\phi: (A, f) \rightarrow (B, g)$ such that $f:X\rightarrow A, g:B \rightarrow X \text{ of }\cat{C}$ such that $g = \phi \circ f$. 
+    The dual definition of \emph{coslice category}, noted $X/\cat{C}$ (where $X \in \Ob(\cat{C})$), is obtained by taking as objects the morhisms of $\cat{C}$ with domain $X$ and as arrows the morphisms $\phi: (A, f) \rightarrow (B, g)$ such that $f:X\rightarrow A, g:B \rightarrow X \text{ of }\cat{C}$ and $g = \phi \circ f$. 
 \end{definition}
 
 Furthermore, it is possible to raise a new category from two old ones by taking their product, as the following definition shows.
@@ -191,7 +195,7 @@ A functor is a structure preserving map between categories.
     A first example of functor is the \emph{identity functor}. Given a category $\cat C$, the identity functor $Id_\cat C :\cat{C \rightarrow C}$ is the functor that maps each object on itself and each arrow onto itself. 
 \end{example}
 
-Once defined what is a functor, we can give a more rigorous definition of diagram. Although this may seem extremely technical, it will be useful, especially in the definition of limits (Definition~\ref{def:limit}).
+Once defined what a functor is, we can give a more rigorous definition of diagram. Although this may seem extremely technical, it will be useful, especially in the definition of limits (Definition~\ref{def:limit}).
 
 \begin{definition}[Diagram]\label{def:diagram}
     A \emph{diagram in a category $\cat C$ of shape $\cat I$} is a functor $D: \cat{I \rightarrow C}$.
@@ -205,7 +209,7 @@ Once defined what is a functor, we can give a more rigorous definition of diagra
     The dual notion of span is a \emph{cospan}, namely, a diagram of shape $\Lambda^{op} = (L \xrightarrow{l} X \xleftarrow{r} R)$, and is denoted by $(l, X, r): L \rightharpoondown R$.
 \end{example}
 
-Functor are often used to generalize some structural behaviour that constructions in categories have. An important example of this fact is the universal property. The definition is not straightforward, but it gives the abstraction of a property that will be useful in further definitions.~\cite{Herrlich_Strecker_1979}
+Functor are often used to generalize some structural behaviour that constructions in categories have. An important example of this fact is the universal property. The definition is not straightforward, but it gives the abstraction of a property that will be useful in further definitions~\cite{Herrlich_Strecker_1979}.
 
 \begin{definition}[Universal property]\label{def:univ_prop}
     Let $F: \cat{C \rightarrow D}$ be a functor, and let $B \in \Ob(\cat D)$. A pair $(u, A)$, with $A \in \Ob(\cat C)$ and $u: B \rightarrow F(A)$ is said to be an \emph{universal map for $B$ with respect to $F$} if for each $A' \in \Ob(\cat C)$ and each $f: B \rightarrow F(A')$ there exists a unique morphism $h \in \cat C(A, A')$ such that the following triangle commute:
@@ -227,12 +231,12 @@ Functor are often used to generalize some structural behaviour that construction
     \]
 \end{definition}
 
-Given two functors which share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of "changing the functor acting on that object".
+Given two functors that share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of ``changing the functor acting on that object''.
 
 \subsection{Natural transformations}
 
 \begin{definition}[Natural transformation]
-    Let $F,G : \cat {C \rightarrow D}$ be two functors. A \emph{natural transformation} $\eta$ between them, denoted $\eta: F \dot\rightarrow G$ is a function $\eta: \Ob(\cat C) \rightarrow \Hom(\cat D)$ taking each $A \in \Ob(\cat C)$ to a morphism $\eta_A:F(A) \rightarrow G(A)$ in $\cat{D}$, such that, for each morphism $f: A \rightarrow B$ of $\cat C$, the following diagram commutes:
+    Let $F,G : \cat {C \rightarrow D}$ be two functors. A \emph{natural transformation} $\eta$ between them, denoted $\eta: F \dot\rightarrow G$, is a function $\eta: \Ob(\cat C) \rightarrow \Hom(\cat D)$ taking each $A \in \Ob(\cat C)$ to a morphism $\eta_A:F(A) \rightarrow G(A)$ in $\cat{D}$, such that, for each morphism $f: A \rightarrow B$ of $\cat C$, the following diagram commutes:
     \[
         \begin{tikzcd}
             F(A) \arrow[d, "F(f)" swap] \arrow[r, "{\eta_A}"] & G(A) \arrow[d, "G(f)"] \\
@@ -245,7 +249,7 @@ Given two functors which share domain and codomain categories, it is possible to
 \end{definition}
 
 \begin{obs}\label{obs:comp_assoc_nat_tran}
-It is easy to see that, given two natural transformation $\eta:F\dot\rightarrow G$, $\theta: G \dot\rightarrow H$, it is possible to compose them obtaining a new natural transformation $\xi = \theta \circ \eta : F \dot \rightarrow H$. This follows by the fact that the diagram
+It is easy to see that, given two natural transformations $\eta:F\dot\rightarrow G$, $\theta: G \dot\rightarrow H$, it is possible to compose them obtaining a new natural transformation $\xi = \theta \circ \eta : F \dot \rightarrow H$. This follows by the fact that the diagram
 \[
         \begin{tikzcd}
             F(A) \arrow[d, "F(f)" swap] \arrow[r, "{\eta_A}"] 
@@ -256,22 +260,22 @@ It is easy to see that, given two natural transformation $\eta:F\dot\rightarrow 
                 & H(B)
         \end{tikzcd}
 \]
-commutes because the two inner squares do. Sticking another diagram on the right of the one above, it is even possible to show associativity of composition of natural transformations.
+commutes because the two inner squares do. Sticking another diagram on the right of the one above, it is possible to show associativity of composition of natural transformations.
 \end{obs}
 
 \subsection{Functor Category}
 
-The Observation~\ref{obs:comp_assoc_nat_tran} shows that natural transformations recreate on the functors the same structure that morphisms in a category have on objects. This led us to define a particular kind of category, in which objects are functors between two fixed categories, and arrow are natural transformations.
+The Observation~\ref{obs:comp_assoc_nat_tran} shows that natural transformations recreate on the functors the same structure that morphisms in a category have on objects. This leds us to define a particular kind of category, in which objects are functors between two categories, and arrow are natural transformations.
 
 
 \begin{definition}[Functor Category]\label{def:functor_category}
-    Let $\cat C$ and $\cat D$ be two categories. The category whose objects are functors between $\cat C$ and $\cat D$ and whose arrows are natural transformations between them is said to be a \emph{functor category}, and it is denoted by $[\cat{C, D}]$.
+    Let $\cat C$ and $\cat D$ be categories. The category whose objects are functors between $\cat C$ and $\cat D$ and whose arrows are natural transformations between them is said to be a \emph{functor category}, and it is denoted by $[\cat{C, D}]$.
 \end{definition}
 
 A functor with a small category as domain (Remark~\ref{rem:small_cats}) and $\Set$ as codomain is said to be a \emph{presheaf} on that category. Given a category $\cat C$, it is possible to construct the functor category of the presheaves on $\cat C$, i.e. $[\cat C, \Set]$.
 
 \begin{remark}
-    What we are calling here a presheaf is not totally accurate, because technically a presheaf on a small category $\cat C$ is a functor $F: \cat C ^{op} \rightarrow \Set$. This technicality would bring more complexity, and it is beyond the scope of this work, so we will continue adopting the definition we give above.
+    What we are calling here a presheaf is not totally accurate, because technically a presheaf on a small category $\cat C$ is a functor $F: \cat C ^{op} \rightarrow \Set$. This technicality would bring more complexity, and it is beyond the scope of this work, so we will continue adopting the definition given above.
 \end{remark}
 
 \subsection{Comma categories}
@@ -330,12 +334,12 @@ The next definitions are about \emph{universal constructions}. The simplest ones
 \begin{definition}[Initial and terminal object]
     An object $A$ of a category $\cat C$ is said to be \emph{initial} if, for each other object $B$ of $\cat C$, there exists a unique morphism from $A$ to $B$.
     Dually, an object $Z$ is said to be a terminal object in a category $\cat C$ if, for any other object $X$ of $\cat C$, there exists a unique morphism from $X$ to $Z$.
-    An initial object of a category is indicated by the symbol $\initial$, and a terminal object is indicated by the symbol $\terminal$.
+    An initial object is indicated by the symbol $\initial$, and a terminal object by the symbol $\terminal$.
 \end{definition}
 
 \begin{obs}\label{obs:terminal_are_isomorph}
-    It makes sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose indeed that $\initial$ and $\initial'$ are two distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. At the same way, it must exist a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
-    The reason why this argument works is because initial and terminal objects have the \emph{universal property} (Definition~\ref{def:univ_prop}), i.e., 
+    It makes sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose that $\initial$ and $\initial'$ are distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. Likewise, it must exist a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
+    The reason why this argument works is because initial and terminal objects have the \emph{universal property} (Definition~\ref{def:univ_prop}), i.e., {\color{red} ?????}
 \end{obs}
 
 \begin{example}\label{ex:set_init_term}
@@ -407,12 +411,12 @@ More complex constructions are products (and, dually, coproducts).
 \end{definition}
 
 \begin{example}
-    $\Set$ have both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A + B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A + B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
 \end{example}
 
-The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrow for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
+The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
 
-Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction owns the universal property.
+Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satifies the universal property.
 
 \subsection{Equalizers and Coequalzers}
 
@@ -436,14 +440,14 @@ This concept can be generalized as follows.
 \end{definition}
 
 \begin{prop}\label{prop:eq_are_mono}
-    Let $e: E \rightarrow A$ be the arrow that equalize $f, g : A \rightarrow B$ in a category $\cat C$. Then, $e$ is a monomorphism.
+    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then, $e$ is a monomorphism.
 \end{prop}
 
 \begin{proof}
     Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
 \end{proof}
 
-Of all monomorphism, an intrersting subclass of them is the one that contains only the equalizers.
+Of all monomorphism, an interesting subclass of them is the one that contains only the equalizers.
 
 \begin{definition}[Regular Monomorphism]\label{def:reg_mono}
     A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
@@ -451,7 +455,7 @@ Of all monomorphism, an intrersting subclass of them is the one that contains on
 
 \subsection{Pullbacks and Pushouts}
 
-Another (pair of) construction(s) one can find in a category, given two arrows, is the pullback (and the pushout).
+Given two arrows, another pair of constructions one can find in a category is given by pullbacks and pushouts.
 
 \begin{definition}[Pullback, Pushout]
         A \emph{pullback} of two arrows $f: A \rightarrow C$ and $g: B \rightarrow C$ is a triple $(P, \pi_g, \pi_f)$ containing an object $P$ and a pair of arrows $\pi_g: P \rightarrow A$, $\pi_f: P \rightarrow B$ such that:
@@ -494,7 +498,7 @@ Another (pair of) construction(s) one can find in a category, given two arrows, 
     }
 \end{definition}
 
-Pullbacks (and, dually pushouts) are construction slightly more general than products and equalizers. An intuition of what they represent is given by considering what is concretely a pullback in the category of sets.
+Pullbacks (and, dually, pushouts) are a construction that is slightly more general than products and equalizers. An intuition of what they represent is given by considering what is concretely a pullback in the category of sets.
 
 \begin{example}
     In $\Set$, given two functions $f: A \rightarrow C$ and $g: B \rightarrow C$, a pullback of $f$ and $g$ exists and is exactly the set $P = \{(x, y) \in A \times B \mid f(x) = g(y)\}$, with $\pi_f : P \rightarrow B$ and $\pi_g : P \rightarrow C$ defined, respectively, by $\pi_f((x, y)) = y$ and $\pi_g((x, y)) = x$. In this way, we have then, $\forall (x, y) \in P$:
@@ -517,8 +521,8 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
     \end{tikzcd}
 \]
 \begin{definition}[Stability under pullbacks, pushouts]
-    Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
-    $\mathcal A$ is said to be \emph{stable under pushouts} if, for every square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
+    Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
+    $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
 \end{definition}
 
 \subsection{Limits and Colimits}
@@ -541,7 +545,7 @@ To define what a limit is, we first need to define cones.
 \end{definition}
 
 \begin{obs}\label{obs:category_of_cones}
-    Given a diagram $D$, the category of the cones for $D$, denoted $\textbf{Cone}(D)$ is defined to have cones for $D$ as objects and cone morphisms as arrows, where a con morphism $\phi: C \rightarrow C'$ from a cone $C = \{f_i: X \rightarrow D(i)\}$ to $C' = \{f_i':X' \rightarrow D(i)\}$ is a morphism $\phi: X \rightarrow X'$ such that the following diagram commutes for each $i$:
+    Given a diagram $D$, the category of the cones for $D$, denoted $\textbf{Cone}(D)$, is defined to have cones for $D$ as objects and cone morphisms as arrows, where a cone morphism $\phi: C \rightarrow C'$ from $C = \{f_i: X \rightarrow D(i)\}$ to $C' = \{f_i':X' \rightarrow D(i)\}$ is a morphism $\phi: X \rightarrow X'$ such that the following diagram commutes for each $i$:
     \[
         \begin{tikzcd}
             X \arrow[rr, "{\phi}"] \arrow[dr, "{f_i}" swap] & & X' \arrow[dl, "{f_i'}"] \\
@@ -584,7 +588,7 @@ The following examples show how limits are general concepts for the construction
             A & X \arrow[l, "f" swap] \arrow[r, "g"] & B
         \end{tikzcd}
     \]
-    A limit for $D$ is, if it exists, the product of $A$ and $B$.
+    If it exists, a limit for $D$ is the product of $A$ and $B$.
 \end{example}
 
 \begin{example}
@@ -618,7 +622,7 @@ The following examples show how limits are general concepts for the construction
 \end{example}
 
 
-The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and product do.
+The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do.
 
 \begin{theorem}[Limit theorem]
     Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
@@ -640,10 +644,10 @@ The connection between constructions as products and equalizers and limits is ma
     \[
         \gamma, \varepsilon : \prod_{j \in \Ob(\cat I)}D(j) \ \longrightarrow \prod_{\alpha \in \Hom(\cat I)} D(cod \ \alpha)
     \]
-    defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
+    be defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
     Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
     
-    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, show that conditions given at the beginning are valid.
+    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, to prove that the conditions given at the beginning are valid.
 
     For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
     \begin{align*}
@@ -674,7 +678,7 @@ The dual notions of cones and limits are that of cocones and colimits.
     A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
 \end{definition}
 
-All examples done about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizer, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples. The limit theorem is still valid, considering coequalizers and coproducts, and the proof is much the same.
+All the examples we provided about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples. The limit theorem is still valid, considering coequalizers and coproducts, and the proof is much the same.
 
 \begin{example}
     Given a span $S = (l, X, r): L \rightharpoonup R$, shown in the diagram below,
@@ -698,10 +702,10 @@ All examples done about limits are still valid, in their dual form, for what reg
 
 
 \begin{remark}
-    Since a diagram is nothing more than a functor form a "shape" category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
+    Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
 \end{remark}
 
-In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behave whit respect to the constructions defined so far.
+In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behaves with respect to the constructions defined so far.
 
 \begin{definition}
     Let $D : \cat{I \rightarrow C}$ be a diagram, and $F: \cat{C \rightarrow D}$ a functor. We say that $F$:
@@ -711,14 +715,14 @@ In the next sections, we will work on a special kind of diagrams with certain pr
         \item \emph{lifts limits} of $D$ if, given a limit $(L, l_i)_{i \in \cat I}$ for $F \circ D$, there exists a limit $(L', l_i')_{i \in \cat I}$ such that $(F(L'), F(l_i'))_{i \in \cat I} = (L, l_i)_{i \in \cat I}$.
         \item \emph{creates limits} of $D$ if $D$ has a limit and $F$ preserves and reflects limits along it.
     \end{enumerate}
-    The dual notions are obtained in the obvious way, namely, substituting the words \textit{"limits"} and \textit{"cones"} with \textit{"colimits"} and \textit{"cocones"}.
+    The dual notions are obtained in the obvious way, namely, substituting the words ``limits'' and ``cones'' with ``colimits'' and ``cocones'', respectively
 \end{definition}
 
 
 \section{Adhesivity}\label{sect:adh}
 
 \chapter{Categories of Graphs}
-This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
+This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from the set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
 
 \section{Set-Theoretic Definition of Graphs}
 
@@ -761,7 +765,7 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
 \end{example}
 
 \begin{example}
-    Equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ which is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
+    The equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ that is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
 \end{example}
 
 \subsection{Graph with Equivalences}
