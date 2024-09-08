@@ -230,17 +230,26 @@ Functor are often used to generalize some structural behaviour that construction
 Some interesting properties of certain functors depend strictly on how they behave on the homsets of the domain and the codomain categories. The following definitions are about this particular type of functors.
 
 \begin{definition}[Full functor, faithful functor, fully faithful functor]
-    let $F: \cat C \rightarrow \cat D$ be a functor, and consider the induced function
+    Let $F: \cat C \rightarrow \cat D$ be a functor, and consider the inducted function
     $$
-        F_{X, Y} : {\cat C}(X, Y) \rightarrow {\cat D}(F(X), F(Y))
+        F_{A, B} : {\cat C}(A, B) \rightarrow {\cat D}(F(A), F(B))
     $$
-    If, for each $X$, $Y$ objects of $\cat C$, $F_{X, Y}$ is surjective, then $F$ is said to be \emph{full}, if it is injective, $F$ is said to be \emph{faithful}, if it is both injective and surjective, $F$ is said to be \emph{fully faithful}.
+    If, for each $A$, $B$ objects of $\cat C$, $F_{A, B}$ is surjective, then $F$ is said to be \emph{full}, if it is injective, $F$ is said to be \emph{faithful}, if it is both injective and surjective, $F$ is said to be \emph{fully faithful}.
 \end{definition}
 
+\begin{obs}
+    Properties such as fullness and faithfulness are so called \emph{self-dual}, because the dual notion coincide with the same notion. This fact can be advantageous because if for example the faithfulness implies the preservation of some property, then the dual property is implied at the same way.
+\end{obs}
+
 \begin{example}
-    Let $\cat C$ be a category and $\cat D$ a subcategory. The inclusion functor $I: \cat{D \rightarrow C}$, mapping each object and each arrow onto itself. $I$ is a faithful functor, because, given any pair of objects $X$ and $Y$ of $\cat D$, $I_{X, Y}$ is injective. If $\cat D$ is a full subcategory, then $I$ is fully faithful.
+    Let $\cat C$ be a category and $\cat D$ a subcategory. The inclusion functor $I: \cat{D \rightarrow C}$, mapping each object and each arrow onto itself. $I$ is a faithful functor, because, given any pair of objects $A$ and $B$ of $\cat D$, $I_{A, B}$ is injective. If $\cat D$ is a full subcategory, then $I$ is fully faithful.
 \end{example}
 
+Having such classification among functors turns out to be useful in many contexts. For example, consider $F(m): F(B) \rightarrow F(C)$ be a monomorphism in a category $\cat D$, where $F: \cat C \rightarrow \cat D$ is a faithful functor. Then, if $f, g: A \rightarrow B$ are two morphisms in $\cat C$ such that $m \circ f = m \circ g$, then $F(m \circ f) = F(m) \circ F(f) = F(m) \circ F(g) = F(m\circ g)$. Since $F(m)$ is mono, then $F(f) = F(g)$, and, since $F_{A, B}$ is injective, $f = g$. Together with the fact that faithfulness is a self-dual concept, we have a proof for what follows~\cite{Herrlich_Strecker_1979}.
+
+\begin{prop}
+    Let $F: \cat{C \rightarrow D}$ be a faithful functor. Then $F$ reflects monomorphisms and epimorphisms.
+\end{prop}
 
 Given two functors which share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of "changing the functor acting on that object".
 
@@ -864,7 +873,7 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with a relation of that kind of relation defined over its set of vertices.
 
 \begin{definition}[Graph with Equivalence~\cite{concur2006}]
-    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
+    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \ \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
 \end{definition}
 
 The next consideration will be useful later.
@@ -878,8 +887,10 @@ The next consideration will be useful later.
 \end{obs}
 
 \begin{definition}[Quotient functor]
-    The functor $Q: \mathbf{EqGrph \rightarrow Graph}$, which maps each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$ is called \emph{quotient functor}.
+    The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$.
 \end{definition}
+
+
 
 
 % ---------------- Bibliography ---------------- %
