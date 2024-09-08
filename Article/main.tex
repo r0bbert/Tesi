@@ -49,8 +49,13 @@
 % [TODO]
 
 \chapter{Background}
+<<<<<<< HEAD
 In this chapter the building blocks for this work, almost entirely based on categories, will be defined.
 The aim of what follows is not only to introduce concepts that will be used later, but also to understand how category theory is general enough to give the abstraction of known notions (mainly from set theory) to reuse them in different contexts. This is not a complete tutorial on categories, but instead a sufficient compendium of definitions to make clear what will be done in the next chapters.
+=======
+In this chapter will be defined the building blocks for this work, almost entirely based on categories.
+The aim of what follows is not only to introduce concepts that will be used later, but also to understand how category theory is general enough to give the abstraction of known notions (mainly from set theory) and reuse them in different contexts. This is not a complete tutorial on categories, but instead a sufficient compendium of definitions to make clear what will be done in the next chapters.
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 
 \section{Basic Notions}\label{sect:basic_nots}
 
@@ -64,7 +69,7 @@ This section is all about basic definitions and examples, to get familiar with t
     A \emph{category} $\cat{C}$ comprises:
     \begin{enumerate}
         \item A collection of \emph{objects} $\Ob(\cat{C})$;
-        \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$.
+        \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$, often called \emph{homset}.
     \end{enumerate}
     For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ that map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
     An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
@@ -130,7 +135,11 @@ Between the morphisms of a category, it is possible to distinguish some that hav
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
+<<<<<<< HEAD
 Starting from a category $\cat{C}$, it is possible to construct other categories with interesting property.
+=======
+Starting from a category $\cat{C}$, it is possible to construct some other categories with interesting properties.
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 An example is the \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
 Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}. {\color{red} la discussione sul duale temo confonda}
 
@@ -231,7 +240,26 @@ Functor are often used to generalize some structural behaviour that construction
     \]
 \end{definition}
 
+<<<<<<< HEAD
 Given two functors that share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of ``changing the functor acting on that object''.
+=======
+Some interesting properties of certain functors depend strictly on how they behave on the homsets of the domain and the codomain categories. The following definitions are about this particular type of functors.
+
+\begin{definition}[Full functor, faithful functor, fully faithful functor]
+    let $F: \cat C \rightarrow \cat D$ be a functor, and consider the induced function
+    $$
+        F_{X, Y} : {\cat C}(X, Y) \rightarrow {\cat D}(F(X), F(Y))
+    $$
+    If, for each $X$, $Y$ objects of $\cat C$, $F_{X, Y}$ is surjective, then $F$ is said to be \emph{full}, if it is injective, $F$ is said to be \emph{faithful}, if it is both injective and surjective, $F$ is said to be \emph{fully faithful}.
+\end{definition}
+
+\begin{example}
+    Let $\cat C$ be a category and $\cat D$ a subcategory. The inclusion functor $I: \cat{D \rightarrow C}$, mapping each object and each arrow onto itself. $I$ is a faithful functor, because, given any pair of objects $X$ and $Y$ of $\cat D$, $I_{X, Y}$ is injective. If $\cat D$ is a full subcategory, then $I$ is fully faithful.
+\end{example}
+
+
+Given two functors which share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of "changing the functor acting on that object".
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 
 \subsection{Natural transformations}
 
@@ -263,7 +291,7 @@ It is easy to see that, given two natural transformations $\eta:F\dot\rightarrow
 commutes because the two inner squares do. Sticking another diagram on the right of the one above, it is possible to show associativity of composition of natural transformations.
 \end{obs}
 
-\subsection{Functor Category}
+\subsection{Functor Categories}
 
 The Observation~\ref{obs:comp_assoc_nat_tran} shows that natural transformations recreate on the functors the same structure that morphisms in a category have on objects. This leds us to define a particular kind of category, in which objects are functors between two categories, and arrow are natural transformations.
 
@@ -326,6 +354,8 @@ In the same way, it is possible to define coslice categories in terms of comma c
 
 
 \section{Universal Constructions}\label{sect:univ_constr}
+
+% What we are interested in are the "best" construction having a certain property, and we exprtess this fact via requiring unique factorization when another construction does.
 
 \subsection{Initial and Terminal Objects}
 
@@ -411,7 +441,11 @@ More complex constructions are products (and, dually, coproducts).
 \end{definition}
 
 \begin{example}
+<<<<<<< HEAD
     $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A + B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+=======
+    $\Set$ have both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A \coprod B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 \end{example}
 
 The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
@@ -470,6 +504,7 @@ Given two arrows, another pair of constructions one can find in a category is gi
         & A  \arrow[r, "f" swap] & C
         \end{tikzcd}
     \]
+    We can refer to this situation also saying that \emph{$\pi_g$ is a pullback of $g$ along $f$}.
 
     Dually, the \emph{pushout} of two arrows $f: A \rightarrow B$ and $g: A\rightarrow C$ is a triple $(\iota_g, \iota_f, I)$, where $I$ is an object and $\iota_g:B \rightarrow I$ and $\iota_f: C \rightarrow I$ are morphisms such that:
     \begin{enumerate}
@@ -500,7 +535,7 @@ Given two arrows, another pair of constructions one can find in a category is gi
 
 Pullbacks (and, dually, pushouts) are a construction that is slightly more general than products and equalizers. An intuition of what they represent is given by considering what is concretely a pullback in the category of sets.
 
-\begin{example}
+\begin{example}\label{ex:pb_in_set}
     In $\Set$, given two functions $f: A \rightarrow C$ and $g: B \rightarrow C$, a pullback of $f$ and $g$ exists and is exactly the set $P = \{(x, y) \in A \times B \mid f(x) = g(y)\}$, with $\pi_f : P \rightarrow B$ and $\pi_g : P \rightarrow C$ defined, respectively, by $\pi_f((x, y)) = y$ and $\pi_g((x, y)) = x$. In this way, we have then, $\forall (x, y) \in P$:
     \begin{align*}
         (f \circ \pi_g) ((x, y))
@@ -513,6 +548,26 @@ Pullbacks (and, dually, pushouts) are a construction that is slightly more gener
     thus, $f \circ \pi_g = g \circ \pi_f$.
 \end{example}
 
+Another important example to our aims is a concrete definition of what is a pushout in the category of sets, and why morally we can regard a pushout as \textit{the way to identify part of an object with a part of another}~\cite{Barr_Wells_1995}.
+
+\begin{example}\label{ex:po_in_set}
+    \color{red}
+    In $\Set$, given two functions $f: A \rightarrow B$ and $g: A \rightarrow C$, the pushout of them is the set $X = (B \coprod C) /_\sim$, where $\sim$ is the least equivalence relation such that $f(a) \sim g(a)$ for each $a \in A$, with $\iota_g:B \rightarrow X$ and $\iota_f : C \rightarrow X$ as arrows, sending each element of the domain in the corresponding equivalence class in $X$. In particular, for each $a \in A$:
+    \begin{align*}
+        (\iota_g \circ f) (a)
+                        &= \iota_g(f(a))    &&\\
+                        &= [(f(a), 0)]           && \textit{Definition of $\iota_g$} \\
+                        &= [(g(a), 1)]           && f(a) \sim g(a) \\
+                        &= \iota_f(g(a))    && \textit{Definition of $\iota_f$} \\
+                        &= (\iota_f \circ g) (a) &&
+    \end{align*}
+    % This is not sure!!
+    When both $f$ and $g$ are monos (that is, injections), then we can construct the pushout taking at the same way we have done above, with $(f(a), 0) \sim (g(a), 1)$ when such $a$ exists and $(b, 0) \sim (c, 1)$ on each $b$ and $c$ with no preimage in $A$, with $\iota_f$ and $\iota_g$ injective.
+    An easy way to see this fact is considering the following situation: let $f: A \rightarrow A \cup B$ and $g: A \rightarrow A \cup C$, with $A$ disjoint from $B$ and $C$, $f(a)= a$ and $g(a) = a$. Then the pushout is the object $A \cup B \cup C$, with the inclusion as arrows, that are also injective.
+    A more general case is what happens considering functions $f: A \rightarrow B$ and $g: A \rightarrow C$ injective. Differently from the previous example, in this case is not possible to take just the union of codomains as the pushout, but rather the disjoint union of them and then identify the elements $f(a)$ with $g(a)$, as we have done above. In the category of sets and functions, we have the certainty that the pullback arrows are injective. In fact, taking the equivalence relation $\sim$, we have that $f(a) \sim f(a')$ if and only if $a = a'$ by hypothesis, and then $x \sim x'$ if and only if $x = x'$, then the pushout morphisms sends each element in an equivalence class composed only by the element itself, thus are injective.
+    This is an interesting property that in other categories may do not hold, and will be recalled later.
+\end{example}
+
 Given a subclass of morphisms of a category, an important property is \emph{stability} under certain type of constructions. In our case, we are interested in stability under pullbacks and under pushouts.
 \[
     \begin{tikzcd}\label{diag:p_square}\tag{$\ast$}
@@ -520,9 +575,15 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
         C \arrow[r, "g" swap] & D
     \end{tikzcd}
 \]
+<<<<<<< HEAD
 \begin{definition}[Stability under pullbacks, pushouts]
     Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
     $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
+=======
+\begin{definition}\label{def:stab_under_po_pb}[Stability under pullbacks, pushouts]
+    Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
+    $\mathcal A$ is said to be \emph{stable under pushouts} if, for every square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 \end{definition}
 
 \subsection{Limits and Colimits}
@@ -671,6 +732,14 @@ The connection between constructions as products and equalizers and limits is ma
     Since $e$ equalizes $\pi$ and $\varepsilon$, there exists a unique $f: E \rightarrow L$ in $\cat C$ such that $q = e \circ f$. Then, for each $j \in \Ob(\cat I)$, we have $\pi_{D(j)} \circ q = \pi_{D(j)} \circ e \circ f$, hence, $q_i = p_i \circ f$.
 \end{proof}
 
+\begin{example}\label{ex:lim_of_sets}
+    Limit theorem gives us an easy way to calculate limits. An example of this fact is how limits are computed in $\Set$. Given a diagram $D: \cat{I} \rightarrow \Set$, where $\cat I$ is a small category and $I = Ob(\cat I)$, its limit is the set $L$ defined as follows:
+    $$
+        L = \{ (d_i)_{i \in I} \in \prod_{i \in I}D(i) \mid \forall \phi \in \cat I(i, i'), D(\phi)(d_i) = d_{i'} \}
+    $$
+    with projections as arrows.
+\end{example}
+
 The dual notions of cones and limits are that of cocones and colimits.
 
 \begin{definition}(Cocones, Colimits)
@@ -678,7 +747,11 @@ The dual notions of cones and limits are that of cocones and colimits.
     A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
 \end{definition}
 
+<<<<<<< HEAD
 All the examples we provided about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples. The limit theorem is still valid, considering coequalizers and coproducts, and the proof is much the same.
+=======
+All examples done about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizer, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples. The limit theorem is still valid, considering coequalizers and coproducts, and the proof is much the same. examples of these facts will follow.
+>>>>>>> 0d40aa3 (Pushouts in Set, Full and Faithful functors)
 
 \begin{example}
     Given a span $S = (l, X, r): L \rightharpoonup R$, shown in the diagram below,
@@ -700,6 +773,13 @@ All the examples we provided about limits are still valid, in their dual form, f
     A colimit for $S$ is then a pushout of $l$ and $r$.
 \end{example}
 
+\begin{example}\label{ex:colm_of_sets}
+    As mentioned before, the limit theorem in its dual form is still valid. As we have done in Example~\ref{ex:lim_of_sets} we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
+    $$
+        C = \big ( \coprod_{i \in I} D(i) \big ) / \sim
+    $$
+    with the inclusions as arrows.
+\end{example}
 
 \begin{remark}
     Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
@@ -720,6 +800,48 @@ In the next sections, we will work on a special kind of diagrams with certain pr
 
 
 \section{Adhesivity}\label{sect:adh}
+
+The next section is about adhesivity.
+An adhesive category is intuitively a category in which pushouts of (some) monomorphisms exist and they behave more or less as they do among sets. 
+
+\begin{definition}(Van Kampen property)
+    Let $\mathcal A$ be a subclass of $\Hom(\cat C)$, and consider the diagram below:
+    % \[
+    % \begin{tikzcd}
+    %     A \arrow[r, "f"] \arrow[d, "m" swap] & B \arrow[d, "n"] \\
+    %     C \arrow[r, "g" swap]                & D
+    % \end{tikzcd}
+    % \]
+    \[
+    \begin{tikzcd}[row sep = scriptsize]
+        A' \arrow[ddd, "m'"swap] \arrow[rrr, "f'"] \arrow[dr, "a"swap] & & & B \arrow[ddd, "n'"] \arrow[dl, "b"] \\
+        & A \arrow[r, "f"] \arrow[d, "m" swap] & B \arrow[d, "n"]   & \\
+        & C \arrow[r, "g" swap]                & D                  & \\
+        C' \arrow[rrr, "g'"swap] \arrow[ur, "c"] & & & D' \arrow[ul, "d" swap] 
+    \end{tikzcd}
+    \]
+    we say that the inner square is an \emph{$\mathcal A$-Van Kampen} square if:
+    \begin{itemize}
+        \item it is a pushout;
+        \item $a, b, c, d \in \mathcal{A}$;
+        \item whenever the top and the left squares are pullbacks then the outer square is a pushout if and only of the right and the down squares are pullbacks.
+    \end{itemize}
+\end{definition}
+
+We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
+
+\begin{definition}
+    Let $\cat C$ be a category and $\mathcal M$ a subclass of $\Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (Definition~\ref{def:stab_under_po_pb}).
+    Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
+    \begin{enumerate}
+        \item it has pullbacks along arrows of $\mathcal M$;
+        \item it has pushouts along arrows of $\mathcal M$;
+        \item pushouts along $\mathcal M$-arrows are $\mathcal M$-Van Kampen squares.
+    \end{enumerate}
+    We also say that $\cat C$ is \emph{adhesive} when it is $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is $\Reg(\cat C)$-adhesive.
+\end{definition}
+
+
 
 \chapter{Categories of Graphs}
 This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from the set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
