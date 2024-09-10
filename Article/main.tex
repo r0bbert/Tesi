@@ -4,8 +4,7 @@
 \usepackage[english]{babel} % Lingua principale inglese
 \usepackage{graphicx} % Per includere immagini esterne
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento
-\usepackage[fontsize=13pt]{scrextend} %dimensione font
-
+\usepackage[fontsize=12pt]{scrextend} %dimensione font
 
 
 \usepackage{titlesec} %indice
@@ -327,7 +326,7 @@ Functor constructions allow us to generalise basic concept already seen for cate
             \cat{C} \arrow[r, "S"] & \cat{E} & \cat{D} \arrow[l, "T" swap]
         \end{tikzcd}
     \]
-    Then, the \emph{slice category $(S \downarrow T)$} is the category in which: 
+    Then, the \emph{comma category $(S \downarrow T)$} is the category in which: 
     \begin{itemize}
         \item the objects are triples $(A, f, B)$, where $A \in \Ob(\cat{C})$, $B \in \Ob(\cat D)$ and $f: S(A) \rightarrow T(B)$ is an arrow of $\cat E$;
         \item the arrows are pairs $(c, d): (A, f, B) \rightarrow (C, g, D)$, where $c \in \Hom(\cat C)$ and $d \in \Hom(\cat D)$, such that the square below commutes;
@@ -673,7 +672,7 @@ The following examples show how limits are general concepts for the construction
 
 The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do.
 
-\begin{theorem}[Limit theorem]
+\begin{theorem}\label{th:limit}[Limit theorem]
     Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
 \end{theorem}
 
@@ -769,6 +768,10 @@ All the examples we provided about limits are still valid, in their dual form, f
     Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
 \end{remark}
 
+\begin{obs}\label{obs:limits_in_presh}
+    So far we introduced categories of presheaves. In these categories, an interesting fact is that limits and colimits are computed pointwise -- i.e., the limit of a diagram in a category of presheaves is exactly the limit on each of its components.
+\end{obs}
+
 In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behaves with respect to the constructions defined so far.
 
 \begin{definition}
@@ -818,7 +821,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
 We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
 
 \begin{definition}\label{def:adh}[$\mathcal{M}$-adhesivity]
-    Let $\cat C$ be a category and $\mathcal M$ a subclass of $\Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (Definition~\ref{def:stab_under_pb_po}).
+    Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (Definition~\ref{def:stab_under_pb_po}).
     Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
     \begin{enumerate}
         \item every cospan $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ can be completed to a pullback ( such pullbacks are called $\mathcal M$-pullbacks);
@@ -897,6 +900,8 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
     The equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ that is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
 \end{example}
 
+These examples show how some kind of limits are computed among graphs, but we have already said something similar about categories of presheaves (Observation~\ref{obs:limits_in_presh}). In fact, The category of graphs in nothing than 
+
 \subsection{Graph with Equivalences}
 
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with a relation of that kind of relation defined over its set of vertices.
@@ -915,10 +920,40 @@ The next consideration will be useful later.
     $\mathbf{Graph}$, defined in Definition~\ref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
 \end{obs}
 
-\begin{definition}[Quotient functor]
-    The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$.
-\end{definition}
+% \begin{definition}[Quotient functor]
+%     The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps
+%     each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} 
+%     $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if 
+%     $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences 
+%     $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$.
+% \end{definition}
 
+% \begin{definition}[Quotient functor]
+%     The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps each $\mathcal{G} = (G, \sim)$ onto its quotient graph $G/_{\sim} = (V_G/_{\sim},E_G, s_G', t_G')$, such that, for each edge $e$:
+%     \begin{itemize}
+%         \item $s_G'([e]_{\sim}) = [v]_{\sim_G}$
+%     \end{itemize}
+% \end{definition}
+
+Some examples of limits will follow.
+
+\begin{example}
+    The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
+\end{example}
+
+\begin{example}
+    Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
+\end{example}
+
+\begin{example}
+    An equalizer in $\mathbf{EgGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
+\end{example}
+
+The two previous examples shows that the category $\mathbf{EgGrph}$ has both equalizer and finite products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EgGrph}$ has finite limits.
+
+\begin{example}
+    Given two parallel morphisms $f, g: \mathcal{G \rightarrow H}$ in $\mathbf{EgGrph}$, the coequalizer $(\mathcal{C}, c)$ is the graph 
+\end{example}
 
 % ---------------- Bibliography ---------------- %
 \bibliographystyle{alpha}
