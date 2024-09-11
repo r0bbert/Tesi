@@ -16,6 +16,8 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{cor}[theorem]{Corollary}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -795,8 +797,8 @@ In the next sections, we will work on a special kind of diagrams with certain pr
     The dual notions are obtained in the obvious way, namely, substituting the words ``limits'' and ``cones'' with ``colimits'' and ``cocones'', respectively
 \end{definition}
 
-\begin{obs}\label{obs:funct_creat_lim_then_lift}[~\cite{Adámek_Herrlich_Strecker_2009}]
-    It holds that if a functor creates limits, then lifts uniquely limits.
+\begin{obs}\label{obs:funct_creat_lim_then_lift}
+    It holds that if a functor creates limits, then lifts uniquely limits~\cite{Adamek_Herrlich_Strecker_2009}.
 \end{obs}
 
 \section{Adhesivity}\label{sect:adh}
@@ -943,12 +945,28 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
+Graphs with equivalences are alternative representation of \emph{quotient graphs} over an equivalence relation. The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$.
+
+\begin{definition}\label{def:quot_func}[Quotient Functor]
+    The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
+    \begin{itemize}
+        \item on objects, given $\mathcal{G}=(G, \sim_{G})$ as $Q(\mathcal{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
+        \item on morphisms, given $h = (h_V, h_E): \mathcal{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
+    \end{itemize}
+\end{definition}
+
 In the category of graphs with equivalences, universal constructions are easy to obtain. 
 The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
 Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
 An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
 
-Previous examples show that the category $\mathbf{EqGrph}$ has both (c)equalizer and finite (co)products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
+Previous examples show that the category $\mathbf{EqGrph}$ has both (co)equalizers and finite (co)products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
+
+An important characterization in the category of graphs with equivalences is the following.
+
+\begin{prop}\label{prop:reg_mono_in_EG_are_mono_in_graph}
+    In $\mathbf{EqGrph}$, a monomorphism is regular if it reflects equivalences. That is, if $h: \mathcal{G \rightarrow H}$ is mono and such that $h_V (v_1) \sim_H h_V(v_2) \Rightarrow v_1 \sim_G v_2$, then $h$ is regular mono.
+\end{prop}
 
 %TODO: EGGS
 
@@ -958,7 +976,7 @@ Set-theoretical definitions of graphs are straightforward, but a further level o
 
 Considering the category of graphs (as defined in Definition~\ref{def:cat_of_graph}), it is possible to show that 
 $$\mathbf{Graph} \cong [E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
-where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural trasformation, and the commutativity of the diagram below is given by definition of graph morphisms (Definition~\ref{def:graph_hom})
+where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural transformation, and the commutativity of the diagram below is given by definition of graph morphisms (Definition~\ref{def:graph_hom})
 $$
     \begin{tikzcd}
         G(E) \arrow[r, "{\eta_E}"] \arrow[d, "G(s)"swap] & H(E) \arrow[d, "H(s)"] \\
@@ -967,9 +985,20 @@ $$
 $$
 (and the same for $t$).
 
-Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed component-wise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
+Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
 
 More complex objects are graphs with equivalence. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
+In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
+
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}).
+
+\begin{lemma}
+    $\mathbf{EqGrph}$ is stable under $\Reg(\mathbf{EqGrph})$-pushouts and $\Reg({\mathbf{EqGrph}})$-pullbacks.
+\end{lemma}
+
+\begin{theorem}
+    $EqGrph$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+\end{theorem}
 
 
 
