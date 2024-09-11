@@ -129,6 +129,16 @@ Between the morphisms of a category, it is possible to distinguish some that hav
     In $\Set$, monomorphisms are injective functions, epimorphisms are surjective functions and isomorphisms are bijections.
 \end{example}
 
+\begin{prop}\label{prop:epi_mono_prop}
+    The following statements hold for every pair of composable arrows $f$ and $g$ for any category $\cat C$:
+    \begin{enumerate}
+        \item if both $f$ and $g$ are mono, then $g \circ f$ is mono;
+        \item if $g \circ f$ is mono, then $f$ is mono;
+        \item if both $f$ and $g$ are epi, then $g \circ f$ is epi;
+        \item if $g \circ f$ is epi, then $g$ is epi.
+    \end{enumerate}
+\end{prop}
+
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
 Starting from a category $\cat{C}$, it is possible to construct other categories with interesting property.
@@ -257,7 +267,7 @@ Having such classification among functors turns out to be useful in many context
 \end{prop}
 
 
-\subsection{Natural transformations}
+\subsection{Natural Transformations}
 
 Given two functors that share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of ``changing the functor acting on that object''.
 
@@ -304,7 +314,7 @@ A functor with a small category as domain (Remark~\ref{rem:small_cats}) and $\Se
     What we are calling here a presheaf is not totally accurate, because technically a presheaf on a small category $\cat C$ is a functor $F: \cat C ^{op} \rightarrow \Set$. This technicality would bring more complexity, and it is beyond the scope of this work, so we will continue adopting the definition given above.
 \end{remark}
 
-\subsection{Comma categories}
+\subsection{Comma Categories}
 
 Functor constructions allow us to generalise basic concept already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (Definition~\ref{def:slice_cat}).
 
@@ -900,17 +910,15 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
     The equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ that is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
 \end{example}
 
-These examples show how some kind of limits are computed among graphs, but we have already said something similar about categories of presheaves (Observation~\ref{obs:limits_in_presh}). In fact, The category of graphs in nothing than 
+These examples show how some kind of limits are computed among graphs, but we have already said something similar about categories of presheaves (Observation~\ref{obs:limits_in_presh}). In fact, it is possible to show the equivalence between the category of graphs and $[\bullet \rightrightarrows \bullet , \Set]$. The easy way of computing depends on the fact that in a category of presheaves, limits are computed objectwise [citation needed], as we implicitly have done in the previous examples.
 
 \subsection{Graph with Equivalences}
 
-It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with a relation of that kind of relation defined over its set of vertices.
+It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with such a relation defined over its set of vertices.
 
 \begin{definition}[Graph with Equivalence~\cite{concur2006}]
     A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
 \end{definition}
-
-The next consideration will be useful later.
 
 \begin{remark}
     It is possible to define an equivalence relation $\sim \ \subseteq S\times S$ as a surjective function mapping each $s \in S$ to a partition of $S$ in which each element is equivalent according to $\sim$, that is, its \emph{equivalence class}. Formally, an equivalence relation $\sim \ \subseteq S\times S$ is fully described by a function $f_\sim : S \rightarrow \{[s]_\sim \mid s \in S \}$, where $[s]_\sim = \{t \in S \mid t \sim s\}$, defined by $f_{\sim}(s) = [s]_\sim$. 
@@ -935,21 +943,13 @@ The next consideration will be useful later.
 %     \end{itemize}
 % \end{definition}
 
-Some examples of limits will follow.
-
-\begin{example}
-    The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
-\end{example}
-
-\begin{example}
-    Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
-\end{example}
-
-\begin{example}
-    An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
-\end{example}
-
+In the category of graphs with equivalences universal constructions are easy to obtain. 
+The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
+Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
+An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
+Coequalizers are computed in the same way. Computing 
 The two previous examples shows that the category $\mathbf{EqGrph}$ has both equalizer and finite products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits.
+
 
 
 % ---------------- Bibliography ---------------- %
