@@ -866,18 +866,18 @@ The idea behind this theorem is to simplify calculation to show that a certain c
 \chapter{Categories of Graphs}
 This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from the set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
 
-\section{Set-Theoretic Definition of Graphs}
+\section{Set-Theoretic Definitions of Graphs}
 
 First obvious definitions of graph are given via sets and set-theoretic tools, remarking what intuitively graphs are. We present in this section a few classes of graphs.
 
-\subsection{Simple Graphs}
+\subsection{Graphs}
 
 \begin{definition}[Graph]
     A \emph{graph} $G$ is a tuple $(V, E, s, t)$, where $V$ and $E$ are sets (respectively, the set of vertices, or nodes, and the set of edges, or arcs), and $s, t: E \rightarrow V$ are two functions (respectively, the source and the target of an edge).
     In general, given a graph $G$, we write $V(G)$ to denote the set of vertices and $E(G)$ the set of edges of $G$.
 \end{definition}
 
-\begin{definition}[Graph Homomorphism]
+\begin{definition}\label{def:graph_hom}[Graph Homomorphism]
     Given two graphs $G=(V_G, E_G, s_G, t_G)$ and $H=(V_H, E_H, s_H, t_H)$, a \emph{graph homomorphism} $h: G \rightarrow H$ is a pair of functions $h = (h_V: V_G \rightarrow V_H, h_E: E_G \rightarrow E_H)$ such that
     \[
         h_V \circ s_G = s_H \circ h_E
@@ -898,7 +898,7 @@ Graphs together with graph homomorphisms from a category.
 
 All the constructions defined in Section~\ref{sect:univ_constr} exists in $\mathbf{Graph}$, and they are very similar to construction in $\Set$, intuitively because of the set-theoretic nature of graphs. The next examples try to make this point clear.
 
-\begin{example}
+\begin{example}\label{ex:in_term_in_graph}
     The initial object in $\mathbf{Graph}$ is the empty graph, i.e., the graph with an empty set of vertices and an empty set of edges. The initial object instead is the graph with exactly one node and a single edge from that node to itself.
 \end{example}
 
@@ -910,8 +910,6 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
     The equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ that is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
 \end{example}
 
-These examples show how some kind of limits are computed among graphs, but we have already said something similar about categories of presheaves (Observation~\ref{obs:limits_in_presh}). In fact, it is possible to show the equivalence between the category of graphs and $[\bullet \rightrightarrows \bullet , \Set]$. The easy way of computing depends on the fact that in a category of presheaves, limits are computed objectwise [citation needed], as we implicitly have done in the previous examples.
-
 \subsection{Graph with Equivalences}
 
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with such a relation defined over its set of vertices.
@@ -920,7 +918,7 @@ It is possible to endow the set of vertices of a graph with any sort of relation
     A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rem:eq_as_surj}
     It is possible to define an equivalence relation $\sim \ \subseteq S\times S$ as a surjective function mapping each $s \in S$ to a partition of $S$ in which each element is equivalent according to $\sim$, that is, its \emph{equivalence class}. Formally, an equivalence relation $\sim \ \subseteq S\times S$ is fully described by a function $f_\sim : S \rightarrow \{[s]_\sim \mid s \in S \}$, where $[s]_\sim = \{t \in S \mid t \sim s\}$, defined by $f_{\sim}(s) = [s]_\sim$. 
 \end{remark}
 
@@ -943,12 +941,35 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 %     \end{itemize}
 % \end{definition}
 
-In the category of graphs with equivalences universal constructions are easy to obtain. 
+%TODO: RIGUARDARE QUESTA PARTE!!!
+
+In the category of graphs with equivalences, universal constructions are easy to obtain. 
 The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
 Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
 An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
-Coequalizers are computed in the same way. Computing 
-The two previous examples shows that the category $\mathbf{EqGrph}$ has both equalizer and finite products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits.
+
+Previous examples show that the category $\mathbf{EqGrph}$ has both (c)equalizer and finite (co)products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
+
+%TODO: EGGS
+
+\section{Graphs as Functors}
+
+Set-theoretical definitions of graphs are straightforward, but a further level of abstraction allows us to highlight some interesting properties of these objects. We can indeed consider a graph as a functor from a category of ``primitive objects'' (e.g., the object representing edges and the object representing vertices) onto a category which provides a representation of them. This concept is perfectly represented by categories of presheaves, where an object is nothing than a way to interpret objects of a category as sets. An example will make clear what we are talking about.
+
+Considering the category of graphs (as defined in Definition~\ref{def:cat_of_graph}), it is possible to show that 
+$$\mathbf{Graph} \cong [E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
+where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural trasformation, and the commutativity of the diagram below is given by definition of graph morphisms (Definition~\ref{def:graph_hom})
+$$
+    \begin{tikzcd}
+        G(E) \arrow[r, "{\eta_E}"] \arrow[d, "G(s)"swap] & H(E) \arrow[d, "H(s)"] \\
+        G(V) \arrow[r, "{\eta_V}"swap] & H(V)
+    \end{tikzcd}
+$$
+(and the same for $t$).
+
+Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed component-wise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
+
+More complex objects are graphs with equivalence. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
 
 
 
