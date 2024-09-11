@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
 \usepackage[english]{babel} % Lingua principale inglese
 \usepackage{graphicx} % Per includere immagini esterne
+\usepackage{todonotes}
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento
 \usepackage[fontsize=12pt]{scrextend} %dimensione font
 
@@ -188,9 +189,9 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 \end{definition}
 
 \section{Functors, Natural transformations and Beyond}\label{sect:funct_nats}
-
+\todo{Toglierei il "beyond" DC}
 A functor is a structure preserving map between categories. 
-
+\todo{E cambierei anche l'intro a questa sezione DC}
 \subsection{Functors}
 \begin{definition}[Functor]
     Let $\cat{C}$ and $\cat{D}$ be categories. A \emph{functor} $F:\cat{C \rightarrow D}$ is a map taking each object of $A \in \Ob(\cat{C})$ to an object $F(A) \in \Ob(\cat{D})$ and each arrow $f:A\rightarrow B$ of $\cat C$ to a arrow $F(f): F(A) \rightarrow F(B)$ of $\cat D$, such that, for all objects $A \in \Ob(\cat C)$ and composable arrows $f$ and $g$ of $\cat C$:
@@ -795,7 +796,7 @@ In the next sections, we will work on a special kind of diagrams with certain pr
     The dual notions are obtained in the obvious way, namely, substituting the words ``limits'' and ``cones'' with ``colimits'' and ``cocones'', respectively
 \end{definition}
 
-\begin{obs}\label{obs:funct_creat_lim_then_lift}[~\cite{Adámek_Herrlich_Strecker_2009}]
+\begin{obs}\label{obs:funct_creat_lim_then_lift}%[~\cite{Adámek_Herrlich_Strecker_2009}]
     It holds that if a functor creates limits, then lifts uniquely limits.
 \end{obs}
 
@@ -863,6 +864,31 @@ The idea behind this theorem is to simplify calculation to show that a certain c
 \end{proof}
 
 
+\color{red}{ [DC]Alcuni commenti su questo capitolo. Non sono soddisfatto dall'ordine della presentazione. Io  personalmente proporrei il seguente indice:
+
+Sec. 1 Categorie e funtori
+
+>def di categorie
+	-menzionare che data una categoria c'è il duale
+	-epi, mono e  iso
+	
+>funtori e trasf naturali
+
+>categorie comma (con slice e coslice come sottocaso)
+		
+Sec. 2: Limiti e colimiti
+Io sinceramente questa la riscriverei completamente. La definizione di (co)limite deve venire prima e solo dopo deve venire l'elenco degli esempi. Struttura che propongo:
+
+>definizione, esempi e se avanza tempo come si calcolano (co)limiti generali a partire da quelli "base" (tipo prodotti da pb e equalizzatori) 
+	-epi e mono regolari
+
+>Limiti nelle categorie di funtori e comma
+
+
+Sec. 3: Adesività
+Unica osservazione che ho per ora è che terrei il cubo invece del diagramma che hai fatto}
+\color{black} 		
+	
 \chapter{Categories of Graphs}
 This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from the set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
 
