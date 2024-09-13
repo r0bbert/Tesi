@@ -8,6 +8,8 @@
 \usepackage[fontsize=12pt]{scrextend} %dimensione font
 
 
+
+
 \usepackage{titlesec} %indice
 
 \usepackage{amssymb,amsthm, amsmath, mathrsfs, dsfont} %simboli matematici
@@ -554,7 +556,6 @@ Pullbacks (and, dually, pushouts) are a construction that is slightly more gener
     thus, $f \circ \pi_g = g \circ \pi_f$.
 \end{example}
 
-
 Another important example to our aims is a concrete definition of what is a pushout in the category of sets, and why morally we can regard a pushout as \textit{the way to identify part of an object with a part of another}~\cite{Barr_Wells_1995}.
 
 \begin{example}\label{ex:po_in_set}
@@ -586,6 +587,18 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
     Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
     $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
 \end{definition}
+
+\begin{prop}\label{prop:monos_pres_by_pullback}
+    Let $f: A \rightarrow C$, $g: B \rightarrow C$ arrows in any category $\cat C$, and consider the pullback square:
+    $$
+        \begin{tikzcd}
+            P \arrow[r, "{\pi_f}"] \arrow[d, "{\pi_g}"swap] & B \arrow[d, "g"] \\
+            A \arrow[r, "f"swap] & C
+        \end{tikzcd}
+    $$
+    If $g$ is mono, then so is $\pi_g$.
+\end{prop}
+
 
 \subsection{Limits and Colimits}
 
@@ -630,6 +643,13 @@ To define what a limit is, we first need to define cones.
 \begin{obs}
     Given a diagram $D$, a limit for $D$ is exactly the terminal object of the category $\textbf{Cone}(D)$, defined in Observation~\ref{obs:category_of_cones}.
 \end{obs}
+
+The dual notions of cones and limits are that of cocones and colimits.
+
+\begin{definition}(Cocones, Colimits)
+    A \emph{cocone} for a diagram $D: \cat{I \rightarrow C}$ is an object $Y$ of $\cat C$ together with arrows $f_i : D(i) \rightarrow Y$ such that, for each $g: D(i) \rightarrow D(j)$ of $\cat C$, $f_j \circ g = f_i$. A cocone is denoted $\{f_i: D(i) \rightarrow Y \}$.
+    A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
+\end{definition}
 
 The following examples show how limits are general concepts for the constructions defined above.
 
@@ -684,71 +704,7 @@ The following examples show how limits are general concepts for the construction
 \end{example}
 
 
-The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do.
-
-\begin{theorem}\label{th:limit}[Limit theorem]
-    Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
-\end{theorem}
-
-\begin{proof}
-    Let $D: \cat{I \rightarrow C}$ a diagram, with $\cat I$ finite.
-    
-    The \emph{if} statement is easily satisfied as shown in Example~\ref{ex:equaliz_are_limits} and Example~\ref{ex:product_are_limits}.
-
-    To satisfy the \emph{only if} statement, we want an object $L$ together with morphisms $p_i : L \rightarrow D(j)$ such that:
-    \begin{enumerate}
-        \item\label{item:cone} $\{p_i: L \rightarrow D(i)\}$ is a cone -- i.e., for each morphism of $\cat I$ $\alpha : i \rightarrow j$, $D(\alpha) \circ p_i = p_j$; and
-        \item\label{item:univ_prop} for each $E$ and $q_i : E \rightarrow D(j)$ in $\cat C$, with $D(\alpha) \circ q_i = q_j$ for each $\alpha : i \rightarrow j$ of $\cat I$, there exists a unique $f: E \rightarrow L$ such that $q_i = p_i \circ f$ for each $i \in \Ob(\cat I)$.
-    \end{enumerate}
-
-    Consider the two products (which exist by hypothesis) $\prod_{j \in \Ob(\cat I)} D(j)$, the product of the objects of the diagram, and $\prod_{\alpha \in \Hom(\cat I)}D(cod \ \alpha)$, the product of the codomains of the morphisms in $D$, where $\pi_x$ is the $x$-th projection of the product.
-    Let now:
-    \[
-        \gamma, \varepsilon : \prod_{j \in \Ob(\cat I)}D(j) \ \longrightarrow \prod_{\alpha \in \Hom(\cat I)} D(cod \ \alpha)
-    \]
-    be defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
-    Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
-    
-    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, to prove that the conditions given at the beginning are valid.
-
-    For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
-    \begin{align*}
-        D(\alpha) \circ p_i 
-            &= D(\alpha) \circ \pi_{D(i)} \circ e   && \textit{Definition of $p_j$} \\
-            &= \varepsilon_{\alpha} \circ e         && \textit{Definition of $\varepsilon$}\\
-            &= \gamma_\alpha \circ e                && \textit{$e$ is an equalizer of $\pi, \varepsilon$}\\
-            &= \pi_{D(j)} \circ e                   && \textit{Definition of $\pi$} \\
-            &= p_j                                  && \textit{Definition of $p_j$} \\
-    \end{align*}
-
-    For condition~\ref{item:univ_prop}, suppose that $(E, (q_i)_{i \in \Ob(\cat I)})$ has the properties stated. By definition of product, there exists a (unique) arrow $q: E \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$. For each arrow $\alpha: i \rightarrow j$, we have:
-    \begin{align*}
-            \gamma_\alpha \circ q 
-                &= \pi_{D(j)} \circ q           && \textit{Definition of $\pi$} \\
-                &= q_j                          && \textit{Definition of $q_j$} \\
-                &= D(\alpha) \circ q_i          && \textit{Assumption on $q_j$} \\
-                &= D(\alpha) \circ \pi_{D(j)} \circ q   &&\textit{Definition of $q_i$} \\
-                &= \varepsilon_{\alpha} \circ q && \textit{Definition of $\varepsilon$} \\
-    \end{align*}
-    Since $e$ equalizes $\pi$ and $\varepsilon$, there exists a unique $f: E \rightarrow L$ in $\cat C$ such that $q = e \circ f$. Then, for each $j \in \Ob(\cat I)$, we have $\pi_{D(j)} \circ q = \pi_{D(j)} \circ e \circ f$, hence, $q_i = p_i \circ f$.
-\end{proof}
-
-\begin{example}\label{ex:lim_of_sets}
-    Limit theorem gives us an easy way to calculate limits. An example of this fact is how limits are computed in $\Set$. Given a diagram $D: \cat{I} \rightarrow \Set$, where $\cat I$ is a small category and $I = Ob(\cat I)$, its limit is the set $L$ defined as follows:
-    $$
-        L = \{ (d_i)_{i \in I} \in \prod_{i \in I}D(i) \mid \forall \phi \in \cat I(i, i'), D(\phi)(d_i) = d_{i'} \}
-    $$
-    with projections as arrows.
-\end{example}
-
-The dual notions of cones and limits are that of cocones and colimits.
-
-\begin{definition}(Cocones, Colimits)
-    A \emph{cocone} for a diagram $D: \cat{I \rightarrow C}$ is an object $Y$ of $\cat C$ together with arrows $f_i : D(i) \rightarrow Y$ such that, for each $g: D(i) \rightarrow D(j)$ of $\cat C$, $f_j \circ g = f_i$. A cocone is denoted $\{f_i: D(i) \rightarrow Y \}$.
-    A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
-\end{definition}
-
-All the examples we provided about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples. The limit theorem is still valid, considering coequalizers and coproducts, and the proof is much the same.
+All the examples we provided about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples.
 
 \begin{example}
     Given a span $S = (l, X, r): L \rightharpoonup R$, shown in the diagram below,
@@ -770,8 +726,26 @@ All the examples we provided about limits are still valid, in their dual form, f
     A colimit for $S$ is then a pushout of $l$ and $r$.
 \end{example}
 
+The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
+
+\begin{theorem}\label{th:limit}[Limit theorem]
+    Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
+\end{theorem}
+
+\begin{remark}
+    The theorem above (and its relative proof) can be stated in its dual form leading to a theorem on existence of colimits, and a relative criterion to calculate them (taking the dual of the proof).
+\end{remark}
+
+\begin{example}\label{ex:lim_of_sets}
+    Limit theorem gives us an easy way to calculate limits. An example of this fact is how limits are computed in $\Set$. Given a diagram $D: \cat{I} \rightarrow \Set$, where $\cat I$ is a small category and $I = Ob(\cat I)$, its limit is the set $L$ defined as follows:
+    $$
+        L = \{ (d_i)_{i \in I} \in \prod_{i \in I}D(i) \mid \forall \phi \in \cat I(i, i'), D(\phi)(d_i) = d_{i'} \}
+    $$
+    with projections as arrows.
+\end{example}
+
 \begin{example}\label{ex:colm_of_sets}
-    As mentioned before, the limit theorem in its dual form is still valid. As we have done in Example~\ref{ex:lim_of_sets} we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
+    As we have done in Example~\ref{ex:lim_of_sets} we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
     $$
         C = \big ( \coprod_{i \in I} D(i) \big ) / \sim
     $$
@@ -849,7 +823,7 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
 
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be vary complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
 
-\begin{theorem}
+\begin{theorem}\label{th:crit_for_adh}
     Let $\cat C$ be a category, $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts. Let now $F: \cat{C \rightarrow D}$ be a functor with $\cat D$ $\mathcal{N}$-adhesive for some $\mathcal{N} \subseteq \Mono(\cat D)$.
     If $F$ is such that $F(\mathcal{M}) \subseteq \mathcal N$ and creates pullbacks and $\mathcal{M}$-pullbacks, then $\cat C$ is $\mathcal M$-adhesive.
 \end{theorem}
@@ -997,6 +971,14 @@ An important characterization in the category of graphs with equivalences is the
 \end{prop}
 
 %TODO: EGGS
+\subsection{E-Graphs}
+
+E-Graphs are a particular type of graphs with equivalences, in which holds that
+$$
+    \frac{s(e) \sim s(e')}{t(e) \sim t(e')}
+$$
+for each pair of edges $e$, $e'$ of $\mathcal{G} = (G, \sim)$.
+
 
 \section{Graphs as Functors}
 
@@ -1018,15 +1000,73 @@ Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits ar
 More complex objects are graphs with equivalence. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
-Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}).
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
-\begin{lemma}
-    $\mathbf{EqGrph}$ is stable under $\Reg(\mathbf{EqGrph})$-pushouts and $\Reg({\mathbf{EqGrph}})$-pullbacks.
+\begin{lemma}\label{lemma:eqgrph_stab_po_pb}
+    In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of Definition~\ref{def:stab_under_pb_po}).
 \end{lemma}
 
 \begin{theorem}
-    $EqGrph$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+    $\mathbf{EqGrph}$ is quasiadhesive.
 \end{theorem}
+
+\begin{proof}
+    In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mappend onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+    \todo{Generalizzare il fatto che i limiti in $\mathbf{EqGrph}$ rimangono limiti in $\mathbf{Graph}$} 
+\end{proof}
+
+% ----------------- Appendix ------------------ %
+**\appendix
+
+
+\chapter{Omitted Proofs}
+
+\paragraph{Theorem~\ref{th:limit}.}
+ Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
+\begin{proof}
+    Let $D: \cat{I \rightarrow C}$ a diagram, with $\cat I$ finite.
+    
+    The \emph{if} statement is easily satisfied as shown in Example~\ref{ex:equaliz_are_limits} and Example~\ref{ex:product_are_limits}.
+
+    To satisfy the \emph{only if} statement, we want an object $L$ together with morphisms $p_i : L \rightarrow D(j)$ such that:
+    \begin{enumerate}
+        \item\label{item:cone} $\{p_i: L \rightarrow D(i)\}$ is a cone -- i.e., for each morphism of $\cat I$ $\alpha : i \rightarrow j$, $D(\alpha) \circ p_i = p_j$; and
+        \item\label{item:univ_prop} for each $E$ and $q_i : E \rightarrow D(j)$ in $\cat C$, with $D(\alpha) \circ q_i = q_j$ for each $\alpha : i \rightarrow j$ of $\cat I$, there exists a unique $f: E \rightarrow L$ such that $q_i = p_i \circ f$ for each $i \in \Ob(\cat I)$.
+    \end{enumerate}
+
+    Consider the two products (which exist by hypothesis) $\prod_{j \in \Ob(\cat I)} D(j)$, the product of the objects of the diagram, and $\prod_{\alpha \in \Hom(\cat I)}D(cod \ \alpha)$, the product of the codomains of the morphisms in $D$, where $\pi_x$ is the $x$-th projection of the product.
+    Let now:
+    \[
+        \gamma, \varepsilon : \prod_{j \in \Ob(\cat I)}D(j) \ \longrightarrow \prod_{\alpha \in \Hom(\cat I)} D(cod \ \alpha)
+    \]
+    be defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
+    Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
+    
+    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, to prove that the conditions given at the beginning are valid.
+
+    For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
+    \begin{align*}
+        D(\alpha) \circ p_i 
+            &= D(\alpha) \circ \pi_{D(i)} \circ e   && \textit{Definition of $p_j$} \\
+            &= \varepsilon_{\alpha} \circ e         && \textit{Definition of $\varepsilon$}\\
+            &= \gamma_\alpha \circ e                && \textit{$e$ is an equalizer of $\pi, \varepsilon$}\\
+            &= \pi_{D(j)} \circ e                   && \textit{Definition of $\pi$} \\
+            &= p_j                                  && \textit{Definition of $p_j$} \\
+    \end{align*}
+
+    For condition~\ref{item:univ_prop}, suppose that $(E, (q_i)_{i \in \Ob(\cat I)})$ has the properties stated. By definition of product, there exists a (unique) arrow $q: E \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$. For each arrow $\alpha: i \rightarrow j$, we have:
+    \begin{align*}
+            \gamma_\alpha \circ q 
+                &= \pi_{D(j)} \circ q           && \textit{Definition of $\pi$} \\
+                &= q_j                          && \textit{Definition of $q_j$} \\
+                &= D(\alpha) \circ q_i          && \textit{Assumption on $q_j$} \\
+                &= D(\alpha) \circ \pi_{D(j)} \circ q   &&\textit{Definition of $q_i$} \\
+                &= \varepsilon_{\alpha} \circ q && \textit{Definition of $\varepsilon$} \\
+    \end{align*}
+    Since $e$ equalizes $\pi$ and $\varepsilon$, there exists a unique $f: E \rightarrow L$ in $\cat C$ such that $q = e \circ f$. Then, for each $j \in \Ob(\cat I)$, we have $\pi_{D(j)} \circ q = \pi_{D(j)} \circ e \circ f$, hence, $q_i = p_i \circ f$.
+\end{proof}
+
+
 
  		
 % ---------------- Bibliography ---------------- %
