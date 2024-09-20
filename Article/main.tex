@@ -322,7 +322,7 @@ A functor with a small category as domain (Remark~\ref{rem:small_cats}) and $\Se
 
 \subsection{Comma Categories}
 
-Functor constructions allow us to generalise basic concept already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (Definition~\ref{def:slice_cat}).
+Functor constructions allow us to generalise basic concepts already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (Definition~\ref{def:slice_cat}).
 
 % \begin{definition}[Comma category]
 %     Given two functors $F: \cat{C} \rightarrow \cat{E}$, $G: \cat{D} \rightarrow \cat{E}$, the \emph{comma category $(F \downarrow G)$} is the category whose objects are triples $(A, f, B)$, with $A \in \Ob(\cat C)$, $B \in \Ob(\cat D)$ and $f \in \cat{E}(F(A), G(B))$, and whose morphisms are the pairs $(a, b) : (A, f, B) \rightarrow (C, g, D)$ where $a : A \rightarrow C$, $b: B \rightarrow D$ and such that
@@ -422,7 +422,7 @@ We now illustrate a result on functor categories (Definition~\ref{def:functor_ca
     Hence, $\theta$ is the unique natural transformation from $F$ to $T$, and $T$ is the terminal object of $[\cat{C, D}]$.
 \end{proof}
 
-In particular, every presheaf has an initial and a terminal object, because $\Set$ do (Example~\ref{ex:set_init_term}).
+In particular, every presheaf has an initial and a terminal object, because $\Set$ does (Example~\ref{ex:set_init_term}).
 
 \subsection{Products and Coproducts}
 
@@ -457,7 +457,9 @@ More complex constructions are products (and, dually, coproducts).
     $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A \coprod B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
 \end{example}
 
-The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
+The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for 
+each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as 
+$\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
 
 Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satifies the universal property.
 
@@ -483,14 +485,14 @@ This concept can be generalized as follows.
 \end{definition}
 
 \begin{prop}\label{prop:eq_are_mono}
-    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then, $e$ is a monomorphism.
+    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then $e$ is a monomorphism.
 \end{prop}
 
 \begin{proof}
-    Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
+    Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$ and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
 \end{proof}
 
-Of all monomorphism, an interesting subclass of them is the one that contains only the equalizers.
+Of all monomorphisms, an interesting subclass of them is the one that contains only the equalizers.
 
 \begin{definition}[Regular Monomorphism]\label{def:reg_mono}
     A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
@@ -570,8 +572,8 @@ Another important example to our aims is a concrete definition of what is a push
                         &= (\iota_f \circ g) (a) &&
     \end{align*}
     % This is not sure!!
-    When both $f$ and $g$ are monos (that is, injections), then we can construct the pushout taking at the same way we have done above, with $(f(a), 0) \sim (g(a), 1)$ when such $a$ exists and $(b, 0) \sim (c, 1)$ on each $b$ and $c$ with no preimage in $A$, with $\iota_f$ and $\iota_g$ injective.
-    An easy way to see this fact is considering the following situation: let $f: A \rightarrow A \cup B$ and $g: A \rightarrow A \cup C$, with $A$ disjoint from $B$ and $C$, $f(a)= a$ and $g(a) = a$. Then the pushout is the object $A \cup B \cup C$, with the inclusion as arrows, that are also injective.
+    When both $f$ and $g$ are monos (that is, injections), then we can construct the pushout in the same way we have done above, with $(f(a), 0) \sim (g(a), 1)$ when such $a$ exists and $(b, 0) \sim (c, 1)$ on each $b$ and $c$ with no preimage in $A$, with $\iota_f$ and $\iota_g$ injective.
+    An easy way to see this fact is considering the following situation: let $f: A \rightarrow A \cup B$ and $g: A \rightarrow A \cup C$, with $A$ disjoint from $B$ and $C$, $f(a)= a$ and $g(a) = a$. Then the pushout is the object $A \cup B \cup C$, with the inclusions as arrows, that are also injective.
     A more general case is what happens considering functions $f: A \rightarrow B$ and $g: A \rightarrow C$ injective. Differently from the previous example, in this case is not possible to take just the union of codomains as the pushout, but rather the disjoint union of them and then identify the elements $f(a)$ with $g(a)$, as we have done above. In the category of sets and functions, we have the certainty that the pullback arrows are injective. In fact, taking the equivalence relation $\sim$, we have that $f(a) \sim f(a')$ if and only if $a = a'$ by hypothesis, and then $x \sim x'$ if and only if $x = x'$, then the pushout morphisms sends each element in an equivalence class composed only by the element itself, thus are injective.
     This is an interesting property that in other categories may do not hold, and will be recalled later.
 \end{example}
@@ -602,7 +604,7 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
 
 \subsection{Limits and Colimits}
 
-We now introduce the notion that generalize all the universal constructions defined above. In fact, initial objects, products, equalizers an pullback (dually, terminal objects, coproducts, coequalizers and pushouts) can be seen as the particular case of a certain type of construction, called limit.
+We now introduce the notion that generalize all the universal constructions defined above. In fact, initial objects, products, equalizers and pullbacks (dually, terminal objects, coproducts, coequalizers and pushouts) can be seen as the particular case of a certain type of construction, called limit.
 
 To define what a limit is, we first need to define cones.
 
@@ -681,7 +683,7 @@ The following examples show how limits are general concepts for the construction
             A \arrow[r, "f" swap] & C
         \end{tikzcd}
     \]
-    In fact, a cone for the diagram above is an object $P$ and three arrows $\phi:P \rightarrow A$, $\psi: P \rightarrow B$ and $h: P \rightarrow C$, but the latter is uniquely determined by the other ones ($f \circ \phi = h = g \circ \psi$).
+    In fact, a cone for the diagram above is an object $P$ and three arrows $\phi:P \rightarrow A$, $\psi: P \rightarrow B$, and $h: P \rightarrow C$, but the latter is uniquely determined by the other ones ($f \circ \phi = h = g \circ \psi$).
     Thus, the following diagram is a cone:
     \[
         \begin{tikzcd}
@@ -704,7 +706,7 @@ The following examples show how limits are general concepts for the construction
 \end{example}
 
 
-All the examples we provided about limits are still valid, in their dual form, for what regard colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples.
+All the examples we provided about limits are still valid, in their dual form, for colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples.
 
 \begin{example}
     Given a span $S = (l, X, r): L \rightharpoonup R$, shown in the diagram below,
@@ -745,7 +747,7 @@ The connection between constructions as products and equalizers and limits is ma
 \end{example}
 
 \begin{example}\label{ex:colm_of_sets}
-    As we have done in Example~\ref{ex:lim_of_sets} we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
+    As we have done in Example~\ref{ex:lim_of_sets}, we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
     $$
         C = \big ( \coprod_{i \in I} D(i) \big ) / \sim
     $$
@@ -812,7 +814,7 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
     Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (Definition~\ref{def:stab_under_pb_po}).
     Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
     \begin{enumerate}
-        \item every cospan $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ can be completed to a pullback ( such pullbacks are called $\mathcal M$-pullbacks);
+        \item every cospan $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ can be completed to a pullback (such pullbacks are called $\mathcal M$-pullbacks);
         \item every span $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ can be completed to a pushout (such pushouts are called $\mathcal M$-pushouts);
         \item pushouts along $\mathcal M$-arrows are $\mathcal M$-Van Kampen squares.
     \end{enumerate}
@@ -828,12 +830,12 @@ Verifying $\mathcal M$-adhesivity using the definition above may turn out to be 
     If $F$ is such that $F(\mathcal{M}) \subseteq \mathcal N$ and creates pullbacks and $\mathcal{M}$-pullbacks, then $\cat C$ is $\mathcal M$-adhesive.
 \end{theorem}
 
-The idea behind this theorem is to simplify calculation to show that a certain category is adhesive for some subclass of monomorphisms, considering a functor from the category of which we want to prove adhesivity to a category we know it is adhesive, requiring that such functor has some properties.
+The idea behind this theorem is to simplify calculations to show that a certain category is adhesive for some subclass of monomorphisms, considering a functor from the category of which we want to prove adhesivity to a category we know it is adhesive, requiring that such functor has some properties.
 
 \begin{proof}
     In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in Definition~\ref{def:adh}.
     \begin{itemize}
-        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$.Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lift them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$.Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exists a pullback $(P, p_B, p_D)$ in $\cat C$.
         \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
         \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
     \end{itemize}
