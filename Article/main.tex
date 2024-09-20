@@ -921,7 +921,7 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with such a relation defined over its set of vertices.
 
 \begin{definition}[Graph with Equivalence~\cite{concur2006}]
-    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that, if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
+    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
 \end{definition}
 
 \begin{remark}\label{rem:eq_as_surj}
@@ -949,7 +949,7 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
-Graphs with equivalences are alternative representation of \emph{quotient graphs} over an equivalence relation. The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$.
+Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation. The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$.
 
 \begin{definition}\label{def:quot_func}[Quotient Functor]
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
@@ -1013,7 +1013,7 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \math
 \end{theorem}
 
 \begin{proof}
-    In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mappend onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+    In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
     \todo{Generalizzare il fatto che i limiti in $\mathbf{EqGrph}$ rimangono limiti in $\mathbf{Graph}$} 
 \end{proof}
 
