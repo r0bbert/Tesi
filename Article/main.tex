@@ -463,7 +463,7 @@ $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
 
 Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satifies the universal property.
 
-\subsection{Equalizers and Coequalzers}
+\subsection{Equalizers and Coequalizers}
 
 The next notion is about a construction that make parallel arrows (i.e., two possibly distinct morphisms with the same domain and codomain) equal. In $\Set$, given two functions $f, g: A \rightarrow B$, such construction corresponds exactly to the restriction of the domain to the set of elements on which $f$ and $g$ are equal. Specifically, if we take the set $E = \{x \in A \mid f(x) = g(x)\}$, and we take the function $e: E \rightarrow A$ defined by $e(x) = x$, we obtain what is called an \emph{equalizer} for $f$ and $g$. In fact, $e$ is that function that make $f$ and $g$ be the same function -- i.e., $f \circ e = g \circ e$.
 This concept can be generalized as follows.
@@ -984,11 +984,11 @@ for each pair of edges $e$, $e'$ of $\mathcal{G} = (G, \sim)$.
 
 \section{Graphs as Functors}
 
-Set-theoretical definitions of graphs are straightforward, but a further level of abstraction allows us to highlight some interesting properties of these objects. We can indeed consider a graph as a functor from a category of ``primitive objects'' (e.g., the object representing edges and the object representing vertices) onto a category which provides a representation of them. This concept is perfectly represented by categories of presheaves, where an object is nothing than a way to interpret objects of a category as sets. An example will make clear what we are talking about.
+Set-theoretical definitions of graphs are straightforward, but a further level of abstraction allows us to highlight some interesting properties of these objects. We can indeed consider a graph as a functor from a category of ``primitive objects'' (e.g., the object representing edges and the object representing vertices) onto a category which provides a representation of them. This concept is perfectly represented by categories of presheaves, where an object is nothing more than a way to interpret objects of a category as sets. An example will make clear what we are talking about.
 
 Considering the category of graphs (as defined in Definition~\ref{def:cat_of_graph}), it is possible to show that 
 $$\mathbf{Graph} \cong [E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
-where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural transformation, and the commutativity of the diagram below is given by definition of graph morphisms (Definition~\ref{def:graph_hom})
+where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural transformation, and the commutativity of the diagram below is given by the definition of graph morphisms (Definition~\ref{def:graph_hom})
 $$
     \begin{tikzcd}
         G(E) \arrow[r, "{\eta_E}"] \arrow[d, "G(s)"swap] & H(E) \arrow[d, "H(s)"] \\
@@ -999,7 +999,7 @@ $$
 
 Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
 
-More complex objects are graphs with equivalence. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
+Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
 Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
