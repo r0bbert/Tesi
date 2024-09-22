@@ -89,6 +89,21 @@ The most important thing here is not the structure of the objects, but instead h
     The category with just one object and just one arrow, the identity arrow on that object, is denoted $\textbf 1$. In particular, the only object of this category is $\bullet$, and the only arrow is $id_{\bullet}$.
 \end{example}
 
+\begin{definition}\label{def:dual_cat}[Dual Category]
+    Given a category $\cat C$, there exist a category $\cat C^{op}$ such that:
+    \begin{itemize}
+        \item $Ob(\cat C^{op}) = Ob(\cat C)$;
+        \item if $f: A \rightarrow B$ is a morphism in $\cat C$, then $f: B\rightarrow A$ is a morphism in $\cat C ^ {op}$.
+    \end{itemize}
+    Hence, given $f : A \rightarrow B$ and $g: B \rightarrow C$ arrows in $\cat C$, as $g \circ f: A \rightarrow C$ is an arrow in $\cat C$, then $f \circ g: C \rightarrow A$ is an arrow in $\cat C ^{op}$.
+    Such category is called \emph{dual category} or \emph{opposite category}.
+\end{definition}
+
+Duality is a concept that we will encounter most of the time. Given a property $P$ valid for a category $\cat C$, we will refer to the same property in the opposite category $\cat C^{op}$ as the \emph{dual} of $P$, without explicitly constructing $\cat C^{op}$. There exist some properties that coincide exactly with their dual, and such properties are said to be \emph{self dual} properties.
+
+%  \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
+% Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}. {\color{red} la discussione sul duale temo confonda}
+
 To represent morphisms of a category $\cat{C}$ it is possible to use \emph{diagrams}, as the one below, in which the vertices are objects of $\cat{C}$, and the edges are morphisms of $\cat{C}$.
     \[
     \begin{tikzcd}
@@ -100,7 +115,7 @@ The diagram is said to commute whenever  $f \circ g' = g \circ f'$. Unique morph
 A more rigorous definition of what a diagram is will be given later (Definition~\ref{def:diagram}).
 
 \begin{example}
-    It is easy to see that taking sets as objects and total functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $\forall a \in A: id_A(a) = a$.
+    It is easy to see that taking sets as objects and total functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $id_A(a) = a$ for each $a\in A$.
     This category is denoted as $\Set$.
 \end{example}
 
@@ -134,6 +149,11 @@ Between the morphisms of a category, it is possible to distinguish some that hav
     In $\Set$, monomorphisms are injective functions, epimorphisms are surjective functions and isomorphisms are bijections.
 \end{example}
 
+\begin{remark}
+    Mono and epi are dual concepts. This fact is easily shown by considering how a monomorphism $m$ in a category $\cat C$ behaves in the dual category $\cat C^{op}$.
+    In $\cat C$ we have that $m \circ f = m \circ g$ implies $f = g$. In $\cat C^{op}$, the we can state that $f \circ m = g \circ m$ implies $f = g$, obtaining the definition of epi. 
+\end{remark}
+
 \begin{prop}\label{prop:epi_mono_prop}
     The following statements hold for every pair of composable arrows $f$ and $g$ for any category $\cat C$:
     \begin{enumerate}
@@ -146,17 +166,16 @@ Between the morphisms of a category, it is possible to distinguish some that hav
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
-Starting from a category $\cat{C}$, it is possible to construct other categories with interesting property.
-An example is the \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
-Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}. {\color{red} la discussione sul duale temo confonda}
+Starting from a category, it is possible to construct other categories with some interesting properties, as the following examples show.
 
-Another important notion is that of subcategory.
+The first notion to introduce is the one of subcategory.
+
 \begin{definition}[Subcategory]
     A category $\cat{D}$ is a \emph{subcategory} of a category $\cat{C}$ if:
     \begin{enumerate}
         \item each object of $\cat{D}$ is an object of $\cat{C}$;
         \item \label{inc} each morphism between two objects of $\cat{D}$ is a morphism of $\cat{C}$; and
-        \item \label{comp} composites and identities of $\cat{D}$ are the same of $\cat{C}$
+        \item \label{comp} composites and identities of $\cat{D}$ are the same of $\cat{C}$.
     \end{enumerate}
 
     If the inclusion at~\ref{inc} is an equality (i.e. $\cat{D}(A, B) = \cat{C}(A, B)$ for each couple of objects $A$, $B$ of $\cat{D}$), then $\cat{D}$ is said to be a \emph{full subcategory} of $\cat{C}$.
@@ -194,10 +213,11 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 
 \section{Functors and Natural Transformations}\label{sect:funct_nats}
 
-A functor is a structure preserving map between categories. 
 \todo{E cambierei anche l'intro a questa sezione DC}
 
 \subsection{Functors}
+
+A functor is a structure preserving map between categories. 
 \begin{definition}[Functor]
     Let $\cat{C}$ and $\cat{D}$ be categories. A \emph{functor} $F:\cat{C \rightarrow D}$ is a map taking each object of $A \in \Ob(\cat{C})$ to an object $F(A) \in \Ob(\cat{D})$ and each arrow $f:A\rightarrow B$ of $\cat C$ to a arrow $F(f): F(A) \rightarrow F(B)$ of $\cat D$, such that, for all objects $A \in \Ob(\cat C)$ and composable arrows $f$ and $g$ of $\cat C$:
     \begin{itemize}
@@ -454,14 +474,12 @@ More complex constructions are products (and, dually, coproducts).
 \end{definition}
 
 \begin{example}
-    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjount sum $A \coprod B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjoint sum $A \coprod B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
 \end{example}
 
-The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for 
-each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as 
-$\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
+The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
 
-Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satifies the universal property.
+Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satisfies the universal property.
 
 \subsection{Equalizers and Coequalizers}
 
@@ -485,11 +503,11 @@ This concept can be generalized as follows.
 \end{definition}
 
 \begin{prop}\label{prop:eq_are_mono}
-    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then $e$ is a monomorphism.
+    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then, $e$ is a monomorphism.
 \end{prop}
 
 \begin{proof}
-    Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$ and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
+    Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
 \end{proof}
 
 Of all monomorphisms, an interesting subclass of them is the one that contains only the equalizers.
@@ -821,13 +839,16 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
     We also say that $\cat C$ is \emph{adhesive} when it is $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is $\Reg(\cat C)$-adhesive.
 \end{definition}
 
-% Verificare la M-adesività utilizzando la definizione data sopra può essere particolarmente ostico. Per questa ragione, è possibile ricorrere al seguente risultato. [A new crit for MN-adh]
+\begin{obs}
+    $\Set$ is adhesive.
+    % It is easy to check the first two points of the definition~\ref{def:adh} while for the Van Kampen property of pushouts along monos [...]
+\end{obs}
 
-Verifying $\mathcal M$-adhesivity using the definition above may turn out to be vary complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
+Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
 
 \begin{theorem}\label{th:crit_for_adh}
     Let $\cat C$ be a category, $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts. Let now $F: \cat{C \rightarrow D}$ be a functor with $\cat D$ $\mathcal{N}$-adhesive for some $\mathcal{N} \subseteq \Mono(\cat D)$.
-    If $F$ is such that $F(\mathcal{M}) \subseteq \mathcal N$ and creates pullbacks and $\mathcal{M}$-pullbacks, then $\cat C$ is $\mathcal M$-adhesive.
+    If $F$ is such that $F(\mathcal{M}) \subseteq \mathcal N$ and creates pullbacks and $\mathcal{M}$-pushout, then $\cat C$ is $\mathcal M$-adhesive.
 \end{theorem}
 
 The idea behind this theorem is to simplify calculations to show that a certain category is adhesive for some subclass of monomorphisms, considering a functor from the category of which we want to prove adhesivity to a category we know it is adhesive, requiring that such functor has some properties.
@@ -835,7 +856,7 @@ The idea behind this theorem is to simplify calculations to show that a certain 
 \begin{proof}
     In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in Definition~\ref{def:adh}.
     \begin{itemize}
-        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$.Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exists a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$.Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
         \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
         \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
     \end{itemize}
@@ -949,7 +970,8 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
-Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation. The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$.
+% Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
+The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
 
 \begin{definition}\label{def:quot_func}[Quotient Functor]
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
@@ -999,10 +1021,14 @@ $$
 
 Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
 
-Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}. 
+Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
-Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
+\begin{obs}
+    Quotient functor preserves limits. 
+\end{obs}
+
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise \color{red}{(?)}\color{black}, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
 \begin{lemma}\label{lemma:eqgrph_stab_po_pb}
     In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of Definition~\ref{def:stab_under_pb_po}).
@@ -1018,7 +1044,7 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \math
 \end{proof}
 
 % ----------------- Appendix ------------------ %
-**\appendix
+\appendix
 
 
 \chapter{Omitted Proofs}
