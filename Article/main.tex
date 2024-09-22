@@ -7,9 +7,6 @@
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento
 \usepackage[fontsize=12pt]{scrextend} %dimensione font
 
-
-
-
 \usepackage{titlesec} %indice
 
 \usepackage{amssymb,amsthm, amsmath, mathrsfs, dsfont} %simboli matematici
@@ -28,6 +25,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{obs}[theorem]{Observation}
 
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
 
 % General Setting diagrams
 \usepackage{tikz-cd} %diagrammi
@@ -43,7 +41,7 @@
 \newcommand{\Set}{\mathbf{Set}}
 \newcommand{\Reg}{\mathcal{R}eg}
 \newcommand{\Mono}{\mathcal{M}ono}
-\newcommand{\initial}{\textbf 0}
+\newcommand{\initial}{\mymathbb{0}}
 \newcommand{\terminal}{\mathds{1}}
 
 % input file frontespizio.tex
@@ -53,6 +51,7 @@
 
 % \chapter*{Introduction}
 % [TODO]
+
 
 \chapter{Background}
 In this chapter the building blocks for this work, almost entirely based on categories, will be defined.
@@ -246,7 +245,7 @@ Once defined what a functor is, we can give a more rigorous definition of diagra
     The dual notion of span is a \emph{cospan}, namely, a diagram of shape $\Lambda^{op} = (L \xrightarrow{l} X \xleftarrow{r} R)$, and is denoted by $(l, X, r): L \rightharpoondown R$.
 \end{example}
 
-Functor are often used to generalize some structural behaviour that constructions in categories have. An important example of this fact is the universal property. The definition is not straightforward, but it gives the abstraction of a property that will be useful in further definitions~\cite{Herrlich_Strecker_1979}.
+Functor are often used to generalize some structural behaviour that constructions in categories have. An important example of this fact is the universal property. The definition is not straightforward, but it gives the abstraction of a property that will be useful in further definitions%~\cite{Herrlich_Strecker_1979}.
 
 \begin{definition}[Universal property]\label{def:univ_prop}
     Let $F: \cat{C \rightarrow D}$ be a functor, and let $B \in \Ob(\cat D)$. A pair $(u, A)$, with $A \in \Ob(\cat C)$ and $u: B \rightarrow F(A)$ is said to be an \emph{universal map for $B$ with respect to $F$} if for each $A' \in \Ob(\cat C)$ and each $f: B \rightarrow F(A')$ there exists a unique morphism $h \in \cat C(A, A')$ such that the following triangle commute:
@@ -278,9 +277,12 @@ Some interesting properties of certain functors depend strictly on how they beha
     If, for each $A$, $B$ objects of $\cat C$, $F_{A, B}$ is surjective, then $F$ is said to be \emph{full}, if it is injective, $F$ is said to be \emph{faithful}, if it is both injective and surjective, $F$ is said to be \emph{fully faithful}.
 \end{definition}
 
-\begin{obs}
-    Properties such as fullness and faithfulness are so called \emph{self-dual}, because the dual notion coincide with the same notion. This fact can be advantageous because if for example the faithfulness implies the preservation of some property, then the dual property is implied at the same way.
-\end{obs}
+\color{red}{
+    \begin{obs}
+        Properties such as fullness and faithfulness are so called \emph{self-dual}, because the dual notion coincide with the same notion. This fact can be advantageous because if for example the faithfulness implies the preservation of some property, then the dual property is implied at the same way.
+    \end{obs}
+}\color{black}
+    
 
 \begin{example}
     Let $\cat C$ be a category and $\cat D$ a subcategory. The inclusion functor $I: \cat{D \rightarrow C}$, mapping each object and each arrow onto itself. $I$ is a faithful functor, because, given any pair of objects $A$ and $B$ of $\cat D$, $I_{A, B}$ is injective. If $\cat D$ is a full subcategory, then $I$ is fully faithful.
@@ -406,7 +408,7 @@ The next definitions are about \emph{universal constructions}. The simplest ones
 \end{obs}
 
 \begin{example}\label{ex:set_init_term}
-    In $\Set$, the initial object is the empty set $\varnothing$, because, for each set $S$, there exists the empty function from $\varnothing$ to $S$. The terminal object of $\Set$ is the singleton $\{ \bullet \}$, because there is exactly one function from a set $S$ to $\{ \bullet \}$, namely, the function which sends each $s \in S$ to $\bullet$. It is possible to visualize the Observation~\ref{obs:terminal_are_isomorph}: given two singletons $\{ \bullet \}$ and $\{ \star \}$, the function between them is bijective.
+    In $\Set$, the initial object is the empty set $\varnothing$, because, for each set $S$, there exists the empty function from $\varnothing$ to $S$. The terminal object of $\Set$ is the singleton $\{ \bullet \}$, because there is exactly one function from a set $S$ to $\{ \bullet \}$, namely, the function which sends each $s \in S$ to $\bullet$. It is possible to visualize the Observation~\ref{obs:terminal_are_isomorph}: given two singletons $\{ \bullet \}$ and $\{ \star \}$, the function between them is bijective, while there exists a unique initial object.
 \end{example}
 
 We now illustrate a result on functor categories (Definition~\ref{def:functor_category}) that will be useful later.
@@ -474,7 +476,7 @@ More complex constructions are products (and, dually, coproducts).
 \end{definition}
 
 \begin{example}
-    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjoint sum $A \coprod B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjoint sum $A \amalg B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
 \end{example}
 
 The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
@@ -515,6 +517,16 @@ Of all monomorphisms, an interesting subclass of them is the one that contains o
 \begin{definition}[Regular Monomorphism]\label{def:reg_mono}
     A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
 \end{definition}
+
+\begin{obs}
+    Given two composable regular monos $m$ and $n$, suppose that $n$ equalizes two arrows $f$ and $g$. Then, we have
+    \begin{align*}
+        g \circ (n \circ m) &= (g \circ n) \circ m &&\\
+                            &= (f \circ n) \circ m  && \textit{$n$ equalizer} \\
+                            &= f \circ (n \circ m)
+    \end{align*}
+    Since $n \circ m$ is mono (Proposition~\ref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
+\end{obs}
 
 \subsection{Pullbacks and Pushouts}
 
@@ -580,7 +592,7 @@ Another important example to our aims is a concrete definition of what is a push
 
 \begin{example}\label{ex:po_in_set}
     \color{blue}
-    In $\Set$, given two functions $f: A \rightarrow B$ and $g: A \rightarrow C$, the pushout of them is the set $X = (B \coprod C) /_\sim$, where $\sim$ is the least equivalence relation such that $f(a) \sim g(a)$ for each $a \in A$, with $\iota_g:B \rightarrow X$ and $\iota_f : C \rightarrow X$ as arrows, sending each element of the domain in the corresponding equivalence class in $X$. In particular, for each $a \in A$:
+    In $\Set$, given two functions $f: A \rightarrow B$ and $g: A \rightarrow C$, the pushout of them is the set $X = (B \amalg C) /_\sim$, where $\sim$ is the least equivalence relation such that $f(a) \sim g(a)$ for each $a \in A$, with $\iota_g:B \rightarrow X$ and $\iota_f : C \rightarrow X$ as arrows, sending each element of the domain in the corresponding equivalence class in $X$. In particular, for each $a \in A$:
     \begin{align*}
         (\iota_g \circ f) (a)
                         &= \iota_g(f(a))    &&\\
