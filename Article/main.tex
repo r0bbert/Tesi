@@ -210,7 +210,7 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 
 \end{definition}
 
-\section{Functors and Natural Transformations}\label{sect:funct_nats}
+\section{Functors, Natural Transformations, Adjoints}\label{sect:funct_nats}
 
 \todo{E cambierei anche l'intro a questa sezione DC}
 
@@ -386,8 +386,31 @@ Thus, the slice category $\cat C / X$ is the comma category given by the two fun
 \]
 It is easy to see that $(Id_\cat C \downarrow !_X)$ is exactly the same of $\cat C / X$.
 
-In the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C$.
+In the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C $.
 
+
+
+\subsection{Adjoints}
+
+\begin{definition}\label{def:adjoint}[Adjoint Functor]
+    Let $\cat C$ and $\cat D$ be categories, and let $F:\cat{C \rightarrow D}$ and $G : \cat{D \rightarrow C}$ be functors. $G$ is called \emph{left adjoint} of $F$ if there exists a natural transformation $\eta: Id_{\cat C} \dot\rightarrow (G \circ F)$ such that, for each object $A$ and each arrow $f: A \rightarrow G(B)$ of $\cat C$, there exists a unique arrow $g: F(A) \rightarrow B$ of $\cat D$ such that the following diagrams commutes:
+    \[
+        \begin{tikzcd}
+            A \arrow[r, "{\eta_A}"] \arrow[dr, "f" swap] & G(F(A)) \arrow[d, dashed, "G(g)"] \\
+            & G(B)
+        \end{tikzcd}
+    \] -- i.e., if $G(g) \circ \eta_{A} = f$. In this case $\eta$ is called the \emph{unit} of the adjoint.
+
+    Analogously, $F$ is called \emph{right adjoint} of $G$ provided that there exists a natural transformation $\epsilon : (F \circ G) \dot\rightarrow Id_{\cat D}$ such that, for each arrow $g: F(A) \rightarrow B$ of $\cat D$ there exists a unique arrow $f: A \rightarrow G(B)$ of $\cat C$ such that the following diagram commutes:
+    \[
+        \begin{tikzcd}
+            F(G(B)) \arrow[r, "{\epsilon_{B}}"] & B \\
+            F(A) \arrow[u, dashed, "F(f)"] \arrow[ur, "g"swap] 
+        \end{tikzcd}
+    \] -- i.e., $\epsilon_{B} \circ F(f) = g$. In this case, $\epsilon$ is called \emph{co-unit} of the adjoint.
+\end{definition}
+
+% Il concetto di functore aggiunto è molto più complesso di come viene presentato qui. In questo lavoro, avere una definizione di funtore aggiunto serve soltanto per una certa proprietà che verrà presentata nel capitolo sui limiti.
 
 \section{Universal Constructions}\label{sect:univ_constr}
 
@@ -615,19 +638,20 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
         C \arrow[r, "g" swap] & D
     \end{tikzcd}
 \]
+
 \begin{definition}\label{def:stab_under_pb_po}[Stability under pullbacks, pushouts]
     Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
     $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
 \end{definition}
 
 \begin{prop}\label{prop:monos_pres_by_pullback}
-    Let $f: A \rightarrow C$, $g: B \rightarrow C$ arrows in any category $\cat C$, and consider the pullback square:
-    $$
+    Let $f: A \rightarrow C$, $g: B \rightarrow C$ be arrows in any category $\cat C$, and consider the following pullback square:
+    \[
         \begin{tikzcd}
             P \arrow[r, "{\pi_f}"] \arrow[d, "{\pi_g}"swap] & B \arrow[d, "g"] \\
             A \arrow[r, "f"swap] & C
         \end{tikzcd}
-    $$
+    \]
     If $g$ is mono, then so is $\pi_g$.
 \end{prop}
 
@@ -808,6 +832,16 @@ In the next sections, we will work on a special kind of diagrams with certain pr
 \begin{obs}\label{obs:funct_creat_lim_then_lift}
     It holds that if a functor creates limits, then lifts uniquely limits~\cite{Adamek_Herrlich_Strecker_2009}.
 \end{obs}
+
+The next theorem is about a particular property that adjoint functors have.
+
+\begin{theorem}\label{th:adjoints_preserves_lim}
+    Let $F: \cat{C \rightarrow D}$ be a functor, and $G: \cat{D \rightarrow C}$ its right adjoint. Then, $G$ preserves limits.
+\end{theorem}
+
+\begin{remark}
+    The dual of the theorem above states that, if $G$ is a functor and $F$ is a left adjoint, then $F$ preserves colimits.
+\end{remark}
 
 \section{Adhesivity}\label{sect:adh}
 
@@ -1033,12 +1067,28 @@ $$
 
 Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
 
-Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[V \rightrightarrows E \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: E \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
+Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
-\begin{obs}
-    Quotient functor preserves limits. 
-\end{obs}
+We now give some considerations on quotient functor.
+
+\begin{prop}
+    Quotient functor has a left adjoint and a right adjoint.
+\end{prop}
+
+\begin{proof}
+    To prove the statement we just have to find the adjoints. 
+    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\mathcal{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Q \dot\rightarrow I$ is the one mapping $\mathcal{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \mathcal{G} \rightarrow I(\mathcal{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    In particular, $I(\mathcal{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\mathcal{G}$ to $\mathcal{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\mathcal{G})) \rightarrow I(\mathcal{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
+
+    A similar argument shows that the functor mapping each graph onto another wit all equivalent nodes is a right adjoint of $Q$.
+\end{proof}
+
+The following result lies on Theorem~\ref{th:adjoints_preserves_lim} and its dual.
+
+\begin{cor}\label{cor:quot_preserves_co_lim}
+    Quotient functor preserves limits and colimits. 
+\end{cor}
 
 Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise \color{red}{(?)}\color{black}, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
@@ -1112,8 +1162,6 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \math
 % ---------------- Bibliography ---------------- %
 \bibliographystyle{alpha}
 \bibliography{bibliography}
-
-
 
 
 \end{document}
