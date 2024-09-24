@@ -1078,7 +1078,7 @@ We now give some considerations on quotient functor.
 
 \begin{proof}
     To prove the statement we just have to find the adjoints. 
-    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\mathcal{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Q \dot\rightarrow I$ is the one mapping $\mathcal{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \mathcal{G} \rightarrow I(\mathcal{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\mathcal{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\mathcal{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \mathcal{G} \rightarrow I(\mathcal{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
     In particular, $I(\mathcal{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\mathcal{G}$ to $\mathcal{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\mathcal{G})) \rightarrow I(\mathcal{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
 
     A similar argument shows that the functor mapping each graph onto another wit all equivalent nodes is a right adjoint of $Q$.
@@ -1102,7 +1102,6 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \math
 
 \begin{proof}
     In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
-    \todo{Generalizzare il fatto che i limiti in $\mathbf{EqGrph}$ rimangono limiti in $\mathbf{Graph}$} 
 \end{proof}
 
 % ----------------- Appendix ------------------ %
