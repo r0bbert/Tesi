@@ -2,15 +2,15 @@
 
 1. Background 3
    - 1.1. Basic Notions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
-    -    1.1.1. Categories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
-     -   1.1.2. Mono, Epi and Iso . . . . . . . . . . . . . . . . . . . . . . . . 5
+       - 1.1.1. Categories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+       - 1.1.2. Mono, Epi and Iso . . . . . . . . . . . . . . . . . . . . . . . . 5
        - 1.1.3. Categories from other categories . . . . . . . . . . . . . . . . . 5
     - 1.2. Functors, Natural Transformations, Adjoints . . . . . . . . . . . . . . 7
-      -  1.2.1. Functors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+       - 1.2.1. Functors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
        - 1.2.2. Natural Transformations . . . . . . . . . . . . . . . . . . . . . 9
-        1.2.3. Functor Categories . . . . . . . . . . . . . . . . . . . . . . . . 9
-        1.2.4. Comma Categories . . . . . . . . . . . . . . . . . . . . . . . . 10
-        1.2.5. Adjoints . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+       - 1.2.3. Functor Categories . . . . . . . . . . . . . . . . . . . . . . . . 9
+       - 1.2.4. Comma Categories . . . . . . . . . . . . . . . . . . . . . . . . 10
+       - 1.2.5. Adjoints . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
     - 1.3. Universal Constructions . . . . . . . . . . . . . . . . . . . . . . . . . 11
         - 1.3.1. Initial and Terminal Objects . . . . . . . . . . . . . . . . . . . 11
         - 1.3.2. Products and Coproducts . . . . . . . . . . . . . . . . . . . . 13
