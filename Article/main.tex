@@ -43,6 +43,7 @@
 \newcommand{\Mono}{\mathcal{M}ono}
 \newcommand{\initial}{\mymathbb{0}}
 \newcommand{\terminal}{\mathds{1}}
+\newcommand{\eqgraph}[1]{\mathbb{#1}}
 
 % input file frontespizio.tex
 % \input{frontespizio}
@@ -988,7 +989,7 @@ All the constructions defined in Section~\ref{sect:univ_constr} exists in $\math
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}. Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$). A graph with equivalence is a graph with such a relation defined over its set of vertices.
 
 \begin{definition}[Graph with Equivalence~\cite{concur2006}]
-    A \emph{graph with equivalence} is a pair $\mathcal{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\mathcal{G} = (G, \sim_G)\rightarrow \mathcal{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
+    A \emph{graph with equivalence} is a pair $\eqgraph{G} = (G, \sim_G)$ where $G$ is a graph and $\sim_G \subseteq V(G)\times V(G)$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\eqgraph{G} = (G, \sim_G)\rightarrow \eqgraph{H} = (H, \sim_H)$ is a graph homomorphism $h = (h_V, h_E):G \rightarrow H$ such that if $v_1 \sim_G v_2$ then $h_V(v_1) \sim_H h_V(v_2)$. Graphs with equivalences together with their homomorphism from a category, denoted $\mathbf{EqGrph}$.
 \end{definition}
 
 \begin{remark}\label{rem:eq_as_surj}
@@ -999,55 +1000,32 @@ It is possible to endow the set of vertices of a graph with any sort of relation
     $\mathbf{Graph}$, defined in Definition~\ref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
 \end{obs}
 
-% \begin{definition}[Quotient functor]
-%     The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps
-%     each graph with equivalence $\mathcal{G} = (G, \sim_G)$ to its \emph{quotient graph} 
-%     $G/_{\sim_G} = (V_G/_{\sim_G}, E_G, s_G', t_G')$, with $s_G'([e]_{\sim_G}) = [v]_{\sim_G}$ if 
-%     $s_G(e) = v$ and the same for $t_G'$, and each homomorphism between graphs with equivalences 
-%     $h: \mathcal{G \rightarrow H}$ to $Q(h)$ defined by $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$.
-% \end{definition}
-
-% \begin{definition}[Quotient functor]
-%     The \emph{quotient functor} $Q: \mathbf{EqGrph \rightarrow Graph}$ is the functor that maps each $\mathcal{G} = (G, \sim)$ onto its quotient graph $G/_{\sim} = (V_G/_{\sim},E_G, s_G', t_G')$, such that, for each edge $e$:
-%     \begin{itemize}
-%         \item $s_G'([e]_{\sim}) = [v]_{\sim_G}$
-%     \end{itemize}
-% \end{definition}
-
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
 % Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
-The graph with equivalence $\mathcal{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
+The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
 
 \begin{definition}\label{def:quot_func}[Quotient Functor]
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
     \begin{itemize}
-        \item on objects, given $\mathcal{G}=(G, \sim_{G})$ as $Q(\mathcal{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
-        \item on morphisms, given $h = (h_V, h_E): \mathcal{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
+        \item on objects, given $\eqgraph{G}=(G, \sim_{G})$ as $Q(\eqgraph{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
+        \item on morphisms, given $h = (h_V, h_E): \eqgraph{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
     \end{itemize}
 \end{definition}
 
 In the category of graphs with equivalences, universal constructions are easy to obtain. 
 The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
-Given two graphs with equivalences $\mathcal{G} = (G, \sim_G) $ and $\mathcal{H} = (H, \sim_{H})$, one can construct the product graph $\mathcal{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\mathcal{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
-An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \mathcal{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\mathcal{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\mathcal{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \mathcal{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
+Given two graphs with equivalences $\eqgraph{G} = (G, \sim_G) $ and $\eqgraph{H} = (H, \sim_{H})$, one can construct the product graph $\eqgraph{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\eqgraph{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
+An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \eqgraph{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\eqgraph{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\eqgraph{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \eqgraph{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
 
 Previous examples show that the category $\mathbf{EqGrph}$ has both (co)equalizers and finite (co)products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
 
 An important characterization in the category of graphs with equivalences is the following.
 
 \begin{prop}\label{prop:reg_mono_in_EG_are_mono_in_graph}
-    In $\mathbf{EqGrph}$, a monomorphism is regular if it reflects equivalences. That is, if $h: \mathcal{G \rightarrow H}$ is mono and such that $h_V (v_1) \sim_H h_V(v_2) \Rightarrow v_1 \sim_G v_2$, then $h$ is regular mono.
+    In $\mathbf{EqGrph}$, a monomorphism is regular if it reflects equivalences. That is, if $h: \eqgraph{G \rightarrow H}$ is mono and such that $h_V (v_1) \sim_H h_V(v_2) \Rightarrow v_1 \sim_G v_2$, then $h$ is regular mono.
 \end{prop}
 
-%TODO: EGGS
-\subsection{E-Graphs}
-
-E-Graphs are a particular type of graphs with equivalences, in which holds that
-$$
-    \frac{s(e) \sim s(e')}{t(e) \sim t(e')}
-$$
-for each pair of edges $e$, $e'$ of $\mathcal{G} = (G, \sim)$.
 
 
 \section{Graphs as Functors}
@@ -1067,7 +1045,7 @@ $$
 
 Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
 
-Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\mathcal{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\mathcal{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
+Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\eqgraph{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\eqgraph{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
 We now give some considerations on quotient functor.
@@ -1078,8 +1056,8 @@ We now give some considerations on quotient functor.
 
 \begin{proof}
     To prove the statement we just have to find the adjoints. 
-    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\mathcal{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\mathcal{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \mathcal{G} \rightarrow I(\mathcal{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
-    In particular, $I(\mathcal{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\mathcal{G}$ to $\mathcal{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\mathcal{G})) \rightarrow I(\mathcal{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
+    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
 
     A similar argument shows that the functor mapping each graph onto another wit all equivalent nodes is a right adjoint of $Q$.
 \end{proof}
@@ -1090,7 +1068,7 @@ The following result lies on Theorem~\ref{th:adjoints_preserves_lim} and its dua
     Quotient functor preserves limits and colimits. 
 \end{cor}
 
-Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \mathcal{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise \color{red}{(?)}\color{black}, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
 \begin{lemma}\label{lemma:eqgrph_stab_po_pb}
     In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of Definition~\ref{def:stab_under_pb_po}).
@@ -1103,6 +1081,27 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \math
 \begin{proof}
     In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
 \end{proof}
+
+
+%TODO: EGGS
+\section{E-Graphs}\label{sect:eggs}
+
+E-Graphs are a particular type of graphs with equivalences, in which holds that
+$$
+    \frac{s(e) \sim s(e')}{t(e) \sim t(e')}
+$$
+for each pair of edges $e$, $e'$ of $\eqgraph{G} = (G, \sim)$.
+In a more general case, considering a graph with equivalence as a functor $\eqgraph{G} : (E \rightrightarrows V \rightarrow Q) \rightarrow \Set$, the inference rule above rewrites as
+\[
+    \frac{\eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e')}{\eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e')}
+\] for each $e$, $e' \in \eqgraph{G}(E)$.
+But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (and the projection arrows) is exactly the pullback of $(q \circ s, q \circ s)$, and $T$ is the pullback of $(q \circ t, q \circ t)$. Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that {\color{red}{there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$}}.
+
+\begin{definition}\label{def:cat_of_eggs}[Category of E-Graphs]
+    The full subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
+\end{definition}
+
+
 
 % ----------------- Appendix ------------------ %
 \appendix
