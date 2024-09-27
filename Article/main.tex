@@ -10,6 +10,7 @@
 \usepackage{titlesec} %indice
 
 \usepackage{amssymb,amsthm, amsmath, mathrsfs, dsfont} %simboli matematici
+\usepackage{cleveref}
 \raggedbottom % Se la pagina non è completa, lascia lo spazio alla fine
 \pagestyle{headings}
 
@@ -113,7 +114,7 @@ To represent morphisms of a category $\cat{C}$ it is possible to use \emph{diagr
     \end{tikzcd}
     \]
 The diagram is said to commute whenever  $f \circ g' = g \circ f'$. Unique morphisms are represented with dashed arrows.
-A more rigorous definition of what a diagram is will be given later (Definition~\ref{def:diagram}).
+A more rigorous definition of what a diagram is will be given later (\Cref{def:diagram}).
 
 \begin{example}
     It is easy to see that taking sets as objects and total functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $id_A(a) = a$ for each $a\in A$.
@@ -121,7 +122,7 @@ A more rigorous definition of what a diagram is will be given later (Definition~
 \end{example}
 
 \begin{remark}\label{rem:small_cats}
-    It is important to note that the Definition~\ref{def:category} above does not specify what kind of collections
+    It is important to note that the \Cref{def:category} above does not specify what kind of collections
     %for a category $\cat{C}$, 
     $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are.
     Taking $\Set$ as example, the collection $\Ob(\Set)$ cannot be a set itself, due to Russel's paradox. It would be more appropriate referring to a category $\cat{C}$ which $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are both sets as a \emph{small category}, but it is assumed in this work, except where it is made explicit, for a category to be small.
@@ -233,7 +234,7 @@ A functor is a structure preserving map between categories.
     A first example of functor is the \emph{identity functor}. Given a category $\cat C$, the identity functor $Id_\cat C :\cat{C \rightarrow C}$ is the functor that maps each object on itself and each arrow onto itself. 
 \end{example}
 
-Once defined what a functor is, we can give a more rigorous definition of diagram. Although this may seem extremely technical, it will be useful, especially in the definition of limits (Definition~\ref{def:limit}).
+Once defined what a functor is, we can give a more rigorous definition of diagram. Although this may seem extremely technical, it will be useful, especially in the definition of limits (\Cref{def:limit}).
 
 \begin{definition}[Diagram]\label{def:diagram}
     A \emph{diagram in a category $\cat C$ of shape $\cat I$} is a functor $D: \cat{I \rightarrow C}$.
@@ -331,14 +332,14 @@ commutes because the two inner squares do. Sticking another diagram on the right
 
 \subsection{Functor Categories}
 
-The Observation~\ref{obs:comp_assoc_nat_tran} shows that natural transformations recreate on the functors the same structure that morphisms in a category have on objects. This leds us to define a particular kind of category, in which objects are functors between two categories, and arrow are natural transformations.
+The \Cref{obs:comp_assoc_nat_tran} shows that natural transformations recreate on the functors the same structure that morphisms in a category have on objects. This leds us to define a particular kind of category, in which objects are functors between two categories, and arrow are natural transformations.
 
 
 \begin{definition}[Functor Category]\label{def:functor_category}
     Let $\cat C$ and $\cat D$ be categories. The category whose objects are functors between $\cat C$ and $\cat D$ and whose arrows are natural transformations between them is said to be a \emph{functor category}, and it is denoted by $[\cat{C, D}]$.
 \end{definition}
 
-A functor with a small category as domain (Remark~\ref{rem:small_cats}) and $\Set$ as codomain is said to be a \emph{presheaf} on that category. Given a category $\cat C$, it is possible to construct the functor category of the presheaves on $\cat C$, i.e. $[\cat C, \Set]$.
+A functor with a small category as domain (\Cref{rem:small_cats}) and $\Set$ as codomain is said to be a \emph{presheaf} on that category. Given a category $\cat C$, it is possible to construct the functor category of the presheaves on $\cat C$, i.e. $[\cat C, \Set]$.
 
 \begin{remark}
     What we are calling here a presheaf is not totally accurate, because technically a presheaf on a small category $\cat C$ is a functor $F: \cat C ^{op} \rightarrow \Set$. This technicality would bring more complexity, and it is beyond the scope of this work, so we will continue adopting the definition given above.
@@ -346,7 +347,7 @@ A functor with a small category as domain (Remark~\ref{rem:small_cats}) and $\Se
 
 \subsection{Comma Categories}
 
-Functor constructions allow us to generalise basic concepts already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (Definition~\ref{def:slice_cat}).
+Functor constructions allow us to generalise basic concepts already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (\Cref{def:slice_cat}).
 
 % \begin{definition}[Comma category]
 %     Given two functors $F: \cat{C} \rightarrow \cat{E}$, $G: \cat{D} \rightarrow \cat{E}$, the \emph{comma category $(F \downarrow G)$} is the category whose objects are triples $(A, f, B)$, with $A \in \Ob(\cat C)$, $B \in \Ob(\cat D)$ and $f \in \cat{E}(F(A), G(B))$, and whose morphisms are the pairs $(a, b) : (A, f, B) \rightarrow (C, g, D)$ where $a : A \rightarrow C$, $b: B \rightarrow D$ and such that
@@ -380,7 +381,7 @@ Functor constructions allow us to generalise basic concepts already seen for cat
     \end{itemize}
 \end{definition}
 
-Thus, the slice category $\cat C / X$ is the comma category given by the two functors $Id_{\cat C}$ (the identity functor), and the functor $!_X: \textbf{1} \rightarrow \cat C$, where $\textbf 1$ is the one-object category defined in Example~\ref{ex:1_cat}, and $!_X$ sends the only object of $\textbf{1}$ to $X$ (then the only morphism of $\textbf{1}$ to $id_X$ of $\cat C$):
+Thus, the slice category $\cat C / X$ is the comma category given by the two functors $Id_{\cat C}$ (the identity functor), and the functor $!_X: \textbf{1} \rightarrow \cat C$, where $\textbf 1$ is the one-object category defined in \Cref{ex:1_cat}, and $!_X$ sends the only object of $\textbf{1}$ to $X$ (then the only morphism of $\textbf{1}$ to $id_X$ of $\cat C$):
 \[
     \begin{tikzcd}
         \cat C \arrow[r, "{Id_\cat C}"] & \cat C & \textbf{1} \arrow[l, "{!_X}"swap]
@@ -411,6 +412,7 @@ In the same way, it is possible to define coslice categories in terms of comma c
         \end{tikzcd}
     \] -- i.e., $\epsilon_{B} \circ F(f) = g$. In this case, $\epsilon$ is called \emph{co-unit} of the adjoint.
 \end{definition}
+\todo{sistemare la definizione}
 
 % Il concetto di functore aggiunto è molto più complesso di come viene presentato qui. In questo lavoro, avere una definizione di funtore aggiunto serve soltanto per una certa proprietà che verrà presentata nel capitolo sui limiti.
 
@@ -433,10 +435,10 @@ The next definitions are about \emph{universal constructions}. The simplest ones
 \end{obs}
 
 \begin{example}\label{ex:set_init_term}
-    In $\Set$, the initial object is the empty set $\varnothing$, because, for each set $S$, there exists the empty function from $\varnothing$ to $S$. The terminal object of $\Set$ is the singleton $\{ \bullet \}$, because there is exactly one function from a set $S$ to $\{ \bullet \}$, namely, the function which sends each $s \in S$ to $\bullet$. It is possible to visualize the Observation~\ref{obs:terminal_are_isomorph}: given two singletons $\{ \bullet \}$ and $\{ \star \}$, the function between them is bijective, while there exists a unique initial object.
+    In $\Set$, the initial object is the empty set $\varnothing$, because, for each set $S$, there exists the empty function from $\varnothing$ to $S$. The terminal object of $\Set$ is the singleton $\{ \bullet \}$, because there is exactly one function from a set $S$ to $\{ \bullet \}$, namely, the function which sends each $s \in S$ to $\bullet$. It is possible to visualize the \Cref{obs:terminal_are_isomorph}: given two singletons $\{ \bullet \}$ and $\{ \star \}$, the function between them is bijective, while there exists a unique initial object.
 \end{example}
 
-We now illustrate a result on functor categories (Definition~\ref{def:functor_category}) that will be useful later.
+We now illustrate a result on functor categories (\Cref{def:functor_category}) that will be useful later.
 
 \begin{prop}
     Let $\cat D$ be a category. If $\cat D$ has an initial object, then, for any category $\cat C$, $[\cat{C, D}]$ has an initial object. If $\cat D$ has a terminal object, then, for any category $\cat C$, $[\cat{C, D}]$ has a terminal object.
@@ -469,7 +471,7 @@ We now illustrate a result on functor categories (Definition~\ref{def:functor_ca
     Hence, $\theta$ is the unique natural transformation from $F$ to $T$, and $T$ is the terminal object of $[\cat{C, D}]$.
 \end{proof}
 
-In particular, every presheaf has an initial and a terminal object, because $\Set$ does (Example~\ref{ex:set_init_term}).
+In particular, every presheaf has an initial and a terminal object, because $\Set$ does (\Cref{ex:set_init_term}).
 
 \subsection{Products and Coproducts}
 
@@ -550,7 +552,7 @@ Of all monomorphisms, an interesting subclass of them is the one that contains o
                             &= (f \circ n) \circ m  && \textit{$n$ equalizer} \\
                             &= f \circ (n \circ m)
     \end{align*}
-    Since $n \circ m$ is mono (Proposition~\ref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
+    Since $n \circ m$ is mono (\Cref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
 \end{obs}
 
 \subsection{Pullbacks and Pushouts}
@@ -699,7 +701,7 @@ To define what a limit is, we first need to define cones.
 \end{definition}
 
 \begin{obs}
-    Given a diagram $D$, a limit for $D$ is exactly the terminal object of the category $\textbf{Cone}(D)$, defined in Observation~\ref{obs:category_of_cones}.
+    Given a diagram $D$, a limit for $D$ is exactly the terminal object of the category $\textbf{Cone}(D)$, defined in \Cref{obs:category_of_cones}.
 \end{obs}
 
 The dual notions of cones and limits are that of cocones and colimits.
@@ -722,7 +724,7 @@ The following examples show how limits are general concepts for the construction
             A & & B
         \end{tikzcd}
     \]
-    Then, a cone for $D$ is an object $X$ and two arrows $f: X \rightarrow A$, $g: X \rightarrow B$ (i.e., a span, defined in Example~\ref{ex: span}):
+    Then, a cone for $D$ is an object $X$ and two arrows $f: X \rightarrow A$, $g: X \rightarrow B$ (i.e., a span, defined in \Cref{ex: span}):
     \[
         \begin{tikzcd}
             A & X \arrow[l, "f" swap] \arrow[r, "g"] & B
@@ -749,7 +751,7 @@ The following examples show how limits are general concepts for the construction
     \]
     For $(P, \phi, \psi)$ to be a pullback, it must have the universal property. In other words, it has to be a limit.
 
-    This example show us that a pullback is a limit for a cospan (Example~\ref{ex: span}).
+    This example show us that a pullback is a limit for a cospan (\Cref{ex: span}).
 \end{example}
 
 \begin{example}\label{ex:equaliz_are_limits}
@@ -803,7 +805,7 @@ The connection between constructions as products and equalizers and limits is ma
 \end{example}
 
 \begin{example}\label{ex:colm_of_sets}
-    As we have done in Example~\ref{ex:lim_of_sets}, we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
+    As we have done in \Cref{ex:lim_of_sets}, we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
     $$
         C = \big ( \coprod_{i \in I} D(i) \big ) / \sim
     $$
@@ -881,7 +883,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
 We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
 
 \begin{definition}\label{def:adh}[$\mathcal{M}$-adhesivity]
-    Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (Definition~\ref{def:stab_under_pb_po}).
+    Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (\Cref{def:stab_under_pb_po}).
     Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
     \begin{enumerate}
         \item every cospan $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ can be completed to a pullback (such pullbacks are called $\mathcal M$-pullbacks);
@@ -893,7 +895,7 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
 
 \begin{obs}
     $\Set$ is adhesive.
-    % It is easy to check the first two points of the definition~\ref{def:adh} while for the Van Kampen property of pushouts along monos [...]
+    % It is easy to check the first two points of the \Cref{def:adh} while for the Van Kampen property of pushouts along monos [...]
 \end{obs}
 
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
@@ -906,9 +908,9 @@ Verifying $\mathcal M$-adhesivity using the definition above may turn out to be 
 The idea behind this theorem is to simplify calculations to show that a certain category is adhesive for some subclass of monomorphisms, considering a functor from the category of which we want to prove adhesivity to a category we know it is adhesive, requiring that such functor has some properties.
 
 \begin{proof}
-    In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in Definition~\ref{def:adh}.
+    In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in \Cref{def:adh}.
     \begin{itemize}
-        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (\Cref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (\Cref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
         \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
         \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
     \end{itemize}
@@ -916,31 +918,31 @@ The idea behind this theorem is to simplify calculations to show that a certain 
 \end{proof}
 
 
-\color{red}{ [DC]Alcuni commenti su questo capitolo. Non sono soddisfatto dall'ordine della presentazione. Io  personalmente proporrei il seguente indice:
+{% \color{red}{ [DC]Alcuni commenti su questo capitolo. Non sono soddisfatto dall'ordine della presentazione. Io  personalmente proporrei il seguente indice:
 
-Sec. 1 Categorie e funtori
+% Sec. 1 Categorie e funtori
 
->def di categorie
-	-menzionare che data una categoria c'è il duale
-	-epi, mono e  iso
+% >def di categorie
+% 	-menzionare che data una categoria c'è il duale
+% 	-epi, mono e  iso
 
->funtori e trasf naturali
+% >funtori e trasf naturali
 
->categorie comma (con slice e coslice come sottocaso)
+% >categorie comma (con slice e coslice come sottocaso)
 
-Sec. 2: Limiti e colimiti
-Io sinceramente questa la riscriverei completamente. La definizione di (co)limite deve venire prima e solo dopo deve venire l'elenco degli esempi. Struttura che propongo:
+% Sec. 2: Limiti e colimiti
+% Io sinceramente questa la riscriverei completamente. La definizione di (co)limite deve venire prima e solo dopo deve venire l'elenco degli esempi. Struttura che propongo:
 
->definizione, esempi e se avanza tempo come si calcolano (co)limiti generali a partire da quelli "base" (tipo prodotti da pb e equalizzatori) 
-	-epi e mono regolari
+% >definizione, esempi e se avanza tempo come si calcolano (co)limiti generali a partire da quelli "base" (tipo prodotti da pb e equalizzatori) 
+% 	-epi e mono regolari
 
->Limiti nelle categorie di funtori e comma
+% >Limiti nelle categorie di funtori e comma
 
 
-Sec. 3: Adesività
-Unica osservazione che ho per ora è che terrei il cubo invece del diagramma che hai fatto}
-\color{black}
-
+% Sec. 3: Adesività
+% Unica osservazione che ho per ora è che terrei il cubo invece del diagramma che hai fatto}
+% \color{black}
+}
 
 \chapter{Categories of Graphs}
 This chapter is about graphs, and how it is possible to formalize them using categories in order to point out their properties from an abstract point of view. Starting from the set-theoretical definition of graphs, we will give an abstraction via functor categories, in which a graph is nothing but a functor between a category to another.
@@ -975,7 +977,7 @@ Graphs together with graph homomorphisms from a category.
     $\mathbf{Graph}$ is the category in which objects are graphs and arrows are graph homomorphisms.
 \end{definition}
 
-All the constructions defined in Section~\ref{sect:univ_constr} exists in $\mathbf{Graph}$, and they are very similar to construction in $\Set$, intuitively because of the set-theoretic nature of graphs. The next examples try to make this point clear.
+All the constructions defined in \Cref{sect:univ_constr} exists in $\mathbf{Graph}$, and they are very similar to construction in $\Set$, intuitively because of the set-theoretic nature of graphs. The next examples try to make this point clear.
 
 \begin{example}\label{ex:in_term_in_graph}
     The initial object in $\mathbf{Graph}$ is the empty graph, i.e., the graph with an empty set of vertices and an empty set of edges. The initial object instead is the graph with exactly one node and a single edge from that node to itself.
@@ -1002,7 +1004,7 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 \end{remark}
 
 \begin{obs}
-    $\mathbf{Graph}$, defined in Definition~\ref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
+    $\mathbf{Graph}$, defined in \Cref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
 \end{obs}
 
 %TODO: RIGUARDARE QUESTA PARTE!!!
@@ -1023,7 +1025,7 @@ The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only o
 Given two graphs with equivalences $\eqgraph{G} = (G, \sim_G) $ and $\eqgraph{H} = (H, \sim_{H})$, one can construct the product graph $\eqgraph{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\eqgraph{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
 An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \eqgraph{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\eqgraph{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\eqgraph{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \eqgraph{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
 
-Previous examples show that the category $\mathbf{EqGrph}$ has both (co)equalizers and finite (co)products, so, by Theorem~\ref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
+Previous examples show that the category $\mathbf{EqGrph}$ has both (co)equalizers and finite (co)products, so, by \Cref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
 
 An important characterization in the category of graphs with equivalences is the following.
 
@@ -1037,9 +1039,9 @@ An important characterization in the category of graphs with equivalences is the
 
 Set-theoretical definitions of graphs are straightforward, but a further level of abstraction allows us to highlight some interesting properties of these objects. We can indeed consider a graph as a functor from a category of ``primitive objects'' (e.g., the object representing edges and the object representing vertices) onto a category which provides a representation of them. This concept is perfectly represented by categories of presheaves, where an object is nothing more than a way to interpret objects of a category as sets. An example will make clear what we are talking about.
 
-Considering the category of graphs (as defined in Definition~\ref{def:cat_of_graph}), it is possible to show that 
+Considering the category of graphs (as defined in \Cref{def:cat_of_graph}), it is possible to show that 
 $$\mathbf{Graph} \cong [E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
-where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural transformation, and the commutativity of the diagram below is given by the definition of graph morphisms (Definition~\ref{def:graph_hom})
+where an object $G$ is a functor, having $G(V)$ as the set of vertices, $G(E)$ as the set of edges, $G(s)$ and $G(t)$ as the source and target functions. A morphisms $\eta: G \dot\rightarrow H$ is a natural transformation, and the commutativity of the diagram below is given by the definition of graph morphisms (\Cref{def:graph_hom})
 $$
     \begin{tikzcd}
         G(E) \arrow[r, "{\eta_E}"] \arrow[d, "G(s)"swap] & H(E) \arrow[d, "H(s)"] \\
@@ -1048,9 +1050,9 @@ $$
 $$
 (and the same for $t$).
 
-Example~\ref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of Observation~\ref{obs:limits_in_presh}.
+\Cref{ex:in_term_in_graph} and following, in which limits and colimits are computed pointwise, are a concrete instance of \Cref{obs:limits_in_presh}.
 
-Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\eqgraph{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\eqgraph{G}(q)$ here is intended to be the function discussed in Remark~\ref{rem:eq_as_surj}.
+Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\eqgraph{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\eqgraph{G}(q)$ here is intended to be the function discussed in \Cref{rem:eq_as_surj}.
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
 
 We now give some considerations on quotient functor.
@@ -1067,16 +1069,16 @@ We now give some considerations on quotient functor.
     A similar argument shows that the functor mapping each graph onto another with all equivalent nodes is a right adjoint of $Q$.
 \end{proof}
 
-The following result lies on Theorem~\ref{th:adjoints_preserves_lim} and its dual.
+The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
 
 \begin{cor}\label{cor:quot_preserves_co_lim}
     Quotient functor preserves limits and colimits. 
 \end{cor}
 
-Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (Proposition~\ref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (\Cref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
 \begin{lemma}\label{lemma:eqgrph_stab_po_pb}
-    In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of Definition~\ref{def:stab_under_pb_po}).
+    In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of \Cref{def:stab_under_pb_po}).
 \end{lemma}
 
 \begin{theorem}
@@ -1084,7 +1086,7 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgr
 \end{theorem}
 
 \begin{proof}
-    In order to apply Theorem~\ref{th:crit_for_adh}, we can consider the quotient functor defined in Definition~\ref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to Lemma~\ref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+    In order to apply \Cref{th:crit_for_adh}, we can consider the quotient functor defined in \Cref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to \Cref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
 \end{proof}
 
 
@@ -1105,19 +1107,19 @@ But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \t
     The full subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
 \end{definition}
 
-Consider now the inclusion functor $I: \mathbf{EGG} \rightarrow \mathbf{EqGrph}$. Since $\mathbf{EGG}$ is a full subcategory of $\mathbf{EqGrph}$, $I$ is full and faithful (Example~\ref{ex:full_subc_inc_fully_faith}), it reflects all limits (Propositon~\ref{prop:inc_funct_reflects_so_limits}). But limits are also preserved, since the limit in $\mathbf{EqGrph}$ in which objects are e-graphs is an e-graph together with morphisms that are also morphisms of $\mathbf{EGG}$ since it is a full subcategory. Then, we can conclude as follows.
+Consider now the inclusion functor $I: \mathbf{EGG} \rightarrow \mathbf{EqGrph}$. Since $\mathbf{EGG}$ is a full subcategory of $\mathbf{EqGrph}$, $I$ is full and faithful (\Cref{ex:full_subc_inc_fully_faith}), it reflects all limits (\Cref{prop:inc_funct_reflects_so_limits}). But limits are also preserved, since the limit in $\mathbf{EqGrph}$ in which objects are e-graphs is an e-graph together with morphisms that are also morphisms of $\mathbf{EGG}$ since it is a full subcategory. Then, we can conclude as follows.
 
 \begin{lemma}
     The inclusion functor $I: \mathbf{EGG \rightarrow EqGrph}$ creates limits.
 \end{lemma}
 
-Since $I$ is faithful, monomorphisms in $\mathbf{EqGrph}$ between graphs that are e-graphs too are monomorphisms in $\Egg$ too. Regular monomorphisms in $\Egg$ are, as in $\mathbf{EqGrph}$, monomorphisms which reflect equivalences, hence natural transformations with all the three components mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}).
+Since $I$ is faithful, monomorphisms in $\mathbf{EqGrph}$ between graphs that are e-graphs too are monomorphisms in $\Egg$ too. Regular monomorphisms in $\Egg$ are, as in $\mathbf{EqGrph}$, monomorphisms which reflect equivalences, hence natural transformations with all the three components mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}).
 
 \begin{prop}
     Let $I$ be the inclusion functor from $\Egg$ to $\mathbf{EqGrph}$. Then, $I(\Reg(\Egg)) \subseteq \Reg(\mathbf{EqGrph})$.
 \end{prop}
 
-At this point, by direct application of Theorem~\ref{th:crit_for_adh}, it is possible to state what follows.
+At this point, by direct application of \Cref{th:crit_for_adh}, it is possible to state what follows.
 
 \begin{cor}
     $\mathbf{EGG}$ is quasiadhesive.
@@ -1130,12 +1132,12 @@ At this point, by direct application of Theorem~\ref{th:crit_for_adh}, it is pos
 
 \chapter{Omitted Proofs}
 
-\paragraph{Theorem~\ref{th:limit}.}
- Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
+\paragraph{\Cref{th:limit}.}
+ Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all equalizers.
 \begin{proof}
     Let $D: \cat{I \rightarrow C}$ a diagram, with $\cat I$ finite.
     
-    The \emph{if} statement is easily satisfied as shown in Example~\ref{ex:equaliz_are_limits} and Example~\ref{ex:product_are_limits}.
+    The \emph{if} statement is easily satisfied as shown in \Cref{ex:equaliz_are_limits} and \Cref{ex:product_are_limits}.
 
     To satisfy the \emph{only if} statement, we want an object $L$ together with morphisms $p_i : L \rightarrow D(j)$ such that:
     \begin{enumerate}
