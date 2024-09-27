@@ -25,5 +25,6 @@
        - 2.1.2. Graph with Equivalences . . . . . . . . . . . . . . . . . . . . . 26
     - 2.2. Graphs as Functors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
     - 2.3 E-Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
 A. Omitted Proofs 31
 
