@@ -44,6 +44,7 @@
 \newcommand{\initial}{\mymathbb{0}}
 \newcommand{\terminal}{\mathds{1}}
 \newcommand{\eqgraph}[1]{\mathbb{#1}}
+\newcommand{\Egg}{\mathbf{EGG}}
 
 % input file frontespizio.tex
 % \input{frontespizio}
@@ -285,7 +286,7 @@ Some interesting properties of certain functors depend strictly on how they beha
 }\color{black}
     
 
-\begin{example}
+\begin{example}\label{ex:full_subc_inc_fully_faith}
     Let $\cat C$ be a category and $\cat D$ a subcategory. The inclusion functor $I: \cat{D \rightarrow C}$, mapping each object and each arrow onto itself. $I$ is a faithful functor, because, given any pair of objects $A$ and $B$ of $\cat D$, $I_{A, B}$ is injective. If $\cat D$ is a full subcategory, then $I$ is fully faithful.
 \end{example}
 
@@ -834,6 +835,10 @@ In the next sections, we will work on a special kind of diagrams with certain pr
     It holds that if a functor creates limits, then lifts uniquely limits~\cite{Adamek_Herrlich_Strecker_2009}.
 \end{obs}
 
+\begin{prop}\label{prop:inc_funct_reflects_so_limits}
+    A fully faithful functor reflects all limits and colimits.
+\end{prop}
+
 The next theorem is about a particular property that adjoint functors have.
 
 \begin{theorem}\label{th:adjoints_preserves_lim}
@@ -903,7 +908,7 @@ The idea behind this theorem is to simplify calculations to show that a certain 
 \begin{proof}
     In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in Definition~\ref{def:adh}.
     \begin{itemize}
-        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$.Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (Example~\ref{ex:pb_as_limit}). Since $F$ creates pullbacks, hence lifts them (Observation~\ref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
         \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
         \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
     \end{itemize}
@@ -1059,7 +1064,7 @@ We now give some considerations on quotient functor.
     A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
     In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
 
-    A similar argument shows that the functor mapping each graph onto another wit all equivalent nodes is a right adjoint of $Q$.
+    A similar argument shows that the functor mapping each graph onto another with all equivalent nodes is a right adjoint of $Q$.
 \end{proof}
 
 The following result lies on Theorem~\ref{th:adjoints_preserves_lim} and its dual.
@@ -1083,7 +1088,6 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgr
 \end{proof}
 
 
-%TODO: EGGS
 \section{E-Graphs}\label{sect:eggs}
 
 E-Graphs are a particular type of graphs with equivalences, in which holds that
@@ -1101,6 +1105,23 @@ But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \t
     The full subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
 \end{definition}
 
+Consider now the inclusion functor $I: \mathbf{EGG} \rightarrow \mathbf{EqGrph}$. Since $\mathbf{EGG}$ is a full subcategory of $\mathbf{EqGrph}$, $I$ is full and faithful (Example~\ref{ex:full_subc_inc_fully_faith}), it reflects all limits (Propositon~\ref{prop:inc_funct_reflects_so_limits}). But limits are also preserved, since the limit in $\mathbf{EqGrph}$ in which objects are e-graphs is an e-graph together with morphisms that are also morphisms of $\mathbf{EGG}$ since it is a full subcategory. Then, we can conclude as follows.
+
+\begin{lemma}
+    The inclusion functor $I: \mathbf{EGG \rightarrow EqGrph}$ creates limits.
+\end{lemma}
+
+Since $I$ is faithful, monomorphisms in $\mathbf{EqGrph}$ between graphs that are e-graphs too are monomorphisms in $\Egg$ too. Regular monomorphisms in $\Egg$ are, as in $\mathbf{EqGrph}$, monomorphisms which reflect equivalences, hence natural transformations with all the three components mono (Proposition~\ref{prop:reg_mono_in_EG_are_mono_in_graph}).
+
+\begin{prop}
+    Let $I$ be the inclusion functor from $\Egg$ to $\mathbf{EqGrph}$. Then, $I(\Reg(\Egg)) \subseteq \Reg(\mathbf{EqGrph})$.
+\end{prop}
+
+At this point, by direct application of Theorem~\ref{th:crit_for_adh}, it is possible to state what follows.
+
+\begin{cor}
+    $\mathbf{EGG}$ is quasiadhesive.
+\end{cor}
 
 
 % ----------------- Appendix ------------------ %
