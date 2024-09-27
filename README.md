@@ -23,8 +23,7 @@
     - 2.1. Set-Theoretic Definitions of Graphs . . . . . . . . . . . . . . . . . . . 25
        - 2.1.1. Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
        - 2.1.2. Graph with Equivalences . . . . . . . . . . . . . . . . . . . . . 26
-       - 2.1.3. E-Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
-   - 2.2. Graphs as Functors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
-
+    - 2.2. Graphs as Functors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+    - 2.3 E-Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
 A. Omitted Proofs 31
 
