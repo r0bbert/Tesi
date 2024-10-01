@@ -141,6 +141,25 @@ Between the morphisms of a category, it is possible to distinguish some that hav
     An arrow $f:B\rightarrow C$ in a category $\cat{C}$ is a \emph{monomorphism} if, for any pair of arrows of $\cat{C}$ $g:A \rightarrow B$, $h: A \rightarrow B$, the equality $f \circ g = f \circ h$ implies $g = h$. The class of monomorphisms of $\cat C$ is denoted $\Mono(\cat C)$.
 \end{definition}
 
+For a morphism, from an algebraic point of view, being mono means being \emph{left cancellable}. This fact can led us to define a particular kind of class of morphisms, which will reveal useful further. 
+
+\begin{definition}[Subobjects]
+    Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
+    \[
+        \begin{tikzcd}[row sep=9]
+            A \arrow[dr, "m"] \arrow[dd, dashed, "f"swap] & \\
+            & B \\
+            C \arrow[ur, "n"swap] &
+        \end{tikzcd}
+    \]
+    Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subibjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$.
+\end{definition}
+
+An useful fact about subobjects is how factorization behaves. In particular $(A, m)$ and $(B, n)$ are subobjects of $C$. Then, if $(A, m)\leq (B, n)$, we have $m = n \circ h$ for some $h$. Suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis. This is to say what follows.
+
+\begin{prop}\label{prop:fact_of_subobjects_is_unique}
+    Let $(A, m)$ and $(B, n)$ be subobjects of $C$ in a category $\cat C$, with $(A, m)\leq (B, n)$. Then, the factorization of $m$ through $n$ is unique.
+\end{prop}
 
 
 \begin{definition}[Epimorphism]\label{def:epi}
@@ -399,7 +418,7 @@ In the same way, it is possible to define coslice categories in terms of comma c
 
 \subsection{Adjoints}
 
-\begin{definition}\label{def:adjoint}[Adjoint Functor]
+\begin{definition}[Adjoint Functor]\label{def:adjoint}
     Let $\cat C$ and $\cat D$ be categories, and let $F:\cat{C \rightarrow D}$ and $G : \cat{D \rightarrow C}$ be functors. $G$ is called \emph{left adjoint} of $F$ if there exists a natural transformation $\eta: Id_{\cat C} \dot\rightarrow (G \circ F)$ such that, for each object $A$ and each arrow $f: A \rightarrow G(B)$ of $\cat C$, there exists a unique arrow $g: F(A) \rightarrow B$ of $\cat D$ such that the following diagrams commutes:
     \[
         \begin{tikzcd}
@@ -647,7 +666,7 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
     \end{tikzcd}
 \]
 
-\begin{definition}\label{def:stab_under_pb_po}[Stability under pullbacks, pushouts]
+\begin{definition}[Stability under pullbacks, pushouts]\label{def:stab_under_pb_po}
     Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
     $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
 \end{definition}
@@ -792,7 +811,7 @@ All the examples we provided about limits are still valid, in their dual form, f
 
 The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
 
-\begin{theorem}\label{th:limit}[Limit theorem]
+\begin{theorem}[Limit theorem]\label{th:limit}
     Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
 \end{theorem}
 
@@ -886,7 +905,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
 
 We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
 
-\begin{definition}\label{def:adh}[$\mathcal{M}$-adhesivity]
+\begin{definition}[$\mathcal{M}$-adhesivity]\label{def:adh}
     Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (\Cref{def:stab_under_pb_po}).
     Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
     \begin{enumerate}
@@ -962,7 +981,7 @@ First obvious definitions of graph are given via sets and set-theoretic tools, r
     In general, given a graph $G$, we write $V(G)$ to denote the set of vertices and $E(G)$ the set of edges of $G$.
 \end{definition}
 
-\begin{definition}\label{def:graph_hom}[Graph Homomorphism]
+\begin{definition}[Graph Homomorphism]\label{def:graph_hom}
     Given two graphs $G=(V_G, E_G, s_G, t_G)$ and $H=(V_H, E_H, s_H, t_H)$, a \emph{graph homomorphism} $h: G \rightarrow H$ is a pair of functions $h = (h_V: V_G \rightarrow V_H, h_E: E_G \rightarrow E_H)$ such that
     \[
         h_V \circ s_G = s_H \circ h_E
@@ -1016,7 +1035,7 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 % Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
 The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
 
-\begin{definition}\label{def:quot_func}[Quotient Functor]
+\begin{definition}[Quotient Functor]\label{def:quot_func}
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
     \begin{itemize}
         \item on objects, given $\eqgraph{G}=(G, \sim_{G})$ as $Q(\eqgraph{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
@@ -1105,9 +1124,29 @@ In a more general case, considering a graph with equivalence as a functor $\eqgr
 \[
     \frac{\eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e')}{\eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e')}
 \] for each $e$, $e' \in \eqgraph{G}(E)$.
-But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (and the projection arrows) is exactly the pullback of $(q \circ s, q \circ s)$, and $T$ is the pullback of $(q \circ t, q \circ t)$. Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that {\color{red}{there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$}}.
+But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (with the projection arrows$p_1$ and $p_2$) is exactly the pullback of $(q \circ s, q \circ s)$, and $T$ (together with the projections $q_1, q_2$) is the pullback of $(q \circ t, q \circ t)$. Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$.
+To find a structure to express this fact, we have to consider a more general case.
 
-\begin{definition}\label{def:cat_of_eggs}[Category of E-Graphs]
+Consider an arrow $f: X \rightarrow Y$, and let $(K, \pi_1, \pi_2)$ be the pullback of $(f, f)$.
+\[
+    \begin{tikzcd}
+        K \arrow[r, "{\pi_1}"] \arrow[d, "{\pi_2}"swap] & X \arrow[d, "f"] \\
+        X \arrow[r, "f"swap] & Y
+    \end{tikzcd}
+\]
+Such pullback induces an arrow $\langle \pi_1, \pi_2 \rangle : K \rightarrow X\times X$. Such arrow is mono and unique, because of the universal property of the pullback, indeed a subobject.
+\todo{capire quanto andare nello specifico qui}
+
+Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$, we can make use of the \Cref{prop:fact_of_subobjects_is_unique}. Specifically, we want, in the following situation, $i$ to be mono and unique.
+\[
+    \begin{tikzcd}
+        S \arrow[rr, "i"] \arrow[dr, "{\langle p_1, p_2 \rangle}"swap] & & T \arrow[dl, "{\langle q_1, q_2\rangle}"] \\
+        & \eqgraph{G}(E) \times \eqgraph{G}(E)
+    \end{tikzcd}
+\]
+We have then that $\langle p_1, p_2 \rangle$ is mono, then so is $\langle q_1, q_2 \rangle \circ i$. From \Cref{prop:epi_mono_prop}, we can conclude that $i$ is mono too. The uniqueness follows from \Cref{prop:fact_of_subobjects_is_unique}. If such $i$ exists, then $\eqgraph{G}$ is an e-graph.
+
+\begin{definition}[Category of E-Graphs]\label{def:cat_of_eggs}
     The full subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
 \end{definition}
 
