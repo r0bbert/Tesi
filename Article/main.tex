@@ -418,24 +418,66 @@ In the same way, it is possible to define coslice categories in terms of comma c
 
 \subsection{Adjoints}
 
-\begin{definition}[Adjoint Functor]\label{def:adjoint}
-    Let $\cat C$ and $\cat D$ be categories, and let $F:\cat{C \rightarrow D}$ and $G : \cat{D \rightarrow C}$ be functors. $G$ is called \emph{left adjoint} of $F$ if there exists a natural transformation $\eta: Id_{\cat C} \dot\rightarrow (G \circ F)$ such that, for each object $A$ and each arrow $f: A \rightarrow G(B)$ of $\cat C$, there exists a unique arrow $g: F(A) \rightarrow B$ of $\cat D$ such that the following diagrams commutes:
-    \[
-        \begin{tikzcd}
-            A \arrow[r, "{\eta_A}"] \arrow[dr, "f" swap] & G(F(A)) \arrow[d, dashed, "G(g)"] \\
-            & G(B)
-        \end{tikzcd}
-    \] -- i.e., if $G(g) \circ \eta_{A} = f$. In this case $\eta$ is called the \emph{unit} of the adjoint.
+% \begin{definition}[Adjoint Functor]\label{def:adjoint}
+%     Let $\cat C$ and $\cat D$ be categories, and let $R:\cat{C \rightarrow D}$ and $L : \cat{D \rightarrow C}$ be functors. $L$ is called \emph{left adjoint} of $R$ if there exists a natural transformation $\eta: Id_{\cat C} \dot\rightarrow (L \circ R)$ such that, for each object $A$ and each arrow $f: A \rightarrow L(B)$ of $\cat C$, there exists a unique arrow $g: R(A) \rightarrow B$ of $\cat D$ such that the following diagrams commutes:
+%     \[
+%         \begin{tikzcd}
+%             A \arrow[r, "{\eta_A}"] \arrow[dr, "f" swap] & L(R(A)) \arrow[d, dashed, "L(g)"] \\
+%             & L(B)
+%         \end{tikzcd}
+%     \] -- i.e., if $L(g) \circ \eta_{A} = f$. In this case $\eta$ is called the \emph{unit} of the adjoint.
 
-    Analogously, $F$ is called \emph{right adjoint} of $G$ provided that there exists a natural transformation $\epsilon : (F \circ G) \dot\rightarrow Id_{\cat D}$ such that, for each arrow $g: F(A) \rightarrow B$ of $\cat D$ there exists a unique arrow $f: A \rightarrow G(B)$ of $\cat C$ such that the following diagram commutes:
+%     Analogously, $R$ is called \emph{right adjoint} of $L$ provided that there exists a natural transformation $\epsilon : (R \circ L) \dot\rightarrow Id_{\cat D}$ such that, for each arrow $g: R(A) \rightarrow B$ of $\cat D$ there exists a unique arrow $f: A \rightarrow L(B)$ of $\cat C$ such that the following diagram commutes:
+%     \[
+%         \begin{tikzcd}
+%             R(L(B)) \arrow[r, "{\epsilon_{B}}"] & B \\
+%             R(A) \arrow[u, dashed, "R(f)"] \arrow[ur, "g"swap] 
+%         \end{tikzcd}
+%     \] -- i.e., $\epsilon_{B} \circ R(f) = g$. In this case, $\epsilon$ is called \emph{co-unit} of the adjoint.
+% \end{definition}
+%\todo{sistemare la definizione}
+
+\begin{definition}[Right Adjoint]\label{def:right_adjoint}
+    Let $R: \cat{C \rightarrow D}$ be a functor. $R$ is said \emph{right adjoint} if, for each object $A$ of $\cat D$, there exists an object $L(A)$ and an arrow $\eta_A:A \rightarrow R(L(A))$ in $\cat C$ such that, for each arrow $f: A \rightarrow R(B)$ of $\cat D$, there is a unique arrow $g:L(A) \rightarrow B$ such that the following diagram commutes.
     \[
         \begin{tikzcd}
-            F(G(B)) \arrow[r, "{\epsilon_{B}}"] & B \\
-            F(A) \arrow[u, dashed, "F(f)"] \arrow[ur, "g"swap] 
+            A \arrow[r, "{\eta_A}"] \arrow[dr, "f" swap] & R(L(A)) \arrow[d, dashed, "R(g)"] \\
+            & R(B)
         \end{tikzcd}
-    \] -- i.e., $\epsilon_{B} \circ F(f) = g$. In this case, $\epsilon$ is called \emph{co-unit} of the adjoint.
+    \]
+    --i.e., $R(g) \circ \eta_A = f$.
 \end{definition}
-\todo{sistemare la definizione}
+
+\begin{prop}\label{prop:ext_left_to_funct}
+    In \Cref{def:right_adjoint}, the map that takes an object $A$ to an object $L(A)$ can be extended to a functor $L: \cat{D \rightarrow C}$.
+\end{prop}
+
+\begin{proof}
+    Let $R$ be the right adjoint as in ~\Cref{def:right_adjoint}. It is possible to define, for $f: X \rightarrow Y$, $L(f) : L(X) \rightarrow L(Y)$ such that: $R(L(f)) \circ \eta_X = \eta_Y \circ f$.
+\end{proof}
+
+\begin{definition}[Left Adjoint]\label{def:left_adjoint}
+    Let $L: \cat{D \rightarrow C}$ be a functor. $L$ is a \emph{left adjoint} if, for each object $B$ of $\cat C$, there exists an object $R(B)$ and an arrow $\epsilon_B : L(R(B)) \rightarrow B$ in $\cat D$ such that, for each arrow $g: L(A) \rightarrow B$ of $\cat C$, there exists a unique arrow $f:A \rightarrow R(B)$ such that the following diagram commutes.
+    \[
+        \begin{tikzcd}
+            L(R(B)) \arrow[r, "{\epsilon_B}"] & B \\
+            L(A) \arrow[u, dashed, "L(f)"] \arrow[ur, "g"swap]
+        \end{tikzcd}
+    \]
+    -- i.e., $\epsilon_B \circ L(f) = g$.
+\end{definition}
+
+As we have shown before, it is possible to extend the mapping $A \rightarrow R(B)$ to a functor $R$, whose functoriality follows placing $\epsilon_X \circ L(R(f)) = f \circ \epsilon_Y$ for each $f: X \rightarrow Y$.
+
+The connection between left and right adjoints is expressed in the following proposition.
+
+\begin{prop}
+    Let $L$ be the functor of \Cref{prop:ext_left_to_funct}. Then, $L$ is a left adjoint.
+\end{prop}
+
+\begin{proof}
+    
+\end{proof}
 
 % Il concetto di functore aggiunto è molto più complesso di come viene presentato qui. In questo lavoro, avere una definizione di funtore aggiunto serve soltanto per una certa proprietà che verrà presentata nel capitolo sui limiti.
 
@@ -1086,10 +1128,17 @@ We now give some considerations on quotient functor.
 
 \begin{proof}
     To prove the statement we just have to find the adjoints. 
-    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$ -- that is, a morphism from a graph with equivalence onto a graph with all non-equivalent nodes, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
-    In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
+    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    % In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
 
-    A similar argument shows that the functor mapping each graph onto another with all equivalent nodes is a right adjoint of $Q$.
+    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$ such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
+    \[
+        \begin{tikzcd}
+            \eqgraph{G} = (\mathcal{G}, \sim_{\mathcal{G}}) \arrow[r, "{\eta_{\eqgraph{G}}}"] \arrow[dr, "f"swap] & (T \circ Q)(\eqgraph{G}) = (\mathcal{G}/_{\sim_{\mathcal{G}}}, \approx_{\mathcal{G}/_{\sim_{\mathcal{G}}}}) \arrow[d, dashed, "h"] \\
+            & T(\mathcal{H}) = \eqgraph{H}
+        \end{tikzcd}
+    \]
+    Since $\eqgraph{H}$ is in the image of $T$, it is a graph with all equivalent nodes. Then, the morphism $f$ is a graph morphism that in addition sends each equivalence class of vertices onto the unique class in the graph $\eqgraph{H}$. Then, $f$ factors uniquely as $h \circ \eta_\eqgraph{G}$, and $h$ is a graph morphism extended to a morphism in $\mathbf{EqGrph}$ by sending the unique equivalence class on $(T \circ G)(\eqgraph{G})$ onto the unique equivalence class in $\eqgraph{H}$, and $\eta: Id_{\mathbf{EqGrph}} \rightarrow (T \circ Q)$ is the unit of the adjunction.
 \end{proof}
 
 The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
@@ -1150,11 +1199,24 @@ We have then that $\langle p_1, p_2 \rangle$ is mono, then so is $\langle q_1, q
     The full subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
 \end{definition}
 
+\begin{prop}\label{prop:prod_of_EGGs_is_EGG}
+    The product of two e-graphs in $\mathbf{EqGrph}$ is an e-graph.
+\end{prop}
+
+\begin{proof}
+    Let $\eqgraph{G}$, $\eqgraph{H}$ be two e-graphs in $\mathbf{EqGrph}$. Then, we want to to show that $\eqgraph{G \times H}$ is an e-graph too. The argument lies on the consideration that limits in presheaves categories are computed pointwise. In fact, we can 
+\end{proof}
+
 Consider now the inclusion functor $I: \mathbf{EGG} \rightarrow \mathbf{EqGrph}$. Since $\mathbf{EGG}$ is a full subcategory of $\mathbf{EqGrph}$, $I$ is full and faithful (\Cref{ex:full_subc_inc_fully_faith}), it reflects all limits (\Cref{prop:inc_funct_reflects_so_limits}). But limits are also preserved, since the limit in $\mathbf{EqGrph}$ in which objects are e-graphs is an e-graph together with morphisms that are also morphisms of $\mathbf{EGG}$ since it is a full subcategory. Then, we can conclude as follows.
 
 \begin{lemma}
     The inclusion functor $I: \mathbf{EGG \rightarrow EqGrph}$ creates limits.
 \end{lemma}
+
+\begin{proof}
+    To prove that $I$ creates limits, we have to show that both preserves and reflects limits.
+    To see that $I$ preserves limits, it is sufficient to note that a limit of e-graphs in $\mathbf{EqGrph}$ is again an e-graph, together with morphisms. (Note that, since $\Egg$ is a full subcategory of $\mathbf{EqGrph}$, these morphisms in $\mathbf{EqGrph}$ are morphisms of $\Egg$ too).
+\end{proof}
 
 Since $I$ is faithful, monomorphisms in $\mathbf{EqGrph}$ between graphs that are e-graphs too are monomorphisms in $\Egg$ too. Regular monomorphisms in $\Egg$ are, as in $\mathbf{EqGrph}$, monomorphisms which reflect equivalences, hence natural transformations with all the three components mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). The following result follows by the fact that a fully and faithful functor preserves equalizers. {\color{red}{???? Da dimostrare}}
 
