@@ -1128,8 +1128,22 @@ We now give some considerations on quotient functor.
 
 \begin{proof}
     To prove the statement we just have to find the adjoints. 
-    A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    %A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
     % In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
+
+    Let $I: \mathbf{Graph \rightarrow EqGrph}$ be the functor that sends each graph $\mathcal{G}$ onto the graph with equivalence $(\mathcal{G}, =_{\mathcal{G}})$, where $=_{\mathcal G}$ is the identity relation.
+    Consider the following situation:
+    \[
+        \begin{tikzcd}
+            (Q \circ I)(\mathcal{G}) = \mathcal{G}/_{=_{\mathcal{G}}}
+            \arrow[r, "{\epsilon_{\mathcal{G}}}"] 
+            & \mathcal{G} \\
+            {I(\mathcal{H}) = (\mathcal{H}, =_{\mathcal{H}})}
+            \arrow[u, dashed, "I(f)"] 
+            \arrow[ur, "g"swap] 
+        \end{tikzcd}
+    \]
+    The graph $\mathcal G/_{=_{\mathcal{G}}}$ is exactly the graph $\mathcal G$, hence the arrow $\epsilon_\mathcal{G}$ is the identity arrow $id_\mathcal{G}$, so the arrow $I(f)$ is uniquely determined by $g$, having $\epsilon_{\mathcal{G}} \circ I(f) = I(f) = g$. Therefore, $\epsilon: (Q \circ I) \rightarrow Id_{\mathbf{Graph}}$ is the counit of the adjunction, and $I$ is a left adjoint.
 
     A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$ such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
     \[
