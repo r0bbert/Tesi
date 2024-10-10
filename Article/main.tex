@@ -454,9 +454,9 @@ In the same way, it is possible to define coslice categories in terms of comma c
 \begin{prop}\label{prop:ext_left_to_funct}
     In \Cref{def:right_adjoint}, the map that takes an object $A$ to an object $L(A)$ can be extended to a functor $L: \cat{D \rightarrow C}$.
 \end{prop}
-
+\todo{Devi mostrare che eta risulta naturale (viene in automatico ma conviene scriverlo per la dimostrazione successiva).}
 \begin{proof}
-    Let $R$ be the right adjoint as in ~\Cref{def:right_adjoint}. It is possible to define, for $f: X \rightarrow Y$, $L(f) : L(X) \rightarrow L(Y)$ such that: $R(L(f)) \circ \eta_X = \eta_Y \circ f$.
+    Let $R$ be the right adjoint as in ~\Cref{def:right_adjoint}. It is possible to define, for $f: X \rightarrow Y$, $L(f) : L(X) \rightarrow L(Y)$  such that: \[R(L(f)) \circ \eta_X = \eta_Y \circ f\] \todo{finire}
 \end{proof}
 
 \begin{definition}[Left Adjoint]\label{def:left_adjoint}
@@ -479,13 +479,26 @@ The connection between left and right adjoints is expressed in the following pro
 \end{prop}
 
 \begin{proof}
-    
-\end{proof}
+	Given an object $B$ in $\cat{C}$, we can consider the solid part of the diagram below. 
+	Since $R$ is a right adjoint, we get a unique arrow whose image through $R$ make the triangle commutative.
+	    \[
+	\begin{tikzcd}
+		R(B)\arrow[r, "{\eta_{R(B)}}"] \arrow[dr, "id_{R(B)}" swap] & R(L(R(B))) \arrow[d, dashed, "R(\epsilon_B)"] \\
+		& R(B)
+	\end{tikzcd}
+	\]
+	
+	Let now $A$ be an object of $\cat{D}$ and $g\colon L(A)\to B$ an arrow in $\cat{C}$. We can consider the composite $R(g)\circ \eta_A\colon A\to R(B)$. Then we have
+	\begin{align*}
+		R(\epsilon_B)\circ R(L(R(g)))\circ R(L(\eta_A))\circ \eta_A&=R(\epsilon_B)\circ R(RL(R(g)))\circ \eta_{R(L(A))}\circ \eta_A\\&=R(\epsilon_B)\circ \eta_{R(B)}\circ R(g)\circ \eta_A\\&=R(g)\circ \eta_A
+	\end{align*}
+	Since $R$ is a right adjoint and $\eta$ its unit, it follows that $\epsilon_B\circ L(R(g)\circ \eta_A)$ coincides with $g$ as wanted.
+ \end{proof}
 
 % Il concetto di functore aggiunto è molto più complesso di come viene presentato qui. In questo lavoro, avere una definizione di funtore aggiunto serve soltanto per una certa proprietà che verrà presentata nel capitolo sui limiti.
 
 \section{Universal Constructions}\label{sect:univ_constr}
-
+\todo{Questa è da riscriviere e ridurre}
 % What we are interested in are the "best" construction having a certain property, and we exprtess this fact via requiring unique factorization when another construction does
 
 \subsection{Initial and Terminal Objects}
