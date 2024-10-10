@@ -979,6 +979,12 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
     % It is easy to check the first two points of the \Cref{def:adh} while for the Van Kampen property of pushouts along monos [...]
 \end{obs}
 
+Here it follows an interesting property of adhesive categories~\cite{lack2011embeddingtheoremadhesivecategories}.
+
+\begin{prop}\label{prop:monos_are_preserved_by_pullbacks_in_adh_cats}
+    In any adhesive category, the pushout of a monomorphism along any morphism is a monomorphism, and the resulting square is also a pullback.
+\end{prop}
+
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
 
 \begin{theorem}\label{th:crit_for_adh}
@@ -1177,11 +1183,35 @@ The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
     Quotient functor preserves limits and colimits. 
 \end{cor}
 
-Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). Since limits are computed pointwise, pullbacks preserve regular monomorphisms (\Cref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts. Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
+
+\color{red}{
+
+
+\begin{lemma}\label{lemma:reg_mono_pres_by_pushouts}
+    Pushouts in $\mathbf{EqGrph}$ preserves regular monomorphisms.    
+\end{lemma}
+
+\begin{proof}
+    Consider the following pullback in $\mathbf{EqGrph}$, where $m$ is a regular monomorphism:
+    \[
+        \begin{tikzcd}
+            G \arrow[r, "m"] \arrow[d, "n" swap] & G_1 \arrow[d, "i"] \\
+            G_2 \arrow[r, "j" swap] & P
+        \end{tikzcd}
+    \]
+    In particular, since $\mathbf{EqGrph}$ is a category of presheaves, colimits are computed pointwise,\color{green}{commentato}\color{black}
+
+    %%% IDEA: far vedere che, poiché i colimiti in una categoria di prefasci sono calcolati punto punto, allora ho un pushout su ogni componente (E, V, Q). Dalla prop nella parte sull'adesività si può concludere che tutti e tre i pushout preservano mono e quindi mono è preservata su tutte e tre le componenti, quindi reg  mono.
+\end{proof}
+
+}\color{black}
+Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). Pullbacks preserve regular monomorphisms (\Cref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts (\Cref{lemma:reg_mono_pres_by_pushouts}). Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
 \begin{lemma}\label{lemma:eqgrph_stab_po_pb}
     In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of \Cref{def:stab_under_pb_po}).
 \end{lemma}
+
+% Q crea pullback, Q crea pushout sui reg mono.
 
 \begin{theorem}
     $\mathbf{EqGrph}$ is quasiadhesive.
