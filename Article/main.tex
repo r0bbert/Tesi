@@ -74,7 +74,7 @@ This section is all about basic definitions and examples, to get familiar with t
         \item A collection of \emph{objects} $\Ob(\cat{C})$;
         \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$, often called \emph{homset}.
     \end{enumerate}
-    For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ that map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
+   \todo{Non sono d'accordo con quello che è scritto qui. Non è vero che per ogni morfismo esistono due operatori dom e cod. Semmai esistono due operatori che ad ogni morfismo associano un dominio ed un codominio} For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ that map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
     An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
     $$
         h \circ (g \circ f) = (h\circ g) \circ f
@@ -119,7 +119,7 @@ The diagram is said to commute whenever  $f \circ g' = g \circ f'$. Unique morph
 A more rigorous definition of what a diagram is will be given later (\Cref{def:diagram}).
 
 \begin{example}
-    It is easy to see that taking sets as objects and total functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $id_A(a) = a$ for each $a\in A$.
+    It is easy to see that taking sets as objects and total \todo{Ha senso mettere totale qui?}functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $id_A(a) = a$ for each $a\in A$.
     This category is denoted as $\Set$.
 \end{example}
 
@@ -144,7 +144,7 @@ Between the morphisms of a category, it is possible to distinguish some that hav
 For a morphism, from an algebraic point of view, being mono means being \emph{left cancellable}. This fact can led us to define a particular kind of class of morphisms, which will reveal useful further. 
 
 \begin{definition}[Subobjects]
-    Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
+    Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono\todo{sinceramente non trovo molto sensata la scelta di chiamare sottoggetto la coppia $(A, m)$. Lo standard, per quanto ne so, è usare sottoggetto per una classe di equivalenza di mono o, al massimo, per i mono}, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
     \[
         \begin{tikzcd}[row sep=9]
             A \arrow[dr, "m"] \arrow[dd, dashed, "f"swap] & \\
@@ -152,7 +152,7 @@ For a morphism, from an algebraic point of view, being mono means being \emph{le
             C \arrow[ur, "n"swap] &
         \end{tikzcd}
     \]
-    Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subibjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$.
+    Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subobjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$. 
 \end{definition}
 
 An useful fact about subobjects is how factorization behaves. In particular $(A, m)$ and $(B, n)$ are subobjects of $C$. Then, if $(A, m)\leq (B, n)$, we have $m = n \circ h$ for some $h$. Suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis. This is to say what follows.
@@ -188,6 +188,8 @@ An useful fact about subobjects is how factorization behaves. In particular $(A,
         \item if $g \circ f$ is epi, then $g$ is epi.
     \end{enumerate}
 \end{prop}
+\todo{val la pena osservare la relazione di equivalenza tra sottoggetti corrisponde ad avere un isomorfismo tra i domini}
+
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
@@ -239,6 +241,7 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 \section{Functors, Natural Transformations, Adjoints}\label{sect:funct_nats}
 
 \todo{E cambierei anche l'intro a questa sezione DC}
+\todo{la 1.1 è un po' povera come sezione, se sposti questa sezione sui funtori prima, poi puoi arricchire la 1.1 con la sottosezione sulle comma}
 
 \subsection{Functors}
 
