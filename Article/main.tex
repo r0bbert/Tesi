@@ -452,11 +452,31 @@ In the same way, it is possible to define coslice categories in terms of comma c
 \end{definition}
 
 \begin{prop}\label{prop:ext_left_to_funct}
-    In \Cref{def:right_adjoint}, the map that takes an object $A$ to an object $L(A)$ can be extended to a functor $L: \cat{D \rightarrow C}$.
+    In \Cref{def:right_adjoint}, the map that takes an object $A$ to an object $L(A)$ can be extended to a functor $L: \cat{D \rightarrow C}$. Moreover, there exists a natural transformation $id_{\cat{D}}\to R\circ L$.
 \end{prop}
-\todo{Devi mostrare che eta risulta naturale (viene in automatico ma conviene scriverlo per la dimostrazione successiva).}
 \begin{proof}
-    Let $R$ be the right adjoint as in ~\Cref{def:right_adjoint}. It is possible to define, for $f: X \rightarrow Y$, $L(f) : L(X) \rightarrow L(Y)$  such that: \[R(L(f)) \circ \eta_X = \eta_Y \circ f\] \todo{finire}
+    Let $R$ be the right adjoint as in ~\Cref{def:right_adjoint}. Given $f\colon X \rightarrow Y$, we can define $L(f)$ as the unqiue arrow  $L(X) \rightarrow L(Y)$ whose image through $R$ fits in the diagram below.
+    \[
+    \begin{tikzcd}
+    	X \arrow[r, "{\eta_X}"] \arrow[d, "f" swap] & R(L(X)) \arrow[d, dashed, "R(L(f))"] \\
+    	Y\arrow[r, "\eta_Y" swap]& R(L(Y))
+    \end{tikzcd}
+    \]
+    
+    To see that in this way we get a functor it is now enough to notice the commutativity of the following diagrams.
+    \[
+    \begin{tikzcd}
+    	X \arrow[r, "{\eta_X}"] \arrow[d, "{id_X}" swap] & R(L(X)) \arrow[d, "{R(id_{L(X)})}"]   \\
+    	Y\arrow[r, "{\eta_Y}" swap] & R(L(Y))
+    \end{tikzcd}
+    \]    \[
+    \begin{tikzcd}
+    	   X \arrow[d, "{\eta_X}" swap]  \arrow[r, "{f}"]& Y \arrow[d, "{\eta_Y}" swap] \arrow[r, "{g}"]& Z\arrow[d, "{\eta_Z}"]\\
+    	R(L(X))  \arrow[r, "{R(L(f))}" swap] & R(L(Y)) \arrow[r, "{R(L(g))}" swap] & R(L(Z))
+    \end{tikzcd}
+    \]
+    
+    Finally, by construction the family given by all the $\eta_A\colon A\to R(L(A))$ is natural and we can conclude. 
 \end{proof}
 
 \begin{definition}[Left Adjoint]\label{def:left_adjoint}
@@ -1097,7 +1117,7 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
 % Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
-The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
+The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph\todo{sposta questo discorso dopo il calcolo dei limiti, così che sia appena prima della dimostrazione sugli aggiunti} $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
 
 \begin{definition}[Quotient Functor]\label{def:quot_func}
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
@@ -1107,14 +1127,21 @@ The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation
     \end{itemize}
 \end{definition}
 
-In the category of graphs with equivalences, universal constructions are easy to obtain. 
+In the category of graphs with equivalences, universal constructions are easy to obtain.
+\begin{prop}COME SI CALCOLANO I LIMITI IN $\mathbf{EqGrph}$
+\end{prop}
+\begin{proof}
+	TO DO
+\end{proof}
+
+ \todo{riscrivere questa parte come esempi che derivano dalla proposizione precedente}
 The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
 Given two graphs with equivalences $\eqgraph{G} = (G, \sim_G) $ and $\eqgraph{H} = (H, \sim_{H})$, one can construct the product graph $\eqgraph{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\eqgraph{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
 An equalizer in $\mathbf{EqGrph}$ for a pair of morphisms $f, g: \eqgraph{G \rightarrow H}$ is exactly the same as in $\mathbf{Graph}$, namely, $(\eqgraph{E} = (E, \sim_E), e)$, where $E$ is the greatest subgraph of the underlying graph of $\eqgraph{G}$ on which $f$ and $g$ are equal, together with the inclusion $e: \eqgraph{E \rightarrow G}$. The equivalence relation is preserved ($\sim_E$ is $\sim_G$ restricted to the set of vertices of $E$).
 
 Previous examples show that the category $\mathbf{EqGrph}$ has both (co)equalizers and finite (co)products, so, by \Cref{th:limit}, we can conclude that $\mathbf{EqGrph}$ has finite limits and colimits.
 
-An important characterization in the category of graphs with equivalences is the following.
+An important characterization in the category of graphs with equivalences is the following. \todo{questo deriva da 2.1.11}
 
 \begin{prop}\label{prop:reg_mono_in_EG_are_mono_in_graph}
     In $\mathbf{EqGrph}$, a monomorphism is regular if it reflects equivalences. That is, if $h: \eqgraph{G \rightarrow H}$ is mono and such that $h_V (v_1) \sim_H h_V(v_2) \Rightarrow v_1 \sim_G v_2$, then $h$ is regular mono.
@@ -1123,7 +1150,8 @@ An important characterization in the category of graphs with equivalences is the
 
 
 \section{Graphs as Functors}
-
+\todo{non ha senso avere questa parte come sezione: "graph as functors"  ha
+ senso come remark separato e la restante parte della sezione si salda a quella precedente}
 Set-theoretical definitions of graphs are straightforward, but a further level of abstraction allows us to highlight some interesting properties of these objects. We can indeed consider a graph as a functor from a category of ``primitive objects'' (e.g., the object representing edges and the object representing vertices) onto a category which provides a representation of them. This concept is perfectly represented by categories of presheaves, where an object is nothing more than a way to interpret objects of a category as sets. An example will make clear what we are talking about.
 
 Considering the category of graphs (as defined in \Cref{def:cat_of_graph}), it is possible to show that 
@@ -1153,7 +1181,7 @@ We now give some considerations on quotient functor.
     %A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
     % In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
 
-    Let $I: \mathbf{Graph \rightarrow EqGrph}$ be the functor that sends each graph $\mathcal{G}$ onto the graph with equivalence $(\mathcal{G}, =_{\mathcal{G}})$, where $=_{\mathcal G}$ is the identity relation.
+    Let $I: \mathbf{Graph \rightarrow EqGrph}$ be the functor \todo{il punto è che NON sai che I è un funtore. Quello che devi fare è mostrare che epsilon ha la proprietà di una counità, DOPO deduci che I è un funtore} that sends each graph $\mathcal{G}$ onto the graph with equivalence $(\mathcal{G}, =_{\mathcal{G}})$, where $=_{\mathcal G}$ is the identity relation.
     Consider the following situation:
     \[
         \begin{tikzcd}
@@ -1167,7 +1195,7 @@ We now give some considerations on quotient functor.
     \]
     The graph $\mathcal G/_{=_{\mathcal{G}}}$ is exactly the graph $\mathcal G$, hence the arrow $\epsilon_\mathcal{G}$ is the identity arrow $id_\mathcal{G}$, so the arrow $I(f)$ is uniquely determined by $g$, having $\epsilon_{\mathcal{G}} \circ I(f) = I(f) = g$. Therefore, $\epsilon: (Q \circ I) \rightarrow Id_{\mathbf{Graph}}$ is the counit of the adjunction, and $I$ is a left adjoint.
 
-    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$ such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
+    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$ \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente.}such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
     \[
         \begin{tikzcd}
             \eqgraph{G} = (\mathcal{G}, \sim_{\mathcal{G}}) \arrow[r, "{\eta_{\eqgraph{G}}}"] \arrow[dr, "f"swap] & (T \circ Q)(\eqgraph{G}) = (\mathcal{G}/_{\sim_{\mathcal{G}}}, \approx_{\mathcal{G}/_{\sim_{\mathcal{G}}}}) \arrow[d, dashed, "h"] \\
@@ -1205,6 +1233,15 @@ The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
 \end{proof}
 
 }\color{black}
+
+COSE DA FARE
+
+>Quoziente crea i limiti (questo dovrebbe derivare direttamente dalla sezione precedente ) 
+
+>Quoziente crea certi pushout (questo va fatto ex novo)
+
+
+
 Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). Pullbacks preserve regular monomorphisms (\Cref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts (\Cref{lemma:reg_mono_pres_by_pushouts}). Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
 
 \begin{lemma}\label{lemma:eqgrph_stab_po_pb}
@@ -1223,6 +1260,15 @@ Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgr
 
 
 \section{E-Graphs}\label{sect:eggs}
+
+COSE DA FARE:
+Questa sezione ha più o meno gli stessi problemi della precedente. L'ordine da rispettare imho è il seguente:
+
+>Definizione
+>Calcolo dei limiti e certi colimiti (si fanno come in EqGrph)
+> cor del calcolo dei limiti: caratterizzare mono regolari
+>I crea limiti e i giusti pushout
+> e-graph sono quasiadesivi
 
 E-Graphs are a particular type of graphs with equivalences, in which holds that
 $$
