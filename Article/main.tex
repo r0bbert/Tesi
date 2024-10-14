@@ -3,8 +3,8 @@
 \usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
 \usepackage[english]{babel} % Lingua principale inglese
 \usepackage{graphicx} % Per includere immagini esterne
-\usepackage{todonotes}
-\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento
+\usepackage[tickmarkheight=.5em,textwidth=\marginparwidth,textsize=small]{todonotes}
+% \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento -- DA POROBLEMI!!!
 \usepackage[fontsize=12pt]{scrextend} %dimensione font
 
 \usepackage{titlesec} %indice
@@ -480,6 +480,10 @@ In the same way, it is possible to define coslice categories in terms of comma c
     Finally, by construction the family given by all the $\eta_A\colon A\to R(L(A))$ is natural and we can conclude. 
 \end{proof}
 
+\begin{remark}
+    The family above mentioned is called \emph{unit} of the adjunction.
+\end{remark}
+
 \begin{definition}[Left Adjoint]\label{def:left_adjoint}
     Let $L: \cat{D \rightarrow C}$ be a functor. $L$ is a \emph{left adjoint} if, for each object $B$ of $\cat C$, there exists an object $R(B)$ and an arrow $\epsilon_B : L(R(B)) \rightarrow B$ in $\cat D$ such that, for each arrow $g: L(A) \rightarrow B$ of $\cat C$, there exists a unique arrow $f:A \rightarrow R(B)$ such that the following diagram commutes.
     \[
@@ -491,7 +495,7 @@ In the same way, it is possible to define coslice categories in terms of comma c
     -- i.e., $\epsilon_B \circ L(f) = g$.
 \end{definition}
 
-As we have shown before, it is possible to extend the mapping $A \rightarrow R(B)$ to a functor $R$, whose functoriality follows placing $\epsilon_X \circ L(R(f)) = f \circ \epsilon_Y$ for each $f: X \rightarrow Y$.
+As we have shown before, it is possible to extend the mapping $A \rightarrow R(B)$ to a functor $R$, whose functoriality follows placing $\epsilon_X \circ L(R(f)) = f \circ \epsilon_Y$ for each $f: X \rightarrow Y$. The family $\epsilon_B : L(R(B)) \rightarrow B$ is natural and it is called \emph{counit} of the adjunction.
 
 The connection between left and right adjoints is expressed in the following proposition.
 
@@ -1129,8 +1133,9 @@ The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation
 \end{definition}
 
 In the category of graphs with equivalences, universal constructions are easy to obtain. 
-\begin{prop}
+\begin{prop}\label{prop:limits_in_EqGrph}
     COME SI CALCOLANO I LIMITI IN $\mathbf{EqGrph}$
+    % GUESS: limiti calcolati componente per componente su E e V, e restrizioni su Q (?) come in Graph (Dipende da prefasci).
 \end{prop}
 \begin{proof}
     TO DO
@@ -1198,14 +1203,16 @@ We now give some considerations on quotient functor.
     \]
     The graph $\mathcal G/_{=_{\mathcal{G}}}$ is exactly the graph $\mathcal G$, hence the arrow $\epsilon_\mathcal{G}$ is the identity arrow $id_\mathcal{G}$, so the arrow $I(f)$ is uniquely determined by $g$, having $\epsilon_{\mathcal{G}} \circ I(f) = I(f) = g$. Therefore, $\epsilon: (Q \circ I) \rightarrow Id_{\mathbf{Graph}}$ is the counit of the adjunction, and $I$ is a left adjoint.
 
-    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$ \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente.} such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
+    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$
+    \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente.}
+    such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
     \[
         \begin{tikzcd}
             \eqgraph{G} = (\mathcal{G}, \sim_{\mathcal{G}}) \arrow[r, "{\eta_{\eqgraph{G}}}"] \arrow[dr, "f"swap] & (T \circ Q)(\eqgraph{G}) = (\mathcal{G}/_{\sim_{\mathcal{G}}}, \approx_{\mathcal{G}/_{\sim_{\mathcal{G}}}}) \arrow[d, dashed, "h"] \\
             & T(\mathcal{H}) = \eqgraph{H}
         \end{tikzcd}
     \]
-    Since $\eqgraph{H}$ is in the image of $T$, it is a graph with all equivalent nodes. Then, the morphism $f$ is a graph morphism that in addition sends each equivalence class of vertices onto the unique class in the graph $\eqgraph{H}$. Then, $f$ factors uniquely as $h \circ \eta_\eqgraph{G}$, and $h$ is a graph morphism extended to a morphism in $\mathbf{EqGrph}$ by sending the unique equivalence class on $(T \circ G)(\eqgraph{G})$ onto the unique equivalence class in $\eqgraph{H}$, and $\eta: Id_{\mathbf{EqGrph}} \rightarrow (T \circ Q)$ is the unit of the adjunction.
+    Since $\eqgraph{H}$ is in the image of $T$, it is a graph with all equivalent nodes. Then, the morphism $f$ is a graph morphism that in addition sends each equivalence class of vertices onto the unique class in the graph $\eqgraph{H}$. Then, $f$ factors uniquely as $h \circ \eta_\eqgraph{G}$, and $h$ is a graph morphism extended to a morphism in $\mathbf{EqGrph}$ by sending the unique equivalence class on $(T \circ Q)(\eqgraph{G})$ onto the unique equivalence class in $\eqgraph{H}$, and $\eta: Id_{\mathbf{EqGrph}} \rightarrow (T \circ Q)$ is the unit of the adjunction.
 \end{proof}
 
 The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
@@ -1268,13 +1275,21 @@ COSE DA FARE
             Q(\eqgraph{H}) \arrow[r, "Q(g)"swap] & Q(\eqgraph{K})
         \end{tikzcd}
     \]
-    and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. \color{green}{continuare}\color{black}
+    and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. 
+    \color{green}{
+        Since limits are computed pointwise in $\mathbf{EqGrph}$ on $E$ and $V$ components, we have that 
+        % IDEA: come si calcola un pullback in EgGrph? --> componente per componente, e poi su Q la least equiv relation such that ..., quindi applicando il funtore quoziente ottengo esattamente il pullback dei quozienti.
+    }\color{black}
     Hence, from \Cref{cor:quot_preserves_co_lim}, we can conclude that $Q$ creates pullbacks.
 \end{proof}
 
 \begin{lemma}
-    The quotient functor creates pullbacks along regular monomorphism.
+    The quotient functor creates pushouts along regular monomorphism.
 \end{lemma}
+
+\begin{proof}
+    1) --> Q preserva pushout along reg monos ()
+\end{proof}
 
 \begin{theorem}
     $\mathbf{EqGrph}$ is quasiadhesive.
