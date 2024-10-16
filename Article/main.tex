@@ -1121,25 +1121,41 @@ It is possible to endow the set of vertices of a graph with any sort of relation
 
 %TODO: RIGUARDARE QUESTA PARTE!!!
 
-% Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
-The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph\todo{sposta questo discorso dopo il calcolo dei limiti, così che sia appena prima della dimostrazione sugli aggiunti} $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
-
-\begin{definition}[Quotient Functor]\label{def:quot_func}
-    The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
-    \begin{itemize}
-        \item on objects, given $\eqgraph{G}=(G, \sim_{G})$ as $Q(\eqgraph{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
-        \item on morphisms, given $h = (h_V, h_E): \eqgraph{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
-    \end{itemize}
-\end{definition}
-
 In the category of graphs with equivalences, universal constructions are easy to obtain. 
 \begin{prop}\label{prop:limits_in_EqGrph}
-    COME SI CALCOLANO I LIMITI IN $\mathbf{EqGrph}$
-    % GUESS: limiti calcolati componente per componente su E e V, e restrizioni su Q (?) come in Graph (Dipende da prefasci).
+    Let $D: \cat I \rightarrow \mathbf{EqGrph}$ be a diagram. Then, a limit for $D$ is $(\eqgraph{L}, l^i)_{i\in \Ob(\cat I)}$ with in which $\eqgraph{L} = (\mathcal{L}, \sim_{\mathcal{L}})$ is a graph in which (in $\Set$):
+    \begin{itemize}
+        \item $(V_{\mathcal{L}}, l^i_{V})$ is the limit of all the $V_{D(i)}$;
+        \item $(E_{\mathcal{L}}, l^i_{E})$ is the limit of all the $E_{D(i)}$.
+    \end{itemize}
+    And the equivalence relation on nodes is the least equivalence relation $\sim_{\mathcal{L}}$ such that, given two vertices $v$ and $w$ of $\eqgraph{L}$, if $v\sim_{\mathcal{L}}w$m then $l^i_V(v) \sim_i l^i_V(w)$ for each $i\in \Ob(\cat I)$. (Here $\sim_i$ denotes the equivalence relation of $D(i)$).
 \end{prop}
+
 \begin{proof}
-    TO DO
+
+    \color{red}{
+    Firstly, we show that $(\eqgraph{L}, l^i)_{\cat I}$ is a cone. Let $D(\alpha) : D(i) \rightarrow D(j)$, with $\alpha: i \rightarrow j$ morphism in $\cat I$. Our claim is $D(\alpha) \circ l^i = l^j$. Hence, 
+    \begin{align*}
+        D(\alpha) \circ l^i &= (h_V, h_E) \circ (l^i_V, l^i_E)      \\
+                            &= (h_V \circ l^i_V, h_E \circ l^i_E)   \\
+                            &= (l^j_V, l^j_E)                       \\
+                            &= l^j                              
+    \end{align*}
+    For $(\eqgraph{L}, l^i)_{\cat I}$ to be a cone, the only constraint on the equivalence relation $\sim_{\mathcal{L}}$ is to be such that graph homomorphisms above can preserve it. But such equivalence relation exists in every case, considering the identity. This led us to the second point of the proof, that is, the universal property. 
+    % L'idea qui è di prendere la relazione di equivalenza tale che il grafo limite abbia la proprietà universale.
+    For the cone described above to be a limit must be valid the universal property. Such condition is is satisfied taking the least equivalence relation such that, given two vertices $v$ and $w$ of $\eqgraph{L}$, if $v\sim_{\mathcal{L}}w$ then $l^i_V(v) \sim_i l^i_V(w)$ for each $i\in \Ob(\cat I)$. Suppose the following situation:
+    \[
+        \begin{tikzcd}
+            & \eqgraph{L}'  \arrow[d, "h"] \arrow[ddl, bend right=30, "{q^i}"swap] \arrow[ddr, bend left=30, "{q^j}"] & \\
+            & \eqgraph{L} \arrow[dl, "{l^i}"swap] \arrow[dr, "{l^j}"] & \\
+            D(i) \arrow[rr, "{D(\alpha)}"]& &  D(j)
+        \end{tikzcd}
+    \]
+    The universal property the follows from the definition of least equivalence relation.
+    } \color{black}
 \end{proof}
+
+
  \todo{riscrivere questa parte come esempi che derivano dalla proposizione precedente}
 The terminal object in $\mathbf{EqGrph}$ is the graph with only one node, only one edge and with the single node equivalent only to itself, while the initial object is the graph with no nodes and no edges.
 Given two graphs with equivalences $\eqgraph{G} = (G, \sim_G) $ and $\eqgraph{H} = (H, \sim_{H})$, one can construct the product graph $\eqgraph{G \times H} = (G \times H, \sim_{G \times H})$, together with the two projections $\pi_G$ and $\pi_H$,  where $\sim_{G \times H}$ is the least equivalence relation on $G \times H$ such that, if $w_1$ and $w_2$ are nodes of $\eqgraph{G \times H}$, we have $w_1 \sim_{G \times H} w_2$ if $\pi_G(w_1) \sim_G \pi_G(w_2)$ and $\pi_H(w_1) \sim_H \pi_H(w_2)$.
@@ -1177,6 +1193,18 @@ $$
 
 Graphs with equivalence are more complex objects. We can think of $\mathbf{EqGrph}$ as a subcategory of the category $[E \rightrightarrows V \rightarrow Q, \Set]$, in which each object $\eqgraph{G}$ is a functor mapping the arrow $q: V \rightarrow Q$ onto an epimorphism (i.e., a surjective function). The component $\eqgraph{G}(q)$ here is intended to be the function discussed in \Cref{rem:eq_as_surj}.
 In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to the category of presheaves we have just introduced.
+
+
+% Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
+The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph\todo{sposta questo discorso dopo il calcolo dei limiti, così che sia appena prima della dimostrazione sugli aggiunti} $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
+
+\begin{definition}[Quotient Functor]\label{def:quot_func}
+    The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
+    \begin{itemize}
+        \item on objects, given $\eqgraph{G}=(G, \sim_{G})$ as $Q(\eqgraph{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
+        \item on morphisms, given $h = (h_V, h_E): \eqgraph{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
+    \end{itemize}
+\end{definition}
 
 We now give some considerations on quotient functor.
 
@@ -1248,6 +1276,11 @@ The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
 
     %%% IDEA: far vedere che, poiché i colimiti in una categoria di prefasci sono calcolati punto punto, allora ho un pushout su ogni componente (E, V, Q). Dalla prop nella parte sull'adesività si può concludere che tutti e tre i pushout preservano mono e quindi mono è preservata su tutte e tre le componenti, quindi reg  mono.
 \end{proof}
+
+\begin{cor}\label{cor:quot_pres_reg_mono_pushouts}
+    Quotient functor preserves pushouts along regular monomorphisms.
+\end{cor}
+
 }\color{black}
 \todo[color=green!40]{
 COSE DA FARE
@@ -1277,7 +1310,7 @@ COSE DA FARE
     \]
     and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. 
     \color{green}{
-        Since limits are computed pointwise in $\mathbf{EqGrph}$ on $E$ and $V$ components, we have that 
+        from \Cref{prop:limits_in_EqGrph}, we note that a limit in $\mathbf{EqGrph}$ is nothing more than the limit graph embedded with an equivalence relation.
         % IDEA: come si calcola un pullback in EgGrph? --> componente per componente, e poi su Q la least equiv relation such that ..., quindi applicando il funtore quoziente ottengo esattamente il pullback dei quozienti.
     }\color{black}
     Hence, from \Cref{cor:quot_preserves_co_lim}, we can conclude that $Q$ creates pullbacks.
@@ -1287,9 +1320,9 @@ COSE DA FARE
     The quotient functor creates pushouts along regular monomorphism.
 \end{lemma}
 
-\begin{proof}
-    1) --> Q preserva pushout along reg monos ()
-\end{proof}
+% \begin{proof}
+%     Consider the following situation
+% \end{proof}
 
 \begin{theorem}
     $\mathbf{EqGrph}$ is quasiadhesive.
