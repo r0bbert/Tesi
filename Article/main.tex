@@ -74,7 +74,7 @@ This section is all about basic definitions and examples, to get familiar with t
         \item A collection of \emph{objects} $\Ob(\cat{C})$;
         \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$, often called \emph{homset}.
     \end{enumerate}
-   \todo{Non sono d'accordo con quello che è scritto qui. Non è vero che per ogni morfismo esistono due operatori dom e cod. Semmai esistono due operatori che ad ogni morfismo associano un dominio ed un codominio} For each morphism $f \in \Hom(\cat{C})$, there are two operators $dom$ and $cod$ that map every morphism to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
+    Two operators, $dom$ and $cod$, that map every morphism $f \in \Hom(\cat{C})$ to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
     An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
     $$
         h \circ (g \circ f) = (h\circ g) \circ f
@@ -129,7 +129,6 @@ A more rigorous definition of what a diagram is will be given later (\Cref{def:d
     $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are.
     Taking $\Set$ as example, the collection $\Ob(\Set)$ cannot be a set itself, due to Russel's paradox. It would be more appropriate referring to a category $\cat{C}$ which $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are both sets as a \emph{small category}, but it is assumed in this work, except where it is made explicit, for a category to be small.
     Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, it is possible to construct the set $B^A$ of all functions from $A$ to $B$. This is isomorphic to $\Set(A, B)$, for each pair of sets $A$ and $B$.
-    {\color{green}{rivedere}}
     A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
 \end{remark}
 
@@ -1196,7 +1195,7 @@ In the following, we will refer with $\mathbf{Graph}$ and $\mathbf{EqGrph}$ to t
 
 
 % Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
-The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph\todo{sposta questo discorso dopo il calcolo dei limiti, così che sia appena prima della dimostrazione sugli aggiunti} $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
+The graph with equivalence $\eqgraph{G} = (G, \sim_G)$ is another representation of the graph $G/_{\sim_G}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence. Such functor is defined as follow.
 
 \begin{definition}[Quotient Functor]\label{def:quot_func}
     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
@@ -1232,7 +1231,7 @@ We now give some considerations on quotient functor.
     The graph $\mathcal G/_{=_{\mathcal{G}}}$ is exactly the graph $\mathcal G$, hence the arrow $\epsilon_\mathcal{G}$ is the identity arrow $id_\mathcal{G}$, so the arrow $I(f)$ is uniquely determined by $g$, having $\epsilon_{\mathcal{G}} \circ I(f) = I(f) = g$. Therefore, $\epsilon: (Q \circ I) \rightarrow Id_{\mathbf{Graph}}$ is the counit of the adjunction, and $I$ is a left adjoint.
 
     A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$
-    \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente.}
+    \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente. UPDATE: probabilmente questo non è nu funtore aggiunto}
     such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
     \[
         \begin{tikzcd}
@@ -1253,33 +1252,35 @@ The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
 \color{red}{
 
 
-\begin{lemma}\label{lemma:reg_mono_pres_by_pushouts}
-    Pushouts in $\mathbf{EqGrph}$ preserves regular monomorphisms.    
-\end{lemma}
+% \begin{lemma}\label{lemma:reg_mono_pres_by_pushouts}
+%     Pushouts in $\mathbf{EqGrph}$ preserves regular monomorphisms.    
+% \end{lemma}
 
-\begin{proof}
-    Consider the following pullback in $\mathbf{EqGrph}$, where $m$ is a regular monomorphism:
-    \[
-        \begin{tikzcd}
-            G \arrow[r, "m"] \arrow[d, "n" swap] & G_1 \arrow[d, "i"] \\
-            G_2 \arrow[r, "j" swap] & P
-        \end{tikzcd}
-    \]
-    In particular, since $\mathbf{EqGrph}$ is a category of presheaves, colimits are computed pointwise, we have the following situation in the codomain category of the presheaves:
-    \[
-        \begin{tikzcd}
-            G(Q) \arrow[r, "{m_Q}"] \arrow[d, "n_{Q}" swap] & G_1(Q) \arrow[d, "i_{Q}"] \\
-            G_2(Q) \arrow[r, "j_{Q}" swap] & P(Q)
-        \end{tikzcd}
-    \]
-    From \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats}, the fact that $m$ is regular mono (i.e., $m=(m_E, m_V, m_Q)$ is mono on each component) implies that $j = (j_E, j_V, j_Q)$ is mono on each component, hence a regular mono in $\mathbf{EqGrph}$.
+% \begin{proof}
+%     Consider the following pullback in $\mathbf{EqGrph}$, where $m$ is a regular monomorphism:
+%     \[
+%         \begin{tikzcd}
+%             G \arrow[r, "m"] \arrow[d, "n" swap] & G_1 \arrow[d, "i"] \\
+%             G_2 \arrow[r, "j" swap] & P
+%         \end{tikzcd}
+%     \]
+%     In particular, since $\mathbf{EqGrph}$ is a category of presheaves, colimits are computed pointwise, we have the following situation in the codomain category of the presheaves:
+%     \[
+%         \begin{tikzcd}
+%             G(Q) \arrow[r, "{m_Q}"] \arrow[d, "n_{Q}" swap] & G_1(Q) \arrow[d, "i_{Q}"] \\
+%             G_2(Q) \arrow[r, "j_{Q}" swap] & P(Q)
+%         \end{tikzcd}
+%     \]
+%     From \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats}, the fact that $m$ is regular mono (i.e., $m=(m_E, m_V, m_Q)$ is mono on each component) implies that $j = (j_E, j_V, j_Q)$ is mono on each component, hence a regular mono in $\mathbf{EqGrph}$.
 
-    %%% IDEA: far vedere che, poiché i colimiti in una categoria di prefasci sono calcolati punto punto, allora ho un pushout su ogni componente (E, V, Q). Dalla prop nella parte sull'adesività si può concludere che tutti e tre i pushout preservano mono e quindi mono è preservata su tutte e tre le componenti, quindi reg  mono.
-\end{proof}
+%     %%% IDEA: far vedere che, poiché i colimiti in una categoria di prefasci sono calcolati punto punto, allora ho un pushout su ogni componente (E, V, Q). Dalla prop nella parte sull'adesività si può concludere che tutti e tre i pushout preservano mono e quindi mono è preservata su tutte e tre le componenti, quindi reg  mono.
+% \end{proof}
 
-\begin{cor}\label{cor:quot_pres_reg_mono_pushouts}
+\begin{lemma}\label{lemma:quot_pres_reg_mono_pushouts}
     Quotient functor preserves pushouts along regular monomorphisms.
-\end{cor}
+\end{lemma}
+\todo{Capire qui!}
+
 
 }\color{black}
 \todo[color=green!40]{
@@ -1308,11 +1309,7 @@ COSE DA FARE
             Q(\eqgraph{H}) \arrow[r, "Q(g)"swap] & Q(\eqgraph{K})
         \end{tikzcd}
     \]
-    and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. 
-    \color{green}{
-        from \Cref{prop:limits_in_EqGrph}, we note that a limit in $\mathbf{EqGrph}$ is nothing more than the limit graph embedded with an equivalence relation.
-        % IDEA: come si calcola un pullback in EgGrph? --> componente per componente, e poi su Q la least equiv relation such that ..., quindi applicando il funtore quoziente ottengo esattamente il pullback dei quozienti.
-    }\color{black}
+    and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. But, since $Q$ preserves limits, $Q(\eqgraph{P}) = \mathcal{P}$ (and so the arrows).
     Hence, from \Cref{cor:quot_preserves_co_lim}, we can conclude that $Q$ creates pullbacks.
 \end{proof}
 
