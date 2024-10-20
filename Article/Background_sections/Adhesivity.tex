@@ -1,0 +1,71 @@
+\section{Adhesivity}\label{sect:adh}
+
+The next section is about adhesivity.
+An adhesive category is intuitively a category in which pushouts of (some) monomorphisms exist and they behave more or less as they do among sets. 
+
+\begin{definition}(Van Kampen property)
+    Let $\mathcal A$ be a subclass of $\Hom(\cat C)$, and consider the diagram below:
+    % \[
+    % \begin{tikzcd}
+    %     A \arrow[r, "f"] \arrow[d, "m" swap] & B \arrow[d, "n"] \\
+    %     C \arrow[r, "g" swap]                & D
+    % \end{tikzcd}
+    % \]
+    \[
+    \begin{tikzcd}[row sep = scriptsize]
+        A' \arrow[ddd, "m'"swap] \arrow[rrr, "f'"] \arrow[dr, "a"swap] & & & B \arrow[ddd, "n'"] \arrow[dl, "b"] \\
+        & A \arrow[r, "f"] \arrow[d, "m" swap] & B \arrow[d, "n"]   & \\
+        & C \arrow[r, "g" swap]                & D                  & \\
+        C' \arrow[rrr, "g'"swap] \arrow[ur, "c"] & & & D' \arrow[ul, "d" swap] 
+    \end{tikzcd}
+    \]
+    we say that the inner square is an \emph{$\mathcal A$-Van Kampen} square if:
+    \begin{itemize}
+        \item it is a pushout;
+        \item $a, b, c, d \in \mathcal{A}$;
+        \item whenever the top and the left squares are pullbacks then the outer square is a pushout if and only of the right and the bottom squares are pullbacks.
+    \end{itemize}
+\end{definition}
+
+We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
+
+\begin{definition}[$\mathcal{M}$-adhesivity]\label{def:adh}
+    Let $\cat C$ be a category and $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts (\Cref{def:stab_under_pb_po}).
+    Then $\cat C$ is \emph{$\mathcal M$-adhesive} if
+    \begin{enumerate}
+        \item every cospan $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ can be completed to a pullback (such pullbacks are called $\mathcal M$-pullbacks);
+        \item every span $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ can be completed to a pushout (such pushouts are called $\mathcal M$-pushouts);
+        \item pushouts along $\mathcal M$-arrows are $\mathcal M$-Van Kampen squares.
+    \end{enumerate}
+    We also say that $\cat C$ is \emph{adhesive} when it is $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is $\Reg(\cat C)$-adhesive.
+\end{definition}
+
+\begin{obs}
+    $\Set$ is adhesive.
+    % It is easy to check the first two points of the \Cref{def:adh} while for the Van Kampen property of pushouts along monos [...]
+\end{obs}
+
+Here it follows an interesting property of adhesive categories~\cite{lack2011embeddingtheoremadhesivecategories}.
+
+\begin{prop}\label{prop:monos_are_preserved_by_pullbacks_in_adh_cats}
+    In any adhesive category, the pushout of a monomorphism along any morphism is a monomorphism, and the resulting square is also a pullback.
+\end{prop}
+
+Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
+
+\begin{theorem}\label{th:crit_for_adh}
+    Let $\cat C$ be a category, $\mathcal M \subseteq \Mono(\cat C)$ containing all isomorphisms, closed under composition and stable under pullbacks and pushouts. Let now $F: \cat{C \rightarrow D}$ be a functor with $\cat D$ $\mathcal{N}$-adhesive for some $\mathcal{N} \subseteq \Mono(\cat D)$.
+    If $F$ is such that $F(\mathcal{M}) \subseteq \mathcal N$ and creates pullbacks and $\mathcal{M}$-pushout, then $\cat C$ is $\mathcal M$-adhesive.
+\end{theorem}
+
+The idea behind this theorem is to simplify calculations to show that a certain category is adhesive for some subclass of monomorphisms, considering a functor from the category of which we want to prove adhesivity to a category we know it is adhesive, requiring that such functor has some properties.
+
+\begin{proof}
+    In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in \Cref{def:adh}.
+    \begin{itemize}
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (\Cref{def:pullback_pushout}). Since $F$ creates pullbacks, hence lifts them (\Cref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
+        \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
+    \end{itemize}
+    
+\end{proof}

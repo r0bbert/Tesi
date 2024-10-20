@@ -1,0 +1,437 @@
+
+\section{Universal Constructions}\label{sect:univ_constr}
+\todo{Questa è da riscriviere e ridurre}
+% What we are interested in are the "best" construction having a certain property, and we exprtess this fact via requiring unique factorization when another construction does
+
+
+\subsection{Initial and Terminal Objects}
+
+The next definitions are about \emph{universal constructions}. The simplest ones are the notion of initial and, dually, terminal objects.
+
+\begin{definition}[Initial and terminal object]
+    An object $A$ of a category $\cat C$ is said to be \emph{initial} if, for each other object $B$ of $\cat C$, there exists a unique morphism from $A$ to $B$.
+    Dually, an object $Z$ is said to be a terminal object in a category $\cat C$ if, for any other object $X$ of $\cat C$, there exists a unique morphism from $X$ to $Z$.
+    An initial object is indicated by the symbol $\initial$, and a terminal object by the symbol $\terminal$.
+\end{definition}
+
+\begin{obs}\label{obs:terminal_are_isomorph}
+    It makes sense to refer to an initial (and terminal) object as \emph{the} initial (\emph{the} terminal) object. Suppose that $\initial$ and $\initial'$ are distinct initial objects of a category $\cat C$. Then, there exists a unique morphism from $\initial$ to $\initial'$, say $f$. Likewise, it must exist a unique morphism from $\initial'$ to $\initial$, say $g$. Then, $g\circ f$ must be exactly $id_{\initial}$, and $f \circ g = id_{\initial'}$, and then they are isomorphic. The same argument works for the terminal object.
+\end{obs}
+
+\begin{example}\label{ex:set_init_term}
+    In $\Set$, the initial object is the empty set $\varnothing$, because, for each set $S$, there exists the empty function from $\varnothing$ to $S$. The terminal object of $\Set$ is the singleton $\{ \bullet \}$, because there is exactly one function from a set $S$ to $\{ \bullet \}$, namely, the function which sends each $s \in S$ to $\bullet$. It is possible to visualize the \Cref{obs:terminal_are_isomorph}: given two singletons $\{ \bullet \}$ and $\{ \star \}$, the function between them is bijective, while there exists a unique initial object.
+\end{example}
+
+We now illustrate a result on functor categories (\Cref{def:functor_category}) that will be useful later.
+
+\begin{prop}
+    Let $\cat D$ be a category. If $\cat D$ has an initial object, then, for any category $\cat C$, $[\cat{C, D}]$ has an initial object. If $\cat D$ has a terminal object, then, for any category $\cat C$, $[\cat{C, D}]$ has a terminal object.
+\end{prop}
+
+\begin{proof}
+    Let $\initial_{\cat{D}}$ be the initial object of $\cat D$,  and consider the constant functor $I(f) = id_{\initial_{\cat D}}$ for all $f \in \Hom(\cat C)$. Then, for any $G: \cat{C \rightarrow D}$, $\eta: I \rightarrow G$, defining $\eta_A$ as the \emph{unique morphism from $\initial_{\cat D}$ to $G(A)$} for each $A \in \Ob(\cat C)$, is a natural transformation $I \dot\rightarrow G$, as the diagram below shows:
+    \[
+        \begin{tikzcd}
+            I(A)=\initial_{\cat D} 
+                    \arrow[r, "{\eta_A}"]
+                    \arrow[d, "{I(f) = id_{\initial_{\cat D}}}" swap] &
+            G(A)
+                    \arrow[d, "G(f)"] \\
+            I(A') = \initial_{\cat D}
+                    \arrow[r, "{\eta_{A'}}" swap] &
+            G(A')
+        \end{tikzcd}
+    \]
+    for each $f: A \rightarrow A'$, the square above must commute, since there is only one morphism from $\initial_{\cat D}$ to $G(A')$. For the same reason, $\eta$ is the only natural transformation from $I$ to $G$, being indeed the initial object of $[\cat{C, D}]$.
+    
+    Defining $T(f) = id_{\terminal_{\cat D}}$ for each $f \in \Hom(\cat C)$. Then, $\theta:F\rightarrow T$, for any $F: \cat{C \rightarrow D}$, defining $\theta_A$ as the \emph{unique morphism from $F(A)$ to $\terminal_{\cat{D}}$} is a natural transformation due to the commutativity of the following diagram for each $f: A \rightarrow A'$:
+    \[
+        \begin{tikzcd}
+            F(A) \arrow[r, "{\theta_A}"] \arrow[d, "F(f)" swap] &
+            T(A) = \terminal_{\cat D} \arrow[d, "{T(f) = id_{\terminal_{\cat D}}}"] \\
+            F(A') \arrow[r, "{\theta_{A'}}" swap] & T(A') = \terminal_{\cat D}
+        \end{tikzcd}
+    \]
+    Hence, $\theta$ is the unique natural transformation from $F$ to $T$, and $T$ is the terminal object of $[\cat{C, D}]$.
+\end{proof}
+
+In particular, every presheaf has an initial and a terminal object, because $\Set$ does (\Cref{ex:set_init_term}).
+
+\subsection{Products and Coproducts}
+
+More complex constructions are products (and, dually, coproducts).
+
+\begin{definition}[Product]
+    A \emph{product} of two objects $A$ an $B$ is an object $A \times B$ together with two \emph{projection arrows} $\pi_1:A\times B \rightarrow A$ and $\pi_2: A \times B \rightarrow B$ such that, for every object $C$ and pair of arrows $f: C \rightarrow A$, $g: C \rightarrow B$, there is exactly one arrow $\langle f, g \rangle : c \rightarrow A \times B$ making the diagram commutes
+    \[
+        \begin{tikzcd}
+                    & C \arrow[dl, "f" swap] \arrow[d, dashed, "{\langle f, g \rangle}" description] \arrow[dr, "g"] & \\
+                A   & A \times B  \arrow[l, "{\pi_1}"] \arrow[r, "{\pi_2}" swap]    &  B    
+        \end{tikzcd}
+    \]
+   -- i.e., such that $\pi_1 \circ \langle f, g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle  = g$.
+    
+\end{definition}
+
+
+\begin{definition}[Coproduct]
+    The dual of the product is the \emph{coproduct}.
+    A coproduct of two objects $A$ and $B$ is an object $A + B$ together with two arrows $\iota_1:A\rightarrow A+B$, $\iota_2: B \rightarrow A + B$ such that, for every object $C$ and pair of arrows $f:A \rightarrow C$, $g:B \rightarrow C$, there is a unique arrow $[f, g] : A + B \rightarrow C$ such that the diagram commutes
+    \[
+        \begin{tikzcd}
+            A \arrow[r, "{\iota_1}"] \arrow[dr, "f" swap] & A+B \arrow[d, dashed, "{[f,g]}" description] & B \arrow[l, "{\iota_2}" swap] \arrow[dl, "g"] \\
+            & C & 
+        \end{tikzcd}
+    \]
+    -- i.e., such that $[f, g] \circ \iota_1 = f$ and $[f, g] \circ \iota_2 = g$.
+\end{definition}
+
+\begin{example}
+    $\Set$ has both products and coproduts. Given two sets $A$ and $B$, the categorical product is the set-theoretic cartesian product $A \times B$, together with the two projections $\pi_A$ and $\pi_B$, while the coproduct is the disjoint sum $A \amalg B = \{ (x, 0) \mid x \in A\} \cup \{(y, 1) \mid y \in B \}$, together with the two canonical injections $\iota_A$ and $\iota B$, where $\iota_A(a) = (a, 0)$ and $\iota_B(b) = (b, 1)$. 
+\end{example}
+
+The notions of product and coproduct can be easily generalized, extending the definition to the product (and coproduct) of a family of objects, together with appropriate arrows (e.g., the projection arrows for each object in the product). We will denote the product of a collection of objects indexed by a (finite) category $\cat I$ as $\big(\prod_{i \in \Ob(\cat I)} X_i, (\pi_i)_{i \in \Ob(\cat I)}\big)$, and the coproduct as $\big((\iota_i)_{i \in \Ob(\cat I)}, \coprod_{i \in \Ob(\cat I)} X_i\big)$.
+
+Again, the definition of these constructions is divided into two parts: one stating what the construction is, and another stating that the construction satisfies the universal property.
+
+\subsection{Equalizers and Coequalizers}
+
+The next notion is about a construction that make parallel arrows (i.e., two possibly distinct morphisms with the same domain and codomain) equal. In $\Set$, given two functions $f, g: A \rightarrow B$, such construction corresponds exactly to the restriction of the domain to the set of elements on which $f$ and $g$ are equal. Specifically, if we take the set $E = \{x \in A \mid f(x) = g(x)\}$, and we take the function $e: E \rightarrow A$ defined by $e(x) = x$, we obtain what is called an \emph{equalizer} for $f$ and $g$. In fact, $e$ is that function that make $f$ and $g$ be the same function -- i.e., $f \circ e = g \circ e$.
+This concept can be generalized as follows.
+
+\begin{definition}[Equalizer and Coequalizer]
+    Let $f, g: A \rightarrow B$ be two arrows of a category $\cat C$. An \emph{equalizer} for $f$ and $g$ is pair $(E, e)$, where $E$ is an object and $e: E \rightarrow A$ is an arrow in $\cat C$ such that:
+    \begin{enumerate}
+        \item \label{eq_1} $ f \circ e = g \circ e$; and
+        \item if $(E', e')$ is another pair that satisfies~\ref{eq_1}, then there exists a unique $h: E' \rightarrow E$ such that $e \circ h = e'$.
+    \end{enumerate}
+    \[
+        \begin{tikzcd}
+            E \arrow[r, "e"] & A \arrow[r, shift left, "f"] \arrow[r, shift right, "g" swap] & B \\
+            E' \arrow[u, dashed, "k"] \arrow[ur, "e'" swap] & 
+        \end{tikzcd}
+    \]
+
+    A \emph{coequalizer} of $f$ and $g$, dually, is a pair $(c, C)$, where $C$ is an object and $c: B \rightarrow C$ such that $c \circ f = c \circ g$, with the universal property.
+\end{definition}
+
+\begin{prop}\label{prop:eq_are_mono}
+    Let $e: E \rightarrow A$ be the arrow that equalizes $f, g : A \rightarrow B$ in a category $\cat C$. Then, $e$ is a monomorphism.
+\end{prop}
+
+\begin{proof}
+    Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of equalizers, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
+\end{proof}
+
+Of all monomorphisms, an interesting subclass of them is the one that contains only the equalizers.
+
+\begin{definition}[Regular Monomorphism]\label{def:reg_mono}
+    A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
+\end{definition}
+
+\begin{obs}
+    Given two composable regular monos $m$ and $n$, suppose that $n$ equalizes two arrows $f$ and $g$. Then, we have
+    \begin{align*}
+        g \circ (n \circ m) &= (g \circ n) \circ m &&\\
+                            &= (f \circ n) \circ m  && \textit{$n$ equalizer} \\
+                            &= f \circ (n \circ m)
+    \end{align*}
+    Since $n \circ m$ is mono (\Cref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
+\end{obs}
+
+\subsection{Pullbacks and Pushouts}
+
+Given two arrows, another pair of constructions one can find in a category is given by pullbacks and pushouts.
+
+\begin{definition}[Pullback, Pushout]
+        A \emph{pullback} of two arrows $f: A \rightarrow C$ and $g: B \rightarrow C$ is a triple $(P, \pi_g, \pi_f)$ containing an object $P$ and a pair of arrows $\pi_g: P \rightarrow A$, $\pi_f: P \rightarrow B$ such that:
+        \begin{enumerate}
+            \item\label{pb_1} $f \circ \pi_g = g \circ \pi_f$; and
+            \item if $(X, p, q)$, where $p: X \rightarrow A$ and $q: X \rightarrow B$, satisfies~\ref{pb_1}, then there is a unique $k:X \rightarrow P$ such that $p = \pi_g \circ k$ and $j = \pi_f \circ k$.
+        \end{enumerate}
+        \[
+        \begin{tikzcd}
+        X \arrow[drr, bend left=20, "q"] \arrow[ddr, bend right=20,"p" swap] \arrow[dr, dashed, "k"] & & \\
+        & P  \arrow[d, "{\pi_g}" swap] \arrow[r, "{\pi_f}"] & B \arrow[d, "g"] \\
+        & A  \arrow[r, "f" swap] & C
+        \end{tikzcd}
+    \]
+
+    Dually, the \emph{pushout} of two arrows $f: A \rightarrow B$ and $g: A\rightarrow C$ is a triple $(\iota_g, \iota_f, I)$, where $I$ is an object and $\iota_g:B \rightarrow I$ and $\iota_f: C \rightarrow I$ are morphisms such that:
+    \begin{enumerate}
+        \item\label{po_1} $\iota_g \circ f = \iota_f \circ g$; and 
+        \item if $(i, j, Y)$, where $i: B \rightarrow Y$ and $j: C \rightarrow Y$, satisfies~\ref{po_1}, then there is a unique $h: I \rightarrow Y$ such that $i = h \circ \iota_g$ and $j = h \circ \iota_f$.  
+    \end{enumerate}
+    \[\begin{tikzcd}
+        A & C \\
+        B & I \\
+        && Y
+        \arrow["g", from=1-1, to=1-2]
+        \arrow["f" swap, from=1-1, to=2-1]
+        \arrow["{{\iota_f}}", from=1-2, to=2-2]
+        \arrow["j", bend left=20, from=1-2, to=3-3]
+        \arrow["{{\iota_g}}" swap, from=2-1, to=2-2]
+        \arrow["i" swap, bend right=20, from=2-1, to=3-3]
+        \arrow["h", dashed, from=2-2, to=3-3]
+    \end{tikzcd}\]
+    {% \[
+        %     \begin{tikzcd}
+        %         Y & &\\
+        %         & I \arrow[ul, dashed, "h"] & B \arrow[l, "{\iota_g}" swap] \arrow[ull, bend right=20, "i"swap] \\
+        %         & C \arrow[u, "{\iota_f}"] \arrow[uul, bend left=20, "j"] & A \arrow[l, "g"] \arrow[u, "f" swap]
+        %     \end{tikzcd}
+        % \]
+    }
+\end{definition}
+
+Pullbacks (and, dually, pushouts) are a construction that is slightly more general than products and equalizers. An intuition of what they represent is given by considering what is concretely a pullback in the category of sets.
+
+\begin{example}
+    In $\Set$, given two functions $f: A \rightarrow C$ and $g: B \rightarrow C$, a pullback of $f$ and $g$ exists and is exactly the set $P = \{(x, y) \in A \times B \mid f(x) = g(y)\}$, with $\pi_f : P \rightarrow B$ and $\pi_g : P \rightarrow C$ defined, respectively, by $\pi_f((x, y)) = y$ and $\pi_g((x, y)) = x$. In this way, we have then, $\forall (x, y) \in P$:
+    \begin{align*}
+        (f \circ \pi_g) ((x, y))
+                    &= f(\pi_g((x, y)))     &&  \\
+                    & = f(x)                &&  \textit{Definition of $\pi_g$} \\
+                    & = g(y)                &&  (x, y) \in P \\
+                    & = g(\pi_f((x, y)))    &&  \textit{Definition of $\pi_f$} \\
+                    & = (g \circ \pi_f) ((x, y)) && 
+    \end{align*}
+    thus, $f \circ \pi_g = g \circ \pi_f$.
+\end{example}
+
+Another important example to our aims is a concrete definition of what is a pushout in the category of sets, and why morally we can regard a pushout as \textit{the way to identify part of an object with a part of another}~\cite{Barr_Wells_1995}.
+
+\begin{example}\label{ex:po_in_set}
+    \color{blue}
+    In $\Set$, given two functions $f: A \rightarrow B$ and $g: A \rightarrow C$, the pushout of them is the set $X = (B \amalg C) /_\sim$, where $\sim$ is the least equivalence relation such that $f(a) \sim g(a)$ for each $a \in A$, with $\iota_g:B \rightarrow X$ and $\iota_f : C \rightarrow X$ as arrows, sending each element of the domain in the corresponding equivalence class in $X$. In particular, for each $a \in A$:
+    \begin{align*}
+        (\iota_g \circ f) (a)
+                        &= \iota_g(f(a))    &&\\
+                        &= [(f(a), 0)]           && \textit{Definition of $\iota_g$} \\
+                        &= [(g(a), 1)]           && f(a) \sim g(a) \\
+                        &= \iota_f(g(a))    && \textit{Definition of $\iota_f$} \\
+                        &= (\iota_f \circ g) (a) &&
+    \end{align*}
+    % This is not sure!!
+    When both $f$ and $g$ are monos (that is, injections), then we can construct the pushout in the same way we have done above, with $(f(a), 0) \sim (g(a), 1)$ when such $a$ exists and $(b, 0) \sim (c, 1)$ on each $b$ and $c$ with no preimage in $A$, with $\iota_f$ and $\iota_g$ injective.
+    An easy way to see this fact is considering the following situation: let $f: A \rightarrow A \cup B$ and $g: A \rightarrow A \cup C$, with $A$ disjoint from $B$ and $C$, $f(a)= a$ and $g(a) = a$. Then the pushout is the object $A \cup B \cup C$, with the inclusions as arrows, that are also injective.
+    A more general case is what happens considering functions $f: A \rightarrow B$ and $g: A \rightarrow C$ injective. Differently from the previous example, in this case is not possible to take just the union of codomains as the pushout, but rather the disjoint union of them and then identify the elements $f(a)$ with $g(a)$, as we have done above. In the category of sets and functions, we have the certainty that the pullback arrows are injective. In fact, taking the equivalence relation $\sim$, we have that $f(a) \sim f(a')$ if and only if $a = a'$ by hypothesis, and then $x \sim x'$ if and only if $x = x'$, then the pushout morphisms sends each element in an equivalence class composed only by the element itself, thus are injective.
+    This is an interesting property that in other categories may do not hold, and will be recalled later.
+\end{example}
+
+Given a subclass of morphisms of a category, an important property is \emph{stability} under certain type of constructions. In our case, we are interested in stability under pullbacks and under pushouts.
+\[
+    \begin{tikzcd}\label{diag:p_square}\tag{$\ast$}
+        A \arrow[r, "f"] \arrow[d, "m"swap] & B \arrow[d, "n"] \\
+        C \arrow[r, "g" swap] & D
+    \end{tikzcd}
+\]
+
+\begin{definition}[Stability under pullbacks, pushouts]\label{def:stab_under_pb_po}
+    Given a category $\cat C$, a subclass $\mathcal{A} \subseteq \Hom(\cat C)$ is said to be \emph{stable under pullbacks} if, for every pullback square as the one in \eqref{diag:p_square}, if $n \in \mathcal{A}$, then $m \in \mathcal{A}$.
+    $\mathcal A$ is said to be \emph{stable under pushouts} if, for every pushout square as the one in \eqref{diag:p_square}, if $m \in \mathcal{A}$, then $n \in \mathcal{A}$.
+\end{definition}
+
+\begin{prop}\label{prop:monos_pres_by_pullback}
+    Let $f: A \rightarrow C$, $g: B \rightarrow C$ be arrows in any category $\cat C$, and consider the following pullback square:
+    \[
+        \begin{tikzcd}
+            P \arrow[r, "{\pi_f}"] \arrow[d, "{\pi_g}"swap] & B \arrow[d, "g"] \\
+            A \arrow[r, "f"swap] & C
+        \end{tikzcd}
+    \]
+    If $g$ is mono, then so is $\pi_g$.
+\end{prop}
+
+
+\subsection{Limits and Colimits}
+
+We now introduce the notion that generalize all the universal constructions defined above. In fact, initial objects, products, equalizers and pullbacks (dually, terminal objects, coproducts, coequalizers and pushouts) can be seen as the particular case of a certain type of construction, called limit.
+
+To define what a limit is, we first need to define cones.
+
+\begin{definition}[Cones]
+    Let $D:\cat {I \rightarrow C}$ be a diagram in $\cat C$ of shape $\cat I$. A \emph{cone} for $D$ is an object $X$ of $\cat C$, together with arrows $f_i : X \rightarrow D(i)$ indexed by $\cat I$ (i.e. one for each object $i$ of $\cat I$), such that, for each morphism $\alpha: i \rightarrow j$ of $\cat I$, the following diagram commutes:
+    \[
+        \begin{tikzcd}
+            & X \arrow[dl, "{f_i}"swap] \arrow[dr, "{f_j}"] & \\
+            D(i) \arrow[rr, "{D(\alpha)}" swap] & & D(j)
+        \end{tikzcd}
+    \]
+    -- i.e., $D(\alpha) \circ f_i = f_j$.
+    We denote such cone as $\{f_i: X \rightarrow D(i)\}$.
+
+\end{definition}
+
+\begin{obs}\label{obs:category_of_cones}
+    Given a diagram $D$, the category of the cones for $D$, denoted $\textbf{Cone}(D)$, is defined to have cones for $D$ as objects and cone morphisms as arrows, where a cone morphism $\phi: C \rightarrow C'$ from $C = \{f_i: X \rightarrow D(i)\}$ to $C' = \{f_i':X' \rightarrow D(i)\}$ is a morphism $\phi: X \rightarrow X'$ such that the following diagram commutes for each $i$:
+    \[
+        \begin{tikzcd}
+            X \arrow[rr, "{\phi}"] \arrow[dr, "{f_i}" swap] & & X' \arrow[dl, "{f_i'}"] \\
+            & D(i) &
+        \end{tikzcd}
+    \]
+\end{obs}
+
+\begin{definition}[Limits]\label{def:limit}
+    Let $D:\cat {I \rightarrow C}$ be a diagram in $\cat C$ of shape $\cat I$. A cone $\{f_i: X \rightarrow D(i)\}$ is a \emph{limit} provided that, for any other cone $\{f_{i}': X' \rightarrow D(i)\}$ for $D$, then there exists a unique morphism $k: X' \rightarrow X$ such that the following diagram commutes for each object $i$ of $\cat I$:
+    \[
+        \begin{tikzcd}
+            X' \arrow[rr, dashed, "k"] \arrow[dr, "{f_i'}" swap] & & X \arrow[dl, "{f_i}"] \\
+            & D(i) &
+        \end{tikzcd}
+    \]
+    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Such limit is denoted as $(X, f_i)_{i \in \cat I}$
+\end{definition}
+
+\begin{obs}
+    Given a diagram $D$, a limit for $D$ is exactly the terminal object of the category $\textbf{Cone}(D)$, defined in \Cref{obs:category_of_cones}.
+\end{obs}
+
+The dual notions of cones and limits are that of cocones and colimits.
+
+\begin{definition}(Cocones, Colimits)
+    A \emph{cocone} for a diagram $D: \cat{I \rightarrow C}$ is an object $Y$ of $\cat C$ together with arrows $f_i : D(i) \rightarrow Y$ such that, for each $g: D(i) \rightarrow D(j)$ of $\cat C$, $f_j \circ g = f_i$. A cocone is denoted $\{f_i: D(i) \rightarrow Y \}$.
+    A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
+\end{definition}
+
+The following examples show how limits are general concepts for the constructions defined above.
+
+\begin{example}
+    Let $D$ be the empty diagram in the category $\cat C$. Then, a cone for $D$ is any object of $\cat C$, while a limit is the terminal object of $\cat C$.
+\end{example}
+
+\begin{example}\label{ex:product_are_limits}
+    Let $D$ be the following diagram:
+    \[
+        \begin{tikzcd}
+            A & & B
+        \end{tikzcd}
+    \]
+    Then, a cone for $D$ is an object $X$ and two arrows $f: X \rightarrow A$, $g: X \rightarrow B$ (i.e., a span, defined in \Cref{ex: span}):
+    \[
+        \begin{tikzcd}
+            A & X \arrow[l, "f" swap] \arrow[r, "g"] & B
+        \end{tikzcd}
+    \]
+    If it exists, a limit for $D$ is the product of $A$ and $B$.
+\end{example}
+
+\begin{example}\label{ex:pb_as_limit}
+    A pullback is the limit for the diagram below.
+    \[
+        \begin{tikzcd}
+            & B \arrow[d, "g"] \\
+            A \arrow[r, "f" swap] & C
+        \end{tikzcd}
+    \]
+    In fact, a cone for the diagram above is an object $P$ and three arrows $\phi:P \rightarrow A$, $\psi: P \rightarrow B$, and $h: P \rightarrow C$, but the latter is uniquely determined by the other ones ($f \circ \phi = h = g \circ \psi$).
+    Thus, the following diagram is a cone:
+    \[
+        \begin{tikzcd}
+            P \arrow[r, "{\psi}"] \arrow[d, "{\phi}" swap] & B \arrow[d, "g"] \\
+            A \arrow[r, "f" swap] & C
+        \end{tikzcd}
+    \]
+    For $(P, \phi, \psi)$ to be a pullback, it must have the universal property. In other words, it has to be a limit.
+
+    This example show us that a pullback is a limit for a cospan (\Cref{ex: span}).
+\end{example}
+
+\begin{example}\label{ex:equaliz_are_limits}
+    A limit for the diagram below is an equalizer for $f$ and $g$.
+    \[
+        \begin{tikzcd}
+            A \arrow[r, shift left, "f"] \arrow[r, shift right,"g"swap] & B
+        \end{tikzcd}
+    \]
+\end{example}
+
+
+All the examples we provided about limits are still valid, in their dual form, for colimits. In fact, initial objects, coequalizers, coproducts and pullbacks are particular cases of limits, and the way to see this fact is the same seen in previous examples.
+
+\begin{example}
+    Given a span $S = (l, X, r): L \rightharpoonup R$, shown in the diagram below,
+    \[
+        \begin{tikzcd}
+            L & X \arrow[l, "l"swap] \arrow[r, "r"]& R
+        \end{tikzcd}
+    \]
+    a cocone for $S$ is any commutative square of the form
+    \[
+        \begin{tikzcd}
+            & C & \\
+            L \arrow[ur, "f"] &
+            X \arrow[l, "l"swap] \arrow[r, "r"]&
+            R \arrow[ul, "g" swap]
+        \end{tikzcd}
+    \]
+    (the morphism $X \rightarrow C$ is uniquely determined by the relation $f \circ l = g \circ r$).
+    A colimit for $S$ is then a pushout of $l$ and $r$.
+\end{example}
+
+The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
+
+\begin{theorem}[Limit theorem]\label{th:limit}
+    Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
+\end{theorem}
+
+\begin{remark}
+    The theorem above (and its relative proof) can be stated in its dual form leading to a theorem on existence of colimits, and a relative criterion to calculate them (taking the dual of the proof).
+\end{remark}
+
+\begin{example}\label{ex:lim_of_sets}
+    Limit theorem gives us an easy way to calculate limits. An example of this fact is how limits are computed in $\Set$. Given a diagram $D: \cat{I} \rightarrow \Set$, where $\cat I$ is a small category and $I = Ob(\cat I)$, its limit is the set $L$ defined as follows:
+    $$
+        L = \{ (d_i)_{i \in I} \in \prod_{i \in I}D(i) \mid \forall \phi \in \cat I(i, i'), D(\phi)(d_i) = d_{i'} \}
+    $$
+    with projections as arrows.
+\end{example}
+
+\begin{example}\label{ex:colm_of_sets}
+    As we have done in \Cref{ex:lim_of_sets}, we illustrate how to construct colimits in the category of sets. Given a small category $\cat I$, $ I = Ob(\cat I)$, and a diagram $D: \cat I \rightarrow \Set$, consider the equivalence relation $\sim$ defined on $\coprod_{i\in I} D(i)$ such that $d_i \sim d_{i'}$ if $d_i \in D(i), d_{i'} \in D(i')$ and there exists some $\phi \in \cat I(i, i')$ such that $D(\phi)(d_i) = d_{i'}$. Then, a colimit for $D$ is the set
+    $$
+        C = \big ( \coprod_{i \in I} D(i) \big ) / \sim
+    $$
+    with the inclusions as arrows.
+\end{example}
+
+\begin{remark}
+    Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
+\end{remark}
+
+\begin{obs}\label{obs:limits_in_presh}
+    So far we introduced categories of presheaves. In these categories, an interesting fact is that limits and colimits are computed pointwise -- i.e., the limit of a diagram in a category of presheaves is exactly the limit on each of its components.
+\end{obs}
+
+In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behaves with respect to the constructions defined so far.
+
+\begin{definition}
+    Let $D : \cat{I \rightarrow C}$ be a diagram, and $F: \cat{C \rightarrow D}$ a functor. We say that $F$:
+    \begin{enumerate}
+        \item \emph{preserves limits} of $D$ if, given a limit $(L, l_i)_{i \in \cat I}$ for $D$, then $(F(L), F(l_i))_{i \in \cat I}$ is a limit for $F \circ D$.
+        \item \emph{reflects limits} of $D$ if a cone $(L, l_i)_{i \in \cat I}$ is a limit for $D$ whenever $(F(L), F(l_i))_{i \in \cat I}$ is a limit for $F \circ D$.
+        \item \emph{lifts limits (uniquely)} of $D$ if, given a limit $(L, l_i)_{i \in \cat I}$ for $F \circ D$, there exists a (unique) limit $(L', l_i')_{i \in \cat I}$ for $D$ such that $(F(L'), F(l_i'))_{i \in \cat I} = (L, l_i)_{i \in \cat I}$.
+        \item \emph{creates limits} of $D$ if $D$ has a limit and $F$ preserves and reflects limits along it.
+    \end{enumerate}
+    The dual notions are obtained in the obvious way, namely, substituting the words ``limits'' and ``cones'' with ``colimits'' and ``cocones'', respectively
+\end{definition}
+
+\begin{obs}\label{obs:funct_creat_lim_then_lift}
+    It holds that if a functor creates limits, then lifts uniquely limits~\cite{Adamek_Herrlich_Strecker_2009}.
+\end{obs}
+
+\begin{prop}\label{prop:inc_funct_reflects_so_limits}
+    A fully faithful functor reflects all limits and colimits.
+\end{prop}
+
+The next theorem is about a particular property that adjoint functors have.
+
+\begin{theorem}\label{th:adjoints_preserves_lim}
+    Let $F: \cat{C \rightarrow D}$ be a functor, and $G: \cat{D \rightarrow C}$ its right adjoint. Then, $G$ preserves limits.
+\end{theorem}
+
+\begin{remark}
+    The dual of the theorem above states that, if $G$ is a functor and $F$ is a left adjoint, then $F$ preserves colimits.
+\end{remark}
+

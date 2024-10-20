@@ -1,0 +1,182 @@
+\section{Graphs with Equivalences}
+
+It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}.
+%Recall that an equivalence relation $R$ over a set $A$, $R \subseteq A\times A$, is a relation that is \emph{reflexive} ($\forall a \in A, aRa$), \emph{transitive} ($\forall a, b, c \in A, aRb \text{ and } bRc \Rightarrow aRc$) and \emph{symmetric} ($\forall a, b \in A, aRb \Rightarrow bRa$).
+A graph with equivalence is a graph with an equivalence relation defined over its set of vertices.
+
+Formally,  A \emph{graph with equivalence} is a pair $\eqgraph{G} = (\graph G, \sim_\graph{G})$ where $\graph{G}$ is a graph and $\sim_\graph{G} \subseteq V_\graph{G}\times V_\graph{G}$ is an equivalence relation over its set of nodes. An homomorphism between two graphs with equivalences $h :\eqgraph{G} = (\graph{G}, \sim_\graph{G})\rightarrow \eqgraph{H} = (\graph{H}, \sim_\graph{H})$ is a graph homomorphism $h = (h_V, h_E):\graph{G} \rightarrow \graph{H}$ such that if $v_1 \sim_\graph{G} v_2$ then $h_V(v_1) \sim_\graph{H} h_V(v_2)$.
+
+\todo{Remark su categorie in cui si può passare dalle relazioni di equivalenza al quoziente (Categorie Regolari (?)) per giustificare la def. di eq-grafo}.
+
+As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence as a presheaf, this time from a category $E \rightrightarrows V \rightarrow C$, where the image of $C$ along the presheaf is the set of the equivalence classes, requiring that the morphism $V\rightarrow C$ is an epimorphism (that is, a surjective function).
+
+\begin{definition}[Category of Graphs with Equivalences]
+    The category $\EqGrph$ is the subcategory of $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V \xrightarrow{q} C, \Set]$$ such that, for each $\eqgraph{G} \in \Ob(\EqGrph)$, $\eqgraph{G}(q)$ is an epimorphism. 
+\end{definition}
+
+\begin{obs}
+    $\mathbf{Graph}$, defined in \Cref{def:cat_of_graph} is equivalent to the full subcategory of $\mathbf{EqGrph}$ where objects are graphs $(G, =)$, i.e., in which each node is equivalent only to itself.
+\end{obs}
+
+
+In the category of graphs with equivalences, universal constructions are easy to obtain. 
+\begin{prop}\label{prop:limits_in_EqGrph}
+    Let $D: \cat I \rightarrow \mathbf{EqGrph}$ be a diagram. Then, a limit for $D$ is $(\eqgraph{L}, l^i)_{i\in \Ob(\cat I)}$ with in which $\eqgraph{L} = (\mathcal{L}, \sim_{\mathcal{L}})$ is a graph in which (in $\Set$):
+    \begin{itemize}
+        \item $(V_{\mathcal{L}}, l^i_{V})$ is the limit of all the $V_{D(i)}$;
+        \item $(E_{\mathcal{L}}, l^i_{E})$ is the limit of all the $E_{D(i)}$.
+    \end{itemize}
+    And the equivalence relation on nodes is the least equivalence relation $\sim_{\mathcal{L}}$ such that, given two vertices $v$ and $w$ of $\eqgraph{L}$, if $v\sim_{\mathcal{L}}w$m then $l^i_V(v) \sim_i l^i_V(w)$ for each $i\in \Ob(\cat I)$. (Here $\sim_i$ denotes the equivalence relation of $D(i)$).
+\end{prop}
+
+\begin{proof}
+
+    \color{red}{
+    Firstly, we show that $(\eqgraph{L}, l^i)_{\cat I}$ is a cone. Let $D(\alpha) : D(i) \rightarrow D(j)$, with $\alpha: i \rightarrow j$ morphism in $\cat I$. Our claim is $D(\alpha) \circ l^i = l^j$. Hence, 
+    \begin{align*}
+        D(\alpha) \circ l^i &= (h_V, h_E) \circ (l^i_V, l^i_E)      \\
+                            &= (h_V \circ l^i_V, h_E \circ l^i_E)   \\
+                            &= (l^j_V, l^j_E)                       \\
+                            &= l^j                              
+    \end{align*}
+    For $(\eqgraph{L}, l^i)_{\cat I}$ to be a cone, the only constraint on the equivalence relation $\sim_{\mathcal{L}}$ is to be such that graph homomorphisms above can preserve it. But such equivalence relation exists in every case, considering the identity. This led us to the second point of the proof, that is, the universal property. 
+    % L'idea qui è di prendere la relazione di equivalenza tale che il grafo limite abbia la proprietà universale.
+    For the cone described above to be a limit must be valid the universal property. Such condition is is satisfied taking the least equivalence relation such that, given two vertices $v$ and $w$ of $\eqgraph{L}$, if $v\sim_{\mathcal{L}}w$ then $l^i_V(v) \sim_i l^i_V(w)$ for each $i\in \Ob(\cat I)$. Suppose the following situation:
+    \[
+        \begin{tikzcd}
+            & \eqgraph{L}'  \arrow[d, "h"] \arrow[ddl, bend right=30, "{q^i}"swap] \arrow[ddr, bend left=30, "{q^j}"] & \\
+            & \eqgraph{L} \arrow[dl, "{l^i}"swap] \arrow[dr, "{l^j}"] & \\
+            D(i) \arrow[rr, "{D(\alpha)}"]& &  D(j)
+        \end{tikzcd}
+    \]
+    The universal property the follows from the definition of least equivalence relation.
+    } \color{black}
+\end{proof} \todo{Rivedere completamente questa proposizione e riadattarla alla definizione come prefasci.}
+
+\todo{Esempi, da copiare praticamente dalla versione precedente}
+
+From \Cref{prop:limits_in_EqGrph} it is possible to derive a string characterisation of regular monomorphisms in $\EqGrph$. Intuitively, a regular mono among graphs with equivalence is a morphism that not only preserves equivalences but reflects them too, that is, if $h: \eqgraph{G \rightarrow H}$ is mono and such that $h_V (v_1) \sim_\graph{H} h_V(v_2)$ implies $v_1 \sim_\graph{G} v_2$, then $h$ is regular mono.
+
+\begin{prop}\label{prop:reg_monos_in_EqGrph}
+    In $\EqGrph$, a monomorphims is regular if it is mono on all the components.
+\end{prop}
+
+\todo{prova}
+
+% Graphs with equivalences are an alternative representation of \emph{quotient graphs} over an equivalence relation.
+The graph with equivalence $(\graph{G}, \sim_\graph{G})$ is another representation of the graph $\graph{G}/_{\sim_\graph{G}}$. Such graph is called \emph{quotient graph}, and it can be expressed by the action of a functor over a graph with equivalence, which is defined below. The idea is to identify the graph with equivalence  above with $\graph{G}/_{\sim_\graph{G}} = (V/_{\sim_\graph G}, E, s', t')$, where $s'(e) = [v]_{\sim_\graph G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_\graph G}$ if $t(e) = v$, and, consequently, having coherent action on homomorphisms.
+
+% \begin{definition}[Quotient Functor]\label{def:quot_func}
+%     The \emph{quotient functor} $Q: \mathbf{EqGrph} \rightarrow \mathbf{Graph}$ is defined as follows:
+%     \begin{itemize}
+%         \item on objects, given $\eqgraph{G}=(G, \sim_{G})$ as $Q(\eqgraph{G}) = G/_{\sim_G} = (V/_{\sim_G}, E, s', t')$, where $s'(e) = [v]_{\sim_G}$ if $s(e) = v$, and $t'(e) = [v]_{\sim_G}$ if $t(e) = v$;
+%         \item on morphisms, given $h = (h_V, h_E): \eqgraph{G \rightarrow H}$, as $Q(h_V)([v]_{\sim_G}) = [h_V(v)]_{\sim_H}$, and $Q(h_E) = h_E$.
+%     \end{itemize}
+% \end{definition}
+
+\begin{definition}[Quotient Functor]\label{def:quot_func}
+    The \emph{quotient functor} is the functor $\Q: \EqGrph \rightarrow \Graph$ such that, for each $\eqgraph{G, H}$ and for each morphism $\phi = (\phi_E, \phi_V, \phi_C) : \eqgraph{G \dot\to H}$:
+    \begin{itemize}
+        \item $\Q(\eqgraph{G})(E) = \eqgraph{G}(E)$, $\Q(\eqgraph{G})(V) = \eqgraph{G}(C)$;
+        \item $\Q(\eqgraph{G})(s) = \eqgraph{G}(q \circ s)$, $\Q(\eqgraph{G})(t) = \eqgraph{G}(q \circ t)$;
+        \item $\Q(\phi_E) = \phi_E$, $\Q(\phi_V) \circ \eqgraph{G}(q) = \phi_C \circ \eqgraph{H}(q) $.
+    \end{itemize}
+\end{definition}
+
+We now give some considerations on quotient functor.
+
+\begin{prop}
+    Quotient functor has a left adjoint and a right adjoint.
+\end{prop}
+
+\begin{proof}
+    To prove the statement we just have to find the adjoints. 
+    %A good candidate to be the left adjoint is the functor $I: \mathbf{Graph \rightarrow EqGrph}$, which sends each graph $G$ to $\eqgraph{G} = (G, =_G)$ (the graph in which each node is equivalent only to itself). To see that this functor is the adjoint we were looking for, we can apply the definition of left adjoint. The unit of the adjunction $\eta: Id_{\mathbf{EqGrph}} \dot\rightarrow I \circ Q$ is the one mapping $\eqgraph{G} = (G, \sim_G)$ onto $(G/_{\sim_G}, =)$,  and, given a morphism $f: \eqgraph{G} \rightarrow I(\eqgraph{H})$ in $\mathbf{EqGrph}$, we can find only one arrow $h$ in $\mathbf{Graph}$ such that $I(h) \circ \eta_{G} = f$.
+    % In particular, $I(\eqgraph{H})$ is a graph with equivalence which maps the morphism $q:V\rightarrow Q$ onto the identity $id_V: V \rightarrow V$, hence a morphism from $\eqgraph{G}$ to $\eqgraph{H}$ is a natural transformation $f = (f_E, f_V, f_Q = f_V)$. Then, the arrow $I(h): I(Q(\eqgraph{G})) \rightarrow I(\eqgraph{H})$ is given by $I(h_V, h_E) = (f_V, f_E, f_V)$.
+
+     Let $I: \mathbf{Graph \rightarrow EqGrph}$ be the functor
+     \todo{il punto è che NON sai che I è un funtore. Quello che devi fare è mostrare che epsilon ha la proprietà di una counità, DOPO deduci che I è un funtore}
+     that sends each graph $\mathcal{G}$ onto the graph with equivalence $(\mathcal{G}, =_{\mathcal{G}})$, where $=_{\mathcal G}$ is the identity relation.
+    Consider the following situation:
+    \[
+        \begin{tikzcd}
+            (Q \circ I)(\mathcal{G}) = \mathcal{G}/_{=_{\mathcal{G}}}
+            \arrow[r, "{\epsilon_{\mathcal{G}}}"] 
+            & \mathcal{G} \\
+            {I(\mathcal{H}) = (\mathcal{H}, =_{\mathcal{H}})}
+            \arrow[u, dashed, "I(f)"] 
+            \arrow[ur, "g"swap] 
+        \end{tikzcd}
+    \]
+    The graph $\mathcal G/_{=_{\mathcal{G}}}$ is exactly the graph $\mathcal G$, hence the arrow $\epsilon_\mathcal{G}$ is the identity arrow $id_\mathcal{G}$, so the arrow $I(f)$ is uniquely determined by $g$, having $\epsilon_{\mathcal{G}} \circ I(f) = I(f) = g$. Therefore, $\epsilon: (Q \circ I) \rightarrow Id_{\mathbf{Graph}}$ is the counit of the adjunction, and $I$ is a left adjoint.
+
+    A right adjoint of $Q$ is the functor $T: \mathbf{Graph \rightarrow EqGrph}$
+    \todo{stesso problema di prima. Io riscriverei anche questa metà perché non si capisce la notazione e ad un certo punto occorre usare le proprietà dei quozienti in Set, cosa che non è evidente. UPDATE: probabilmente questo non è nu funtore aggiunto}
+    such that, for each graph $\mathcal{G}$ of $\mathbf{Graph}$, $T(\mathcal{G}) = (\mathcal{G}, \approx_{\mathcal{G}})$, where $\approx_{\mathcal{G}}$ is the total relation among vertices of $\mathcal{G}$. We have then the following situation:
+    \[
+        \begin{tikzcd}
+            \eqgraph{G} = (\mathcal{G}, \sim_{\mathcal{G}}) \arrow[r, "{\eta_{\eqgraph{G}}}"] \arrow[dr, "f"swap] & (T \circ Q)(\eqgraph{G}) = (\mathcal{G}/_{\sim_{\mathcal{G}}}, \approx_{\mathcal{G}/_{\sim_{\mathcal{G}}}}) \arrow[d, dashed, "h"] \\
+            & T(\mathcal{H}) = \eqgraph{H}
+        \end{tikzcd}
+    \]
+    Since $\eqgraph{H}$ is in the image of $T$, it is a graph with all equivalent nodes. Then, the morphism $f$ is a graph morphism that in addition sends each equivalence class of vertices onto the unique class in the graph $\eqgraph{H}$. Then, $f$ factors uniquely as $h \circ \eta_\eqgraph{G}$, and $h$ is a graph morphism extended to a morphism in $\mathbf{EqGrph}$ by sending the unique equivalence class on $(T \circ Q)(\eqgraph{G})$ onto the unique equivalence class in $\eqgraph{H}$, and $\eta: Id_{\mathbf{EqGrph}} \rightarrow (T \circ Q)$ is the unit of the adjunction.
+\end{proof}
+
+The following result lies on \Cref{th:adjoints_preserves_lim} and its dual.
+
+\begin{cor}\label{cor:quot_preserves_co_lim}
+    Quotient functor preserves limits and colimits. 
+\end{cor}
+
+
+\begin{lemma}\label{lemma:quot_pres_reg_mono_pushouts}
+    Quotient functor preserves pushouts along regular monomorphisms.
+\end{lemma}
+\todo{Capire qui!}
+
+
+\todo[color=green!40]{
+COSE DA FARE
+>Quoziente crea i limiti (questo dovrebbe derivare direttamente dalla sezione precedente ) 
+>Quoziente crea certi pushout (questo va fatto ex novo)
+}
+% Regular monos in $\mathbf{EqGrph}$ are then natural transformations $\eta: \eqgraph{G \dot\rightarrow H}$ such that $\eta_Q$ is mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). Pullbacks preserve regular monomorphisms (\Cref{prop:monos_pres_by_pullback}). Regular monos are preserved also by pushouts (\Cref{lemma:reg_mono_pres_by_pushouts}). Again, since (co)limits are computed pointwise, and in $\Set$ monos are preserved by pushouts (since $\Set$ is adhesive), we can conclude what follows.
+
+\begin{lemma}\label{lemma:eqgrph_stab_po_pb}
+    In $\mathbf{EqGrph}$,  $\Reg(\mathbf{EqGrph})$ is stable under pushouts and pullbacks (in the sense of \Cref{def:stab_under_pb_po}).
+\end{lemma}
+
+% Q crea pullback, Q crea pushout sui reg mono.
+
+\begin{lemma}
+    The quotient functor creates pullbacks.
+\end{lemma}
+
+\begin{proof}
+    We will show now that $Q$ reflects pullbacks.
+    Consider the following diagram in $\mathbf{Graph}$
+    \[
+        \begin{tikzcd}
+            & Q(\eqgraph{G}) \arrow[d, "Q(f)"] \\
+            Q(\eqgraph{H}) \arrow[r, "Q(g)"swap] & Q(\eqgraph{K})
+        \end{tikzcd}
+    \]
+    and let $(\mathcal P, p_{Q(f)}, p_{Q(g)})$ be the pullback. We want to show that, if  $(\eqgraph{P}, p_f, p_g)$ is the pullback of the arrows $f$ and $g$ in $\mathbf{EqGrph}$, then $Q(\eqgraph{P}) = \mathcal{P}$, $Q(p_f) = p_{Q(f)}$ and $Q(p_g) = p_{Q(g)}$. But, since $Q$ preserves limits, $Q(\eqgraph{P}) = \mathcal{P}$ (and so the arrows).
+    Hence, from \Cref{cor:quot_preserves_co_lim}, we can conclude that $Q$ creates pullbacks.
+\end{proof}
+
+\begin{lemma}
+    The quotient functor creates pushouts along regular monomorphism.
+\end{lemma}
+
+% \begin{proof}
+%     Consider the following situation
+% \end{proof}
+
+\begin{theorem}
+    $\mathbf{EqGrph}$ is quasiadhesive.
+\end{theorem}
+
+\begin{proof}
+    In order to apply \Cref{th:crit_for_adh}, we can consider the quotient functor defined in \Cref{def:quot_func} $Q: \mathbf{EqGrph \rightarrow Graph}$. We note that $Q$ creates limits, and that regular monos in $\mathbf{EqGrph}$ are mapped onto monos in $\mathbf{Graph}$. In addition to \Cref{lemma:eqgrph_stab_po_pb}, we can conclude that $\mathbf{EqGrph}$ is $\Reg(\mathbf{EqGrph})$-adhesive.
+\end{proof}

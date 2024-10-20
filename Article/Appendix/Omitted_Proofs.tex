@@ -1,0 +1,46 @@
+\chapter{Omitted Proofs}
+
+\paragraph{\Cref{th:limit}.}
+ Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all equalizers.
+\begin{proof}
+    Let $D: \cat{I \rightarrow C}$ a diagram, with $\cat I$ finite.
+    
+    The \emph{if} statement follows from definitions of products and equalizers (\Cref{def:pullback_pushout}, \Cref{def:equalizer_coequalizer})
+
+    To satisfy the \emph{only if} statement, we want an object $L$ together with morphisms $p_i : L \rightarrow D(j)$ such that:
+    \begin{enumerate}
+        \item\label{item:cone} $\{p_i: L \rightarrow D(i)\}$ is a cone -- i.e., for each morphism of $\cat I$ $\alpha : i \rightarrow j$, $D(\alpha) \circ p_i = p_j$; and
+        \item\label{item:univ_prop} for each $E$ and $q_i : E \rightarrow D(j)$ in $\cat C$, with $D(\alpha) \circ q_i = q_j$ for each $\alpha : i \rightarrow j$ of $\cat I$, there exists a unique $f: E \rightarrow L$ such that $q_i = p_i \circ f$ for each $i \in \Ob(\cat I)$.
+    \end{enumerate}
+
+    Consider the two products (which exist by hypothesis) $\prod_{j \in \Ob(\cat I)} D(j)$, the product of the objects of the diagram, and $\prod_{\alpha \in \Hom(\cat I)}D(cod \ \alpha)$, the product of the codomains of the morphisms in $D$, where $\pi_x$ is the $x$-th projection of the product.
+    Let now:
+    \[
+        \gamma, \varepsilon : \prod_{j \in \Ob(\cat I)}D(j) \ \longrightarrow \prod_{\alpha \in \Hom(\cat I)} D(cod \ \alpha)
+    \]
+    be defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
+    Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
+    
+    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, to prove that the conditions given at the beginning are valid.
+
+    For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
+    \begin{align*}
+        D(\alpha) \circ p_i 
+            &= D(\alpha) \circ \pi_{D(i)} \circ e   && \textit{Definition of $p_j$} \\
+            &= \varepsilon_{\alpha} \circ e         && \textit{Definition of $\varepsilon$}\\
+            &= \gamma_\alpha \circ e                && \textit{$e$ is an equalizer of $\pi, \varepsilon$}\\
+            &= \pi_{D(j)} \circ e                   && \textit{Definition of $\pi$} \\
+            &= p_j                                  && \textit{Definition of $p_j$} \\
+    \end{align*}
+
+    For condition~\ref{item:univ_prop}, suppose that $(E, (q_i)_{i \in \Ob(\cat I)})$ has the properties stated. By definition of product, there exists a (unique) arrow $q: E \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$. For each arrow $\alpha: i \rightarrow j$, we have:
+    \begin{align*}
+            \gamma_\alpha \circ q 
+                &= \pi_{D(j)} \circ q           && \textit{Definition of $\pi$} \\
+                &= q_j                          && \textit{Definition of $q_j$} \\
+                &= D(\alpha) \circ q_i          && \textit{Assumption on $q_j$} \\
+                &= D(\alpha) \circ \pi_{D(j)} \circ q   &&\textit{Definition of $q_i$} \\
+                &= \varepsilon_{\alpha} \circ q && \textit{Definition of $\varepsilon$} \\
+    \end{align*}
+    Since $e$ equalizes $\pi$ and $\varepsilon$, there exists a unique $f: E \rightarrow L$ in $\cat C$ such that $q = e \circ f$. Then, for each $j \in \Ob(\cat I)$, we have $\pi_{D(j)} \circ q = \pi_{D(j)} \circ e \circ f$, hence, $q_i = p_i \circ f$.
+\end{proof}

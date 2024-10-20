@@ -1,0 +1,2 @@
+?: Non capisco perché devo prima dimostrare che \epsilon è una counità nella dim. 2.2.1, non basta avere un funtore??
+

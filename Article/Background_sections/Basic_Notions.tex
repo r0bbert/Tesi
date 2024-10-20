@@ -1,0 +1,182 @@
+
+\section{Basic Notions}\label{sect:basic_nots}
+
+%The very fist concept to get familiar with is what is a category. We can see a category as a general construction that can provide any level of abstraction needed. In fact, the definition is not about what the category represents, but instead a more general scheme that \emph{may} represent something. The definition is about what a category is composed by, and how the objects in it interact between themselves.
+
+This section is all about basic definitions and examples, to get familiar with the formalism of categories.
+
+\subsection{Categories}\label{ssect:cats}
+
+\begin{definition}[Category]\label{def:category}
+    A \emph{category} $\cat{C}$ comprises:
+    \begin{enumerate}
+        \item A collection of \emph{objects} $\Ob(\cat{C})$;
+        \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$, often called \emph{homset}.
+    \end{enumerate}
+    Two operators, $dom$ and $cod$, that map every morphism $f \in \Hom(\cat{C})$ to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
+    An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
+    $$
+        h \circ (g \circ f) = (h\circ g) \circ f
+    $$
+    For each object $A$, an \emph{identity} morphism $id_A : A \rightarrow A$ (or, when it is clear from the context, just denoted $A$)  such that, for each $f: A \rightarrow B$:
+    \[
+        id_B \circ f = f = f \circ id_A 
+    \]
+\end{definition}
+
+The most important thing here is not the structure of the objects, but instead how this structure is preserved by the morphisms.
+
+\begin{example}\label{ex:0_cat}
+    A trivial example of category is the one with no objects, and hence no morphisms. Such category is denoted by $\textbf 0$ and is called \emph{empty category}.
+\end{example}
+
+\begin{example}\label{ex:1_cat}
+    The category with just one object and just one arrow, the identity arrow on that object, is denoted $\textbf 1$. In particular, the only object of this category is $\bullet$, and the only arrow is $id_{\bullet}$.
+\end{example}
+
+Given an arrow $f A \rightarrow B$ in a category $\cat C$, we say that $f$ \emph{factors through} $g: C \rightarrow B$ if there exists an arrow $h: A \rightarrow C$ such that $f = h \circ g$.
+
+\begin{definition}\label{def:dual_cat}[Dual Category]
+    Given a category $\cat C$, there exist a category $\cat C^{op}$ such that:
+    \begin{itemize}
+        \item $Ob(\cat C^{op}) = Ob(\cat C)$;
+        \item if $f: A \rightarrow B$ is a morphism in $\cat C$, then $f: B\rightarrow A$ is a morphism in $\cat C ^ {op}$.
+    \end{itemize}
+    Hence, given $f : A \rightarrow B$ and $g: B \rightarrow C$ arrows in $\cat C$, as $g \circ f: A \rightarrow C$ is an arrow in $\cat C$, then $f \circ g: C \rightarrow A$ is an arrow in $\cat C ^{op}$.
+    Such category is called \emph{dual category} or \emph{opposite category}.
+\end{definition}
+
+Duality is a concept that we will encounter most of the time. Given a property $P$ valid for a category $\cat C$, we will refer to the same property in the opposite category $\cat C^{op}$ as the \emph{dual} of $P$, without explicitly constructing $\cat C^{op}$. There exist some properties that coincide exactly with their dual, and such properties are said to be \emph{self dual} properties.
+
+%  \emph{dual category} of a category $\cat{C}$, denoted $\cat{C}^{op}$, in which the objects are the same of $\cat{C}$, and the arrows are the opposite of the arrows in $\cat{C}$, i.e., if $f: A \rightarrow B$ is an arrow of $\cat{C}$, then $f: B \rightarrow A$ is an arrow of $\cat{C}^{op}$.
+% Each definition in category theory has a dual form. In general, if a statement $S$ is true in a category $\cat{C}$, then the opposite of the statement, $S^{op}$, obtained switching the words "domain" and "codomain" and replacing each composite $g \circ f$ into $f \circ g$, is still true in the category $\cat{C}^{op}$. Moreover, since every category is the opposite of its opposite, if a statement $S$ is true for every category, then $S^{op}$ is also true for every category ~\cite[pp8-9]{pierce91}. {\color{red} la discussione sul duale temo confonda}
+
+To represent morphisms of a category $\cat{C}$ it is possible to use \emph{diagrams}, as the one below, in which the vertices are objects of $\cat{C}$, and the edges are morphisms of $\cat{C}$.
+    \[
+    \begin{tikzcd}
+        X \arrow[d, "g'" swap] \arrow[r, "f'"] & Z \arrow[d, "g"] \\
+        W \arrow[r, "f" swap] & Y        
+    \end{tikzcd}
+    \]
+The diagram is said to commute whenever  $f \circ g' = g \circ f'$. Unique morphisms are represented with dashed arrows.
+A more rigorous definition of what a diagram is will be given later (\Cref{def:diagram}).
+
+\begin{example}
+    It is easy to see that taking sets as objects and (total) functions as arrows, we obtain a category. In fact, given two functions $f: A \rightarrow B$ and $g: B \rightarrow C$, it is possible to compose them obtaining an arrow $g \circ f : A \rightarrow C$, and the composition is associative. For each set $A$ there exists an identity function $id_A: A \rightarrow A$ such that $id_A(a) = a$ for each $a\in A$.
+    This category is denoted as $\Set$.
+\end{example}
+
+\begin{remark}\label{rem:small_cats}
+    It is important to note that the \Cref{def:category} above does not specify what kind of collections
+    %for a category $\cat{C}$, 
+    $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are.
+    Taking $\Set$ as example, the collection $\Ob(\Set)$ cannot be a set itself, due to Russel's paradox. It would be more appropriate referring to a category $\cat{C}$ which $\Ob(\cat{C})$ and $\Hom(\cat{C})$ are both sets as a \emph{small category}, but it is assumed in this work, except where it is made explicit, for a category to be small.
+    Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, it is possible to construct the set $B^A$ of all functions from $A$ to $B$. This is isomorphic to $\Set(A, B)$, for each pair of sets $A$ and $B$.
+    A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
+\end{remark}
+
+\subsection{Mono, Epi and Iso}\label{ssect:Mono_epi_iso}
+
+Between the morphisms of a category, it is possible to distinguish some that have certain properties, as functions between sets can be surjective, injective or bijective.
+
+\begin{definition}[Monomorphism]\label{def:mono}
+    An arrow $f:B\rightarrow C$ in a category $\cat{C}$ is a \emph{monomorphism} if, for any pair of arrows of $\cat{C}$ $g:A \rightarrow B$, $h: A \rightarrow B$, the equality $f \circ g = f \circ h$ implies $g = h$. The class of monomorphisms of $\cat C$ is denoted $\Mono(\cat C)$.
+\end{definition}
+
+For a morphism, from an algebraic point of view, being mono means being \emph{left cancellable}. This fact can led us to define a particular kind of class of morphisms, which will reveal useful further. 
+
+\begin{definition}[Subobjects]
+    Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono\todo{sinceramente non trovo molto sensata la scelta di chiamare sottoggetto la coppia $(A, m)$. Lo standard, per quanto ne so, è usare sottoggetto per una classe di equivalenza di mono o, al massimo, per i mono}, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
+    \[
+        \begin{tikzcd}[row sep=9]
+            A \arrow[dr, "m"] \arrow[dd, dashed, "f"swap] & \\
+            & B \\
+            C \arrow[ur, "n"swap] &
+        \end{tikzcd}
+    \]
+    Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subobjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$. 
+\end{definition}
+
+An useful fact about subobjects is how factorization behaves. In particular $(A, m)$ and $(B, n)$ are subobjects of $C$. Then, if $(A, m)\leq (B, n)$, we have $m = n \circ h$ for some $h$. Suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis. This is to say what follows.
+
+\begin{prop}\label{prop:fact_of_subobjects_is_unique}
+    Let $(A, m)$ and $(B, n)$ be subobjects of $C$ in a category $\cat C$, with $(A, m)\leq (B, n)$. Then, the factorization of $m$ through $n$ is unique.
+\end{prop}
+
+
+\begin{definition}[Epimorphism]\label{def:epi}
+    An arrow $f: A\rightarrow B$ in a category $\cat{C}$ is an \emph{epimorphism} if, for any pair of arrows of $\cat{C}$ $g : B \rightarrow C$, $h: B \rightarrow C$, the equality $g \circ f = h \circ f$ implies $g = h$.
+\end{definition}
+
+\begin{definition}[Isomorphism]\label{def:iso}
+    An arrow $f:A \rightarrow B$ is an \emph{isomorphism} if there is an arrow $f^{-1}:B \rightarrow A$, called the \emph{inverse} of $f$, such that $f^{-1}\circ f = id_{A}$ and $f \circ f^{-1} = id_{B}$. Two objects are said to be \emph{isomorphic} if there is an isomorphism between them.
+\end{definition}
+
+\begin{example}
+    In $\Set$, monomorphisms are injective functions, epimorphisms are surjective functions and isomorphisms are bijections.
+\end{example}
+
+\begin{remark}
+    Mono and epi are dual concepts. This fact is easily shown by considering how a monomorphism $m$ in a category $\cat C$ behaves in the dual category $\cat C^{op}$.
+    In $\cat C$ we have that $m \circ f = m \circ g$ implies $f = g$. In $\cat C^{op}$, the we can state that $f \circ m = g \circ m$ implies $f = g$, obtaining the definition of epi. 
+\end{remark}
+
+\begin{prop}\label{prop:epi_mono_prop}
+    The following statements hold for every pair of composable arrows $f$ and $g$ for any category $\cat C$:
+    \begin{enumerate}
+        \item if both $f$ and $g$ are mono, then $g \circ f$ is mono;
+        \item if $g \circ f$ is mono, then $f$ is mono;
+        \item if both $f$ and $g$ are epi, then $g \circ f$ is epi;
+        \item if $g \circ f$ is epi, then $g$ is epi.
+    \end{enumerate}
+\end{prop}
+\todo{val la pena osservare la relazione di equivalenza tra sottoggetti corrisponde ad avere un isomorfismo tra i domini}
+
+
+\subsection{Categories from other categories}\label{ssect:cats_from_cats}
+
+Starting from a category, it is possible to construct other categories with some interesting properties, as the following examples show.
+
+The first notion to introduce is the one of subcategory.
+
+\begin{definition}[Subcategory]
+    A category $\cat{D}$ is a \emph{subcategory} of a category $\cat{C}$ if:
+    \begin{enumerate}
+        \item each object of $\cat{D}$ is an object of $\cat{C}$;
+        \item \label{inc} each morphism between two objects of $\cat{D}$ is a morphism of $\cat{C}$; and
+        \item \label{comp} composites and identities of $\cat{D}$ are the same of $\cat{C}$.
+    \end{enumerate}
+
+    If the inclusion at~\ref{inc} is an equality (i.e. $\cat{D}(A, B) = \cat{C}(A, B)$ for each couple of objects $A$, $B$ of $\cat{D}$), then $\cat{D}$ is said to be a \emph{full subcategory} of $\cat{C}$.
+    Another way to express that composites are the same (point~\ref{comp}) is to say that if $f, g \in \Hom(\cat D)$ are composable, then $g \circ f \in \Hom(\cat D)$, i.e., $\Hom(\cat D)$ is \emph{closed under composition}.
+\end{definition}
+
+An object of a category marks out a category itself. This is the case of slice (and coslice) categories.
+
+\begin{definition}[Slice Category]\label{def:slice_cat}
+    Given a category $\cat{C}$ and an object $X \in \Ob(\cat{C})$, the \emph{slice category} $\cat{C}/X$ is the category that has pairs $(A, f)$ as objects, where $A$ is an object of $C$ and $f: A \rightarrow X$ is an arrow in $\cat{C}$, and arrows $\phi: (A, f) \rightarrow (B, g)$ are given by a morphism $\phi: A \rightarrow B$ of $\cat{C}$ such that the following diagram commutes:
+    \[
+        \begin{tikzcd}
+            A \arrow[r, "{\phi}"] \arrow[dr, "f" swap] & B \arrow[d, "g"] \\
+            & X
+        \end{tikzcd}
+    \]
+    -- i.e, $g \circ \phi = f$.
+    Composition between two arrows in $\cat{C}/X$ $\phi: (A, f) \rightarrow (B, g)$ and $\psi: (B, g) \rightarrow (C, h)$ is the arrow $\psi \circ \phi : (A, f) \rightarrow (C, h)$ obtained in the obvious way:
+    \[
+        \begin{tikzcd}
+            A \arrow[bend left=30]{rr}{\psi \circ \phi}  \arrow[r, "{\phi}"] \arrow[dr, "f" swap] & B \arrow[r, "{\psi}"] \arrow[d, "g"] & C \arrow[dl, "h"] \\
+            & X & 
+        \end{tikzcd}
+    \]
+
+    The dual definition of \emph{coslice category}, noted $X/\cat{C}$ (where $X \in \Ob(\cat{C})$), is obtained by taking as objects the morhisms of $\cat{C}$ with domain $X$ and as arrows the morphisms $\phi: (A, f) \rightarrow (B, g)$ such that $f:X\rightarrow A, g:B \rightarrow X \text{ of }\cat{C}$ and $g = \phi \circ f$. 
+\end{definition}
+
+Furthermore, it is possible to raise a new category from two old ones by taking their product, as the following definition shows.
+
+\begin{definition}[Product category]
+    Given two categories $\cat C, \cat D$, the \emph{product category} $\cat{C\times D}$ has as objects pairs of objects $(A, B)$, where $A \in \Ob(\cat C), B \in \Ob(\cat D)$, and as arrows pairs of morphisms $(f, g)$, where $f$ is an arrow in $\cat C$ and $g$ is an arrow in $\cat D$. Composition and identities are defined pairwise: $(f, g) \circ (h, k) = (f \circ h, g \circ k)$, and $id_{(A, B)} = (id_A, id_B)$.
+
+\end{definition}
+
