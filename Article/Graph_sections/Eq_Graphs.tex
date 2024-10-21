@@ -1,3 +1,121 @@
+\color{blue}
+
+\section{Graphs with equivalences - notes and results}
+\begin{definition}
+	A \emph{graph with equivalence} is a 6-uple $(A, B, C, s, t, q)$ where $A, B$ and $C$ are set, $s,t\colon A\rightrightarrows B$ are functions and $q\colon B\to C$ is another surjective function.
+	
+	A morphism  $(A, B, C, s, t, q)\to (A', B', C', s', t', q')$ is a triple $(h_1, h_2, h_3)$ of functions $h_1\colon A\to A'$, $h_2\colon B\to B'$ and $h_3\colon C\to C'$ making the following diagrams commute.
+	
+	\[\xymatrix{A \ar[r]^{s} \ar[d]_{h_1} & B \ar[d]^{h_2} & A \ar[r]^{s} \ar[d]_{h_1}& B \ar[d]^{h_2} & B \ar[d]_{h_2} \ar[r]^{q} & C \ar[d]^{h_3}\\A' \ar[r]_{s'} & B' & A ' \ar[r]_{t'}& B' & B' \ar[r]_{q'} & C'}\]
+	
+	In this way we get a category $\EqGrph$.
+\end{definition}
+
+\begin{remark}\label{rem:fedele}
+	There is a faithful functor $U\colon \EqGrph\to \Graph$, forgetting the quotient part. \todo{Questo è per te da dimostrare.}
+\end{remark}
+
+\begin{prop}\label{prop:limits}
+	$\EqGrph$ is complete, cocomplete and $U$ preserves limits and colimits.
+\end{prop}
+
+\begin{proof}
+	NOTATION: $D(i)$ is $(A_i, B_i, Q_i, s_i, t_i, q_i)$.	Let $(A, B, s, t)$ be the limit of $U\circ D$, with projections $(p_{1,i}, p_{2,i})\colon (A,B, s,t)\to (A_i, B_i, s_i, t_i)$ we define\todo{WARNING: \emph{non} è immediatamente ovvio come si fa a  generalizzare questo passaggio ad altre categorie diverse da quella degli insiemi - serve almeno completezza e presenza dei coequalizzatori.} an equivalence relation on $B$ putting
+	\[b\sim b' \iff q_i(p_{2, i}(b))=q_i(p_{2, i}(b')) \text{ for every $i\in \cat{I}$}\]
+	
+	Let $q\colon B\to Q$ be the resulting quotient map. By definition, for every $i\in \cat{I}$, if $b\sim b'$ we have	 $q_i\circ p_{2,i}(b)=q_i\circ p_{2,i}(b')$, yielding a unique $p_{3,i}\colon Q\to Q_i$ fitting in the square below.
+
+\[\xymatrix{ B \ar[d]_{p_{2,i}} \ar[r]^{q} & Q \ar@{.>}[d]^{p_{3,i}}\\ B_i \ar[r]_{q_i} & Q_i}\]
+	
+	We have to show that in this way we get a cone over the diagram $D$. Let $f\colon i\to j$ be an arrow of $\cat{I}$, then we have:
+	\begin{align*}
+	U(D(f)\circ (p_{1,i}, p_{2, i}, p_{3,i}))&=U(D(f))\circ(p_{1,i}, p_{2, i})\\&=(p_{1,j}, p_{2, j})\\&= U(D(f)\circ (p_{1,j}, p_{2, j}, p_{3,j}))
+	\end{align*}
+	 And faithfulness of $U$ yields the thesis.
+	 
+	 To see that this cone is terminal, let $(E, F, G, a, b, c)$ be another graph with the vertex of a cone with sides $(t_{1,i},t_{2, i}, t_{3,i})$. By construction, we have an arrow $(t_1, t_2)\colon (E, F, a, b)\to (A, B, s, t)$ such that
+	 \[\xymatrix{&E \ar@{.>}[dl]_{t_1} \ar[dr]^{t_{1,i}}&&&F \ar@{.>}[dl]_{t_2} \ar[dr]^{t_{2,i}}\\ A \ar[rr]_{p_{1,i}} & & A_i & B \ar[rr]_{p_{2,i}}&& B_i }\]
+	
+	Let now $g$ and $g'$ be two elements of $F$ such that $c(g)=c(g')$, then for every $i\in \cat{I}$
+	\begin{align*}
+		q_i(p_{2,i}(t_2(g)))&=q_i(t_{2,i}(g))\\&=t_{3, i}(c(g))\\&=t_{3, i}(c'(g))\\&=q_i(t_{2,i}(g'))\\&=	q_i(p_{2,i}(t_2(g')))
+	\end{align*}
+	
+	Thus $t_2(g)\sim t_2(g')$, so that we have a, unique, dotted arrow $t_3\colon G\to Q$ as below
+	
+	\[\xymatrix{ F \ar[d]_{t_{2}} \ar[r]^{c} & G \ar@{.>}[d]^{t_{3}}\\ B \ar[r]_{q} & Q}\]
+	
+	Faithfulness \todo{esercizio per te: scrivere la dimostrazione di queste ultime due righe}of $U$ now guarantees that $(t_1, t_2, t_3)$ is the unique arrow such that $(p_{1,i}, p_{2,i}, p_{3,i})\circ(t_1, t_2, t_3)=(t_{1,i},t_{2, i}, t_{3,i})$.
+	
+	
+	\todo{esercizio per te: fare i colimiti. Hint: la dimostrazione è diversa ma più semplice. Se $(A, B, s,t)$ è il colimite di $U\circ D$ puoi considerare il colimite $Q$ dei vari $Q_i$. Per la proprietà del colimite hai una freccia $B\to Q$ (come la definisci?). Ora devi mostrare che è epi.}
+\end{proof}
+
+\begin{cor}
+	An arrow $(h_1, h_2, h_3)\colon (A, B, C, s,t, q)\to (E, F, G, a,b,c)$ in $\EqGrph$ is mono if and only if $h_1$ and $h_2$ are mono in $\Set$.
+\end{cor}
+\begin{proof}
+	\todo{esercizio per te, usa fedeltà e continuità}
+\end{proof}
+
+
+Let us turn to another functor $\EqGrph\to \Graph$.
+
+\begin{definition}
+The \emph{quotient functor} $Q\EqGrph\to \Graph $ sends $(A, B, C, s,t, q)$ to $(A, C, q\circ s, q\circ t)$ and an arrow $(h_1, h_2, h_3) \colon (A, B, C, s,t, q)\to (E, F, G, a,b, c)$ to $(h_1, h_3)$.
+\end{definition}
+
+\todo{Verifica che questa cosa funziona $(h_1, h_3)$ è un morfismo di grafi?}
+
+\begin{lemma}
+	$Q$ is both a left and right adjoint.
+\end{lemma}
+\begin{proof} Let us start proving that $Q$ is a left adjoint. Let $R(A,B, s, t)$ be $(A, B, B, s,t, id_{B})$ , so that $Q(R(A,B,s,t))=(A,B,s,t)$. Now, suppose that an arrow $(h_1, h_2)\colon Q(E,F,G, a,b,c)\to (A,B, s,t)$ is given. Consider the triple $(h_1, h_2, h_2\circ c)$. Notice that
+	\[h_2\circ c\circ a= s\circ h_1 \qquad  h_2\circ c\circ b= t\circ h_1\]
+	
+	 then we have three squares:	
+	
+
+\[\xymatrix{E \ar[r]^{a} \ar[d]_{h_1} & F \ar[d]^{h_2\circ c} & E \ar[r]^{b} \ar[d]_{h_1}& F \ar[d]_{h_2\circ C} & B \ar[d]_{h_2\circ c} \ar[r]^{c} & C \ar[d]^{h_2}\\A \ar[r]_{s} & B & A  \ar[r]_{t}& B & B \ar[r]_{id_B} & B}\]
+	
+	 We have therefore found a morphism whose image through $Q$ fits in the diagram below.
+	\[\xymatrix{(A, B, s,t)\ar[r]^{(id_A, id_B)} &(A, B, s,t)\\ (E, G, q\circ s, q\circ t) \ar[ur]_{(h_1, h_2)} \ar[u]^{Q(h_1, h_2\circ q, h_2)}}\]
+	
+Uniqueness of	
+	
+We can now turn to the second half of the thesis. To see that $Q$ is a right adjoint, 
+	
+	
+\end{proof}
+
+
+\begin{cor}Let $(h_1, h_2, h_3)\colon (A, B, C, s,t, q)\to (E, F, G, a,b,c)$ be a morphism of $\EqGrph$, then the following are equivalent:
+	\begin{enumerate}
+		\item $(h_1, h_2, h_3)$ is a regular mono;
+		\item $h_1$, $h_2$, $h_3$ are all monos;
+		\item $h_1$ and $h_2$ are mono and for every $f, f'\in F$, $c(h_2(f))=c(h_2(f'))$ if and only if $q(f)=q(f')$.
+	\end{enumerate}
+\end{cor}
+\begin{proof}
+	$1\Rightarrow 2.$ \todo{Esercizio} 
+	
+	\smallskip \noindent
+	$2\Rightarrow 3.$ \todo{Esercizio}
+	
+	
+	$3\Rightarrow 1.$
+\end{proof}
+
+
+\begin{prop}
+	$Q$ creates limits and colimits.
+\end{prop}
+\begin{proof}
+	\todo{esercizio per te (devi verificare solo la riflessione: ma dato un diagramma in grafi fatto di quozienti, come costruisci un insieme di vertici per il (co)limite?)}
+\end{proof}
+
+
+\color{black}
 \section{Graphs with Equivalences}
 
 It is possible to endow the set of vertices of a graph with any sort of relation, requiring that such relation is preserved by homomorphisms. The ones we are interested in are \emph{equivalence relations}.
@@ -9,6 +127,13 @@ Formally,  A \emph{graph with equivalence} is a pair $\eqgraph{G} = (\graph G, \
 \todo{Remark su categorie in cui si può passare dalle relazioni di equivalenza al quoziente (Categorie Regolari (?)) per giustificare la def. di eq-grafo}.
 
 As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence as a presheaf, this time from a category $E \rightrightarrows V \rightarrow C$, where the image of $C$ along the presheaf is the set of the equivalence classes, requiring that the morphism $V\rightarrow C$ is an epimorphism (that is, a surjective function).
+
+
+\todo{Io sinceramente qua propongo una struttura "intermedia" da usare come definizione. Un grafo con equivalenza è una sestupla (A, B, C, s, t, q) tale che blah blah. Segue remark che questo equivale a dare:
+
+
+>un funtore da un opportuna categoria che manda certe frecce in epi
+>un grafo con una relazione di equivalenza sui vertici}
 
 \begin{definition}[Category of Graphs with Equivalences]
     The category $\EqGrph$ is the subcategory of $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V \xrightarrow{q} C, \Set]$$ such that, for each $\eqgraph{G} \in \Ob(\EqGrph)$, $\eqgraph{G}(q)$ is an epimorphism. 
