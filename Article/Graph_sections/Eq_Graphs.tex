@@ -30,7 +30,7 @@
 \end{proof}
 
 
-
+\iffalse 
 In an $\mathcal{M}$-adhesive category, pullbacks also enjoy a kind of left cancellation property.
 
 \begin{lemma}\label{lem:pb2}
@@ -80,7 +80,7 @@ In an $\mathcal{M}$-adhesive category, pullbacks also enjoy a kind of left cance
 	\[\xymatrix{Z'_0\ar[r]^{b_2} \ar[d] _{b_1}& Z_2 \ar@/^.3cm/[ddr]^{u_2}\ar[d]^{z_2} \\ Z_1 \ar[r]_{z_1}  \ar@/_.3cm/[drr]_{u_1}& W \ar[dr]^{g} \\ &&U}\]
 	and thus it is an isomorphism.
 \end{proof} 
-
+\fi 
 
 \begin{definition}A \emph{kernel pair} $(K_f, p_{f, 1}, p_{f,2})$ for an arrow $f\colon X\to Y$ is an object $K_f$ with two arrows $p_{f,1}, p_{f, 2}\colon K_f\to X$ making the following square a pullback.
 	\[\xymatrix{K_f \ar[r]^{p_{f,1}} \ar[d]_{p_{f,2}}& X \ar[d]^{f}\\ X \ar[r]_{f} & Y}\]
@@ -361,10 +361,10 @@ Moreover, notice that \todo{Esercizio (basta comporre prima e dopo con gli oppor
 
 Let now $(z_1, z_2, z_3)\colon (A'_2, B'_2, C'_2)\to (E, F, G, e, f, g)$ and $(w_1, w_2, w_3)\colon (A'_3, B'_3, C'_3)\to (E, F, G, e, f, g)$ be two morphisms such that 
 \[(z_1, z_2, z_3)\circ (h'_1, h'_2, h'_3)=(w_1, w_2, w_3)\circ (k'_1, k'_2, k'_3)\] 
-Let $z\colon B'_4\to F$ be the arrow induced by $z_2$ and $w_2$, we want to construct the dotted arrow $w\colon C'_4 \to G$ in the diagram below
+Let $z\colon B'_4\to F$ be the arrow induced by $z_2$ and $w_2$, we want to construct the dotted arrow $v\colon C'_4 \to G$ in the diagram below
  
- \todo{Finisci il diagramma}
-\[\xymatrix@C=35pt@R=15pt{& B'_1 \ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[dl]_{t'_2} \ar@/^.2cm/[dr]^{z_2}\\B'_3 \ar[rr]^{p'_2} && B'_4  \ar[rr]^{z}&& F \ar[ddddd]^{g}\\& C'_1 \ar[d]_{m_1}\\& S \ar[rr]^{s_1} \ar[dd]_{s_2} && C'_2 \ar[dd]^{m_2} \\ C'_3 \ar[dd]_{m_3}\\&T\ar[dd]|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]^(.7){y_1} & & C'_4 \ar[dd]_(.3){d_3} && G\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
+ \todo{Sistema il diagramma mettendo gli opportuni buchi}
+\[\xymatrix@C=35pt@R=15pt{& B'_1 \ar[dd]|(.5)\hole_(.62){q'_1}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[ddd]|(.33)\hole^{q'_2} \ar[dl]_{t'_2} \ar@/^.2cm/[dr]^{z_2}\\B'_3 \ar[ddd]_{q'_3} \ar[rr]^(.65){p'_2} && B'_4  \ar[rr]^(.65){z}&& F \ar[ddddd]^{g}\\& C'_1 \ar@/^.2cm/[drr]^{h'_3} \ar@/_.2cm/[ddl]_{k'_3} \ar[d]^{m_1}\\& S \ar[rr]^{s_1} \ar[dd]_{s_2} && C'_2 \ar[dd]^{m_2} \ar@/^.2cm/[dddr]^{z_3} \ar[lddd]_{t'_3}\\ C'_3 \ar@/_.5cm/[ddrr]^(.65){p'_3} \ar[ddrrrr]_{w_3} \ar[dd]_{m_3}\\&T\ar[dd]|(.25)\hole|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]|(.25)\hole_{w} && U \ar[dd]^(.3){u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]_(.65){y_1} & & C'_4 \ar@{.>}[rr]_(.65){v} \ar[dd]_(.3){d_3} && G\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
 
 
 Now by \Cref{prop:regepi} $d_3$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lem:salvavita2}  we know that the top face of the cube below is a pushout.
