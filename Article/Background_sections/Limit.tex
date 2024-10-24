@@ -155,15 +155,16 @@ Of all monomorphisms, an interesting subclass of them is the one that contains o
     A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
 \end{definition}
 
-\begin{obs}
-    Given two composable regular monos $m$ and $n$, suppose that $n$ equalizes two arrows $f$ and $g$. Then, we have
-    \begin{align*}
-        g \circ (n \circ m) &= (g \circ n) \circ m &&\\
-                            &= (f \circ n) \circ m  && \textit{$n$ equalizer} \\
-                            &= f \circ (n \circ m)
-    \end{align*}
-    Since $n \circ m$ is mono (\Cref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
-\end{obs}
+% -- NON SEMPRE E' VERO !!! ---
+% \begin{obs}
+%     Given two composable regular monos $m$ and $n$, suppose that $n$ equalizes two arrows $f$ and $g$. Then, we have
+%     \begin{align*}
+%         g \circ (n \circ m) &= (g \circ n) \circ m &&\\
+%                             &= (f \circ n) \circ m  && \textit{$n$ equalizer} \\
+%                             &= f \circ (n \circ m)
+%     \end{align*}
+%     Since $n \circ m$ is mono (\Cref{prop:epi_mono_prop}), we have shown that, given a category $\cat C$, $\Reg(\cat C)$ is closed under composition. 
+% \end{obs}
 
 
 % ---- Pullback, Pushout -----
@@ -257,6 +258,18 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
 \end{prop}
 
 The proposition above can be dualised stating that pushouts preserves epimorphisms.
+
+The following lemma is a classical result, its proof is in the appendix.
+
+\begin{lemma}[Pullback Lemma]\label{lemma:pullback_lemma}
+        Suppose that the following diagram is given and its right half is a pullback. Then the whole rectangle is a pullback if and only if its left half is a pullback.
+        \[
+            \begin{tikzcd}
+                X \arrow[r, "f"] \arrow[d, "t"swap] & Y \arrow[r, "g"] \arrow[d, "k"] & Z \arrow[d, "h"] \\
+                A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
+            \end{tikzcd}
+        \]
+\end{lemma}
 
 The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
 
