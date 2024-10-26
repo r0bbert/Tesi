@@ -1,0 +1,218 @@
+\section{Graphs with Equivalences}\label{sect:eq_graphs}
+A graph with equivalence is a 6-tuple $\eqgraph{G} =  (E, V, C, s, t, q)$, where $E$ and $V$ are, respectively, the edges and the vertices sets, and $C$ is the set of the equivalence classes among vertices, $s,t : E \to V$ are the source and target functions and $q: V \to C$ is the \emph{quotient} function, that is, the map from a vertex to its equivalence class. For this definition to make sense, $q$ needs to be surjective. A morphisms $h$ from a graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ to another $\eqgraph{H} = (E', V', C', s', t',  q')$ is a triple $h = (h_E, h_V, h_C)$ of functions $h_V : V \to V'$, $h_E : E \to E'$ and $h_C : C \to C'$ such that:
+\begin{itemize}
+    \item $h_E \circ s = s' \circ h_V$;
+    \item $h_E \circ t = t' \circ h_V$;
+    \item $h_C \circ q = q' \circ h_C$.
+\end{itemize}
+
+\begin{remark}
+     A graph with equivalence can be viewed as a graph endowed with an equivalence relation over its set of vertices, $(\graph G, \sim_\graph{G})$. An homomorphism between two graphs with equivalences $h :\eqgraph{G} = (\graph{G}, \sim_\graph{G})\rightarrow \eqgraph{H} = (\graph{H}, \sim_\graph{H})$ is a graph homomorphism $h = (h_V, h_E):\graph{G} \rightarrow \graph{H}$ such that if $v_1 \sim_\graph{G} v_2$ then $h_V(v_1) \sim_\graph{H} h_V(v_2)$. In $\Set$, it is possible to formalize an equivalence relation $\sim$ over $X$ as a surjective function sending each element $x$ on its equivalence class $[x]_{\sim}$, and this justify our formalization via surjective functions (i.e., epimorphisms).
+\end{remark}
+
+As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence as a presheaf, this time from a category $E \rightrightarrows V \rightarrow C$, where the image of $C$ along the presheaf is the set of the equivalence classes, requiring that the morphism $V\rightarrow C$ is an epimorphism (that is, a surjective function).
+
+\begin{definition}[Category of Graphs with Equivalences]\label{def:eq_grphs}
+    The category $\EqGrph$ is the subcategory of $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V \xrightarrow{q} C, \Set]$$ such that, for each $\eqgraph{G} \in \Ob(\EqGrph)$, $\eqgraph{G}(q)$ is an epimorphism. 
+\end{definition}
+
+\begin{obs}\label{obs:eq_grph_morph_det_by_first_two_comp}
+    Morphisms of graphs with equivalence are uniquely determined by the first two component. That is, if $h_1 = (h_E, h_V, \phi)$ and $h_2 = (h_E, h_V, \psi)$, then $\phi = \psi$.
+\end{obs}
+
+\begin{proof}
+    Let $h_1, h_2 : \eqgraph{G \to H}$, where $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$. Then, we have the following situation
+    \[
+        \begin{tikzcd}
+            V_G \arrow[r, "{h_V}"] \arrow[d, "{q_G}"swap] & V_H \arrow[d, "{q_H}"] & V_G \arrow[l, "{h_V}"swap] \arrow[d, "{q_G}"] \\
+            C_G \arrow[r, "{\phi}"swap] & C_H & \arrow[l, "{\psi}"] C_G
+        \end{tikzcd}
+     \]
+     Then, we have:
+     \begin{align*}
+         \psi \circ q_G &= q_H \circ h_V \\
+                        &= \phi \circ q_G
+     \end{align*}
+     From the fact that $q_G$ is epi, we can conclude $\phi = \psi$.
+\end{proof}
+
+A graph with equivalence is then a graph with an extra structure, the quotient map. Hence, it is possible to get the underlying graph by forgetting it. Such action is described by the \emph{forgetful functor} $U : \EqGrph \to \Graph$, that maps each graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ onto $U(\eqgraph{G}) = (E, V, s, t)$, and each morphisms $h = (h_E, h_V, h_C)$ onto $U(h) = (h_E, h_V)$. $U$ is effectively a functor, since, on identities, $U((id_E, id_V, id_C)) = (id_E, id_V)$, and on compositions $U(h \circ k) = U((h_E \circ k_E, h_V 1circ k_V, h_C \circ k_C)) = (h_E \circ k_E, h_V \circ k_V) = (h_E, h_V) \circ (k_E \circ k_V) = U(h) \circ U(k)$.
+
+\begin{prop}\label{prop:U_is_faithf}
+    The forgetful functor $U: \EqGrph \to \Graph$ is faithful.
+\end{prop}
+
+\begin{proof}
+    Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$  be two graphs with equivalences, and let $h, k : \eqgraph{G \to H}$.
+    If $U(h) = U(k)$ (i.e., the first two component of $h$ and $k$ are the same), from \Cref{obs:eq_grph_morph_det_by_first_two_comp}, we can conclude that $h = k$. Then, the restriction $U_{\eqgraph{G, H}} : \EqGrph(\eqgraph{G, H}) \to \Graph(U(\eqgraph{G}), U(\eqgraph{H}))$, therefore $U$ is faithful.
+\end{proof}
+
+Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $C_G$, and $h = (h_E, h_V, h_C)$ to $h_C$.
+
+\begin{prop}
+    $\EqGrph$ has all limits, colimits and $U$ preserves limits and colimits.
+\end{prop}
+
+\begin{proof}
+    Let $D : \cat I \to \EqGrph$ be a diagram. In the following, we will denote the graph with equivalence $D(i)$ as $(E_i, V_i, C_i, s_i, t_i, q_i)$.
+    Let now be the graph $(A, B, s, t)$ the limit of $U \circ D$, with projections $(\pi_E^i, \pi_V^i):(A, B, s, t) \to (E_i, V_i, s_i, t_i)$. Notice now that $(B, (q_i\circ \pi_V^i)_{i \in \cat I})$ is a cone for $V \circ D$. To see this, let $\alpha : i \to j$ be an arrow of $\cat I$, $D(\alpha) = (h_E, h_V, h_C)$, $U \circ D (\alpha) = (h_E, h_V)$. From the definition of cone, we have that $U \circ D (\alpha) \circ (\pi_E^i, \pi_V^i) = (\pi_E^j, \pi_V^j)$, hence $h_V \circ \pi_V^i = \pi_V^j$. 
+    Consider now the following diagram in $\Set$
+    \[
+        \begin{tikzcd}[row sep=25 pt, column sep = 25 pt]
+            & B \arrow[dl, "{\pi_V^i}"swap] \arrow[dr, "{\pi_V^j}"] & \\
+            V_i \arrow[rr, "{h_V}"] \arrow[d, "{q_i}" swap] & & V_j \arrow[d, "{q_j}"] \\
+            C_i \arrow[rr, "{h_C}" swap] & & C_j 
+        \end{tikzcd}
+    \]
+    So we have $q_j \circ h_V \circ \pi_V^i = q_j \circ \pi_V^j$, by definition of graph with equivalence, $h_C \circ q_i \circ \pi_V^i = q_j$, and, by definition of $V$, $V \circ D (\alpha) \circ q_i \circ \pi_V^i = q_j \circ \pi_V^j$.
+    Suppose now $(L, (l_i)_{i \in \cat I})$ be a limit for $V \circ D$, so that we have an arrow $l: B \to L$. This arrow is not epi in general, so let $Q$ be its image, $q: Q \to B$ be the resulting epi and $m: Q \to L$ the corresponding mono, as the diagram below shows. By definition, the external rectangle commutes, so, for each $i$ object of $\cat I$, 
+    REMARK\todo{epi-mono factorization in Set (or Regular Cats in general)}
+    yields the dotted arrow $\pi_C^i$.
+    \[
+        \begin{tikzcd}
+            B \arrow[r, "{\pi_V^i}"] \arrow[d, "q" swap] & B_i \arrow[r, "{q_i}"] & Q_i \arrow[d, "{id_{Q_i}}"] \\
+            Q \arrow[urr, dashed, "\pi_C^i"] \arrow[r, "m" swap] &L \arrow[r, "{l_i}"swap] & Q_i
+        \end{tikzcd}
+    \]
+    We have to show that in this way we get a cone over the diagram $D$. Let $\alpha : i\to j$ be an arrow of $\cat{I}$, then we have:
+    \begin{align*}
+    U(D(\alpha)\circ (\pi_E^i, \pi_V^i, \pi_C^i))  &=  U(D(\alpha))\circ(\pi_E^i, \pi_V^i)\\
+                                                   &=  (\pi_E^j, \pi_V^j)\\
+                                                   &=  U(D(\alpha)\circ (\pi_E^j, \pi_V^j, \pi_C^j))
+    \end{align*}
+    And faithfulness of $U$ yields the thesis.
+
+    To see that this cone is terminal, let $((E, F, G, a, b, c), \tau_i = (\tau_E^i, \tau_V^i, \tau_C^i)_{i \in \cat I})$ be another cone. By construction, we have an arrow $(\tau_E, \tau_V):(E, F, a, b) \to (A, B, s, t)$ such that
+    \[
+        \begin{tikzcd}
+            & E \arrow[dl, dashed, "{\tau_E}" swap] \arrow[dr, "{\tau_E^i}"] & \\
+            A \arrow[rr, "{\pi_E^i}" swap] & & A_i 
+        \end{tikzcd}
+        %
+        \qquad
+        %
+        \begin{tikzcd}
+            & F \arrow[dl, dashed, "{\tau_V}" swap] \arrow[dr, "{\tau_V^i}"] & \\
+            B \arrow[rr, "{\pi_V^i}" swap] & & B_i 
+        \end{tikzcd}
+    \]
+
+    For the same reason as before, $(G, (\tau_C^i)_{i\in \cat I})$ is a cone over $V \circ D$, thus there exists an arrow $\tau : G \to L$ such that $l_i \circ \tau = \tau_C^i$. At this point, we get
+    \begin{align*}
+        l_i\circ \tau \circ c 
+                        &= \tau_C^i\circ c              && \\
+                        &=q_i\circ \tau_V^i             && \textit{$\tau_i$ is a morphism in $\EqGrph$}\\
+                        &=q_i\circ \pi_V^i\circ \tau_V  && \textit{Diagram above} \\
+                        &=l_i\circ l\circ \tau_V        && \textit{$(B, (q_i\circ \pi_V^i)_{i \in \cat I})$ cone} 
+    \end{align*} 
+
+    Therefore, the outer part of the rectangle below commutes, and by REMARK \todo{epi-reg fact in SET} there exists a unique $\tau_C: G \to Q$
+    \[
+        \begin{tikzcd}
+            F \arrow[r, "{\tau_V}"] \arrow[d, "c"swap] & B \arrow[r, "q"] & Q \arrow[d, "m"] \\
+            G \arrow[urr, dashed, "{\tau_C}"] \arrow[rr, "{\tau}"swap] & & L
+        \end{tikzcd}
+    \]
+     Faithfulness of $U$ guarantees that $(\tau_E, \tau_V, \tau_C)$ is the unique arrow such that $(\pi_E^i, \pi_V^i, \pi_C^i) \circ (\tau_E, \tau_V, \tau_C) = (\tau_E^i, \tau_V^i, \tau_C^i)$.
+     \todo{Dimostrazione dello statement di sopra, e colimiti}
+\end{proof}
+
+\begin{cor}\label{cor:mono_in_EqGrph}
+    An arrow $h = (h_E, h_V, h_C): \eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G) \to \eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ in $\EqGrph$ is mono if and only if $h_E$ and $h_V$ are mono in $\Set$.
+\end{cor}
+
+\begin{proof}
+    The ``if'' part is given by the fact that $U$ is faithful, and hence reflects monomorphisms. Since a morphism ain a category of presheaves is mono if and only if it is injective on each component \todo{commentato il link, dimostrare questa cosa}
+    % https://ncatlab.org/nlab/show/category+of+presheaves#properties
+    we have that, if  $U(h)$ is mono, that is, $h_E$ and $h_V$ are injective in $\Set$, then $h$ is mono.
+    For the ``only if'' part, suppose $f = (f_E, f_V, f_C)$, $g=(g_E, g_V, g_C)$, $f, g : \eqgraph{H \to K}$ be such that $h \circ f = h \circ g$. Then, we have
+    \begin{align*}
+        h \circ f   &= (h_E \circ f_E, h_V \circ f_V, h_C \circ f_C) \\
+                    &= (h_E \circ f_E, h_V \circ f_V, h_V \circ f_V \circ \eqgraph{K}(q)) \\
+                    &= (h_E \circ g_E, h_V \circ g_V, h_V \circ g_V \circ \eqgraph{K}(q))
+    \end{align*}    
+    Since $\eqgraph{K}(q)$ is epi, we have, on the third component, that $h_V \circ f_V \circ \eqgraph{K}(q) = h_V \circ g_V \circ \eqgraph{K}(q))$ implies $f_C = g_C$, and hence $f = g$    
+\end{proof}
+
+\begin{cor}\label{cor:regmono}Let $ h = (h_E, h_V, h_C): \eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G) \to \eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be a morphism of $\EqGrph$, then the following are equivalent:
+	\begin{enumerate}
+		\item $h$ is a regular mono;
+		\item $h_E$, $h_V$, $h_C$ are all monos;
+		\item $h_E$ and $h_V$ are mono and for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$.
+	\end{enumerate}
+\end{cor}
+\begin{proof}
+	$1\Rightarrow 2.$ If $h$ is mono, from \Cref{cor:mono_in_EqGrph} we have that $h_E$ and $h_V$ are monos. To derive $h_C$ mono, suppose $f, g :  \eqgraph{H \to K}$ to be the arrows equalized by $h$. Then we have
+    \begin{align*}
+        f_C \circ h_C \circ \eqgraph{G}(q)  &=  f_C \circ \eqgraph{H}(q) \circ h_V \\
+                                            &=  \eqgraph{K}(q) \circ f_V \circ h_V \\
+                                            &=  \eqgraph{K}(q) \circ g_V \circ h_V \\
+                                            &=  g_C \circ h_C \circ \eqgraph{G}(q)
+    \end{align*}
+    since $\eqgraph{G}(q)$ is epi, we have that $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, thus a monomorphism.
+	
+	\smallskip \noindent
+	$2\Rightarrow 3.$ The leftward side of the statement is satisfied by the definition of morphism of graphs with equivalences. For the remaining part, we have
+    \begin{align*}
+        (\eqgraph{H}(q) \circ h_V) (v)  &=  (\eqgraph{H}(q) \circ h_V)(v') \\
+        (h_C \circ \eqgraph{G}(q))(v)   &=  (h_C \circ \eqgraph{G}(q))(v')  
+    \end{align*}
+        since $h_C$ is mono, we can conclude $\eqgraph{G}(q)(v)= \eqgraph{G}(q)(v')$.
+	
+	\smallskip \noindent 
+	$3\Rightarrow 1.$\todo{Esercizio} \color{green}{idea: force the comm. of the diagram on the last two components to obtain the two arrows that are equalized, and show that the condition in 3 is sufficient to conclude reg. mono} \color{black}
+\end{proof}
+
+Let us turn to another functor $\EqGrph\to \Graph$.
+
+\begin{definition}
+The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $(E_G, C_G, q_G\circ s_G, q_G\circ t_G)$ and an arrow $(h_E, h_V, h_C) \colon (E_G, V_G, C_G, s_G, t_G, q_G)\to (E_H, V_H, C_H, s_H, t_H, q_H)$ to $(h_E, h_C)$.
+\end{definition}
+
+\begin{remark}
+    The action of the functor on a morphism of graphs with equivalences gives a morphism of graphs, in fact $q_H \circ s_H \circ h_E = q_H \circ h_V \circ s_G = h_C \circ q_G \circ s_G$. The same is valid for $t_H$ and $t_G$. 
+\end{remark}
+
+\begin{lemma}
+    $Q$ is a left adjoint.
+\end{lemma}
+
+\begin{proof}
+    Let $R((A, B, s, t))$ be $(A, B, B, s, t, id_B)$, so that $Q(R((A, B, s, t))) = (A, B, s, t)$. Now, suppose that $h = (h_E, h_V): Q((E, V, C, s', t', q)) \to (A, B, s, t)$  is an arrow in $\Graph$, and consider the triple $(h_E, h_V, h_V \circ q)$. Since $h$ is a morphism of $\Graph$, 
+    \[h_V\circ q\circ s'= s\circ h_E \qquad  h_V\circ q\circ t' = t\circ h_E\]
+    Then we have the following squares:
+    \[
+        \begin{tikzcd}
+            E \arrow[r, "{h_E}"] \arrow[d, "{s_G}"swap] & A \arrow[d, "s"] \\
+            V \arrow[r, "{h_V \circ q}"swap] & B
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}
+            E \arrow[r, "{h_E}"] \arrow[d, "{t_G}"swap] & A \arrow[d, "t"] \\
+            V \arrow[r, "{h_V \circ q}"swap] & B
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}
+            V \arrow[r, "{h_V\circ q}"] \arrow[d, "q" swap] & B \arrow[d, "{id_B}"] \\
+            C \arrow[r, "{h_V}"swap] & B
+        \end{tikzcd}
+    \]
+
+    We have therefore found a morphism $(E, V, C, s', t', q) \to R((A, B, s, t))$ whose image through $Q$ fits in the diagram below.
+    \[
+        \begin{tikzcd}
+            (A, B, s, t) \arrow[r, "{id_A, id_B}"] & (A, B, s, t)\\
+            (E, C, q\circ s', q\circ t') \arrow[u, "{Q((h_E, h_V \circ q, h_V))}"] \arrow[ur, "{(h_E, h_V)}" swap] 
+        \end{tikzcd}
+    \]
+    Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow wit such property. Then, it must be $(id_A, id_B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
+\end{proof}
+
+\begin{prop}
+    $Q$ creates colimits.
+\end{prop}
+
+\begin{proof}
+    Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
+\end{proof}
+

@@ -1,0 +1,412 @@
+\color{blue}
+
+\section{Graphs with equivalences - notes and results}
+
+\subsection{Some results on kernel pair and regular epis}
+\todo{Questi risultati vanno completati e distribuiti lungo la tesi: quello sui kernel pair nella parte sui pullback, quello sugli epi regolari nella parte sui coequalizzatori, quelli che riguardano l'adesività nella relativa sezione}
+
+\todo{Sicuramente devi anche mettere dei riferimenti ai risultati della sez. sull'adesività (tipo alla proposizione che gli M-pushout sono pullback)}
+
+\begin{lemma}\label{lem:pb1}
+	Suppose that the following diagram is given and its right half is a pullback. Then the whole rectangle is a pullback if and only if its left half is a pullback.
+	\[\xymatrix{X\ar[r]^{f} \ar[d]_{t} & Y \ar[d]^{k}\ar[r]^{g} &Z \ar[d]^{h}\\A \ar[r]_{a}& B \ar[r]_{b} & C}\]
+\end{lemma}
+\begin{proof}
+	\todo{Esercizio per te}
+\end{proof}
+
+\begin{cor}\label{cor:cube} Let $\cat{C}$ be a category and suppose that  the solid part of the following cube is given
+	\[\xymatrix@C=13pt@R=13pt{&Y'\ar[dd]|\hole_(.65){y}\ar[rr]^{g'} \ar@{.>}[dl]_{q'} && Z' \ar[dd]^{z} \ar[dl]_{r'} \\ B'  \ar[dd]_{b}\ar[rr]^(.65){k'} & & C' \ar[dd]_(.3){c}\\&Y\ar[rr]|\hole^(.65){g} \ar[dl]^{q} && Z \ar[dl]^{r} \\B \ar[rr]_{k} & & C}\]
+	If the front face is a pullback then there is a unique $q'\colon Y'\to B'$ filling the diagram. If, moreover, the other two vertical faces are also pullbacks, then the following square is a pullback too.
+	\[\xymatrix{Y' \ar[r]^{q'} \ar[d]_{y}& B'\ar[d]^{b}\\ Y \ar[r]_{q} & B}\]
+\end{cor}
+\begin{proof}
+	Let us compute:
+	\begin{align*}
+		c\circ r'\circ g'&=r\circ z \circ g'\\&=r\circ g \circ y\\&=k\circ q \circ y
+	\end{align*}
+	Since the front face is a pullback, this guarantees the existence of $q'$.  The second half of the thesis follows applying \cref{lem:pb1} to the following rectangle.
+	\[\xymatrix{Y'\ar@/^.4cm/[rr]^{r'\circ g'} \ar[r]_{q'} \ar[d]_{y}& B'\ar[d]_{b}\ar[r]_{k'}& C'\ar[d]^{c}\\ Y\ar@/_.4cm/[rr]_{r\circ g} \ar[r]^{q} & B \ar[r]^{k}& C}\]
+\end{proof}
+
+
+\iffalse 
+In an $\mathcal{M}$-adhesive category, pullbacks also enjoy a kind of left cancellation property.
+
+\begin{lemma}\label{lem:pb2}
+	Let $\cat{C}$ be a category with pullbacks, given the following diagrams:
+	\[
+	\xymatrix{Y\ar[r]^{f_2} \ar[d]_{f_1} & X_2 \ar[d]^{r_2} & Z_1 \ar[d]_{x_1}\ar[r]^{z_1} & W \ar[r]^{w} \ar[d]_{r} & Q'\ar[d]^{q} & Z_2 \ar[d]_{x_2} \ar[r]^{z_2}  & W  \ar[r]^{w} \ar[d]_{r}  & Q' \ar[d]^{q}\\ X_1 \ar[r]_{r_1} &R  & X_1 \ar[r]_{r_1} & R \ar[r]_{s}  & Q& X_2 \ar[r]_{r_2} & R \ar[r]_{s} & Q}\]
+	if the first square is a stable pushout and the whole rectangles and their left halves are pullbacks, then their common right half is a pullback too.
+\end{lemma}
+\begin{proof}Pulling back  $q$ along $s$ we get a square 
+	\[\xymatrix{U \ar[r]^{u} \ar[d]_{h}& Q' \ar[d]^{q}\\ R \ar[r]_s & S}\]
+	Notice that
+	\[
+	q\circ w\circ z_1=s\circ r_1\circ x_1 \qquad 
+	q\circ w\circ z_2=s\circ r_2\circ x_2 \]
+	Thus we get $u_1\colon Z_1\to U$ and $u_2\colon Z_2\to U$ fitting in the rectangles
+	\[\xymatrix{  Z_1  \ar@/^.4cm/[rr]^{w\circ z_1}\ar[r]_{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]_{u} & Q'  \ar[d]^{q}&  Z_2 \ar@/^.4cm/[rr]^{w\circ z_2} \ar[r]_{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]_{u}& Q' \ar[d]^{q} \\  X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	which, by hypothesis and  \cref{lem:pb1} have left halves which are pullbacks. Now,
+	\[s\circ r_1\circ f_1 =s\circ r_2\circ f_2\]
+	Pulling back $q$ along this arrow we get another square
+	\[\xymatrix@C=40pt{Z'_0 \ar[r]^{t} \ar[d]_{y}& Q' \ar[d]^{q}\\ R \ar[r]_{s\circ r_1\circ f_1} & S}\]
+	In particular, we obtain the dotted $b_1\colon Z'_0\to Z_1$ and $b_2\colon Z'_0\to Z_2$ in
+	\[\xymatrix@C=30pt{ Z'_0 \ar@/^.4cm/[rrr]^{t}\ar[d]_{y} \ar@{.>}[r]_{b_1} & Z_1  \ar[r]_{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]_{u} & Q'  \ar[d]^{q} &Z'_0 \ar@/^.4cm/[rrr]^{t} \ar[d]_{y}\ar@{.>}[r]_{b_2}  & Z_2  \ar[r]_{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]_{u}& Q' \ar[d]^{q} \\ Y \ar[r]_{f_1}& X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & Y \ar[r]_{f_2} & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	in which, using again \cref{lem:pb1}, all of the squares on the bottom rows are pullbacks. 
+	
+	We are going to construct another row above these two rectangles. By hypothesis 
+	\[q\circ w = s\circ r\]
+	Thus there exists a unique $g\colon W\to U$ such that
+	\[r=h\circ g \qquad w=u\circ g\]
+	Moreover, we also have that
+	\[\begin{split}h\circ g \circ z_1&=r \circ z_1\\&= r_1\circ x_1 \\&=h\circ u_1
+	\end{split}\qquad\begin{split}h\circ g \circ z_2&=r \circ z_2\\&= r_2\circ x_2 \\&=h\circ u_2
+	\end{split}\]
+	and 
+	\[\begin{split}u\circ g \circ z_1&=w \circ z_1\\&= u\circ u_1 
+	\end{split} \qquad \begin{split}u\circ g \circ z_1&=w \circ z_2\\&= u\circ u_2
+	\end{split}\]
+	which together show that
+	\[g\circ z_1=u_1 \qquad g\circ z_2=u_2\]
+	
+	Summing up, we can depict all the arrows we have constucted so far in the following diagrams
+	\[\xymatrix{Z'_0 \ar[r]^{b_1} \ar[d]_{id_{Z'}}& Z_1 \ar[r]^{z_1} \ar[d]_{id_{Z_1}} &  W \ar[d]_g \ar[r]^{w} & Q' \ar[d]^{id_{Q'}}&& Z'_0 \ar[r]^{b_2}  \ar[d]_{id_{Z'}}& Z_2 \ar[d]_{id_{Z_2}} \ar[r]^{z_2}&  W \ar[d]_g\ar[r]^{w}& Q' \ar[d]^{id_{Q'}}\\ Z'_0 \ar[d]_{y} \ar[r]^{b_1} & Z_1  \ar[r]^{u_1}\ar[d]_{x_1}&  U \ar[d]_h \ar[r]^{u} & Q'  \ar[d]^{q}& &Z'_0  \ar[d]_{y}\ar[r]^{b_2}  & Z_2  \ar[r]^{u_2}\ar[d]_{x_2} &  U \ar[d]_h \ar[r]^{u}& Q' \ar[d]^{q} \\ Y \ar[r]_{f_1}& X_1 \ar[r]_{r_1} & R \ar[r]_s& Q & &Y \ar[r]_{f_2} & X_2 \ar[r]_{r_2}& R \ar[r]_s & Q}\]
+	If we show that $g$ is an isomorphism we are done. Consider the cubes
+	\[\xymatrix@C=13pt@R=13pt{&Z_0'\ar[dd]|\hole_(.7){y}\ar[rr]^{b_2} \ar[dl]_{b_1} && Z_2 \ar[dd]^{x_2} \ar[dl]_{z_2}  &&Z'_0\ar[dd]|\hole_(.7){y}\ar[rr]^{b_2} \ar[dl]_{b_1} && Z_2 \ar[dd]^{F_j(b)} \ar[dl]_{u_2}\\Z_1  \ar[dd]_{x_1}\ar[rr]^(.65){z_1} & & W \ar[dd]_(.3){r}&& Z_1  \ar[dd]_{x_1}\ar[rr]^(.65){u_1} & &U \ar[dd]_(.3){h}\\&Y\ar[rr]|\hole^(.65){f_2} \ar[dl]_{f_1} && X_2 \ar[dl]^{r_2} && Y\ar[rr]|\hole^(.65){f_2} \ar[dl]_{f_1} && X_2 \ar[dl]^{r_2}\\X_1 \ar[rr]_{r_1} & & R && X_1 \ar[rr]_{r_1} & & R}\]
+	in which the vertical faces are pullbacks. Since the bottom face is a stable pushout we can deduce that
+	\[\xymatrix{Z'_0 \ar[d]_{b_1} \ar[r]^{b_2}&  Z_2 \ar[d]^{z_2} & Z'_0 \ar[d]_{b_1} \ar[r]^{b_2}&  Z_2 \ar[d]^{u_2}\\ Z_1 \ar[r]_{z_1}& W & Z_1 \ar[r]_{u_1}& U }\]
+	are pushout squares too. The arrow $g$ fits in the following  diagram
+	\[\xymatrix{Z'_0\ar[r]^{b_2} \ar[d] _{b_1}& Z_2 \ar@/^.3cm/[ddr]^{u_2}\ar[d]^{z_2} \\ Z_1 \ar[r]_{z_1}  \ar@/_.3cm/[drr]_{u_1}& W \ar[dr]^{g} \\ &&U}\]
+	and thus it is an isomorphism.
+\end{proof} 
+\fi 
+
+\begin{definition}A \emph{kernel pair} $(K_f, p_{f, 1}, p_{f,2})$ for an arrow $f\colon X\to Y$ is an object $K_f$ with two arrows $p_{f,1}, p_{f, 2}\colon K_f\to X$ making the following square a pullback.
+	\[\xymatrix{K_f \ar[r]^{p_{f,1}} \ar[d]_{p_{f,2}}& X \ar[d]^{f}\\ X \ar[r]_{f} & Y}\]
+\end{definition}
+
+\begin{remark}
+	If a category $\cat{C}$ has pullbacks then every arrow has a kernel pair.
+\end{remark}
+
+
+\begin{prop}\label{prop:kermono}
+	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
+\end{prop}
+\begin{proof}\todo{esercizio}
+\end{proof}
+
+\begin{cor}\label{cor:kermono}
+	Let $(K_f, p_{f,1}, p_{f,2})$ be a kernel pair for $f\colon X\to Y$. Then for every mono $m\colon Y\to Z$, $(K_f, p_{f,1}, p_{f,2})$ is a kernel pair also for $m\circ f$.
+\end{cor}
+\begin{proof}
+	It is enough to see that, by \Cref{lem:pb1,prop:kermono} the outer boundary of the following square is a pullback.
+	\[\xymatrix{K_f\ar[r]^{p_{f,1}}  \ar[d]_{p_{f,2}}& X \ar[r]^{id_X} \ar[d]_{f}&X\ar[d]^{f} \\X \ar[d]_{id_X} \ar[r]_{f} & Y \ar[d]_{id_Y} \ar[r]_{id_Y}& Y \ar[d]^{m}\\X \ar[r]_{f} & Y \ar[r]_{m} & Z}\]
+	
+\end{proof}
+
+\begin{lemma}\label{lem:salvavita1}
+Suppose that the following square is given and that $f\colon X\to Y$ and $g\colon Z\to W$ have kernel pairs.
+\[\xymatrix{X \ar[d]_{f}\ar[r]^{h}& Z \ar[d]^{g} \\ Y \ar[r]_{t}& W}\]
+
+Then there exists a unique arrow $k_h\colon K_f\to K_g$ making the squares below commutes.
+
+\[\xymatrix{K_f \ar[d]_{p_{f, 1}}\ar@{.>}[r]^{k_h}& K_g \ar[d]^{p_{g,1}} & K_f \ar[d]_{p_{f,2}}\ar@{.>}[r]^{k_h}& K_g \ar[d]^{p_{g,2}} \\ X \ar[r]_{h}& Z & X \ar[r]_{h}& Z}\]
+
+Moreover, if the beginning square is a pullback, then also the preceding ones are so.
+\end{lemma}
+\begin{proof}
+	Computing we have
+	\begin{align*}
+		g\circ h\circ p_{f,1}&=t\circ f\circ p_{f,1}\\&=t\circ f\circ p_{f,2}\\&=g\circ h\circ p_{f,2}
+	\end{align*}
+	So that the wanted $k_h$ exists, and it is unique, by the universal property of $K_g$ as the pullback of $g$ along itself. 
+	
+	To prove the second half of the thesis, let us consider the  two rectangles below, which, by \Cref{lem:pb1} are pullbacks.
+\[\xymatrix{K_f\ar[r]^{p_{f,1}}  \ar[d]_{p_{f,2}}& X \ar[r]^{h} \ar[d]^{f} & Z \ar[d]^{g} & K_f \ar[r]^{p_{f,2}}  \ar[d]_{p_{f,1}} & X \ar[d]^{f} \ar[r]^{h}& Z \ar[d]^{g}\\
+	X \ar[r]_{f}& Y \ar[r]_{t}& W&  X \ar[r]_f & Y\ar[r]_{t} & W}\]
+	
+	But then the following ones are pullbacks too.
+ 	\[\xymatrix{K_f \ar@/^.4cm/[rr]^{h\circ p_{f,2}} \ar[r]_{k_h} \ar[d]_{p_{f,1}}& K_g  \ar[r]_{p_{g,2}} \ar[d]_{p_{g,1}} & Z \ar[d]^{g} & K_f \ar@/^.4cm/[rr]^{h\circ p_{f,1}} \ar[r]_{k_h} \ar[d]_{p_{f,2}}& K_g \ar[r]_{p_{g,1}} \ar[d]_{p_{g,2}} & Z \ar[d]^{g}\\X \ar@/_.4cm/[rr]_{t\circ f}\ar[r]^{h}& Z \ar[r]^{g} & W & X \ar@/_.4cm/[rr]_{t\circ f} \ar[r]^{h}& Z \ar[r]^{g}& W}\]
+ 	
+ 	The thesis now follows again by \Cref{lem:pb1}.
+\end{proof}
+
+
+\begin{lemma}\label{lem:salvavita2}
+Let $\cat{C}$ be an $\mathcal{M}$-adhesive category with all pullbacks and suppose that the cube below is given, in which every face is a pullback and the bottom one is an $\mathcal{M}$-pushout.
+
+ 	\[\xymatrix@C=10pt@R=10pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D}\]
+Then the square below is a pushout.
+\[\xymatrix{K_{a} \ar[r]^{k_{f'}}  \ar[d]_{k_{m'}}& K_b \ar[d]^{k_{n'}}\\ K_c \ar[r]_{k_{g'}} & K_d}\]
+\end{lemma}
+\begin{proof} By \Cref{lem:salvavita1} in the following cube the vertical faces are all pullbacks. 
+		\[\xymatrix@C=10pt@R=10pt{&K_a\ar[dd]|\hole_(.65){p_{a,1}}\ar[rr]^{k_{f'}} \ar[dl]_{k_{m'}} && K_b \ar[dd]^{p_{b,1}} \ar[dl]_{k_{n'}} \\ K_c  \ar[dd]_{p_{c,1}}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){p_{d,1}}\\&A'\ar[rr]|\hole^(.65){f'} \ar[dl]^{m'} && B' \ar[dl]^{n'} \\C' \ar[rr]_{g'} & & D'}\]
+	$f'$ is in $\mathcal{M}$ as it is the pullback of $\mathcal{M}$, thus the bottom face of the cube is a Van Kampen pushout and the thesis follows.
+\end{proof}
+
+
+\begin{prop}\label{prop:regepi}
+	Let $e\colon X\to Y$ be a regular epi in a category $\cat{C}$ with a kernel pair $p_1, p_2\colon P\rightrightarrows X$, then $e$ is the coequalizer of $p_1$ and $p_2$.
+\end{prop}
+\begin{proof}
+	By hypothesis there exists a pair $f, g\colon Z\rightrightarrows X$ of which $e$ is the coequalizer, since $e\circ f=e\circ g$ we have a diagram
+	\[\xymatrix{	Z \ar@/^.5cm/[drr]^{f} \ar@/_.5cm/[ddr]_{g} \ar@{.>}[dr]^{k}& &	\\ &P\ar[r]^{p_1} \ar[d]_{p_2} & X \ar[d]^{e} \\& X \ar[r]_{e}  & Y}\]
+	and thus there exists  the dotted $k\colon Z\to P$. Let $h\colon Z\to V$ be an arrow such that $h\circ p_1=h\circ p_2$, then
+	\begin{align*}h\circ f &= h \circ p_1\circ k \\&= h \circ p_2\circ k \\&=h\circ g
+	\end{align*}
+	and thus there exists a unique $l\colon Y\to V$ such that $l\circ e=h$.
+\end{proof}
+
+
+\begin{cor}\label{cor:regepi1}
+Let $\cat{C}$ be a category with pullbacks and $\phi\colon D\to D'$ be a natural transformation between two functor $D, D'\colon \cat{I}\to \cat{C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
+\end{cor}
+\begin{proof}
+	Let $K_i$ be the kernel pair of $\phi_i$, with projections $p_{1,i}, p_{2,i}\colon K_i\rightrightarrows D(i)$. Given an arrow $f\colon i\to j$ in $\cat{I}$, we have 
+	\begin{align*}
+		\phi_j\circ D(f)\circ p_{1,i}&=D'(f)\circ \phi_i\circ p_{1,i}\\&=D'(f)\circ \phi_i\circ p_{2,i}\\&=\phi_j\circ D(f)\circ p_{2,i}
+	\end{align*}
+	
+	
+	Thus the outer boundary of the diagram below commutes, yielding the dotted arrows $K(f)$.
+	\[\xymatrix{K_i \ar@{.>}[dr]^{K(f)}\ar[r]^{p_{1,i}} \ar[d]_{p_{2,i}}& D(i) \ar[dr]^{D(f)}\\D(i) \ar[dr]_{D(f)}&K_j \ar[r]^{p_{1,j}} \ar[d]_{p_{2,j}} & D(j) \ar[d]^{\phi_j}\\ &D(j) \ar[r]_{\phi_j} & D'(j)}\]
+	
+	In this way \todo{esercizio per te}we get a functor $E\colon \cat{I}\to \cat{C}$ with two natural transformations $p_{1}, p_2\colon E\rightrightarrows D$. By \Cref{prop:regepi} every component  $\phi_i$ of $\phi$ is the coequalizer of $p_{1,i}, p_{2,i}\colon E\rightrightarrows D$ and so $\phi$ is the coequalizer of $p_1$ and $p_2$.
+\end{proof}
+
+
+\todo{COSE DA FARE: nel capitolo 1 metti una proposizione in cui mostri che da ogni trasf naturale $D\to D'$ puoi ricavare una freccia tra i colimiti, così in questa e nelle altre proposizioni puoi citarla.}
+
+\begin{lemma}\label{lem:regepi}
+	Let $D, D'\colon \cat{I}\rightrightarrows  \cat{C}$ be two diagrams diagram with colimiting cocone $(C, \{c_i\}_{i\in \cat{I}})$ and   $(Q, \{q_i\}_{i\in \cat{I}})$. If $\cat{C}$ has all colimits for diagrams of shape $\cat{I}$ and $\phi\colon D\to D'$ is a natural transformation in which all components are regular epis, then the canonical arrow\todo{richiama prop precedente}  $c\colon C\to Q$ is a regular epi to.
+\end{lemma}
+\begin{proof}
+	By \Cref{cor:regepi1} we know that $\phi\colon D\to D'$ is a regular epi, so that there is a functor $E\colon \cat{I}\to \cat{C}$ and $\alpha, \beta\colon E\rightrightarrows D$ such that $\phi$ is a coequalizer for $\alpha$ and $\beta$. Let $(P, \{p_i\}_{i\in \cat{I}})$ be the colimit of $E$, by ???\todo{richiama prop sulla freccia tra i colimiti} we have arrows $a, b\colon P\rightrightarrows  C$ fitting in the diagram belows:
+	\[\xymatrix{E(i) \ar[r]^{p_i} \ar[d]_{\alpha_i}& P \ar@{.>}[d]^{a} & E(i) \ar[r]^{p_i} \ar[d]_{\alpha_i} & P \ar@{.>}[d]^{b}\\ D(i) \ar[r]_{c_i} & C & D(i) \ar[r]_{c_i} & C}\]
+	
+	We want to show that $c$ coequalizes $a$ and $b$. Let thus $t\colon C\to T$ be an arrow such that $t\circ a=t\circ b$. Then for every $i\in I$ we have 
+	\begin{align*}
+		t\circ c_i\circ \alpha_i&=t\circ a\circ p_i\\&=t\circ b\circ p_i\\&=t\circ c_i\circ \beta_i
+	\end{align*}
+	
+	Thus there is $t_i\colon D'(i)\to T$ such that $t\circ c_i=t_i\circ \phi_i$. It is now easy to see that $(T, \{t_i\}_{i\in \cat{I}})$ is a cocone on $D'$ \todo{Verificalo!}.  Thus we have an arrow $k\colon Q\to T$ such that $k\circ q_i=t_i$. But then we have
+	\begin{align*}
+		k\circ c\circ c_i&=k\circ q_i\circ \phi_i\\&=t_i\circ \phi\\&=t\circ c_i
+	\end{align*}
+	Showing that $k\circ c=t$. 
+	
+	For uniqueness, let $k'$ be another arrow $Q\to T$ such that $k'\circ c=t$, then we have
+	\begin{align*}
+		k'\circ q_i\circ \phi_i&=k'\circ c\circ c_i\\&=t\circ c_i\\&=t_i\circ \phi_i
+	\end{align*}
+	Since $\phi_i$ is a regular epi, by ???\todo{mettere nel capitolo 1 una proposizione che mostra che epi regolari sono epi} this entails $k'\circ q_i=t_i$. By construction $k\circ q_i=t_i$ and  so $k=k'$ since $(Q, \{q_i\}_{i\in \cat{I}})$ is a colimiting cocone.
+\end{proof}
+
+
+
+
+\begin{definition}
+	A \emph{graph with equivalence} is a 6-uple $(A, B, C, s, t, q)$ where $A, B$ and $C$ are set, $s,t\colon A\rightrightarrows B$ are functions and $q\colon B\to C$ is another surjective function.
+	
+	A morphism  $(A, B, C, s, t, q)\to (A', B', C', s', t', q')$ is a triple $(h_1, h_2, h_3)$ of functions $h_1\colon A\to A'$, $h_2\colon B\to B'$ and $h_3\colon C\to C'$ making the following diagrams commute.
+	
+	\[\xymatrix{A \ar[r]^{s} \ar[d]_{h_1} & B \ar[d]^{h_2} & A \ar[r]^{s} \ar[d]_{h_1}& B \ar[d]^{h_2} & B \ar[d]_{h_2} \ar[r]^{q} & C \ar[d]^{h_3}\\A' \ar[r]_{s'} & B' & A ' \ar[r]_{t'}& B' & B' \ar[r]_{q'} & C'}\]
+	
+	In this way, defining the composition componentwise, we get a category $\EqGrph$.
+\end{definition}
+
+\begin{remark}\label{rem:fedele}
+	There is a faithful functor $U\colon \EqGrph\to \Graph$, forgetting the quotient part. \todo{Questo è per te da dimostrare (forse meglio come proposizione che come remark).}
+\end{remark}
+
+\begin{remark}
+There is another functor $V\colon \EqGrph\to \Set$ sending $(A, B,C, s,t, q)$ to $C$ and a morphism to its last component.	
+\end{remark}
+
+
+\begin{prop}\label{prop:limits}
+	$\EqGrph$ is complete, cocomplete and $U$ preserves limits and colimits.
+\end{prop}
+
+\begin{remark}\label{rem:ima}\todo{Dimostrala}In $\Set$ we have the following property: for every square as the one below, if $e\colon X\to Y$ is epi and $m\colon M\to Z$ is mono, then there exists a unique dotted arrow $Y\to M$ making the diagram below commutative.
+	\[\xymatrix{X \ar[r]^{f} \ar[d]_{e}& M \ar[d]^{m}\\ Y \ar[r]_{g} \ar@{.>}[ur]^{h}& Z}\] 
+\end{remark}
+
+
+\begin{proof}\todo{Per generalizzare ad altre categorie: serve poter fattorizzare con un epi regolare.} 
+	NOTATION: $D(i)$ is $(A_i, B_i, Q_i, s_i, t_i, q_i)$.	Let $(A, B, s, t)$ be the limit of $U\circ D$, with projections $(p_{1,i}, p_{2,i})\colon (A,B, s,t)\to (A_i, B_i, s_i, t_i)$. Let $(L, \{l_i\}_{i\in \cat{I}})$ be a limiting cone for $V\circ D$. 
+	
+	Now, notice that $(B, \{q_i\circ p_{2,i}\}_{i\in \cat{I}})$ is a cone over $V\circ D$, \todo{Dimostralo}, so that we have an arrow $l\colon B\to L$. This arrow is not epi in general, let $Q$ be its image and $q\colon B\to Q$ be the resulting epi and $m\colon Q\to L$ the corresponding mono.
+	By definition the external square in the diagram below commutes, so for every $i\in \cat{I}$, \Cref{rem:ima} yields the dotted arrow $p_{3,i}$.
+	\[\xymatrix{B \ar[r]^{p_{2,i}} \ar[d]_{q}& B_i \ar[r]^{q_i} & Q_i \ar[d]^{id_{Q_i}}\\ Q \ar[r]_{m} \ar@{.>}[urr]_{p_{3,i}}& L \ar[r]_{l_i} & Q_i}\]
+	
+	We have to show that in this way we get a cone over the diagram $D$. Let $f\colon i\to j$ be an arrow of $\cat{I}$, then we have:
+	\begin{align*}
+	U(D(f)\circ (p_{1,i}, p_{2, i}, p_{3,i}))  &=  U(D(f))\circ(p_{1,i}, p_{2, i})\\
+                                                   &=  (p_{1,j}, p_{2, j})\\
+                                                   &=  U(D(f)\circ (p_{1,j}, p_{2, j}, p_{3,j}))
+	\end{align*}
+	 And faithfulness of $U$ yields the thesis.
+	 
+	 To see that this cone is terminal, let $(E, F, G, a, b, c)$ be another graph with the vertex of a cone with sides $(t_{1,i},t_{2, i}, t_{3,i})$. By construction, we have an arrow $(t_1, t_2)\colon (E, F, a, b)\to (A, B, s, t)$ such that
+	 \[\xymatrix{&E \ar@{.>}[dl]_{t_1} \ar[dr]^{t_{1,i}}&&&F \ar@{.>}[dl]_{t_2} \ar[dr]^{t_{2,i}}\\ A \ar[rr]_{p_{1,i}} & & A_i & B \ar[rr]_{p_{2,i}}&& B_i }\]
+	
+        Moreover $(G, \{t_{3,i}\}_{i\in \cat{I}})$ is a cone over $V\circ D$, \todo{Verificalo}, thus there exists an arrow $t\colon G\to L$ such that $l_i\circ t =t_{3,i}$. Now, precomposing with $c$ we get
+	\begin{align*}
+		l_i\circ t\circ c&=t_{3,i}\circ c\\&=q_i\circ t_{2,i}\\&=q_i\circ p_{2,i}\circ t_2\\&=l_i\circ l\circ t_2
+	\end{align*} 
+	
+	Therefore the solid part of the diagram below commutes and \Cref{rem:ima} yields the dotted arrow $t_3\colon G\to Q$.
+	
+	\[\xymatrix{F \ar[r]^{t_2} \ar[d]_{c}& B \ar[r]^{q} & Q \ar[d]^{m}\\G \ar[rr]_{t} \ar@{.>}[urr]^{t_3}&& L}\]
+	
+	Faithfulness \todo{esercizio per te: scrivere la dimostrazione di queste ultime due righe}of $U$ now guarantees that $(t_1, t_2, t_3)$ is the unique arrow such that $(p_{1,i}, p_{2,i}, p_{3,i})\circ(t_1, t_2, t_3)=(t_{1,i},t_{2, i}, t_{3,i})$.	\todo{esercizio per te: fare i colimiti. Hint: la dimostrazione è diversa ma più semplice. Se $(A, B, s,t)$ è il colimite di $U\circ D$ puoi considerare il colimite $Q$ dei vari $Q_i$. Per la proprietà del colimite hai una freccia $B\to Q$, mostra che è epi (segue in una riga dai risultati che abbiamo).}
+\end{proof}
+
+
+
+
+\begin{cor}
+	An arrow $(h_1, h_2, h_3)\colon (A, B, C, s,t, q)\to (E, F, G, a,b,c)$ in $\EqGrph$ is mono if and only if $h_1$ and $h_2$ are mono in $\Set$.
+\end{cor}
+\begin{proof}
+	\todo{esercizio per te, usa fedeltà e continuità}
+\end{proof}
+
+
+
+\begin{cor}\label{cor:regmono}Let $(h_1, h_2, h_3)\colon (A, B, C, s,t, q)\to (E, F, G, a,b,c)$ be a morphism of $\EqGrph$, then the following are equivalent:
+	\begin{enumerate}
+		\item $(h_1, h_2, h_3)$ is a regular mono;
+		\item $h_1$, $h_2$, $h_3$ are all monos;
+		\item $h_1$ and $h_2$ are mono and for every $f, f'\in F$, $c(h_2(f))=c(h_2(f'))$ if and only if $q(f)=q(f')$.
+	\end{enumerate}
+\end{cor}
+\begin{proof}
+	$1\Rightarrow 2.$ \todo{Esercizio} 
+	
+	\smallskip \noindent
+	$2\Rightarrow 3.$ \todo{Esercizio}
+	
+	\smallskip \noindent 
+	$3\Rightarrow 1.$\todo{Esercizio}
+\end{proof}
+
+Let us turn to another functor $\EqGrph\to \Graph$.
+
+\begin{definition}
+The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(A, B, C, s,t, q)$ to $(A, C, q\circ s, q\circ t)$ and an arrow $(h_1, h_2, h_3) \colon (A, B, C, s,t, q)\to (E, F, G, a,b, c)$ to $(h_1, h_3)$.
+\end{definition}
+
+\todo{Verifica che questa cosa funziona $(h_1, h_3)$ è un morfismo di grafi?}
+
+\begin{lemma}
+	$Q$ is a left  adjoint.
+\end{lemma}
+\begin{proof} Let us start proving that $Q$ is a left adjoint. Let $R(A,B, s, t)$ be $(A, B, B, s,t, id_{B})$ , so that $Q(R(A,B,s,t))=(A,B,s,t)$. Now, suppose that an arrow $(h_1, h_2)\colon Q(E,F,G, a,b,c)\to (A,B, s,t)$ is given. Consider the triple $(h_1, h_2, h_2\circ c)$. Notice that, since $(h_1, h_2)$ is an arrow in $\Graph$:
+	\[h_2\circ c\circ a= s\circ h_1 \qquad  h_2\circ c\circ b= t\circ h_1\]
+	
+	 Then we have three squares:	
+	
+
+\[\xymatrix{E \ar[r]^{a} \ar[d]_{h_1} & F \ar[d]^{h_2\circ c} & E \ar[r]^{b} \ar[d]_{h_1}& F \ar[d]_{h_2\circ c} & B \ar[d]_{h_2\circ c} \ar[r]^{c} & C \ar[d]^{h_2}\\A \ar[r]_{s} & B & A  \ar[r]_{t}& B & B \ar[r]_{id_B} & B}\]
+	
+	 We have therefore found a morphism $(E,F,G, a,b,c)\to R(A,B,s,t)$ whose image through $Q$ fits in the diagram below.
+	\[\xymatrix{(A, B, s,t)\ar[r]^{(id_A, id_B)} &(A, B, s,t)\\ (E, G, q\circ s, q\circ t) \ar[ur]_{(h_1, h_2)} \ar[u]^{Q(h_1, h_2\circ q, h_2)}}\]
+	
+\todo{Esercizio: prova unicità (è facile)}
+\end{proof}
+
+
+
+\begin{prop}\label{prop:colimit}
+	$Q$ creates colimits.
+\end{prop}
+\begin{proof}
+	\todo{esercizio per te (devi verificare solo la riflessione: ma dato un diagramma in grafi fatto di quozienti, come costruisci un insieme di vertici per il colimite?)}
+\end{proof}
+
+\begin{example}
+	\todo{Q non preserva i limiti}
+\end{example}
+
+\subsection{Adhesivity of $\EqGrph$}
+
+\begin{lemma}\label{lem:stab}
+In $\EqGrph$ pushouts along regular monos are stable.
+\end{lemma}
+\begin{proof}
+	Suppose that the cube below is given, in which all the vertical faces are pullbacks and the bottom face is a pushout, with $(h_1, h_2, h_3)\colon (A_1,B_1,C_1, s_1,t_1,q_1)\to (A_2,B_2,C_2, s_2,t_2,q_2)$ a regular mono\todo{Questo diagramma va sistemato per farlo stare nella pagina (val la pena magari dire "sia $\mathcal{G}_1$ il grafo....")}.
+	
+		\[\xymatrix@C=20pt@R=20pt{&(A'_1,B'_1,C'_1, s'_1,t'_1,q'_1)\ar[dd]|\hole_(.65){(a_1, a_2, a_3)}\ar[rr]^{(h'_1, h'_2, h'_3)} \ar[dl]_{(k'_1, k'_2, k'_3)} && (A'_2,B'_2,C'_2, s'_2,t'_2,q'_2) \ar[dd]^{(b_1, b_2, b_3)} \ar[dl]_{(t'_1, t'_2, t'_3)} \\ (A'_3,B'_3,C'_3, s'_3,t'_3,q'_3) \ar[dd]_{(c_1, c_2, c_3)}\ar[rr]^(.65){(p'_1,p'_2,p'_3)} & & (A'_4,B'_4,C'_4, s'_4,t'_4,q'_4) \ar[dd]_(.3){(d_1, d_2, d_3)}\\&(A_1,B_1,C_1, s_1,t_1,q_1)\ar[rr]|\hole^(.65){(h_1, h_2, h_3)} \ar[dl]^{(k_1, k_2, k_3)} && (A_2,B_2,C_2, s_2,t_2,q_2) \ar[dl]^{(t_1, t_2, t_3)} \\(A_3,B_3,C_3, s_3,t_3,q_3) \ar[rr]_{(p_1, p_2, p_3)} & & (A_4,B_4,C_4, s_4,t_4,q_4)}\]
+
+By \Cref{prop:limits,cor:regmono} the following two cubes have $\mathcal{M}$-pushouts as bottom faces and pullbacks as vertical faces, thus their top faces are $\mathcal{M}$-pushouts.
+
+\[\xymatrix@C=10pt@R=10pt{&A'_1\ar[dd]|\hole_(.65){a_1}\ar[rr]^{h'_1} \ar[dl]_{k'_1} && A'_2 \ar[dd]^{b_1} \ar[dl]_{t'_1} && B'_1\ar[dd]|\hole_(.65){a_2}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[dd]^{b_2} \ar[dl]_{t'_2}\\ A'_3  \ar[dd]_{c_1}\ar[rr]^(.7){p'_1} & & A'_4 \ar[dd]_(.3){d_1} &&B'_3  \ar[dd]_{c_2}\ar[rr]^(.7){p'_2} & & B'_4 \ar[dd]_(.3){d_2}\\&A_1\ar[rr]|\hole^(.65){h_1} \ar[dl]^{k_1} && A_2 \ar[dl]^{t_1} && B_1\ar[rr]|\hole^(.65){h_2} \ar[dl]^{k_2} && B_2 \ar[dl]^{t_2} \\A_3 \ar[rr]_{p_1} & & A_4&&B_3 \ar[rr]_{p_2} & & B_4}\]
+
+Now,  using \Cref{cor:cube}, we can consider a third cube, which, by \Cref{prop:colimit}, has a bottom face an $\mathcal{M}$-pushout and pullbacks as vertical faces, so that its top face is an $\mathcal{M}$-pushout too.
+
+\[\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]^(.7){y_1} & & C'_4 \ar[dd]_(.3){d_3}\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
+
+Moreover, by the proof of \Cref{prop:limits} we know that there are monos $m_2\colon C'_2\to U $ and $m_3\colon C'_3\to Y$ fitting in the diagrams
+\[\xymatrix{B'_3\ar[r]^{p'_2} \ar[d]^{q'_3} \ar@/_.4cm/[dd]_{c_2}& B'_4\ar@/^.2cm/[dr]^{q'_4} && B'_2 \ar@/_.4cm/[dd]_{b_2} \ar[r]^{t'_2} \ar[d]^{q'_2}& B'_4 \ar@/^.2cm/[dr]^{q'_4} \\C'_3  \ar[r]^{m_3}& Y \ar[r]^{y_1} \ar[d]_{y_2} & C'_4 \ar[d]^{d_3} &C'_2 \ar[r]^{m_2}& U\ar[r]^{u_1} \ar[d]_{u_2} & C'_4 \ar[d]^{d_3}\\  B_3  \ar[r]_{q_2}& C_3 \ar[r]_{p_3}& C_4 &B_2 \ar[r]_{q_2}&  C_2 \ar[r]_{t_3}& C_4}\]
+
+For $C'_1$, the we can make a similar argument, let $S$ be the pullback of $m_2$ along $x_1$, using \Cref{lem:pb1} and, again, the proof of \Cref{prop:limits} we know that $q'_1$ arise as the factorization of the arrow $B'_1\to S$ induced by $q'_2\circ h'_2$ and $a_2$ so that we have a diagram.
+	\[\xymatrix{ B'_1 \ar@/_.4cm/[dd]_{a_2} \ar[r]^{h'_2} \ar[d]^{q'_2}& B'_2 \ar@/^.2cm/[dr]^{q'_2} \\C'_1 \ar[r]^{m_1}& S\ar[r]^{s_1} \ar[d]_{s_2}&C'_2 \ar[d]^{m_2}\\  B_2 \ar@/_.2cm/[dr]_{q_2}&  T \ar[r]^{x_1} \ar[d]_{x_2}& U \ar[d]_{u_2} \\ & C_1 \ar[r]_{h_3}&  C_2}\]
+
+%Notice that $s_2\colon S\to T$, being the pullback of a mono is mono by ????\todo{metti questo lemma da qualche parte: il pullback di un mono è mono}
+Moreover, notice that \todo{Esercizio (basta comporre prima e dopo con gli opportuni epi e mono)}
+
+\[s_1\circ m_1 = h'_3 \quad w\circ s_2\circ m_1=  m_3\circ k'_3 \quad t'_3=u_1\circ m_2 \quad p_3=y_1\circ m_3\]
+
+Let now $(z_1, z_2, z_3)\colon (A'_2, B'_2, C'_2)\to (E, F, G, e, f, g)$ and $(w_1, w_2, w_3)\colon (A'_3, B'_3, C'_3)\to (E, F, G, e, f, g)$ be two morphisms such that 
+\[(z_1, z_2, z_3)\circ (h'_1, h'_2, h'_3)=(w_1, w_2, w_3)\circ (k'_1, k'_2, k'_3)\] 
+Let $z\colon B'_4\to F$ be the arrow induced by $z_2$ and $w_2$, we want to construct the dotted arrow $v\colon C'_4 \to G$ in the diagram below
+ 
+ \todo{Sistema il diagramma mettendo gli opportuni buchi}
+\[\xymatrix@C=35pt@R=15pt{& B'_1 \ar[dd]|(.5)\hole_(.62){q'_1}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[ddd]|(.33)\hole^{q'_2} \ar[dl]_{t'_2} \ar@/^.2cm/[dr]^{z_2}\\B'_3 \ar[ddd]_{q'_3} \ar[rr]^(.65){p'_2} && B'_4  \ar[rr]^(.65){z}&& F \ar[ddddd]^{g}\\& C'_1 \ar@/^.2cm/[drr]^{h'_3} \ar@/_.2cm/[ddl]_{k'_3} \ar[d]^{m_1}\\& S \ar[rr]^{s_1} \ar[dd]_{s_2} && C'_2 \ar[dd]^{m_2} \ar@/^.2cm/[dddr]^{z_3} \ar[lddd]_{t'_3}\\ C'_3 \ar@/_.5cm/[ddrr]^(.65){p'_3} \ar[ddrrrr]_{w_3} \ar[dd]_{m_3}\\&T\ar[dd]|(.25)\hole|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]|(.25)\hole_{w} && U \ar[dd]^(.3){u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]_(.65){y_1} & & C'_4 \ar@{.>}[rr]_(.65){v} \ar[dd]_(.3){d_3} && G\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
+
+
+Now by \Cref{prop:regepi} $d_3$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lem:salvavita2}  we know that the top face of the cube below is a pushout.
+\[\xymatrix@C=15pt@R=15pt{&K_{s_2\circ m_1\circ q'_1}\ar[dd]|\hole_(.65){p_{s_2\circ m_1\circ q'_1,1}}\ar[rr]^{k_{h'_2}} \ar[dl]_{k_{k'_2}} && K_{m_2\circ q'_2} \ar[dd]^{p_{m_2\circ q'_2,1}} \ar[dl]_{k_{t'_2}} \\ K_{m_3\circ q'_3}  \ar[dd]_{p_{m_3\circ q'_3,1}}\ar[rr]^(.7){k_{p'_2}} & & K_{q'_4} \ar[dd]_(.3){p_{q'_4,1}}\\&B'_1\ar[rr]|\hole^(.65){h'_2} \ar[dl]^{k'_2} && B'_2 \ar[dl]^{t'_2} \\B'_3 \ar[rr]_{p'_2} & & C_4}\]
+Moreover, since $m_3$ and $m_2$ are monos, or by \Cref{cor:kermono} we also know that
+\[q'_3\circ p_{m_3\circ q'_3, 1}  = q'_3\circ p_{m_3\circ q'_3,2} \qquad q'_2\circ p_{m_2\circ q'_2, 1}  = q'_2\circ p_{m_2\circ q'_2,2}\]
+
+Now, we have
+\[
+\begin{split}
+	g\circ z\circ p_{q'_4,1} \circ k_{p'_2}&=g\circ z\circ p'_2\circ p_{m_3\circ q'_3, 1}\\&=g\circ w_2\circ \circ  p_{m_3\circ q'_3, 1}\\&=w_3\circ q'_3\circ p_{m_3\circ q'_3, 1}\\&=w_3\circ q'_3\circ p_{m_3\circ q'_3, 2}\\&=g\circ w_2\circ \circ  p_{m_3\circ q'_3, 2}\\&=g\circ z\circ p'_2\circ p_{m_3\circ q'_3, 2}\\&=g\circ z\circ p_{q'_4,2} \circ k_{p'_2}
+\end{split} \qquad 
+\begin{split}
+g\circ z\circ p_{q'_4,1} \circ k_{t'_2}&=g\circ z\circ t'_2\circ p_{m_2\circ q'_2, 1}\\&=g\circ z_2\circ \circ  p_{m_2\circ q'_2, 1}\\&=z_3\circ q'_2\circ p_{m_2\circ q'_2, 1}\\&=z_3\circ q'_2\circ p_{m_2\circ q'_2, 2}\\&=g\circ z_2\circ \circ  p_{m_2\circ q'_2, 2}\\&=g\circ z\circ t'_2\circ p_{m_2\circ q'_2, 2}\\&=g\circ z\circ p_{q'_4,2} \circ k_{t'_2}
+\end{split}
+\]
+
+The thesis now follows \todo{Scrivi perché}
+
+\todo{Esercizio: prova unicità}
+
+
+
+
+
+
+\end{proof}
+
+
+\begin{lemma}\label{lem:vk}
+In $\EqGrph$ pushouts along regular monos are Van Kampen.
+\end{lemma}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+From \Cref{prop:limits} and \Cref{lem:stab,lem:vk} we deduce at once the following.
+
+\begin{cor}\label{cor:equi}
+	$\EqGrph$ is quasiadhesive.
+\end{cor}
+
+\color{black}
