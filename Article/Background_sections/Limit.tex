@@ -149,10 +149,12 @@ The notions of product and coproduct can be easily generalized, extending the de
     Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of limits, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
 \end{proof}
 
+The dual of the proposition above states that a coequalizer is an epimmorphism.
+
 Of all monomorphisms, an interesting subclass of them is the one that contains only the equalizers.
 
-\begin{definition}[Regular Monomorphism]\label{def:reg_mono}
-    A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$.
+\begin{definition}[Regular Monomorphism, Regular Epimorphism]\label{def:reg_mono}
+    A monomorphism that is an equalizer for a pair of arrows is said \emph{regular monomorphism}. The class of all regular monomorphisms of a category $\cat C$ is denoted $\Reg(\cat C)$. An epimorphism that is a coequalizer for a pair of arrows is said \emph{regular epimorphism}.
 \end{definition}
 
 % -- NON SEMPRE E' VERO !!! ---
@@ -271,6 +273,57 @@ The following lemma is a classical result, its proof is in the appendix.
         \]
 \end{lemma}
 
+
+\begin{cor}\label{cor:cube} 
+    Let $\cat{C}$ be a category and suppose that  the solid part of the following cube is given
+	\[\begin{tikzcd}[row sep=13 pt, column sep=13 pt]
+    	& {Y'} && {Z'} \\
+    	{B'} && {C'} \\
+    	& Y && Z \\
+    	B && C
+    	\arrow["{g'}", from=1-2, to=1-4]
+    	\arrow["{q'}"', dashed, from=1-2, to=2-1]
+    	\arrow["y"'{pos=0.8}, from=1-2, to=3-2]
+    	\arrow["{r'}", from=1-4, to=2-3]
+    	\arrow["z", from=1-4, to=3-4]
+    	\arrow["{k'}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+    	\arrow["b"', from=2-1, to=4-1]
+    	\arrow["c"{pos=0.7}, from=2-3, to=4-3]
+    	\arrow["g"{pos=0.3}, from=3-2, to=3-4]
+    	\arrow["q"'{pos=0.2}, from=3-2, to=4-1]
+    	\arrow["r", from=3-4, to=4-3]
+    	\arrow["k"', from=4-1, to=4-3]
+        \end{tikzcd}\]
+	If the front face is a pullback then there is a unique $q'\colon Y'\to B'$ filling the diagram. If, moreover, the other two vertical faces are also pullbacks, then the following square is a pullback too.
+	\[\begin{tikzcd}
+	    Y' \ar[r, "{q'}"] \ar[d, "y"swap] & B' \ar[d,"b"] \\
+            Y \ar[r, "q"swap] & B
+	\end{tikzcd}\]
+\end{cor}
+\begin{proof}
+	Let us compute:
+	\begin{align*}
+            c\circ r'\circ g'   &=  r\circ z \circ g'   \\
+                                &=  r\circ g \circ y    \\
+                                &=k\circ q \circ y
+	\end{align*}
+	Since the front face is a pullback, this guarantees the existence of $q'$.  The second half of the thesis follows applying \Cref{lemma:pullback_lemma} to the following rectangle.
+	\[\begin{tikzcd}[row sep=15 pt, column sep=15 pt]
+	{Y'} && {B'} && {C'} \\
+	\\
+	Y && B && C
+	\arrow["{q'}"', from=1-1, to=1-3]
+	\arrow["{r' \circ g'}", bend left = 30, from=1-1, to=1-5]
+	\arrow["y"', from=1-1, to=3-1]
+	\arrow["{k'}"', from=1-3, to=1-5]
+	\arrow["b", from=1-3, to=3-3]
+	\arrow["c", from=1-5, to=3-5]
+	\arrow["q", from=3-1, to=3-3]
+	\arrow["{r \circ g}"', bend right=30, from=3-1, to=3-5]
+	\arrow["k", from=3-3, to=3-5]
+\end{tikzcd}\]
+\end{proof}
+
 The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
 
 \begin{theorem}[Limit theorem]\label{th:limit}
@@ -336,4 +389,168 @@ The next theorem is about a particular property that adjoint functors have.
     The dual of the theorem above states that, if $G$ is a functor and $F$ is a left adjoint, then $F$ preserves colimits.
 \end{remark}
 
+\subsection{Kernel pairs}
 
+\begin{definition}[Kernel Pair]
+    A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi_1^f, \pi_2^f : K_f \to A$, denoted as $(K_f, \pi_1^f, \pi_2^f)$, such that the following square is a pullback.
+    \[
+        \begin{tikzcd}
+            K_f \ar[r, "{\pi_1^f}"] \ar[d, "{\pi_2^f}" swap] & A \arrow[d, "f"] \\
+            A \ar[r, "f"swap] & B
+        \end{tikzcd}
+    \]
+\end{definition}
+
+\begin{remark}
+	If a category $\cat{C}$ has pullbacks then every arrow has a kernel pair.
+\end{remark}
+
+\begin{prop}\label{prop:kermono}
+	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
+\end{prop}
+
+\begin{proof}
+    To prove the ``if'' part of the statement, let $f, g: A \to M$ be such that $m\circ f = m\circ g$, and consider the following situation.
+    \[
+        \begin{tikzcd}
+        A \arrow[drr, bend left=20, "f"] \arrow[ddr, bend right=20,"g" swap] \arrow[dr, dashed, "u"] & & \\
+        & M  \arrow[d, "{id_M}" swap] \arrow[r, "{id_M}"] & M \arrow[d, "m"] \\
+        & M  \arrow[r, "m" swap] & X
+        \end{tikzcd}
+    \]
+    For the universal property of pullbacks, we have that $$f  =  id_M \circ u =  g$$
+    Hence, $m$ is mono.
+
+    Conversely, if $m$ is mono, then, we have that
+    \begin{align*}
+        m \circ f = m \circ g   &\Rightarrow    f = g \\
+                                &\Rightarrow    f \circ id_M = g\circ id_M
+    \end{align*}
+    Hence, $f$ is the unique arrow that makes the commutative square illustrated above a pushout.
+\end{proof}
+
+\begin{cor}\label{cor:kermono}
+	Let $(K_f, \pi^f_i), \pi^f_2)$ be a kernel pair for $f\colon X\to Y$. Then for every mono $m\colon Y\to Z$, $(K_f, \pi^f_1, \pi^f_2)$ is a kernel pair also for $m\circ f$.
+\end{cor}
+\begin{proof}
+    It is enough to see that, by \Cref{lemma:pullback_lemma} and \Cref{prop:kermono} the outer boundary of the following square is a pullback.
+        \[\begin{tikzcd}[row sep=13 pt, column sep=13 pt]
+    	{K_f} && X && X \\
+    	\\
+    	X && Y && Y \\
+    	\\
+    	X && Y && Z
+    	\arrow["{\pi_f^2}", from=1-1, to=1-3]
+    	\arrow["{\pi_f^2}"', from=1-1, to=3-1]
+    	\arrow["{id_X}", from=1-3, to=1-5]
+    	\arrow["f", from=1-3, to=3-3]
+    	\arrow["f", from=1-5, to=3-5]
+    	\arrow["f", from=3-1, to=3-3]
+    	\arrow["{id_X}"', from=3-1, to=5-1]
+    	\arrow["{id_Y}", from=3-3, to=3-5]
+    	\arrow["{id_Y}", from=3-3, to=5-3]
+    	\arrow["m", from=3-5, to=5-5]
+    	\arrow["f"', from=5-1, to=5-3]
+    	\arrow["m"', from=5-3, to=5-5]
+    \end{tikzcd}\]
+\end{proof}
+
+\begin{lemma}
+    Suppose the following situation, and that $f: X \to Y$ and $g: Z \to W$ have kernel pairs.
+    \[
+        \begin{tikzcd}
+            X \ar[r, "h"] \ar[d, "f"swap] & Z \ar[d, "g"] \\
+            Y \ar[r, "t"swap] & W
+        \end{tikzcd}
+    \]
+    
+    Then, there exists a unique arrow $k_h: K_f \to K_g$ making the squares below commute.
+    \[
+        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
+            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^1}"swap] & K_g \ar[d, "{\pi_g^1}"] \\
+            X \ar[r, "h"swap] & Z 
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
+            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^2}"swap] & K_g \ar[d, "{\pi_g^2}"] \\
+            X \ar[r, "h"swap] & Z 
+        \end{tikzcd}
+    \]
+
+    Moreover, if the beginning square is a pullback, then also the preceding ones are so.
+\end{lemma}
+
+\begin{proof}
+    Computing, we have
+    \begin{align*}
+        g \circ h \circ \pi_f^1 &=  t \circ f \circ \pi_f^1     \\
+                                &=  t \circ f \circ \pi_f^2     \\
+                                &=  g \circ h \circ \pi_f^2
+    \end{align*}
+    By the universal property of $K_g$ as the pullback of $g$ along itself, such $k_h$ exists and it is unique.
+
+    To prove the second half of the thesis, let us consider the two rectangles below, which, by \Cref{lemma:pullback_lemma} are pullbacks.
+    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
+	{K_f} & X & Z \\
+	X & Y & W
+	\arrow["{\pi_f^1}", from=1-1, to=1-2]
+	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
+	\arrow["h", from=1-2, to=1-3]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["t"', from=2-2, to=2-3]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
+	{K_f} & X & Z \\
+	X & Y & W
+	\arrow["{\pi_f^2}", from=1-1, to=1-2]
+	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
+	\arrow["h", from=1-2, to=1-3]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["t"', from=2-2, to=2-3]
+    \end{tikzcd}
+    \]
+    But then the following ones are pullbacks too.
+    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
+	{K_f} & {K_g} & Z \\
+	X & Y & W
+	\arrow["{k_h}"', from=1-1, to=1-2]
+	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
+	\arrow["{\pi_g^2}"', from=1-2, to=1-3]
+	\arrow["{\pi_g^1}", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["h", from=2-1, to=2-2]
+	\arrow["g", from=2-2, to=2-3]
+        \arrow["{h\circ \pi_f^2}", from=1-1, to=1-3, bend left = 30]
+        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
+	{K_f} & {K_g} & Z \\
+	X & Y & W
+	\arrow["{k_h}"', from=1-1, to=1-2]
+	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
+	\arrow["{\pi_g^1}"', from=1-2, to=1-3]
+	\arrow["{\pi_g^2}", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["h", from=2-1, to=2-2]
+	\arrow["g", from=2-2, to=2-3]
+        \arrow["{h\circ \pi_f^1}", from=1-1, to=1-3, bend left = 30]
+        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
+    \end{tikzcd}
+    \]
+
+    The thesis follows again by \Cref{lemma:pullback_lemma}.
+\end{proof}
+
+\begin{cor}
+    Let $\cat C$ be a category with pullbacks and $\phi : D \to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
+\end{cor}
+
+\begin{proof}
+    TODO
+\end{proof}

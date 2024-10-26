@@ -69,3 +69,16 @@ The idea behind this theorem is to simplify calculations to show that a certain 
     \end{itemize}
     
 \end{proof}
+
+\begin{cor}\label{cor:adhesivity_functor_categories}
+    Let $\cat A$ be a $\mathcal M$-adhesive category for some $\mathcal M \subseteq \Hom(\cat A)$. Then, for every other category $\cat C$, the functor category $[\cat C, \cat A]$ is $\mathcal M^{\cat C}$-adhesive, where
+    \[
+        \mathcal{M}^\cat C = \{\eta \in \Hom([\cat C, \cat A]) \mid \eta_C \in \mathcal M \textit{ for each object $C$ of $\cat C$ }\}
+    \]
+\end{cor}
+
+Since $\Set$ is adhesive, we can conclude what follows.
+
+\begin{cor}\label{cor:presh_adhesive}
+    Every category of presheaves is adhesive.
+\end{cor}

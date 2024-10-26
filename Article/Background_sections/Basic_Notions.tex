@@ -132,6 +132,32 @@ An useful fact about subobjects is how factorization behaves. In particular $(A,
 \end{prop}
 \todo{val la pena osservare la relazione di equivalenza tra sottoggetti corrisponde ad avere un isomorfismo tra i domini}
 
+The next proposition will be useful later.
+
+\begin{prop}\label{prop:prop_epi_mono_Set}
+    In $\Set$, for every commutative square as the one below, if $e: X \to Y$ is epi and $m: M \to Z$ is mono, then there exists a unique morphism $h: Y \to M$ making the whole diagram below commutative.
+    \[
+        \begin{tikzcd}
+            X \ar[r, "f"] \ar[d, "e"swap] & M \ar[d, "m"] \\
+            Y \ar[ur, dashed, "h"] \ar[r, "g"swap] & Z
+        \end{tikzcd}
+    \]
+\end{prop}
+
+\begin{proof}
+    Before we start proving the statement, we have to note that, given a function $t: A \to B$, it is possible to decompose it as a composition of a injective function and a surjective function, considering the function $A \to t(A)$ sending each element onto its image along $t$, and then applying the inclusion $t(A) \to B$, and such functions are unique. Another way to factorize $t$ is via a composition of a surjective function and an injective function. Consider the equivalence relation $\sim$ defined on $A$, where $a \sim a'$ whenever $t(a) = t(a')$. This equivalence relation induces a map $A \to A/_\sim$, which is surjective. The function $A/_\sim \to B$, mapping each equivalence class onto its image along $t$ is then injective, and this factorization in unique too.
+
+    Let now be $f = f_i \circ f_s$ be the decomposition of $f$ with $f_s$ surjective (i.e., epi in $\Set$) and $f_i$ injective (i.e., mono in $\Set$), and $g = g_i \circ g_s$ be the decomposition of $g$ with $g_i$ injective and $g_s$ surjective, having the following situation.
+    \[
+        \begin{tikzcd}
+            X \ar[r, "{f_s}"] \ar[d, "e"] & f(X) \ar[r, "{f_i}"] & M \ar[d, "m"] \\
+            Y \ar[r, "{g_i}"swap] \ar[urr, "h"]& Y/_\sim \ar[r, "{g_s}"swap] & Z
+        \end{tikzcd}
+    \]
+    For the diagram above to commute, must be $f_i \circ f_s = h \circ e$ and $g_s \circ g_i = m \circ h$\todo{completare!!!}
+\end{proof}
+
+
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
@@ -177,6 +203,5 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 
 \begin{definition}[Product category]
     Given two categories $\cat C, \cat D$, the \emph{product category} $\cat{C\times D}$ has as objects pairs of objects $(A, B)$, where $A \in \Ob(\cat C), B \in \Ob(\cat D)$, and as arrows pairs of morphisms $(f, g)$, where $f$ is an arrow in $\cat C$ and $g$ is an arrow in $\cat D$. Composition and identities are defined pairwise: $(f, g) \circ (h, k) = (f \circ h, g \circ k)$, and $id_{(A, B)} = (id_A, id_B)$.
-
 \end{definition}
 
