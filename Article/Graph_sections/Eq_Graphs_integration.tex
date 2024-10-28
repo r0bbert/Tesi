@@ -138,7 +138,8 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
 	\begin{enumerate}
 		\item $h$ is a regular mono;
 		\item $h_E$, $h_V$, $h_C$ are all monos;
-		\item $h_E$ and $h_V$ are mono and for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$.
+%		\item $h_E$ and $h_V$ are mono and for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$.
+            \item $h_E$ and $h_V$ are mono and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_H \circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_G$.
 	\end{enumerate}
 \end{cor}
 \begin{proof}
@@ -152,16 +153,26 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
     since $\eqgraph{G}(q)$ is epi, we have that $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, thus a monomorphism.
 	
 	\smallskip \noindent
-	$2\Rightarrow 3.$ The leftward side of the statement is satisfied by the definition of morphism of graphs with equivalences. For the remaining part, we have
-    \begin{align*}
-        (\eqgraph{H}(q) \circ h_V) (v)  &=  (\eqgraph{H}(q) \circ h_V)(v') \\
-        (h_C \circ \eqgraph{G}(q))(v)   &=  (h_C \circ \eqgraph{G}(q))(v')  
-    \end{align*}
-        since $h_C$ is mono, we can conclude $\eqgraph{G}(q)(v)= \eqgraph{G}(q)(v')$.
+	% $2\Rightarrow 3.$ The leftward side of the statement is satisfied by the definition of morphism of graphs with equivalences. For the remaining part, we have
+ %    \begin{align*}
+ %        (\eqgraph{H}(q) \circ h_V) (v)  &=  (\eqgraph{H}(q) \circ h_V)(v') \\
+ %        (h_C \circ \eqgraph{G}(q))(v)   &=  (h_C \circ \eqgraph{G}(q))(v')  
+ %    \end{align*}
+ %        since $h_C$ is mono, we can conclude $\eqgraph{G}(q)(v)= \eqgraph{G}(q)(v')$.
+        \smallskip \noindent
+	$2\Rightarrow 3.$ We note that, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_G$ if and only if it is the kernel pair also of $h_C \circ q_G$, since $h_C$ is mono by hypothesis. The thesis follows from $h_C \circ q_G = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
 	
 	\smallskip \noindent 
 	$3\Rightarrow 1.$\todo{Esercizio} \color{green}{idea: force the comm. of the diagram on the last two components to obtain the two arrows that are equalized, and show that the condition in 3 is sufficient to conclude reg. mono} \color{black}
 \end{proof}
+
+\begin{remark}
+    It is possible to restate the third point of the \Cref{cor:regmono}, by \Cref{ex:kernel_pairs_in_Set}, as 
+    \begin{displayquote}
+    \textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
+    \end{displayquote}
+    That is, a regular monomorphism in $\EqGrph$ is a morphism that reflects equivalences besides preserving them.
+\end{remark}
 
 Let us turn to another functor $\EqGrph\to \Graph$.
 
