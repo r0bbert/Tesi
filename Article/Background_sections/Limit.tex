@@ -149,7 +149,7 @@ The notions of product and coproduct can be easily generalized, extending the de
     Suppose $X$ be an object and $x, y: X \rightarrow E$ be two morphisms in $\cat C$ such that $e \circ x = e \circ y$, and let $z = e \circ x$. Then, since $e$ is an equalizer, $f \circ e = g \circ e$, and $f \circ z = g \circ z$. But, for the universal property of limits, there must be exactly one $u: Z \rightarrow E$ such that $z = e \circ u$. It follow that $x = u$ and $y = u$, hence $x = y$.
 \end{proof}
 
-The dual of the proposition above states that a coequalizer is an epimmorphism.
+The dual of the proposition above states that a coequalizer is an epimorphism.
 
 Of all monomorphisms, an interesting subclass of them is the one that contains only the equalizers.
 
@@ -389,13 +389,36 @@ The next theorem is about a particular property that adjoint functors have.
     The dual of the theorem above states that, if $G$ is a functor and $F$ is a left adjoint, then $F$ preserves colimits.
 \end{remark}
 
-\subsection{Kernel pairs}
+\begin{prop}\label{prop:nat_tran_induces_unique_arrow_between_colimits}
+    Let $D, D': \cat{I \to C}$ be two functors, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. Then, a natural transformation $\phi: D \dot\to D'$ induces a unique arrow $c: C \to C'$.
+\end{prop}
+
+\begin{proof}
+    Consider the following situation.
+    \[\begin{tikzcd}[row sep=26 pt, column sep= 13 pt]
+        & C & \\
+        D(i) \ar[ur, "{c_i}"] \ar[d, "{\phi_i}"swap] \ar[rr, "{D(\alpha)}"]&& D(j) \ar[ul, "{c_j}"swap] \ar[d, "{\phi_j}"] \\
+        D'(i) \ar[dr, "{c_i'}" swap] \ar[rr, "{D'(\alpha)}" swap] && D'(j) \ar[dl, "{c_j'}"] \\
+        & C' &
+    \end{tikzcd}\]
+
+    To prove the statement, we note that $((c_i' \circ \phi_i)_{i \in \cat I}, C')$ is a cocone for $D$. Computing, we have, for each $i$, $j$ and $\alpha: i \to j$
+    \begin{align*}
+        c_j' \circ \phi_j \circ D(\alpha)   
+                        &=  c_j' \circ D'(\alpha) \circ \phi_i  &&\textit{Naturality of $\phi$}\\
+                        &=  c_i' \circ \phi_i                   &&\textit{$((c_i')_{i\in \cat I}, C')$ is a colimit for $D'$}
+    \end{align*}
+
+    Since $((c_i')_{i \in \cat I}, C)$ is a limit by hypothesis, then must exists a unique arrow $c:C \to C'$ such that $c \circ c_i = \phi_i \circ c_i'$, having the thesis.
+\end{proof}
+
+\subsection{Kernel Pairs an Regular Epimorphisms}
 
 \begin{definition}[Kernel Pair]
-    A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi_1^f, \pi_2^f : K_f \to A$, denoted as $(K_f, \pi_1^f, \pi_2^f)$, such that the following square is a pullback.
+    A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f : K_f \to A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
     \[
         \begin{tikzcd}
-            K_f \ar[r, "{\pi_1^f}"] \ar[d, "{\pi_2^f}" swap] & A \arrow[d, "f"] \\
+            K_f \ar[r, "{\pi^1_f}"] \ar[d, "{\pi^2_f}" swap] & A \arrow[d, "f"] \\
             A \ar[r, "f"swap] & B
         \end{tikzcd}
     \]
@@ -412,9 +435,9 @@ The next theorem is about a particular property that adjoint functors have.
 \begin{proof}
     To prove the ``if'' part of the statement, let $f, g: A \to M$ be such that $m\circ f = m\circ g$, and consider the following situation.
     \[
-        \begin{tikzcd}
-        A \arrow[drr, bend left=20, "f"] \arrow[ddr, bend right=20,"g" swap] \arrow[dr, dashed, "u"] & & \\
-        & M  \arrow[d, "{id_M}" swap] \arrow[r, "{id_M}"] & M \arrow[d, "m"] \\
+        \begin{tikzcd}[row sep=26, column sep = 26]
+        A \arrow[drr, bend left=30, "f"] \arrow[ddr, bend right=30,"g" swap] \arrow[dr, dashed, "u"] & & \\
+        & M  \arrow[d, "{id_M}"] \arrow[r, "{id_M}"] & M \arrow[d, "m"] \\
         & M  \arrow[r, "m" swap] & X
         \end{tikzcd}
     \]
@@ -430,7 +453,7 @@ The next theorem is about a particular property that adjoint functors have.
 \end{proof}
 
 \begin{cor}\label{cor:kermono}
-	Let $(K_f, \pi^f_i), \pi^f_2)$ be a kernel pair for $f\colon X\to Y$. Then for every mono $m\colon Y\to Z$, $(K_f, \pi^f_1, \pi^f_2)$ is a kernel pair also for $m\circ f$.
+	Let $(K_f, \pi_f^1, \pi_f^2)$ be a kernel pair for $f\colon X\to Y$. Then for every mono $m\colon Y\to Z$, $(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair also for $m\circ f$.
 \end{cor}
 \begin{proof}
     It is enough to see that, by \Cref{lemma:pullback_lemma} and \Cref{prop:kermono} the outer boundary of the following square is a pullback.
@@ -455,7 +478,7 @@ The next theorem is about a particular property that adjoint functors have.
     \end{tikzcd}\]
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:kern_pairs_pres_pullbacks}
     Suppose the following situation, and that $f: X \to Y$ and $g: Z \to W$ have kernel pairs.
     \[
         \begin{tikzcd}
@@ -547,10 +570,133 @@ The next theorem is about a particular property that adjoint functors have.
     The thesis follows again by \Cref{lemma:pullback_lemma}.
 \end{proof}
 
-\begin{cor}
-    Let $\cat C$ be a category with pullbacks and $\phi : D \to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
+\begin{prop}\label{prop:reg_epi_coeq}
+    Let $e: X \to Y$ be a regular epimorphism in a category $\cat C$ with a kernel pair $(K, \pi_1, \pi_2)$. Then, $e$ is the coequalizer of $\pi_1$ and $\pi_2$.
+\end{prop}
+
+\begin{proof}
+    By hypothesis, there exists a pair $f, g: Z \to X$ of which $e$ is the coequalizer. Since $e \circ f = e \circ g$, we have
+    \[
+        \begin{tikzcd}[row sep= 20, column sep = 13]
+            Z \ar[drr, "f", bend left=30] \ar[ddr, "g"swap, bend right=30] \ar[dr, dashed, "k"] & & \\
+            & K \ar[r, "{\pi_1}"] \ar[d, "{\pi_2}" swap] & X \ar[d, "e"] \\
+            & X \ar[r, "e"swap] & Y
+        \end{tikzcd}
+    \]
+    thus there exists the unique $k: Z \to K$. Let now $h: Z \to V$ be an arrow such that $h \circ \pi_1 = h \circ \pi_2$, then
+    \begin{align*}
+        h \circ f &= h \circ \pi_1 \circ k \\
+                  &= h \circ \pi_2 \circ k \\
+                  &= h \circ g
+    \end{align*}
+    and thus there exists a unique $l: Y \to V$ such that $l \circ e = h$.
+\end{proof}
+
+\begin{cor}\label{cor:reg_epi_components_reg_epi_nat_trans}
+    Let $\cat C$ be a category with pullbacks and $\phi : D \dot\to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
 \end{cor}
 
 \begin{proof}
-    TODO
+    Let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $\phi_i$ for each $i$. Given an arrow $\alpha: i \to j$ of $\cat I$, we have
+    \begin{align*}
+        \phi_j \circ D(\alpha) \circ \pi_i^1 &= D'(\alpha) \circ \phi_i \circ \pi_i^1 \\
+                                             &= D'(\alpha) \circ \phi_i \circ \pi_i^2 \\
+                                             &= \phi_j \circ D(\alpha) \circ \pi_i^2
+    \end{align*}
+    Thus, the outer boundary of the diagram below commutes, yielding the arrow $K(\alpha)$
+    \[
+        \begin{tikzcd}[row sep=26, column sep=26]
+            {K_i} \ar[r, "{\pi_i^1}"] \ar[d, "{\pi_i^2}"swap] \ar[dr, dashed, "{K(\alpha)}"] & D(i) \ar[dr, "{D(\alpha)}"] \\
+            D(i) \ar[dr, "{D(\alpha)}"swap] & K_j \ar[r, "{\pi_j^1}"] \ar[d, "{\pi_j^2}"swap] & D(j) \ar[d, "{\phi_j}"] \\
+            & D(j) \ar[r, "{\phi_j}"swap] & D'(j)
+        \end{tikzcd}
+    \]
+
+    In this way, we get a functor $E: \cat{I \to C}$, 
+    {
+        \color{blue} which maps each $i$ onto $K_i$ and each arrow $\alpha$ onto $K(\alpha)$
+        We have in fact $E(id_i) = K(id_i) : K_i \to K_i$ is the arrow such that
+        \[
+            \begin{split}
+                D(id_i) \circ \pi_i^1 &= \pi_i^1 \circ K(id_i) \\
+                \pi_i^1 &= \pi_i^1 \circ K(id_i)
+            \end{split}
+                \qquad
+            \begin{split}
+                D(id_i) \circ \pi_i^2 &= \pi_i^2 \circ K(id_i) \\
+                \pi_i^2 &= \pi_i^2 \circ K(id_i)
+            \end{split}
+        \]
+        Thus, for the universal property of pullbacks, $K(id_i) = id_{K_i}$.
+
+        Suppose now $\alpha : i \to j$ and $\beta: j \to k$. Computing, we have
+        \[
+            \begin{split}
+                \pi_k^1 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^1 \\
+                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^1 \\
+                                                    &= D(\beta) \circ \pi_j^1 \circ K(\alpha) \\
+                                                    &= \pi_k^1 \circ K(\beta) \circ K(\alpha)
+            \end{split} \qquad
+            \begin{split}
+                \pi_k^2 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^2 \\
+                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^2 \\
+                                                    &= D(\beta) \circ \pi_j^2 \circ K(\alpha) \\
+                                                    &= \pi_k^2 \circ K(\beta) \circ K(\alpha)
+            \end{split}
+        \]
+        Again, for universal property of pullbacks, necessarily we have $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving functoriality of $E$.
+    }
+    
+     Hence, we have two natural transformations $\pi^1, \pi^2 : E \dot\to D$. By \Cref{prop:reg_epi_coeq}, every component $\phi_i$ is the coequalizer of $\pi_i^1, \pi_i^2: E \to D$, and so $\phi$ is the coequalizer of $\pi^1$ and $\pi^2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
+    Let $D, D': \cat{I \to C}$ be two diagrams, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. If $\cat C$ has all colimits, for diagrams of shape $\cat I$ and $phi: D \dot\to D'$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $C$ to $C'$ (\Cref{prop:nat_tran_induces_unique_arrow_between_colimits}) is a regular epimorphism too.
+\end{lemma}
+
+\begin{proof}
+    By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi: D \dot\to D'$ is a regular epimorphism, so that there is a functor $E: \cat{I \to C}$ and $\eta, \theta: E \dot\to D$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $((p_i)_{i \in \cat I}, P)$ be the colimit of $E$, by \Cref{prop:nat_tran_induces_unique_arrow_between_colimits}, we have $a, b: P \to C$ fitting in the diagram below.
+    \[
+        \begin{tikzcd}[row sep = 26, column sep = 26]
+            E(i) \ar[r, "{p_i}"] \ar[d, "{\eta_i}"swap] & P \ar[d, dashed, "a"] \\
+            D(i) \ar[r, "{c_i}"swap] & C
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}[row sep = 26, column sep = 26]
+            E(i) \ar[r, "{p_i}"] \ar[d, "{\theta_i}"swap] & P \ar[d, dashed, "b"] \\
+            D(i) \ar[r, "{c_i}"swap] & C
+        \end{tikzcd}
+    \]
+
+    We want to show that $c$ coequalizes $\eta$ and $\theta$. Let thus $t: C \to T$ be an arrow such that $t \circ a = t \circ b$. Then, for every $i$, we have
+    \begin{align*}
+        t \circ c_i \circ \eta_i &= t \circ a \circ p_i \\
+                                 &= t \circ b \circ p_i \\
+                                 &= t \circ c_i \circ \theta_i
+    \end{align*}    
+
+    Thus, there is $t_i: D(i) \to T$ such that $t\circ c_i = t_i \circ \phi_i$. It is now easy to see that $((t_i)_{i \in \cat I}, T)$ is a cocone of $D'$: suppose $\alpha: i \to j$ be an arrow of $\cat I$, obtaining
+    \begin{align*}
+        t_i \circ \phi_i &= t \circ c_i \\
+                         &= t \circ c_j \circ D(\alpha) \\
+                         &= t_j \circ \phi_j \circ D(\alpha) \\
+                         &= t_j \circ D'(\alpha) \circ \phi_i
+    \end{align*}
+    By the hypothesis that $\phi_i$ is regular epi for each $i$, therefore epi (by the dual of \Cref{prop:eq_are_mono}), we can conclude $t_i = t_j \circ D'(\alpha)$.
+    
+    Hence, we have an arrow $k: C' \to T$ such that $k \circ c_i' = t_i$. But then
+    \begin{align*}
+        c \circ c \circ c_i &= k \circ c_i' \circ \phi_i \\
+                            &= t_i \circ \phi \\
+                            &= t \circ c_i
+    \end{align*}
+    Showing that $k \circ c = t$.
+
+    For the uniqueness, let $k': C' \to T$ be another arrow such that $k' \circ c = t$. Then we have
+    \begin{align*}
+        k' \circ c_i' \circ \phi_i &= k' \circ c \circ c_i \\
+                                   &= t \circ c_i \\
+                                   &= t_i \circ \phi_i
+    \end{align*}    
+    Since $\phi_i$ is a regular epimorphism, we have $k' \circ c_i' = t_i$, and, because $k \circ c_i' = t_i$ by construction, we can conclude that $k'=k$ since $((c_i')_{i \in \cat I}, C')$ is a colimit.
 \end{proof}
