@@ -37,7 +37,7 @@
             & D(i) &
         \end{tikzcd}
     \]
-    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Such limit is denoted as $(X, f_i)_{i \in \cat I}$
+    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Such limit is denoted as $(X, f_i)_{i \in \cat I}$. Sometimes we will refer to the unique arrow $k$ as the \emph{mediating arrow}.
 \end{definition}
 
 \begin{obs}
@@ -354,10 +354,6 @@ The connection between constructions as products and equalizers and limits is ma
     Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
 \end{remark}
 
-\begin{obs}\label{obs:limits_in_presh}
-    So far we introduced categories of presheaves. In these categories, an interesting fact is that limits and colimits are computed pointwise -- i.e., the limit of a diagram in a category of presheaves is exactly the limit on each of its components.
-\end{obs}
-
 In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behaves with respect to the constructions defined so far.
 
 \begin{definition}
@@ -440,6 +436,10 @@ The next theorem is about a particular property that adjoint functors have.
     together with the canonical projection on the first and the second component of the pairs.
 \end{example}
 
+\begin{prop}\label{prop:pairng_of_kernel_pairs_mono}
+    Let $(K, p_1, p_2)$ be the kernel pair of $f: X \to Y$, and let $(X\times X, \pi_1, \pi_2)$ be the product of $X$ with itself. Then, the mediating arrow $\langle p_1, p_2\rangle : K \to X \times X$ is mono.
+\end{prop}
+
 \begin{prop}\label{prop:kermono}
 	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
 \end{prop}
@@ -463,6 +463,10 @@ The next theorem is about a particular property that adjoint functors have.
     \end{align*}
     Hence, $f$ is the unique arrow that makes the commutative square illustrated above a pushout.
 \end{proof}
+
+\begin{remark}\label{rem:monos_in_presh_cats}
+    From characterization of monos via pullbacks in \Cref{prop:kermono} and \Cref{lemma:limits_of_presheaves}, we have that a mono in a category of presheaves is a natural transformation of which each component is mono.
+\end{remark}
 
 \begin{cor}\label{cor:kermono}
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$ if and only if, for each mono $m\colon Y\to Z$, $(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair also for $m\circ f$.

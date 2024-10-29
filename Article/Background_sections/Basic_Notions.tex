@@ -83,25 +83,35 @@ Between the morphisms of a category, it is possible to distinguish some that hav
     An arrow $f:B\rightarrow C$ in a category $\cat{C}$ is a \emph{monomorphism} if, for any pair of arrows of $\cat{C}$ $g:A \rightarrow B$, $h: A \rightarrow B$, the equality $f \circ g = f \circ h$ implies $g = h$. The class of monomorphisms of $\cat C$ is denoted $\Mono(\cat C)$.
 \end{definition}
 
-For a morphism, from an algebraic point of view, being mono means being \emph{left cancellable}. This fact can led us to define a particular kind of class of morphisms, which will reveal useful further. 
+\begin{remark}\label{rem:fact_of_subobject_is_unique}
+    For a morphism, from an algebraic point of view, being mono means being \emph{left cancelable}.
+    %This fact can led us to define a particular kind of class of morphisms, which will reveal useful further.
+    Let $A$ be an object in a category $\cat C$. Given two monomorphism $m: X \to A$ and $n: Y \to A$, then if  $h: X \to Y$ is a morphism such that $m = n \circ h$, then is the unique one: suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis.    
+\end{remark}
 
-\begin{definition}[Subobjects]
-    Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono\todo{sinceramente non trovo molto sensata la scelta di chiamare sottoggetto la coppia $(A, m)$. Lo standard, per quanto ne so, è usare sottoggetto per una classe di equivalenza di mono o, al massimo, per i mono}, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
-    \[
-        \begin{tikzcd}[row sep=9]
-            A \arrow[dr, "m"] \arrow[dd, dashed, "f"swap] & \\
-            & B \\
-            C \arrow[ur, "n"swap] &
-        \end{tikzcd}
-    \]
-    Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subobjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$. 
+
+\begin{definition}[Subobject]\label{def:subobj}
+    Starting from this consideration, we can define a preorder on monomorphisms, placing $m \leq n$ if $m = n \circ h$ for some $h$. Such preorder induces an equivalence relation $\equiv$ on monomorphisms with codomain $A$, where $m \equiv n$ whenever $m \leq n$ and $n \leq m$, and the corresponding equivalence class is called \emph{subobject} of $A$.
 \end{definition}
 
-An useful fact about subobjects is how factorization behaves. In particular $(A, m)$ and $(B, n)$ are subobjects of $C$. Then, if $(A, m)\leq (B, n)$, we have $m = n \circ h$ for some $h$. Suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis. This is to say what follows.
 
-\begin{prop}\label{prop:fact_of_subobjects_is_unique}
-    Let $(A, m)$ and $(B, n)$ be subobjects of $C$ in a category $\cat C$, with $(A, m)\leq (B, n)$. Then, the factorization of $m$ through $n$ is unique.
-\end{prop}
+% \begin{definition}[Subobjects]
+%     Let $C$ be an object in a category $\cat C$. Then, if $m: A \rightarrow C$ is mono\todo{sinceramente non trovo molto sensata la scelta di chiamare sottoggetto la coppia $(A, m)$. Lo standard, per quanto ne so, è usare sottoggetto per una classe di equivalenza di mono o, al massimo, per i mono}, $(A, m)$ is said to be a \emph{subobject} of $C$. Factorization of morphisms induces a preorder on subobjects of an object. $(A, m) \leq (B, n)$ whenever there exists a morphism $f : A\rightarrow B$ such that $m = n \circ f$.
+%     \[
+%         \begin{tikzcd}[row sep=9]
+%             A \arrow[dr, "m"] \arrow[dd, dashed, "f"swap] & \\
+%             & B \\
+%             C \arrow[ur, "n"swap] &
+%         \end{tikzcd}
+%     \]
+%     Two subobject $(A, m)$ and $(B, n)$ can are said to be \emph{equivalent subobjects}, written $(A, m) \approx (B, n)$ if $(A, m)\leq (B, n)$ and $(B, n) \leq (A, m)$. 
+% \end{definition}
+
+% An useful fact about subobjects is how factorization behaves. In particular $(A, m)$ and $(B, n)$ are subobjects of $C$. Then, if $(A, m)\leq (B, n)$, we have $m = n \circ h$ for some $h$. Suppose $k$ is another morphism such that $m = n \circ k$. We can conclude $h = k$ observing that $n \circ h = n \circ k$ implies $h = k$ when $n$ is mono, which is by hypothesis. This is to say what follows.
+
+% \begin{prop}\label{prop:fact_of_subobjects_is_unique}
+%     Let $(A, m)$ and $(B, n)$ be subobjects of $C$ in a category $\cat C$, with $(A, m)\leq (B, n)$. Then, the factorization of $m$ through $n$ is unique.
+% \end{prop}
 
 
 \begin{definition}[Epimorphism]\label{def:epi}

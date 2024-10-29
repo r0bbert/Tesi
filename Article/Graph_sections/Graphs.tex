@@ -19,7 +19,25 @@ Having two of such presheaves, a natural transformation from one to another enca
     We denote as $\Graph$ the category $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
 \end{definition}
 
-\todo{Dimostrare come si calcolano i limiti nelle categorie di prefasci (conponente per componente) e poi dare qualche esempio, porendendolo dalla versione precedente. Dimostrare anche come sono fatti i mono (mono sulle componenti) (Nei prefasci dipende dalla caratterizzqazione dei mono via pullback (Vedi roba kernel pairs)).}
+Since $\Graph$ is a category of presheaves, \Cref{lemma:limits_of_presheaves} guarantees the existence of limits and colimits, and gives us an easy way to compute them.
+
+\begin{cor}\label{cor:graph_has_co_limits}
+    $\Graph$ has all limits and colimits.
+\end{cor}
+
+\begin{example}\label{ex:in_term_in_graph}
+    The initial object in $\mathbf{Graph}$ is the empty graph, i.e., the graph with an empty set of vertices and an empty set of edges. The initial object instead is the graph with exactly one node and a single edge from that node to itself.
+\end{example}
+
+\begin{example}
+    Given two graphs $G = (V_G, E_G, s_G, t_G)$ and $H=(V_H, E_H, s_H, t_H)$, the graph $G \times H = (V_G\times V_H, E_G \times E_H, (s_G, s_H), (t_G, t_H))$, where $(s_G, s_H), (t_G, t_H):V_G\times V_H \rightarrow E_G \times E_H$ are the pairwise sources and targets, is the categorical product in $\mathbf{Graph}$, together with the two projections $\pi_G: G \times H \rightarrow G$, $\pi_H : G \times H \rightarrow H$ defined in the obvious way.
+\end{example}
+
+\begin{example}
+    The equalizer of two morphisms $h, k: G \rightarrow H$ in $\mathbf{Graph}$ is defined as in $\Set$, that is,  a graph $Q$ together with a graph morphism $q$ that is the restriction of $G$ to all the vertices and all the arcs that are mapped on the same vertices and edges both from $h$ and $k$. Formally, $(Q, q)$ is an equalizer for $h, k: G \rightarrow H$, $h = (h_V, h_E), k = (k_V, k_E)$ where $V(Q) = \{ n \in V(G) \mid h_V(n) = k_V(n)\}$, $E(Q) = \{ e \in E(G) \mid h_E(e) = k_E(e)\}$, $s_Q = s_G \mid_{V(Q)}$, $t_E = t_G \mid_{V(Q)}$.
+\end{example}
+
+%\todo{Dimostrare come si calcolano i limiti nelle categorie di prefasci (conponente per componente) e poi dare qualche esempio, porendendolo dalla versione precedente. Dimostrare anche come sono fatti i mono (mono sulle componenti) (Nei prefasci dipende dalla caratterizzqazione dei mono via pullback (Vedi roba kernel pairs)).}
 \begin{remark}
     TODO: Si può generalizzare a tutte le categorie regolari per evitare di perdere le proprietà che usiamo (da eq.rel. a quot.).
 \end{remark}
