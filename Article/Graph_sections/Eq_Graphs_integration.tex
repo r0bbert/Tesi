@@ -84,14 +84,14 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
 
     To see that this cone is terminal, let $((E, F, G, a, b, c), \tau_i = (\tau_E^i, \tau_V^i, \tau_C^i)_{i \in \cat I})$ be another cone. By construction, we have an arrow $(\tau_E, \tau_V):(E, F, a, b) \to (A, B, s, t)$ such that
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 26, column sep = 26]
             & E \arrow[dl, dashed, "{\tau_E}" swap] \arrow[dr, "{\tau_E^i}"] & \\
             A \arrow[rr, "{\pi_E^i}" swap] & & A_i 
         \end{tikzcd}
         %
         \qquad
         %
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 26, column sep = 26]
             & F \arrow[dl, dashed, "{\tau_V}" swap] \arrow[dr, "{\tau_V^i}"] & \\
             B \arrow[rr, "{\pi_V^i}" swap] & & B_i 
         \end{tikzcd}

@@ -13,7 +13,7 @@ This section is all about basic definitions and examples, to get familiar with t
         \item A collection of \emph{objects} $\Ob(\cat{C})$;
         \item A collection of \emph{arrows} (or \emph{morphisms}) $\Hom(\cat{C})$, often called \emph{homset}.
     \end{enumerate}
-    Two operators, $dom$ and $cod$, that map every morphism $f \in \Hom(\cat{C})$ to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
+    Two operators, $dom$ and $cod$, that map every morphism \-$f \in \Hom(\cat{C})$ to two objects, respectively, its \emph{domain} and its \emph{codomain}. In case $dom\ f = A$ and $cod\ f = B$, we will write $f: A \rightarrow B$. The collection of morphisms from an object $A$ to an object $B$ is denoted as $\cat{C}(A, B)$.
     An operator $\circ$ of \emph{composition} maps every couple of morphisms $f$, $g$ with $cod\ f = dom \ g$ (in this case $f$ and $g$ are said to be composable) to a morphism $g \circ f : dom\ f \rightarrow cod \ g$. The composition operator is associative, i.e., for each composable arrows $f$, $g$ and $h$, it holds that
     $$
         h \circ (g \circ f) = (h\circ g) \circ f
@@ -114,6 +114,7 @@ Between the morphisms of a category, it is possible to distinguish some that hav
 % \end{prop}
 
 
+
 \begin{definition}[Epimorphism]\label{def:epi}
     An arrow $f: A\rightarrow B$ in a category $\cat{C}$ is an \emph{epimorphism} if, for any pair of arrows of $\cat{C}$ $g : B \rightarrow C$, $h: B \rightarrow C$, the equality $g \circ f = h \circ f$ implies $g = h$.
 \end{definition}
@@ -140,7 +141,22 @@ Between the morphisms of a category, it is possible to distinguish some that hav
         \item if $g \circ f$ is epi, then $g$ is epi.
     \end{enumerate}
 \end{prop}
-\todo{val la pena osservare la relazione di equivalenza tra sottoggetti corrisponde ad avere un isomorfismo tra i domini}
+
+\begin{obs}\label{obs:equiv_subobj_implies_isom_of_domains}
+    Consider two monomorphisms $m: X \to A$ and $n: Y \to A$, and suppose $m \equiv n$ (in the sense of \Cref{def:subobj}). This corresponds to having a isomorphism between $X$ and $Y$. in fact, since $m \leq n$, there exists s unique $h: Y \to X$ such that $m = n \circ h$, and, since $n \leq m$, there exists a unique $k: X \to Y$ such that $n = m \circ k$. But then
+    \[
+        \begin{split}
+            m &= n \circ h \\
+              &= m \circ h \circ k
+        \end{split}
+        \qquad
+        \begin{split}
+            n &= m \circ k \\
+              &= n \circ h \circ k
+        \end{split}
+    \]
+    Since $m$ is mono, we obtain $id_X = h \circ k$, and, since $n$ is mono, $id_Y = k\circ h$, thus, an isomorphism. 
+\end{obs}
 
 The next proposition will be useful later.
 
@@ -154,7 +170,7 @@ The next proposition will be useful later.
     \]
 \end{prop}
 
-\begin{proof}
+{\color{red}\begin{proof}
     Before we start proving the statement, we have to note that, given a function $t: A \to B$, it is possible to decompose it as a composition of a injective function and a surjective function, considering the function $A \to t(A)$ sending each element onto its image along $t$, and then applying the inclusion $t(A) \to B$, and such functions are unique. Another way to factorize $t$ is via a composition of a surjective function and an injective function. Consider the equivalence relation $\sim$ defined on $A$, where $a \sim a'$ whenever $t(a) = t(a')$. This equivalence relation induces a map $A \to A/_\sim$, which is surjective. The function $A/_\sim \to B$, mapping each equivalence class onto its image along $t$ is then injective, and this factorization in unique too.
 
     Let now be $f = f_i \circ f_s$ be the decomposition of $f$ with $f_s$ surjective (i.e., epi in $\Set$) and $f_i$ injective (i.e., mono in $\Set$), and $g = g_i \circ g_s$ be the decomposition of $g$ with $g_i$ injective and $g_s$ surjective, having the following situation.
@@ -165,7 +181,7 @@ The next proposition will be useful later.
         \end{tikzcd}
     \]
     For the diagram above to commute, must be $f_i \circ f_s = h \circ e$ and $g_s \circ g_i = m \circ h$\todo{completare!!!}
-\end{proof}
+\end{proof}}
 
 
 
