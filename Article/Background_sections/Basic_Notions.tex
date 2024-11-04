@@ -170,19 +170,28 @@ The next proposition will be useful later.
     \]
 \end{prop}
 
-{\color{red}\begin{proof}
-    Before we start proving the statement, we have to note that, given a function $t: A \to B$, it is possible to decompose it as a composition of a injective function and a surjective function, considering the function $A \to t(A)$ sending each element onto its image along $t$, and then applying the inclusion $t(A) \to B$, and such functions are unique. Another way to factorize $t$ is via a composition of a surjective function and an injective function. Consider the equivalence relation $\sim$ defined on $A$, where $a \sim a'$ whenever $t(a) = t(a')$. This equivalence relation induces a map $A \to A/_\sim$, which is surjective. The function $A/_\sim \to B$, mapping each equivalence class onto its image along $t$ is then injective, and this factorization in unique too.
+%{\color{red}\begin{proof}
+%    Before we start proving the statement, we have to note that, given a function $t: A \to B$, it is possible to decompose it as a composition of a injective function and a surjective function, considering the function $A \to t(A)$ sending each element onto its image along $t$, and then applying the inclusion $t(A) \to B$, and such functions are unique. Another way to factorize $t$ is via a composition of a surjective function and an injective function. Consider the equivalence relation $\sim$ defined on $A$, where $a \sim a'$ whenever $t(a) = t(a')$. This equivalence relation induces a map $A \to A/_\sim$, which is surjective. The function $A/_\sim \to B$, mapping each equivalence class onto its image along $t$ is then injective, and this factorization in unique too.
 
-    Let now be $f = f_i \circ f_s$ be the decomposition of $f$ with $f_s$ surjective (i.e., epi in $\Set$) and $f_i$ injective (i.e., mono in $\Set$), and $g = g_i \circ g_s$ be the decomposition of $g$ with $g_i$ injective and $g_s$ surjective, having the following situation.
-    \[
-        \begin{tikzcd}
-            X \ar[r, "{f_s}"] \ar[d, "e"] & f(X) \ar[r, "{f_i}"] & M \ar[d, "m"] \\
-            Y \ar[r, "{g_i}"swap] \ar[urr, "h"]& Y/_\sim \ar[r, "{g_s}"swap] & Z
-        \end{tikzcd}
-    \]
-    For the diagram above to commute, must be $f_i \circ f_s = h \circ e$ and $g_s \circ g_i = m \circ h$\todo{completare!!!}
-\end{proof}}
-
+%    Let now be $f = f_i \circ f_s$ be the decomposition of $f$ with $f_s$ surjective (i.e., epi in $\Set$) and $f_i$ injective (i.e., mono in $\Set$), and $g = g_i \circ g_s$ be the decomposition of $g$ with $g_i$ injective and $g_s$ surjective, having the following situation.
+%    \[
+%        \begin{tikzcd}
+%            X \ar[r, "{f_s}"] \ar[d, "e"] & f(X) \ar[r, "{f_i}"] & M \ar[d, "m"] \\
+%            Y \ar[r, "{g_i}"swap] \ar[urr, "h"]& Y/_\sim \ar[r, "{g_s}"swap] & Z
+%        \end{tikzcd}
+%   \]
+%    For the diagram above to commute, must be $f_i \circ f_s = h \circ e$ and $g_s \circ g_i = m \circ h$\todo{completare!!!}
+%\end{proof}}
+\begin{proof}
+	Let $y \in Y$. Since $e$ is epi (i.e., surjective), there exists $x \in X$ such that $e(x) = y$. Then, we put $h(y) = f(x)$. $h$ is well defined, in fact, let $x' \in X$ be such that $e(x') = y$. In this case, we have $h(x) = f(x')$, and so
+	\begin{align*}
+		(m \circ f) (x')  &= (g \circ e) (x') \\
+				&= g(y)		\\
+				&= (g \circ e) (x)	\\
+				&= (m \circ f) (x)
+	\end{align*}
+	since $m$ is mono by hypothesis, $f(x) = f(x')$.
+\end{proof}
 
 
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}

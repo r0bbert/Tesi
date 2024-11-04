@@ -440,6 +440,24 @@ The next theorem is about a particular property that adjoint functors have.
     Let $(K, p_1, p_2)$ be the kernel pair of $f: X \to Y$, and let $(X\times X, \pi_1, \pi_2)$ be the product of $X$ with itself. Then, the mediating arrow $\langle p_1, p_2\rangle : K \to X \times X$ is mono.
 \end{prop}
 
+\begin{proof}
+	Suppose $\langle p_1, p_2 \rangle \circ f = \langle p_1, p_2 \rangle \circ g$ for $f, g: Z \to K$. Then, we have
+	\[
+		\begin{split}
+			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
+			\pi_1 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_1 \circ \langle p_1, p_2 \rangle \circ g \\
+			p_1 \circ f &= p_1 \circ g
+		\end{split}
+		\qquad
+		\begin{split}
+			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
+			\pi_2 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_2 \circ \langle p_1, p_2 \rangle \circ g \\
+			p_2 \circ f &= p_2 \circ g
+		\end{split}
+	\]
+	Thus, from the universal property of the pullback, $f = g$.
+\end{proof}
+
 \begin{prop}\label{prop:kermono}
 	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
 \end{prop}
@@ -629,10 +647,9 @@ The next theorem is about a particular property that adjoint functors have.
         \end{tikzcd}
     \]
 
-    In this way, we get a functor $E: \cat{I \to C}$, 
-    {
-        \color{blue} which maps each $i$ onto $K_i$ and each arrow $\alpha$ onto $K(\alpha)$
-        We have in fact $E(id_i) = K(id_i) : K_i \to K_i$ is the arrow such that
+    In this way, we get a functor $K: \cat{I \to C}$, 
+    which maps each $i$ onto $K_i$ and each arrow $\alpha$ onto $K(\alpha)$. 
+	We have in fact $K(id_i) : K_i \to K_i$ is the arrow such that
         \[
             \begin{split}
                 D(id_i) \circ \pi_i^1 &= \pi_i^1 \circ K(id_i) \\
@@ -644,7 +661,7 @@ The next theorem is about a particular property that adjoint functors have.
                 \pi_i^2 &= \pi_i^2 \circ K(id_i)
             \end{split}
         \]
-        Thus, for the universal property of pullbacks, $K(id_i) = id_{K_i}$.
+	Thus, for the universal property of pullbacks, $K(id_i) = id_{K_i}$.
 
         Suppose now $\alpha : i \to j$ and $\beta: j \to k$. Computing, we have
         \[
@@ -661,8 +678,8 @@ The next theorem is about a particular property that adjoint functors have.
                                                     &= \pi_k^2 \circ K(\beta) \circ K(\alpha)
             \end{split}
         \]
-        Again, for universal property of pullbacks, necessarily we have $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving functoriality of $E$.
-    }
+        Again, for universal property of pullbacks, necessarily we have $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving functoriality of $K$.
+   
     
      Hence, we have two natural transformations $\pi^1, \pi^2 : E \dot\to D$. By \Cref{prop:reg_epi_coeq}, every component $\phi_i$ is the coequalizer of $\pi_i^1, \pi_i^2: E \to D$, and so $\phi$ is the coequalizer of $\pi^1$ and $\pi^2$.
 \end{proof}

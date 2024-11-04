@@ -19,18 +19,20 @@ In a more general case, considering a graph with equivalence as a functor $\eqgr
 \[
     \frac{\eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e')}{\eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e')}
 \] for each $e$, $e' \in \eqgraph{G}(E)$.
-But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (with the projection arrows $p_1$ and $p_2$) is exactly the pullback of $(q \circ s, q \circ s)$, and $T$ (together with the projections $q_1, q_2$) is the pullback of $(q \circ t, q \circ t)$. Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$.
+But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (with the projection arrows $p_1$ and $p_2$) is exactly the kernel pair of $q \circ s$, and $T$ (together with the projections $q_1, q_2$) is the kernel pair of $q \circ t$ (\Cref{ex:kernel_pairs_in_Set}). Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$.
 To find a structure to express this fact, we have to consider a more general case.
 
-Consider an arrow $f: X \rightarrow Y$, and let $(K, \pi_1, \pi_2)$ be the pullback of $(f, f)$.
-\[
-    \begin{tikzcd}
-        K \arrow[r, "{\pi_1}"] \arrow[d, "{\pi_2}"swap] & X \arrow[d, "f"] \\
-        X \arrow[r, "f"swap] & Y
-    \end{tikzcd}
-\]
-Such pullback induces an arrow $\langle \pi_1, \pi_2 \rangle : K \rightarrow X\times X$. Such arrow is mono and unique, because of the universal property of the pullback, indeed a subobject.
-\todo{capire quanto andare nello specifico qui}
+% Consider an arrow $f: X \rightarrow Y$, and let $(K, \pi_1, \pi_2)$ be the pullback of $(f, f)$.
+% \[
+%     \begin{tikzcd}
+%         K \arrow[r, "{\pi_1}"] \arrow[d, "{\pi_2}"swap] & X \arrow[d, "f"] \\
+%         X \arrow[r, "f"swap] & Y
+%     \end{tikzcd}
+% \]
+% Such pullback induces an arrow $\langle \pi_1, \pi_2 \rangle : K \rightarrow X\times X$. Such arrow is mono and unique, because of the universal property of the pullback, indeed a subobject.
+% \todo{capire quanto andare nello specifico qui}
+
+TODO: usare kernel pairs e sottoggetti per definire gli EGGs, usando \Cref{prop:pairing_of_kernel_pairs_mono} e \Cref{rem:fact_of_subobject_is_unique}
 
 Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$, we can make use of the \Cref{prop:fact_of_subobjects_is_unique}. Specifically, we want, in the following situation, $i$ to be mono and unique.
 \[
