@@ -371,7 +371,7 @@ Let now $(z_1, z_2, z_3)\colon (A'_2, B'_2, C'_2)\to (E, F, G, e, f, g)$ and $(w
 Let $z\colon B'_4\to F$ be the arrow induced by $z_2$ and $w_2$, we want to construct the dotted arrow $v\colon C'_4 \to G$ in the diagram below
  
  \todo{Sistema il diagramma mettendo gli opportuni buchi}
-\[\xymatrix@C=35pt@R=15pt{& B'_1 \ar[dd]|(.5)\hole_(.62){q'_1}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[ddd]|(.33)\hole^{q'_2} \ar[dl]_{t'_2} \ar@/^.2cm/[dr]^{z_2}\\B'_3 \ar[ddd]_{q'_3} \ar[rr]^(.65){p'_2} && B'_4  \ar[rr]^(.65){z}&& F \ar[ddddd]^{g}\\& C'_1 \ar@/^.2cm/[drr]^{h'_3} \ar@/_.2cm/[ddl]_{k'_3} \ar[d]^{m_1}\\& S \ar[rr]^{s_1} \ar[dd]_{s_2} && C'_2 \ar[dd]^{m_2} \ar@/^.2cm/[dddr]^{z_3} \ar[lddd]_{t'_3}\\ C'_3 \ar@/_.5cm/[ddrr]^(.65){p'_3} \ar[ddrrrr]_{w_3} \ar[dd]_{m_3}\\&T\ar[dd]|(.25)\hole|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]|(.25)\hole_{w} && U \ar[dd]^(.3){u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]_(.65){y_1} & & C'_4 \ar@{.>}[rr]_(.65){v} \ar[dd]_(.3){d_3} && G\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
+\[\xymatrix@C=35pt@R=15pt{& B'_1 \ar[dd]|(.5)\hole_(.62){q'_1}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[ddd]|(.33)\hole^{q'_2} \ar[dl]_{t'_2} \ar@/^.2cm/[dr]^{z_2}\\B'_3 \ar[ddd]_{q'_3} \ar[rr]^(.65){p'_2} && B'_4  \ar[rr]^(.65){z} \ar[ddddd]_{q'_4}&& F \ar[ddddd]^{g}\\& C'_1 \ar@/^.2cm/[drr]^{h'_3} \ar@/_.2cm/[ddl]_{k'_3} \ar[d]^{m_1}\\& S \ar[rr]^{s_1} \ar[dd]_{s_2} && C'_2 \ar[dd]^{m_2} \ar@/^.2cm/[dddr]^{z_3} \ar[lddd]_{t'_3}\\ C'_3 \ar@/_.5cm/[ddrr]^(.65){p'_3} \ar[ddrrrr]_{w_3} \ar[dd]_{m_3}\\&T\ar[dd]|(.25)\hole|\hole_(.65){x_2}\ar[rr]^{x_1} \ar[dl]|(.25)\hole_{w} && U \ar[dd]^(.3){u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]_(.65){y_1} & & C'_4 \ar@{.>}[rr]_(.65){v} \ar[dd]_(.3){d_3} && G\\&C_1\ar[rr]|\hole^(.65){h_3} \ar[dl]^{k_3} && C_2 \ar[dl]^{t_3} \\C_3 \ar[rr]_{p_3} & & C_4}\]
 
 
 Now by \Cref{prop:regepi} $d_3$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lem:salvavita2}  we know that the top face of the cube below is a pushout.
@@ -402,16 +402,47 @@ The thesis now follows \todo{Scrivi perché}
 
 
 \begin{lemma}\label{lem:vk}
-In $\EqGrph$ pushouts along regular monos are Van Kampen.
+In $\EqGrph$ pushouts along regular monos are Reg-Van Kampen.
 \end{lemma}
 \begin{proof}
-	contenuto...
-\end{proof}
+In lieu of \Cref{lem:stab}, it is enough to proof that, given a cube as the one below, with pullbacks as back faces, pushouts as bottom and top faces and such that $(h_1, h_2, h_3)\colon (A_1,B_1,C_1, s_1,t_1,q_1)\to (A_2,B_2,C_2, s_2,t_2,q_2)$ is a regular mono, the front faces are pullbacks too. \todo{Questo diagramma va sistemato per farlo stare nella pagina (val la pena magari dire "sia $\mathcal{G}_1$ il grafo....")}.
 
+\[\xymatrix@C=20pt@R=20pt{&(A'_1,B'_1,C'_1, s'_1,t'_1,q'_1)\ar[dd]|\hole_(.65){(a_1, a_2, a_3)}\ar[rr]^{(h'_1, h'_2, h'_3)} \ar[dl]_{(k'_1, k'_2, k'_3)} && (A'_2,B'_2,C'_2, s'_2,t'_2,q'_2) \ar[dd]^{(b_1, b_2, b_3)} \ar[dl]_{(t'_1, t'_2, t'_3)} \\ (A'_3,B'_3,C'_3, s'_3,t'_3,q'_3) \ar[dd]_{(c_1, c_2, c_3)}\ar[rr]^(.65){(p'_1,p'_2,p'_3)} & & (A'_4,B'_4,C'_4, s'_4,t'_4,q'_4) \ar[dd]_(.3){(d_1, d_2, d_3)}\\&(A_1,B_1,C_1, s_1,t_1,q_1)\ar[rr]|\hole^(.65){(h_1, h_2, h_3)} \ar[dl]^{(k_1, k_2, k_3)} && (A_2,B_2,C_2, s_2,t_2,q_2) \ar[dl]^{(t_1, t_2, t_3)} \\(A_3,B_3,C_3, s_3,t_3,q_3) \ar[rr]_{(p_1, p_2, p_3)} & & (A_4,B_4,C_4, s_4,t_4,q_4)}\]
+
+By \Cref{prop:limits,cor:regmono} the following two cubes have $\mathcal{M}$-pushouts as bottom and top faces and pullbacks as back faces, thus their front faces are pullbacks too.
+
+\[\xymatrix@C=10pt@R=10pt{&A'_1\ar[dd]|\hole_(.65){a_1}\ar[rr]^{h'_1} \ar[dl]_{k'_1} && A'_2 \ar[dd]^{b_1} \ar[dl]_{t'_1} && B'_1\ar[dd]|\hole_(.65){a_2}\ar[rr]^{h'_2} \ar[dl]_{k'_2} && B'_2 \ar[dd]^{b_2} \ar[dl]_{t'_2}\\ A'_3  \ar[dd]_{c_1}\ar[rr]^(.7){p'_1} & & A'_4 \ar[dd]_(.3){d_1} &&B'_3  \ar[dd]_{c_2}\ar[rr]^(.7){p'_2} & & B'_4 \ar[dd]_(.3){d_2}\\&A_1\ar[rr]|\hole^(.65){h_1} \ar[dl]^{k_1} && A_2 \ar[dl]^{t_1} && B_1\ar[rr]|\hole^(.65){h_2} \ar[dl]^{k_2} && B_2 \ar[dl]^{t_2} \\A_3 \ar[rr]_{p_1} & & A_4&&B_3 \ar[rr]_{p_2} & & B_4}\]
+
+On the other hand we can consider the diagrams below, in which the inner squares are pullbacks. Since the outer diagrams commute, by definition of porphism of $\EqGrph$, then we have the existence of the dotted $m_2\colon C'_2\to U$, $m_3\colon C'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
+
+\[\xymatrix{C'_3 \ar@{.>}[dr]^{m_3} \ar@/^.3cm/[drr]^{p'_3} \ar@/_.3cm/[ddr]_{d_3} &&& C'_2 \ar@{.>}[dr]^{m_2} \ar@/^.3cm/[drr]^{t'_3} \ar@/_.3cm/[ddr]_{d_2}\\&Y \ar[r]_{y_1} \ar[d]_{y_2}& C'_4\ar[d]^{d_3}&& U \ar[d]_{u_2}\ar[r]_{u_1}& C'_4 \ar[d]^{d_3}\\&C_3 \ar[r]_{p_3}& C_4 &&C_2 \ar[r]_{t_3}& C_4 }\]
+
+\[\xymatrix{B'_3 \ar@{.>}[dr]^{a_3} \ar[r]^{p'_2} \ar[d]_{q'_3} &B'_4\ar[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{t'_2} \ar[d]_{q'_2} &B'_4\ar[dr]^{q'_4}\\C'_3 \ar[dr]_{d_3} &Y \ar[r]_{y_1} \ar[d]_{y_2}& C'_4\ar[d]^{d_3}&C_2' \ar[dr]_{d_2}& U \ar[d]_{u_2}\ar[r]_{u_1}& C'_4 \ar[d]^{d_3}\\&C_3 \ar[r]_{p_3}& C_4 &&C_2 \ar[r]_{t_3}& C_4 }\]
+
+Now, notice that  $m_3$ and $m_2$ are monos because $d_3$ and $d_2$ are regular monos. By the proof of \Cref{prop:limits}, to conclude it is enough to show that
+\[m_3\circ q'_3 = a_3 \qquad m_2\circ q'_2=a_2\]
+
+Indeed, if the previous equations hold, then $C'_3$ and $C'_2$ are epi-mono factorizations of $a_3$ and $a_2$ and the thesis follows from \Cref{cor:unique} and the proof of \Cref{prop:limits}.
+
+No if we compute we have:
+\[\begin{split}
+	y_1\circ a_3&= q'_4\circ p'_2\\&=p'_3 \circ q'_3\\&=y_1\circ m_3\circ q'_3  
+\end{split}\qquad \begin{split}
+	u_1\circ a_2&= q'_4\circ t'_2\\&=t'_3 \circ q'_3\\&=u_1\circ m_2\circ q'_2  
+\end{split}\]
+\[\begin{split}
+y_2\circ a_3&= d_3\circ q_3'\\&=y_2\circ m_3\circ q'_3
+\end{split}\qquad \begin{split}
+u_2\circ a_2&= d_2\circ q_2'\\&=u_2\circ m_2\circ q'_2
+\end{split}\]
+And we have done.
+\end{proof} 
+
+\todo{Una cosa che manca nei due lemmi precedenti è la seguente: bisognerebbe contollare che lse mappe source e target che appaiano tra i vari  A e B sono esattamente quelle che mi danno la struttura di pushout. Questo si può fare a mano, ma sarebbe meglio inserire un lemma da qualche parte che dice: i due funtori Graph -> Set jointly creano tutto (questo segue immediatamente dal fatto che Graph è una categoria di prefasci) Però va scritto e citato nelle prove di entrambi.}
 From \Cref{prop:limits} and \Cref{lem:stab,lem:vk} we deduce at once the following.
 
 \begin{cor}\label{cor:equi}
-	$\EqGrph$ is quasiadhesive.
+	$\EqGrph$ is Reg-adhesive.
 \end{cor}
 
 \color{black}
