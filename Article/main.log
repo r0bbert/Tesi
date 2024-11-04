@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.10.30)  4 NOV 2024 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.10.30)  4 NOV 2024 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1235,7 +1235,7 @@ Overfull \hbox (10.07158pt too wide) has occurred while \output is active
 12 51
  []
 
-[51] <xymatrix 5x9 1615> <xymatrix 4x4 568>
+[51] <xymatrix 5x9 1656> <xymatrix 4x4 568>
 Overfull \hbox (58.59799pt too wide) in alignment at lines 386--390
 [] []
  []
@@ -1244,13 +1244,35 @@ Overfull \hbox (58.59799pt too wide) in alignment at lines 386--390
 
 LaTeX Warning: Marginpar on page 53 moved.
 
-) (./Graph_sections/Eq_Graphs_integration.tex [53]
+
+Overfull \hbox (0.20511pt too wide) in paragraph at lines 408--409
+\T1/cmr/m/n/12 tom and top faces and such that $\OT1/cmr/m/n/12 (\OML/cmm/m/it/
+12 h[]; h[]; h[]\OT1/cmr/m/n/12 ) [] [] (\OML/cmm/m/it/12 A[]; B[]; C[]; s[]; t
+[]; q[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 !
+ []
+
+<xymatrix 4x4 568>
+Overfull \hbox (159.34656pt too wide) detected at line 410
+[]
+ []
+
+<xymatrix 8x4 1142>
+Overfull \hbox (10.07158pt too wide) has occurred while \output is active
+\T1/cmr/m/sl/12 2.2.  GRAPHS WITH EQUIVALENCES - NOTES AND RESULTS \T1/cmr/m/n/
+12 53
+ []
+
+[53] <xymatrix 6x3 668> <xymatrix 6x3 808>
+
+LaTeX Warning: Reference `cor:unique' on page 1 undefined on input line 425.
+
+[54]) (./Graph_sections/Eq_Graphs_integration.tex [55]
 Overfull \hbox (20.31721pt too wide) in paragraph at lines 20--21
 []\T1/cmr/bx/n/12 Observation 2.3.3. []\T1/cmr/m/n/12 Mor-phisms of graphs with
  equiv-a-lence are uniquely
  []
 
-[54]
+
 Overfull \hbox (25.19919pt too wide) in paragraph at lines 46--48
 []\T1/cmr/m/n/12 Let $\U/msb/m/n/12 G \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 E[]; 
 V[]; C[]; s[]; t[]; q[]\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 and $\U/msb/m/n/12 H \
@@ -1258,14 +1280,14 @@ OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 E[]; V[]; C[]; s[]; t[]; q[]\OT1/cmr/m/n/12
 )$
  []
 
-[55]
+[56] [57]
 Overfull \hbox (40.92184pt too wide) in paragraph at lines 85--86
 []\T1/cmr/m/n/12 To see that this cone is ter-mi-nal, let $\OT1/cmr/m/n/12 ((\O
 ML/cmm/m/it/12 E; F; G; a; b; c\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; ^^\[] \OT1/c
 mr/m/n/12 = (\OML/cmm/m/it/12 ^^\[]; ^^\[]; ^^\[]\OT1/cmr/m/n/12 )[])$
  []
 
-[56]
+[58]
 Overfull \hbox (50.95049pt too wide) in paragraph at lines 121--122
 []\T1/cmr/bx/n/12 Corollary 2.3.6. []\T1/cmr/m/it/12 An ar-row $\OML/cmm/m/it/1
 2 h \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 h[]; h[]; h[]\OT1/cmr/m/n/12 ) : \U/msb
@@ -1281,7 +1303,7 @@ T1/cmr/m/n/12 = (\OML/cmm/m/it/12 h[]; h[]; h[]\OT1/cmr/m/n/12 ) : \U/msb/m/n/1
 n/12 ) \OMS/cmsy/m/n/12 !
  []
 
-[57]
+[59]
 Overfull \hbox (4.41472pt too wide) in paragraph at lines 172--173
 []$\OML/cmm/m/it/12 h[]$ \T1/cmr/m/it/12 and $\OML/cmm/m/it/12 h[]$ \T1/cmr/m/i
 t/12 are mono and, for ev-ery $\OML/cmm/m/it/12 v; v[] \OMS/cmsy/m/n/12 2 \OML/
@@ -1326,39 +1348,39 @@ Overfull \hbox (25.16055pt too wide) detected at line 210
 [] [] []
  []
 
-[58]
+[60]
 Overfull \hbox (28.28593pt too wide) in paragraph at lines 212--213
 []\T1/cmr/m/n/12 We have there-fore found a mor-phism $\OT1/cmr/m/n/12 (\OML/cm
 m/m/it/12 E; V; C; s[]; t[]; q\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ! \OML/cmm/m/i
 t/12 R\OT1/cmr/m/n/12 ((\OML/cmm/m/it/12 A; B; s; t\OT1/cmr/m/n/12 ))$
  []
 
-) (./Graph_sections/EGGs.tex [59]
+) (./Graph_sections/EGGs.tex [61]
 
 LaTeX Warning: Reference `prop:fact_of_subobjects_is_unique' on page 1 undefine
 d on input line 27.
 
-[60]
+[62]
 
 LaTeX Warning: Reference `prop:reg_mono_in_EG_are_mono_in_graph' on page 1 unde
 fined on input line 83.
 
-[61])) (./Appendix.tex (./Appendix/Omitted_Proofs.tex [62]
+[63])) (./Appendix.tex (./Appendix/Omitted_Proofs.tex [64]
 Appendix A.
-[63
+[65
 
 
-] [64] [65]
+] [66] [67]
 Overfull \hbox (21.0689pt too wide) in paragraph at lines 70--72
 []\T1/cmr/m/n/12 Consider the two prod-ucts (which ex-ist by hy-poth-e-sis) $[]
 [] \OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1/cmr/m/n/12 )$\T1/c
 mr/m/n/12 ,
  []
 
-[66])) (./main.bbl [67] [68
+[68])) (./main.bbl [69] [70
 
 
-]) [69] (./main.aux)
+]) [71] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1374,10 +1396,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4CA88642EC3B6B5154EBE53B591B11F5;4002.
  ) 
 Here is how much of TeX's memory you used:
- 33990 strings out of 476076
- 651564 string characters out of 5793774
- 1990187 words of memory out of 5000000
- 55193 multiletter control sequences out of 15000+600000
+ 34029 strings out of 476076
+ 652356 string characters out of 5793774
+ 1992187 words of memory out of 5000000
+ 55228 multiletter control sequences out of 15000+600000
  590173 words of font info for 137 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  108i,16n,107p,3217b,1197s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1406,10 +1428,10 @@ public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
 /usr/share/texmf-dist/fonts/type1/public/xypic/xycmat10.pfb></usr/share/texmf-d
 ist/fonts/type1/public/xypic/xycmbt10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/boondox/zxxrl8a.pfb>
-Output written on main.pdf (69 pages, 630899 bytes).
+Output written on main.pdf (71 pages, 643500 bytes).
 PDF statistics:
- 954 PDF objects out of 1000 (max. 8388607)
- 813 compressed objects within 9 object streams
- 311 named destinations out of 1000 (max. 500000)
+ 970 PDF objects out of 1000 (max. 8388607)
+ 827 compressed objects within 9 object streams
+ 315 named destinations out of 1000 (max. 500000)
  205 words of extra memory for PDF output out of 10000 (max. 10000000)
 
