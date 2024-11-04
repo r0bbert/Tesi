@@ -16,7 +16,7 @@ Index
         - 1.3.2 Kernel Pairs and Regular Epimorphisms . . . 28
     - 1.4 Adhesivity . . . . . . . . . . . . . . . . . . . . . . 35
 
-2 Categories of Graphs . . . . . . . . . . . . . . . . 39
+2. Categories of Graphs . . . . . . . . . . . . . . . . 39
     - 2.1 Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . 39
     - 2.2 Graphs with equivalences - notes and results . . . . . 40
         - 2.2.1 Some results on kernel pair and regular epis . 40
