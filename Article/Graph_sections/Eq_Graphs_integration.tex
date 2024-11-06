@@ -3,7 +3,7 @@ A graph with equivalence is a 6-tuple $\eqgraph{G} =  (E, V, C, s, t, q)$, where
 \begin{itemize}
     \item $h_E \circ s = s' \circ h_V$;
     \item $h_E \circ t = t' \circ h_V$;
-    \item $h_C \circ q = q' \circ h_C$.
+    \item $h_C \circ q = q' \circ h_V$.
 \end{itemize}
 
 \begin{remark}
@@ -44,7 +44,7 @@ A graph with equivalence is then a graph with an extra structure, the quotient m
 
 \begin{proof}
     Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$  be two graphs with equivalences, and let $h, k : \eqgraph{G \to H}$.
-    If $U(h) = U(k)$ (i.e., the first two component of $h$ and $k$ are the same), from \Cref{obs:eq_grph_morph_det_by_first_two_comp}, we can conclude that $h = k$. Then, the restriction $U_{\eqgraph{G, H}} : \EqGrph(\eqgraph{G, H}) \to \Graph(U(\eqgraph{G}), U(\eqgraph{H}))$, therefore $U$ is faithful.
+    If $U(h) = U(k)$ (i.e., the first two component of $h$ and $k$ are the same), from \Cref{obs:eq_grph_morph_det_by_first_two_comp}, we can conclude that $h = k$. Then, the restriction $U_{\eqgraph{G, H}} : \EqGrph(\eqgraph{G, H}) \to \Graph(U(\eqgraph{G}), U(\eqgraph{H}))$ is injective, therefore $U$ is faithful.
 \end{proof}
 
 Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $C_G$, and $h = (h_E, h_V, h_C)$ to $h_C$.
@@ -70,7 +70,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
     yields the dotted arrow $\pi_C^i$.
     \[
         \begin{tikzcd}
-            B \arrow[r, "{\pi_V^i}"] \arrow[d, "q" swap] & B_i \arrow[r, "{q_i}"] & Q_i \arrow[d, "{id_{Q_i}}"] \\
+            B \arrow[r, "{\pi_V^i}"] \arrow[d, "q" swap] & B_ i \arrow[r, "{q_i}"] & Q_i \arrow[d, "{id_{Q_i}}"] \\
             Q \arrow[urr, dashed, "\pi_C^i"] \arrow[r, "m" swap] &L \arrow[r, "{l_i}"swap] & Q_i
         \end{tikzcd}
     \]
@@ -122,9 +122,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
 \end{cor}
 
 \begin{proof}
-    The ``if'' part is given by the fact that $U$ is faithful, and hence reflects monomorphisms. Since a morphism ain a category of presheaves is mono if and only if it is injective on each component \todo{commentato il link, dimostrare questa cosa}
-    % https://ncatlab.org/nlab/show/category+of+presheaves#properties
-    we have that, if  $U(h)$ is mono, that is, $h_E$ and $h_V$ are injective in $\Set$, then $h$ is mono.
+    The ``if'' part is given by the fact that $U$ is faithful, and hence reflects monomorphisms. Since a morphism in a category of presheaves is mono if and only if it is injective on each component, we have that, if  $U(h)$ is mono, that is, $h_E$ and $h_V$ are injective in $\Set$, then $h$ is mono.
     For the ``only if'' part, suppose $f = (f_E, f_V, f_C)$, $g=(g_E, g_V, g_C)$, $f, g : \eqgraph{H \to K}$ be such that $h \circ f = h \circ g$. Then, we have
     \begin{align*}
         h \circ f   &= (h_E \circ f_E, h_V \circ f_V, h_C \circ f_C) \\

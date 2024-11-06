@@ -1,5 +1,7 @@
 \section{E-Graphs}\label{sect:eggs}
 
+\newcommand{\EGG}{\mathbf{EGG}}
+
 \todo[color=green!40]{
     COSE DA FARE:
 Questa sezione ha più o meno gli stessi problemi della precedente. L'ordine da rispettare imho è il seguente:
@@ -19,20 +21,8 @@ In a more general case, considering a graph with equivalence as a functor $\eqgr
 \[
     \frac{\eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e')}{\eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e')}
 \] for each $e$, $e' \in \eqgraph{G}(E)$.
-But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (with the projection arrows $p_1$ and $p_2$) is exactly the kernel pair of $q \circ s$, and $T$ (together with the projections $q_1, q_2$) is the kernel pair of $q \circ t$ (\Cref{ex:kernel_pairs_in_Set}). Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$.
+But this is to say that, given the two set $S = \{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ s)(e) = \eqgraph{G}(q \circ s)(e') \}$ and $T =\{ (e, e') \in \eqgraph{G}(E) \times \eqgraph{G}(E) \mid \eqgraph{G}(q \circ t)(e) = \eqgraph{G}(q \circ t)(e') \} $, $S \subseteq T$. But $S$ (with the projection arrows $p_1$ and $p_2$) is exactly the kernel pair of $\eqgraph{G}(q \circ s)$, and $T$ (together with the projections $q_1, q_2$) is the kernel pair of $\eqgraph{G}(q \circ t)$ (\Cref{ex:kernel_pairs_in_Set}). Then, a more general way to express that $\eqgraph{G}$ is an e-graph is by saying that $\eqgraph{G}$ is such that there exists a monomorphism, which is the canonical inclusion, in $\Set$ from $S$ to $T$.
 To find a structure to express this fact, we have to consider a more general case.
-
-% Consider an arrow $f: X \rightarrow Y$, and let $(K, \pi_1, \pi_2)$ be the pullback of $(f, f)$.
-% \[
-%     \begin{tikzcd}
-%         K \arrow[r, "{\pi_1}"] \arrow[d, "{\pi_2}"swap] & X \arrow[d, "f"] \\
-%         X \arrow[r, "f"swap] & Y
-%     \end{tikzcd}
-% \]
-% Such pullback induces an arrow $\langle \pi_1, \pi_2 \rangle : K \rightarrow X\times X$. Such arrow is mono and unique, because of the universal property of the pullback, indeed a subobject.
-% \todo{capire quanto andare nello specifico qui}
-
-TODO: usare kernel pairs e sottoggetti per definire gli EGGs, usando \Cref{prop:pairing_of_kernel_pairs_mono} e \Cref{rem:fact_of_subobject_is_unique}
 
 Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$, we can make use of the \Cref{prop:fact_of_subobjects_is_unique}. Specifically, we want, in the following situation, $i$ to be mono and unique.
 \[
@@ -41,39 +31,34 @@ Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$,
         & \eqgraph{G}(E) \times \eqgraph{G}(E)
     \end{tikzcd}
 \]
-We have then that $\langle p_1, p_2 \rangle$ is mono, then so is $\langle q_1, q_2 \rangle \circ i$. From \Cref{prop:epi_mono_prop}, we can conclude that $i$ is mono too. The uniqueness follows from \Cref{prop:fact_of_subobjects_is_unique}. If such $i$ exists, then $\eqgraph{G}$ is an e-graph.
+% We have then that $\langle p_1, p_2 \rangle$ is mono, then so is $\langle q_1, q_2 \rangle \circ i$. From \Cref{prop:epi_mono_prop}, we can conclude that $i$ is mono too. The uniqueness follows from \Cref{prop:fact_of_subobjects_is_unique}. If such $i$ exists, then $\eqgraph{G}$ is an e-graph.
 
 \begin{definition}[Category of E-Graphs]\label{def:cat_of_eggs}
-    The subcategory of $\mathbf{EqGrph}$ whose objects are this particular kind of graphs is denoted as $\mathbf{EGG}$.
+    $\EGG$ is the subcategory of $\EqGrph$ such that
+	\begin{itemize}
+		\item $\eqgraph{G} \in \EGG$ if, being $(S, p_1, p_2)$ and $(T, q_1, q_2)$, respectively, the kernel pair of $\eqgraph{G}(q \circ s)$ and the kernel pair of $\eqgraph{G}(q \circ t)$, it holds that $\langle p_1, p_2 \rangle \leq \langle q_1, q_2 \rangle$ (in the sense of \Cref{def:subobj});
+		\item given two e-graphs $\eqgraph{G, H}$, $\EGG(\eqgraph{G, H}) =\EqGrph(\eqgraph{G, H})$ (i.e., a full subcategory).
+	\end{itemize}
 \end{definition}
 
-\begin{prop}\label{prop:prod_of_EGGs_is_EGG}
-    The product of two e-graphs in $\mathbf{EqGrph}$ is an e-graph.
-\end{prop}
-
-\begin{proof}
-    Let $\eqgraph{G}$, $\eqgraph{H}$ be two e-graphs in $\mathbf{EqGrph}$. Then, we want to to show that $\eqgraph{G \times H}$ is an e-graph too. The argument lies on the consideration that limits in presheaves categories are computed pointwise. In fact, we can 
-\end{proof}
-
-Consider now the inclusion functor $I: \mathbf{EGG} \rightarrow \mathbf{EqGrph}$. Since $\mathbf{EGG}$ is a full subcategory of $\mathbf{EqGrph}$, $I$ is full and faithful (\Cref{ex:full_subc_inc_fully_faith}), it reflects all limits (\Cref{prop:inc_funct_reflects_so_limits}). But limits are also preserved, since the limit in $\mathbf{EqGrph}$ in which objects are e-graphs is an e-graph together with morphisms that are also morphisms of $\mathbf{EGG}$ since it is a full subcategory. Then, we can conclude as follows.
+Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful functor $I: \EGG \to \EqGrph$ (\Cref{ex:full_subc_inc_fully_faith}).
 
 \begin{lemma}
-    The inclusion functor $I: \mathbf{EGG \rightarrow EqGrph}$ creates limits.
+	$\EGG$ has all limits and colimits, and $I$ preserves them.
 \end{lemma}
 
 \begin{proof}
-    To prove that $I$ creates limits, we have to show that both preserves and reflects limits.
-    To see that $I$ preserves limits, it is sufficient to note that a limit of e-graphs in $\mathbf{EqGrph}$ is again an e-graph, together with morphisms. (Note that, since $\Egg$ is a full subcategory of $\mathbf{EqGrph}$, these morphisms in $\mathbf{EqGrph}$ are morphisms of $\Egg$ too).
+	Let $D: \cat I \to \EGG$ be a diagram, and suppose $(\eqgraph{L}, (l_i)_{i \in \cat{I}})$ be a limit for $I \circ D$, where $l_i = (l_E^i, l_V^i, l_C^i)$. Then, it is sufficient to show that $(\eqgraph{L}, (l_i)_{i \in \cat I})$ is a limit for $D$ (i.e., $\eqgraph{L}$ is an e-graph). To see this, consider $e, e' \in \eqgraph{L}(E)$, and suppose $\eqgraph{L}(q \circ s)(e) = \eqgraph{L}(q \circ s)(e')$. Then, we have $(l_C^i \circ \eqgraph{L}(q \circ s))(e) = (l_C^i \circ \eqgraph{L}(q \circ s))(e')$, but, since
+	\[\begin{split}
+		l_C^i \circ \eqgraph{L}(q \circ s) &= l_C^i \circ \eqgraph{L}(q) \circ \eqgraph{L}(s) \\
+						   &= D(i)(q) \circ l_V^i \circ \eqgraph{L}(s)	\\
+						   &= D(i)(q \circ s)\circ l_E^i
+	\end{split}\]
+	the equation above rewrites as
+	\[(D(i)(q \circ s))(l_E^i (e)) = (D(i)(q \circ s))(l_E^i (e')) \]
+	Since $D(i)$ is an e-graph, we have then
+	\[(D(i)(q \circ t))(l_E^i (e)) = (D(i)(q \circ t))(l_E^i (e')) \]
+	and, retracing the previous steps, \[ (l_C^i \circ \eqgraph{L}(q \circ t))(e) = (l_C^i \circ \eqgraph{L}(q \circ t))(e')\]
+	\todo{finire qui.}
 \end{proof}
 
-Since $I$ is faithful, monomorphisms in $\mathbf{EqGrph}$ between graphs that are e-graphs too are monomorphisms in $\Egg$ too. Regular monomorphisms in $\Egg$ are, as in $\mathbf{EqGrph}$, monomorphisms which reflect equivalences, hence natural transformations with all the three components mono (\Cref{prop:reg_mono_in_EG_are_mono_in_graph}). The following result follows by the fact that a full and faithful functor preserves equalizers. {\color{red}{???? Da dimostrare}}
-
-\begin{prop}
-    Let $I$ be the inclusion functor from $\Egg$ to $\mathbf{EqGrph}$. Then, $I(\Reg(\Egg)) \subseteq \Reg(\mathbf{EqGrph})$.
-\end{prop}
-
-At this point, by direct application of \Cref{th:crit_for_adh}, it is possible to state what follows.
-
-\begin{cor}
-    $\mathbf{EGG}$ is quasiadhesive.
-\end{cor}
