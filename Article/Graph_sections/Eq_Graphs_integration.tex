@@ -65,9 +65,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
         \end{tikzcd}
     \]
     So we have $q_j \circ h_V \circ \pi_V^i = q_j \circ \pi_V^j$, by definition of graph with equivalence, $h_C \circ q_i \circ \pi_V^i = q_j$, and, by definition of $V$, $V \circ D (\alpha) \circ q_i \circ \pi_V^i = q_j \circ \pi_V^j$.
-    Suppose now $(L, (l_i)_{i \in \cat I})$ be a limit for $V \circ D$, so that we have an arrow $l: B \to L$. This arrow is not epi in general, so let $Q$ be its image, $q: Q \to B$ be the resulting epi and $m: Q \to L$ the corresponding mono, as the diagram below shows. By definition, the external rectangle commutes, so, for each $i$ object of $\cat I$, 
-    REMARK\todo{epi-mono factorization in Set (or Regular Cats in general)}
-    yields the dotted arrow $\pi_C^i$.
+    Suppose now $(L, (l_i)_{i \in \cat I})$ be a limit for $V \circ D$, so that we have an arrow $l: B \to L$. This arrow is not epi in general, so let $Q$ be its image, $q: Q \to B$ be the resulting epi and $m: Q \to L$ the corresponding mono, as the diagram below shows. By definition, the external rectangle commutes, so, for each $i$ object of $\cat I$, \Cref{prop:prop_epi_mono_Set} yields the dotted arrow $\pi_C^i$.
     \[
         \begin{tikzcd}
             B \arrow[r, "{\pi_V^i}"] \arrow[d, "q" swap] & B_ i \arrow[r, "{q_i}"] & Q_i \arrow[d, "{id_{Q_i}}"] \\
@@ -82,7 +80,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
     \end{align*}
     And faithfulness of $U$ yields the thesis.
 
-    To see that this cone is terminal, let $((E, F, G, a, b, c), \tau_i = (\tau_E^i, \tau_V^i, \tau_C^i)_{i \in \cat I})$ be another cone. By construction, we have an arrow $(\tau_E, \tau_V):(E, F, a, b) \to (A, B, s, t)$ such that
+	To see that this cone is terminal, let $((E, F, G, a, b, c), (\tau_i)_{i \in \cat I})$, where $\tau_i = (\tau_E^i, \tau_V^i, \tau_C^i)$, be another cone. By construction, we have an arrow $(\tau_E, \tau_V):(E, F, a, b) \to (A, B, s, t)$ such that
     \[
         \begin{tikzcd}[row sep = 26, column sep = 26]
             & E \arrow[dl, dashed, "{\tau_E}" swap] \arrow[dr, "{\tau_E^i}"] & \\
@@ -106,7 +104,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
                         &=l_i\circ l\circ \tau_V        && \textit{$(B, (q_i\circ \pi_V^i)_{i \in \cat I})$ cone} 
     \end{align*} 
 
-    Therefore, the outer part of the rectangle below commutes, and by REMARK \todo{epi-reg fact in SET} there exists a unique $\tau_C: G \to Q$
+	Therefore, the outer part of the rectangle below commutes, and by \Cref{prop:prop_epi_mono_Set} there exists a unique $\tau_C: G \to Q$
     \[
         \begin{tikzcd}
             F \arrow[r, "{\tau_V}"] \arrow[d, "c"swap] & B \arrow[r, "q"] & Q \arrow[d, "m"] \\
@@ -115,6 +113,18 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
     \]
      Faithfulness of $U$ guarantees that $(\tau_E, \tau_V, \tau_C)$ is the unique arrow such that $(\pi_E^i, \pi_V^i, \pi_C^i) \circ (\tau_E, \tau_V, \tau_C) = (\tau_E^i, \tau_V^i, \tau_C^i)$.
      \todo{Dimostrazione dello statement di sopra, e colimiti}
+
+     For colimits, let $(A, B, s, t)$ be the colimit of $U \circ D$, together with morphisms $(\kappa_i)_{i \in \cat I} = (\kappa_E^i, \kappa_V^i)_{i \in \cat I}$, and suppose $((c_i)_{i \in \cat I}, C)$ be the colimit of $V \circ D$. Then, we have the following situation
+     \[
+	     \begin{tikzcd}[row sep = 25, column sep=25]
+			& B & \\
+			B_i \ar[rr, "{h_V}"] \ar[ur, "{\kappa_V^i}"] \ar[d, "{q_i}"swap] & & B_j \ar[ul, "{\kappa_V^j}"swap] \ar[d, "q_j"] \\
+			C_i \ar[rr, "{h_C}" swap] \ar[dr, "{c_i}"swap] & & C_j \ar[dl, "{c_j}"] \\
+			& C &
+		\end{tikzcd}
+     \]
+     Then, $((c_i \circ q_i)_{i \in \cat I}, C)$ is a cocone for all $B_i$, and, since $((\kappa_i)_{i \in \cat I}, B)$ is the colimit of all $B_i$ (\Cref{lemma:limits_of_presheaves}), there exists a unique arrow $q: B \to C$ such that, for each $i$, $q \circ \kappa_V^i = c_i \circ q_i$. Such $q$ is epi {\color{red}{dimostrare}}, and thus $(A, B, C, s, t, q)$ is the colimit of $D$. {\color{red}{rifinire, dimostrare unicità}}.
+
 \end{proof}
 
 \begin{cor}\label{cor:mono_in_EqGrph}

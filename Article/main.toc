@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.2.2}Rimanenze da integrare}{50}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Adhesivity of $\mathbf {EqGrph}$}{50}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}Graphs with Equivalences}{55}{section.2.3}%
-\contentsline {section}{\numberline {2.4}E-Graphs}{61}{section.2.4}%
+\contentsline {section}{\numberline {2.4}E-Graphs}{62}{section.2.4}%
 \contentsline {chapter}{\numberline {A}Omitted Proofs}{65}{appendix.A}%
-\contentsline {paragraph}{\Cref {lemma:pullback_lemma}.}{65}{paragraph*.44}%
-\contentsline {paragraph}{\Cref {th:limit}.}{67}{paragraph*.46}%
+\contentsline {paragraph}{\Cref {lemma:pullback_lemma}.}{65}{paragraph*.42}%
+\contentsline {paragraph}{\Cref {th:limit}.}{67}{paragraph*.44}%
