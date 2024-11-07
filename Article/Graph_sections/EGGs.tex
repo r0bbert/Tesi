@@ -44,8 +44,39 @@ Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$,
 Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful functor $I: \EGG \to \EqGrph$ (\Cref{ex:full_subc_inc_fully_faith}).
 
 \begin{lemma}
-	$\EGG$ has all limits and colimits, and $I$ preserves them.
+	$\EGG$ has all limits and $I$ preserves them.
 \end{lemma}
+
+\begin{proof}
+	Let $D: \cat{I} \to \EGG$ be a diagram, with $D(i) = (A_i, B_i, C_i, s_i, t_i, q_i)$, let $(U, u_1^i, u_2^i)$ be the kernel pair of $q_i\circ s_i$. Let now be $(A, B, C, s, t, q)$, togehter with projections $(\pi_E^i, \pi_V^i, \pi_C^i)_{i \in \cat I}$ the limit of $I \circ D$, let $(U, u_1, u_2)$ be the kernel pair of $q\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $V\circ I\circ D$.
+	By construction (proof of \Cref{???}\todo{citazione}), there exists a monomorphism $m: Q \to L$ such that $\pi_C^i = l_i \circ m$. Notice that
+	\begin{align*}
+		q_i\circ s_i\circ \pi^i_E\circ u_1 	&= q_i\circ \pi^i_V\circ s\circ u_1\\
+							&= \pi_C^i\circ q\circ s\circ u_1\\
+							&=\pi_C^i\circ q\circ s\circ u_2\\
+							&= q_i \circ s_i \circ \pi_E^i \circ u_2
+	\end{align*}
+	Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
+	\[
+		\begin{tikzcd}[row sep = 25, column sep = 25]
+			U \ar[r, "{u_1}"] \ar[d, "{u_2}"swap font=\small] \ar[dr, dashed, "{a_i}"] & A \ar[drr, "{\pi_E^i}"] && \\
+			A \ar[ddr, "{\pi_E^i}"swap] & U_i \ar[rr, "{u_1^i}"] \ar[dd, "{u_2^i}"swap]&& A_i \ar[d, "{s_i}"] \\
+			& & & B_i \ar[d, "{q_i}"]\\
+			& A_i \ar[r, "{s_i}"swap] & B_i \ar[r, "{q_i}"swap] & C_i
+		\end{tikzcd}
+	\]
+	We have then
+	\begin{align*}
+		l_i\circ m \circ q \circ t \circ u_1	&= q_i \circ \pi_V^i \circ t \circ u_1 \\
+							&= q_i \circ t_i \circ \pi_E^i \circ u_1 \\
+							&= q_i \circ t_i \circ u_1^i \circ a_i \\
+							&= q_i \circ t_i \circ u_2^i \circ a_i \\
+							&= q_i \circ t_i \circ \pi_E^i \circ u_2 \\
+							&= q_i \circ \pi_V^i \circ t \circ u_2 \\
+							&= l_i \circ m \circ q \circ t \circ u_2
+	\end{align*}
+	By universal property of limits, we have that $m\circ q \circ t \circ u_1 = m \circ q \circ t \circ u_2$, and, since $m$ is mono, $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis.
+\end{proof}
 
 
 APPUNTI
