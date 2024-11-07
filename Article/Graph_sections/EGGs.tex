@@ -59,7 +59,7 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 	Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
 	\[
 		\begin{tikzcd}[row sep = 25, column sep = 25]
-			U \ar[r, "{u_1}"] \ar[d, "{u_2}"swap font=\small] \ar[dr, dashed, "{a_i}"] & A \ar[drr, "{\pi_E^i}"] && \\
+			U \ar[r, "{u_1}"] \ar[d, "{u_2}"swap] \ar[dr, dashed, "{a_i}"] & A \ar[drr, "{\pi_E^i}"] && \\
 			A \ar[ddr, "{\pi_E^i}"swap] & U_i \ar[rr, "{u_1^i}"] \ar[dd, "{u_2^i}"swap]&& A_i \ar[d, "{s_i}"] \\
 			& & & B_i \ar[d, "{q_i}"]\\
 			& A_i \ar[r, "{s_i}"swap] & B_i \ar[r, "{q_i}"swap] & C_i
@@ -75,7 +75,23 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 							&= q_i \circ \pi_V^i \circ t \circ u_2 \\
 							&= l_i \circ m \circ q \circ t \circ u_2
 	\end{align*}
-	By universal property of limits, we have that $m\circ q \circ t \circ u_1 = m \circ q \circ t \circ u_2$, and, since $m$ is mono, $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis.
+	By universal property of limits, we have that \- $m\circ q \circ t \circ u_1 = m \circ q \circ t \circ u_2$, and, since $m$ is mono, $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis.
+\end{proof}
+
+\begin{cor}\label{cor:I_creates_limits}
+	$I$ creates limits.
+\end{cor}
+
+\begin{cor}\label{cor:reg_mono_EGG}
+	$h: \eqgraph{G \to H}$ is a regular mono in $EGG$ if and only if it is a regular mono in $\EqGrph$.
+\end{cor}
+
+\begin{lemma}\label{lem:I_pres_pushouts_of_monos}
+	$I$ preserves pushouts along regular monomorphisms.	
+\end{lemma}
+
+\begin{proof}
+	TODO	
 \end{proof}
 
 
