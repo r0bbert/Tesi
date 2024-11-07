@@ -47,6 +47,31 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 	$\EGG$ has all limits and colimits, and $I$ preserves them.
 \end{lemma}
 
+
+APPUNTI
+Chiamiamo $(A_i, B_i, Q_i, s_i, t_i, q_i)$ le componenti del diagramma. Chiamiamo $(U_i, u_{1, i} , u_{2,i})$ il kernel pair di $q_i\circ s_i$.  Sia $(A, B, Q, s,t,q )$ il limite in $\EqGrph$ e $(U, u_1, u_2)$ il kernel pair di $q\circ s$. Vogliamo far vedere che $q\circ t \circ u_1= q\circ t\circ u_2$. Sia anche $(L, l_i)$ il limite del diagramma dato dai $Q_i$. In particolare abbiamo $m\colon Q\to L$ mono.
+
+Osserviamo che 
+\begin{align*}
+q_i\circ s_i\circ \pi^i_E\circ u_1 &= q_i\circ \pi^i_V\circ s\circ u_1\\&= \pi^i\circ q\circ s\circ u_1\\&=\pi^i\circ q\circ s\circ u_2=\dots (percorso al contrario)
+\end{align*}
+
+Dunque per ogni $i$ esiste una freccia $a_i\colon U\to U_{i}$ tale che il diagramma sotto commuta
+\[
+\xymatrix{U \ar@{.>}[dr]^{a_i}\ar[r]^{u_1} \ar[d]_{u_2}& A \ar[drr]^{\pi^i_E}\\A \ar[ddr]_{\pi^i_E}&U_i \ar[dd]_{u_{2,i}} \ar[rr]^{u_{1,i}}& & A_i \ar[d]^{s_i}\\
+& & &B_i \ar[d]^{q_i}\\&A_i \ar[r]_{s_i} & B_i \ar[r]_{s_i} & Q_i}
+\]
+
+
+\begin{align*}
+	l_i\circ m\circ q\circ t \circ u_1 &= q_i \circ \pi^{i}_V\circ t\circ u_1 \\&=q_i\circ t_i\circ \pi^i_E\circ u_1\\&=q_i\circ t_i\circ u_{1,i}\circ a_i\\&=q_i\circ t_i\circ u_{2,i}\circ a_i\\=\dots (uguaglianze al contrario)
+\end{align*}
+
+Dunque le frecce $m\circ q\circ t \circ u_1, m\circ q\circ t \circ u_2\colon U\rightrightarrows L$ sono uguali. Ma $m$ è mono per costruzione e allora $q\circ t \circ u_1=q\circ t \circ u_2$.
+
+FINE APPUNTI 
+
+
 \begin{proof}
 	Let $D: \cat I \to \EGG$ be a diagram, and suppose $(\eqgraph{L}, (l_i)_{i \in \cat{I}})$ be a limit for $I \circ D$, where $l_i = (l_E^i, l_V^i, l_C^i)$. Then, it is sufficient to show that $(\eqgraph{L}, (l_i)_{i \in \cat I})$ is a limit for $D$ (i.e., $\eqgraph{L}$ is an e-graph). To see this, consider $e, e' \in \eqgraph{L}(E)$, and suppose $\eqgraph{L}(q \circ s)(e) = \eqgraph{L}(q \circ s)(e')$. Then, we have $(l_C^i \circ \eqgraph{L}(q \circ s))(e) = (l_C^i \circ \eqgraph{L}(q \circ s))(e')$, but, since
 	\[\begin{split}
