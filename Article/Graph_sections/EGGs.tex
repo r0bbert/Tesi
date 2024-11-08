@@ -12,6 +12,8 @@ Questa sezione ha più o meno gli stessi problemi della precedente. L'ordine da 
 > e-graph sono quasiadesivi
 }
 
+\iffalse
+
 E-Graphs are a particular type of graphs with equivalences, in which holds that
 $$
     \frac{s(e) \sim s(e')}{t(e) \sim t(e')}
@@ -39,6 +41,30 @@ Since both $S$ and $T$ are subobjects of $\eqgraph{G}(E) \times \eqgraph{G}(E)$,
 		\item $\eqgraph{G} \in \EGG$ if, being $(S, p_1, p_2)$ and $(T, q_1, q_2)$, respectively, the kernel pair of $\eqgraph{G}(q \circ s)$ and the kernel pair of $\eqgraph{G}(q \circ t)$, it holds that $\langle p_1, p_2 \rangle \leq \langle q_1, q_2 \rangle$ (in the sense of \Cref{def:subobj});
 		\item given two e-graphs $\eqgraph{G, H}$, $\EGG(\eqgraph{G, H}) =\EqGrph(\eqgraph{G, H})$ (i.e., a full subcategory).
 	\end{itemize}
+\end{definition}
+
+\fi
+
+E-Graphs are a particular type of graphs with equivalences.
+
+\begin{definition}[E-Graph]\label{def:e_graph}
+	Given a graph with equivalence $\eqgraph{G} = (E, V, C, s, t, q)$, let $(S, p_1, p_2)$ be the kernel pair of $q \circ s$. Then, $\eqgraph G$ is an \emph{e-graph} if it holds that
+	\[
+		q \circ t \circ p_1 = q \circ t \circ p_2
+	\]
+\end{definition}
+
+\begin{remark}
+	From a set-theoretic point of view, $\eqgraph{G} = (\graph{G}, \sim)$ is a graph with equivalence, where $\graph{G} = (E, V, s, t)$ in which holds that, for each pair of edges $e$, $e'$,
+	\[
+		\frac{s(e)\sim s(e')}{t(e)\sim t(e')}
+	\]
+	As we have considered in the section on graphs with equivalences, we can formalize the equivalence relation with a surjective function $q: V \to V/_\sim = C$, rewriting the inference rule above as an inclusion.
+	Let $S = \{(e, e') \in E\times E \mid q(s(e)) = q(s(e'))\}$ and $T = \{(e, e') \in E \times E \mid q(t(e)) = q(t(e'))\}$. Then, $\eqgraph{G}$ is an e-graph if $S \subseteq T$. As we noted in \Cref{ex:kernel_pairs_in_Set}, $S$ is the kernel pair of $q \circ s$ and $T$ is the kernel pair of $q \circ t$, if endowed with canonical projections. Moreover, we notice that the pairing of such projections yields a subobject of the product $E \times E$ \Cref{prop:pairng_of_kernel_pairs_mono}. Hence, by \Cref{rem:fact_of_subobject_is_unique}, the \Cref{def:e_graph} express this fact using categorial constructions.
+\end{remark}
+
+\begin{definition}[Category of E-Graphs]\label{def:cat_of_eggs}
+	$\EGG$ is the subcategory of $\EqGrph$ in which objects are e-graphs, and, given two e-graphs $\eqgraph{G, H}$, $\EGG(\eqgraph{G, H}) = \EqGrph(\eqgraph{G, H})$.
 \end{definition}
 
 Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful functor $I: \EGG \to \EqGrph$ (\Cref{ex:full_subc_inc_fully_faith}).
@@ -91,11 +117,115 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 \end{lemma}
 
 \begin{proof}
-	TODO	
+	Let $\eqgraph{G}_1 = (A_1, B_1, C_1, s_1, t_1, q_1)$, $\eqgraph{G}_2 = (A_2, B_2, C_2, s_2, t_2, q_2)$ and $\eqgraph{G}_3 = (A_3, B_3, C_3, s_3, t_3, q_3)$ be e-graphs,  $h: \eqgraph{G}_1 \to \eqgraph{G}_2$ and $m: \eqgraph{G}_1 \to \eqgraph{G}_3$ be two morphisms with $m$ mono. Let now $\eqgraph{P} = (A, B, C, s, t, q)$, together with $k: \eqgraph{G}_3 \to \eqgraph{P}$ and $n: \eqgraph{G}_2 \to \eqgraph{P}$, the pushout of $h$ and $m$.
+	Let $(K_i, \pi_i^1, \pi_i^2)$ the kernel pair of $q_i\circ s_i$, for $i = 1, 2, 3$, and let $(U, u_1, u_2)$ be the kernel pair of $q \circ s$.
+	Consider the following cube in $\Set$
+	\[\begin{tikzcd}[row sep=25, column sep = 25]
+	& {A_1} && {A_2} \\
+	{A_3} && A \\
+	& {C_1} && {C_2} \\
+	{C_3} && C
+	\arrow["{h_E}", from=1-2, to=1-4]
+	\arrow["{m_E}"', from=1-2, to=2-1]
+	\arrow["{q_1\circ s_1}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{n_E}", from=1-4, to=2-3]
+	\arrow["{q_2\circ s_2}", from=1-4, to=3-4]
+	\arrow["{k_E}"{pos=0.7}, from=2-1, to=2-3, crossing over]
+	\arrow["{q_3\circ s_3}"', from=2-1, to=4-1]
+	\arrow["{h_C}"{pos=0.8}, from=3-2, to=3-4]
+	\arrow["{m_C}"', from=3-2, to=4-1]
+	\arrow["{n_C}", from=3-4, to=4-3]
+	\arrow["{k_C}"', from=4-1, to=4-3]
+	\arrow["{q\circ s}"'{pos=0.2}, from=2-3, to=4-3, crossing over]
+	\end{tikzcd}\]
+	By adhesivity of $\Set$, and since $m$ is regular mono, the cube above is Van Kampen, and, by \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats}, all the faces are pullbacks. Then, applying \Cref{lemma:pushouts_kernel_pairs}, the square below is a pushout
+	\[\begin{tikzcd}[row sep=27, column sep = 27]
+		K_1 \ar[r, "{f_h}"] \ar[d, "{f_m}"swap] & K_2 \ar[d, "{f_n}"] \\
+		K_3 \ar[r, "{f_k}"swap] & U
+	\end{tikzcd}\]
+
+	Hence, we end up with the following situation
+	\[
+		\begin{tikzcd}[row sep = 20, column sep = 20]
+	& {K_1} && {K_2} \\
+	{K_3} && U \\
+	& {A_1} && {A_2} \\
+	{A_3} && A \\
+	& {C_1} && {C_2} \\
+	{C_3} && C
+	\arrow["{f_h}", from=1-2, to=1-4]
+	\arrow["{f_m}"', from=1-2, to=2-1]
+	\arrow["{\pi_1^1}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{f_n}", from=1-4, to=2-3]
+	\arrow["{\pi^1_2}", from=1-4, to=3-4]
+	\arrow["{f_k}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{\pi_3^1}"', from=2-1, to=4-1]
+	\arrow["{u_1}"'{pos=0.3}, from=2-3, to=4-3, crossing over]
+	\arrow["{h_E}"{pos=0.8}, from=3-2, to=3-4]
+	\arrow["{m_E}"', from=3-2, to=4-1]
+	\arrow["{q_1\circ s_1}"'{pos=0.7}, from=3-2, to=5-2]
+	\arrow["{n_E}", from=3-4, to=4-3]
+	\arrow["{q_2\circ s_2}", from=3-4, to=5-4]
+	\arrow["{k_E}"{pos=0.7}, from=4-1, to=4-3, crossing over]
+	\arrow["{q_3\circ s_3}"', from=4-1, to=6-1]
+	\arrow["{h_C}"{pos=0.8}, from=5-2, to=5-4]
+	\arrow["{q\circ s}"'{pos=0.2}, from=4-3, to=6-3, crossing over]
+	\arrow["{m_C}"', from=5-2, to=6-1]
+	\arrow["{n_C}", from=5-4, to=6-3]
+	\arrow["{k_C}"', from=6-1, to=6-3]
+	\end{tikzcd}
+		\qquad
+		\begin{tikzcd}[row sep = 20, column sep = 20]
+	& {K_1} && {K_2} \\
+	{K_3} && U \\
+	& {A_1} && {A_2} \\
+	{A_3} && A \\
+	& {C_1} && {C_2} \\
+	{C_3} && C
+	\arrow["{f_h}", from=1-2, to=1-4]
+	\arrow["{f_m}"', from=1-2, to=2-1]
+	\arrow["{\pi_1^2}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{f_n}", from=1-4, to=2-3]
+	\arrow["{\pi^2_2}", from=1-4, to=3-4]
+	\arrow["{f_k}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{\pi_3^2}"', from=2-1, to=4-1]
+	\arrow["{u_2}"'{pos=0.3}, from=2-3, to=4-3, crossing over]
+	\arrow["{h_E}"{pos=0.8}, from=3-2, to=3-4]
+	\arrow["{m_E}"', from=3-2, to=4-1]
+	\arrow["{q_1\circ s_1}"'{pos=0.7}, from=3-2, to=5-2]
+	\arrow["{n_E}", from=3-4, to=4-3]
+	\arrow["{q_2\circ s_2}", from=3-4, to=5-4]
+	\arrow["{k_E}"{pos=0.7}, from=4-1, to=4-3, crossing over]
+	\arrow["{q_3\circ s_3}"', from=4-1, to=6-1]
+	\arrow["{h_C}"{pos=0.8}, from=5-2, to=5-4]
+	\arrow["{q\circ s}"'{pos=0.2}, from=4-3, to=6-3, crossing over]
+	\arrow["{m_C}"', from=5-2, to=6-1]
+	\arrow["{n_C}", from=5-4, to=6-3]
+	\arrow["{k_C}"', from=6-1, to=6-3]
+		\end{tikzcd}\]
+
+	Computing, we have
+	\[
+		\begin{split}
+			q \circ t \circ u_1 \circ f_n &= q \circ t \circ n_E \circ \pi_2^1 \\ &= n_C \circ q_2 \circ s_2 \circ \pi_2^1 \\&= n_C \circ q_2 \circ s_2 \circ \pi_2^2 \\&=q \circ t \circ u_2 \circ f_n 
+			\end{split}
+			\qquad
+			\begin{split} q \circ t \circ u_1 \circ f_k &= q \circ t \circ k_E \circ \pi_3^1 \\ &= k_C \circ q_3 \circ s_3 \circ \pi_3^1 \\&= k_C \circ q_3 \circ s_3 \circ \pi_3^2 \\&=q \circ t \circ u_2 \circ f_k
+			\end{split}
+	\]
+	By universal property of pushouts, we can conclude $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis.
 \end{proof}
 
 
+\begin{cor}
+	$I$ creates pushouts along regular monos.
+\end{cor}
 
+By direct application of \Cref{th:crit_for_adh}, we can conclude what follows.{rem:fact_of_subobject_is_unique}
+
+\begin{cor}
+	$\EGG$ is $\Reg(\EGG)-adhesive$.
+\end{cor}
 
 % APPUNTI
 %Chiamiamo $(A_i, B_i, Q_i, s_i, t_i, q_i)$ le componenti del diagramma. Chiamiamo $(U_i, u_{1, i} , u_{2,i})$ il kernel pair di $q_i\circ s_i$.  Sia $(A, B, Q, s,t,q )$ il limite in $\EqGrph$ e $(U, u_1, u_2)$ il kernel pair di $q\circ s$. Vogliamo far vedere che $q\circ t \circ u_1= q\circ t\circ u_2$. Sia anche $(L, l_i)$ il limite del diagramma dato dai $Q_i$. In particolare abbiamo $m\colon Q\to L$ mono.
