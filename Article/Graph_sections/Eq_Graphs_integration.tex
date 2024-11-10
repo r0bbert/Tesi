@@ -49,7 +49,7 @@ A graph with equivalence is then a graph with an extra structure, the quotient m
 
 Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $C_G$, and $h = (h_E, h_V, h_C)$ to $h_C$.
 
-\begin{prop}
+\begin{prop}\label{prop:eqgrph_complete}
     $\EqGrph$ has all limits, colimits and $U$ preserves limits and colimits.
 \end{prop}
 
@@ -192,7 +192,7 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
     The action of the functor on a morphism of graphs with equivalences gives a morphism of graphs, in fact $q_H \circ s_H \circ h_E = q_H \circ h_V \circ s_G = h_C \circ q_G \circ s_G$. The same is valid for $t_H$ and $t_G$. 
 \end{remark}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:quot_funct_left_adj}
     $Q$ is a left adjoint.
 \end{lemma}
 
@@ -227,11 +227,250 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
     Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow wit such property. Then, it must be $(id_A, id_B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:quot_creat_colims}
     $Q$ creates colimits.
 \end{prop}
 
 \begin{proof}
     Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
+\end{proof}
+
+
+\begin{example}
+	TODO: Q does not preserves limits.
+\end{example}
+
+\subsection{Adhesivity of $\EqGrph$}
+
+\begin{lemma}\label{lemma:reg_push_stable}
+	In $\EqGrph$, pushouts along regular monos are stable.
+\end{lemma}
+
+\begin{proof}
+	Let $\graph{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\graph{G}'=(A_i', B_i', C_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$, and, in the diagram above, suppose all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is regular mono.
+	\[\begin{tikzcd}[row sep=23, column sep =23]
+	& {\mathcal{G}_1'} && {\mathcal{G}_2'} \\
+	{\mathcal{G}_3'} && {\mathcal{G}_4'} \\
+	& {\mathcal{G}_1} && {\mathcal{G}_2} \\
+	{\mathcal{G}_3} && {\mathcal{G}_4}
+	\arrow["{h'}", from=1-2, to=1-4]
+	\arrow["{k'}"', from=1-2, to=2-1]
+	\arrow["b"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{t'}", from=1-4, to=2-3]
+	\arrow["c", from=1-4, to=3-4]
+	\arrow["{p'}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["a"', from=2-1, to=4-1]
+	\arrow["h"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["d"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["k"', from=3-2, to=4-1]
+	\arrow["t", from=3-4, to=4-3]
+	\arrow["p"', from=4-1, to=4-3]
+	\end{tikzcd}\]
+	By \Cref{prop:eqgrph_complete} and \Cref{cor:mono_in_EqGrph}, the following two cubes have $\mathcal{M}$-pushouts as bottom faces and pullbacks as vertical faces, thus their top faces are $\mathcal{M}$-pushouts.
+	\[\begin{tikzcd}[row sep=20, column sep = 20]
+	& {A_1'} && {A_2'} \\
+	{A_3'} && {A_4'} \\
+	& {A_1} && {A_2} \\
+	{A_3} && {A_4}
+	\arrow["{h'_V}", from=1-2, to=1-4]
+	\arrow["{k'_V}"', from=1-2, to=2-1]
+	\arrow["{b_V}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{t'_V}", from=1-4, to=2-3]
+	\arrow["{c_V}", from=1-4, to=3-4]
+	\arrow["{p'_V}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{a_V}"', from=2-1, to=4-1]
+	\arrow["{h_V}"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["{d_V}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["{k_V}"', from=3-2, to=4-1]
+	\arrow["{t_V}", from=3-4, to=4-3]
+	\arrow["{p_V}"', from=4-1, to=4-3]
+	\end{tikzcd}\qquad
+	\begin{tikzcd}[row sep=20, column sep = 20]
+	& {B_1'} && {B_2'} \\
+	{B_3'} && {B_4'} \\
+	& {B_1} && {B_2} \\
+	{B_3} && {B_4}
+	\arrow["{h'_E}", from=1-2, to=1-4]
+	\arrow["{k'_E}"', from=1-2, to=2-1]
+	\arrow["{b_E}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{t'_E}", from=1-4, to=2-3]
+	\arrow["{c_E}"', from=1-4, to=3-4]
+	\arrow["{p'_E}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{a_E}"', from=2-1, to=4-1]
+	\arrow["{h_E}"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["{d_E}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["{k_E}"', from=3-2, to=4-1]
+	\arrow["{t_E}", from=3-4, to=4-3]
+	\arrow["{p_E}"', from=4-1, to=4-3]
+	\end{tikzcd}
+	\]
+	Now, using \Cref{cor:cube}, we can consider a third cube, which, by \Cref{prop:quot_creat_colims}, has a $\mathcal{M}$-pushout as bottom face and pullbacks as vertical faces, so that its top face is a $\mathcal M$-pushout too.
+	\[\begin{tikzcd}[row sep=20, column sep = 20]
+	& {T} && {U} \\
+	{Y} && {C_4'} \\
+	& {C_1} && {C_2} \\
+	{C_3} && {C_4}
+	\arrow["{x_1}", from=1-2, to=1-4]
+	\arrow["{w}"', from=1-2, to=2-1]
+	\arrow["{x_2}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{u_1}", from=1-4, to=2-3]
+	\arrow["{u_2}", from=1-4, to=3-4]
+	\arrow["{y_1}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{y_2}"', from=2-1, to=4-1]
+	\arrow["{h_C}"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["{d_C}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["{k_C}"', from=3-2, to=4-1]
+	\arrow["{t_C}", from=3-4, to=4-3]
+	\arrow["{p_C}"', from=4-1, to=4-3]
+	\end{tikzcd}\]
+
+	Moreover, by the proof of \Cref{prop:eqgrph_complete}, we know that there are monos $m_2:C_2'\to U$ and $m_3:C_3'\to Y$ fitting in the diagrams
+	\[\begin{tikzcd}[row sep=18, column sep = 18]
+	{B'_3} && {B'_4} \\
+	\\
+	{C'_3} && Y && {C'_4} \\
+	\\
+	{B_3} && {C_3} && {C_4}
+	\arrow["{p'_V}", from=1-1, to=1-3]
+	\arrow["{q'_3}", from=1-1, to=3-1]
+	\arrow["{q'_4}", from=1-3, to=3-5, bend left = 20]
+	\arrow["{m_3}", from=3-1, to=3-3]
+	\arrow["{y_1}", from=3-3, to=3-5]
+	\arrow["{y_2}"', from=3-3, to=5-3]
+	\arrow["{d_C}", from=3-5, to=5-5]
+	\arrow["{q_3}"', from=5-1, to=5-3]
+	\arrow["{p_C}"', from=5-3, to=5-5]
+        \arrow["{c_V}"', from=1-1, to=5-1, bend right = 20, shift right=1]
+	\end{tikzcd}\qquad\begin{tikzcd}[row sep=18, column sep = 18]
+	{B'_2} && {B'_4} \\
+	\\
+	{C'_2} && U && {C'_4} \\
+	\\
+	{B_2} && {C_2} && {C_4}
+	\arrow["{t'_V}", from=1-1, to=1-3]
+	\arrow["{q'_2}", from=1-1, to=3-1]
+	\arrow["{q'_4}", from=1-3, to=3-5, bend left = 20]
+	\arrow["{m_2}", from=3-1, to=3-3]
+	\arrow["{u_1}", from=3-3, to=3-5]
+	\arrow["{u_2}"', from=3-3, to=5-3]
+	\arrow["{d_C}", from=3-5, to=5-5]
+	\arrow["{q_2}"', from=5-1, to=5-3]
+	\arrow["{t_C}"', from=5-3, to=5-5]
+        \arrow["{b_V}"', from=1-1, to=5-1, bend right = 20, shift right = 1]
+	\end{tikzcd}\]
+
+	For $C'_1$, we can make a similar argument, let $S$ be the pullback of $m_2$ along $x_1$, using \Cref{lemma:pullback_lemma} and, again, the proof of \Cref{prop:eqgrph_complete} we know that $q'_1$ arise as the factorization of the arrow $B'_1\to S$ induced by $q'_2\circ h'_2$ and $a_2$ so that we have a diagram.
+	\[\begin{tikzcd}[row sep = 20, column sep =20]
+	{B'_1} && {B'_2} \\
+	\\
+	{C'_3} && S && {C'_2} \\
+	\\
+	{B_1} && T && U \\
+	\\
+	&& {C_1} && {C_2}
+	\arrow["{h'_V}", from=1-1, to=1-3]
+	\arrow["{q'_1}", from=1-1, to=3-1]
+	\arrow["{q'_2}", from=1-3, to=3-5, bend left = 20]
+	\arrow["{m_1}", from=3-1, to=3-3]
+	\arrow["{s_1}", from=3-3, to=3-5]
+	\arrow["{s_2}"', from=3-3, to=5-3]
+	\arrow["{m_2}", from=3-5, to=5-5]
+	\arrow["{q_1}"', from=5-1, to=7-3, bend right = 20, shift right = 1]
+	\arrow["{x_1}", from=5-3, to=5-5]
+	\arrow["{x_2}"', from=5-3, to=7-3]
+	\arrow["{u_2}", from=5-5, to=7-5]
+	\arrow["{h_C}"', from=7-3, to=7-5]
+        \arrow["{a_V}"', from=1-1, to=5-1, bend right = 20, shift right = 1]
+	\end{tikzcd}\]
+	
+	Moreover, we have that
+	\[
+		\begin{split}
+			s_1 \circ m_1 \circ q_1 &= q'2 \circ h'_V \\ &= h'_C \circ q'_1
+		\end{split}\qquad\begin{split}
+			q'_4 \circ t'_V &= t'_C \circ q'_2\\ &= u_1\circ m_2 \circ q'_2
+		\end{split}\quad\begin{split}
+			y_1 \circ m_3 \circ q'_3 &= p'_V \circ q'_4\\ &= p'_C \circ q'_3
+		\end{split}\qquad\begin{split}TODO:\ w \circ s_2 \circ m_1 = m_3 \circ k_C'
+		\end{split}
+	\]
+	Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p_C = y_1 \circ m_3$.
+	Let now $z: \graph{G}'_2 \to \graph H = (E, V, Q, s, t, q)$, $w: \graph G_3^1 \to \graph H$ be two morphisms such that $z \circ h' = w \circ k'$, and let $\phi:B'_4 \to V$ be the arrow induced by $z_V$ and $w_V$. We want to construct the arrow $v: C'_4 \to Q$ in the diagram below.
+	\[\begin{tikzcd}[row sep = 25, column sep = 25]
+	& {B_1'} && {B_2'} \\
+	{B_3'} && {B_4'} && V \\
+	& T && U \\
+	Y && {C_4'} && Q \\
+	& {C_1} && {C_2} \\
+	{C_3} && {C_4}
+	\arrow["{h_V'}", from=1-2, to=1-4]
+	\arrow["{k_V'}"', from=1-2, to=2-1]
+	\arrow["{s_2\circ m_1 \circ q_1'}"{description, pos=0.7}, from=1-2, to=3-2]
+	\arrow["{t_V'}", from=1-4, to=2-3]
+	\arrow["{z_V}", from=1-4, to=2-5]
+	\arrow["{m_2\circ q'_2}"{pos=0.7}, from=1-4, to=3-4]
+	\arrow["{m_3 \circ q'_3}"', from=2-1, to=4-1]
+	\arrow["q", from=2-5, to=4-5]
+	\arrow["{x_1}"{pos=0.8}, from=3-2, to=3-4]
+	\arrow["w"', from=3-2, to=4-1]
+	\arrow["{x_2}"'{pos=0.7}, from=3-2, to=5-2]
+	\arrow["{u_1}", from=3-4, to=4-3]
+	\arrow["{u_2}"{pos=0.7}, from=3-4, to=5-4]
+	\arrow["{y_2}"', from=4-1, to=6-1]
+	\arrow["{h_C}"{pos=0.8}, from=5-2, to=5-4]
+	\arrow["{k_C}", from=5-2, to=6-1]
+	\arrow["{t_C}", from=5-4, to=6-3]
+	\arrow["{p_C}"', from=6-1, to=6-3]
+	\arrow["{p_V'}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["\phi"{pos=0.8}, from=2-3, to=2-5, crossing over]
+	\arrow["{q'_4}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["{y_1}"{pos=0.7}, from=4-1, to=4-3, crossing over]
+	\arrow["{d_C}"'{pos=0.7}, from=4-3, to=6-3, crossing over]
+	\arrow["v"{pos=0.8}, dashed, from=4-3, to=4-5, crossing over]
+	\end{tikzcd}\]
+	
+	By \Cref{prop:reg_epi_coeq}, $d_C$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lemma:pushouts_kernel_pairs}, we know that the top face of the cube below is a pushout.
+	\[\begin{tikzcd}[row sep=20, column sep = 20]
+	& {K_{s_2\circ m_1 \circ q_1'}} && {K_{m_2\circ q_2'}} \\
+	{K_{m_3 \circ q_3'}} && {K_{q_4'}} \\
+	& {B'_1} && {B'_2} \\
+	{B'_3} && {B'_4}
+	\arrow["{k_{h'_V}}", from=1-2, to=1-4]
+	\arrow["{k_{k_V'}}"', from=1-2, to=2-1]
+	\arrow["{\pi_{s_2\circ m_1 \circ q_1'}^1}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{k_{t_V'}}", from=1-4, to=2-3]
+	\arrow["{\pi_{m_2\circ q_2'}^1}", from=1-4, to=3-4]
+	\arrow["{k_{p_V'}}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+	\arrow["{\pi_{m_3 \circ q_3'}^1}"', from=2-1, to=4-1]
+	\arrow["{h_V'}"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["{\pi_{q_4'}^1}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\arrow["{k_V'}"', from=3-2, to=4-1]
+	\arrow["{t_V'}", from=3-4, to=4-3]
+	\arrow["{p_V'}"', from=4-1, to=4-3]
+	\end{tikzcd}\]
+	And, since $m_3$ and $m_2$ are monos,
+	\[\begin{split}
+		q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2
+	\end{split}\qquad\begin{split}
+		q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2
+	\end{split}\]
+	
+	Computing, we obtain
+	\[\begin{split}
+		q \circ \phi \circ \pi_{q'_4}^1 \circ k_{p_V'} &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'} \\ &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{p'_V}
+	\end{split}\qquad\begin{split}
+		q \circ \phi \circ \pi_{q'_4}^1 \circ k_{t_V'} &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^1 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'} \\ &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{t'_V}
+	\end{split}\]
+
+	Since the previous cube has a pushout as top face, by universal property, we have
+	\[
+		q \circ \phi \circ \pi_{q'4}^1 = q \circ \phi \circ \pi_{q'_4}^2
+	\]
+	hence
+	\[
+		v \circ q'_4 \circ \pi_{q'_4}^1 = v \circ q'_4 \circ \pi_{q'_4}^2
+	\]
+
+	\todo{rimane unicità}
 \end{proof}
 
