@@ -354,6 +354,14 @@ The connection between constructions as products and equalizers and limits is ma
     Since a diagram is nothing more than a functor from a ``shape'' category to another, it makes sense to talk about limits of functors in general, even when they are not intended to be diagrams.
 \end{remark}
 
+\begin{lemma}\label{lemma:limits_of_presheaves}
+    Let $\cat C$ be a category, and let $[\cat C, \Set]$ be the category of presheaves on $\cat C$. Let $D: \cat I \to [\cat C, \Set]$ be a diagram of shape $\cat I$ on the presheaves category early mentioned. Then,
+    \begin{enumerate}
+        \item The limit of $D$ exists, and it is the presheaf $L: \cat C \to \Set$ such that, for each object $A$ of $\cat C$, $L(A)$ is the limit in $\Set$ of the values of the presheaves $D(i)(A)$ for each $i$.
+        \item The colimit of $D$ exists, and it is the presheaf $C: \cat C \to \Set$ such that, for each object $A$ of $\cat C$, $C(A)$ is the colimit in $\Set$ of the values of the presheaves $D(i)(A)$, for each $i$.
+    \end{enumerate}
+\end{lemma}
+
 In the next sections, we will work on a special kind of diagrams with certain properties. In particular, we are interested in how a functor behaves with respect to the constructions defined so far.
 
 \begin{definition}
