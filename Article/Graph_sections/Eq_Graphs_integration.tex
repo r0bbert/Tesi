@@ -227,18 +227,33 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
     Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow wit such property. Then, it must be $(id_A, id_B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
 \end{proof}
 
+{\color{red}
 \begin{prop}\label{prop:quot_creat_colims}
     $Q$ creates colimits.
 \end{prop}
+}
 
 \begin{proof}
     Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
 \end{proof}
 
-
+{\color{blue}
 \begin{example}
-	TODO: Q does not preserve limits.
+	$Q$ does not preserve limits. Indeed, let $\eqgraph{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\eqgraph{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\eqgraph{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \eqgraph{G}_1 \to \eqgraph{G}_3$, $k = (k_E, \iota_B, !_B): \eqgraph{G}_2 \to \eqgraph{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.
+	The following two diagrams show the pullback of $h$ and $k$ and the pullback of $Q(h)$ and $Q(k)$, on the second component (the vertices of the graphs)
+	\[\begin{tikzcd}[row sep = 20, column sep = 20]
+		\initial \ar[r, "{p_1}"] \ar[d, "{p_2}" swap] & A \ar[d, "{\iota_A}"] \\
+		B \ar[r, "{\iota_B}"swap] & A+B
+	\end{tikzcd}\
+	\qquad
+	\begin{tikzcd}[row sep = 20, column sep = 20]
+		{A \times B} \ar[r, "{\pi_A}"] \ar[d, "{\pi_B}"swap] & A \ar[d, "{!_A}"] \\
+		B \ar[r, "{!_B}"swap] & \terminal
+	\end{tikzcd}\]
+
+	But the arrow $\initial \to A\times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
 \end{example}
+}
 
 \subsection{Adhesivity of $\EqGrph$}
 
