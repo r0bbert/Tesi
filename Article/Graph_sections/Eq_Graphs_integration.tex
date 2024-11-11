@@ -36,7 +36,10 @@ As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence 
      From the fact that $q_G$ is epi, we can conclude $\phi = \psi$.
 \end{proof}
 
-A graph with equivalence is then a graph with an extra structure, the quotient map. Hence, it is possible to get the underlying graph by forgetting it. Such action is described by the \emph{forgetful functor} $U : \EqGrph \to \Graph$, that maps each graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ onto $U(\eqgraph{G}) = (E, V, s, t)$, and each morphisms $h = (h_E, h_V, h_C)$ onto $U(h) = (h_E, h_V)$. $U$ is effectively a functor, since, on identities, $U((id_E, id_V, id_C)) = (id_E, id_V)$, and on compositions $U(h \circ k) = U((h_E \circ k_E, h_V 1circ k_V, h_C \circ k_C)) = (h_E \circ k_E, h_V \circ k_V) = (h_E, h_V) \circ (k_E \circ k_V) = U(h) \circ U(k)$.
+A graph with equivalence is then a graph with an extra structure, the quotient map. Hence, it is possible to get the underlying graph by forgetting it. Such action is described by the \emph{forgetful functor} $U : \EqGrph \to \Graph$, that maps each graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ onto $U(\eqgraph{G}) = (E, V, s, t)$, and each morphisms $h = (h_E, h_V, h_C)$ onto $U(h) = (h_E, h_V)$. $U$ is effectively a functor, since, on identities, $U((id_E, id_V, id_C)) = (id_E, id_V)$, and on compositions 
+\[\begin{split}
+	U(h \circ k) &= U((h_E \circ k_E, h_V \circ k_V, h_C \circ k_C))\\ &= (h_E \circ k_E, h_V \circ k_V) \\&= (h_E, h_V) \circ (k_E \circ k_V) \\&= U(h) \circ U(k)
+\end{split}\]
 
 \begin{prop}\label{prop:U_is_faithf}
     The forgetful functor $U: \EqGrph \to \Graph$ is faithful.
