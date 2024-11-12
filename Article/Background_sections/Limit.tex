@@ -413,7 +413,7 @@ The next theorem is about a particular property that adjoint functors have.
                         &=  c_i' \circ \phi_i                   &&\textit{$((c_i')_{i\in \cat I}, C')$ is a colimit for $D'$}
     \end{align*}
 
-    Since $((c_i')_{i \in \cat I}, C)$ is a limit by hypothesis, then must exists a unique arrow $c:C \to C'$ such that $c \circ c_i = \phi_i \circ c_i'$, having the thesis.
+    Since $((c_i')_{i \in \cat I}, C)$ is a colimit by hypothesis, then must exists a unique arrow $c:C \to C'$ such that $c \circ c_i = \phi_i \circ c_i'$, having the thesis.
 \end{proof}
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
@@ -693,7 +693,7 @@ The next theorem is about a particular property that adjoint functors have.
 \end{proof}
 
 \begin{lemma}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
-    Let $D, D': \cat{I \to C}$ be two diagrams, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. If $\cat C$ has all colimits, for diagrams of shape $\cat I$ and $phi: D \dot\to D'$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $C$ to $C'$ (\Cref{prop:nat_tran_induces_unique_arrow_between_colimits}) is a regular epimorphism too.
+    Let $D, D': \cat{I \to C}$ be two diagrams, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. If $\cat C$ has all colimits, for diagrams of shape $\cat I$ and $\phi: D \dot\to D'$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $C$ to $C'$ (\Cref{prop:nat_tran_induces_unique_arrow_between_colimits}) is a regular epimorphism too.
 \end{lemma}
 
 \begin{proof}

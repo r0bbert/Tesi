@@ -17,7 +17,7 @@ As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence 
 \end{definition}
 
 \begin{obs}\label{obs:eq_grph_morph_det_by_first_two_comp}
-    Morphisms of graphs with equivalence are uniquely determined by the first two component. That is, if $h_1 = (h_E, h_V, \phi)$ and $h_2 = (h_E, h_V, \psi)$, then $\phi = \psi$.
+    Morphisms of graphs with equivalences are uniquely determined by the first two component. That is, if $h_1 = (h_E, h_V, \phi)$ and $h_2 = (h_E, h_V, \psi)$, then $\phi = \psi$.
 \end{obs}
 
 \begin{proof}
@@ -114,8 +114,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
             G \arrow[urr, dashed, "{\tau_C}"] \arrow[rr, "{\tau}"swap] & & L
         \end{tikzcd}
     \]
-     Faithfulness of $U$ guarantees that $(\tau_E, \tau_V, \tau_C)$ is the unique arrow such that $(\pi_E^i, \pi_V^i, \pi_C^i) \circ (\tau_E, \tau_V, \tau_C) = (\tau_E^i, \tau_V^i, \tau_C^i)$.
-     \todo{Dimostrazione dello statement di sopra, e colimiti}
+     Faithfulness of $U$ and \Cref{obs:eq_grph_morph_det_by_first_two_comp} guarantees that $(\tau_E, \tau_V, \tau_C)$ is the unique arrow such that $(\pi_E^i, \pi_V^i, \pi_C^i) \circ (\tau_E, \tau_V, \tau_C) = (\tau_E^i, \tau_V^i, \tau_C^i)$.
 
      For colimits, let $(A, B, s, t)$ be the colimit of $U \circ D$, together with morphisms $(\kappa_i)_{i \in \cat I} = (\kappa_E^i, \kappa_V^i)_{i \in \cat I}$, and suppose $((c_i)_{i \in \cat I}, C)$ be the colimit of $V \circ D$. Then, we have the following situation
      \[
@@ -126,7 +125,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, that sends $
 			& C &
 		\end{tikzcd}
      \]
-     Then, $((c_i \circ q_i)_{i \in \cat I}, C)$ is a cocone for all $B_i$, and, since $((\kappa_i)_{i \in \cat I}, B)$ is the colimit of all $B_i$ (\Cref{lemma:limits_of_presheaves}), there exists a unique arrow $q: B \to C$ such that, for each $i$, $q \circ \kappa_V^i = c_i \circ q_i$. Such $q$ is epi {\color{red}{dimostrare}}, and thus $(A, B, C, s, t, q)$ is the colimit of $D$. {\color{red}{rifinire, dimostrare unicità}}.
+     Then, $((c_i \circ q_i)_{i \in \cat I}, C)$ is a cocone for all $B_i$, and, since $((\kappa_i)_{i \in \cat I}, B)$ is the colimit of all $B_i$ (\Cref{lemma:limits_of_presheaves}), there exists a unique arrow $q: B \to C$ such that, for each $i$, $q \circ \kappa_V^i = c_i \circ q_i$. Such $q$ is epi, by application of \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}, and thus $(A, B, C, s, t, q)$, together with arrows $(\kappa_E^i, \kappa_V^i, c_i)_{i \in \cat I}$ is the colimit of $D$.
 
 \end{proof}
 
@@ -498,7 +497,7 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 \end{lemma}
 
 \begin{proof}
-	In lieu of \Cref{lem:stab}, it is enough to proof that, given a cube as the one below, with pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is a regular mono, the front faces are pullbacks too, where $\graph{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\graph{G}'=(A_i', B_i', C_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$.
+	In lieu of \Cref{lemma:stab}, it is enough to proof that, given a cube as the one below, with pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is a regular mono, the front faces are pullbacks too, where $\graph{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\graph{G}'=(A_i', B_i', C_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$.
         \[\begin{tikzcd}[row sep=23, column sep =23]
         & {\mathcal{G}_1'} && {\mathcal{G}_2'} \\
         {\mathcal{G}_3'} && {\mathcal{G}_4'} \\
