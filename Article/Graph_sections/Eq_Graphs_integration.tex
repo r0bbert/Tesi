@@ -380,7 +380,7 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 	\[\begin{tikzcd}[row sep = 20, column sep =20]
 	{B'_1} && {B'_2} \\
 	\\
-	{C'_3} && S && {C'_2} \\
+	{C'_1} && S && {C'_2} \\
 	\\
 	{B_1} && T && U \\
 	\\
@@ -403,15 +403,17 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 	Moreover, we have that
 	\[
 		\begin{split}
-			s_1 \circ m_1 \circ q_1 &= q'2 \circ h'_V \\ &= h'_C \circ q'_1
+			s_1 \circ m_1 \circ q_1 &= q'_2 \circ h'_V \\ &= h'_C \circ q'_1
 		\end{split}\qquad\begin{split}
 			q'_4 \circ t'_V &= t'_C \circ q'_2\\ &= u_1\circ m_2 \circ q'_2
-		\end{split}\quad\begin{split}
+		\end{split}
+	\]\[
+		\begin{split}
 			y_1 \circ m_3 \circ q'_3 &= p'_V \circ q'_4\\ &= p'_C \circ q'_3
 		\end{split}\qquad\begin{split}TODO:\ w \circ s_2 \circ m_1 = m_3 \circ k_C'
 		\end{split}
 	\]
-	Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p_C = y_1 \circ m_3$.
+	Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p'_C = y_1 \circ m_3$.
 	Let now $z: \graph{G}'_2 \to \graph H = (E, V, Q, s, t, q)$, $w: \graph G_3^1 \to \graph H$ be two morphisms such that $z \circ h' = w \circ k'$, and let $\phi:B'_4 \to V$ be the arrow induced by $z_V$ and $w_V$. We want to construct the arrow $v: C'_4 \to Q$ in the diagram below.
 	\[\begin{tikzcd}[row sep = 25, column sep = 25]
 	& {B_1'} && {B_2'} \\
