@@ -233,11 +233,27 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 \begin{prop}\label{prop:quot_creat_colims}
     $Q$ creates colimits.
 \end{prop}
-}
+
 
 \begin{proof}
     Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
+	Let $D: \cat I \to \EqGrph$ be a diagram, and let $((c_i)_{i\in \cat I}, \eqgraph{C})$ be the colimit of $Q \circ D$, where $\eqgraph{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
+	Let now $T: \EqGrph \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.
+	Let then $((b_i)_{i\in \cat I}, B)$ be the colimit of $T \circ D$.
+	Consider the following situation.
+	\[\begin{tikzcd}[row sep = 24, column sep = 24]
+		& B & \\
+		B_i \ar[ur, "{b_i}"] \ar[rr, "h_V"] \ar[d, "{q_i}"] & & B_j \ar[ul, "{b_j}"swap] \ar[d, "{q_j}" swap] \\
+		C_i \ar[dr, "{c_C^i}" swap] \ar[rr, "{h_C}"swap] & & C_j \ar[dl, "{c_C^j}"] \\
+		& C &
+	\end{tikzcd}\]
+
+	Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $T \circ D$, there exists a unique $q: B \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
+	Consider now the functor $W: \EqGrph \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component. By \Cref{prop:eqgrph_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, A)$ is the colimit of $W \circ D$.
+	Notice that $((b_i \circ s_i)_{i \in \cat{I}}, B)$ and $((b_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(A, B, C, s, t, q)$, together with $(c_E^i, b_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
 \end{proof}
+
+}
 
 {\color{blue}
 \begin{example}
