@@ -69,6 +69,36 @@ Here it follows an interesting property of adhesive categories~\cite{lack2011emb
     In any adhesive category, the pushout of a monomorphism along any morphism is a monomorphism, and the resulting square is also a pullback. \todo{almeno la seconda parte devi provarla o citarla per le M-adesive}
 \end{prop}
 
+\begin{proof}
+	Let the following square be a pushout, with $m$ mono.
+	\[\begin{tikzcd}[row sep = 26, column sep = 26]
+		A \ar[r, "f"] \ar[d, "m"swap] & B \ar[d, "n"] \\
+		C \ar[r, "g"swap] & D
+	\end{tikzcd}\]
+	Consider now the following cube.
+	\[\begin{tikzcd}[row sep = 20, column sep = 20]
+	& A && B \\
+	A && B \\
+	& A && B \\
+	C && D \\
+	& {}
+	\arrow["f", from=1-2, to=1-4]
+	\arrow["{id_A}"', from=1-2, to=2-1]
+	\arrow["{id_A}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{id_B}"', from=1-4, to=2-3]
+	\arrow["{id_B}", from=1-4, to=3-4]
+	\arrow["m"', from=2-1, to=4-1]
+	\arrow["f"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["m"', from=3-2, to=4-1]
+	\arrow["n", from=3-4, to=4-3]
+	\arrow["g"', from=4-1, to=4-3]
+	\arrow["f"{pos=0.7}, from=2-1, to=2-3, crossing over]
+	\arrow["n"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\end{tikzcd}\]
+
+	We have then that the top face is a pullback, and by \Cref{prop:kermono}, the left face is a pullback. Since the bottom face is a pushout by hypothesis, we have that the front face and the right one are pullbacks (by adhesivity). Hence, we can conclude that the starting square (which is the front and the bottom face of the cube) is a pushout, and by \Cref{prop:kermono}, since the left face is a pullback, $n$ is mono.
+\end{proof}
+
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
 
 \begin{theorem}\label{th:crit_for_adh}
