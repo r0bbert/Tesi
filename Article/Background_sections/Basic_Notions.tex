@@ -194,8 +194,25 @@ The next proposition will be useful later.
 \end{proof}
 {\color{red}
 \begin{cor}\label{cor:unique}
-	La fattorizzazione di un morfismo è unica a meno di isomorfismo \todo{Scrivilo bene (l'isomorfismo dovrà rispettare certe coerenze) e dimostralo}
+	% La fattorizzazione di un morfismo è unica a meno di isomorfismo \todo{Scrivilo bene (l'isomorfismo dovrà rispettare certe coerenze) e dimostralo}
+	In $\Set$, let $f:A \to B$ be a morphism, and let $f=m \circ e$, $f=m'\circ e'$ be two factorizations of $f$, with $e: A \to X$ and $e': A \to Y$ epis and $m: X \to B$, $m': Y \to B$ monos.
+	Then, there exists an isomorphism $\phi: X \to Y$.
 \end{cor}
+
+\begin{proof}
+	Representing the hypothesis in diagrams, we have the following situation
+	\[\begin{tikzcd}
+		A \ar[r, "e"] \ar[d, "e'"swap] & X \ar[d, "m"] & A \ar[r, "e'"] \ar[d, "e"swap] & Y \ar[d, "m'"] \\
+		Y \ar[r, "m'"swap] \ar[ur, dashed, "h"] & B    & X \ar[r, "m"swap] \ar[ur, dashed, "k"] & B 
+	\end{tikzcd}\]
+	where the dashed arrows are yielded by \Cref{prop:prop_epi_mono_Set}. Hence, we have that
+	\[\begin{split}
+		id_X \circ e &= h \circ e' \\ &= h \circ k \circ e
+	\end{split}\qquad\begin{split}
+		id_Y \circ e' &= k \circ e \\ &= k \circ h \circ e'
+	\end{split}\]
+	Hence, $h \circ k = id_X$, $k \circ h = id_Y$, obtaining the isomorphism.
+\end{proof}
 }
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
