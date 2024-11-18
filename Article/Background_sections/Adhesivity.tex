@@ -11,6 +11,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
     %     C \arrow[r, "g" swap]                & D
     % \end{tikzcd}
     % \]
+	\iffalse
     \[
     \begin{tikzcd}[row sep = scriptsize]
         A' \arrow[ddd, "m'"swap] \arrow[rrr, "f'"] \arrow[dr, "a"swap] & & & B \arrow[ddd, "n'"] \arrow[dl, "b"] \\
@@ -19,6 +20,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
         C' \arrow[rrr, "g'"swap] \arrow[ur, "c"] & & & D' \arrow[ul, "d" swap] 
     \end{tikzcd}
     \]
+	\fi
     \[\begin{tikzcd}[row sep=25, column sep=25]
 	& {A'} && {B'} \\
 	{C'} && {D'} \\
@@ -41,7 +43,8 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
     \begin{itemize}
         \item it is a pushout;
         \item $a, b, c, d \in \mathcal{A}$;
-        \item whenever the top and the left squares are pullbacks then the outer square is a pushout if and only of the right and the bottom squares are pullbacks.
+%        \item whenever the top and the left squares are pullbacks then the outer square is a pushout if and only of the right and the bottom squares are pullbacks.
+	\item whenever the back and the left squares of the cube are pullbacks, then the top square is a pullback if and only if the front and the right squares are pullbacks.
     \end{itemize}
 \end{definition}
 
@@ -111,7 +114,7 @@ The idea behind this theorem is to simplify calculations to show that a certain 
 \begin{proof}
     In order to prove $\mathcal M$-adhesivity of $\cat C$, we have to verify the condition in \Cref{def:adh}.
     \begin{itemize}
-        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{(F(D))})$ in $\cat D$, which is an $\mathcal N$-pullback (\Cref{def:pullback_pushout}). Since $F$ creates pullbacks, hence lifts them (\Cref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
+        \item Let $C \xrightarrow[]{g} D \xleftarrow[]{m} B$ with $m \in \mathcal M$ be a cospan in $\cat C$. Applying $F$, we obtain $F(C) \xrightarrow[]{F(g)} F(D) \xleftarrow[]{F(m)} B$, with $F(m) \in \mathcal{N}$ by hypothesis. Then, there exists a pullback $(P_F, p_{F(B)}, p_{F(D)})$ in $\cat D$, which is an $\mathcal N$-pullback (\Cref{def:pullback_pushout}). Since $F$ creates pullbacks, hence lifts them (\Cref{obs:funct_creat_lim_then_lift}), there exist a pullback $(P, p_B, p_D)$ in $\cat C$.
         \item Let $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ be a cospan in $\cat C$. Analogously to the previous point, applying the functor $F$ we obtain $F(C) \xleftarrow{F(m)} F(A) \xrightarrow{F(f)} F(B)$ with $ F(m) \in \mathcal N$, and there exists a $\mathcal N$-pushout $(q_{F(C)}, q_{F(B)}, F(Q))$ in $\cat D$. Since $F$ reflects pushouts, $(q_C, q_B, Q)$ is a $\mathcal{M}$-pushout in $\cat C$.
         \item the Van Kampen property of $\mathcal M$-pullbacks follows from the closure under pullbacks and pushouts of $\mathcal M$ and from the fact that $F$ reflects pullbacks.
     \end{itemize}
