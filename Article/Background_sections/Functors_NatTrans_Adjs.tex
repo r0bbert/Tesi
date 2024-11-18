@@ -66,11 +66,9 @@ Some interesting properties of certain functors depend strictly on how they beha
     If, for each $A$, $B$ objects of $\cat C$, $F_{A, B}$ is surjective, then $F$ is said to be \emph{full}, if it is injective, $F$ is said to be \emph{faithful}, if it is both injective and surjective, $F$ is said to be \emph{fully faithful}.
 \end{definition}
 
-\color{red}{
-    \begin{obs}
+\begin{obs}
         Properties such as fullness and faithfulness are so called \emph{self-dual}, because the dual notion coincide with the same notion. This fact can be advantageous because if for example the faithfulness implies the preservation of some property, then the dual property is implied at the same way.
-    \end{obs}
-}\color{black}
+\end{obs}
     
 
 \begin{example}\label{ex:full_subc_inc_fully_faith}
@@ -293,7 +291,7 @@ The connection between left and right adjoints is expressed in the following pro
 	
 	Let now $A$ be an object of $\cat{D}$ and $g\colon L(A)\to B$ an arrow in $\cat{C}$. We can consider the composite $R(g)\circ \eta_A\colon A\to R(B)$. Then we have
 	\begin{align*}
-		R(\epsilon_B)\circ R(L(R(g)))\circ R(L(\eta_A))\circ \eta_A&=R(\epsilon_B)\circ R(RL(R(g)))\circ \eta_{R(L(A))}\circ \eta_A\\&=R(\epsilon_B)\circ \eta_{R(B)}\circ R(g)\circ \eta_A\\&=R(g)\circ \eta_A
+		R(\epsilon_B)\circ R(L(R(g)))\circ R(L(\eta_A))\circ \eta_A&=R(\epsilon_B)\circ R(L(R(g)))\circ \eta_{R(L(A))}\circ \eta_A\\&=R(\epsilon_B)\circ \eta_{R(B)}\circ R(g)\circ \eta_A\\&=R(g)\circ \eta_A
 	\end{align*}
 	Since $R$ is a right adjoint and $\eta$ its unit, it follows that $\epsilon_B\circ L(R(g)\circ \eta_A)$ coincides with $g$ as wanted.
  \end{proof}
