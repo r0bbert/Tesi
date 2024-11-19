@@ -46,6 +46,7 @@ An adhesive category is intuitively a category in which pushouts of (some) monom
 %        \item whenever the top and the left squares are pullbacks then the outer square is a pushout if and only of the right and the bottom squares are pullbacks.
 	\item whenever the back and the left squares of the cube are pullbacks, then the top square is a pullback if and only if the front and the right squares are pullbacks.
     \end{itemize}
+	when in the last requirement holds only the \textit{if} part, we say that the category is $\mathcal{A}$-stable. Moreover, $\Hom(\cat C)$-Van Kampen squares are said to be \emph{Van Kampen}, and $\Hom(\cat C)$-stable squares are called \emph{stable}.
 \end{definition}
 
 We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://web3.arxiv.org/pdf/2407.06181
@@ -58,9 +59,13 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
         \item every span $C \xleftarrow{m} A \xrightarrow{f} B$ with $ m \in \mathcal M$ can be completed to a pushout (such pushouts are called $\mathcal M$-pushouts);
         \item pushouts along $\mathcal M$-arrows are $\mathcal M$-Van Kampen squares.
     \end{enumerate}
-    We also say that $\cat C$ is \emph{adhesive} when it is $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is $\Reg(\cat C)$-adhesive. \todo{NO, questo è sbagliato: bisogna introdurre la nozione di adesività forte (cioè VK vale per tutti i cubi)}
+	$\cat C$ is said to be \emph{strictly $\mathcal{M}$-adhesive} if $\mathcal{M}$-pushouts are Van Kampen sqaures.
+	We also say that $\cat C$ is \emph{adhesive} when it is strictly $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is strictly $\Reg(\cat C)$-adhesive.% \todo{NO, questo è sbagliato: bisogna introdurre la nozione di adesività forte (cioè VK vale per tutti i cubi)}
 \end{definition}
 
+
+
+    %We also say that $\cat C$ is \emph{adhesive} when it is $\Mono(\cat C)$-adhesive, and \emph{quasiadhesive} when it is $\Reg(\cat C)$-adhesive. \todo{NO, questo è sbagliato: bisogna introdurre la nozione di adesività forte (cioè VK vale per tutti i cubi)}
 \begin{obs}
     $\Set$ is adhesive.
     % It is easy to check the first two points of the \Cref{def:adh} while for the Van Kampen property of pushouts along monos [...]
@@ -69,7 +74,8 @@ We are now ready to give the notion of $\mathcal M$-adhesivity. % CITE: https://
 Here it follows an interesting property of adhesive categories~\cite{lack2011embeddingtheoremadhesivecategories}.
 
 \begin{prop}\label{prop:monos_are_preserved_by_pullbacks_in_adh_cats}
-    In any adhesive category, the pushout of a monomorphism along any morphism is a monomorphism, and the resulting square is also a pullback. \todo{almeno la seconda parte devi provarla o citarla per le M-adesive}
+    In any adhesive category, the pushout of a monomorphism along any morphism is a monomorphism, and the resulting square is also a pullback. %\todo{almeno la seconda parte devi provarla o citarla per le M-adesive}
+	In $\mathcal{M}$-adhesive categories, $\mathcal{M}$-pushouts are pullbacks.
 \end{prop}
 
 \begin{proof}
@@ -100,6 +106,33 @@ Here it follows an interesting property of adhesive categories~\cite{lack2011emb
 	\end{tikzcd}\]
 
 	We have then that the top face is a pullback, and by \Cref{prop:kermono}, the left face is a pullback. Since the bottom face is a pushout by hypothesis, we have that the front face and the right one are pullbacks (by adhesivity). Hence, we can conclude that the starting square (which is the front and the bottom face of the cube) is a pushout, and by \Cref{prop:kermono}, since the left face is a pullback, $n$ is mono.
+
+	Suppose now that $\cat C$ is $\mathcal{M}$-adhesive, and let the following square be a $\mathcal{M}$-pushout, so $m, n \in \mathcal{M}$.
+	\[\begin{tikzcd}[row sep = 26, column sep = 26]
+		A \ar[r, "f"] \ar[d, "m"swap] & B \ar[d, "n"] \\
+		C \ar[r, "g"swap] & D
+	\end{tikzcd}\]
+	Consider now the following cube.
+	\[\begin{tikzcd}[row sep = 20, column sep = 20]
+	& A && B \\
+	A && B \\
+	& A && B \\
+	C && D \\
+	& {}
+	\arrow["f", from=1-2, to=1-4]
+	\arrow["{id_A}"', from=1-2, to=2-1]
+	\arrow["{id_A}"'{pos=0.7}, from=1-2, to=3-2]
+	\arrow["{id_B}"', from=1-4, to=2-3]
+	\arrow["{id_B}", from=1-4, to=3-4]
+	\arrow["m"', from=2-1, to=4-1]
+	\arrow["f"{pos=0.7}, from=3-2, to=3-4]
+	\arrow["m"', from=3-2, to=4-1]
+	\arrow["n", from=3-4, to=4-3]
+	\arrow["g"', from=4-1, to=4-3]
+	\arrow["f"{pos=0.7}, from=2-1, to=2-3, crossing over]
+	\arrow["n"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+	\end{tikzcd}\]
+	By the same argument as before, we can conclude that the starting square is a pullback.
 \end{proof}
 
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
@@ -134,11 +167,10 @@ Since $\Set$ is adhesive, we can conclude what follows.
     Every category of presheaves is adhesive.
 \end{cor}
 
-\color{blue}\todo{Ti inserisco una versione un po' più generale del lemma sotto}
 
 
 \begin{lemma}\label{lemma:pushouts_kernel_pairs}
-	Let $\cat C$ be an \todo{Qua serve adesività forte} $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube below the top face is an $\mathcal{M}$-pushout.
+	Let $\cat C$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube below the top face is an $\mathcal{M}$-pushout.
 	\[\begin{tikzcd}[row sep=25, column sep=25]
 		& {A'} && {B'} \\
 		{C'} && {D'} \\
@@ -168,7 +200,7 @@ Since $\Set$ is adhesive, we can conclude what follows.
 \end{lemma}
 
 \begin{proof}
-	Since $f'$, being the pullback of $f$, is in $\mathcal{M}$ then by  \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats} the bottom face of the cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the following cube the vertical faces are pullbacks \todo{Nota che le frecce verticali NON sono mono in generale: qua serve adesività forte}.
+	Since $f'$, being the pullback of $f$, is in $\mathcal{M}$ then by  \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats} the bottom face of the cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the following cube the vertical faces are pullbacks.
 	\[\begin{tikzcd}[row sep = 20, column sep = 20]
 		& {K_a} && {K_b} \\
 		{K_c} && {K_d} \\
@@ -192,10 +224,8 @@ Now the thesis follows from strong $\mathcal{M}$-adhesivity.
 \end{proof}
 
 
-\color{black}
-
 \begin{lemma}\label{lemma:pushouts_kernel_pairs}
-    Let $\cat C$ be an \todo{Qua serve adesività forte} $\mathcal{M}$-adhesive category with all pullbacks, and suppose that the cube below is given, in which every face is a pullback and the bottom one is a $\mathcal{M}$-pushout.
+    Let $\cat C$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that the cube below is given, in which every face is a pullback and the bottom one is a $\mathcal{M}$-pushout.
         \[\begin{tikzcd}[row sep=25, column sep=25]
 	& {A'} && {B'} \\
 	{C'} && {D'} \\

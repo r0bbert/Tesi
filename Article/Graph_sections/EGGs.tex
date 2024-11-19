@@ -139,14 +139,9 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 	\arrow["{k_C}"', from=4-1, to=4-3]
 	\arrow["{q\circ s}"'{pos=0.2}, from=2-3, to=4-3, crossing over]
 	\end{tikzcd}\]
-	By adhesivity of $\Set$, and since $m$ is regular mono, the cube above is Van Kampen \todo{Non esisono i cubi di Van Kampen, a essere Van Kampen sono certi quadrati},
+
+	Since $m$ is a regular mono then $m_C$ is mono by \Cref{cor:reg_mono_EGG} and \Cref{cor:regmono}. Then, by adhesivity of $\Set$, the bottom face of the cube above is a Van Kampen square and thus a pullback. Therefore by \Cref{lemma:pushouts_kernel_pairs}, the square below is a pushout.
 	
-	\color{blue}
-	
-	Since $m$ is a regular mono then $m_C$ is mono by ???. Then, by adhesivity of $\Set$, the bottom face of the cube above is a Van Kampen square and thus a pullback. Therefore by \Cref{lemma:pushouts_kernel_pairs}, the square below is a pushout.
-	\color{black}
-	
-	 and, by \Cref{prop:monos_are_preserved_by_pullbacks_in_adh_cats}, all the \todo{vertical} faces are pullbacks. Then, applying \Cref{lemma:pushouts_kernel_pairs}, the square below is a pushout
 	\[\begin{tikzcd}[row sep=27, column sep = 27]
 		K_1 \ar[r, "{f_h}"] \ar[d, "{f_m}"swap] & K_2 \ar[d, "{f_n}"] \\
 		K_3 \ar[r, "{f_k}"swap] & U
@@ -221,7 +216,9 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 			\begin{split} q \circ t \circ u_1 \circ f_k &= q \circ t \circ k_E \circ \pi_3^1 \\ &= k_C \circ q_3 \circ s_3 \circ \pi_3^1 \\&= k_C \circ q_3 \circ s_3 \circ \pi_3^2 \\&=q \circ t \circ u_2 \circ f_k
 			\end{split}
 	\]
-	By universal property of pushouts, we can conclude $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis. \todo{Qua estendi un pochino: da questo si deduce che esiste una freccia blah blah}
+	By universal property of pushouts, there must exists a unque arrow $v: U \to C$ such that 
+	\[\begin{split}v \circ f_n &= q \circ t \circ u_1 \circ f_n\\v\circ f_n  &= q \circ t \circ u_2 \circ f_n \end{split}\qquad\begin{split}v \circ f_k &= q \circ t \circ u_1 \circ f_k\\v \circ f_k &= q \circ t \circ u_2 \circ f_k\end{split}\]
+		 hence, we deduce $q \circ t \circ u_1 = q \circ t \circ u_2$, and the thesis follows.
 \end{proof}
 
 
