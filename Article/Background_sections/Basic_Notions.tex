@@ -18,7 +18,7 @@ This section is all about basic definitions and examples, to get familiar with t
     $$
         h \circ (g \circ f) = (h\circ g) \circ f
     $$
-    For each object $A$, an \emph{identity} morphism $id_A : A \rightarrow A$ (or, when it is clear from the context, just denoted $A$)  such that, for each $f: A \rightarrow B$:
+    For each object $A$, an \emph{identity} morphism $id_A : A \rightarrow A$ such that, for each $f: A \rightarrow B$
     \[
         id_B \circ f = f = f \circ id_A 
     \]
@@ -74,6 +74,19 @@ A more rigorous definition of what a diagram is will be given later (\Cref{def:d
     Another clarification must to be done, still considering $\Set$. Given two sets $A$ and $B$, it is possible to construct the set $B^A$ of all functions from $A$ to $B$. This is isomorphic to $\Set(A, B)$, for each pair of sets $A$ and $B$.
     A category $\cat C$ where, for each pair of objects $A$ and $B$, $\cat C (A, B)$ is a set is said to be \emph{locally small}.
 \end{remark}
+
+\begin{definition}[Subcategory]
+    A category $\cat{D}$ is a \emph{subcategory} of a category $\cat{C}$ if:
+    \begin{enumerate}
+        \item each object of $\cat{D}$ is an object of $\cat{C}$;
+        \item \label{inc} each morphism between two objects of $\cat{D}$ is a morphism of $\cat{C}$; and
+        \item \label{comp} composites and identities of $\cat{D}$ are the same of $\cat{C}$.
+    \end{enumerate}
+
+    If the inclusion at~\ref{inc} is an equality (i.e. $\cat{D}(A, B) = \cat{C}(A, B)$ for each couple of objects $A$, $B$ of $\cat{D}$), then $\cat{D}$ is said to be a \emph{full subcategory} of $\cat{C}$.
+    Another way to express that composites are the same (point~\ref{comp}) is to say that if $f, g \in \Hom(\cat D)$ are composable, then $g \circ f \in \Hom(\cat D)$, i.e., $\Hom(\cat D)$ is \emph{closed under composition}.
+\end{definition}
+
 
 \subsection{Mono, Epi and Iso}\label{ssect:Mono_epi_iso}
 
@@ -192,7 +205,7 @@ The next proposition will be useful later.
 	\end{align*}
 	since $m$ is mono by hypothesis, $f(x) = f(x')$.
 \end{proof}
-{\color{red}
+
 \begin{cor}\label{cor:unique}
 	% La fattorizzazione di un morfismo è unica a meno di isomorfismo \todo{Scrivilo bene (l'isomorfismo dovrà rispettare certe coerenze) e dimostralo}
 	In $\Set$, let $f:A \to B$ be a morphism, and let $f=m \circ e$, $f=m'\circ e'$ be two factorizations of $f$, with $e: A \to X$ and $e': A \to Y$ epis and $m: X \to B$, $m': Y \to B$ monos.
@@ -211,9 +224,11 @@ The next proposition will be useful later.
 	\end{split}\qquad\begin{split}
 		id_Y \circ e' &= k \circ e \\ &= k \circ h \circ e'
 	\end{split}\]
-	Hence, $h \circ k = id_X$, $k \circ h = id_Y$, obtaining the isomorphism.
+	Hence, iìsince $e$ and $e'$ are epimorphisms,  $h \circ k = id_X$, $k \circ h = id_Y$, obtaining the isomorphism.
 \end{proof}
-}
+
+\iffalse
+
 \subsection{Categories from other categories}\label{ssect:cats_from_cats}
 
 Starting from a category, it is possible to construct other categories with some interesting properties, as the following examples show.
@@ -259,4 +274,4 @@ Furthermore, it is possible to raise a new category from two old ones by taking 
 \begin{definition}[Product category]
     Given two categories $\cat C, \cat D$, the \emph{product category} $\cat{C\times D}$ has as objects pairs of objects $(A, B)$, where $A \in \Ob(\cat C), B \in \Ob(\cat D)$, and as arrows pairs of morphisms $(f, g)$, where $f$ is an arrow in $\cat C$ and $g$ is an arrow in $\cat D$. Composition and identities are defined pairwise: $(f, g) \circ (h, k) = (f \circ h, g \circ k)$, and $id_{(A, B)} = (id_A, id_B)$.
 \end{definition}
-
+\fi

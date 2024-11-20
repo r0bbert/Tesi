@@ -1,27 +1,47 @@
 \section{Graphs with Equivalences}\label{sect:eq_graphs}
-A graph with equivalence is a 6-tuple $\eqgraph{G} =  (E, V, C, s, t, q)$, where $E$ and $V$ are, respectively, the edges and the vertices sets, and $C$ is the set of the equivalence classes among vertices, $s,t : E \to V$ are the source and target functions and $q: V \to C$ is the \emph{quotient} function, that is, the map from a vertex to its equivalence class. For this definition to make sense, $q$ needs to be surjective. A morphisms $h$ from a graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ to another $\eqgraph{H} = (E', V', C', s', t',  q')$ is a triple $h = (h_E, h_V, h_C)$ of functions $h_V : V \to V'$, $h_E : E \to E'$ and $h_C : C \to C'$ such that:
-\begin{itemize}
-    \item $h_E \circ s = s' \circ h_V$;
-    \item $h_E \circ t = t' \circ h_V$;
-    \item $h_C \circ q = q' \circ h_V$.
-\end{itemize}
+
+A (directed graph) $\graph{G}$ is a structure consisting of a set of edge, a set of nodes and two functions, one assigning a \emph{source} node and one assigning a \emph{target} node to an edge. Formally, $\graph{G}$ is a quadruple $(V_\graph{G}, E_\graph{G}, s_\graph{G}, t_\graph{G})$, where $V_\graph{G}$ is the set of nodes, $E_\graph{G}$ is the set of edges, and $s_\graph{G}, t_\graph{G}: E_\graph{G} \rightarrow V_\graph{G}$ are the source and the target functions.
+
+A \emph{graph homomorphism} $h: \graph{G \rightarrow H}$ is then a pair of functions $h = (h_V: V_\graph{G} \rightarrow V_\graph{H}, h_E: E_\graph{G} \rightarrow E_\graph{H})$ such that
+    \[
+        h_V \circ s_\graph{G} = s_\graph{H} \circ h_E
+    \]
+    and
+    \[
+        h_V \circ t_\graph{G} = t_\graph{H} \circ h_E
+    \]
+that is, a structure preserving map.
+
+We can then generalize such notion to something more abstract, considering a graph to be nothing more than a presheaf from the category $(E \rightrightarrows V)$ to the category of sets.
+Having two of such presheaves, a natural transformation from one to another encapsulates the behavior of a graph morphism due to naturality. We can now define the category of graphs.
+
+\begin{definition}[Category of Graphs]\label{def:cat_of_graph}
+    We denote as $\Graph$ the category $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
+\end{definition}
+
+Since $\Graph$ is a category of presheaves, \Cref{lemma:limits_of_presheaves} guarantees the existence of limits and colimits, and gives us an easy way to compute them.
+
+\begin{cor}\label{cor:graph_has_co_limits}
+    $\Graph$ has all limits and colimits.
+\end{cor}
+
+A graph with equivalence is a 6-tuple $\eqgraph{G} =  (E, V, C, s, t, q)$, where $E$ and $V$ are, respectively, the edges and the vertices sets, and $C$ is the set of the equivalence classes among vertices, $s,t : E \to V$ are the source and target functions and $q: V \to C$ is the \emph{quotient} function, that is, the map from a vertex to its equivalence class. For this definition to make sense, $q$ needs to be surjective. A morphisms $h$ from a graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ to another $\eqgraph{H} = (E', V', C', s', t',  q')$ is a triple $h = (h_E, h_V, h_C)$ of functions $h_V : V \to V'$, $h_E : E \to E'$ and $h_C : C \to C'$ such that
+\[
+    h_E \circ s = s' \circ h_V \qquad h_E \circ t = t' \circ h_V'\qquad h_C \circ q = q' \circ h_V
+\]
 
 \begin{remark}
      A graph with equivalence can be viewed as a graph endowed with an equivalence relation over its set of vertices, $(\graph G, \sim_\graph{G})$. An homomorphism between two graphs with equivalences $h :\eqgraph{G} = (\graph{G}, \sim_\graph{G})\rightarrow \eqgraph{H} = (\graph{H}, \sim_\graph{H})$ is a graph homomorphism $h = (h_V, h_E):\graph{G} \rightarrow \graph{H}$ such that if $v_1 \sim_\graph{G} v_2$ then $h_V(v_1) \sim_\graph{H} h_V(v_2)$. In $\Set$, it is possible to formalize an equivalence relation $\sim$ over $X$ as a surjective function sending each element $x$ on its equivalence class $[x]_{\sim}$, and this justify our formalization via surjective functions (i.e., epimorphisms).
 \end{remark}
 
-As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence as a presheaf, this time from a category $E \rightrightarrows V \rightarrow C$, where the image of $C$ along the presheaf is the set of the equivalence classes, requiring that the morphism $V\rightarrow C$ is an epimorphism (that is, a surjective function).
+As we have done for graphs, we can think to a graph with equivalence as a presheaf, this time from a category $E \rightrightarrows V \rightarrow C$, where the image of $C$ along the presheaf is the set of the equivalence classes, requiring that the morphism $V\rightarrow C$ is an epimorphism (that is, a surjective function).
 
 \begin{definition}[Category of Graphs with Equivalences]\label{def:eq_grphs}
     The category $\EqGrph$ is the subcategory of $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V \xrightarrow{q} C, \Set]$$ such that, for each $\eqgraph{G} \in \Ob(\EqGrph)$, $\eqgraph{G}(q)$ is an epimorphism. 
 \end{definition}
 
 \begin{obs}\label{obs:eq_grph_morph_det_by_first_two_comp}
-    Morphisms of graphs with equivalences are uniquely determined by the first two component. That is, if $h_1 = (h_E, h_V, \phi)$ and $h_2 = (h_E, h_V, \psi)$, then $\phi = \psi$.
-\end{obs}
-
-\begin{proof}
-    Let $h_1, h_2 : \eqgraph{G \to H}$, where $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$. Then, we have the following situation
+    Morphisms of graphs with equivalences are uniquely determined by the first two components. That is, if $h_1 = (h_E, h_V, \phi)$ and $h_2 = (h_E, h_V, \psi)$, then $\phi = \psi$. Indeed, consider two arrows $h_1, h_2 : \eqgraph{G \to H}$, where $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$. Then, we have the following situation
     \[
         \begin{tikzcd}
             V_G \arrow[r, "{h_V}"] \arrow[d, "{q_G}"swap] & V_H \arrow[d, "{q_H}"] & V_G \arrow[l, "{h_V}"swap] \arrow[d, "{q_G}"] \\
@@ -34,7 +54,7 @@ As we have done in \Cref{sect:graphs}, we can think to a graph with equivalence 
                         &= \phi \circ q_G
      \end{align*}
      From the fact that $q_G$ is epi, we can conclude $\phi = \psi$.
-\end{proof}
+\end{obs}
 
 A graph with equivalence is then a graph with an extra structure, the quotient map. Hence, it is possible to get the underlying graph by forgetting it. Such action is described by the \emph{forgetful functor} $U : \EqGrph \to \Graph$, that maps each graph with equivalence $\eqgraph{G} =  (E, V, C, s, t, q)$ onto $U(\eqgraph{G}) = (E, V, s, t)$, and each morphisms $h = (h_E, h_V, h_C)$ onto $U(h) = (h_E, h_V)$. $U$ is effectively a functor, since, on identities, $U((id_E, id_V, id_C)) = (id_E, id_V)$, and on compositions 
 \[\begin{split}
@@ -130,21 +150,21 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
 \end{proof}
 
 \begin{cor}\label{cor:mono_in_EqGrph}
-    An arrow $h = (h_E, h_V, h_C): \eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G) \to \eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ in $\EqGrph$ is mono if and only if $h_E$ and $h_V$ are mono in $\Set$.
+    Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be two graphs with equivalences. Then, an arrow $h = (h_E, h_V, h_C): \eqgraph{G} \to \eqgraph{H}$ in $\EqGrph$ is mono if and only if $h_E$ and $h_V$ are mono in $\Set$.
 \end{cor}
 
 \begin{proof}
     The ``if'' part is given by the fact that $U$ is faithful, and hence reflects monomorphisms. Since a morphism in a category of presheaves is mono if and only if it is injective on each component, we have that, if  $U(h)$ is mono, that is, $h_E$ and $h_V$ are injective in $\Set$, then $h$ is mono.
-    For the ``only if'' part, suppose $f = (f_E, f_V, f_C)$, $g=(g_E, g_V, g_C)$, $f, g : \eqgraph{H \to K}$ be such that $h \circ f = h \circ g$. Then, we have
+	For the ``only if'' part, suppose $f = (f_E, f_V, f_C)$, $g=(g_E, g_V, g_C)$, $f, g : \eqgraph{H \to K}$, where $\eqgraph{K} = (E_K, V_K, C_K, s_K, t_K, q_K)$, be such that $h \circ f = h \circ g$. Then, we have
     \begin{align*}
         h \circ f   &= (h_E \circ f_E, h_V \circ f_V, h_C \circ f_C) \\
-                    &= (h_E \circ f_E, h_V \circ f_V, h_V \circ f_V \circ \eqgraph{K}(q)) \\
-                    &= (h_E \circ g_E, h_V \circ g_V, h_V \circ g_V \circ \eqgraph{K}(q))
+                    &= (h_E \circ f_E, h_V \circ f_V, h_V \circ f_V \circ q_K) \\
+                    &= (h_E \circ g_E, h_V \circ g_V, h_V \circ g_V \circ q_K)
     \end{align*}    
-    Since $\eqgraph{K}(q)$ is epi, we have, on the third component, that $h_V \circ f_V \circ \eqgraph{K}(q) = h_V \circ g_V \circ \eqgraph{K}(q))$ implies $f_C = g_C$, and hence $f = g$    
+    Since $q_K$ is epi, we have, on the third component, that $h_V \circ f_V \circ q_K = h_V \circ g_V \circ q_K$ implies $f_C = g_C$, and hence $f = g$    
 \end{proof}
 
-\begin{cor}\label{cor:regmono}Let $ h = (h_E, h_V, h_C): \eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G) \to \eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be a morphism of $\EqGrph$, then the following are equivalent:
+\begin{cor}\label{cor:regmono}Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be two graphs with equivalences, and let $ h = (h_E, h_V, h_C): \eqgraph{G}\to \eqgraph{H} $ be a morphism of $\EqGrph$, then the following are equivalent:
 	\begin{enumerate}
 		\item $h$ is a regular mono;
 		\item $h_E$, $h_V$, $h_C$ are all monos;
@@ -153,14 +173,14 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
 	\end{enumerate}
 \end{cor}
 \begin{proof}
-	$1\Rightarrow 2.$ If $h$ is mono, from \Cref{cor:mono_in_EqGrph} we have that $h_E$ and $h_V$ are monos. To derive $h_C$ mono, suppose $f, g :  \eqgraph{H \to K}$ to be the arrows equalized by $h$. Then we have
+	$1\Rightarrow 2.$ If $h$ is mono, from \Cref{cor:mono_in_EqGrph} we have that $h_E$ and $h_V$ are monos. To derive $h_C$ mono, suppose $f, g :  \eqgraph{H \to K}$, where $\eqgraph{K} = (E_K, V_K, C_K, s_K, t_K, q_K)$to be the arrows equalized by $h$. Then we have
     \begin{align*}
-        f_C \circ h_C \circ \eqgraph{G}(q)  &=  f_C \circ \eqgraph{H}(q) \circ h_V \\
-                                            &=  \eqgraph{K}(q) \circ f_V \circ h_V \\
-                                            &=  \eqgraph{K}(q) \circ g_V \circ h_V \\
-                                            &=  g_C \circ h_C \circ \eqgraph{G}(q)
+        f_C \circ h_C \circ q_G  &=  f_C \circ q_H \circ h_V \\
+                                            &=  q_K \circ f_V \circ h_V \\
+                                            &=  q_K \circ g_V \circ h_V \\
+                                            &=  g_C \circ h_C \circ q_G
     \end{align*}
-    since $\eqgraph{G}(q)$ is epi, we have that $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, thus a monomorphism.
+    since $q_G$ is epi, we have that $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, thus a monomorphism.
 	
 	\smallskip \noindent
 	% $2\Rightarrow 3.$ The leftward side of the statement is satisfied by the definition of morphism of graphs with equivalences. For the remaining part, we have
@@ -187,7 +207,7 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
 Let us turn to another functor $\EqGrph\to \Graph$.
 
 \begin{definition}
-The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $(E_G, C_G, q_G\circ s_G, q_G\circ t_G)$ and an arrow $(h_E, h_V, h_C) \colon (E_G, V_G, C_G, s_G, t_G, q_G)\to (E_H, V_H, C_H, s_H, t_H, q_H)$ to $(h_E, h_C)$.
+The \emph{quotient functor} $Q:\EqGrph\to \Graph $ is defined as the one sending $(E_G, V_G, C_G, s_G, t_G, q_G)$ to $(E_G, C_G, q_G\circ s_G, q_G\circ t_G)$ and an arrow $(h_E, h_V, h_C) \colon (E_G, V_G, C_G, s_G, t_G, q_G)\to (E_H, V_H, C_H, s_H, t_H, q_H)$ to $(h_E, h_C)$.
 \end{definition}
 
 \begin{remark}
@@ -229,7 +249,6 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
     Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow wit such property. Then, it must be $(id_A, id_B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
 \end{proof}
 
-{\color{red}
 \begin{prop}\label{prop:quot_creat_colims}
     $Q$ creates colimits.
 \end{prop}
@@ -252,8 +271,6 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 	Consider now the functor $W: \EqGrph \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component. By \Cref{prop:eqgrph_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, A)$ is the colimit of $W \circ D$.
 	Notice that $((b_i \circ s_i)_{i \in \cat{I}}, B)$ and $((b_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(A, B, C, s, t, q)$, together with $(c_E^i, b_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
 \end{proof}
-
-}
 
 \begin{example}
 	$Q$ does not preserve limits. Indeed, let $\eqgraph{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\eqgraph{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\eqgraph{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \eqgraph{G}_1 \to \eqgraph{G}_3$, $k = (k_E, \iota_B, !_B): \eqgraph{G}_2 \to \eqgraph{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.

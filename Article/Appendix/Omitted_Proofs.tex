@@ -3,7 +3,7 @@
 \paragraph{\Cref{lemma:pullback_lemma}.}
     Suppose that the following diagram is given and its right half is a pullback. Then the whole rectangle is a pullback if and only if its left half is a pullback.
     \[
-        \begin{tikzcd}
+	    \begin{tikzcd}[row sep = 20, column sep = 20]
             X \arrow[r, "f"] \arrow[d, "t"swap] & Y \arrow[r, "g"] \arrow[d, "k"] & Z \arrow[d, "h"] \\
             A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
         \end{tikzcd}
@@ -11,7 +11,7 @@
 \begin{proof}
     For the ``only if'' part, suppose the left square to be a pullback. To verify the outer rectangle is a pullback, consider the following situation:
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 20, column sep = 20]
             P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} & & \\
             & & & Z \arrow[d, "h"] \\
             & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
@@ -19,7 +19,7 @@
     \]
     But the right square is a pullback implies that there exists a unique $u$ such that
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 20, column sep = 20]
             P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15, dashed]{drr}{u}& & \\
             & &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
             & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
@@ -27,7 +27,7 @@
     \]
     And, since the left square is a pullback, there exists a unique $v$ such that
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 20, column sep = 20]
             P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15]{drr}{u} \arrow[dr, "v", dashed]& & \\
             & X \arrow[r, "f"] \arrow[d, "t"swap] &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
             & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
@@ -37,7 +37,7 @@
 
     For the ``if'' part, consider the following situation.
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 20, column sep = 20]
             P \arrow[bend left=30]{rrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} & \\
             & & Y \arrow[d, "k"] \\
             & B \arrow[r, "b"swap] & C
@@ -45,13 +45,12 @@
     \]
     We have now to show that the unique arrow $v: P \to X$ (of the outer rectangle) is such that $f \circ v = p_1$, but this follows from the fact that the right square is a pullback, having the following situation.
     \[
-        \begin{tikzcd}
+        \begin{tikzcd}[row sep = 20, column sep = 20]
             P \arrow[bend left=30]{rrrd}{g \circ p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15, dashed]{drr}{u}& & \\
             & &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
             & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
         \end{tikzcd}
     \]
-    \todo{Rivedere questa dimostrazione}
 \end{proof}    
 
 \paragraph{\Cref{th:limit}.}
