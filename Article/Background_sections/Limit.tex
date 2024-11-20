@@ -1,7 +1,5 @@
 \section{Limits and Universal Constructions}\label{sect:limits_univ_constr}
 
-\todo{aggiungere i diagrammi e sistemare per l'indice}
-
 \subsection{Limits and Colimits}
 
 % ---- Coni, Limiti ----
@@ -15,12 +13,12 @@
         \end{tikzcd}
     \]
     -- i.e., $D(\alpha) \circ f_i = f_j$.
-    We denote such cone as $\{f_i: X \rightarrow D(i)\}$.
+	We denote such cone as $(X, (f_i)_{i\in\cat I})$.% $\{f_i: X \rightarrow D(i)\}$.
 
 \end{definition}
 
 \begin{obs}\label{obs:category_of_cones}
-    Given a diagram $D$, the category of the cones for $D$, denoted $\textbf{Cone}(D)$, is defined to have cones for $D$ as objects and cone morphisms as arrows, where a cone morphism $\phi: C \rightarrow C'$ from $C = \{f_i: X \rightarrow D(i)\}$ to $C' = \{f_i':X' \rightarrow D(i)\}$ is a morphism $\phi: X \rightarrow X'$ such that the following diagram commutes for each $i$:
+	Given a diagram $D$, the category of the cones for $D$, denoted $\textbf{Cone}(D)$, is defined to have cones for $D$ as objects and cone morphisms as arrows, where a cone morphism $\phi: C \rightarrow C'$ from $C =(X, (f_i)_{i\in\cat I})$ to $C' = (X', (f_i')_{i \in \cat I})$ is a morphism $\phi: X \rightarrow X'$ such that the following diagram commutes for each $i$:
     \[
         \begin{tikzcd}
             X \arrow[rr, "{\phi}"] \arrow[dr, "{f_i}" swap] & & X' \arrow[dl, "{f_i'}"] \\
@@ -30,14 +28,14 @@
 \end{obs}
 
 \begin{definition}[Limits]\label{def:limit}
-    Let $D:\cat {I \rightarrow C}$ be a diagram in $\cat C$ of shape $\cat I$. A cone $\{f_i: X \rightarrow D(i)\}$ is a \emph{limit} provided that, for any other cone $\{f_{i}': X' \rightarrow D(i)\}$ for $D$, then there exists a unique morphism $k: X' \rightarrow X$ such that the following diagram commutes for each object $i$ of $\cat I$:
+	Let $D:\cat {I \rightarrow C}$ be a diagram in $\cat C$ of shape $\cat I$. A cone $(X, (f_i)_{i \in \cat I})$ is a \emph{limit} provided that, for any other cone $(X', (f_i')_{i \in \cat I})$ for $D$, then there exists a unique morphism $k: X' \rightarrow X$ such that the following diagram commutes for each object $i$ of $\cat I$:
     \[
         \begin{tikzcd}
             X' \arrow[rr, dashed, "k"] \arrow[dr, "{f_i'}" swap] & & X \arrow[dl, "{f_i}"] \\
             & D(i) &
         \end{tikzcd}
     \]
-    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Such limit is denoted as $(X, f_i)_{i \in \cat I}$. Sometimes we will refer to the unique arrow $k$ as the \emph{mediating arrow}.
+    -- i.e., $f_i \circ k = f_i'$ for each object $i$ of $\cat I$. Sometimes we will refer to the unique arrow $k$ as the \emph{mediating arrow}.
 \end{definition}
 
 \begin{obs}
@@ -47,8 +45,8 @@
 The dual notions of cones and limits are that of cocones and colimits.
 
 \begin{definition}(Cocones, Colimits)
-    A \emph{cocone} for a diagram $D: \cat{I \rightarrow C}$ is an object $Y$ of $\cat C$ together with arrows $f_i : D(i) \rightarrow Y$ such that, for each $g: D(i) \rightarrow D(j)$ of $\cat C$, $f_j \circ g = f_i$. A cocone is denoted $\{f_i: D(i) \rightarrow Y \}$.
-    A \emph{colimit} for $D$ is a cocone $C = \{f_i: D(i) \rightarrow Y \}$ with the universal property -- i.e., if $C' = \{ f_i' : D(i) \rightarrow Y'\}$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
+	A \emph{cocone} for a diagram $D: \cat{I \rightarrow C}$ is an object $Y$ of $\cat C$ together with arrows $f_i : D(i) \rightarrow Y$ such that, for each $g: D(i) \rightarrow D(j)$ of $\cat C$, $f_j \circ g = f_i$. A cocone is denoted $((f_i)_{i\in\cat I}, Y)$.
+	A \emph{colimit} for $D$ is a cocone $((f_i)_{i \in \cat I}, Y)$ with the universal property -- i.e., if $((f_i')_{i \in \cat I}, Y')$ is another cone for $D$, then there exists a unique arrow $h:Y \rightarrow Y'$ such that, for each $i$, $h \circ f_i = f_i'$.
 \end{definition}
 
 \begin{remark}\label{rem:limits_are_unique_up_to_isomorphisms}
@@ -218,7 +216,6 @@ Of all monomorphisms, an interesting subclass of them is the one that contains o
 Another important example to our aims is a concrete definition of what is a pushout in the category of sets, and why morally we can regard a pushout as \textit{the way to identify part of an object with a part of another}~\cite{Barr_Wells_1995}.
 
 \begin{example}\label{ex:po_in_set}
-    \color{blue}
     In $\Set$, given two functions $f: A \rightarrow B$ and $g: A \rightarrow C$, the pushout of them is the set $X = (B \amalg C) /_\sim$, where $\sim$ is the least equivalence relation such that $f(a) \sim g(a)$ for each $a \in A$, with $\iota_g:B \rightarrow X$ and $\iota_f : C \rightarrow X$ as arrows, sending each element of the domain in the corresponding equivalence class in $X$. In particular, for each $a \in A$:
     \begin{align*}
         (\iota_g \circ f) (a)
@@ -232,7 +229,6 @@ Another important example to our aims is a concrete definition of what is a push
     When both $f$ and $g$ are monos (that is, injections), then we can construct the pushout in the same way we have done above, with $(f(a), 0) \sim (g(a), 1)$ when such $a$ exists and $(b, 0) \sim (c, 1)$ on each $b$ and $c$ with no preimage in $A$, with $\iota_f$ and $\iota_g$ injective.
     An easy way to see this fact is considering the following situation: let $f: A \rightarrow A \cup B$ and $g: A \rightarrow A \cup C$, with $A$ disjoint from $B$ and $C$, $f(a)= a$ and $g(a) = a$. Then the pushout is the object $A \cup B \cup C$, with the inclusions as arrows, that are also injective.
     A more general case is what happens considering functions $f: A \rightarrow B$ and $g: A \rightarrow C$ injective. Differently from the previous example, in this case is not possible to take just the union of codomains as the pushout, but rather the disjoint union of them and then identify the elements $f(a)$ with $g(a)$, as we have done above. In the category of sets and functions, we have the certainty that the pullback arrows are injective. In fact, taking the equivalence relation $\sim$, we have that $f(a) \sim f(a')$ if and only if $a = a'$ by hypothesis, and then $x \sim x'$ if and only if $x = x'$, then the pushout morphisms sends each element in an equivalence class composed only by the element itself, thus are injective.
-    This is an interesting property that in other categories may do not hold, and will be recalled later.
 \end{example}
 
 Given a subclass of morphisms of a category, an important property is \emph{stability} under certain type of constructions. In our case, we are interested in stability under pullbacks and under pushouts.
@@ -324,7 +320,7 @@ The following lemma is a classical result, its proof is in the appendix.
 \end{tikzcd}\]
 \end{proof}
 
-The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer $Eq(f, g)$, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
+The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
 
 \begin{theorem}[Limit theorem]\label{th:limit}
     Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.

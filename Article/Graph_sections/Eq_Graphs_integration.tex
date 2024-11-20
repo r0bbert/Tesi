@@ -255,7 +255,6 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 
 }
 
-{\color{blue}
 \begin{example}
 	$Q$ does not preserve limits. Indeed, let $\eqgraph{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\eqgraph{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\eqgraph{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \eqgraph{G}_1 \to \eqgraph{G}_3$, $k = (k_E, \iota_B, !_B): \eqgraph{G}_2 \to \eqgraph{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.
 	The following two diagrams show the pullback of $h$ and $k$ and the pullback of $Q(h)$ and $Q(k)$, on the second component (the vertices of the graphs)
@@ -271,7 +270,7 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 
 	But the arrow $\initial \to A\times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
 \end{example}
-}
+
 
 \subsection{Adhesivity of $\EqGrph$}
 
@@ -426,8 +425,7 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 	\]\[
 		\begin{split}
 			y_1 \circ m_3 \circ q'_3 &= p'_V \circ q'_4\\ &= p'_C \circ q'_3
-		\end{split}\qquad\begin{split}TODO:\ w \circ s_2 \circ m_1 = m_3 \circ k_C'
-		\end{split}
+		\end{split}%\qquad\begin{split}TODO:\ w \circ s_2 \circ m_1 = m_3 \circ k_C'\end{split}
 	\]
 	Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p'_C = y_1 \circ m_3$.
 	Let now $z: \graph{G}'_2 \to \graph H = (E, V, Q, s, t, q)$, $w: \graph G_3^1 \to \graph H$ be two morphisms such that $z \circ h' = w \circ k'$, and let $\phi:B'_4 \to V$ be the arrow induced by $z_V$ and $w_V$. We want to construct the arrow $v: C'_4 \to Q$ in the diagram below.
@@ -492,21 +490,19 @@ The \emph{quotient functor} $Q:\EqGrph\to \Graph $ sends $(E_G, V_G, C_G, s_G, t
 	
 	Computing, we obtain
 	\[\begin{split}
-		q \circ \phi \circ \pi_{q'_4}^1 \circ k_{p_V'} &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'} \\ &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{p'_V}
+		q \circ \phi \circ \pi_{q_4'}^1 \circ k_{p_V'} &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'} \\ &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{p'_V}
 	\end{split}\qquad\begin{split}
 		q \circ \phi \circ \pi_{q'_4}^1 \circ k_{t_V'} &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^1 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'} \\ &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{t'_V}
 	\end{split}\]
 
 	Since the previous cube has a pushout as top face, by universal property, we have
 	\[
-		q \circ \phi \circ \pi_{q'4}^1 = q \circ \phi \circ \pi_{q'_4}^2
+		q \circ \phi \circ \pi_{q'_4}^1 = q \circ \phi \circ \pi_{q'_4}^2
 	\]
-	hence
+	hence, $v$ is the mediating arrow.
 	\[
 		v \circ q'_4 \circ \pi_{q'_4}^1 = v \circ q'_4 \circ \pi_{q'_4}^2
 	\]
-
-	\todo{rimane unicità}
 \end{proof}
 
 
