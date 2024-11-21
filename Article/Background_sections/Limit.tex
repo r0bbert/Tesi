@@ -53,6 +53,28 @@ The dual notions of cones and limits are that of cocones and colimits.
     It makes sense to refer to a (co)limit as \emph{the} (co)limit. Suppose $(P, p_i)_{i\in \cat I}$ and $(Q, q_i)_{i \in \cat I}$ be limits for a diagram $D: \cat{I \rightarrow C}$. Then, there exists a unique morphism $h: Q \rightarrow P$ such that $p_i \circ k = q_i$ for each $i$. At the same way, there exists a unique morphisms $k: P \rightarrow Q$ such that $q_i \circ k = p_i$ for each $i$. From the existence of the identity, must be $k \circ h = id_{Q}$ and $h \circ k = id_P$, that is, $P$ and $Q$ are isomorphic.
 \end{remark}
 
+\begin{prop}\label{prop:nat_tran_induces_unique_arrow_between_colimits}
+    Let $D, D': \cat{I \to C}$ be two functors, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. Then, a natural transformation $\phi: D \dot\to D'$ induces a unique arrow $c: C \to C'$.
+\end{prop}
+
+\begin{proof}
+    Consider the following situation.
+    \[\begin{tikzcd}[row sep=26 pt, column sep= 13 pt]
+        & C & \\
+        D(i) \ar[ur, "{c_i}"] \ar[d, "{\phi_i}"swap] \ar[rr, "{D(\alpha)}"]&& D(j) \ar[ul, "{c_j}"swap] \ar[d, "{\phi_j}"] \\
+        D'(i) \ar[dr, "{c_i'}" swap] \ar[rr, "{D'(\alpha)}" swap] && D'(j) \ar[dl, "{c_j'}"] \\
+        & C' &
+    \end{tikzcd}\]
+
+    To prove the statement, we note that $((c_i' \circ \phi_i)_{i \in \cat I}, C')$ is a cocone for $D$. Computing, we have, for each $i$, $j$ and $\alpha: i \to j$
+    \begin{align*}
+        c_j' \circ \phi_j \circ D(\alpha)   
+                        &=  c_j' \circ D'(\alpha) \circ \phi_i  &&\textit{Naturality of $\phi$}\\
+                        &=  c_i' \circ \phi_i                   &&\textit{$((c_i')_{i\in \cat I}, C')$ is a colimit for $D'$}
+    \end{align*}
+
+    Since $((c_i')_{i \in \cat I}, C)$ is a colimit by hypothesis, then must exists a unique arrow $c:C \to C'$ such that $c \circ c_i = \phi_i \circ c_i'$, having the thesis.
+\end{proof}
 Notion such limits and colimits are generalization of more particular cases that will be now introduced, that we will often call \emph{universal constructions}.
 
 
@@ -69,7 +91,7 @@ Notion such limits and colimits are generalization of more particular cases that
 
 We now illustrate a result on functor categories (\Cref{def:functor_category}) that will be useful later.
 
-\begin{prop}
+\iffalse\begin{prop}
     Let $\cat D$ be a category. If $\cat D$ has an initial object, then, for any category $\cat C$, $[\cat{C, D}]$ has an initial object. If $\cat D$ has a terminal object, then, for any category $\cat C$, $[\cat{C, D}]$ has a terminal object.
 \end{prop}
 
@@ -98,7 +120,7 @@ We now illustrate a result on functor categories (\Cref{def:functor_category}) t
         \end{tikzcd}
     \]
     Hence, $\theta$ is the unique natural transformation from $F$ to $T$, and $T$ is the terminal object of $[\cat{C, D}]$.
-\end{proof}
+\end{proof}\fi
 
 In particular, every presheaf has an initial and a terminal object, because $\Set$ does (\Cref{ex:set_init_term}).
 
@@ -351,10 +373,10 @@ The connection between constructions as products and equalizers and limits is ma
 \end{remark}
 
 \begin{lemma}\label{lemma:limits_of_presheaves}
-    Let $\cat C$ be a category, and let $[\cat C, \Set]$ be the category of presheaves on $\cat C$. Let $D: \cat I \to [\cat C, \Set]$ be a diagram of shape $\cat I$ on the presheaves category early mentioned. Then,
+    Let $\cat C, \cat D$ be a categories, and let $[\cat C, \cat D]$ be the category of functors from $\cat C$ to $\cat D$. Let $D: \cat I \to [\cat C, \cat D]$ be a diagram of shape $\cat I$ on the functor category early mentioned. Then,
     \begin{enumerate}
-        \item The limit of $D$ exists, and it is the presheaf $L: \cat C \to \Set$ such that, for each object $A$ of $\cat C$, $L(A)$ is the limit in $\Set$ of the values of the presheaves $D(i)(A)$ for each $i$.
-        \item The colimit of $D$ exists, and it is the presheaf $C: \cat C \to \Set$ such that, for each object $A$ of $\cat C$, $C(A)$ is the colimit in $\Set$ of the values of the presheaves $D(i)(A)$, for each $i$.
+        \item The limit of $D$ exists, and it is the functor $L: \cat C \to \cat D$ such that, for each object $A$ of $\cat C$, $L(A)$ is the limit in $\cat D$ of the values of the functors $D(i)(A)$ for each $i$.
+        \item The colimit of $D$ exists, and it is the functor $C: \cat C \to \cat D$ such that, for each object $A$ of $\cat C$, $C(A)$ is the colimit in $\cat D$ of the values of the functors $D(i)(A)$, for each $i$.
     \end{enumerate}
 \end{lemma}
 
@@ -379,6 +401,10 @@ In the next sections, we will work on a special kind of diagrams with certain pr
     A fully faithful functor reflects all limits and colimits.
 \end{prop}
 
+\begin{prop}\label{prop:inc_creat}
+	Let $\cat D$ be a full subcategory of a category $\cat C$, $D: \cat{I \to D}$ be a diagram and $I: \cat{D \to C}$ be the inclusion functor. Then, if $(L, (l_i)_{i \in \cat I})$ is the limit of $I \circ D$, and $L$ is an object of $\cat D$ for each diagram $D$, then the inclusion functor creates limits.
+\end{prop}
+
 The next theorem is about a particular property that adjoint functors have.
 
 \begin{theorem}\label{th:adjoints_preserves_lim}
@@ -389,28 +415,6 @@ The next theorem is about a particular property that adjoint functors have.
     The dual of the theorem above states that, if $G$ is a functor and $F$ is a left adjoint, then $F$ preserves colimits.
 \end{remark}
 
-\begin{prop}\label{prop:nat_tran_induces_unique_arrow_between_colimits}
-    Let $D, D': \cat{I \to C}$ be two functors, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. Then, a natural transformation $\phi: D \dot\to D'$ induces a unique arrow $c: C \to C'$.
-\end{prop}
-
-\begin{proof}
-    Consider the following situation.
-    \[\begin{tikzcd}[row sep=26 pt, column sep= 13 pt]
-        & C & \\
-        D(i) \ar[ur, "{c_i}"] \ar[d, "{\phi_i}"swap] \ar[rr, "{D(\alpha)}"]&& D(j) \ar[ul, "{c_j}"swap] \ar[d, "{\phi_j}"] \\
-        D'(i) \ar[dr, "{c_i'}" swap] \ar[rr, "{D'(\alpha)}" swap] && D'(j) \ar[dl, "{c_j'}"] \\
-        & C' &
-    \end{tikzcd}\]
-
-    To prove the statement, we note that $((c_i' \circ \phi_i)_{i \in \cat I}, C')$ is a cocone for $D$. Computing, we have, for each $i$, $j$ and $\alpha: i \to j$
-    \begin{align*}
-        c_j' \circ \phi_j \circ D(\alpha)   
-                        &=  c_j' \circ D'(\alpha) \circ \phi_i  &&\textit{Naturality of $\phi$}\\
-                        &=  c_i' \circ \phi_i                   &&\textit{$((c_i')_{i\in \cat I}, C')$ is a colimit for $D'$}
-    \end{align*}
-
-    Since $((c_i')_{i \in \cat I}, C)$ is a colimit by hypothesis, then must exists a unique arrow $c:C \to C'$ such that $c \circ c_i = \phi_i \circ c_i'$, having the thesis.
-\end{proof}
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 

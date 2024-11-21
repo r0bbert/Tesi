@@ -65,7 +65,7 @@ E-Graphs are a particular type of graphs with equivalences.
 \end{remark}
 
 \begin{definition}[Category of E-Graphs]\label{def:cat_of_eggs}
-	$\EGG$ is the subcategory of $\EqGrph$ in which objects are e-graphs, and, given two e-graphs $\eqgraph{G, H}$, $\EGG(\eqgraph{G, H}) = \EqGrph(\eqgraph{G, H})$.
+	$\EGG$ is the full subcategory of $\EqGrph$ in which objects are e-graphs. %and, given two e-graphs $\eqgraph{G, H}$, $\EGG(\eqgraph{G, H}) = \EqGrph(\eqgraph{G, H})$.
 \end{definition}
 
 Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful functor $I: \EGG \to \EqGrph$ (\Cref{ex:full_subc_inc_fully_faith}).
@@ -105,20 +105,22 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 	By universal property of limits, we have that \- $m\circ q \circ t \circ u_1 = m \circ q \circ t \circ u_2$, and, since $m$ is mono, $q \circ t \circ u_1 = q \circ t \circ u_2$, hence the thesis.
 \end{proof}
 
+By the previous results, we can deduce what follows from \Cref{prop:inc_creat}.
+
 \begin{cor}\label{cor:I_creates_limits}
 	$I$ creates limits.
 \end{cor}
 
 \begin{cor}\label{cor:reg_mono_EGG}
-	$h: \eqgraph{G \to H}$ is a regular mono in $EGG$ if and only if it is a regular mono in $\EqGrph$.
+	$h: \eqgraph{G \to H}$ is a regular mono in $\EGG$ if and only if it is a regular mono in $\EqGrph$.
 \end{cor}
 
 \begin{lemma}\label{lem:I_pres_pushouts_of_monos}
-	$I$ preserves pushouts along regular monomorphisms.	
+	Let $\eqgraph{G}_1 = (A_1, B_1, C_1, s_1, t_1, q_1)$, $\eqgraph{G}_2 = (A_2, B_2, C_2, s_2, t_2, q_2)$ and $\eqgraph{G}_3 = (A_3, B_3, C_3, s_3, t_3, q_3)$ be e-graphs,  $h: \eqgraph{G}_1 \to \eqgraph{G}_2$ and $m: \eqgraph{G}_1 \to \eqgraph{G}_3$ be two morphisms with $m$ mono. Then, the pushout of $h$ and $m$ is again an e-graph.	
 \end{lemma}
 
 \begin{proof}
-	Let $\eqgraph{G}_1 = (A_1, B_1, C_1, s_1, t_1, q_1)$, $\eqgraph{G}_2 = (A_2, B_2, C_2, s_2, t_2, q_2)$ and $\eqgraph{G}_3 = (A_3, B_3, C_3, s_3, t_3, q_3)$ be e-graphs,  $h: \eqgraph{G}_1 \to \eqgraph{G}_2$ and $m: \eqgraph{G}_1 \to \eqgraph{G}_3$ be two morphisms with $m$ mono. Let now $\eqgraph{P} = (A, B, C, s, t, q)$, together with $k: \eqgraph{G}_3 \to \eqgraph{P}$ and $n: \eqgraph{G}_2 \to \eqgraph{P}$, the pushout of $h$ and $m$.
+	Let $\eqgraph{P} = (A, B, C, s, t, q)$, together with $k: \eqgraph{G}_3 \to \eqgraph{P}$ and $n: \eqgraph{G}_2 \to \eqgraph{P}$, the pushout of $h$ and $m$.
 	Let $(K_i, \pi_i^1, \pi_i^2)$ the kernel pair of $q_i\circ s_i$, for $i = 1, 2, 3$, and let $(U, u_1, u_2)$ be the kernel pair of $q \circ s$.
 	Consider the following cube in $\Set$
 	\[\begin{tikzcd}[row sep=25, column sep = 25]
@@ -216,9 +218,7 @@ Since $\EGG$ is a full subcategory of $\EqGrph$, there exists a fully faithful f
 			\begin{split} q \circ t \circ u_1 \circ f_k &= q \circ t \circ k_E \circ \pi_3^1 \\ &= k_C \circ q_3 \circ s_3 \circ \pi_3^1 \\&= k_C \circ q_3 \circ s_3 \circ \pi_3^2 \\&=q \circ t \circ u_2 \circ f_k
 			\end{split}
 	\]
-	By universal property of pushouts, there must exists a unque arrow $v: U \to C$ such that 
-	\[\begin{split}v \circ f_n &= q \circ t \circ u_1 \circ f_n\\v\circ f_n  &= q \circ t \circ u_2 \circ f_n \end{split}\qquad\begin{split}v \circ f_k &= q \circ t \circ u_1 \circ f_k\\v \circ f_k &= q \circ t \circ u_2 \circ f_k\end{split}\]
-		 hence, we deduce $q \circ t \circ u_1 = q \circ t \circ u_2$, and the thesis follows.
+	By universal property of pushouts, we deduce $q \circ t \circ u_1 = q \circ t \circ u_2$, and the thesis follows.
 \end{proof}
 
 

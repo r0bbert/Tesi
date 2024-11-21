@@ -1,6 +1,6 @@
 \section{Functors, Natural Transformations, Adjoints}\label{sect:funct_nats}
 
-\subsection{Functors}
+\subsection{Functors and Natural Transformations}
 
 A functor is a structure preserving map between categories. 
 \begin{definition}[Functor]
@@ -79,7 +79,7 @@ Having such classification among functors turns out to be useful in many context
 \end{prop}
 
 
-\subsection{Natural Transformations}
+%\subsection{Natural Transformations}
 
 Given two functors that share domain and codomain categories, it is possible to define a transformation between them, taking each object of the domain of the functors to an arrow in the codomain of the functors that represent the action of ``changing the functor acting on that object''.
 
@@ -143,7 +143,7 @@ A functor with a small category as domain (\Cref{rem:small_cats}) and $\Set$ as 
 \end{lemma}
 \fi
 
-
+\iffalse
 \subsection{Comma Categories}
 
 Functor constructions allow us to generalise basic concepts already seen for categories. An important example of this fact are comma categories, a more general notion of slice categories (\Cref{def:slice_cat}).
@@ -190,7 +190,7 @@ It is easy to see that $(Id_\cat C \downarrow !_X)$ is exactly the same of $\cat
 
 In the same way, it is possible to define coslice categories in terms of comma categories: the category $(!_X \downarrow Id_\cat C)$ is exactly the coslice $X / \cat C $.
 
-
+\fi
 
 \subsection{Adjoints}
 

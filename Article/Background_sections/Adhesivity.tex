@@ -105,8 +105,8 @@ Here it follows an interesting property of adhesive categories~\cite{lack2011emb
 	\arrow["n"'{pos=0.7}, from=2-3, to=4-3, crossing over]
 	\end{tikzcd}\]
 
-	We have then that the top face is a pullback, and by \Cref{prop:kermono}, the left face is a pullback. Since the bottom face is a pushout by hypothesis, we have that the front face and the right one are pullbacks (by adhesivity). Hence, we can conclude that the starting square (which is the front and the bottom face of the cube) is a pushout, and by \Cref{prop:kermono}, since the left face is a pullback, $n$ is mono.
-
+	We have then that the top face is a pushout, and by \Cref{prop:kermono}, the left face is a pullback. Since the bottom face is a pushout by hypothesis, we have that the front face and the right one are pullbacks (by adhesivity). Hence, if $\cat C$ is adhesive, we can conclude that the starting square (which is the front and the bottom face of the cube) is a pushout, and by \Cref{prop:kermono}, since the left face is a pullback, $n$ is mono. If $\cat C$ is $\mathcal M$-adhesive, with $m \in \mathcal{M}$ (that is, the square is a $\mathcal{M}$-pushout), $n \in \mathcal M$, and the vertical arrows then in $\mathcal{M}$. Hence, the front face is a pullback.
+\iffalse
 	Suppose now that $\cat C$ is $\mathcal{M}$-adhesive, and let the following square be a $\mathcal{M}$-pushout, so $m, n \in \mathcal{M}$.
 	\[\begin{tikzcd}[row sep = 26, column sep = 26]
 		A \ar[r, "f"] \ar[d, "m"swap] & B \ar[d, "n"] \\
@@ -132,7 +132,7 @@ Here it follows an interesting property of adhesive categories~\cite{lack2011emb
 	\arrow["f"{pos=0.7}, from=2-1, to=2-3, crossing over]
 	\arrow["n"'{pos=0.7}, from=2-3, to=4-3, crossing over]
 	\end{tikzcd}\]
-	By the same argument as before, we can conclude that the starting square is a pullback.
+	By the same argument as before, we can conclude that the starting square is a pullback.\fi
 \end{proof}
 
 Verifying $\mathcal M$-adhesivity using the definition above may turn out to be very complex, so we can make use of the following result~\cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}. 
@@ -155,7 +155,7 @@ The idea behind this theorem is to simplify calculations to show that a certain 
 \end{proof}
 
 \begin{cor}\label{cor:adhesivity_functor_categories}
-    Let $\cat A$ be a $\mathcal M$-adhesive category for some $\mathcal M \subseteq \Hom(\cat A)$. Then, if $\cat C$ is a category whith all the pullbacks, the functor category $[\cat C, \cat A]$ is $\mathcal M^{\cat C}$-adhesive, where
+    Let $\cat A$ be a $\mathcal M$-adhesive category for some $\mathcal M \subseteq \Hom(\cat A)$. Then, if $\cat A$ is a category whith all the pullbacks, the functor category $[\cat C, \cat A]$ is $\mathcal M^{\cat C}$-adhesive, where
     \[
         \mathcal{M}^\cat C = \{\eta \in \Hom([\cat C, \cat A]) \mid \eta_C \in \mathcal M \textit{ for each object $C$ of $\cat C$ }\}
     \]
@@ -223,60 +223,5 @@ Since $\Set$ is adhesive, we can conclude what follows.
 Now the thesis follows from strong $\mathcal{M}$-adhesivity.
 \end{proof}
 
-
-\begin{lemma}\label{lemma:pushouts_kernel_pairs}
-    Let $\cat C$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that the cube below is given, in which every face is a pullback and the bottom one is a $\mathcal{M}$-pushout.
-        \[\begin{tikzcd}[row sep=25, column sep=25]
-	& {A'} && {B'} \\
-	{C'} && {D'} \\
-	& A && B \\
-	C && D
-	\arrow["{f'}", from=1-2, to=1-4]
-	\arrow["{m'}"', from=1-2, to=2-1]
-	\arrow["a"'{pos=0.7}, from=1-2, to=3-2]
-	\arrow["{n'}"', from=1-4, to=2-3]
-	\arrow["b", from=1-4, to=3-4]
-	\arrow["{g'}"{pos=0.7}, from=2-1, to=2-3, crossing over]
-	\arrow["c"', from=2-1, to=4-1]
-	\arrow["f"'{pos=0.3}, from=3-2, to=3-4]
-	\arrow["d"{pos=0.3}, from=2-3, to=4-3, crossing over]
-	\arrow["m", from=3-2, to=4-1]
-	\arrow["n", from=3-4, to=4-3]
-	\arrow["g"', from=4-1, to=4-3]
-    \end{tikzcd}\]
-    
-    Then, the square below is a pushout.
-    \[
-        \begin{tikzcd}%[row sep=25, column sep=25]
-            {K_a} \ar[r, "{k_{f'}}"] \ar[d, "{k_{m'}}"'] & {K_b} \ar[d, "{k_{n'}}"] \\
-            {K_c} \ar[r, "{k_{g'}}"'] & {K_d}
-        \end{tikzcd}
-    \]
-\end{lemma}
-
-\begin{proof}
-    By \Cref{lemma:kern_pairs_pres_pullbacks}, in the following cube the vertical faces are pullbacks.
-    \[\begin{tikzcd}[row sep = 20, column sep = 20]
-        & {K_a} && {K_b} \\
-        {K_c} && {K_d} \\
-        & {A'} && {B'} \\
-        {C'} && {D'}
-        \arrow["{k_{f'}}", from=1-2, to=1-4]
-        \arrow["{k_{m'}}"', from=1-2, to=2-1]
-        \arrow["{\pi_a^1}"{pos=0.7}, from=1-2, to=3-2]
-        \arrow["{k_{n'}}", from=1-4, to=2-3]
-        \arrow["{\pi_b^1}", from=1-4, to=3-4]
-        \arrow["{k_{g'}}"{pos=0.7}, from=2-1, to=2-3, crossing over]
-        \arrow["{\pi_c^1}"', from=2-1, to=4-1]
-        \arrow["{f'}"'{pos=0.3}, from=3-2, to=3-4]
-        \arrow["{\pi_d^1}"{pos=0.7}, from=2-3, to=4-3, crossing over]
-        \arrow["{m'}", from=3-2, to=4-1]
-        \arrow["{n'}", from=3-4, to=4-3]
-        \arrow["{g'}"', from=4-1, to=4-3]
-    \end{tikzcd}\]
-
-	$f'$ is in $\mathcal{M}$ as it is the pullback of $\mathcal{M}$, thus the bottom face of the cube is a Van Kampen pushout and the thesis follows.
-
-\end{proof}
 
 
