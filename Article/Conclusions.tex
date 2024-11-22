@@ -1,6 +1,7 @@
 \chapter*{Conclusions}
 \addcontentsline{toc}{chapter}{Conclusions}
 
+\iffalse
 In questo caso, una introduzione meno brusca, ricapitolando un po' la struttura e soprattutto il fine della tesi
 
 \begin{itemize}
@@ -13,5 +14,18 @@ In questo caso, una introduzione meno brusca, ricapitolando un po' la struttura 
 The result we ended up with is then $\Reg(\EGG))$-adhesivity, where $\EGG$ is a category of functors which have $\Set$ as codomain category.
 The main question is now, is it strictly necessary to have $\Set$ as codomain of this functors? The entire work is developed in a more general perspective, using the least possible concept directly connected with set theory, using instead categorial constructions. The property of $\Set$ we have made large use of is the equivalence between quotient and product subobjects, which holds in exact categories.
 Hence, this work can be viewed as a starting point to a more general study on e-graphs, in which edges, nodes and equivalence classes can be not only sets but objects of any exact category.
+\fi
+
+
+Retracing the work, we have defined graphs with equivalence and e-graphs in a more abstract way, untied from potential implementations, in order to analyze formal properties of this kind of structures.
+
+Then, based upon this framework, we proved adhesive properties of graphs with equivalences and e-graphs, obtaining an interesting result of adhesivity
+(both of theses structure are adhesive with respect to the class of their regular monomorphisms)
+useful for a potential exploiting in state-of-the-art techniques, such as the DPO approach for concurrent updates to the structure, currently not explored yet.
+
+Both graphs with equivalence and e-graphs are considered in this work as functors with $\Set$ as codomain category.
+One may ask then, is it strictly necessary to have $\Set$ as codomain of this functors?
+The entire work is developed in a more general perspective, using the least possible concept directly connected with set theory, using instead categorial construction, and requiring only $\mathcal{M}$-adhesivity and exactness (this last concept is quite implicit in $\Set$, hence is not explicitly mentioned, but is, intuitively, the one that permitted the equivalence noted in \Cref{rem:eqgrph_set_eq}).
+Hence, a future work will be a more general presentation of this structures, substituting $\Set$ with any category with this properties.
 
 

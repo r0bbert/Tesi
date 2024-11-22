@@ -30,7 +30,7 @@ A graph with equivalence is a 6-tuple $\eqgraph{G} =  (E, V, C, s, t, q)$, where
     h_E \circ s = s' \circ h_V \qquad h_E \circ t = t' \circ h_V'\qquad h_C \circ q = q' \circ h_V
 \]
 
-\begin{remark}
+\begin{remark}\label{rem:eqgrph_set_eq}
      A graph with equivalence can be viewed as a graph endowed with an equivalence relation over its set of vertices, $(\graph G, \sim_\graph{G})$. An homomorphism between two graphs with equivalences $h :\eqgraph{G} = (\graph{G}, \sim_\graph{G})\rightarrow \eqgraph{H} = (\graph{H}, \sim_\graph{H})$ is a graph homomorphism $h = (h_V, h_E):\graph{G} \rightarrow \graph{H}$ such that if $v_1 \sim_\graph{G} v_2$ then $h_V(v_1) \sim_\graph{H} h_V(v_2)$. In $\Set$, it is possible to formalize an equivalence relation $\sim$ over $X$ as a surjective function sending each element $x$ on its equivalence class $[x]_{\sim}$, and this justify our formalization via surjective functions (i.e., epimorphisms).
 \end{remark}
 
@@ -164,16 +164,13 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
     Since $q_K$ is epi, we have, on the third component, that $h_V \circ f_V \circ q_K = h_V \circ g_V \circ q_K$ implies $f_C = g_C$, and hence $f = g$    
 \end{proof}
 
-\begin{cor}\label{cor:regmono}Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be two graphs with equivalences, and let $ h = (h_E, h_V, h_C): \eqgraph{G}\to \eqgraph{H} $ be a morphism of $\EqGrph$, then the following are equivalent:
-	\begin{enumerate}
-		\item $h$ is a regular mono;
-		\item $h_E$, $h_V$, $h_C$ are all monos;
-%		\item $h_E$ and $h_V$ are mono and for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$.
-            \item $h_E$ and $h_V$ are mono and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_H \circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_G$.
-	\end{enumerate}
+
+\begin{cor}\label{cor:regmono}
+	Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be two graphs with equivalences,
+	and let $ h = (h_E, h_V, h_C): \eqgraph{G}\to \eqgraph{H} $ be a regular monomorphism of $\EqGrph$, then $h_E$, $h_V$, $h_C$ are all monos.
 \end{cor}
 \begin{proof}
-	$1\Rightarrow 2.$ If $h$ is mono, from \Cref{cor:mono_in_EqGrph} we have that $h_E$ and $h_V$ are monos. To derive $h_C$ mono, suppose $f, g :  \eqgraph{H \to K}$, where $\eqgraph{K} = (E_K, V_K, C_K, s_K, t_K, q_K)$to be the arrows equalized by $h$. Then we have
+	If $h$ is mono, from \Cref{cor:mono_in_EqGrph} we have that $h_E$ and $h_V$ are monos. To derive $h_C$ mono, suppose $f, g :  \eqgraph{H \to K}$, where $\eqgraph{K} = (E_K, V_K, C_K, s_K, t_K, q_K)$to be the arrows equalized by $h$. Then we have
     \begin{align*}
         f_C \circ h_C \circ q_G  &=  f_C \circ q_H \circ h_V \\
                                             &=  q_K \circ f_V \circ h_V \\
@@ -181,7 +178,8 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
                                             &=  g_C \circ h_C \circ q_G
     \end{align*}
     since $q_G$ is epi, we have that $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, thus a monomorphism.
-	
+	\iffalse
+
 	\smallskip \noindent
 	% $2\Rightarrow 3.$ The leftward side of the statement is satisfied by the definition of morphism of graphs with equivalences. For the remaining part, we have
  %    \begin{align*}
@@ -194,10 +192,21 @@ Another functor that will be useful later is $V: \EqGrph \to \Set$, sending $(E_
 	
 	\smallskip \noindent 
 	$3\Rightarrow 1.$\todo{Esercizio} \color{green}{idea: force the comm. of the diagram on the last two components to obtain the two arrows that are equalized, and show that the condition in 3 is sufficient to conclude reg. mono} \color{black}
+	\fi
+\end{proof}
+
+\begin{prop}
+	Let $\eqgraph{G} = (E_G, V_G, C_G, s_G, t_G, q_G)$ and $\eqgraph{H} = (E_H, V_H, C_H, s_H, t_H, q_H)$ be two graphs with equivalences,
+	and let $ h = (h_E, h_V, h_C): \eqgraph{G}\to \eqgraph{H} $ be a regular monomorphism of $\EqGrph$. Then, $h_E$ and $h_V$ are mono and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_H \circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_G$.
+\end{prop}
+
+\begin{proof}
+	By \Cref{cor:regmono}, we have that $h_E$, $h_V$ and $h_E$ are all monos. Hence, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_G$ if and only if it is the kernel pair also of $h_C \circ q_G$, since $h_C$ is mono by hypothesis. The thesis follows from $h_C \circ q_G = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
+
 \end{proof}
 
 \begin{remark}
-    It is possible to restate the third point of the \Cref{cor:regmono}, by \Cref{ex:kernel_pairs_in_Set}, as 
+    It is possible to restate the last proposition, by \Cref{ex:kernel_pairs_in_Set}, as 
     \begin{displayquote}
     \textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
     \end{displayquote}
