@@ -1,3 +1,5 @@
+% !TeX root = ./main.tex
+
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
@@ -30,43 +32,63 @@ I contenuti dell'introduzione vanno bene, ma li riaggiusterei leggermente, in mo
 
 \fi
 
+The use of graph-like structures as flexible and powerful models in rewriting-based formalisms and dependency analysis has a long tradition in computer science and related fields. These structures offer an intuitive and expressive framework for capturing the behavior and evolution of complex systems.
+
+Graphs, for instance, can represent a set of entities as nodes and the relationships between them as edges, providing a clear depiction of the system's state at any given moment. Rewriting steps then model computational processes, simulating changes in the system’s state. These transformations might involve the addition, removal, or reconfiguration of nodes and edges, enabling the representation of diverse phenomena such as changes in a software system's architecture, the evolution of a biological network, or updates within a dependency graph. 
+
+Among the various rewriting methodologies, the Double Pushout (DPO) approach \cite{Ehrig_Golas,ehrig2006fundamentals}has emerged as one of the leading paradigms. This rewriting paradigm, paired with the framework of $\mathcal{M}$-adhesive  categories \cite{lack2005adhesive,azzi2019essence,behr2022fundamentals}, provides a robust mathematical foundation for defining and applying rewriting rules. 
+
+
 The developlment of visual formalisms such as equality graphs (e-graphs) has to be brought back to the eighties, in the context of automatic theorem provers (ATPs).
 E-Graphs are an extension of prior structures, in order to represent in a more compact way equivalence classes of expressions, mantaining closure-under-congruence invariant.
 Graph manipulation turns out to be useful in practical fields such as systems optimization or components upgrades.
 The development of formal frameworks is therefore necessary, especially for what concernes parallelism and concurrency, as the research line in which this work wants to be integrated.
 
-In recent years, graph-like structures found a wide diffusion as models to rewriting-based formalisms and dependency analisys.
-As an example, a graph can model a set of entities and relations between them within a state, while rewriting steps can model computation steps that, modifying the graph, result in changes of the state of the system.
+
+The development of visual formalisms, such as \emph{equality graphs} (e-graphs), can be traced back to the 1980s, originating in the context of automatic theorem provers (ATPs)\todo{mettere referenza}. E-graphs provide a compact and efficient way to represent equivalence classes of expressions while maintaining the crucial property of closure under congruence. This ensures that equivalences are preserved across all contexts in which an expression might appear, making e-graphs a robust tools for reasoning about equivalence of algebraic expressions\todo{Non sicuro dell'ultima riga}.
+
+The utility of e-graphs extends beyond theoretical applications, finding practical relevance in fields such as systems optimization and component upgrades.\todo{Qua servirebbero degli esempi di uso di cui non ho idea}
+
+The more this approach is used, the greater the need for formal frameworks to guide the development and application of e-graphs. In particular, addressing issues of parallelism and concurrency is critical for developing a mathematically sound understanding of these structures.
+
+
+ By integrating the theory of e-graphs manipulation into the broader subject of DPO rewriting, this work aims to put on more mathematically firm ground the status of e-graphs. Moreover, it allows to apply to this new context the well known results about concurrency and parallelism already known provided by the abstract theory of DPO rewriting systems \cite{baldan1999concurrent,ehrig1999handbook}. 
+ 
+ On the technical level, to reach our aim we need to prove some adhesivity property of e-graphs. 
+ In order to do so, some considreration on graphs with equivalences are in order. 
+ A graph with equivalence is nothing but a graph endowed with an equivalence relation among its nodes. 
+ The main result on this kind of graphs is a weak adhesivity property that holds for regular monomorphisms. 
+ Such result is, then, inherited by e-graphs \todo{Da qualche parte mettere riferimento a \cite{egg}}, which are graphs with equivalence which satisfies additional requirements that can be intuitively summarized as the property of edges to have equivalent sources whenever targets are equivalent.
+
+
+On the technical level, to reach our objective we need to prove that the category of e-graphs exhibits a specific adhesivity property. To this end, it is necessary to first examine \emph{graphs with equivalence}, as they form the foundational structure underlying e-graphs.
+
+A graph with equivalence is simply a graph where an equivalence relation is defined on its nodes. The primary result concerning graphs with equivalences is an adhesivity property with respect to regular monomorphisms. 
+
+This adhesivity result, in turn, extends naturally, via the results of \cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}, to e-graphs \todo{Add reference to \cite{egg} da qualche parte}, which are a specialized class of graphs with equivalences that satisfy additional structural constraints. Specifically, e-graphs enforce a condition that edges must respect equivalence relations: if two edges have equivalent target nodes, then their source nodes must also be equivalent.
 
 Dependency and concurrency harden the process of program optimization, because application order of rewrites can significantly improve the quality of the overall rewitten program.
 Such problem is known as \textit{phase-ordering problem}, and a recent approach, known as equality saturation, was developed in \cite{Tate_2011}.
 This technique provides an alternative to heuristic methods, consisting of keeping track of a set of candidate equivalent optimized programs, 
 computed by repeatedly inferring equivalences between program fragments.
-E-Graphs provide a compact representation of this set, making operation feasible in concrete applications.
+E-Graphs provide a compact representation of this set, making operation feasible in concrete applications.\todo{Non ho capito questo paragrafo}
 
-Due to its flexibility and locality properties, DPO (double pushout) approach and adhesive categories have become a standard model for rewriting-based formalisms. 
+
+\iffalse 
 A presentation of e-graphs as the one in this work allows to move beyond the operational representation via data structures, in favour of a formalization that models the changes of the structure as well.
 In this setup, adhesivity results allow to make use of all the advantages of DPO rewriting, because of the generality of such framework.
 The elegance of such formalism lies on the definition of adhesive categories, i.e., categories where it is guaranteed the existence of pullbacks and pushouts along (some) monomorphisms, which are additionally required to be Van Kampen (stability of pushouts under pullbacks and stability of pullbacks under combined pushouts and pullbacks \cite{Ehrig_Golas}).
 The only downside of such formalism is the difficulty of proving statements using the definition. 
 For cerain calasses of caeogries, there exists a charaterization of such property, presented in \cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity}.
 
-Among all graphic frameworks, e-graphs, widely used in modern SMT (satisfiability modulo theories) solvers, such as Z3, are gaining success, due to the efficiency of their implementations, but is still missing a solid theoretical underpinning, since almost all the progresses remain implementation-based.
-Thus, one of the aims of this work is to present a more theoretic representation of e-graphs than the one at the state of the art presented in \cite{egg}, using categorial tools to be formalized.
-The main result is, therefore, to show that e-graphs relapse in the current adhesive paradigm.
 
 In order to work with e-graphs, some considreration on graphs with equivalences are to be done. 
 A graph with equivalence is nothing but a graph endowed with an equivalence relation among its nodes. 
 The main result on this kind of graphs is a weak adhesivity property that holds for particular monomorphisms. 
-Such result is, then, inherited by e-graphs, which are graphs with equivalence which satisfies additional requirements that can be intuitively summarized as \textit{the property of edges to have equivalent sources whenever targets are equivalent}.
+Such result is, then, inherited by e-graphs \todo{Da qualche parte mettere riferimento a \cite{egg}}, which are graphs with equivalence which satisfies additional requirements that can be intuitively summarized as \textit{the property of edges to have equivalent sources whenever targets are equivalent}.
+\fi 
 
-The work is structured as follows.
-The first chapter is about basic concepts of category theory, such as categories, limits, constructions and adhesivity, that will be used to model the categories on which in the second chapter we will work on.
-The main aim is to build up the categorial toolbox to work with. 
-Category theory provides a general and uniform formalism, hence almost all definitions may seem very abstract, however some concrete examples will be done.
-The second chapter is entirely focused on graphs, starting from a general notion of graph, that is, a two sorted algebra consisting of a set of edges and a set of vertices and two operators, source and target, which assign to each edge a source vertex and a target one.
-The structure we will use to model graphs are presheaves, which not only provides a straightforward formalization of them but also makes in evidence particular properties proper of graphs.
-Then, we endow graphs with an equivalence relation among vertices, to end up with an adhesivity result.
-The last part is about e-graphs, and in particular their formalization and how they inherit certain properties from graphs with equivalences.
+\smallskip \emph{Synopsis.} \Cref{chap:one} introduces the basic concepts of category theory that will be used throughout this thesis. The main goal of this chapter is to build the categorical toolbox necessary for the remainder of the work. Category theory provides a general and uniform formalism, which has the side effect of making many definitions seem quite abstract. To address this, we will provide concrete examples to help clarify and illustrate the concepts.
+\Cref{chap:two} is focused on graphs. The structure we will use to model graphs are presheaves, which not only provides a straightforward formalization, putting in evidence the categorical properties proper of graphs which we will need.  We will then endow graphs with an equivalence relation among vertices, and proof that the resulting category satisfies an adhesivity property. Finally, in the last part we will examin e-graphs, showing that they inherit the above adhesivity property from graphs with equivalences.
 
 
