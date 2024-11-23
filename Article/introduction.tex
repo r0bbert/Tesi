@@ -53,7 +53,7 @@ computed by repeatedly inferring equivalences between program fragments.
 E-Graphs provide a compact representation of this set, making operation feasible in concrete applications.
 %\todo{Non ho capito questo paragrafo}
 
-The utility of e-graphs thus extends beyond theoretical applications, finding practical relevance in fields such as system optimisation and component upgrading.
+The utility of e-graphs thus extends beyond theoretical applications, finding practical relevance in fields such as system optimisation and upgrading.
 %\todo{Qua servirebbero degli esempi di uso}
 %
 However, the more a formalism is used, the greater is the need for formal frameworks to guide its development and application. In particular, addressing issues of parallelism and concurrency is critical for 
@@ -62,11 +62,11 @@ sound understanding of these structures.
 
 Among the rewriting paradigms for graph-like structures, one of the leading proposal is the Double Pushout (DPO) approach \cite{Ehrig_Golas,ehrig2006fundamentals}, since it provides, paired with the framework of $\mathcal{M}$-adhesive  categories \cite{lack2005adhesive,azzi2019essence,behr2022fundamentals}, a robust mathematical foundation for the definition and the application of rules. 
 %
-Integrating the theory of e-graphs manipulation into the broader subject of DPO rewriting would put on firmer ground the status of e-graphs. Moreover, it would allow to apply to this new context the well known results about concurrency and parallelism already known provided by the abstract theory of DPO rewriting systems \cite{baldan1999concurrent,ehrig1999handbook}. 
+Integrating the theory of e-graphs manipulation into the broader subject of DPO rewriting would put on firmer ground the status of e-graphs. Moreover, it would allow to apply to this new context well-known results about concurrency and parallelism already provided by the theory of DPO rewriting systems \cite{baldan1999concurrent,ehrig1999handbook}. 
  
 Such an integration is the main aim of the thesis.
  On the technical level, to reach our aim we need to prove some adhesivity property of e-graphs. 
- In order to do so, some consideration on graphs with equivalences are in order. 
+ In order to do so, some considerations on graphs with equivalences are in order. 
  A graph with equivalence is nothing but a graph endowed with an equivalence relation among its nodes. 
  The main result on this kind of graphs is a weak adhesivity property that holds for regular monomorphisms. 
 % Such result is, then, inherited by e-graphs \todo{Da qualche parte mettere riferimento a \cite{egg}}, which are graphs with equivalence which satisfies additional requirements that can be intuitively summarized as the property of edges to have equivalent sources whenever targets are equivalent.
@@ -93,8 +93,8 @@ which are graphs with equivalence which satisfies additional requirements that c
 as \textit{the property of edges to have equivalent sources whenever targets are equivalent}.
 \fi 
 
-\smallskip \emph{Synopsis.} \Cref{chap:one} introduces the basic concepts of category theory that will be used throughout this thesis. The main goal of this chapter is to build the categorical toolbox necessary for the remainder of the work. Category theory provides a general and uniform formalism, which has the side effect of making many definitions seem quite abstract. To address this, we will provide concrete examples to help clarify and illustrate the concepts.
-\Cref{chap:two} focuses on graphs. The structure we will use to model graphs are presheaves, which not only provides a straightforward formalisation, putting in evidence the categorical properties of graphs that we will need.  We will then endow graphs with an equivalence relation among vertices, and proof that the resulting category satisfies an adhesivity property. Finally, in the last part we will examine
+\smallskip \emph{Synopsis.} \Cref{chap:one} introduces the basic concepts of category theory used throughout this thesis. The main goal of this chapter is to build the toolbox necessary for the remainder of the work. Category theory provides a general and uniform formalism, which sometimes can make definitions seem quite abstract. To address this, we provide concrete examples to help clarify and illustrate the concepts.
+\Cref{chap:two} focuses on graphs. The structure we  use to model graphs are presheaves, which not only provides a straightforward formalisation, putting in evidence the categorical properties of graphs that we  need.  We then endow graphs with an equivalence relation among vertices, and proof that the resulting category satisfies an adhesivity property. Finally, in the last part we examine
  e-graphs, showing that they inherit the above adhesivity property from graphs with equivalences.
 
 
