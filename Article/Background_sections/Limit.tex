@@ -279,7 +279,7 @@ Given a subclass of morphisms of a category, an important property is \emph{stab
 
 The proposition above can be dualised stating that pushouts preserves epimorphisms.
 
-The following lemma is a classical result, its proof is in the appendix.
+The following lemma is a classical result.
 
 \begin{lemma}[Pullback Lemma]\label{lemma:pullback_lemma}
         Suppose that the following diagram is given and its right half is a pullback. Then the whole rectangle is a pullback if and only if its left half is a pullback.
@@ -290,6 +290,51 @@ The following lemma is a classical result, its proof is in the appendix.
             \end{tikzcd}
         \]
 \end{lemma}
+
+\begin{proof}
+    For the ``only if'' part, suppose the left square to be a pullback. To verify the outer rectangle is a pullback, consider the following situation:
+    \[
+        \begin{tikzcd}[row sep = 20, column sep = 20]
+            P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} & & \\
+            & & & Z \arrow[d, "h"] \\
+            & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
+        \end{tikzcd}
+    \]
+    But the right square is a pullback implies that there exists a unique $u$ such that
+    \[
+        \begin{tikzcd}[row sep = 20, column sep = 20]
+            P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15, dashed]{drr}{u}& & \\
+            & &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
+            & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
+        \end{tikzcd}
+    \]
+    And, since the left square is a pullback, there exists a unique $v$ such that
+    \[
+        \begin{tikzcd}[row sep = 20, column sep = 20]
+            P \arrow[bend left=30]{rrrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15]{drr}{u} \arrow[dr, "v", dashed]& & \\
+            & X \arrow[r, "f"] \arrow[d, "t"swap] &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
+            & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
+        \end{tikzcd}
+    \]
+    Hence, the whole rectangle is a pullback.
+
+    For the ``if'' part, consider the following situation.
+    \[
+        \begin{tikzcd}[row sep = 20, column sep = 20]
+            P \arrow[bend left=30]{rrd}{p_1} \arrow[bend right=30, swap]{ddr}{p_2} & \\
+            & & Y \arrow[d, "k"] \\
+            & B \arrow[r, "b"swap] & C
+        \end{tikzcd}
+    \]
+    We have now to show that the unique arrow $v: P \to X$ (of the outer rectangle) is such that $f \circ v = p_1$, but this follows from the fact that the right square is a pullback, having the following situation.
+    \[
+        \begin{tikzcd}[row sep = 20, column sep = 20]
+            P \arrow[bend left=30]{rrrd}{g \circ p_1} \arrow[bend right=30, swap]{ddr}{p_2} \arrow[bend left=15, dashed]{drr}{u}& & \\
+            & &  Y \arrow[r, "g"] \arrow[d, "k"]& Z \arrow[d, "h"] \\
+            & A \arrow[r, "a"swap] & B \arrow[r, "b"swap] & C
+        \end{tikzcd}
+    \]
+\end{proof} 
 
 
 \begin{cor}\label{cor:cube} 
@@ -342,11 +387,54 @@ The following lemma is a classical result, its proof is in the appendix.
 \end{tikzcd}\]
 \end{proof}
 
-The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do. A detailed proof is in the appendix.
+The connection between constructions as products and equalizers and limits is made clear by the following theorem. The idea behind the proof is the fact that, given a diagram $D : \cat I \rightarrow \cat C$, if each subset of objects $X = \{D(i) \mid i \in \Ob(\cat I)\} \subseteq \Ob(\cat C)$ has a product $(\prod_{i \in I} D(i), (\pi_i)_{i \in \Ob( \cat I)})$ and each pair of arrows $f, g \in \cat C (D(i), D(j))$ has an equalizer, then one can construct the cone taking the equalizer of the arrows that has as domain the product of the objects of the diagram, and as codomain the product of the codomains of the arrows of the diagram. This construction has the universal property because equalizers and products do.
 
 \begin{theorem}[Limit theorem]\label{th:limit}
     Let $\cat C$ be a category. Then $\cat C$ has all finite limits if and only if $\cat C$ has all finite products and all finite equalizers.
 \end{theorem}
+
+\begin{proof}
+    Let $D: \cat{I \rightarrow C}$ a diagram, with $\cat I$ finite.
+    
+    The \emph{if} statement follows from definitions of products and equalizers (\Cref{def:pullback_pushout}, \Cref{def:equalizer_coequalizer})
+
+    To satisfy the \emph{only if} statement, we want an object $L$ together with morphisms $p_i : L \rightarrow D(j)$ such that:
+    \begin{enumerate}
+        \item\label{item:cone} $\{p_i: L \rightarrow D(i)\}$ is a cone -- i.e., for each morphism of $\cat I$ $\alpha : i \rightarrow j$, $D(\alpha) \circ p_i = p_j$; and
+        \item\label{item:univ_prop} for each $E$ and $q_i : E \rightarrow D(j)$ in $\cat C$, with $D(\alpha) \circ q_i = q_j$ for each $\alpha : i \rightarrow j$ of $\cat I$, there exists a unique $f: E \rightarrow L$ such that $q_i = p_i \circ f$ for each $i \in \Ob(\cat I)$.
+    \end{enumerate}
+
+    Consider the two products (which exist by hypothesis) $\prod_{j \in \Ob(\cat I)} D(j)$, the product of the objects of the diagram, and $\prod_{\alpha \in \Hom(\cat I)}D(cod \ \alpha)$, the product of the codomains of the morphisms in $D$, where $\pi_x$ is the $x$-th projection of the product.
+    Let now:
+    \[
+        \gamma, \varepsilon : \prod_{j \in \Ob(\cat I)}D(j) \ \longrightarrow \prod_{\alpha \in \Hom(\cat I)} D(cod \ \alpha)
+    \]
+    be defined by $\gamma_\alpha = \pi_{D(cod\ \alpha)}$ (the projection on the codomain of $\alpha$) and $\varepsilon_\alpha = D(\alpha) \circ \pi_{D(dom \ \alpha)}$.
+    Let now $e: L \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$ the equalizer of $\gamma$ and $\varepsilon$ (which exists by hypothesis), and, for each $j \in \Ob(\cat I)$, $p_j: L \rightarrow D(j)$, defined by $p_j = \pi_{D(j)} \circ e$.
+    
+    What we want now is to show that $(L, (p_i))_{i \in \cat I}$ is the limit of $D$, namely, to prove that the conditions given at the beginning are valid.
+
+    For condition~\ref{item:cone}, we have to show that, for each $\alpha : i \rightarrow j$ of $\cat I$, we have $D(\alpha) \circ p_i = p_j$:
+    \begin{align*}
+        D(\alpha) \circ p_i 
+            &= D(\alpha) \circ \pi_{D(i)} \circ e   && \textit{Definition of $p_j$} \\
+            &= \varepsilon_{\alpha} \circ e         && \textit{Definition of $\varepsilon$}\\
+            &= \gamma_\alpha \circ e                && \textit{$e$ is an equalizer of $\pi, \varepsilon$}\\
+            &= \pi_{D(j)} \circ e                   && \textit{Definition of $\pi$} \\
+            &= p_j                                  && \textit{Definition of $p_j$} \\
+    \end{align*}
+
+    For condition~\ref{item:univ_prop}, suppose that $(E, (q_i)_{i \in \Ob(\cat I)})$ has the properties stated. By definition of product, there exists a (unique) arrow $q: E \rightarrow \prod_{j \in \Ob(\cat I)}D(j)$. For each arrow $\alpha: i \rightarrow j$, we have:
+    \begin{align*}
+            \gamma_\alpha \circ q 
+                &= \pi_{D(j)} \circ q           && \textit{Definition of $\pi$} \\
+                &= q_j                          && \textit{Definition of $q_j$} \\
+                &= D(\alpha) \circ q_i          && \textit{Assumption on $q_j$} \\
+                &= D(\alpha) \circ \pi_{D(j)} \circ q   &&\textit{Definition of $q_i$} \\
+                &= \varepsilon_{\alpha} \circ q && \textit{Definition of $\varepsilon$} \\
+    \end{align*}
+    Since $e$ equalizes $\pi$ and $\varepsilon$, there exists a unique $f: E \rightarrow L$ in $\cat C$ such that $q = e \circ f$. Then, for each $j \in \Ob(\cat I)$, we have $\pi_{D(j)} \circ q = \pi_{D(j)} \circ e \circ f$, hence, $q_i = p_i \circ f$.
+\end{proof}
 
 \begin{remark}
     The theorem above (and its relative proof) can be stated in its dual form leading to a theorem on existence of colimits, and a relative criterion to calculate them (taking the dual of the proof).
