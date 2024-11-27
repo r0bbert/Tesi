@@ -1,5 +1,6 @@
 \documentclass[a4paper, twoside,openright]{report}
 \usepackage[T1]{fontenc} % Font encoding, T1 = it
+%\usepackage[size=a4]{breamerposter}
 \usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
 \usepackage[english]{babel} % Lingua principale inglese
 \usepackage{graphicx} % Per includere immagini esterne
@@ -53,7 +54,26 @@
 
 % input file frontespizio.tex
 \input{frontespizio}
+\clearpage
+\thispagestyle{empty}
+\hfill
+\clearpage
 
+\thispagestyle{empty}
+\begin{flushright}
+\null\vspace{\stretch{1}}
+{\textit{
+	al pettirosso,\\
+	agli specchi delle case dei vecchi.
+}}
+\vspace{\stretch{2}}\null
+\end{flushright}
+\clearpage
+\thispagestyle{empty}
+\hfill
+\clearpage
+
+\thispagestyle{empty}
 \tableofcontents
 
 \input{Introduction}

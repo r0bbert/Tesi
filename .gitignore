@@ -11,3 +11,11 @@ main.aus
 main.out
 main.toc
 texput.log
+Beamer/imgs
+Beamer/main.aux
+Beamer/main.log
+Beamer/main.nav
+Beamer/main.out
+Beamer/main.snm
+Beamer/main.toc
+Beamer/main.vrb

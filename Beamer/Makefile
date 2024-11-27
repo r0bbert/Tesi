@@ -1,0 +1,2 @@
+article:
+	pdflatex main.tex
