@@ -1,7 +1,7 @@
 \documentclass[8pt]{beamer}
 
 \usefonttheme{serif}
-\usetheme{CambridgeUS}
+\usetheme{Singapore}
 
 \usepackage[utf8]{inputenc} %utf8
 %\usepackage[italian]{babel}
@@ -135,8 +135,21 @@
     Le categorie di funtori il cui codominio è $\Set$ sono dette \emph{categorie di prefasci}.
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Categorie di Grafi}
-	
+\section{Grafi}
+
+\begin{frame}[fragile]\frametitle{Definizione dei Grafi}
+
+	Un grafo $G$ è costituito da:
+	\begin{itemize}
+		\item Un insieme di nodi $V$
+		\item Un insieme di archi $E$
+		\item $s: E \to V$ funzione sorgente
+		\item $t: E \to V$ funzione destinazione
+	\end{itemize}
+	In altre parole, un grafo è un elemento di $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$.
+\end{frame}
+
+\begin{frame}\frametitle{Grafi ed Equivalenze}
 	\begin{wrapfigure}{R}{0.4\textwidth}
 		\begin{tikzpicture}
 		[scale=.8,auto=left, every node/.style={circle,fill=blue!20}]
@@ -154,15 +167,6 @@
 		\end{tikzpicture}
 	\end{wrapfigure}
 	
-	Un grafo $G$ è costituito da:
-	\begin{itemize}
-		\item Un insieme di nodi $V$
-		\item Un insieme di archi $E$
-		\item $s: E \to V$ funzione sorgente
-		\item $t: E \to V$ funzione destinazione
-	\end{itemize}
-	In altre parole, un grafo è un elemento di $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$.
-
 	Un \emph{grafo con eqiuvalenza} $(G, \sim)$ è costituito da:
 	\begin{itemize}
 		\item Un grafo $G$
@@ -192,6 +196,8 @@
 
 	Tuttavia gli utilizzi sono molteplici, dalla \emph{equality saturation} all'ottimizzazione in fase di compilazione.
 \end{frame}
+
+\section{Adesività}
 
 \begin{frame}[fragile]\frametitle{Pullback, Pushout, Equalizzatori}
 	\begin{figure}[h]
@@ -228,46 +234,13 @@
 	In $\Set$:
 	\begin{itemize}
 		\item Pullback di $f$ e $g$: $ P = \{(x, y) \in A \times B \mid f(x) = g (y)\}$
-		\item Pushout di $f$ e $g$:  $Q = (A \coprod B)/\sim$
+		\item Pushout di $f$ e $g$:  $Q = (A \coprod B)/_\sim$
 		\item Equalizzatore di $f$ e $g$: $E=\{x \in A \mid f(x) = g(x)\}$
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Adesività}
-
-
-	\begin{wrapfigure}{ur}{0.4\textwidth}
-                \[
-                \begin{tikzcd}[row sep=11, column sep=11]
-                        & {A'} && {B'} \\
-                        {C'} && {D'} \\
-                        & A && B \\
-                        C && D
-                        \arrow["{f'}", from=1-2, to=1-4]
-                        \arrow["{m'}"', from=1-2, to=2-1]
-                        \arrow["a"'{pos=0.7}, from=1-2, to=3-2]
-                        \arrow["{n'}"', from=1-4, to=2-3]
-                        \arrow["b", from=1-4, to=3-4]
-                        \arrow["{g'}"{pos=0.7}, from=2-1, to=2-3, crossing over]
-                        \arrow["c"', from=2-1, to=4-1]
-                        \arrow["f"'{pos=0.3}, from=3-2, to=3-4]
-                        \arrow["d"{pos=0.3}, from=2-3, to=4-3, crossing over]
-                        \arrow["m", from=3-2, to=4-1]
-                        \arrow["n", from=3-4, to=4-3]
-                        \arrow["g"', from=4-1, to=4-3]
-                    \end{tikzcd}
-            \]
-        \end{wrapfigure}
-	Una categoria $\cat C$ è adesiva se:
-	\begin{itemize}
-		\item ha tutti i pushout di monomorfismi
-		\item ha tutti i pullback
-		\item i pushout di monomorfismi sono \emph{Van Kampen}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Approccio DPO su Categorie Adesive}
-	Sia $\cat C$ una categoria adesiva.
+\begin{frame}[fragile]\frametitle{Approccio DPO}
+	Sia $\cat C$ una categoria.
 	\begin{figure}[h]
 		\begin{subfigure}{0.25\textwidth}
 			\[\begin{tikzcd}[row sep = 20, column sep = 20] L & K \arrow[r, "r"] \arrow[l, "l"swap] & L \end{tikzcd}\]
@@ -292,6 +265,58 @@
 		\includegraphics[width=0.4\linewidth]{imgs/fancyDPO}
 	\end{figure}
 \end{frame}
+\begin{frame}[fragile]\frametitle{Adesività}
+
+
+	\iffalse
+	\begin{wrapfigure}{l}{0.4\textwidth}
+                \[
+                \begin{tikzcd}[row sep=11, column sep=11]
+                        & {A'} && {B'} \\
+                        {C'} && {D'} \\
+                        & A && B \\
+                        C && D
+                        \arrow["{f'}", from=1-2, to=1-4]
+                        \arrow["{m'}"', from=1-2, to=2-1]
+                        \arrow["a"'{pos=0.7}, from=1-2, to=3-2]
+                        \arrow["{n'}"', from=1-4, to=2-3]
+                        \arrow["b", from=1-4, to=3-4]
+                        \arrow["{g'}"{pos=0.7}, from=2-1, to=2-3, crossing over]
+                        \arrow["c"', from=2-1, to=4-1]
+                        \arrow["f"'{pos=0.3}, from=3-2, to=3-4]
+                        \arrow["d"{pos=0.3}, from=2-3, to=4-3, crossing over]
+                        \arrow["m", from=3-2, to=4-1]
+                        \arrow["n", from=3-4, to=4-3]
+                        \arrow["g"', from=4-1, to=4-3]
+                    \end{tikzcd}
+            \]
+        \end{wrapfigure}
+	\fi
+
+	Una categoria $\cat C$ è adesiva se:
+	\begin{itemize}
+		\item ha tutti i pushout di monomorfismi
+		\item ha tutti i pullback
+		\item i pushout di monomorfismi sono \emph{Van Kampen} - ossia che tali pushout sono stabili stoot pullback e i pubblack sono stabili sotto pushout combinati con pullback
+	\end{itemize}
+
+	\smallskip
+
+	L'adesività permette di estendere l'approccio DPO a categorie più complesse come quelle dei grafi.
+
+	\smallskip
+	
+	\smallskip
+\begin{figure}%
+    \centering
+    \subfloat[\centering DPO su grafi]{{\includegraphics[width=5cm]{imgs/DPOgraphs} }}%
+    \qquad
+    \subfloat[\centering DPO per reazione di Dies-Alder]{{\includegraphics[width=5cm]{imgs/reaction} }}%
+    \label{fig:example}%
+\end{figure}
+
+\end{frame}
+
 
 \section{Conclusioni}
 \begin{frame}\frametitle{Conclusioni}
@@ -300,7 +325,7 @@
 		\item Adesività rispetto ad alcuni morfismi
 	\end{itemize}
 
-	LAvori futuri: sostituire la categoria $\Set$ con una qualsiasi categoria esatta e adesiva.
+	Lavori futuri: sostituire la categoria $\Set$ con una qualsiasi categoria esatta e adesiva.
 \end{frame}
 
 \end{document}
