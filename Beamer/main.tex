@@ -4,7 +4,6 @@
 \usetheme{Singapore}
 
 \usepackage[utf8]{inputenc} %utf8
-%\usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \author{Roberto Biondo}
 \institute{\small Dipartimento di Informatica\\Università di Pisa}
@@ -13,17 +12,17 @@
 \newdate{date}{29}{11}{2024}
 \date{\displaydate{date}}
 
-
 \usepackage{wrapfig}
 \usepackage[T1]{fontenc} % Font encoding, T1 = it
 %\usepackage[size=a4]{breamerposter}
 \usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
-%\usepackage[english]{babel} % Lingua principale inglese
+%\usepackage[italian]{babel} % Lingua principale inglese
 \usepackage{graphicx} % Per includere immagini esterne
+
 %\usepackage[tickmarkheight=.5em,textwidth=\marginparwidth,textsize=small]{todonotes}
 %\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} %impaginazione e margini documento -- DA POROBLEMI!!!
 %\usepackage[fontsize=12pt]{scrextend} %dimensione font
-
+%\usepackage{}
 %\usepackage{titlesec} %indice
 
 \usepackage{csquotes}
@@ -125,19 +124,24 @@
         \end{tikzcd}
     \]
 
-    \emph{Categoria di funtori} $[\cat{C, D}]$:
-    \begin{itemize}
-	    \item Oggetti: funtori (con dominio $\cat C$ e codominio $\cat D$)
-	    \item Morfismi: trasformazioni naturali
-	\end{itemize}
-        \smallskip
-
-    Le categorie di funtori il cui codominio è $\Set$ sono dette \emph{categorie di prefasci}.
 \end{frame}
 
 \section{Grafi}
 
 \begin{frame}[fragile]\frametitle{Definizione dei Grafi}
+
+	\emph{Categoria di funtori} $[\cat{C, D}]$:
+	\begin{itemize}
+		\item Oggetti: funtori (con dominio $\cat C$ e codominio $\cat D$)
+		\item Morfismi: trasformazioni naturali
+	\end{itemize}
+	
+	\smallskip
+
+	    Le categorie di funtori il cui codominio è $\Set$ sono dette \emph{categorie di prefasci}.
+
+	    \smallskip
+
 
 	Un grafo $G$ è costituito da:
 	\begin{itemize}
@@ -182,9 +186,9 @@
 
 \begin{frame}\frametitle{EGGs}
 
-%	\begin{image}
-			
-%	\end{image}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{imgs/eggs}
+	\end{figure}
 
 	La categoria degli E-Grafi è detta $\Egg$, dal nome della libreria che li implementa in Rust.
 
@@ -220,27 +224,16 @@
 			\caption{Pushout}
 			\label{po}
 		\end{subfigure}
-		\qquad
-		\begin{subfigure}{0.25\textwidth}
-			\[\begin{tikzcd}[row sep = 20, column sep = 20]
-				E \arrow[r, "e"] & A \arrow[r, "f", shift left=1] \arrow[r,"g"swap, shift right = 1] & B \\
-				E' \arrow[u, dashed, "h"] \arrow[ur, "{e'}"swap] &
-			\end{tikzcd}\]
-			\caption{Equalizzatore}
-			\label{eq}
-		\end{subfigure}
 	\end{figure}
 
 	In $\Set$:
 	\begin{itemize}
 		\item Pullback di $f$ e $g$: $ P = \{(x, y) \in A \times B \mid f(x) = g (y)\}$
 		\item Pushout di $f$ e $g$:  $Q = (A \coprod B)/_\sim$
-		\item Equalizzatore di $f$ e $g$: $E=\{x \in A \mid f(x) = g(x)\}$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Approccio DPO}
-	Sia $\cat C$ una categoria.
 	\begin{figure}[h]
 		\begin{subfigure}{0.25\textwidth}
 			\[\begin{tikzcd}[row sep = 20, column sep = 20] L & K \arrow[r, "r"] \arrow[l, "l"swap] & L \end{tikzcd}\]
@@ -261,10 +254,19 @@
 	mentre i due quadrati sono pushout.
 
 
-	\begin{figure}
-		\includegraphics[width=0.4\linewidth]{imgs/fancyDPO}
-	\end{figure}
+	\begin{wrapfigure}{ri}{0.5\textwidth}
+		\includegraphics[width=0.7\linewidth]{imgs/fancyDPO}
+	\end{wrapfigure}
+
+
+	Risultati:
+	\begin{itemize}
+		\item Confluenza
+		\item Terminazione
+		\item Parallelismo e concorrenza
+	\end{itemize}
 \end{frame}
+
 \begin{frame}[fragile]\frametitle{Adesività}
 
 
@@ -297,7 +299,10 @@
 	\begin{itemize}
 		\item ha tutti i pushout di monomorfismi
 		\item ha tutti i pullback
-		\item i pushout di monomorfismi sono \emph{Van Kampen} - ossia che tali pushout sono stabili stoot pullback e i pubblack sono stabili sotto pushout combinati con pullback
+		\item i pushout di monomorfismi sono \emph{Van Kampen}
+			\begin{itemize}
+				\item ossia che tali pushout sono stabili sotto pullback e i pullback sono stabili sotto pushout combinati con pullback
+			\end{itemize}
 	\end{itemize}
 
 	\smallskip
@@ -325,7 +330,10 @@
 		\item Adesività rispetto ad alcuni morfismi
 	\end{itemize}
 
-	Lavori futuri: sostituire la categoria $\Set$ con una qualsiasi categoria esatta e adesiva.
+	Lavori futuri: \begin{itemize}
+		\item Sostituire la categoria $\Set$ con una qualsiasi categoria adesiva
+		\item Generalizzare il risultato ad alti tipi di grafi, e.g., ipergrafi
+	\end{itemize}
 \end{frame}
 
 \end{document}
