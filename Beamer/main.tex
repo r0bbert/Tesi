@@ -105,7 +105,7 @@
         \begin{itemize}
                 \item un \emph{monomorfismo} : $f \circ g = f \circ h \Rightarrow g = h$;
                 \item un \emph{epimorfismo} : $g \circ f = h \circ f \Rightarrow g = h$;
-                \item un \emph{isomorfimso} : esiste $k$ tale che $f \circ k = id_B$ e $k \circ f = id_A$.
+                \item un \emph{isomorfismo} : esiste $k$ tale che $f \circ k = id_B$ e $k \circ f = id_A$.
         \end{itemize}
 
 \end{frame}
@@ -143,14 +143,18 @@
 	    \smallskip
 
 
-	Un grafo $G$ è costituito da:
+	Un grafo $G$ \`e costituito da:
 	\begin{itemize}
 		\item Un insieme di nodi $V$
 		\item Un insieme di archi $E$
 		\item $s: E \to V$ funzione sorgente
 		\item $t: E \to V$ funzione destinazione
 	\end{itemize}
-	In altre parole, un grafo è un elemento di $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$.
+	Un morfismo fra grafi \`e una coppia $f_V: V_1 \to V_2$, $f_E: E_1 \to E_2$ che rispetta sorgente e destinazione.
+	
+	    \smallskip
+	
+	In altre parole, un grafo \`e un oggetto della categoria $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
 \end{frame}
 
 \begin{frame}\frametitle{Grafi ed Equivalenze}
@@ -171,14 +175,15 @@
 		\end{tikzpicture}
 	\end{wrapfigure}
 	
-	Un \emph{grafo con eqiuvalenza} $(G, \sim)$ è costituito da:
+	Un \emph{grafo con equivalenza} $(G, \sim)$ \`e dato da:
 	\begin{itemize}
 		\item Un grafo $G$
-		\item Una relazione di quivalenza $\sim$ definita sui vertici
+		\item Una relazione di equivalenza $\sim$ definita sui vertici
 	\end{itemize}
+	
 	Ossia, un elemento di $[E \rightrightarrows V \to Q, \Set]$, tale che la freccia $q: V \to Q$ sia surgettiva (epi).
 
-	Un E-Grafo $(G, \sim)$ è un grafo con equivalenza tale che
+	Un E-Grafo $(G, \sim)$ \`e un grafo con equivalenza tale che
 	\[
 		\frac{s_G(e)\sim s_G(e')}{t_G(e) \sim t_G(e')}
 	\]
@@ -194,7 +199,7 @@
 
 	\smallskip
 
-	La definizione attuale è troppo operativa per ottenere dei risultati teorici.
+	La definizione attuale \`e esplicitamente operativa, e risulta difficile per ottenere dei risultati teorici.
 
 	\smallskip
 
@@ -229,7 +234,7 @@
 	In $\Set$:
 	\begin{itemize}
 		\item Pullback di $f$ e $g$: $ P = \{(x, y) \in A \times B \mid f(x) = g (y)\}$
-		\item Pushout di $f$ e $g$:  $Q = (A \coprod B)/_\sim$
+		\item Pushout di $f$ e $g$:  $Q = (A + B)/_\sim$
 	\end{itemize}
 \end{frame}
 
@@ -250,16 +255,16 @@
 		\label{fig:step}
 		\end{subfigure}
 	\end{figure}
-	$l$ e $r$ sono due morfismi, possibilmente mono, di $\cat C$, 
-	mentre i due quadrati sono pushout.
-
+	$l$ e $r$ sono morfismi, il primo dei quali mono, di $\cat C$, 
+	mentre i quadrati sono pushout.
 
 	\begin{wrapfigure}{ri}{0.5\textwidth}
 		\includegraphics[width=0.7\linewidth]{imgs/fancyDPO}
 	\end{wrapfigure}
 
+\smallskip 
 
-	Risultati:
+	Tecniche per parlare di:
 	\begin{itemize}
 		\item Confluenza
 		\item Terminazione
@@ -301,7 +306,7 @@
 		\item ha tutti i pullback
 		\item i pushout di monomorfismi sono \emph{Van Kampen}
 			\begin{itemize}
-				\item ossia che tali pushout sono stabili sotto pullback e i pullback sono stabili sotto pushout combinati con pullback
+				\item ossia tali pushout sono stabili sotto pullback e i pullback sono stabili sotto pushout combinati con pullback
 			\end{itemize}
 	\end{itemize}
 
@@ -325,14 +330,15 @@
 
 \section{Conclusioni}
 \begin{frame}\frametitle{Conclusioni}
+	Nel lavoro di tesi abbiamo
 	\begin{itemize}
-		\item Formalizzazione degli E-Grafi mediante categorie
-		\item Adesività rispetto ad alcuni morfismi
+		\item Formalizzato gli E-Grafi mediante categorie di prefasci
+		\item Provato l'adesivit\`a� rispetto a una sottoclasse di monomorfismi
 	\end{itemize}
 
-	Lavori futuri: \begin{itemize}
-		\item Sostituire la categoria $\Set$ con una qualsiasi categoria adesiva
-		\item Generalizzare il risultato ad alti tipi di grafi, e.g., ipergrafi
+	Come lavori futuri vogliamo \begin{itemize}
+		\item Sostituire la categoria $\Set$ con una generica categoria adesiva
+		\item Generalizzare il risultato ad altri tipi di grafi, e.g., ipergrafi e term graph
 	\end{itemize}
 \end{frame}
 
