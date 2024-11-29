@@ -89,7 +89,7 @@
 
 	\smallskip
 
-        Una categoria $\cat C$ è composta da:
+        Una categoria $\cat C$ \`e composta da:
 	\begin{itemize}\item\emph{oggetti}\item\emph{morfismi} (o \emph{frecce})\end{itemize}
         \[
                 \begin{tikzcd} A \arrow[loop left, "{id_A}"] \arrow[r, "f"] & B \arrow[loop right, "{id_B}"] \end{tikzcd}
@@ -97,11 +97,11 @@
 
         \smallskip
         
-        La categoria i cui oggetti sono gli insiemi e i cui morfismi sono le funzioni tra essi è denominata $\Set$.
+        La categoria i cui oggetti sono gli insiemi e i cui morfismi sono le funzioni tra essi \`e denominata $\Set$.
         
         \smallskip
 
-        $f: A \to B$ può essere:
+        $f: A \to B$ pu\`o essere:
         \begin{itemize}
                 \item un \emph{monomorfismo} : $f \circ g = f \circ h \Rightarrow g = h$;
                 \item un \emph{epimorfismo} : $g \circ f = h \circ f \Rightarrow g = h$;
@@ -116,7 +116,7 @@
         \arrow[rr, bend left=30, "{F(g \circ f) = F(g) \circ F(f)}"] & F(B) \arrow[r, "F(g)"] & F(C) 
         \arrow[loop right, "{F(id_C) = id_{F(C)}}"] \end{tikzcd}\]
 
-        Una \emph{trasformazione naturale} $\eta:F \dot\to G$: % è una mappa tra due funtori $F, G: \cat{C \to D}$, che assegna ad ogni oggetto $A$ di $\cat C$ un morfismo $\eta_A$ di $\cat D$. 
+        Una \emph{trasformazione naturale} $\eta:F \dot\to G$: %  una mappa tra due funtori $F, G: \cat{C \to D}$, che assegna ad ogni oggetto $A$ di $\cat C$ un morfismo $\eta_A$ di $\cat D$. 
     \[
         \begin{tikzcd}[row sep = 20, column sep = 20]
             F(A) \arrow[d, "F(f)" swap] \arrow[r, "{\eta_A}"] & G(A) \arrow[d, "G(f)"] \\
@@ -138,7 +138,7 @@
 	
 	\smallskip
 
-	    Le categorie di funtori il cui codominio è $\Set$ sono dette \emph{categorie di prefasci}.
+	    Le categorie di funtori il cui codominio \`e $\Set$ sono dette \emph{categorie di prefasci}.
 
 	    \smallskip
 
@@ -195,7 +195,7 @@
 		\includegraphics[width=\linewidth]{imgs/eggs}
 	\end{figure}
 
-	La categoria degli E-Grafi è detta $\Egg$, dal nome della libreria che li implementa in Rust.
+	La categoria degli E-Grafi \`e detta $\Egg$, dal nome della libreria che li implementa in Rust.
 
 	\smallskip
 
@@ -206,7 +206,7 @@
 	Tuttavia gli utilizzi sono molteplici, dalla \emph{equality saturation} all'ottimizzazione in fase di compilazione.
 \end{frame}
 
-\section{Adesività}
+\section{Adesivit\`a}
 
 \begin{frame}[fragile]\frametitle{Pullback, Pushout, Equalizzatori}
 	\begin{figure}[h]
@@ -272,7 +272,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Adesività}
+\begin{frame}[fragile]\frametitle{Adesivit\`a}
 
 
 	\iffalse
@@ -300,7 +300,7 @@
         \end{wrapfigure}
 	\fi
 
-	Una categoria $\cat C$ è adesiva se:
+	Una categoria $\cat C$ \`e adesiva se:
 	\begin{itemize}
 		\item ha tutti i pushout di monomorfismi
 		\item ha tutti i pullback
@@ -312,7 +312,7 @@
 
 	\smallskip
 
-	L'adesività permette di estendere l'approccio DPO a categorie più complesse come quelle dei grafi.
+	L'adesivit\`a permette di estendere l'approccio DPO a categorie di grafi pi\`u complesse.
 
 	\smallskip
 	
@@ -333,7 +333,7 @@
 	Nel lavoro di tesi abbiamo
 	\begin{itemize}
 		\item Formalizzato gli E-Grafi mediante categorie di prefasci
-		\item Provato l'adesivit\`a� rispetto a una sottoclasse di monomorfismi
+		\item Provato l'adesivit\`a rispetto a una sottoclasse di monomorfismi
 	\end{itemize}
 
 	Come lavori futuri vogliamo \begin{itemize}
