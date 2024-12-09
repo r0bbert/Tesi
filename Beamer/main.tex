@@ -89,7 +89,7 @@
 
 	\smallskip
 
-        Una categoria $\cat C$ è composta da:
+        Una categoria $\cat C$ \`e composta da:
 	\begin{itemize}\item\emph{oggetti}\item\emph{morfismi} (o \emph{frecce})\end{itemize}
         \[
                 \begin{tikzcd} A \arrow[loop left, "{id_A}"] \arrow[r, "f"] & B \arrow[loop right, "{id_B}"] \end{tikzcd}
@@ -97,15 +97,15 @@
 
         \smallskip
         
-        La categoria i cui oggetti sono gli insiemi e i cui morfismi sono le funzioni tra essi è denominata $\Set$.
+        La categoria i cui oggetti sono gli insiemi e i cui morfismi sono le funzioni tra essi \`e denominata $\Set$.
         
         \smallskip
 
-        $f: A \to B$ può essere:
+        $f: A \to B$ pu\`o essere:
         \begin{itemize}
                 \item un \emph{monomorfismo} : $f \circ g = f \circ h \Rightarrow g = h$;
                 \item un \emph{epimorfismo} : $g \circ f = h \circ f \Rightarrow g = h$;
-                \item un \emph{isomorfimso} : esiste $k$ tale che $f \circ k = id_B$ e $k \circ f = id_A$.
+                \item un \emph{isomorfismo} : esiste $k$ tale che $f \circ k = id_B$ e $k \circ f = id_A$.
         \end{itemize}
 
 \end{frame}
@@ -116,7 +116,7 @@
         \arrow[rr, bend left=30, "{F(g \circ f) = F(g) \circ F(f)}"] & F(B) \arrow[r, "F(g)"] & F(C) 
         \arrow[loop right, "{F(id_C) = id_{F(C)}}"] \end{tikzcd}\]
 
-        Una \emph{trasformazione naturale} $\eta:F \dot\to G$: % è una mappa tra due funtori $F, G: \cat{C \to D}$, che assegna ad ogni oggetto $A$ di $\cat C$ un morfismo $\eta_A$ di $\cat D$. 
+        Una \emph{trasformazione naturale} $\eta:F \dot\to G$: %  una mappa tra due funtori $F, G: \cat{C \to D}$, che assegna ad ogni oggetto $A$ di $\cat C$ un morfismo $\eta_A$ di $\cat D$. 
     \[
         \begin{tikzcd}[row sep = 20, column sep = 20]
             F(A) \arrow[d, "F(f)" swap] \arrow[r, "{\eta_A}"] & G(A) \arrow[d, "G(f)"] \\
@@ -138,19 +138,23 @@
 	
 	\smallskip
 
-	    Le categorie di funtori il cui codominio è $\Set$ sono dette \emph{categorie di prefasci}.
+	    Le categorie di funtori il cui codominio \`e $\Set$ sono dette \emph{categorie di prefasci}.
 
 	    \smallskip
 
 
-	Un grafo $G$ è costituito da:
+	Un grafo $G$ \`e costituito da:
 	\begin{itemize}
 		\item Un insieme di nodi $V$
 		\item Un insieme di archi $E$
 		\item $s: E \to V$ funzione sorgente
 		\item $t: E \to V$ funzione destinazione
 	\end{itemize}
-	In altre parole, un grafo è un elemento di $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$.
+	Un morfismo fra grafi \`e una coppia $f_V: V_1 \to V_2$, $f_E: E_1 \to E_2$ che rispetta sorgente e destinazione.
+	
+	    \smallskip
+	
+	In altre parole, un grafo \`e un oggetto della categoria $$[E \mathrel{\mathop{\rightrightarrows}^{s}_{t}} V , \Set]$$
 \end{frame}
 
 \begin{frame}\frametitle{Grafi ed Equivalenze}
@@ -171,14 +175,15 @@
 		\end{tikzpicture}
 	\end{wrapfigure}
 	
-	Un \emph{grafo con eqiuvalenza} $(G, \sim)$ è costituito da:
+	Un \emph{grafo con equivalenza} $(G, \sim)$ \`e dato da:
 	\begin{itemize}
 		\item Un grafo $G$
-		\item Una relazione di quivalenza $\sim$ definita sui vertici
+		\item Una relazione di equivalenza $\sim$ definita sui vertici
 	\end{itemize}
+	
 	Ossia, un elemento di $[E \rightrightarrows V \to Q, \Set]$, tale che la freccia $q: V \to Q$ sia surgettiva (epi).
 
-	Un E-Grafo $(G, \sim)$ è un grafo con equivalenza tale che
+	Un E-Grafo $(G, \sim)$ \`e un grafo con equivalenza tale che
 	\[
 		\frac{s_G(e)\sim s_G(e')}{t_G(e) \sim t_G(e')}
 	\]
@@ -190,18 +195,18 @@
 		\includegraphics[width=\linewidth]{imgs/eggs}
 	\end{figure}
 
-	La categoria degli E-Grafi è detta $\Egg$, dal nome della libreria che li implementa in Rust.
+	La categoria degli E-Grafi \`e detta $\Egg$, dal nome della libreria che li implementa in Rust.
 
 	\smallskip
 
-	La definizione attuale è troppo operativa per ottenere dei risultati teorici.
+	La definizione attuale \`e esplicitamente operativa, e risulta difficile per ottenere dei risultati teorici.
 
 	\smallskip
 
 	Tuttavia gli utilizzi sono molteplici, dalla \emph{equality saturation} all'ottimizzazione in fase di compilazione.
 \end{frame}
 
-\section{Adesività}
+\section{Adesivit\`a}
 
 \begin{frame}[fragile]\frametitle{Pullback, Pushout, Equalizzatori}
 	\begin{figure}[h]
@@ -229,7 +234,7 @@
 	In $\Set$:
 	\begin{itemize}
 		\item Pullback di $f$ e $g$: $ P = \{(x, y) \in A \times B \mid f(x) = g (y)\}$
-		\item Pushout di $f$ e $g$:  $Q = (A \coprod B)/_\sim$
+		\item Pushout di $f$ e $g$:  $Q = (A + B)/_\sim$
 	\end{itemize}
 \end{frame}
 
@@ -250,16 +255,16 @@
 		\label{fig:step}
 		\end{subfigure}
 	\end{figure}
-	$l$ e $r$ sono due morfismi, possibilmente mono, di $\cat C$, 
-	mentre i due quadrati sono pushout.
-
+	$l$ e $r$ sono morfismi, il primo dei quali mono, di $\cat C$, 
+	mentre i quadrati sono pushout.
 
 	\begin{wrapfigure}{ri}{0.5\textwidth}
 		\includegraphics[width=0.7\linewidth]{imgs/fancyDPO}
 	\end{wrapfigure}
 
+\smallskip 
 
-	Risultati:
+	Tecniche per parlare di:
 	\begin{itemize}
 		\item Confluenza
 		\item Terminazione
@@ -267,7 +272,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Adesività}
+\begin{frame}[fragile]\frametitle{Adesivit\`a}
 
 
 	\iffalse
@@ -295,19 +300,19 @@
         \end{wrapfigure}
 	\fi
 
-	Una categoria $\cat C$ è adesiva se:
+	Una categoria $\cat C$ \`e adesiva se:
 	\begin{itemize}
 		\item ha tutti i pushout di monomorfismi
 		\item ha tutti i pullback
 		\item i pushout di monomorfismi sono \emph{Van Kampen}
 			\begin{itemize}
-				\item ossia che tali pushout sono stabili sotto pullback e i pullback sono stabili sotto pushout combinati con pullback
+				\item ossia tali pushout sono stabili sotto pullback e i pullback sono stabili sotto pushout combinati con pullback
 			\end{itemize}
 	\end{itemize}
 
 	\smallskip
 
-	L'adesività permette di estendere l'approccio DPO a categorie più complesse come quelle dei grafi.
+	L'adesivit\`a permette di estendere l'approccio DPO a categorie di grafi pi\`u complesse.
 
 	\smallskip
 	
@@ -325,14 +330,15 @@
 
 \section{Conclusioni}
 \begin{frame}\frametitle{Conclusioni}
+	Nel lavoro di tesi abbiamo
 	\begin{itemize}
-		\item Formalizzazione degli E-Grafi mediante categorie
-		\item Adesività rispetto ad alcuni morfismi
+		\item Formalizzato gli E-Grafi mediante categorie di prefasci
+		\item Provato l'adesivit\`a rispetto a una sottoclasse di monomorfismi
 	\end{itemize}
 
-	Lavori futuri: \begin{itemize}
-		\item Sostituire la categoria $\Set$ con una qualsiasi categoria adesiva
-		\item Generalizzare il risultato ad alti tipi di grafi, e.g., ipergrafi
+	Come lavori futuri vogliamo \begin{itemize}
+		\item Sostituire la categoria $\Set$ con una generica categoria adesiva
+		\item Generalizzare il risultato ad altri tipi di grafi, e.g., ipergrafi e term graph
 	\end{itemize}
 \end{frame}
 
