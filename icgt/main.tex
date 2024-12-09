@@ -1,0 +1,224 @@
+\documentclass[runningheads,envcountsect]{llncs}
+
+\usepackage{stmaryrd}
+\usepackage{bbding}
+%\Envelope
+\usepackage{amsmath,amsfonts,amssymb}
+\newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
+\usepackage[all]{xy}
+
+\usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
+\usepackage[english]{babel} % Lingua principale inglese
+\usepackage{graphicx} % Per includere immagini esterne
+\usepackage[tickmarkheight=.5em,textwidth=\marginparwidth,textsize=small]{todonotes}
+
+
+\usepackage{csquotes}
+
+
+%\usepackage{amssymb,amsthm, amsmath, mathrsfs, dsfont} %simboli matematici
+\usepackage{hyperref, cleveref}
+
+
+
+
+
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+
+\newcommand{\Ob}{\mathcal{O}b}
+\newcommand{\Hom}{\mathcal{H}om}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Reg}{\mathcal{Reg}}
+\newcommand{\Mono}{\mathcal{Mono}}
+\newcommand{\initial}{\mymathbb{0}}
+\newcommand{\terminal}{\mathds{1}}
+\newcommand{\eg}[1]{\mathbf{EqGraph}_{\textbf {\textup{#1}}}}
+\newcommand{\egg}[1]{\mathbf{EGG}_{\textbf {\textup{#1}}}}
+
+\makeatletter
+\def\@citecolor{blue}%
+\def\@urlcolor{blue}%
+\def\@linkcolor{blue}%
+\def\UrlFont{\rmfamily}
+\def\orcidID#1{\smash{\href{http://orcid.org/#1}{\protect\raisebox{-1.25pt}{\protect\includegraphics{orcid_color.eps}}}}}
+\makeatother
+
+
+
+\def\R{\mathsf{R}}
+\def\B{\textbf {\textup{B}}}
+\def\C{\textbf {\textup{C}}}
+\def\D{\textbf {\textup{D}}}
+\def\X{\textbf {\textup{X}}}
+\def\Y{\textbf {\textup{Y}}}
+\def\E{\textbf {\textup{E}}}
+
+
+\bibliographystyle{abbrv}
+
+
+
+\title{On the adhesivity properties of equivalence graphs\thanks{???????}}
+
+\titlerunning{????} %TODO optional, please use if title is longer than one line
+
+%% Author with single affiliation.
+\author{Roberto Biondo \inst{1}{\small\Envelope}\and Davide Castelnovo\inst{1}\orcidID{0000-0002-5926-5615}
+	\and \\Fabio Gadducci\inst{1}\orcidID{0000-0003-0690-3051}
+}
+\institute{Dept.~of Computer Science, University of Pisa, Italy. 
+	\email{r.biondo@studenti.unipi.it},
+	\email{castelnovod@gmail.com},
+	 \email{fabio.gadducci@unipi.it}
+}
+
+
+
+%frecce
+\newcommand{\mor}{\mathsf{Mor}}
+\newcommand{\mon}{\mathsf{Mono}}
+\newcommand{\reg}{\mathsf{Reg}}
+\newcommand{\mto}{\rightarrowtail}
+\newcommand{\eto}{\twoheadrightarrow}
+
+
+
+\authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
+
+
+\begin{document}
+
+	\maketitle \todo{Scegliere un titolo vero e mettere i ringraziamenti}
+	\begin{abstract}
+\todo{a very nice abstract}
+	\end{abstract}
+
+
+\section{Introduction}
+\todo{A very nice introduction}
+\section{$\mathcal{M}$-adhesive categories}
+
+This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an integer $n\in \mathbb{Z}$, $[0,n]$ denotes the set of natural numbers less than or equal to $n$; in particular, $[0,n]=\emptyset$ if $n<0$.
+
+\subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
+The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of
+$\mor(\X)$ is called
+\begin{itemize}
+	\parbox{11cm}{\item
+		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
+		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.{\tiny }}\hfill
+	\parbox{2cm}{$\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}$}
+	\parbox{11cm}{}\hfill
+\end{itemize}
+
+\begin{definition}[Van Kampen property]
+	Let $\X$ be a category and consider the diagram\\
+	\parbox{10cm}{
+		aside.
+		Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square
+		is an \emph{$\mathcal{A}$-Van Kampen square} if
+		\begin{enumerate}
+			\item it is a pushout square;
+			\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
+			if and only if the front and right faces are pullbacks.
+	\end{enumerate}}
+	\parbox{2cm}{$\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }$ }\\
+	Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}.
+	
+	A $\mor(\X)$-Van Kampen square is called  \emph{Van
+		Kampen} and a $\mor(\X)$-stable square  \emph{stable}.
+\end{definition}
+
+We can now define $\mathcal{M}$-adhesive categories.
+
+\begin{definition}[$\mathcal{M}$-adhesive category]
+	Let $\X$ be a category and $\mathcal{M}$ a subclass of
+	$\mon(\X)$  including  all isomorphisms, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	\begin{enumerate}
+		\item it has \emph{$\mathcal{M}$-pullbacks}, i.e.~pullbacks along arrows of $\mathcal{M}$;
+		\item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
+		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
+	\end{enumerate}
+	
+	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
+	if $\mathcal{M}$-pushouts are Van Kampen squares.
+\end{definition}
+
+We write $m\colon X\rightarrowtail Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+
+\begin{remark}
+	\label{rem:salva}
+	\emph{Adhesivity} and \emph{quasiadhesivity} 
+	\cite{lack2005adhesive,garner2012axioms} coincide with strict
+	$\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity,
+	respectively.
+\end{remark}
+
+
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
+
+\begin{theorem}\todo{controllare meglio}
+	\label{thm:slice-functors}
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Given an object $X$
+	the category $\X/X$ is $\mathcal{M}/X$-adhesive with
+	$\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
+	\mathcal{M}\}$. Similarly, $X/\X$ is $X/\mathcal{M}$-adhesive with
+	$X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}$.
+	
+	Moreover for every small category $\Y$, the category $\X^\Y$ of
+	functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
+	$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
+	\mathcal{M} \text{ for every } Y\in \Y\}$.
+\end{theorem}
+
+We can list various examples of $\mathcal{M}$-adhesive categories (see
+\cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
+
+
+\begin{example}
+	\label{ex:adhesive}
+	$\cat{Set}$ is adhesive, and, more generally, every topos is
+	adhesive~\cite{lack2006toposes}. By the closure properties above, every presheaf $[\cat{X},\cat{Set}]$ is adhesive, thus the category
+	$\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is adhesive
+	where $E \rightrightarrows {V}$ is the two objects category with two
+	morphisms $s,t \colon{E} \to {V}$. Similarly, various
+	categories of hypergraphs can be shown to be adhesive, such as term
+	graphs and hierarchical graphs~\cite{CastelnovoGM24}. Note that the category $\cat{sGraphs}$ of simple graphs, 
+	i.e.~graphs without parallel edges, is
+	$\reg{(\cat{sGraphs})}$-adhesive~\cite{BehrHK23} but not
+	quasiadhesive.
+\end{example}
+
+
+\subsection{Kernel pairs}
+\todo{Inserire parte della tesi su kp}
+\subsection{Factorization systems}
+\todo{Inserire qualche cosa su sist. di fattorizazzione e M-adesività - devo pensare a come mettere la questione senza prendere troppo spazio}
+
+
+\section{Graphs with equivalences}
+
+\subsection{Graph signatures}
+\todo{Inserire def di graph signature}
+
+\todo{Grafi su una segnatura sono adesivi (grafi)}
+
+\todo{Inserire equivalenze (stesso discorso della tesi)}
+
+
+\subsection{E-graphs}
+
+\todo{Copincollare dalla tesi senza grandi modifiche}
+
+\section{Conclusions and further works}
+\todo{Some very nice conclusions}
+\bibliography{biblio}
+
+\appendix
+\section{Comparison with Ghica}
+\todo{Lo vogliamo fare?}
+
+
+\end{document}
+
