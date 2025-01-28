@@ -4,7 +4,7 @@
 \usepackage{bbding}
 %\Envelope
 \newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
-\usepackage{amsmath,amsthm,amssymb,mathrsfs, dsfont} %simboli matematici
+\usepackage{amsmath,amssymb,mathrsfs, dsfont} %simboli matematici
 \usepackage[all, cmtip]{xy}
 
 \usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
@@ -16,24 +16,49 @@
 
 
 \usepackage{hyperref, cleveref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
 
 % General Setting diagrams
-\usepackage{tikz-cd} %diagrammi
-\tikzcdset{row sep/normal=5em}
-\tikzcdset{column sep/normal=5em}
-\tikzcdset{every label/.append style = {font = \small}}
+%\usepackage{tikz-cd} %diagrammi
+%\tikzcdset{row sep/normal=5em}
+%\tikzcdset{column sep/normal=5em}
+%\tikzcdset{every label/.append style = {font = \small}}
 
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{cor}[theorem]{Corollary}
+\spnewtheorem*{notation}{Notation}{\bfseries}{}
 
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{obs}[theorem]{Observation}
+%funtori
+\usepackage[usestackEOL]{stackengine}
+\newcommand\functorop[1][l]{\csname#1functor\endcsname}
+\newcommand\lfunctorop[3]{%
+	\setbox0=\hbox{$#2$}%
+	\kern\wd0%
+	\ensurestackMath{\Centerstack[c]{#1\\ \mathllap{#2\;\,}\mathclap{\DownArrow}\\#3}}%
+}		
+\newcommand\rfunctorop[3]{%
+	\setbox0=\hbox{$#2$}%
+	\ensurestackMath{\Centerstack[c]{#1\\\mathclap{\UpArrow}\mathrlap{\,\;#2}\\#3}}%
+	\kern\wd0%
+}
+\newcommand\functoropmapsto{\mathrel{\ensurestackMath{\Centerstack[c]{\longmapsto\\ \\\longmapsto}}}}
+\setstackgap{L}{1.3\normalbaselineskip}
+\newcommand\UpArrow{\rotatebox[origin=c]{90}{$\longrightarrow$\,}}
+\newcommand\DownArrow{\rotatebox[origin=c]{-90}{$\longrightarrow$\,}}
+\newcommand\functor[1][l]{\csname#1functor\endcsname}
+\newcommand\lfunctor[3]{%
+	\setbox0=\hbox{$#2$}%
+	\kern\wd0%
+	\ensurestackMath{\Centerstack[c]{#1\\ \mathllap{#2\;\,}\mathclap{\DownArrow}\\#3}}%
+}
+\newcommand\rfunctor[3]{%
+	\setbox0=\hbox{$#2$}%
+	\ensurestackMath{\Centerstack[c]{#1\\\mathclap{\DownArrow}\mathrlap{\,\;#2}\\#3}}%
+	\kern\wd0%
+}
+\newcommand\functormapsto{\mathrel{\ensurestackMath{\Centerstack[c]{\longmapsto\\ \\\longmapsto}}}}
+\setstackgap{L}{1.3\normalbaselineskip}
+
+
 
 \DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
 
@@ -65,8 +90,55 @@
 \def\Y{\textbf {\textup{Y}}}
 \def\E{\textbf {\textup{E}}}
 
+%categorie varie
+\newcommand{\catname}[1]{\textbf{\textup{#1}}}
+\newcommand{\lab}{\catname{LHyp}}
+\newcommand{\hyp}{\catname{Hyp}}
+\newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
+\newcommand{\gr}{\textbf{\textup{Graph}}}
+\newcommand{\dgr}{\catname{SGraph}}
+\newcommand{\dg}{\catname{DAG}}
+\newcommand{\rt}{\mathsf{dcl_s}}
+\newcommand{\rta}{\mathsf{dcl}}
+\newcommand{\rtd}{\mathsf{dcl_{d}}}
+\newcommand{\slice}[2]{(\catname{#1}\downarrow{#2})}
+\newcommand{\tg}[0]{\catname{TG}_{\Sigma}}
+\newcommand{\teg}[0]{\catname{TeGr}_{\Sigma}}
+\newcommand{\sv}[0]{\mathsf{Sieves}}
+\newcommand{\mono}[1]{\mathcal{M}({#1})}
+\newcommand{\pro}{\mathsf{prod}}
+\newcommand{\spro}{\mathsf{ps}}
+\newcommand{\prol}{\mathsf{lprod}}
+\newcommand{\pred}[1]{{\downarrow}#1}
+\newcommand{\colim}[0]{\mathrm{colim}}
+\newcommand{\cod}{\mathsf{cod}}
+\renewcommand{\sp}{\mathsf{sp}}
+\renewcommand{\sup}{\mathsf{sup}}
+\newcommand{\cow}[1]{\mathsf{cwd}({#1})}
+\renewcommand{\inf}{\mathsf{inf}}
+\newcommand{\dom}{\mathsf{dom}}
+\newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
+\newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
+
+\newcommand{\ari}{\mathsf{ar}}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+
+
+\newcommand{\upstr}[1] { {#1}^{\uparrow }}
+\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}#2}
+\newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
+
+
 
 \bibliographystyle{abbrv}
+
+%frecce
+\newcommand{\mor}{\mathsf{Mor}}
+\newcommand{\mon}{\mathsf{Mono}}
+\newcommand{\reg}{\mathsf{Reg}}
+\newcommand{\mto}{\rightarrowtail}
+\newcommand{\eto}{\twoheadrightarrow}
+\newcommand{\id}[1]{\mathsf{id}_{#1}}
 
 
 
@@ -86,12 +158,6 @@
 
 
 
-%frecce
-\newcommand{\mor}{\mathsf{Mor}}
-\newcommand{\mon}{\mathsf{Mono}}
-\newcommand{\reg}{\mathsf{Reg}}
-\newcommand{\mto}{\rightarrowtail}
-\newcommand{\eto}{\twoheadrightarrow}
 
 
 
@@ -100,6 +166,10 @@
 
 \begin{document}
 
+
+\tikzset{->-/.style={decoration={
+			markings,
+			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
 	\maketitle \todo{Scegliere un titolo vero e mettere i ringraziamenti}
 	\begin{abstract}
 \todo{a very nice abstract}
@@ -110,7 +180,14 @@
 \todo{A very nice introduction}
 \section{$\mathcal{M}$-adhesive categories}
 
-This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
+\todo{Va riscritta tutta con xy}
+
+This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
+
+\begin{notation}
+	contenuto...
+\end{notation}
+Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
 ``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an integer $n\in \mathbb{Z}$, $[0,n]$ denotes the set of natural numbers less than or equal to $n$; in particular, $[0,n]=\emptyset$ if $n<0$.
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
@@ -204,7 +281,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 
 
 \todo{Inserire parte della tesi su kp}
-
+\iffalse 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
 \begin{definition}[Kernel Pair]
@@ -233,9 +310,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     together with the canonical projection on the first and the second component of the pairs.
 \end{example}
 
-\begin{prop}\label{prop:pairng_of_kernel_pairs_mono}
+\begin{proposition}\label{prop:pairng_of_kernel_pairs_mono}
     Let $(K, p_1, p_2)$ be the kernel pair of $f: X \to Y$, and let $(X\times X, \pi_1, \pi_2)$ be the product of $X$ with itself. Then, the mediating arrow $\langle p_1, p_2\rangle : K \to X \times X$ is mono.
-\end{prop}
+\end{proposition}
 
 \begin{proof}
 	Suppose $\langle p_1, p_2 \rangle \circ f = \langle p_1, p_2 \rangle \circ g$ for $f, g: Z \to K$. Then, we have
@@ -255,9 +332,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 	Thus, from the universal property of the pullback, $f = g$.
 \end{proof}
 
-\begin{prop}\label{prop:kermono}
+\begin{proposition}\label{prop:kermono}
 	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
-\end{prop}
+\end{proposition}
 
 \begin{proof}
     To prove the ``if'' part of the statement, let $f, g: A \to M$ be such that $m\circ f = m\circ g$, and consider the following situation.
@@ -283,9 +360,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     From characterization of monos via pullbacks in \Cref{prop:kermono} and \Cref{lemma:limits_of_presheaves}, we have that a mono in a category of presheaves is a natural transformation of which each component is mono.
 \end{remark}
 
-\begin{cor}\label{cor:kermono}
+\begin{corollary}\label{cor:kermono}
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$ if and only if, for each mono $m\colon Y\to Z$, $(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair also for $m\circ f$.
-\end{cor}
+\end{corollary}
 \begin{proof}
     It is enough to see that, by \Cref{lemma:pullback_lemma} and \Cref{prop:kermono} the outer boundary of the following square is a pullback.
         \[\begin{tikzcd}[row sep=13 pt, column sep=13 pt]
@@ -402,9 +479,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     The thesis follows again by \Cref{lemma:pullback_lemma}.
 \end{proof}
 
-\begin{prop}\label{prop:reg_epi_coeq}
+\begin{proposition}\label{prop:reg_epi_coeq}
     Let $e: X \to Y$ be a regular epimorphism in a category $\cat C$ with a kernel pair $(K, \pi_1, \pi_2)$. Then, $e$ is the coequalizer of $\pi_1$ and $\pi_2$.
-\end{prop}
+\end{proposition}
 
 \begin{proof}
     By hypothesis, there exists a pair $f, g: Z \to X$ of which $e$ is the coequalizer. Since $e \circ f = e \circ g$, we have
@@ -424,9 +501,9 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     and thus there exists a unique $l: Y \to V$ such that $l \circ e = h$.
 \end{proof}
 
-\begin{cor}\label{cor:reg_epi_components_reg_epi_nat_trans}
+\begin{corollary}\label{cor:reg_epi_components_reg_epi_nat_trans}
     Let $\cat C$ be a category with pullbacks and $\phi : D \dot\to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
-\end{cor}
+\end{corollary}
 
 \begin{proof}
     Let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $\phi_i$ for each $i$. Given an arrow $\alpha: i \to j$ of $\cat I$, we have
@@ -534,21 +611,376 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 
 \subsection{Factorization systems}
 \todo{Inserire qualche cosa su sist. di fattorizazzione e M-adesività - devo pensare a come mettere la questione senza prendere troppo spazio}
+\fi 
 
 
-\section{Graphs with equivalences}
 
-\subsection{Graph signatures}
-\todo{Inserire def di graph signature}
+\section{Hypergraphical structures}
+\todo{A very nice introduction}
 
-\todo{Grafi su una segnatura sono adesivi (grafi)}
-
-\todo{Inserire equivalenze (stesso discorso della tesi)}
+\subsection{The category of hypergraphs}
 
 
-\subsection{E-graphs}
+We will start this section with the definition of hypergraphs and we will see how to label them with an algebraic signature. 
 
-\todo{Copincollare dalla tesi senza grandi modifiche}
+A pivotal role will be played by the Kleene star $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{...}. In particular, given a set $X$, $X^\star$ is the set of functions with a natural number as domain. Then the neutral element is $?_X\colon \emptyset \to X$ and the composition of $f\colon n\to X$ with $g\colon m\to X$ is simply the arrow $n+m\to X$ induced by them. If $h\colon X\to Y$ is an arrow in $\Set$, then $h^\star \colon \X^\star\to Y^\star$ is the composition with $h$.
+
+
+\begin{definition}A \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, whose elements are called respectively \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} functions  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
+	
+	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
+	We define $\hyp$ to be the resulting category.
+\end{definition}
+
+Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we can present $\hyp$ as a comma category.
+\begin{proposition}\label{prop:com}
+	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
+\end{proposition}
+\begin{proof}
+	 Define two functors $F\colon  \hyp \to \comma{\id{\Set}}{\pro^\star} $
+	and $G\colon \comma{\id{\Set}}{\pro^\star}\to \hyp$	 as follows 
+	\begin{align*}
+		\functor[l]{(E_\mathcal{{G}}, V_\mathcal{{G}}, s_\mathcal{{G}}, t_\mathcal{{G}})}{(f,g)}{\left(E_\mathcal{{H}}, V_\mathcal{{H}}, s_\mathcal{{H}}, t_\mathcal{{H}}\right)}
+		\functormapsto
+		\rfunctor{\left(E_\mathcal{{G}}, V_\mathcal{{G}}, 	\left(s_\mathcal{{G}}, t_\mathcal{{G}}\right)\right)}{(f, g) }{\left(E_\mathcal{{H}}, V_\mathcal{{H}}, \left(s_\mathcal{{H}}, t_\mathcal{{H}}\right)\right)}
+	\end{align*}
+	 \begin{align*}
+		\functor[l]{(E_\mathcal{{G}}, V_\mathcal{{G}}, p_{\mathcal{G}})}{(f,g)}{(E_\mathcal{{H}}, V_\mathcal{{H}}, p_{\mathcal{H}})}
+		\functormapsto
+		\rfunctor{(E_\mathcal{{G}}, V_\mathcal{{G}}, 	\pi_1\circ  p_{\mathcal{G}}, \pi_2\circ  p_{\mathcal{G}})}{(f, g) }{(E_\mathcal{{H}}, V_\mathcal{{H}}, 	\pi_1\circ  p_{\mathcal{H}}, \pi_2\circ  p_{\mathcal{H}})}
+	\end{align*} 
+	Now it is immediate to notice that they are one the inverse of the other.
+\end{proof}
+
+We can show that the  Kleene star preserves pullbacks (see also \cite[Sec. 3]{carboni1995connected}  and \cite[Ch.4]{leinster2004higher} for details and a deeper and more conceptual approach).\index{Kleene star}
+
+\begin{proposition}\label{prop:pb}
+	The functor $(-)^\star$ preserves pullbacks.
+\end{proposition}
+\begin{proof}
+	Suppose that a pullbacks square as the one below is given.
+	\[\xymatrix{P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f}\\ Y \ar[r]_{g} & Z}\]
+	and consider the solid part of the following diagram.
+	\[\xymatrix{Z\ar@{.>}[dr]^{t} \ar@/^.3cm/[drr]^{t_1} \ar@/_.3cm/[ddr]_{t_2}\\&P^\star \ar[r]^{p^\star_1} \ar[d]_{p^\star_2}& X^\star \ar[d]^{f^\star}\\ &Y^\star \ar[r]_{g^\star} & Z^\star}\]
+	For every $z\in Z$ we have $t_1(z)\colon n\to X$ and $t_2(z)\colon m\to Y$ such that
+	\[f^\star(t_1(x))=g^\star(t_2(z))\]
+	In particular this entails that $n=m$ and that there is $t(z)\colon n\to P$ as in the diagram below 
+	\[\xymatrix{n\ar[dr]^{t(z)} \ar@/^.3cm/[drr]^{t_1(z)} \ar@/_.3cm/[ddr]_{t_2(z)}\\&P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f}\\ &Y \ar[r]_{g} & Z}\]
+	But this is equivalent to say that the dotted $t\colon Z\to P$ exists, while its uniqueness follows at once from the universal property of the pullback with which we started.
+\end{proof}
+
+\begin{remark}\label{rem:mono}
+	Preservation of pullbacks implies that $(-)^\star$ sends monos to monos.
+\end{remark}
+
+\begin{corollary}\label{prop:hypadh}
+	$\hyp$ is an adhesive category.
+\end{corollary}
+\begin{proof}
+	$(-)^\star$ preserves pullbacks by \Cref{prop:pb}, while $\pro$ is continuous by definition, thus the thesis follows from This follows from \Cref{comma,prop:com}.
+\end{proof}
+
+
+
+\Cref{prop:left,prop:com} allows us to deduce immediately the following.
+
+\begin{proposition}\label{cor:left}
+	The forgetful functor $U_{\catname{Hyp}}\colon \hyp \to \catname{Set}$ which sends an hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
+\end{proposition}
+
+\begin{remark}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\hyp}(X)$ is the hypergraph which has $X$ as set of nodes and $\emptyset$ as set of hyperedges and $?_X$ as both source and target function.
+\end{remark}
+
+
+Hypergraphs,  can be represented graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter (i.e.~its value at $i-1$) of a target or a source with a label $i$.
+
+\begin{example}Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G}}$ to be $\{h_1, h_2, h_3\}$. Sources and targets are given by:
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 2\to V_{\mathcal{G}}  & \begin{matrix}
+			0 \mapsto v_1\\
+			1\mapsto v_2
+		\end{matrix} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_3\\
+			1\mapsto v_4 
+		\end{matrix} && s_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 
+		0 \mapsto v_5\\
+		t_{\mathcal{G}}(h_1)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_3\\
+			1\mapsto v_4
+		\end{matrix} && t_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & 0\mapsto v_5 && t_{\mathcal{G}}(h_3)\colon 0\to V_{\mathcal{G}} &  t_{\mathcal{G}}(h_3)=?_{ V_{\mathcal{G}}} 
+	\end{matrix}\]
+	
+	We can draw the resulting $\mathcal{G}$ as follows:
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_5$}] (E) at (6,-0.75) {};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5](4.75,-0.75)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](E)--(7,-0.75)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1) rectangle (4.75, -0.5) {};
+			\node at (4.5, -0.3){$h_2$};
+			\node at (1.5, -0.3){$h_1$};
+			\node at (7.25, -0.3){$h_3$};
+			\draw[rounded corners] (7, -1) rectangle (7.5, -0.5) {};
+			\draw(A)[->-=.5]..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw(B)[->-=.5]..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw(C)[->-=.5]..controls(3.5,0)and(4.2,-0.25)..(4.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw(D)[->-=.5]..controls(3.5,-1.5)and(4.2,-1.3)..(4.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5](1.75,-0.9)..controls(1.8,-1.3)and(2.5,-1.5)..(D)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5] (1.75,-0.6)..controls(1.8,-0.25)and(2.5,0)..(C) node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+\begin{example}\label{exa_2} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_1\\
+			1\mapsto v_2
+		\end{matrix}&& s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
+			0 \mapsto v_1\\
+			1\mapsto v_4	
+		\end{matrix}\\
+		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 
+		0 \mapsto v_1 && 		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&   t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5
+	\end{matrix}\]
+	
+	Now we can depict $\mathcal{G}$ as
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,-0.75) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-2.25) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=right:{$v_5$}] (E) at (6,-1.5) {};
+			\draw[->-=.5] (1.75,-0.75)--(C)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5] (4.75,-1.5)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (-1.5,0)--(A)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1.75) rectangle (4.75, -1.25) {};
+			\node at (4.5, -1.05){$h_3$};
+			\node at (1.5, -0.3){$h_2$};
+			\node at (-1.75, 0.45){$h_1$};
+			\draw[rounded corners] (-2, -0.25) rectangle (-1.5, 0.25) {};
+			\draw[->-=.5] (A)..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (B)..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5] (C)..controls(3.5,-0.75)and(4.2,-0.95)..(4.25,-1.35)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (D)..controls(3.5,-2.25)and(4.2,-2.05)..(4.25,-1.65)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{example}\label{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature, we can construct the hypergraph $\mathcal{G}^\Sigma$ taking $V_{\mathcal{G}^\Sigma}$ and $E_{\mathcal{G}^\Sigma}$ to be respectively the singleton $\{\heartsuit\}$ and the set $O_\Sigma$. We put
+	\[\begin{matrix}
+		s_{\mathcal{G}^\Sigma}\colon O_\Sigma\to \{\heartsuit\}^\star & o\mapsto \delta_\heartsuit^{\ari_\Sigma(o)}
+		&&
+		t_{\mathcal{G}^\Sigma}\colon O_\Sigma\to \{\heartsuit\}^\star & o\mapsto \delta_\heartsuit
+	\end{matrix}\]
+	For instance let $\Sigma_G$ be the signature of groups of \Cref{ex:g}, then $\mathcal{G}^{\Sigma_G}$ is depicted as:
+	\begin{center}
+		\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v$}] (V) at (0,0) {};
+			\node(E)at(-2, 0.4){$e$};
+			\node(M)at(0, 2.15){$\cdot$};
+			\node(I)at(2, 0.5){$(-)^{-1}$};
+			\draw[->-=.5](-1.75,0)--(V)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)..controls(-0.5,0.5)and(-0.8,1)..(-0.25,1.6)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5](V)..controls(-1,0.6)and(-1,1.1)..(-0.25,1.9)node[pos=0.5, left,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](0.25,1.75)..controls(0.8,0.8)and(0.5,0.5)..(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)--(1.75,0)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](2.25,0)..controls(3.5,0)and(2.5,-2)..(V)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[rounded corners] (-2.25, -0.25) rectangle (-1.75, 0.25) {};
+			\draw[rounded corners] (-0.25, 1.5) rectangle (0.25, 2) {};
+			\draw[rounded corners] (2.25, -0.25) rectangle (1.75, 0.25) {};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+
+\subsubsection{$\hyp$ as a topos of presheaves}
+
+By \Cref{lim} we already know that $\hyp$ has all pullbacks and by \Cref{prop:hypadh} we know that it is adhesive. Actually more can be proved about it: we can realize $\hyp$ as a topos of presheaves \cite{bonchi2022string}.
+
+
+\begin{definition}Let $\catname{H}$ be the category in which:
+	\begin{itemize}
+		\item the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$
+		\item arrows are given by the identities $\id{k,l}$ and $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$;
+		\item composition is defined simply putting, for every $f_i\colon (k,l)\rightarrow \bullet$:
+		\begin{equation*}
+			f_i=f_i\circ \id{k,l} \qquad f_i = \id{\bullet}\circ f_i 
+		\end{equation*}
+	\end{itemize}
+\end{definition}
+
+Now, given $F\colon \catname{H}\to \catname{Set}$ we can define
+\[E_F:=\sum_{k,l\in \mathbb{N}}F(k,l)\]
+For every element $x$ of $F(k,l)$ we can put
+\begin{align*}
+	s^F_{k,l}(x)\colon k\to F(\bullet) \quad i \mapsto F(f_i)(x)\qquad 
+	t^F_{k,l}(x)\colon l\to F(\bullet) \quad i \mapsto F(f_{i+k})(x)
+\end{align*}
+obtaining
+$s_F, t_F\colon E_F\rightrightarrows \mathcal{F}(\bullet)^{\star}$. Let $\mathcal{G}_F$ be the resulting hypergraph. Now, every $\eta\colon F\rightarrow H$ in $\catname{Set}^{\catname{H}}$ has components $\eta_{k,l}\colon F(k,l)\to H(k,l)$, $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$, thus it induces a function $\hat{\eta}\colon E_F\rightarrow E_H$ such that the following squares commute
+\[\xymatrix{ E_F \ar[r]^{s_F} \ar[d]_{\hat{\eta}}& F(\bullet)^\star \ar[d]^{\eta^\star_\bullet} & E_F \ar[r]^{t_F} \ar[d]_{\hat{\eta}} & F(\bullet)^\star \ar[d]^{\eta^\star_\bullet}\\ E_H \ar[r]_{s_H} & H(\bullet)^\star & E_H \ar[r]_{t_H}& H(\bullet)^\star}\]
+
+This is equivalent to say that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bullet})\colon \mathcal{G}_F\to \mathcal{G}_H$. It is now clear that sending $F$ to $\mathcal{G}_F$ and $\eta$ to $(\hat{\eta}, \eta_{\bullet})$ defines a faithful functor $\mathcal{G}_{-}\colon \catname{Set}^{\catname{H}}\to \hyp$.
+
+\begin{proposition}
+	$\hyp$ is equivalent to the category $\catname{Set}^{\catname{H}}$.
+\end{proposition}
+\begin{proof}
+	Let $X$ be a set, for every $n\in \mathbb{N}$ define
+	\[X_{n}:= \left\{w\in X^{\star} \mid \dom(w)=n\right\}\]
+	In particular, if $F\colon \catname{H}\to \catname{Set}$ then the image of the coprojection $\iota^{F}_{k,l}\colon F(k,l)\to E_F$ is the intersection
+	\[s^{-1}_F\left(F(\bullet)_{k}\right)\cap t^{-1}_F\left(F(\bullet)_{l}\right) \]
+	
+	We are now ready to that $\mathcal{G}_{-}$ is full and essentially surjective.
+	\begin{itemize}
+		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of hypergraphs and define $f_{k,l}$ to be $f\circ \iota^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
+		\[\begin{split}
+			s_H (f_{k,l} (x))&=s_H \left(f \left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt}\left(s_{F} \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)
+		\end{split}\qquad \begin{split}
+			t_H (f_{k,l} (x))&=s_t\hspace{-1pt} \left(f \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt} \left(t_{F}\hspace{-1pt} \left(\iota^F_{k,l} (x)\right)\right)
+		\end{split}\]
+		Therefore there exists $\eta_{k,l}\colon F(k,l)\to H(k,l)$ fitting in the diagram below
+		\[\xymatrix{F(k,l) \ar[r]^-{\iota^{F}_{k,l}} \ar@{.>}[d]_{\eta_{k,l}}& E_F \ar[d]^{f_{k,l}}\\ H(k,l) \ar[r]_-{\iota^{H}_{k,l}}& E_H}\]
+		Define $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ simply as $g^\star$, then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, if $f_i\colon (k,l)\to \bullet$ we have:
+		\[\xymatrix{F(k,l) \ar@/^.4cm/[rr]^{s^F_{k,l}} \ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{s_F}& F(\bullet)^\star \ar[d]^{g^\star}&F(k,l) \ar@/^.4cm/[rr]^{t^F_{k,l}}\ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{t_F}& F(\bullet)^\star \ar[d]^{g^\star}\\ H(k,l) \ar@/_.4cm/[rr]_{s^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{s_H}& H(\bullet)^\star& H(k,l) \ar@/_.4cm/[rr]_{t^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{t_H}& H(\bullet)^\star}\]
+		Thus if $i<k$ then
+		\begin{align*}
+			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(s^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(s^F_{k,l}(x)\right)(i)\\&=s^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
+		\end{align*}
+		while, if $k\leq i < k+l-1$
+		\begin{align*}
+			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(t^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(t^F_{k,l}(x)\right)(i)\\&=t^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
+		\end{align*}
+		Finally, by contruction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
+		\item Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define 
+		\[F_{\mathcal{G}}(k,l):=s_\mathcal{G}^{-1}(V_k)\cap t_\mathcal{G}^{-1}(V_l) \qquad F_{\mathcal{G}}(\bullet):=V_\mathcal{G}\]
+		Given $f_i\colon (k,l)\to \bullet$ we put
+		\[F_{\mathcal{G}}(f_i)\colon F_{\mathcal{G}}(k,l)\to F_{\mathcal{G}}(\bullet) \qquad x\mapsto \begin{cases}
+			s_\mathcal{G}(x)(i) & i<k\\
+			t_\mathcal{G}(x) (i-k) &i\leq k < k+l-1
+		\end{cases}  \]
+		
+		$F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$ and for every $h\in E_\mathcal{G}$ there exists a unique pair $(k,l)$ such that $h\in F_{\mathcal{G}}(k,l) $, namely the pair $(\dom(s_\mathcal{G})(h), \dom(t_\mathcal{G})(h))$thus
+		\[\sum_{k,l\in \mathbb{N}}F_{\mathcal{G}}(k,l)\simeq E\]
+		Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. 
+	\end{itemize}
+\end{proof}
+As a corollary we get immediately the following.
+\begin{corollary}
+	$\hyp$ is a complete category.
+\end{corollary}
+
+\subsection{Labelling hypergraph with an algebraic signature}\index{signature!algebraic -}
+Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature, we are going to use the hypergraph $\mathcal{G}^{\Sigma}$ of \Cref{exa_3} in order to label hyperedges with operations.
+\begin{definition}Let $\Sigma=(O, \ari)$ be an algebraic signature, the category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.\index{hypergraph!algebraically labelled -}
+\end{definition}
+\Cref{cor:mono} and \Cref{cor:slice} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterization of monomorphisms in it.
+\begin{proposition}\label{prop:mono}
+	For every algebraic signature $\Sigma$, $\hyps$ is an adhesive category. Moreover a morphism $(h,k)$ between two object of $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective functions.
+\end{proposition}
+
+
+\begin{remark}\label{rem:label}	
+	Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, since  $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the singleton an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a function $h\colon E_\mathcal{H}\to O_\Sigma$  such that, for every $e\in E_{\mathcal{H}}$
+	\[\ari_\Sigma(h(e))=s_\mathcal{H}(e)\]
+	
+	On the other hand, if $\mathcal{H}$ has an hyperedge $e$ such that $t_{\mathcal{H}}(e)$ has a length different from $1$, then there is no morphism $\mathcal{H}\to \mathcal{G}^{\Sigma}$. Indeed, if such a morphism $(h,!_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^\Sigma$ exists, then, for every $e\in E_{\mathcal{H}}$ we have
+	\begin{align*}
+		f^{\star}(t_{\mathcal{H}}(h))&=t_{\mathcal{G}^{\Sigma}}(f(h))\\&=\delta_\heartsuit
+	\end{align*}
+	and so $\dom(t_{\mathcal{H}}(h))=1$.  
+\end{remark}
+
+$\hyp_{\Sigma}$, as any slice category, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \catname{Set}$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\hyp}(\mathcal{H}$). Now, $U_{\hyp}(\mathcal{G}^{\Sigma})=\{v\}$ thus, for every set $X$, there is only one arrow $X\to U_{\hyp}(\mathcal{G}^{\Sigma})$. Define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \mathcal{G}^{\Sigma}$ to be the transpose of this arrow.
+
+\begin{proposition} $U_\Sigma$
+	has a left adjoint $\Delta_\Sigma$.
+\end{proposition}
+\begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since $U_{\Sigma}(\mathcal{H})=U_{\hyp}(\mathcal{H})$ and $\id{\catname{Set}}$ is the unit of $\Delta_\hyp \dashv U_{\hyp}$, there exists a unique morphism $(k,f)\colon \Delta_{\hyp}(X)\to \mathcal{H}$ of $\hyp$. Since the set of hyperedges of $\Delta_{\hyp}(X)$ is empty, $k$ must be $?_{E_\mathcal{H}}$ and the commutativity of each of the two triangles below is equivalent to that of the other
+	\[\xymatrix{\Delta_\hyp(X) \ar[rr]^{(?_{E_\mathcal{H}}, f)} \ar[dr]_{\Delta_\Sigma(X)} && \mathcal{H} \ar[dl]^{(h, !_{V_\mathcal{H}})} & U_\hyp(\Delta_\hyp(X)) \ar[rr]^{f} \ar[dr]_{U_\hyp(\Delta_\Sigma(X))\hspace{10pt}} && U_\hyp(X) \ar[dl]^{!_{V_\mathcal{H}}}\\& \mathcal{G}^\Sigma &&&U_\hyp\hspace{-1.5pt}\left(\mathcal{G}^\Sigma\right)}\]
+	But the triangle on the right commutes because $U_{\hyp}(\mathcal{G}^{\Sigma})$ is terminal.
+\end{proof}
+
+We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+\begin{example}\label{lab_1}
+	The simplest example is given by the identity $\id{\mathcal{G}^\Sigma}\colon \mathcal{G}^\Sigma\rightarrow \mathcal{G}^{\Sigma}$. If $\Sigma$ is the signature of groups $\Sigma_G$we get 
+	\begin{center}
+		\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$\heartsuit$}] (V) at (0,0) {};
+			\node(E)at(-2, 0.4){$e$};
+			\node(M)at(0, 2.15){$\cdot$};
+			\node(I)at(2, 0.75){$(-)^{-1}$};
+			
+			\node(E')at(-2, 0){$e$};
+			\node(M')at(0, 1.75){$\cdot$};
+			\node(I')at(2, 0){$(-)^{-1}$};
+			\draw[->-=.5](-1.75,0)--(V)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)..controls(-0.5,0.5)and(-0.8,1)..(-0.25,1.6)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5](V)..controls(-1,0.6)and(-1,1.1)..(-0.25,1.9)node[pos=0.5, left,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](0.25,1.75)..controls(0.8,0.8)and(0.5,0.5)..(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)--(1.5,0)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](2.5,0)..controls(4,0)and(2.5,-2)..(V)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[rounded corners] (-2.25, -0.25) rectangle (-1.75, 0.25) {};
+			\draw[rounded corners] (-0.25, 1.5) rectangle (0.25, 2) {};
+			\draw[rounded corners] (2.5, -0.5) rectangle (1.5, 0.5) {};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{example}\label{lab_2}
+	Take again $\Sigma_G$ the signature of groups, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled defining
+	\begin{align*}
+		e=f(h_1) \quad \cdot=f(h_2)\quad \cdot=f(h_3)
+	\end{align*}
+	In this case we get the following picture
+	
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,-0.75) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-2.25) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=right:{$v_5$}] (E) at (6,-1.5) {};
+			\draw[->-=.5] (1.75,-0.75)--(C)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5] (4.75,-1.5)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (-1.5,0)--(A)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1.75) rectangle (4.75, -1.25) {};
+			\node at (4.5, -1.05){$h_3$};
+			\node at (1.5, -0.3){$h_2$};
+			\node at (-1.75, 0.45){$h_1$};
+			\draw[rounded corners] (-2, -0.25) rectangle (-1.5, 0.25) {};
+			\draw[->-=.5] (A)..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (B)..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5] (C)..controls(3.5,-0.75)and(4.2,-0.95)..(4.25,-1.35)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (D)..controls(3.5,-2.25)and(4.2,-2.05)..(4.25,-1.65)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\node at (-1.75,0) {$e$};
+			\node at (1.5,-0.75) {$\cdot$};
+			\node at (4.5,-1.5) {$\cdot$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+
+
+\subsection{Term Graphs}
+
+\section{Hypergraphs with equivalences}
+
+\subsection{title}
+
+\section{title}
+
+\section{EGGS}
 
 \section{Conclusions and further works}
 \todo{Some very nice conclusions}
