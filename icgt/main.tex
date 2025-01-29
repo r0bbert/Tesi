@@ -16,6 +16,7 @@
 
 
 \usepackage{hyperref, cleveref}
+\usepackage{tikz-cd}
 \usepackage{tikz}
 \usetikzlibrary{decorations.markings}
 
@@ -89,6 +90,8 @@
 \def\X{\textbf {\textup{X}}}
 \def\Y{\textbf {\textup{Y}}}
 \def\E{\textbf {\textup{E}}}
+\def\T{\textbf {\textup{1}}}
+\def\A{\textbf {\textup{A}}}
 
 %categorie varie
 \newcommand{\catname}[1]{\textbf{\textup{#1}}}
@@ -105,7 +108,8 @@
 \newcommand{\tg}[0]{\catname{TG}_{\Sigma}}
 \newcommand{\teg}[0]{\catname{TeGr}_{\Sigma}}
 \newcommand{\sv}[0]{\mathsf{Sieves}}
-\newcommand{\mono}[1]{\mathcal{M}({#1})}
+\newcommand{\mono}[1]{\mathsf{Mon}(\catname{#1})}
+\newcommand{\mo}[1]{{#1}_\mathsf{Mon}}
 \newcommand{\pro}{\mathsf{prod}}
 \newcommand{\spro}{\mathsf{ps}}
 \newcommand{\prol}{\mathsf{lprod}}
@@ -129,6 +133,11 @@
 \newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
 
 
+%sommatoria e prodotto per xy
+
+\usepackage{relsize}
+\newcommand{\Sum}{\mathlarger{\sum}}
+\newcommand{\Prod}{\mathlarger{\prod}}
 
 \bibliographystyle{abbrv}
 
@@ -185,43 +194,41 @@
 This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
 
 \begin{notation}
-	contenuto...
-\end{notation}
 Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
-``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an integer $n\in \mathbb{Z}$, $[0,n]$ denotes the set of natural numbers less than or equal to $n$; in particular, $[0,n]=\emptyset$ if $n<0$.
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we will denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one.
+\end{notation}
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
-The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of
-$\mor(\X)$ is called
+The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. 
+
+In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is called
 \begin{itemize}
-	\parbox{11cm}{\item
-		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one on the right, 	if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.{\tiny }}\hfill
-	\parbox{2cm}{$\xymatrix{A\ar[r]^f  \ar[d]_{m}& B \ar[d]^n \\ C \ar[r]_g & D}$}
-	\parbox{11cm}{}\hfill
+	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one  below, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
+	\[\xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}\]
+		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.
 \end{itemize}
 
-\begin{definition}[Van Kampen property]
-	Let $\X$ be a category and consider the diagram\\
-	\parbox{10cm}{
-		aside.
-		Given  a class of arrows $\mathcal{A}\subseteq \mor(\X)$, we say that the bottom square
-		is an \emph{$\mathcal{A}$-Van Kampen square} if
+\begin{definition}
+	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the following diagram.
+	
+		\[
+	\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }\]
+	
+	We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
 		\begin{enumerate}
 			\item it is a pushout square;
 			\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
 			if and only if the front and right faces are pullbacks.
-	\end{enumerate}}
-	\parbox{2cm}{$\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }$ }\\
-	Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}.
-	
-	A $\mor(\X)$-Van Kampen square is called  \emph{Van
+	\end{enumerate}
+
+
+	Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}. A $\mor(\X)$-Van Kampen square is called  \emph{Van
 		Kampen} and a $\mor(\X)$-stable square  \emph{stable}.
 \end{definition}
 
 We can now define $\mathcal{M}$-adhesive categories.
 
-\begin{definition}[$\mathcal{M}$-adhesive category]
+\begin{definition}
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
 	$\mon(\X)$  including  all isomorphisms, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
@@ -231,10 +238,10 @@ We can now define $\mathcal{M}$-adhesive categories.
 	\end{enumerate}
 	
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
-	if $\mathcal{M}$-pushouts are Van Kampen squares.
+	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{definition}
 
-We write $m\colon X\rightarrowtail Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+
 
 \begin{remark}
 	\label{rem:salva}
@@ -281,7 +288,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 
 
 \todo{Inserire parte della tesi su kp}
-\iffalse 
+
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
 \begin{definition}[Kernel Pair]
@@ -611,19 +618,18 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 
 \subsection{Factorization systems}
 \todo{Inserire qualche cosa su sist. di fattorizazzione e M-adesività - devo pensare a come mettere la questione senza prendere troppo spazio}
-\fi 
+\todo{Di questo possiamo sbattercene perché tanto siamo su $\Set$}
 
 
+\section{Hypergraphical structures}\label{sec:hyper}
 
-\section{Hypergraphical structures}
-\todo{A very nice introduction}
+
+A pivotal role will be played by the Kleene star $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{...}. In particular, given a set $X$, $X^\star$ is the set of functions with a natural number as domain. Then the neutral element is $?_X\colon \emptyset \to X$ and the composition of $f\colon n\to X$ with $g\colon m\to X$ is simply the arrow $n+m\to X$ induced by them. If $h\colon X\to Y$ is an arrow in $\Set$, then $h^\star \colon X^\star\to Y^\star$ is the composition with $h$.
 
 \subsection{The category of hypergraphs}
 
 
 We will start this section with the definition of hypergraphs and we will see how to label them with an algebraic signature. 
-
-A pivotal role will be played by the Kleene star $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{...}. In particular, given a set $X$, $X^\star$ is the set of functions with a natural number as domain. Then the neutral element is $?_X\colon \emptyset \to X$ and the composition of $f\colon n\to X$ with $g\colon m\to X$ is simply the arrow $n+m\to X$ induced by them. If $h\colon X\to Y$ is an arrow in $\Set$, then $h^\star \colon \X^\star\to Y^\star$ is the composition with $h$.
 
 
 \begin{definition}A \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, whose elements are called respectively \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} functions  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
@@ -987,6 +993,168 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 \bibliography{biblio}
 
 \appendix
+\section{Some properties of comma categories}
+In this section we will briefly recall the definition of the comma category associated to two functors and some of its properties.
+\begin{definition}\index{category!comma -}
+	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which
+	\begin{itemize}
+		\item objects are triples $(A, B, f)$ with $A\in \A$, $B\in \B$, and $f\colon L(A)\rightarrow R(B)$; 
+		\item a morphism $(A, B, f)\rightarrow (A', B', g)$ is a pair $(h, k)$ with $h\colon A\rightarrow A'$ in $\A$ and $k\colon B\rightarrow B'$ in $\B$ such that the following diagram commutes
+		\[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+	\end{itemize}
+\end{definition} 
+We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \comma{L}{R} \to \B$ given, respectively by
+\[
+\begin{split}
+	\functor[l]{(A,B, f)}{(h,k)}{(A', B', g)}
+	& \functormapsto
+	\rfunctor{A}{h}{A'}
+\end{split}\quad 
+\begin{split}
+	\functor[l]{(A,B, f)}{(h,k)}{(A', B', g)}
+	& \functormapsto
+	\rfunctor{B}{k}{B'}
+\end{split}
+\]
+
+
+
+
+
+
+Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same ting as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$, thus $\left(\comma{L}{R}\right)$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the commutativity in  $\X$ of the square
+\[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+is tantamount to the commutativity in $\X^{op}$ of the square 
+\[\xymatrix@C=25pt{ R(B') \ar[d]_{g} \ar[r]^{R(k)}& R(B) \ar[d]^{f}\\ L(A') \ar[r]_{L(h)}  & L(A) }\]
+Summing up we have just proved the following fact.
+\begin{proposition}\label{prop:dual}
+	$(\comma{L}{R})^{op}$ is equal to	$\comma{R^{op}}{L^{op}}$, moreover $U^{op}_L=U_{L^{op}}$ and $U^{op}_R=U_{R^{op}}$.
+\end{proposition}
+
+We can notice another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
+
+\begin{proposition}\label{prop:left}
+	If $\A$ has initial objects and $L$ preserves them then the forgetful functor $U_R\colon \comma{L}{R}\to \B$ has a left adjoint $\Delta$.
+\end{proposition}
+\begin{proof} For an object $B\in \B$ we can define $\Delta(B)$ as $(0, B, ?_{B})$, where $0$ is an initial object in $\A$ and $?_{R(B)}$ is the unique arrow $L(0)\to R(B)$. Consider $\id{B}\colon B\to U_R(\Delta(B))$ be the identity, and suppose that a $k\colon B\to U_R(A, B', f)$ in $\B$ is given. By initiality of $0$, there is only one arrow $?_A\colon 0\to A $ in $\A$ and, since $L$ preserves initial objects, the following square commutes.
+	\[\xymatrix@C=30pt{L(0) \ar[r]^{L(?_A)} \ar[d]_{?_{R(B)}} & L(A) \ar[d]^{f}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+	Thus $(h,k)$ is the unique morphism $\Delta(B)\to (A, B', f)$	such that $U_R(h,k)=k$.
+\end{proof}
+Dualizing we get immediately the following.
+\begin{corollary}If $\B$ has terminal objects preserved by $R$ then $U_L\colon \comma{L}{R}\to \A$ has a right adjoint.
+\end{corollary}
+
+\subsection{Slice categories}
+
+This section is devoted to recall some basic facts about the so called \emph{slice categories}.
+\begin{definition}\index{category!slice -}
+	Let $X$ be an object of a category $\X$, we will define the following two categories.
+	
+	\begin{itemize}
+		\item The \emph{ slice category over $X$} is the category $\X/X$ which has as objects arrows $f\colon Y\to X$ and  in which an arrow $h\colon f\to g$ is $h\colon Y\to Y'$ in $\X$ such that the following triangle commutes.
+		\[\xymatrix@C=15pt{Y \ar[dr]_{f} \ar[rr]^{h}&& Y' \ar[dl]^{g}\\ & X}\] 
+		\item  	 Dually, the \emph{ slice category under $X$} is the category $X/\X$ in which objects are arrows $f\colon X\to Y$  with domain $X$ and a morphism $h\colon  f\to g$ is an arrow of $\X$ fitting in a triangle as the one below.
+		\[\xymatrix@C=15pt{&X \ar[dr]^{g}\ar[dl]_{f}\\ Y  \ar[rr]_{h}&& Y'}\] 
+	\end{itemize}
+\end{definition}
+
+\begin{remark} For every $X\in\ X$ we have forgetful functors
+	\[\begin{split}
+		\dom_X&\colon \X/X\to \X\\
+		\functor[l]{f}{h}{g}
+		&\functormapsto
+		\rfunctor{\dom(f) }{h}{\dom(g)}
+	\end{split}\qquad \begin{split}
+		\cod_X&\colon X/\X\to \X\\
+		\functor[l]{f}{h}{g}
+		&\functormapsto
+		\rfunctor{\cod(f) }{h}{\cod(g)}
+	\end{split}\]
+\end{remark}
+
+
+We can realize the slice over and under an object $X\in \X$ as comma categories.
+
+\begin{proposition}\label{prop:commaapp}
+	For every object $X$ in a category $\X$, if $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object $*$, then $\X/X$ and $X/\X$ are isomorphic to, respectively,  $\comma{\id{X}}{\delta_X}$ and $\comma{\delta_X}{\id{X}}$ .
+\end{proposition}
+\begin{proof} Define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
+	\[	\begin{split}
+		\functor[l]{(Y, *,  f)}{(h, \id{*} )}{( Y', *,  g)}
+		\functormapsto
+		\rfunctor{f }{h}{g}
+	\end{split} \qquad \begin{split}
+		\functor[l]{f }{h}{g}
+		\functormapsto
+		\rfunctor{(\dom(f), *, f)}{(h, \id{*} )}{(\dom(g), *, g)}
+	\end{split}\]
+	Similarly, we have $F_2\colon \comma{\delta_X}{\id{X}}\to X/\X$ and $G_2\colon X/\X\to \comma{\delta_X}{\id{X}}$
+	\[	\begin{split}
+		\functor[l]{(*, Y, f)}{(\id{*},h )}{(*, Y', g)}
+		\functormapsto
+		\rfunctor{f }{h}{g}
+	\end{split} \qquad \begin{split}
+		\functor[l]{f }{h}{g}
+		\functormapsto
+		\rfunctor{(*, \cod(f), f)}{(\id{*}, h )}{(*, \cod(g), g)}
+	\end{split}\]
+	It is now obvious to see that $F_1,G_1$ and $F_2, G_2$ are pairs of inverses.
+\end{proof}
+
+A straightforward application of \cref{lim} now yields the following.
+\begin{corollary}\label{cor:pbapp}
+	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
+\end{corollary}
+
+\section{Some notes on free monoids}
+
+In this appendix we will provide a brief exposition to the problem of constructing the \emph{free internal monoid} in a monoidal category $(\X, \otimes, I )$. This  construction is needed in \Cref{sec:hyper} to provide a concrete representation to hypergraphs. The standard references on the subject are \cite{dubuc1974free,kelly1980unified,lack2010note}
+
+
+\begin{definition}
+	Let $(\X, \otimes, I)$ be a monoidal category. An \emph{monoid} is a triple $(X, m, e)$ made by an object $X$ equipped with arrows $m\colon X\otimes X\to X$ and $e\colon I\to X$ making the following diagram commute.
+	
+	\[\]
+	
+	A \emph{morphism of monoids} between $(X, m, e)$ and $(X', m', e')$ is an arrow $f\colon X\to X'$ fitting in the diagram below.
+	
+	\[\]
+Monoids with their morphisms form a category $\mono{X}$, such category has an obvious forgetful functor $\mo{U}\colon\mono{X}\to X$ sending $(X, m, e)$ to $X$ and a morphism to itself.
+\end{definition}
+
+We are interested in provide sufficient conditions to guarantee the existence of a left adjoint to $\mo{U}$. The idea is to mimic the construction of the \emph{kleene star} functor $\Set\to \Set$ \cite{bibid}, i.e.~ the functor sending $X$ to the set of finite words over it.
+
+
+\begin{definition}
+	Let $(\X, \otimes, I )$ be  a monoidal category with countable coproduct. We say that $(\X, \otimes. I)$ is \emph{countably distributive} if, given a countable family $\{X_i\}_{i}$ and an object $Y$, the unique dotted morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms.
+	\[\xymatrix{&Y\otimes X_i \ar[dl]_{j_i} \ar[dr]^{\id{Y}\otimes h_i} \\ \Sum_{i\in I} Y\otimes X_i \ar@{.>}[rr]_{\phi}&& Y\otimes (\Sum_{i\in I}X_i) }\]
+	\[\xymatrix{&X_i \otimes Y \ar[dl]_{k_i} \ar[dr]^{ h_i \otimes \id{Y}} \\ \Sum_{i\in I}  X_i \otimes Y \ar@{.>}[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \otimes Y}\]
+\end{definition}
+
+We cite the following, fundamental, result proved in \cite{lack2010note}.
+
+\begin{theorem}
+	Let $(\X, \otimes, I )$ be a countably distributive monoidal category. Then $\mo{U}$ has a left adjoint sending $\mo{F}$ to $\sum_{n\in \mathbb{N}} X^{\otimes n}$.
+\end{theorem}
+
+As a concluding step, we ask for a compatibility property between countable coproducts and pullbacks, to assure that $\mo{F}$ preserves pullbacks.
+
+\begin{definition}
+	Let $\X$ be a category and suppose that $(X, \{j_i\}_{i\in I})$ is a coproduct. We say that $(X, \{j_i\}_{i\in I})$ is \emph{stable under pullbacks} if, given an arrow $f\colon Y\to X$ such that for every $i\in I$ the pullback square below exists,  the cocone $(Y, \{k_i\}_{i\in I})$ is a coproduct.
+	\[\xymatrix{Y_i \ar[r]^{k_i} \ar[d]_{p_i} & Y \ar[d]^{f}\\ X_i\ar[r]_{j_i} & X}\]
+	
+\end{definition}
+
+We are now ready to provide the claimed continuity property of $\mo{F}$.
+
+\begin{proposition}
+	Let $(\X, \otimes, I)$ be a countably distributive monoidal category and suppose that countable  coproducts in $\X$ are stable under pullbacks. Then the functor $\mo{F}\colon \X\to \mono{X}$ preserves pullbacks.
+\end{proposition}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+
 \section{Comparison with Ghica}
 \todo{Lo vogliamo fare?}
 
