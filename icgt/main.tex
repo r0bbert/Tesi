@@ -59,7 +59,7 @@
 \newcommand\functormapsto{\mathrel{\ensurestackMath{\Centerstack[c]{\longmapsto\\ \\\longmapsto}}}}
 \setstackgap{L}{1.3\normalbaselineskip}
 
-
+\newcommand{\lgh}{\mathsf{lg}}
 
 \DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
 
@@ -92,7 +92,7 @@
 \def\E{\textbf {\textup{E}}}
 \def\T{\textbf {\textup{1}}}
 \def\A{\textbf {\textup{A}}}
-
+\def\M{\mathcal{M}}
 %categorie varie
 \newcommand{\catname}[1]{\textbf{\textup{#1}}}
 \newcommand{\lab}{\catname{LHyp}}
@@ -189,7 +189,6 @@
 \todo{A very nice introduction}
 \section{$\mathcal{M}$-adhesive categories}
 
-\todo{Va riscritta tutta con xy}
 
 This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
 
@@ -254,22 +253,24 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
 
-\begin{theorem}\todo{controllare meglio}
+\begin{theorem}
 	\label{thm:slice-functors}
-	Let $\X$ be an $\mathcal{M}$-adhesive category. Given an object $X$
-	the category $\X/X$ is $\mathcal{M}/X$-adhesive with
-	$\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
-	\mathcal{M}\}$. Similarly, $X/\X$ is $X/\mathcal{M}$-adhesive with
-	$X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}$.
-	
-	Moreover for every small category $\Y$, the category $\X^\Y$ of
-	functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
-	$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
-	\mathcal{M} \text{ for every } Y\in \Y\}$.
+	Let $\X$ be an $\mathcal{M}$-adhesive category, then the following hold true:
+	\begin{enumerate}
+		\item if $L\colon \X\to $
+		\item for every object $X$
+		the categories $\X/X$  and $X/X$ are, respectively, $\mathcal{M}/X$-adhesive and $X/\mathcal{M}$-adhesive, where
+		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
+		\mathcal{M}\} \qquad X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
+		\item for every small category $\Y$, the category $\X^\Y$ of
+		functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
+		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
+		\mathcal{M} \text{ for every } Y\in \Y\}$;
+		\item given a  full and faithful $I\colon \Y\to \X$ and a class $\mathcal{M}'$ of arrows in $\Y$ stable under pullbacks, containing all isomorphism
+	\end{enumerate} 
 \end{theorem}
 
-We can list various examples of $\mathcal{M}$-adhesive categories (see
-\cite{castelnovo2023thesis,CastelnovoGM22,lack2006toposes}).
+We will briefly list som examples of $\mathcal{M}$-adhesive categories.
 
 
 \begin{example}
@@ -340,7 +341,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
 \end{proof}
 
 \begin{proposition}\label{prop:kermono}
-	An arrow $m\colon M\to X$ is mono if and only if $(M, id_M, id_M)$ is a kernel pair for it.
+	An arrow $m\colon M\to X$ is mono if and only if $(M, MM, \id{M})$ is a kernel pair for it.
 \end{proposition}
 
 \begin{proof}
@@ -348,17 +349,17 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     \[
         \begin{tikzcd}[row sep=26, column sep = 26]
         A \arrow[drr, bend left=30, "f"] \arrow[ddr, bend right=30,"g" swap] \arrow[dr, dashed, "u"] & & \\
-        & M  \arrow[d, "{id_M}"] \arrow[r, "{id_M}"] & M \arrow[d, "m"] \\
+        & M  \arrow[d, "{\id{M}}"] \arrow[r, "{\id{M}}"] & M \arrow[d, "m"] \\
         & M  \arrow[r, "m" swap] & X
         \end{tikzcd}
     \]
-    For the universal property of pullbacks, we have that $$f  =  id_M \circ u =  g$$
+    For the universal property of pullbacks, we have that $$f  =  \id{M} \circ u =  g$$
     Hence, $m$ is mono.
 
     Conversely, if $m$ is mono, then, we have that
     \begin{align*}
         m \circ f = m \circ g   &\Rightarrow    f = g \\
-                                &\Rightarrow    f \circ id_M = g\circ id_M
+                                &\Rightarrow    f \circ \id{M} = g\circ \id{M}
     \end{align*}
     Hence, $f$ is the unique arrow that makes the commutative square illustrated above a pushout.
 \end{proof}
@@ -380,7 +381,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     	X && Y && Z
     	\arrow["{\pi_f^2}", from=1-1, to=1-3]
     	\arrow["{\pi_f^2}"', from=1-1, to=3-1]
-    	\arrow["{id_X}", from=1-3, to=1-5]
+    	\arrow["{id{X}}", from=1-3, to=1-5]
     	\arrow["f", from=1-3, to=3-3]
     	\arrow["f", from=1-5, to=3-5]
     	\arrow["f", from=3-1, to=3-3]
@@ -616,9 +617,7 @@ We can list various examples of $\mathcal{M}$-adhesive categories (see
     Since $\phi_i$ is a regular epimorphism, we have $k' \circ c_i' = t_i$, and, because $k \circ c_i' = t_i$ by construction, we can conclude that $k'=k$ since $((c_i')_{i \in \cat I}, C')$ is a colimit.
 \end{proof}
 
-\subsection{Factorization systems}
-\todo{Inserire qualche cosa su sist. di fattorizazzione e M-adesività - devo pensare a come mettere la questione senza prendere troppo spazio}
-\todo{Di questo possiamo sbattercene perché tanto siamo su $\Set$}
+\input{./fact_sys}
 
 
 \section{Hypergraphical structures}\label{sec:hyper}
@@ -994,7 +993,7 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 
 \appendix
 \section{Some properties of comma categories}
-In this section we will briefly recall the definition of the comma category associated to two functors and some of its properties.
+In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
 \begin{definition}\index{category!comma -}
 	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which
 	\begin{itemize}
@@ -1018,10 +1017,6 @@ We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \c
 \]
 
 
-
-
-
-
 Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same ting as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$, thus $\left(\comma{L}{R}\right)$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the commutativity in  $\X$ of the square
 \[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
 is tantamount to the commutativity in $\X^{op}$ of the square 
@@ -1031,7 +1026,61 @@ Summing up we have just proved the following fact.
 	$(\comma{L}{R})^{op}$ is equal to	$\comma{R^{op}}{L^{op}}$, moreover $U^{op}_L=U_{L^{op}}$ and $U^{op}_R=U_{R^{op}}$.
 \end{proposition}
 
-We can notice another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
+
+\begin{lemma}\label{colim}
+	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comma{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite{castelnovo2023thesis,castelnovo2022newcriterionmathcalmmathcalnadhesivity}).
+\end{lemma}
+\begin{proof}
+	Suppose that $U_L\circ F$ and $U_R\circ F$ have colimiting cocones  $\left(A, \{a_D\}_{D\in \D}\right)$ and $\left(B, \{b_D\}_{D\in \D}\right)$ respectively. By hypothesis $\left(L(A), \{L\left(a_D\right)\}_{D\in \D}\right)$ is colimiting for $L\circ U_L\circ F$. Now, if we define
+	\[F(D):=(A_D, B_D, f_D)\]
+	then we have arrows $R(a_i)\circ f_D\colon L(A_D)\to R(B)$ that forms a cocone on $L\circ U_L\circ F$: if $d\colon D\to D'$ is an arrow in $\D$ then $F(d)$ is an arrow in $\comma{L}{R}$ and so
+	\begin{align*}
+		R\left(b_{D'}\right)\circ f_{D'}\circ L(U_L(F(d)))&=R\left(b_{D'}\right)\circ R\left(U_R\left(F(d)\right)\right)\circ f_D\\&=R\left(b_{D'}\circ U_R\left(F(d)\right)\right)\circ f_D\\&=R\left(b_D\right)\circ f_D
+	\end{align*}
+	Thus there exists $f\colon L(A)\rightarrow R(B)$ such that
+	\[\xymatrix@C=35pt{ L(A_D) \ar[r]^{L(a_D)} \ar[d]_{f_D}& L(A) \ar[d]^{f}\\ R(B_D) \ar[r]_{R(b_D)} &R(B)}\]
+	Notice that $f$ is the unique arrow in $\X$ wich makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comma{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.
+	
+	First of all, let us show that it is a cocone. Given $d\colon D\to D'$ in $\D$ we have:
+	\begin{align*}
+		\left(a_{D'}, b_{D'}\right)\circ F(d)&=	\left(a_{D'}, b_{D'}\right)\circ \left(U_L(F(d)), U_R(F(d))\right)\\&=\left( a_{D'}\circ U_L(F(d)),  b_{D'}\circ U_R(F(d)) \right)\\&=\left(a_D, b_D\right)
+	\end{align*}
+	For the colimiting property, let $\left((X, Y, g), \left\{\left(x_D, y_D\right)\right\}_{D\in \D}\right)$ be another cocone on $F$. In particular $\left(X, \left\{x_D\right\}_{D\in \D}\right)$ and $\left(Y, \left\{y_D\right\}_{D\in \D}\right)$ are cocones on $U_L\circ F$ and $U_R\circ F$ respectively, so we have uniquely determined arrows $x\colon A\rightarrow X$ and $y\colon B\rightarrow Y$ such that 
+	\[x\circ a_D= x_D \qquad y\circ b_D= y_D\]
+	Let us show that $(x,y)$ is an arrow of $\comma{L}{R}$. Given $D\in \D$ we have
+	\begin{align*}
+		R(y)\circ f\circ L(a_D)&=R(y)\circ R\left(b_D\right)\circ f_D\\&=R\left(y\circ b_D\right)\circ f_D\\&=R\left(y_D\right)\circ f_D\\&= g\circ L\left(x_D\right)\\&=g\circ L\left(x\circ a_D\right)\\&=g\circ L(x)\circ L\left(a_D\right)
+	\end{align*}
+	from which it follows  that the following diagram commutes.
+	\[\xymatrix@C=35pt{L(A)\ar[d]_{f} \ar[r]^{L(x)} & X \ar[d]^{g}\\ R(B) \ar[r]_{R(y)}& Y}\]
+	This shows that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ and the thesis follows.
+\end{proof} 
+
+
+\Cref{prop:dual} and \Cref{colim} now yields the following.
+\begin{corollary}\label{lim} The family $\{U_L, U_R\}$ jointly creates limits along every diagram $F\colon \D\to \comma{L}{R}$ such that $R$ preserves the limit of $U_R\circ I$.
+\end{corollary}
+
+We can use \cref{lim} to characterize monos in comma categories. 
+\begin{corollary}\label{cor:mono}
+	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monomorphisms.
+\end{corollary}
+\begin{proof}
+	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the following square is a pullback in $\comma{L}{R}$
+	\[\xymatrix@C=50pt{(A, B, f)  \ar[r]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}& (A, B, f)  \ar[d]^{(h,k)} \\ (A, B, f)  \ar[r]_{(h,k)}& (A', B', g) }\]
+	Using \cref{lim} we deduce that the following two squares are pullbacks in $\A$ and $\B$.
+	\[\xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
+	From which it follows that $h$ and $k$ are monos.
+	
+	\smallskip\noindent 
+	$(\Leftarrow)$ Since $h$ and $k$ are monos then we have two pullback squares 	
+	\[\xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
+	By \cref{lim} this implies that 
+	\[\xymatrix@C=50pt{(A, B, f)  \ar[r]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}& (A, B, f)  \ar[d]^{(h,k)} \\ (A, B, f)  \ar[r]_{(h,k)}& (A', B', g) }\]
+	is a pullback in $\comma{L}{R}$ and we are done.
+\end{proof}
+
+We end this section pointing out another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
 
 \begin{proposition}\label{prop:left}
 	If $\A$ has initial objects and $L$ preserves them then the forgetful functor $U_R\colon \comma{L}{R}\to \B$ has a left adjoint $\Delta$.
@@ -1101,7 +1150,7 @@ We can realize the slice over and under an object $X\in \X$ as comma categories.
 	It is now obvious to see that $F_1,G_1$ and $F_2, G_2$ are pairs of inverses.
 \end{proof}
 
-A straightforward application of \cref{lim} now yields the following.
+A straightforward application of \Cref{lim} now yields the following.
 \begin{corollary}\label{cor:pbapp}
 	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
 \end{corollary}
@@ -1112,17 +1161,21 @@ In this appendix we will provide a brief exposition to the problem of constructi
 
 
 \begin{definition}
-	Let $(\X, \otimes, I)$ be a monoidal category. An \emph{monoid} is a triple $(X, m, e)$ made by an object $X$ equipped with arrows $m\colon X\otimes X\to X$ and $e\colon I\to X$ making the following diagram commute.
+	Let $(\X, \otimes, I)$ be a monoidal category. An \emph{monoid} is a triple $(X, m, e)$ made by an object $X$ equipped with arrows $m\colon X\otimes X\to X$ and $e\colon I\to X$ making the following diagrams commute, where $\alpha$ is the associator and $\lambda$ and $\rho$ the two unitors.
 	
-	\[\]
+	\[\xymatrix@C=35pt{(X\otimes X) \ar[r]^{\alpha_{X, X, X}} \ar[dd]_{m\otimes \id{X}}\otimes X & X\otimes (X\otimes X) \ar[d]^{\id{X}\otimes m} & X \ar[r]^{\rho^{-1}_X}  \ar[d]_{\lambda^{-1}_X} \ar[ddr]_{\id{X}}& X\otimes I \ar[d]^{\id{X}\otimes e}\\& X\otimes X \ar[d]^{m}  & I\otimes X \ar[d]_{e\otimes \id{X}} & X\otimes X \ar[d]^{m} \\X\otimes X  \ar[r]_{m}& X & X\otimes X \ar[r]_{m} & X}\]
 	
-	A \emph{morphism of monoids} between $(X, m, e)$ and $(X', m', e')$ is an arrow $f\colon X\to X'$ fitting in the diagram below.
+	A \emph{morphism of monoids} between $(X, m, e)$ and $(X', m', e')$ is an arrow $f\colon X\to X'$ fitting in the diagrams below.
 	
-	\[\]
+	\[\xymatrix{X\otimes X \ar[r]^{f\otimes f} \ar[d]_{m}& Y\otimes Y \ar[d]^{m'} && I\ar[dr]^{e'} \ar[dl]_{e}\\ X\ar[r]_{f} & Y & X \ar[rr]_{f} && Y }\]
 Monoids with their morphisms form a category $\mono{X}$, such category has an obvious forgetful functor $\mo{U}\colon\mono{X}\to X$ sending $(X, m, e)$ to $X$ and a morphism to itself.
+
+If the functor $\mo{U}$ has a left adjoint $\mo{F}\colon \X\to \mono{\X}$, we will define the \emph{Kleene star} functor $(-)^\star\colon \X \to \X$ as $\mo{U}\circ \mo{F}$.
 \end{definition}
 
-We are interested in provide sufficient conditions to guarantee the existence of a left adjoint to $\mo{U}$. The idea is to mimic the construction of the \emph{kleene star} functor $\Set\to \Set$ \cite{bibid}, i.e.~ the functor sending $X$ to the set of finite words over it.
+
+
+We are interested in provide sufficient conditions to guarantee the existence of a left adjoint to $\mo{U}$. The idea is to mimic the construction of the usual functor $\Set\to \Set$ \cite{sakarovitch2009elements} sending $X$ to the set of finite words over it.
 
 
 \begin{definition}
@@ -1134,24 +1187,114 @@ We are interested in provide sufficient conditions to guarantee the existence of
 We cite the following, fundamental, result proved in \cite{lack2010note}.
 
 \begin{theorem}
-	Let $(\X, \otimes, I )$ be a countably distributive monoidal category. Then $\mo{U}$ has a left adjoint sending $\mo{F}$ to $\sum_{n\in \mathbb{N}} X^{\otimes n}$.
+	Let $(\X, \otimes, I )$ be a countably distributive monoidal category. Then $\mo{U}\colon \mono{X}\to \X$ has a left adjoint  $\mo{F}\colon \X\to \mono{X}$ defined as
+\[	\functor[l]{X}{f}{Y}
+\functormapsto
+\rfunctor{\sum_{i\in \mathbb{N}} X^{\otimes n}}{\sum_{i\in \mathbb{N}} f^{\otimes n}}{\sum_{i\in \mathbb{N}} Y^{\otimes n}}\]
 \end{theorem}
 
-As a concluding step, we ask for a compatibility property between countable coproducts and pullbacks, to assure that $\mo{F}$ preserves pullbacks.
+
+\begin{remark}\label{rem:lg} Let $\X$ be a category with finite limits and suppose that $(\X, \times, 1)$ is countably distributive.  Then for every object $X$ in $\X$ we have a \emph{length homomorphism} $\lgh_X\colon \mo{F}(X)\to \mo{F}(1)$. The underlying morphism $X^\star \to 1^\star$ in $\X$ is simply $\sum_{n\in \mathbb{N}} (!_X)^{\otimes n}$.  Notice, moreover, that for every $f\colon X\to Y$ we have a commutative triangle as the one below.
+	\[\xymatrix{X^\star \ar[rr]^{f^\star} \ar[dr]_{\lgh_X}&& Y^\star  \ar[dl]^{\lgh_Y}\\ & 1^\star }\]
+\end{remark}
+
+As a concluding step, we ask for a compatibility property between countable coproducts and pullbacks, to assure that $\mo{F}$ preserves pullbacks \cite{bibid}.
 
 \begin{definition}
-	Let $\X$ be a category and suppose that $(X, \{j_i\}_{i\in I})$ is a coproduct. We say that $(X, \{j_i\}_{i\in I})$ is \emph{stable under pullbacks} if, given an arrow $f\colon Y\to X$ such that for every $i\in I$ the pullback square below exists,  the cocone $(Y, \{k_i\}_{i\in I})$ is a coproduct.
-	\[\xymatrix{Y_i \ar[r]^{k_i} \ar[d]_{p_i} & Y \ar[d]^{f}\\ X_i\ar[r]_{j_i} & X}\]
-	
+	Let $\X$ be a category, we say that $\X$ is \emph{countably extensive} if:
+	\begin{enumerate}
+		\item  for every coprojections $j_i \colon X_i\to \sum_{i\in I}^{X_i} $ in a countaple coproduct and arrow $f\colon Y\to \sum_{i\in I} X_i$, a pullback of $j_i$ along $f$ exists; 
+		\item given a countable set $I$, a coproduct $(X, \{j_i\}_{i\in I})$, an arrow $f\colon Z\to X$ and a family of squares
+		\[\xymatrix{Z_i \ar[r]^{k_i} \ar[d]_{f_i} & Z\ar[d]^{f} \\ X_i \ar[r]_{j_i} & X}\]
+		then the above squares are all pullbacks if and only if $(Z, \{k_i\}_{i\in I})$ is a coproduct.
+	\end{enumerate} 
 \end{definition}
+
+\begin{remark}\label{rem:pb}
+Suppose that  $(\X, \times, 1)$ is a countably distributive monoidal category, with $\X$ countably extensive. Then the following squares are pullbacks for every $n\in \mathbb{N}$ and object $X$.
+\[\xymatrix{X^{n} \ar[r]^-{j_n} \ar[d]_{!_{X^n}}& X^\star \ar[d]^{\lgh_X} & Y^{n} \ar[r]^-{k_n} \ar[d]_{!_{Y^n}}& Y^\star \ar[d]^{\lgh_Y}\\ 1 \ar[r]_{a_n}&  1^\star & 1 \ar[r]_{a_n}&  1^\star}\]
+\end{remark}
+
+An elementary, but quite important property of countably extensive category is the following.
+
+\begin{proposition}\label{prop:inj}
+Let $\X$ be a countably extensive category, then countable coproducts are disjoints and have monos as coprojections. 
+\end{proposition}
+\begin{proof}
+Let $(X, \{j_i\}_{i\in I})$ be a coproduct for some countable set $I$. For every $i\in I$, consider the family ${k_{i, h}}_{h\in I}$ defined as
+\[k_{i, h}:=\begin{cases}
+	?_{X_{i}} & h\neq i\\
+	\id{X_i} &h=i
+\end{cases}\]
+It is immediate to notice that $(X_{i}, \{k_{i,h}\}_{h\in I})$ is a countable coproduct. Thus the squares below, where $h\neq i$, are all pullbacks.
+	\[\xymatrix{0 \ar[r]^{?_{X_h}} \ar[d]_{?_{X_h}}& X_h \ar[d]^{j_h} & X_i \ar[r]^{\id{X_i}} \ar[d]_{\id{X_i}}& X_i \ar[d]^{j_i}\\ X_i \ar[r]_{j_i} & X & X_i \ar[r]_{j_i} & X}\]
+	The thesis now follows at once.
+\end{proof}
 
 We are now ready to provide the claimed continuity property of $\mo{F}$.
 
 \begin{proposition}
-	Let $(\X, \otimes, I)$ be a countably distributive monoidal category and suppose that countable  coproducts in $\X$ are stable under pullbacks. Then the functor $\mo{F}\colon \X\to \mono{X}$ preserves pullbacks.
+	Let $\X$ be a category with finite limits such that the cartesian structure $(\X, \times, 1)$ is countably distributive. Suppose, moreover, that countable  coproducts in $\X$ are stable under pullbacks. Then the Kleene star $(-)^\star \colon \X\to \X$ preserves pullbacks.
 \end{proposition}
 \begin{proof}
-	contenuto...
+ Suppose that the solid part of the diagram below is given, where  the inner square is the image of a pullback through $(-)^\star$.
+ 
+ \[\xymatrix{T \ar@/^.4cm/[drr]^{t_1} \ar@/_.4cm/[ddr]_{t_2} \ar@{.>}[dr]^t\\ & P^\star  \ar[d]_{q^\star}\ar[r]^{p^\star}& X^\star \ar[d]^{f^\star} \\ & Y^\star\ar[r]_{g^\star} & Z^\star}\]
+	
+	
+	For every $n\in \mathbb{N}$, consider the coprojection $k_n\circ Z^n\to Z^\star$ and let $T_n$ be the pullback below.
+	\[\xymatrix{T_n \ar[r]^{p_n} \ar[d]_{q_n} & T  \ar[d]^{f^\star \circ t_1}\\
+	Z^n \ar[r]_{k_n}& Z^\star}\]
+	
+	Notice that, by \Cref{rem:lg} and since $f^\star \circ t_1$ is equal to $g^\star \circ t_2$, we have
+	\[
+	\begin{split}
+		\lgh_X\circ t_1 \circ p_n&=\lgh_Z\circ f^\star \circ t_1\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=a_n\circ !_{Z^n}\circ q_n\\&=a_n\circ !_{T_n}
+	\end{split}\qquad \begin{split}
+		\lgh_Y\circ t_2 \circ p_n&=\lgh_Z\circ g^\star \circ t_2\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=a_n\circ !_{Z^n}\circ q_n\\&=a_n\circ !_{T_n}
+	\end{split}\]
+	
+	Thus in the diagram below the solid part commutes, yielding the dotted $x_n\colon T_n\to X^n$ and $y_n\colon T_n\to Y^n$.
+	
+	\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{x_n} \ar[r]^{p_n} & T \ar[dr]^{t_1}&& T_n \ar@/_.3cm/[ddr]_{!_{T_n}} \ar[r]^{p_n} \ar@{.>}[dr]^{y_n}& T \ar[dr]^{t_2}\\ &X^n   \ar[d]_{!_{X^n}}\ar[r]^{j_n}& X^\star \ar[d]^{\lgh_X}& & Y^n \ar[d]_{!_{Y^n}}  \ar[r]^{h_n}& Y^\star \ar[d]^{\lgh_Y}\\ & 1 \ar[r]_{a_n}& 1^\star && 1  \ar[r]_{a_n}& 1^\star}\]
+	
+	
+	Now, limits commutes with limits, and, moreover, we have
+	\begin{align*}	
+	k_n\circ f^n\circ x_n & =f^\star \circ j_n\circ x^n\\&=f^\star \circ t_1\circ p_n\\&=g^\star \circ t_2\circ p_n\\&=g^\star \circ h_n\circ y_n\\&=k_n \circ g^n\circ y_n 
+	\end{align*}
+	so, by \Cref{prop:inj}, the solid part of the diagram below commutes an the inner square is a pullback, therefore we obtain the dotted arrow $b_n\colon T_n\to P^n $.
+	\[\xymatrix{T_n \ar@{.>}[dr]^{b_n}  \ar@/^.4cm/[drr]^{x_n} \ar@/_.4cm/[ddr]_{y_n} \\ & P^n \ar[d]_{q^n} \ar[r]^{p^n}& X^n \ar[d]^{f^n}\\ &  Y^n  \ar[r]_{g^n}& Z^n}\]
+	
+	Since $\X$ is countably extensive, then $(T, \{p_n\}_{n\in \mathbb{N}})$ is a coproduct for the family $\{T_n\}_{n\in \mathbb{N}}$ and so we can define the arrow $t\colon T\to P^\star$ as $\sum_{n\in \mathbb{N}} b_n$
+	
+	Let $v_n\colon P^n\to P^\star$ be te coprojection, to see that $t$ fits in the initial diagram it is now enough to compute.
+	\[\begin{split}
+		p^\star \circ t \circ p_n&= \sum_{i\in \mathbb{N}} p^i \circ \sum_{i\in \mathbb{N}} b_i\circ p_n\\&
+		=\sum_{i\in I}p_i\circ v_n\circ b_n\\&= j_n\circ p_n\circ v_n\\&=j_n\circ x_n\\&=t_1\circ p_n
+ 	\end{split} \qquad \begin{split}
+ 	q^\star \circ t \circ p_n&= \sum_{i\in \mathbb{N}} q^i \circ \sum_{i\in \mathbb{N}} b_i\circ p_n\\&
+ 	=\sum_{i\in I}q_i\circ v_n\circ b_n\\&= h_n\circ p_n\circ v_n\\&=j_n\circ x_n\\&=t_2\circ p_n
+ 	\end{split}\]
+ 	so that $p^\star \circ t = t_1$ and $q^\star\circ t = t_2$.
+	
+We are left with uniqueness. Let $t'\colon T\to P^\star$ be another arrow such that $p^\star \circ t' = t_1$ and $q^\star\circ t' = t_2$, then
+\begin{align*}
+\lgh_P\circ t' \circ p_n&=\lgh_X\circ p^\star \circ t'\circ p_n\\&=\lgh_X\circ t_1\circ p_n\\&=a_n\circ !_{T_n}
+\end{align*}
+
+So that, for every natural $n$, there exists an arrow $u_n\colon T_n \to X^n$ fitting in the diagram below.
+\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{u_n} \ar[r]^{p_n} & T \ar[dr]^{t'}\\ &P^n   \ar[d]_{!_{P^n}}\ar[r]^{v_n}& P^\star \ar[d]^{\lgh_P}\\ & 1 \ar[r]_{a_n}& 1^\star }\]
+Moreover, we have
+\[\begin{split}
+j_n\circ	p^n\circ u_n&=p^\star \circ  v_n\circ u_n\\&=p^\star \circ t'\circ p_n\\&=t_1\circ p_n\\&=j_n\circ x_n\\&=j_n\circ p^n\circ b_n
+\end{split}\qquad \begin{split}
+h_n\circ	q^n\circ u_n&=q^\star \circ  v_n\circ u_n\\&=q^\star \circ t'\circ p_n\\&=t_2\circ p_n\\&=h_n\circ y_n\\&=h_n\circ q^n\circ b_n
+\end{split}\]
+
+By \Cref{prop:inj} the previous equalities entails
+\[p^n\circ u_n=p^n\circ b_n \qquad q^n\circ u_n=q^n\circ b_n\]
+so that $u_n=b_n$ and we can conclude.
 \end{proof}
 
 
