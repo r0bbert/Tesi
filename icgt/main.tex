@@ -257,20 +257,21 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 	\label{thm:slice-functors}
 	Let $\X$ be an $\mathcal{M}$-adhesive category, then the following hold true:
 	\begin{enumerate}
-		\item if $L\colon \X\to $
+		\item if $\Y$ is an $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
 		the categories $\X/X$  and $X/X$ are, respectively, $\mathcal{M}/X$-adhesive and $X/\mathcal{M}$-adhesive, where
 		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
-		\mathcal{M}\} \qquad X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
+		\mathcal{M}\} \hspace{5pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
 		\item for every small category $\Y$, the category $\X^\Y$ of
 		functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
 		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
-		\item given a  full and faithful $I\colon \Y\to \X$ and a class $\mathcal{M}'$ of arrows in $\Y$ stable under pullbacks, containing all isomorphism
+		\item given a  full and faithful $I\colon \Y\to \X$ and a class $\mathcal{M}'$ of arrows in $\Y$ stable under pullbacks, pushout, containing all isomorphism and closed under composition an decomposition, if image of $\mathcal{M}'$ under $I$ is contained in $\mathcal{M}$ and $a$
 	\end{enumerate} 
 \end{theorem}
 
-We will briefly list som examples of $\mathcal{M}$-adhesive categories.
+We will briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 
 \begin{example}
@@ -287,8 +288,6 @@ We will briefly list som examples of $\mathcal{M}$-adhesive categories.
 	quasiadhesive.
 \end{example}
 
-
-\todo{Inserire parte della tesi su kp}
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
