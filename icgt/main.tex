@@ -27,6 +27,9 @@
 %\tikzcdset{every label/.append style = {font = \small}}
 
 \spnewtheorem*{notation}{Notation}{\bfseries}{}
+\spnewtheorem*{convention}{Convention}{\bfseries}{}
+
+
 
 %funtori
 \usepackage[usestackEOL]{stackengine}
@@ -255,24 +258,23 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 
 \begin{theorem}
 	\label{thm:slice-functors}
-	Let $\X$ be an $\mathcal{M}$-adhesive category, then the following hold true:
+	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category, then the following hold true:
 	\begin{enumerate}
-		\item if $\Y$ is an $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
-		the categories $\X/X$  and $X/X$ are, respectively, $\mathcal{M}/X$-adhesive and $X/\mathcal{M}$-adhesive, where
+		the categories $\X/X$  and $X/X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
 		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
 		\mathcal{M}\} \hspace{5pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
 		\item for every small category $\Y$, the category $\X^\Y$ of
-		functors $\Y\to \X$ is $\mathcal{M}^{\Y}$-adhesive, where
+		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
 		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
-		\item given a  full and faithful $I\colon \Y\to \X$ and a class $\mathcal{M}'$ of arrows in $\Y$ stable under pullbacks, pushout, containing all isomorphism and closed under composition an decomposition, if image of $\mathcal{M}'$ under $I$ is contained in $\mathcal{M}$ and $a$
+		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ and  stable under pullbacks, pushout, containing all isomorphism and closed under composition and decomposition.
 	\end{enumerate} 
 \end{theorem}
 
 We will briefly list some examples of $\mathcal{M}$-adhesive categories.
-
 
 \begin{example}
 	\label{ex:adhesive}
@@ -621,24 +623,33 @@ We will briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-
-A pivotal role will be played by the Kleene star $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{...}. In particular, given a set $X$, $X^\star$ is the set of functions with a natural number as domain. Then the neutral element is $?_X\colon \emptyset \to X$ and the composition of $f\colon n\to X$ with $g\colon m\to X$ is simply the arrow $n+m\to X$ induced by them. If $h\colon X\to Y$ is an arrow in $\Set$, then $h^\star \colon X^\star\to Y^\star$ is the composition with $h$.
-
-\subsection{The category of hypergraphs}
+In this section we introduce the notion of \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usua \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,wadler1995monads}. In\Cref{app:mon} the interested reader can find a brief review of the construction of such a monad.
 
 
-We will start this section with the definition of hypergraphs and we will see how to label them with an algebraic signature. 
+\begin{convention}
+	In this section we will operate inside a countably distributive and extensive cartesian category $(\X, \times, I)$ with finite limits. As shown in \Cref{app:mon}, then $\mo{U}\colon \mono{\X}\to \X$ has a left adjoint $\mo{F}$ and $\mo{F}\circ \mo{U}$ preserves pullbacks. Denoting by $(-)^\star$ such composition, we can assume that $X^\star$ is the coproduct $\sum_{n\in \mathbb{N}}X^n$.
+\end{convention}
+
+\begin{remark}\label{rem:mono}
+	Preservation of pullbacks implies that $(-)^\star$ sends monos to monos.
+\end{remark}
 
 
-\begin{definition}A \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, whose elements are called respectively \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} functions  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
+\subsection{The category of $\X$-hypergraphs}
+
+
+We will start this section with the definition of $\X$-hypergraphs and we will see how to label them with an algebraic signature. 
+
+
+\begin{definition}An \emph{$\X$-hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two objects $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the object of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of morphisms $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
 	
 	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
-	We define $\hyp$ to be the resulting category.
+	We define $\hyp_\X$ to be the resulting category.
 \end{definition}
 
-Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we can present $\hyp$ as a comma category.
+Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we can present $\hyp_\X$ as a comma category.
 \begin{proposition}\label{prop:com}
-	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
+	$\hyp_\X$ is isomorphic to $\comma{\id{\X}}{\pro^\star}$
 \end{proposition}
 \begin{proof}
 	 Define two functors $F\colon  \hyp \to \comma{\id{\Set}}{\pro^\star} $
@@ -656,47 +667,27 @@ Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we 
 	Now it is immediate to notice that they are one the inverse of the other.
 \end{proof}
 
-We can show that the  Kleene star preserves pullbacks (see also \cite[Sec. 3]{carboni1995connected}  and \cite[Ch.4]{leinster2004higher} for details and a deeper and more conceptual approach).\index{Kleene star}
-
-\begin{proposition}\label{prop:pb}
-	The functor $(-)^\star$ preserves pullbacks.
-\end{proposition}
-\begin{proof}
-	Suppose that a pullbacks square as the one below is given.
-	\[\xymatrix{P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f}\\ Y \ar[r]_{g} & Z}\]
-	and consider the solid part of the following diagram.
-	\[\xymatrix{Z\ar@{.>}[dr]^{t} \ar@/^.3cm/[drr]^{t_1} \ar@/_.3cm/[ddr]_{t_2}\\&P^\star \ar[r]^{p^\star_1} \ar[d]_{p^\star_2}& X^\star \ar[d]^{f^\star}\\ &Y^\star \ar[r]_{g^\star} & Z^\star}\]
-	For every $z\in Z$ we have $t_1(z)\colon n\to X$ and $t_2(z)\colon m\to Y$ such that
-	\[f^\star(t_1(x))=g^\star(t_2(z))\]
-	In particular this entails that $n=m$ and that there is $t(z)\colon n\to P$ as in the diagram below 
-	\[\xymatrix{n\ar[dr]^{t(z)} \ar@/^.3cm/[drr]^{t_1(z)} \ar@/_.3cm/[ddr]_{t_2(z)}\\&P \ar[r]^{p_1} \ar[d]_{p_2}& X \ar[d]^{f}\\ &Y \ar[r]_{g} & Z}\]
-	But this is equivalent to say that the dotted $t\colon Z\to P$ exists, while its uniqueness follows at once from the universal property of the pullback with which we started.
-\end{proof}
-
-\begin{remark}\label{rem:mono}
-	Preservation of pullbacks implies that $(-)^\star$ sends monos to monos.
-\end{remark}
-
 \begin{corollary}\label{prop:hypadh}
-	$\hyp$ is an adhesive category.
+If $\X$ is (strictly) $\mathcal{M}$-adhesive	then $\hyp$ is an (strict) $\comma{\mathcal{M}}{\mathcal{M}}$-adhesive category.
 \end{corollary}
 \begin{proof}
-	$(-)^\star$ preserves pullbacks by \Cref{prop:pb}, while $\pro$ is continuous by definition, thus the thesis follows from This follows from \Cref{comma,prop:com}.
+	By hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the thesis follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.
 \end{proof}
 
 
 
 \Cref{prop:left,prop:com} allows us to deduce immediately the following.
 
-\begin{proposition}\label{cor:left}
-	The forgetful functor $U_{\catname{Hyp}}\colon \hyp \to \catname{Set}$ which sends an hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
+\begin{proposition}\label{cor:left} If $\X$ has an initial object, then the forgetful functor $U_{\X}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\X}$.
 \end{proposition}
 
-\begin{remark}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\hyp}(X)$ is the hypergraph which has $X$ as set of nodes and $\emptyset$ as set of hyperedges and $?_X$ as both source and target function.
-\end{remark}
+\begin{example}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\Set}(X)$ is the hypergraph which has $X$ as set of nodes and $\emptyset$ as set of hyperedges and $?_X$ as both source and target function.
+\end{example}
 
+\todo{forse possiamo anche cancellare tutti gli esempi sotto}
 
-Hypergraphs,  can be represented graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter (i.e.~its value at $i-1$) of a target or a source with a label $i$.
+$\Set$-hypergraphs,  can be represented graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter (i.e.~its value at $i-1$) of a target or a source with a label $i$.
+
 
 \begin{example}Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G}}$ to be $\{h_1, h_2, h_3\}$. Sources and targets are given by:
 	\[\begin{matrix}
@@ -805,10 +796,9 @@ Hypergraphs,  can be represented graphically. We will use dots to denote nodes a
 \end{example}
 
 
-\subsubsection{$\hyp$ as a topos of presheaves}
+\subsubsection{$\hyp_\X$ as a category of functors}
 
-By \Cref{lim} we already know that $\hyp$ has all pullbacks and by \Cref{prop:hypadh} we know that it is adhesive. Actually more can be proved about it: we can realize $\hyp$ as a topos of presheaves \cite{bonchi2022string}.
-
+Following \cite{bonchi2022string}, we can present $\hyp_\X$ as a category of functor over a suitable category.
 
 \begin{definition}Let $\catname{H}$ be the category in which:
 	\begin{itemize}
@@ -821,31 +811,86 @@ By \Cref{lim} we already know that $\hyp$ has all pullbacks and by \Cref{prop:hy
 	\end{itemize}
 \end{definition}
 
-Now, given $F\colon \catname{H}\to \catname{Set}$ we can define
+Given $F\colon \catname{H}\to \catname{Set}$, since $\X$ has countable coproducts we can define
 \[E_F:=\sum_{k,l\in \mathbb{N}}F(k,l)\]
-For every element $x$ of $F(k,l)$ we can put
-\begin{align*}
-	s^F_{k,l}(x)\colon k\to F(\bullet) \quad i \mapsto F(f_i)(x)\qquad 
-	t^F_{k,l}(x)\colon l\to F(\bullet) \quad i \mapsto F(f_{i+k})(x)
-\end{align*}
-obtaining
-$s_F, t_F\colon E_F\rightrightarrows \mathcal{F}(\bullet)^{\star}$. Let $\mathcal{G}_F$ be the resulting hypergraph. Now, every $\eta\colon F\rightarrow H$ in $\catname{Set}^{\catname{H}}$ has components $\eta_{k,l}\colon F(k,l)\to H(k,l)$, $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$, thus it induces a function $\hat{\eta}\colon E_F\rightarrow E_H$ such that the following squares commute
-\[\xymatrix{ E_F \ar[r]^{s_F} \ar[d]_{\hat{\eta}}& F(\bullet)^\star \ar[d]^{\eta^\star_\bullet} & E_F \ar[r]^{t_F} \ar[d]_{\hat{\eta}} & F(\bullet)^\star \ar[d]^{\eta^\star_\bullet}\\ E_H \ar[r]_{s_H} & H(\bullet)^\star & E_H \ar[r]_{t_H}& H(\bullet)^\star}\]
 
-This is equivalent to say that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bullet})\colon \mathcal{G}_F\to \mathcal{G}_H$. It is now clear that sending $F$ to $\mathcal{G}_F$ and $\eta$ to $(\hat{\eta}, \eta_{\bullet})$ defines a faithful functor $\mathcal{G}_{-}\colon \catname{Set}^{\catname{H}}\to \hyp$.
+Now, for every $k$, $l$, $i$ and $j$ in $\mathbb{N}$ with $i< k$ and $j< l$ we can define $s^F_{k,l}\colon F(k,l)\to F(\bullet)^k$,  $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ as the unique ones fitting in the diagrams below, where the vertical arrows are the projections.
+\[\xymatrix{F(k,l)  \ar@{.>}[r]^{s^F_{k,l}} \ar[dr]_{F(f_i)}& F(\bullet)^{k} \ar[d]^{\pi^F_{i}} & F(k,l) \ar@{.>}[r]^{t^F_{k,l}} \ar[dr]_{F(f_{k+j})} & F(\bullet)^{l} \ar[d]^{\pi^F_{j}} \\ & F(\bullet) && F(\bullet)}\]
+
+In turn, these arrows allow us to consider
+$s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections.
+\[\xymatrix{F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{s^{F}_{k,l}}& F(\bullet)^{k} \ar[d]^{b^F_{k}} & F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{t^{F}_{k,l}}& F(\bullet)^{l} \ar[d]^{b^F_{l}}\\ E_F \ar@{.>}[r]_-{s_F}& F(\bullet)^\star & E_F \ar@{.>}[r]_-{t_F}& F(\bullet)^\star}\]
+
+Let $\mathcal{G}_F$ be the resulting hypergraph. Now, every $\eta\colon F\rightarrow H$ in $\catname{Set}^{\catname{H}}$ has components $\eta_{k,l}\colon F(k,l)\to H(k,l)$, $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$. In particular we can define $\hat{\eta}\colon E_F\rightarrow E_H$ as $\sum_{k,l\in \mathbb{N}}\eta_{k,l}$. Now, on the one hand, we have
+\[\begin{split}
+	\pi^H_i\circ \eta^k_\bullet \circ  s^F_{k,l}&=\eta_\bullet \circ \pi^F_i \circ s^F_{k,l}\\&=\eta_\bullet \circ F(f_i)\\&=H(f_i)\circ \eta_{k,l}\\&=\pi^H_i\circ s^{H}_{k,l}\circ \eta_{k,l}
+\end{split} \qquad \begin{split}
+\pi^H_j\circ \eta^k_\bullet \circ  t^F_{k,l}&=\eta_\bullet \circ \pi^F_j \circ t^F_{k,l}\\&=\eta_\bullet \circ F(f_{k+j})\\&=H(f_{k+j})\circ \eta_{k,l}\\&=\pi^H_j\circ t^{H}_{k,l}\circ \eta_{k,l}
+\end{split} \]
+so that $\eta^k_\bullet \circ  s^F_{k,l}=s^{H}_{k,l}\circ \eta_{k,l}$ and $eta^k_\bullet \circ  t^F_{k,l}= t^{H}_{k,l}\circ \eta_{k,l}$. On the other hand, these equalities give us the following:
+\[\begin{split}
+	\eta_{\bullet}^\star \circ s_{F}\circ a^F_{k,l}&=\eta_{\bullet}^\star \circ b^F_k\circ s^F_{k,l}\\&=b^H_k\circ \eta^k_{\bullet}\circ s^{F}_{k,l} \\&=b^H_{k}\circ s^H_{k,l}\circ \eta_{k,l}\\&=s_H\circ a^H_{k,l}\circ \eta_{k,l}\\&=	s_H\circ \hat{\eta}\circ a^F_{k,l}
+\end{split} \qquad \begin{split}
+	\eta_{\bullet}^\star \circ s_{F}\circ a^F_{k,l}&=\eta_{\bullet}^\star \circ b^F_k\circ t^F_{k,l}\\&=b^H_k\circ \eta^k_{\bullet}\circ t^{F}_{k,l} \\&=b^H_{k}\circ t^H_{k,l}\circ \eta_{k,l}\\&=t_H\circ a^H_{k,l}\circ \eta_{k,l}\\&=	t_H\circ \hat{\eta}\circ a^F_{k,l}
+\end{split}\]
+which, in turn, entail that  that the following squares commute
+\[\xymatrix{E_F \ar[r]^{s_F} \ar@{.>}[d]_{\hat{\eta}}& F(\bullet)^\star \ar[d]^{\eta^\star_\bullet} & E_F \ar[r]^{t_F} \ar[d]_{\hat{\eta}} & F(\bullet)^\star \ar[d]^{\eta^\star_\bullet}\\ E_H \ar[r]_{s_H} & H(\bullet)^\star & E_H \ar[r]_{t_H}& H(\bullet)^\star}\]
+
+This is the same as saying that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bullet})\colon \mathcal{G}_F\to \mathcal{G}_H$. It is now clear that sending $F$ to $\mathcal{G}_F$ and $\eta$ to $(\hat{\eta}, \eta_{\bullet})$ defines a faithful functor $\mathcal{G}_{-}\colon \catname{\X}^{\catname{H}}\to \hyp_\X$.
+
+\begin{remark}\label{rem:utile}
+For every $k\in \mathbb{N}$ consider the following pullback diagram	
+	\[\xymatrix{F(\bullet)_k  \ar[r]^{q_1} \ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ 1 \ar[r]_{o_k} & 1^\star}\]
+	Now, notice that 
+	\[\begin{split}
+		\lgh_{F(\bullet)}\circ b^{F}_k\circ s^{F}_{k,l}&=o_{k}\circ !_{F(\bullet)^k}\circ s^F_{k,l}\\&=o_k\circ !_{F(k,l)}
+	\end{split} \qquad \begin{split}
+	\lgh_{F(\bullet)}\circ b^{F}_k\circ t^{F}_{k,l}&=o_{k}\circ !_{F(\bullet)^k}\circ t^F_{k,l}\\&=o_k\circ !_{F(k,l)}
+	\end{split}\]
+so that we have two diagrams:
+	\[\xymatrix{F(k,l)\ar[r]^{s^F_{k,l}} \ar@{.>}[dr]^{u^1_{k,l}}  \ar@/_.5cm/[ddr]_{!_{F(k,l)}}&F(\bullet)^k \ar[dr]^{b^F_k}&& F(k,l) \ar@/_.5cm/[ddr]_{!_{F(k,l)}} \ar[r]^{s^F_{k,l}} \ar@{.>}[dr]^{u^2_{k,l}} &F(\bullet)^k \ar[dr]^{b^F_k}\\ & F(\bullet)_k  \ar[r]^{q_{k}} \ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} && F(\bullet)_k  \ar[r]^{q_{k} }\ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ &  1 \ar[r]_{o_k} & 1^\star && 1 \ar[r]_{o_k} & 1^\star}\]
+	
+	Moreover we have
+	\[\begin{split}
+		s_F\circ a^F_{k,l}&=b^F_k\circ s^{F}_{k,l}\\&=
+		q_{k}\circ u^1_{k,l}	\end{split} \qquad \begin{split}
+		t_F\circ a^F_{k,l}&=b^F_k\circ t^{F}_{k,l}\\&=
+		q_{k}\circ u^2_{k,l}	\end{split}  \]	
+		
+	Therefore these two arrows, in turn, yield the dotted $v^1_{k,l}\colon F(k,l)\to F(\bullet)_k $ and $v^2_{k,l}\colon F(k,l)\to F(\bullet)_l$ as in the diagram below, where the right and bottom squares are pullbacks.
+	\[\xymatrix@C=45pt{F(k,l)  \ar[dr]^{a^F_{k,l}} \ar@{.>}[r]^{v^2_{k,l}} \ar@{.>}[d]^{v^1_{k,l}} \ar@/^.8cm/[rr]^{u^2_{k,l}} \ar@/_.5cm/[dd]_{u^1_{k,l}}& P_{l} \ar[r]_{p_{l,1}} \ar[d]_{p_{l,2}}& F(\bullet)_{l} \ar[d]^{q_{l}}\\ P_k \ar[r]^{p_{k,2}} \ar[d]^{p_{k,1}}& E_F \ar[r]_{s_F}  \ar[d]^{t_F}& F(\bullet)^\star \\ F(\bullet)_k  \ar[r]_{q_{k}}& F(\bullet)^\star}\]
+	
+ By hypothesis, $\X$ is countably extensive, thus for every $k, l\in \mathbb{N}$, the following diagrams are pullbacks.
+ \[\xymatrix{F(k,l) \ar[r]^{a^F_{k,l}} & E_F \ar[d]^{}\\ 
+ F(\bullet)^k& F(\bullet)^\star}\]
+ 
+ 
+ Let now $d_1\colon Z\to P_l$ and $d_2\colon Z\to P_k $ be two arrows such that
+ \[p_{k,2}\circ d_2=p_{t,2}\circ d_1\]
+ 
+ Then we have
+ \begin{align*}
+ t_{F}\circ 	p_{t_2}\circ d_1&= \end{align*}
+ 
+ 
+ Showing, finally, that 
+\end{remark}
 
 \begin{proposition}
-	$\hyp$ is equivalent to the category $\catname{Set}^{\catname{H}}$.
+	$\hyp_\X$ is equivalent to the category $\catname{\X}^{\catname{H}}$.
 \end{proposition}
 \begin{proof}
-	Let $X$ be a set, for every $n\in \mathbb{N}$ define
-	\[X_{n}:= \left\{w\in X^{\star} \mid \dom(w)=n\right\}\]
+	
+	
+	
+	For every object $X$ of $\X$ and $n\in \mathbb{N}$, we can define $X_n$ as the following pullback (cfr.~\Cref{app:mon})
+	\[\]
 	In particular, if $F\colon \catname{H}\to \catname{Set}$ then the image of the coprojection $\iota^{F}_{k,l}\colon F(k,l)\to E_F$ is the intersection
 	\[s^{-1}_F\left(F(\bullet)_{k}\right)\cap t^{-1}_F\left(F(\bullet)_{l}\right) \]
 	
-	We are now ready to that $\mathcal{G}_{-}$ is full and essentially surjective.
+We already know that $\mathcal{G}_{-}$ is faithful, we still have to show that it is full and essentially surjective.
 	\begin{itemize}
-		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of hypergraphs and define $f_{k,l}$ to be $f\circ \iota^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
+		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of $\X$-hypergraphs. Define $f_{k,l}\colon F(k,l)\to $ to be $f\circ a^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
 		\[\begin{split}
 			s_H (f_{k,l} (x))&=s_H \left(f \left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt}\left(s_{F} \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)
 		\end{split}\qquad \begin{split}
@@ -877,10 +922,6 @@ This is equivalent to say that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bu
 		Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. 
 	\end{itemize}
 \end{proof}
-As a corollary we get immediately the following.
-\begin{corollary}
-	$\hyp$ is a complete category.
-\end{corollary}
 
 \subsection{Labelling hypergraph with an algebraic signature}\index{signature!algebraic -}
 Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature, we are going to use the hypergraph $\mathcal{G}^{\Sigma}$ of \Cref{exa_3} in order to label hyperedges with operations.
@@ -1154,7 +1195,7 @@ A straightforward application of \Cref{lim} now yields the following.
 	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
 \end{corollary}
 
-\section{Some notes on free monoids}
+\section{Some notes on free monoids}\label{app:mon}
 
 In this appendix we will provide a brief exposition to the problem of constructing the \emph{free internal monoid} in a monoidal category $(\X, \otimes, I )$. This  construction is needed in \Cref{sec:hyper} to provide a concrete representation to hypergraphs. The standard references on the subject are \cite{dubuc1974free,kelly1980unified,lack2010note}
 
@@ -1197,7 +1238,7 @@ We cite the following, fundamental, result proved in \cite{lack2010note}.
 	\[\xymatrix{X^\star \ar[rr]^{f^\star} \ar[dr]_{\lgh_X}&& Y^\star  \ar[dl]^{\lgh_Y}\\ & 1^\star }\]
 \end{remark}
 
-As a concluding step, we ask for a compatibility property between countable coproducts and pullbacks, to assure that $\mo{F}$ preserves pullbacks \cite{bibid}.
+As a concluding step, we ask for a compatibility property between countable coproducts and pullbacks, to assure that $\mo{F}$ preserves pullbacks (see also \cite[Sec. 3]{carboni1995connected}  and \cite[Ch.4]{leinster2004higher} for details and a deeper and more conceptual approach in the case of $\Set$).
 
 \begin{definition}
 	Let $\X$ be a category, we say that $\X$ is \emph{countably extensive} if:
@@ -1211,7 +1252,7 @@ As a concluding step, we ask for a compatibility property between countable copr
 
 \begin{remark}\label{rem:pb}
 Suppose that  $(\X, \times, 1)$ is a countably distributive monoidal category, with $\X$ countably extensive. Then the following squares are pullbacks for every $n\in \mathbb{N}$ and object $X$.
-\[\xymatrix{X^{n} \ar[r]^-{j_n} \ar[d]_{!_{X^n}}& X^\star \ar[d]^{\lgh_X} & Y^{n} \ar[r]^-{k_n} \ar[d]_{!_{Y^n}}& Y^\star \ar[d]^{\lgh_Y}\\ 1 \ar[r]_{a_n}&  1^\star & 1 \ar[r]_{a_n}&  1^\star}\]
+\[\xymatrix{X^{n} \ar[r]^-{j_n} \ar[d]_{!_{X^n}}& X^\star \ar[d]^{\lgh_X} & Y^{n} \ar[r]^-{k_n} \ar[d]_{!_{Y^n}}& Y^\star \ar[d]^{\lgh_Y}\\ 1 \ar[r]_{o_n}&  1^\star & 1 \ar[r]_{o_n}&  1^\star}\]
 \end{remark}
 
 An elementary, but quite important property of countably extensive category is the following.
@@ -1248,14 +1289,14 @@ We are now ready to provide the claimed continuity property of $\mo{F}$.
 	Notice that, by \Cref{rem:lg} and since $f^\star \circ t_1$ is equal to $g^\star \circ t_2$, we have
 	\[
 	\begin{split}
-		\lgh_X\circ t_1 \circ p_n&=\lgh_Z\circ f^\star \circ t_1\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=a_n\circ !_{Z^n}\circ q_n\\&=a_n\circ !_{T_n}
+		\lgh_X\circ t_1 \circ p_n&=\lgh_Z\circ f^\star \circ t_1\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=o_n\circ !_{Z^n}\circ q_n\\&=o_n\circ !_{T_n}
 	\end{split}\qquad \begin{split}
-		\lgh_Y\circ t_2 \circ p_n&=\lgh_Z\circ g^\star \circ t_2\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=a_n\circ !_{Z^n}\circ q_n\\&=a_n\circ !_{T_n}
+		\lgh_Y\circ t_2 \circ p_n&=\lgh_Z\circ g^\star \circ t_2\circ p_n\\&=\lgh_Z\circ k_n\circ q_n\\&=o_n\circ !_{Z^n}\circ q_n\\&=o_n\circ !_{T_n}
 	\end{split}\]
 	
 	Thus in the diagram below the solid part commutes, yielding the dotted $x_n\colon T_n\to X^n$ and $y_n\colon T_n\to Y^n$.
 	
-	\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{x_n} \ar[r]^{p_n} & T \ar[dr]^{t_1}&& T_n \ar@/_.3cm/[ddr]_{!_{T_n}} \ar[r]^{p_n} \ar@{.>}[dr]^{y_n}& T \ar[dr]^{t_2}\\ &X^n   \ar[d]_{!_{X^n}}\ar[r]^{j_n}& X^\star \ar[d]^{\lgh_X}& & Y^n \ar[d]_{!_{Y^n}}  \ar[r]^{h_n}& Y^\star \ar[d]^{\lgh_Y}\\ & 1 \ar[r]_{a_n}& 1^\star && 1  \ar[r]_{a_n}& 1^\star}\]
+	\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{x_n} \ar[r]^{p_n} & T \ar[dr]^{t_1}&& T_n \ar@/_.3cm/[ddr]_{!_{T_n}} \ar[r]^{p_n} \ar@{.>}[dr]^{y_n}& T \ar[dr]^{t_2}\\ &X^n   \ar[d]_{!_{X^n}}\ar[r]^{j_n}& X^\star \ar[d]^{\lgh_X}& & Y^n \ar[d]_{!_{Y^n}}  \ar[r]^{h_n}& Y^\star \ar[d]^{\lgh_Y}\\ & 1 \ar[r]_{o_n}& 1^\star && 1  \ar[r]_{o_n}& 1^\star}\]
 	
 	
 	Now, limits commutes with limits, and, moreover, we have
@@ -1279,11 +1320,11 @@ We are now ready to provide the claimed continuity property of $\mo{F}$.
 	
 We are left with uniqueness. Let $t'\colon T\to P^\star$ be another arrow such that $p^\star \circ t' = t_1$ and $q^\star\circ t' = t_2$, then
 \begin{align*}
-\lgh_P\circ t' \circ p_n&=\lgh_X\circ p^\star \circ t'\circ p_n\\&=\lgh_X\circ t_1\circ p_n\\&=a_n\circ !_{T_n}
+\lgh_P\circ t' \circ p_n&=\lgh_X\circ p^\star \circ t'\circ p_n\\&=\lgh_X\circ t_1\circ p_n\\&=o_n\circ !_{T_n}
 \end{align*}
 
 So that, for every natural $n$, there exists an arrow $u_n\colon T_n \to X^n$ fitting in the diagram below.
-\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{u_n} \ar[r]^{p_n} & T \ar[dr]^{t'}\\ &P^n   \ar[d]_{!_{P^n}}\ar[r]^{v_n}& P^\star \ar[d]^{\lgh_P}\\ & 1 \ar[r]_{a_n}& 1^\star }\]
+\[\xymatrix{T_n  \ar@/_.3cm/[ddr]_{!_{T_n}}\ar@{.>}[dr]^{u_n} \ar[r]^{p_n} & T \ar[dr]^{t'}\\ &P^n   \ar[d]_{!_{P^n}}\ar[r]^{v_n}& P^\star \ar[d]^{\lgh_P}\\ & 1 \ar[r]_{o_n}& 1^\star }\]
 Moreover, we have
 \[\begin{split}
 j_n\circ	p^n\circ u_n&=p^\star \circ  v_n\circ u_n\\&=p^\star \circ t'\circ p_n\\&=t_1\circ p_n\\&=j_n\circ x_n\\&=j_n\circ p^n\circ b_n
