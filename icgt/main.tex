@@ -623,7 +623,7 @@ We will briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we introduce the notion of \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usua \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,wadler1995monads}. In\Cref{app:mon} the interested reader can find a brief review of the construction of such a monad.
+In this section we introduce the notion of \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usua \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,wadler1995monads}. In \Cref{app:mon} the interested reader can find a brief review of the construction of such a monad.
 
 
 \begin{convention}
@@ -827,7 +827,7 @@ Let $\mathcal{G}_F$ be the resulting hypergraph. Now, every $\eta\colon F\righta
 \end{split} \qquad \begin{split}
 \pi^H_j\circ \eta^k_\bullet \circ  t^F_{k,l}&=\eta_\bullet \circ \pi^F_j \circ t^F_{k,l}\\&=\eta_\bullet \circ F(f_{k+j})\\&=H(f_{k+j})\circ \eta_{k,l}\\&=\pi^H_j\circ t^{H}_{k,l}\circ \eta_{k,l}
 \end{split} \]
-so that $\eta^k_\bullet \circ  s^F_{k,l}=s^{H}_{k,l}\circ \eta_{k,l}$ and $eta^k_\bullet \circ  t^F_{k,l}= t^{H}_{k,l}\circ \eta_{k,l}$. On the other hand, these equalities give us the following:
+so that $\eta^k_\bullet \circ  s^F_{k,l}=s^{H}_{k,l}\circ \eta_{k,l}$ and $\eta^k_\bullet \circ  t^F_{k,l}= t^{H}_{k,l}\circ \eta_{k,l}$. On the other hand, these equalities give us the following:
 \[\begin{split}
 	\eta_{\bullet}^\star \circ s_{F}\circ a^F_{k,l}&=\eta_{\bullet}^\star \circ b^F_k\circ s^F_{k,l}\\&=b^H_k\circ \eta^k_{\bullet}\circ s^{F}_{k,l} \\&=b^H_{k}\circ s^H_{k,l}\circ \eta_{k,l}\\&=s_H\circ a^H_{k,l}\circ \eta_{k,l}\\&=	s_H\circ \hat{\eta}\circ a^F_{k,l}
 \end{split} \qquad \begin{split}
@@ -839,8 +839,18 @@ which, in turn, entail that  that the following squares commute
 This is the same as saying that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bullet})\colon \mathcal{G}_F\to \mathcal{G}_H$. It is now clear that sending $F$ to $\mathcal{G}_F$ and $\eta$ to $(\hat{\eta}, \eta_{\bullet})$ defines a faithful functor $\mathcal{G}_{-}\colon \catname{\X}^{\catname{H}}\to \hyp_\X$.
 
 \begin{remark}\label{rem:utile}
-For every $k\in \mathbb{N}$ consider the following pullback diagram	
-	\[\xymatrix{F(\bullet)_k  \ar[r]^{q_1} \ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ 1 \ar[r]_{o_k} & 1^\star}\]
+	By \Cref{rem:salv} we know that countably distributivity entails that, for every $k,l\in \mathbb{N}$, the arrow $b^F_k\times b^F_l$ is a coprojection, thus extensivity entails that the square is a pullback 
+	\[\xymatrix@C=30pt{F(k,l) \ar[d]_{(s^F_{k,l}, t^F_{k,l})}  \ar[r]^{a^F_{k,l}}& E_F \ar[d]^{(s_F, t_F)} \\ F(\bullet)^k\times F(\bullet)^l \ar[r]_{b^F_k\times b^F_l} & F(\bullet)^\star\times F(\bullet)^\star}\]
+	
+	
+	\iffalse 
+	As in \Cref{rem:pb}, countably extensivity of $X$ guarantees that, for every $k\in \mathbb{N}$ following square is a pullback.	
+	\[\xymatrix{F(\bullet)^k  \ar[r]^{b^F_k} \ar[d]_{!_{F(\bullet)^k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ 1 \ar[r]_{o_k} & 1^\star}\]
+	
+	
+	
+	
+	
 	Now, notice that 
 	\[\begin{split}
 		\lgh_{F(\bullet)}\circ b^{F}_k\circ s^{F}_{k,l}&=o_{k}\circ !_{F(\bullet)^k}\circ s^F_{k,l}\\&=o_k\circ !_{F(k,l)}
@@ -873,53 +883,56 @@ so that we have two diagrams:
  t_{F}\circ 	p_{t_2}\circ d_1&= \end{align*}
  
  
- Showing, finally, that 
+ Showing, finally, that
+ \fi  
 \end{remark}
+
+
 
 \begin{proposition}
 	$\hyp_\X$ is equivalent to the category $\catname{\X}^{\catname{H}}$.
 \end{proposition}
-\begin{proof}
-	
-	
-	
-	For every object $X$ of $\X$ and $n\in \mathbb{N}$, we can define $X_n$ as the following pullback (cfr.~\Cref{app:mon})
-	\[\]
-	In particular, if $F\colon \catname{H}\to \catname{Set}$ then the image of the coprojection $\iota^{F}_{k,l}\colon F(k,l)\to E_F$ is the intersection
-	\[s^{-1}_F\left(F(\bullet)_{k}\right)\cap t^{-1}_F\left(F(\bullet)_{l}\right) \]
-	
+\begin{proof}	
 We already know that $\mathcal{G}_{-}$ is faithful, we still have to show that it is full and essentially surjective.
 	\begin{itemize}
-		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of $\X$-hypergraphs. Define $f_{k,l}\colon F(k,l)\to $ to be $f\circ a^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
-		\[\begin{split}
-			s_H (f_{k,l} (x))&=s_H \left(f \left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt}\left(s_{F} \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)
-		\end{split}\qquad \begin{split}
-			t_H (f_{k,l} (x))&=s_t\hspace{-1pt} \left(f \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt} \left(t_{F}\hspace{-1pt} \left(\iota^F_{k,l} (x)\right)\right)
-		\end{split}\]
-		Therefore there exists $\eta_{k,l}\colon F(k,l)\to H(k,l)$ fitting in the diagram below
-		\[\xymatrix{F(k,l) \ar[r]^-{\iota^{F}_{k,l}} \ar@{.>}[d]_{\eta_{k,l}}& E_F \ar[d]^{f_{k,l}}\\ H(k,l) \ar[r]_-{\iota^{H}_{k,l}}& E_H}\]
-		Define $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ simply as $g^\star$, then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, if $f_i\colon (k,l)\to \bullet$ we have:
-		\[\xymatrix{F(k,l) \ar@/^.4cm/[rr]^{s^F_{k,l}} \ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{s_F}& F(\bullet)^\star \ar[d]^{g^\star}&F(k,l) \ar@/^.4cm/[rr]^{t^F_{k,l}}\ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{t_F}& F(\bullet)^\star \ar[d]^{g^\star}\\ H(k,l) \ar@/_.4cm/[rr]_{s^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{s_H}& H(\bullet)^\star& H(k,l) \ar@/_.4cm/[rr]_{t^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{t_H}& H(\bullet)^\star}\]
-		Thus if $i<k$ then
-		\begin{align*}
-			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(s^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(s^F_{k,l}(x)\right)(i)\\&=s^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
-		\end{align*}
-		while, if $k\leq i < k+l-1$
-		\begin{align*}
-			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(t^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(t^F_{k,l}(x)\right)(i)\\&=t^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
-		\end{align*}
-		Finally, by contruction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
-		\item Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define 
-		\[F_{\mathcal{G}}(k,l):=s_\mathcal{G}^{-1}(V_k)\cap t_\mathcal{G}^{-1}(V_l) \qquad F_{\mathcal{G}}(\bullet):=V_\mathcal{G}\]
-		Given $f_i\colon (k,l)\to \bullet$ we put
-		\[F_{\mathcal{G}}(f_i)\colon F_{\mathcal{G}}(k,l)\to F_{\mathcal{G}}(\bullet) \qquad x\mapsto \begin{cases}
-			s_\mathcal{G}(x)(i) & i<k\\
-			t_\mathcal{G}(x) (i-k) &i\leq k < k+l-1
-		\end{cases}  \]
+		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of $\X$-hypergraphs. By \Cref{rem:utile}, for every $k,l\in \mathbb{N}$, the front square in diagram below is a pullback, yielding the dotted arrow $\eta_{k,l}\colon F(k,l)\to H(k,l)$.
+		\[\xymatrix@C=10pt{F(k,l)   \ar[dd]_{(s^F_{k,l}, t^F_{k,l})}\ar[rr]^-{a^F_{k,l}} \ar@{.>}[dr]_{\eta_{k,l }}&& E_F \ar[dd]|\hole^(.7){(s_F, t_F)}  \ar[dr]^{f}\\ & H(k,l) \ar[dd]_(.3){(s^H_{k,l}, t^H_{k,l})}\ar[rr]^(.4){a^H_{k,l}} &&  E_H \ar[dd]^{(s_H, t_H)}\\F(\bullet)^k\times F(\bullet)^l \ar[dr]_{g^k\times g^l} \ar[rr]|\hole^(.65){b^F_{k,l}\times b^F_{k,l}}& &F(\bullet)^\star \times F(\bullet)^\star  \ar[dr]^{g^\star\times g^\star}\\&H(\bullet)^k\times H(\bullet)^l \ar[rr]_{b^H_k\times b^H_l} && H(\bullet)^\star \times H(\bullet)^\star  }\]
 		
-		$F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$ and for every $h\in E_\mathcal{G}$ there exists a unique pair $(k,l)$ such that $h\in F_{\mathcal{G}}(k,l) $, namely the pair $(\dom(s_\mathcal{G})(h), \dom(t_\mathcal{G})(h))$thus
-		\[\sum_{k,l\in \mathbb{N}}F_{\mathcal{G}}(k,l)\simeq E\]
-		Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. 
+		As $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ we can simply take  $g$.  Then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, given an arrow $f_i\colon(k,l)\to \bullet$ then we have :	
+		\begin{align*}
+			\eta_\bullet \circ F(f_i)&=g\circ F(f_i)
+			\\&= \begin{cases}
+			g\circ \pi^F_i\circ s^F_{k,l} & i <k\\
+			g\circ \pi^F_i\circ t^F_{k,l} & \text{otherwise}
+			\end{cases}
+			\\&=
+			\begin{cases}
+		\pi^H_i\circ g^k\circ s^F_{k,l} & i <k\\
+		\pi^H_i\circ g^k\circ t^F_{k,l} 	& \text{otherwise}
+			\end{cases}\\&=
+		\begin{cases}
+	\pi^H_i\circ s^H_{k,l} \circ \eta_{k,l}& i <k\\
+	\pi^H_i\circ t^H_{k,l} \circ \eta_{k,l}	& \text{otherwise}
+	\end{cases}\\&=H(i)\circ \eta_{k,l}
+		\end{align*}
+		Finally, by construction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
+		
+		\item  Let us turn to essential surjectivity. Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define $F_{\mathcal{G}}(\bullet):=V_{\mathcal{G}}$ and $F_{\mathcal{G}}(k,l)$ by the following pullback. Notice that, by \Cref{rem:salv} and countably extensivity, $(E_{\mathcal{{G}}}, \{a_{k,l}\}_{k,l\in \mathbb{N}})$ is a coproduct.
+		\[\xymatrix@C=30pt{F_\mathcal{G}(k,l) \ar[d]_{p_{k,l}}  \ar[r]^{a_{k,l}}& E_{\mathcal{G}} \ar[d]^{(s_F, t_F)} \\ V_{\mathcal{G}}^k\times V_{\mathcal{G}}^l \ar[r]_{b_k\times b_l} & V_{\mathcal{G}}^\star\times V_{\mathcal{G}}^\star}\]
+		
+		Let $q_{i;k,l}\colon V_\mathcal{G}^k\times V_{\mathcal{G}}^l\to V_\mathcal{G} $ be the $i^{\text{th}}$ projection, then for every morphism $f_i\colon (k,l)\to \bullet$ in $\catname{H}$ we can define $F_{\mathcal{G}}(f_i)$ as $q_{i; k,l}\circ p_{k,l}$. $F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$. 
+		
+		Now, we know that there is an isomorphism $\phi \colon E_{\mathcal{G}} to \sum_{k,l\in \mathbb{N}} F_{\mathcal{G}}(k,l)$ making the diagram below commutative.
+		\[\xymatrix{\\& F_{\mathcal{G}}(k,l) \\E_{\mathcal{G}} & & \sum_{k,l\in \mathbb{N}} F_{\mathcal{G}}(k,l)}\]
+		
+		 moreover, by construction we have
+		\[\begin{split}
+		s_{F_{\mathcal{G}}}\circ a^{F_{\mathcal{G}}}_{k,l}&=b^{F_{\mathcal{G}}}\circ s^{F_{\mathcal{G}}}_{k,l}
+		\end{split}\]
+		
+		
+		
+		$s_{F_{\mathcal{G}}}=s_{\mathcal{G}}$ and $t_{F_{\mathcal{G}}}=t_{\mathcal{G}}$, from which the thesis follows. 
 	\end{itemize}
 \end{proof}
 
@@ -1019,11 +1032,9 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 
 \subsection{Term Graphs}
 
-\section{Hypergraphs with equivalences}
+\section{Hypergraphs  and term graphs with equivalences}
 
 \subsection{title}
-
-\section{title}
 
 \section{EGGS}
 
@@ -1223,6 +1234,24 @@ We are interested in provide sufficient conditions to guarantee the existence of
 	\[\xymatrix{&Y\otimes X_i \ar[dl]_{j_i} \ar[dr]^{\id{Y}\otimes h_i} \\ \Sum_{i\in I} Y\otimes X_i \ar@{.>}[rr]_{\phi}&& Y\otimes (\Sum_{i\in I}X_i) }\]
 	\[\xymatrix{&X_i \otimes Y \ar[dl]_{k_i} \ar[dr]^{ h_i \otimes \id{Y}} \\ \Sum_{i\in I}  X_i \otimes Y \ar@{.>}[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \otimes Y}\]
 \end{definition}
+
+\begin{remark}\label{rem:salv}
+	There is a property of countably distributive categories which is worth to be pointed out. Let $\{X_i\}_{i\in I}$ and $\{Y_j\}_{j\in J}$ be two countable family of objects, then for every $i\in I$ there is an isomorphism $\phi_{i}\colon \sum_{j\in J}X_i\times Y_j\to X_i\times \sum_{j\in J} Y_j$ fitting in the following triangle, where $\alpha^j_j$ and $y_j$ are coprojections.
+	\[\xymatrix{& X_i\otimes Y_j \ar[dl]_{\alpha^i_j} \ar[dr]^{\id{X_i}\otimes y_j} \\ \Sum_{j\in J} X_i\otimes Y_j \ar[rr]_{\phi_i}&& X_i\otimes (\Sum_{j\in J}Y_j) }\]
+	
+	Moreover, we also have an isomorphism $\psi\colon \sum_{i\in I}(X_i\otimes \sum_{j\in J}Y_j)\to (\sum_{i\in I}X_i) \otimes (\sum_{j\in J} Y_j)$ as in the triangle below, where, again, $\beta_i$ and $x_i$ are coprojections.
+	\[\xymatrix{&X_i \otimes \Sum_{j\in J}Y_j \ar[dl]_{\beta_i} \ar[dr]^{ x_i \otimes \sum_{j\in J} \id{Y_j}} \\ \Sum_{i\in I} ( X_i \otimes \Sum_{j\in J}Y_j) \ar[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \otimes (\Sum_{j\in J}Y_j)}\]
+		
+		Now, since coproducts commute with coproducts, in every category there is a third isomorphism $\theta \colon \sum_{(i,j)\times I\times J}(X_i\otimes Y_j) \to \sum_{i\in I}\sum_{j\in J}(X_i\otimes Y_j)$ making the following diagram commutative, in which all arrows besides $\theta$ are coprojections.
+		\[\xymatrix{\Sum_{(i,j)\times I\times J}(X_i\otimes Y_j)  \ar[r]^-{\theta}& \Sum_{i\in I}\Sum_{j\in J}(X_i\otimes Y_j) \\ X_i\otimes Y_j  \ar[r]_{\alpha^i_j} \ar[u]^-{\delta_{i,j}}& \Sum_{j\in J}(X_i\otimes J) \ar[u]_-{\gamma_i}}\]
+		
+		Putting all these morphisms together, we get the following diagram.
+	\[\xymatrix@C=38pt{\Sum_{(i,j)\in I\times J} (X_i\otimes Y_j) \ar[d]_{\theta}\\ \Sum_{i\in I} \Sum_{j\in J} (X_i\otimes Y_j) \ar[r]^-{\sum_{i\in I}\phi_i}& \Sum_{i\in I}(X_i\otimes \Sum_{j\in J} Y_j) \ar[dr]^-{\psi} \\ \Sum_{j\in J}  (X_i\otimes Y_j) \ar[r]^{\phi_i} \ar[u]^-{\gamma_{i}} & X_i\otimes \Sum_{j\in J} Y_j \ar[u]^-{\beta_i}\ar[r]^-{x_i\otimes \sum_{j\in J}\id{Y_j}}&  (\Sum_{i\in I}X_i) \otimes (\Sum_{j\in J}Y_j)\\X_i\otimes Y_j \ar@/^1.7cm/[uuu]^-{\delta_{i,j}} \ar[u]^{\alpha^i_j} \ar[ur]_{\hspace{3pt}\id{X_i}\otimes y_j} \ar@/_1cm/[urr]_{x_i\otimes y_j}}\]
+	
+
+Summing up, we have just proved that $((\sum_{i\in I}X_i) \otimes (\sum_{j\in J} Y_j), \{x_{i}\otimes y_j\}_{I\times J})$
+ is a coproduct for the family $\{x_i\otimes y_j\}_{(i,j)\in I\times J}$.
+\end{remark}
 
 We cite the following, fundamental, result proved in \cite{lack2010note}.
 
