@@ -1,0 +1,58 @@
+\section{Hypergraphs with equivalences}
+
+\begin{definition}
+	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $C_\mathcal{G}$ is the object of \emph{equivalence classes} and $q_{\mathcal{G}}: V_{\mathcal{G}}\to C_{\mathcal{G}}$ is an epimorphism called \emph{quotient map}. A morphism $h:\mathcal{G\to H}$ is a triple $(h_E, h_V, h_C)$ such that the following diagrams commute.
+	\[\xymatrix{
+		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {C_{\mathcal{G}}} \ar[d]^{h_C} \\
+		{E_\mathcal{H}}\ar[r]_{s_\mathcal{H}} & {V_{\mathcal{H}}^\star}	& {E_\mathcal{H}}\ar[r]_{t_\mathcal{H}} & {V_{\mathcal{H}^\star}}& {V_\mathcal{H}}\ar[r]_{q_\mathcal{H}} & {C_\mathcal{H}}
+	}\]
+	The category of hypergraphs with equivalences and their morphisms is denoted $\EqHyp$.
+
+\end{definition}
+
+\begin{remark}\label{rem:eqhyp_morphs}
+	Morphisms of hypergraphs with equivalences are uniquely determined by the first two components. That is, if $h_1 = (h_E, h_V, f)$ and $h_2 = (h_E, h_V, g)$ are two morphisms $\mathcal{G \to H}$, then we have
+	\[\xymatrix{
+			{V_\mathcal{G}} \ar[r]^{h_V}\ar[d]_{q_\mathcal{G}} & V_\mathcal{H} \ar[d]^{q_\mathcal{H}} & V_\mathcal{G}\ar[l]_{h_V}\ar[d]^{q_\mathcal{G}}\\
+			C_{\mathcal{G}}\ar[r]_{f} & C_{\mathcal{H}} & C_{\mathcal{G}}\ar[l]^{g}
+	}\]
+	Hence,
+	\begin{align*}
+		f \circ q_\mathcal{G} &= q_\mathcal{H}\circ h_V \\ &=g\circ q_\mathcal{G}
+	\end{align*}
+	Since $q_\mathcal{G}$ is epi, we obtain $f = g$.
+\end{remark}
+
+$\EqHyp$ has a forgetful functor $U_{\EqHyp}:\EqHyp \to \Set$, which sends each $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ into $V_\mathcal{G}$, and each $h = (h_E, h_V, h_C)$ onto $h_V$. 
+
+\begin{proposition}
+	$U_\EqHyp$ has a left adjoint $\Delta_{\EqHyp}: \Set \to \EqHyp$.
+\end{proposition}
+
+\begin{proof}
+	For each set $X$, define $\Delta_\EqHyp(X):= (\emptyset, X, \{\bullet\}, ?_X, ?_X, !_X)$. Consider now $h: \Delta_{\EqHyp}(X) \to \mathcal{H}$.
+	\[\xymatrix@C=2.3cm{
+			\Delta_{\EqHyp}(X) \ar@{.>}[d]_{\Delta_\EqHyp(f)} \ar[dr]^{h} & \\
+			\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
+	}\]
+	Where $\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) = (\emptyset, V_\mathcal{H}, \{\bullet\}, ?_{V_\mathcal{H}}, ?_{V_\mathcal{H}}, !_{V_\mathcal{H}})$ and $\epsilon_{\mathcal{H}} = (?_{E_\mathcal{H}}, \id{V_\mathcal{H}}, g)$.
+	Note that, since $\Delta_{\EqHyp}(X)$ has the empty set as object of edges, $h_E = ?_{E_\mathcal{H}}$, then, the unique arrow that fits in the diagram is $\Delta_{\EqHyp}(f) = (?_{E_\mathcal{H}}, h_V, \id{\{\bullet\}})$.
+
+\end{proof}
+
+We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotient part, mapping each hypergraph with equivalence $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ onto $T(\mathcal{G})=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_\mathcal{G}, t_{\mathcal{G}})$. Then, we have the following result.
+
+\begin{proposition}
+	$T$ has a left adjoint $L: \hyp \to \EqHyp$.
+\end{proposition}
+
+\begin{proof}
+	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := \mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
+	\[\xymatrix@C=2.3cm{
+		L(\mathcal{G}) \ar@{.>}[d]_{L(f)} \ar[dr]^{h}\\ L(T(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
+	}\]
+	Where $L(T(\mathcal{H}))=(E_\mathcal{H}, V_{\mathcal{H}}, \{\bullet\}, s_\mathcal{H}, t_\mathcal{H}, !_{V_\mathcal{H}})$. Then, $\epsilon_\mathcal{H} = (\id{E_\mathcal{H}}, \id{V_\mathcal{H}}, h_C)$ (recall that by \Cref{rem:eqhyp_morphs}, the last component is uniquely determined by the first two), and $L(f)$ must be $(h_E, h_V, \id{\{\bullet\}})$.
+\end{proof}
+
+
+
