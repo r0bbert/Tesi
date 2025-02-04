@@ -37,9 +37,23 @@ $\EqHyp$ has a forgetful functor $U_{\EqHyp}:\EqHyp \to \Set$, which sends each 
 			\Delta_{\EqHyp}(X) \ar@{.>}[d]_{\Delta_\EqHyp(f)} \ar[dr]^{h} & \\
 			\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
 	}\]
-	Where $\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) = (\emptyset, V_\mathcal{H}, \{\bullet\}, ?_{V_\mathcal{H}}, ?_{V_\mathcal{H}}, !_{V_\mathcal{H}})$ and $\epsilon_{\mathcal{H}} = (?_{E_\mathcal{H}}, id_{V_\mathcal{H}}, g)$.
-	Note that, since $\Delta_{\EqHyp}(X)$ has the empty set as object of edges, $h_E = ?_{E_\mathcal{H}}$, then, the unique arrow that fits in the diagram is $\Delta_{\EqHyp}(f) = (?_{E_\mathcal{H}}, h_V, id_{\{\bullet\}})$.
+	Where $\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) = (\emptyset, V_\mathcal{H}, \{\bullet\}, ?_{V_\mathcal{H}}, ?_{V_\mathcal{H}}, !_{V_\mathcal{H}})$ and $\epsilon_{\mathcal{H}} = (?_{E_\mathcal{H}}, \id{V_\mathcal{H}}, g)$.
+	Note that, since $\Delta_{\EqHyp}(X)$ has the empty set as object of edges, $h_E = ?_{E_\mathcal{H}}$, then, the unique arrow that fits in the diagram is $\Delta_{\EqHyp}(f) = (?_{E_\mathcal{H}}, h_V, \id{\{\bullet\}})$.
 
+\end{proof}
+
+We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotient part, mapping each hypergraph with equivalence $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ onto $T(\mathcal{G})=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_\mathcal{G}, t_{\mathcal{G}})$. Then, we have the following result.
+
+\begin{proposition}
+	$T$ has a left adjoint $L: \hyp \to \EqHyp$.
+\end{proposition}
+
+\begin{proof}
+	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := \mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
+	\[\xymatrix@C=2.3cm{
+		L(\mathcal{G}) \ar@{.>}[d]_{L(f)} \ar[dr]^{h}\\ L(T(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
+	}\]
+	Where $L(T(\mathcal{H}))=(E_\mathcal{H}, V_{\mathcal{H}}, \{\bullet\}, s_\mathcal{H}, t_\mathcal{H}, !_{V_\mathcal{H}})$. Then, $\epsilon_\mathcal{H} = (\id{E_\mathcal{H}}, \id{V_\mathcal{H}}, h_C)$ (recall that by \Cref{rem:eqhyp_morphs}, the last component is uniquely determined by the first two), and $L(f)$ must be $(h_E, h_V, \id{\{\bullet\}})$.
 \end{proof}
 
 
