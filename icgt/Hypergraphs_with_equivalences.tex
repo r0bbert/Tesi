@@ -50,12 +50,18 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 \end{proposition}
 
 \begin{proof}
-	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := \mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
+	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
 	\[\xymatrix@C=2.3cm{
 		L(\mathcal{G}) \ar@{.>}[d]_{L(f)} \ar[dr]^{h}\\ L(T(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
 	}\]
 	Where $L(T(\mathcal{H}))=(E_\mathcal{H}, V_{\mathcal{H}}, \{\bullet\}, s_\mathcal{H}, t_\mathcal{H}, !_{V_\mathcal{H}})$. Then, $\epsilon_\mathcal{H} = (\id{E_\mathcal{H}}, \id{V_\mathcal{H}}, h_C)$ (recall that by \Cref{rem:eqhyp_morphs}, the last component is uniquely determined by the first two), and $L(f)$ must be $(h_E, h_V, \id{\{\bullet\}})$.
 \end{proof}
+
+\begin{remark}
+	$T$ is faithful. Indeed, consider two morphisms $h = (h_E, h_V, h_C)$ and $k = (k_E, k_V, k_C)$, and suppose $T(h) = T(k)$, that is, $(h_E, h_V) = (k_E, k_V)$.
+	By \Cref{rem:eqhyp_morphs}, we can conclude also $h_C = k_C$, and hence the faithfulness of $T$.
+\end{remark}
+
 
 
 
