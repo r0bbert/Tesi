@@ -96,4 +96,41 @@ Let now $K: \EqHyp \to \Set$ be the functor which sends each hypergraph with equ
 	
 \end{proof}
 
+\begin{corollary}\label{cor:mono1}
+	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ is mono if and only if $T(h)$ is mono.
+\end{corollary}
 
+\begin{proof}
+	The ``if'' part is given by the faithfulness of $T$.
+	The ``only if'' part is given by \Cref{rem:eqhyp_morphs}.
+\end{proof}
+
+\begin{corollary}\label{cor:mono2}
+	If $h = (h_E, h_V, h_C): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
+\end{corollary}
+
+\begin{proof}
+	If $h$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. Suppose now $f, g: \mathcal{H\rightrightarrows K}$ be the arrows equalized by $h$. Then, we have:
+	\begin{align*} f_C \circ h_C \circ q_\mathcal{G} &= f_C\circ q_\mathcal{H} \circ h_V\\&=q_\mathcal{K}\circ g_V \circ h_V\\&=q_\mathcal{K}\circ f_V \circ h_V\\&=g_C \circ h_C \circ q_\mathcal{G} \end{align*}
+	Since $q_\mathcal{G}$ is epi, we have $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, and thus a monomorphism.
+\end{proof}
+
+\begin{proposition}
+	Let $h = (h_E, h_V, h_C): \mathcal{G \to H}$ be a regular monomorphism in $\EqHyp$.
+	Then, $h_E$ and $h_V$ are monos and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{H}\circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$.
+\end{proposition}
+
+\begin{proof}
+	By \Cref{cor:mono2}, we have that $h_E, h_V$ and $h_C$ are all monos.
+	Hence, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$ if and only if it is the kernel pair also of $h_C \circ q_\mathcal{G}$, since $h_C$ is mono by hypothesis.
+	The thesis follows from $h_C \circ q_\mathcal{G} = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
+\end{proof}
+
+
+\begin{remark}
+    It is possible to restate the last proposition, by \Cref{ex:kernel_pairs_in_Set}, as 
+    \begin{displayquote}
+    \textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
+    \end{displayquote}
+    That is, a regular monomorphism in $\EqHyp$ is a morphism that reflects equivalences besides preserving them.
+\end{remark}
