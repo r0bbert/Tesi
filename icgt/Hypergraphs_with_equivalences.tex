@@ -62,6 +62,75 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 	By \Cref{rem:eqhyp_morphs}, we can conclude also $h_C = k_C$, and hence the faithfulness of $T$.
 \end{remark}
 
+Let now $K: \EqHyp \to \Set$ be the functor which sends each hypergraph with equivalence $\mathcal{G} = (E, V, C, s, t, q)$ onto $K(\mathcal{G}) = C$, and each morphsism $(h_E, h_V, h_C)$ to $h_C$.
+
+\begin{proposition}
+	\EqHyp is complete and cocomplete, and $T$ preserves limits and colimits.
+\end{proposition}
+
+\begin{proof}
+	Let $D: \cat{I}\to \EqHyp$ be a diagram, and, for each $i \in \cat{I}$, $D(i) = (E_i, V_i, C_i, s_i, t_i, q_i)$.
+	Suppose now $(E, V, s, t)$, together with morphisms $(\pi_i^E, \pi_i^V)$, be the limit of $T \circ D$.
+	Then, $V$, together with $(q_i\circ \pi_V^i)_{i\in \cat I}$, is a cone for $K \circ D$. Indeed, let $\alpha: i \to j$ be an arrow of $\cat I$, $D(\alpha) = (h_E,h_V, h_C)$.
+	By definition of $T$, $(T \circ D)(\alpha) = (h_E, h_V)$, hence we have the following situation.
+	\[\xymatrix{
+		& V \ar[dl]_{\pi_V^i} \ar[dr]^{\pi_V^j} & \\V_i\ar[rr]^{h_V}\ar[d]_{q_i}&&V_j\ar[d]^{q_j}\\C_i\ar[rr]_{h_C}&&C_j
+	}\]
+	Suppose now that $L$, with morphisms $(l_i)_{i\in \cat I}$ be the limit of $K\circ D$. Hence, we have an arrow $l:V \to L$, which is not epi in general.
+	Let then $l = m \circ q$ be the epi-mono factorization of it. Consider the following situation, where the outer rectangle commutes by definition, and the dotted arrow is yielded by ({\color{red}cite left lifting prop}).
+	\[\xymatrix{
+			V\ar[r]^{\pi_V^i}\ar[d]_{q}&V_i\ar[r]^{q_i}&C_i\ar[d]^{\id{C_i}}\\C\ar[r]_{m}\ar@{.>}[urr]^{\pi_C^i}&L\ar[r]_{l_i}&{C_i}
+	}\]
+	Thus, $(E, V, C, s, t, q)$, together with $(\pi_E^i, \pi_V^i, \pi_C^i)$ is a cone over $D$. {\color{red} remain to show that this cone is terminal}
+	
+	Suppose now $(E', V', s', t')$, together with $(\kappa_E^i, \kappa_V^i)_{i \in \cat I}$, be the colimit of $T \circ D$, and $C'$, with $(c_i)_{i \in \cat I}$ be the colimit of $K \circ D$.
+	Then, we have the folliwing situation.
+	\[\xymatrix{
+								  &  {V'} &                             \\
+		V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
+		C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
+								  &  {C'} &
+	}\]
+	Then, $C'$ with morphisms $(c_i \circ q_i)_{i\in \cat I}$ is a conone for $U \circ D$. Then, there exists a unique morphism $q': V' \to C'$ such that $q'\circ \kappa_V^i = c_i\circ q_i$.
+	Such morphism is epi ({\color{red}cite Lemma 1.3.45 of the thesis}), and thus $(E', V', C', s', t', q')$, together with $(\kappa_E^i, \kappa_V^i, c_i)_{i\in \cat I}$ is the colimit of $D$.
+	
+\end{proof}
+
+\begin{corollary}\label{cor:mono1}
+	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ is mono if and only if $T(h)$ is mono.
+\end{corollary}
+
+\begin{proof}
+	The ``if'' part is given by the faithfulness of $T$.
+	The ``only if'' part is given by \Cref{rem:eqhyp_morphs}.
+\end{proof}
+
+\begin{corollary}\label{cor:mono2}
+	If $h = (h_E, h_V, h_C): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
+\end{corollary}
+
+\begin{proof}
+	If $h$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. Suppose now $f, g: \mathcal{H\rightrightarrows K}$ be the arrows equalized by $h$. Then, we have:
+	\begin{align*} f_C \circ h_C \circ q_\mathcal{G} &= f_C\circ q_\mathcal{H} \circ h_V\\&=q_\mathcal{K}\circ g_V \circ h_V\\&=q_\mathcal{K}\circ f_V \circ h_V\\&=g_C \circ h_C \circ q_\mathcal{G} \end{align*}
+	Since $q_\mathcal{G}$ is epi, we have $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, and thus a monomorphism.
+\end{proof}
+
+\begin{proposition}
+	Let $h = (h_E, h_V, h_C): \mathcal{G \to H}$ be a regular monomorphism in $\EqHyp$.
+	Then, $h_E$ and $h_V$ are monos and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{H}\circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$.
+\end{proposition}
+
+\begin{proof}
+	By \Cref{cor:mono2}, we have that $h_E, h_V$ and $h_C$ are all monos.
+	Hence, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$ if and only if it is the kernel pair also of $h_C \circ q_\mathcal{G}$, since $h_C$ is mono by hypothesis.
+	The thesis follows from $h_C \circ q_\mathcal{G} = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
+\end{proof}
 
 
-
+\begin{remark}
+    It is possible to restate the last proposition, by \Cref{ex:kernel_pairs_in_Set}, as 
+    \begin{displayquote}
+    \textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
+    \end{displayquote}
+    That is, a regular monomorphism in $\EqHyp$ is a morphism that reflects equivalences besides preserving them.
+\end{remark}
