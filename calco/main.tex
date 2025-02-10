@@ -1,0 +1,1431 @@
+\documentclass[runningheads,envcountsect]{lipics-v2021}
+
+\usepackage{stmaryrd}
+\usepackage{bbding}
+%\Envelope
+\newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
+\usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont} %simboli matematici
+\usepackage[all, cmtip]{xy}
+
+\usepackage[utf8]{inputenc} % Input encoding - per caratteri particolari
+%\usepackage[english]{babel} % Lingua principale inglese
+\usepackage{graphicx} % Per includere immagini esterne
+\usepackage[tickmarkheight=.5em,textwidth=\marginparwidth,textsize=small]{todonotes}
+\usepackage{mathtools}
+\usepackage{csquotes}
+
+
+\usepackage{hyperref, cleveref}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+% General Setting diagrams
+%\usepackage{tikz-cd} %diagrammi
+%\tikzcdset{row sep/normal=5em}
+%\tikzcdset{column sep/normal=5em}
+%\tikzcdset{every label/.append style = {font = \small}}
+
+%\spnewtheorem*{notation}{Notation}{\bfseries}{}
+%\spnewtheorem*{convention}{Convention}{\bfseries}{}
+
+
+
+%funtori
+\usepackage[usestackEOL]{stackengine}
+\newcommand\functorop[1][l]{\csname#1functor\endcsname}
+\newcommand\lfunctorop[3]{%
+	\setbox0=\hbox{$#2$}%
+	\kern\wd0%
+	\ensurestackMath{\Centerstack[c]{#1\\ \mathllap{#2\;\,}\mathclap{\DownArrow}\\#3}}%
+}		
+\newcommand\rfunctorop[3]{%
+	\setbox0=\hbox{$#2$}%
+	\ensurestackMath{\Centerstack[c]{#1\\\mathclap{\UpArrow}\mathrlap{\,\;#2}\\#3}}%
+	\kern\wd0%
+}
+\newcommand\functoropmapsto{\mathrel{\ensurestackMath{\Centerstack[c]{\longmapsto\\ \\\longmapsto}}}}
+\setstackgap{L}{1.3\normalbaselineskip}
+\newcommand\UpArrow{\rotatebox[origin=c]{90}{$\longrightarrow$\,}}
+\newcommand\DownArrow{\rotatebox[origin=c]{-90}{$\longrightarrow$\,}}
+\newcommand\functor[1][l]{\csname#1functor\endcsname}
+\newcommand\lfunctor[3]{%
+	\setbox0=\hbox{$#2$}%
+	\kern\wd0%
+	\ensurestackMath{\Centerstack[c]{#1\\ \mathllap{#2\;\,}\mathclap{\DownArrow}\\#3}}%
+}
+\newcommand\rfunctor[3]{%
+	\setbox0=\hbox{$#2$}%
+	\ensurestackMath{\Centerstack[c]{#1\\\mathclap{\DownArrow}\mathrlap{\,\;#2}\\#3}}%
+	\kern\wd0%
+}
+\newcommand\functormapsto{\mathrel{\ensurestackMath{\Centerstack[c]{\longmapsto\\ \\\longmapsto}}}}
+\setstackgap{L}{1.3\normalbaselineskip}
+
+\newcommand{\lgh}{\mathsf{lg}}
+
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+
+\newcommand{\Ob}{\mathcal{O}b}
+\newcommand{\Hom}{\mathcal{H}om}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Reg}{\mathcal{Reg}}
+\newcommand{\Mono}{\mathcal{Mono}}
+\newcommand{\initial}{\mymathbb{0}}
+\newcommand{\terminal}{\mathds{1}}
+\newcommand{\eg}[1]{\mathbf{EqGraph}_{\textbf {\textup{#1}}}}
+\newcommand{\egg}[1]{\mathbf{EGG}_{\textbf {\textup{#1}}}}
+
+\makeatletter
+\def\@citecolor{blue}%
+\def\@urlcolor{blue}%
+\def\@linkcolor{blue}%
+\def\UrlFont{\rmfamily}
+\def\orcidID#1{\smash{\href{http://orcid.org/#1}{\protect\raisebox{-1.25pt}{\protect\includegraphics{orcid_color.eps}}}}}
+\makeatother
+
+
+
+\def\R{\mathsf{R}}
+\def\B{\textbf {\textup{B}}}
+\def\C{\textbf {\textup{C}}}
+\def\D{\textbf {\textup{D}}}
+\def\X{\textbf {\textup{X}}}
+\def\Y{\textbf {\textup{Y}}}
+\def\E{\textbf {\textup{E}}}
+\def\T{\textbf {\textup{1}}}
+\def\A{\textbf {\textup{A}}}
+\def\M{\mathcal{M}}
+%categorie varie
+\newcommand{\catname}[1]{\textbf{\textup{#1}}}
+\newcommand{\lab}{\catname{LHyp}}
+\newcommand{\hyp}{\catname{Hyp}}
+\newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
+\newcommand{\EqHyp}{\catname{EqHyp}} %equivalence hypergraphs
+\newcommand{\gr}{\textbf{\textup{Graph}}}
+\newcommand{\dgr}{\catname{SGraph}}
+\newcommand{\dg}{\catname{DAG}}
+\newcommand{\rt}{\mathsf{dcl_s}}
+\newcommand{\rta}{\mathsf{dcl}}
+\newcommand{\rtd}{\mathsf{dcl_{d}}}
+\newcommand{\slice}[2]{(\catname{#1}\downarrow{#2})}
+\newcommand{\tg}[0]{\catname{TG}_{\Sigma}}
+\newcommand{\teg}[0]{\catname{TeGr}_{\Sigma}}
+\newcommand{\sv}[0]{\mathsf{Sieves}}
+\newcommand{\mono}[1]{\mathsf{Mon}(\catname{#1})}
+\newcommand{\mo}[1]{{#1}_\mathsf{Mon}}
+\newcommand{\pro}{\mathsf{prod}}
+\newcommand{\spro}{\mathsf{ps}}
+\newcommand{\prol}{\mathsf{lprod}}
+\newcommand{\pred}[1]{{\downarrow}#1}
+\newcommand{\colim}[0]{\mathrm{colim}}
+\newcommand{\cod}{\mathsf{cod}}
+\renewcommand{\sp}{\mathsf{sp}}
+\renewcommand{\sup}{\mathsf{sup}}
+\newcommand{\cow}[1]{\mathsf{cwd}({#1})}
+\renewcommand{\inf}{\mathsf{inf}}
+\newcommand{\dom}{\mathsf{dom}}
+\newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
+\newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
+
+\newcommand{\ari}{\mathsf{ar}}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+
+
+\newcommand{\upstr}[1] { {#1}^{\uparrow }}
+\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}#2}
+\newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
+
+
+%sommatoria e prodotto per xy
+
+\usepackage{relsize}
+\newcommand{\Sum}{\mathlarger{\sum}}
+\newcommand{\Prod}{\mathlarger{\prod}}
+
+\bibliographystyle{abbrv}
+
+%frecce
+\newcommand{\mor}{\mathsf{Mor}}
+\newcommand{\mon}{\mathsf{Mono}}
+\newcommand{\reg}{\mathsf{Reg}}
+\newcommand{\mto}{\rightarrowtail}
+\newcommand{\eto}{\twoheadrightarrow}
+\newcommand{\id}[1]{\mathsf{id}_{#1}}
+
+
+
+\title{On the adhesivity properties of equivalence graphs\thanks{???????}}
+
+%\titlerunning{????} %TODO optional, please use if title is longer than one line
+
+%% Author with single affiliation.
+%\author{Roberto Biondo \inst{1}{\small\Envelope}\and Davide Castelnovo\inst{1}\orcidID{0000-0002-5926-5615}
+	%\and \\Fabio Gadducci\inst{1}\orcidID{0000-0003-0690-3051}
+%}
+%\institute{Dept.~of Computer Science, University of Pisa, Italy. 
+	%\email{r.biondo@studenti.unipi.it},
+	%\email{castelnovod@gmail.com},
+	% \email{fabio.gadducci@unipi.it}
+%}
+
+
+
+
+
+
+\authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
+
+
+\begin{document}
+
+
+\tikzset{->-/.style={decoration={
+			markings,
+			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+	\maketitle \todo{Scegliere un titolo vero e mettere i ringraziamenti}
+	\begin{abstract}
+\todo{a very nice abstract}
+	\end{abstract}
+
+
+\section{Introduction}
+\todo{A very nice introduction}
+\section{$\mathcal{M}$-adhesive categories}
+
+
+This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
+
+%\begin{notation}
+Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we will denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one.
+%\end{notation}
+
+\subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
+The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. 
+
+In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is called
+\begin{itemize}
+	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one  below, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
+	\[\xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}\]
+		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.
+\end{itemize}
+
+\begin{definition}
+	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the following diagram.
+	
+		\[
+	\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }\]
+	
+	We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
+		\begin{enumerate}
+			\item it is a pushout square;
+			\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
+			if and only if the front and right faces are pullbacks.
+	\end{enumerate}
+
+
+	Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}. A $\mor(\X)$-Van Kampen square is called  \emph{Van
+		Kampen} and a $\mor(\X)$-stable square  \emph{stable}.
+\end{definition}
+
+We can now define $\mathcal{M}$-adhesive categories.
+
+\begin{definition}
+	Let $\X$ be a category and $\mathcal{M}$ a subclass of
+	$\mon(\X)$  including  all isomorphisms, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	\begin{enumerate}
+		\item it has \emph{$\mathcal{M}$-pullbacks}, i.e.~pullbacks along arrows of $\mathcal{M}$;
+		\item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
+		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
+	\end{enumerate}
+	
+	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
+	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+\end{definition}
+
+
+
+\begin{remark}
+	\label{rem:salva}
+	\emph{Adhesivity} and \emph{quasiadhesivity} 
+	\cite{lack2005adhesive,garner2012axioms} coincide with strict
+	$\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity,
+	respectively.
+\end{remark}
+
+
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
+
+\begin{theorem}
+	\label{thm:slice-functors}
+	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category, then the following hold true:
+	\begin{enumerate}
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
+		\item for every object $X$
+		the categories $\X/X$  and $X/X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
+		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
+		\mathcal{M}\} \hspace{5pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
+		\item for every small category $\Y$, the category $\X^\Y$ of
+		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
+		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
+		\mathcal{M} \text{ for every } Y\in \Y\}$;
+		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ and  stable under pullbacks, pushout, containing all isomorphism and closed under composition and decomposition.
+	\end{enumerate} 
+\end{theorem}
+
+We will briefly list some examples of $\mathcal{M}$-adhesive categories.
+
+\begin{example}
+	\label{ex:adhesive}
+	$\cat{Set}$ is adhesive, and, more generally, every topos is
+	adhesive~\cite{lack2006toposes}. By the closure properties above, every presheaf $[\cat{X},\cat{Set}]$ is adhesive, thus the category
+	$\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is adhesive
+	where $E \rightrightarrows {V}$ is the two objects category with two
+	morphisms $s,t \colon{E} \to {V}$. Similarly, various
+	categories of hypergraphs can be shown to be adhesive, such as term
+	graphs and hierarchical graphs~\cite{CastelnovoGM24}. Note that the category $\cat{sGraphs}$ of simple graphs, 
+	i.e.~graphs without parallel edges, is
+	$\reg{(\cat{sGraphs})}$-adhesive~\cite{BehrHK23} but not
+	quasiadhesive.
+\end{example}
+
+
+\begin{remark}\label{rem:deco}
+	We can point out an important property of strict $\mathcal{M}$-adhesive categories with pullbacks and consider the $\mathcal{M}$-pushout square below.
+	\[\xymatrix{A \ar[r]^{f} \ar@{>->}[d]_{m}& B \ar@{>->}[d]^{n}\\ C \ar[r]_{g} & D}\]
+	
+	Given an arrow $d\colon X\to D$, we can present the object $X$ has a pushout: indeed, consider the following cube, in which all the three vertical squares are pullbacks.
+	\[
+	\xymatrix@C=15pt@R=9pt{&V\ar[dd]|\hole_(.65){a}\ar[rr]^{v} \ar@{>.>}[dl]_{u} && Y \ar[dd]^{b} \ar@{>->}[dl]_{y} \\ Z  \ar[dd]_{c}\ar[rr]^(.7){z} & & X \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{g} & & D }\]
+
+Now, notice that, since the front square is a pullback, then the dotted arrow $u\colon V\to Z$ exists. Moreover, the usual composition and decomposition property of pullbacks \cite{mac2013categories} entails that the left face of the cube so obtained is a pullback too, proving that $u$ is in $\mathcal{M}$ and that the top square is a pushout.
+
+	Clearly if the arrow $p\colon X\to D$ is in $\mathcal{M}$, we can omit the assumptions of strictness and the existence of all pullbacks.
+\end{remark}
+
+
+Finally, another  useful properties of $\mathcal{M}$-adhesive category are the following.
+\begin{proposition}\label{prop:regmono}
+	If $\X$ is $\mathcal{M}$-adhesive then the following are true:
+	\begin{enumerate}
+		\item every $\mathcal{M}$-pushout square is also a pullback;
+		\item every arrow in $\mathcal{M}$ is a regular mono.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout.
+		\[\xymatrix@C=15pt@R=9pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono, thus the Van Kampen property yields that the front and the right faces are pullbacks too and the thesis follows.
+		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback.
+		\[\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}\]
+		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.  
+	\end{enumerate}
+\end{proof}
+
+\subsection{Kernel Pairs and Regular Epimorphisms}
+
+\begin{definition}[Kernel Pair]
+    A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f : K_f \to A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
+    \[
+        \begin{tikzcd}
+            K_f \ar[r, "{\pi^1_f}"] \ar[d, "{\pi^2_f}" swap] & A \arrow[d, "f"] \\
+            A \ar[r, "f"swap] & B
+        \end{tikzcd}
+    \]
+\end{definition}
+
+\begin{remark}
+	If a category $\cat{C}$ has pullbacks then every arrow has a kernel pair.
+\end{remark}
+
+\begin{remark}
+    Since a kernel pair is nothing more that a pullback, that is, a limit, by \Cref{rem:limits_are_unique_up_to_isomorphisms}, it make sense to refer to it as \emph{the} kernel pair for a morphism $f$.
+\end{remark}
+
+\begin{example}\label{ex:kernel_pairs_in_Set}
+    In $\Set$, a kernel pair for a function $f: A\to B$ is the set
+    \[
+        K_f=\{(x, y) \in A \times A \mid f(x) = f(y)\}
+    \]
+    together with the canonical projection on the first and the second component of the pairs.
+\end{example}
+
+\begin{proposition}\label{prop:pairng_of_kernel_pairs_mono}
+    Let $(K, p_1, p_2)$ be the kernel pair of $f: X \to Y$, and let $(X\times X, \pi_1, \pi_2)$ be the product of $X$ with itself. Then, the mediating arrow $\langle p_1, p_2\rangle : K \to X \times X$ is mono.
+\end{proposition}
+
+\begin{proof}
+	Suppose $\langle p_1, p_2 \rangle \circ f = \langle p_1, p_2 \rangle \circ g$ for $f, g: Z \to K$. Then, we have
+	\[
+		\begin{split}
+			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
+			\pi_1 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_1 \circ \langle p_1, p_2 \rangle \circ g \\
+			p_1 \circ f &= p_1 \circ g
+		\end{split}
+		\qquad
+		\begin{split}
+			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
+			\pi_2 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_2 \circ \langle p_1, p_2 \rangle \circ g \\
+			p_2 \circ f &= p_2 \circ g
+		\end{split}
+	\]
+	Thus, from the universal property of the pullback, $f = g$.   
+\end{proof}
+
+\begin{proposition}\label{prop:kermono}
+	An arrow $m\colon M\to X$ is mono if and only if $(M, MM, \id{M})$ is a kernel pair for it.
+\end{proposition}
+
+\begin{proof}
+    To prove the ``if'' part of the statement, let $f, g: A \to M$ be such that $m\circ f = m\circ g$, and consider the following situation.
+    \[
+        \begin{tikzcd}[row sep=26, column sep = 26]
+        A \arrow[drr, bend left=30, "f"] \arrow[ddr, bend right=30,"g" swap] \arrow[dr, dashed, "u"] & & \\
+        & M  \arrow[d, "{\id{M}}"] \arrow[r, "{\id{M}}"] & M \arrow[d, "m"] \\
+        & M  \arrow[r, "m" swap] & X
+        \end{tikzcd}
+    \]
+    For the universal property of pullbacks, we have that $$f  =  \id{M} \circ u =  g$$
+    Hence, $m$ is mono.
+
+    Conversely, if $m$ is mono, then, we have that
+    \begin{align*}
+        m \circ f = m \circ g   &\Rightarrow    f = g \\
+                                &\Rightarrow    f \circ \id{M} = g\circ \id{M}
+    \end{align*}
+    Hence, $f$ is the unique arrow that makes the commutative square illustrated above a pushout.   
+\end{proof}
+
+\begin{remark}\label{rem:monos_in_presh_cats}
+    From characterization of monos via pullbacks in \Cref{prop:kermono} and \Cref{lemma:limits_of_presheaves}, we have that a mono in a category of presheaves is a natural transformation of which each component is mono.
+\end{remark}
+
+\begin{corollary}\label{cor:kermono}
+	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$ if and only if, for each mono $m\colon Y\to Z$, $(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair also for $m\circ f$.
+\end{corollary}
+\begin{proof}
+    It is enough to see that, by \Cref{lemma:pullback_lemma} and \Cref{prop:kermono} the outer boundary of the following square is a pullback.
+        \[\begin{tikzcd}[row sep=13 pt, column sep=13 pt]
+    	{K_f} && X && X \\
+    	\\
+    	X && Y && Y \\
+    	\\
+    	X && Y && Z
+    	\arrow["{\pi_f^2}", from=1-1, to=1-3]
+    	\arrow["{\pi_f^2}"', from=1-1, to=3-1]
+    	\arrow["{id{X}}", from=1-3, to=1-5]
+    	\arrow["f", from=1-3, to=3-3]
+    	\arrow["f", from=1-5, to=3-5]
+    	\arrow["f", from=3-1, to=3-3]
+    	\arrow["{id_X}"', from=3-1, to=5-1]
+    	\arrow["{id_Y}", from=3-3, to=3-5]
+    	\arrow["{id_Y}", from=3-3, to=5-3]
+    	\arrow["m", from=3-5, to=5-5]
+    	\arrow["f"', from=5-1, to=5-3]
+    	\arrow["m"', from=5-3, to=5-5]
+    \end{tikzcd}\]
+    The leftward part of the statement follows by definition of monomorphism an \Cref{lemma:pullback_lemma}.   
+\end{proof}
+
+\begin{lemma}\label{lemma:kern_pairs_pres_pullbacks}
+    Suppose the following situation, and that $f: X \to Y$ and $g: Z \to W$ have kernel pairs.
+    \[
+        \begin{tikzcd}
+            X \ar[r, "h"] \ar[d, "f"swap] & Z \ar[d, "g"] \\
+            Y \ar[r, "t"swap] & W
+        \end{tikzcd}
+    \]
+    
+    Then, there exists a unique arrow $k_h: K_f \to K_g$ making the squares below commute.
+    \[
+        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
+            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^1}"swap] & K_g \ar[d, "{\pi_g^1}"] \\
+            X \ar[r, "h"swap] & Z 
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
+            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^2}"swap] & K_g \ar[d, "{\pi_g^2}"] \\
+            X \ar[r, "h"swap] & Z 
+        \end{tikzcd}
+    \]
+
+    Moreover, if the beginning square is a pullback, then also the preceding ones are so.
+\end{lemma}
+
+\begin{proof}
+    Computing, we have
+    \begin{align*}
+        g \circ h \circ \pi_f^1 &=  t \circ f \circ \pi_f^1     \\
+                                &=  t \circ f \circ \pi_f^2     \\
+                                &=  g \circ h \circ \pi_f^2
+    \end{align*}
+    By the universal property of $K_g$ as the pullback of $g$ along itself, such $k_h$ exists and it is unique.
+
+    To prove the second half of the thesis, let us consider the two rectangles below, which, by \Cref{lemma:pullback_lemma} are pullbacks.
+    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
+	{K_f} & X & Z \\
+	X & Y & W
+	\arrow["{\pi_f^1}", from=1-1, to=1-2]
+	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
+	\arrow["h", from=1-2, to=1-3]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["t"', from=2-2, to=2-3]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
+	{K_f} & X & Z \\
+	X & Y & W
+	\arrow["{\pi_f^2}", from=1-1, to=1-2]
+	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
+	\arrow["h", from=1-2, to=1-3]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["t"', from=2-2, to=2-3]
+    \end{tikzcd}
+    \]
+    But then the following ones are pullbacks too.
+    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
+	{K_f} & {K_g} & Z \\
+	X & Y & W
+	\arrow["{k_h}"', from=1-1, to=1-2]
+	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
+	\arrow["{\pi_g^2}"', from=1-2, to=1-3]
+	\arrow["{\pi_g^1}", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["h", from=2-1, to=2-2]
+	\arrow["g", from=2-2, to=2-3]
+        \arrow["{h\circ \pi_f^2}", from=1-1, to=1-3, bend left = 30]
+        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
+	{K_f} & {K_g} & Z \\
+	X & Y & W
+	\arrow["{k_h}"', from=1-1, to=1-2]
+	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
+	\arrow["{\pi_g^1}"', from=1-2, to=1-3]
+	\arrow["{\pi_g^2}", from=1-2, to=2-2]
+	\arrow["g", from=1-3, to=2-3]
+	\arrow["h", from=2-1, to=2-2]
+	\arrow["g", from=2-2, to=2-3]
+        \arrow["{h\circ \pi_f^1}", from=1-1, to=1-3, bend left = 30]
+        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
+    \end{tikzcd}
+    \]
+
+    The thesis follows again by \Cref{lemma:pullback_lemma}.   
+\end{proof}
+
+\begin{proposition}\label{prop:reg_epi_coeq}
+    Let $e: X \to Y$ be a regular epimorphism in a category $\cat C$ with a kernel pair $(K, \pi_1, \pi_2)$. Then, $e$ is the coequalizer of $\pi_1$ and $\pi_2$.
+\end{proposition}
+
+\begin{proof}
+    By hypothesis, there exists a pair $f, g: Z \to X$ of which $e$ is the coequalizer. Since $e \circ f = e \circ g$, we have
+    \[
+        \begin{tikzcd}[row sep= 20, column sep = 13]
+            Z \ar[drr, "f", bend left=30] \ar[ddr, "g"swap, bend right=30] \ar[dr, dashed, "k"] & & \\
+            & K \ar[r, "{\pi_1}"] \ar[d, "{\pi_2}" swap] & X \ar[d, "e"] \\
+            & X \ar[r, "e"swap] & Y
+        \end{tikzcd}
+    \]
+    thus there exists the unique $k: Z \to K$. Let now $h: Z \to V$ be an arrow such that $h \circ \pi_1 = h \circ \pi_2$, then
+    \begin{align*}
+        h \circ f &= h \circ \pi_1 \circ k \\
+                  &= h \circ \pi_2 \circ k \\
+                  &= h \circ g
+    \end{align*}
+    and thus there exists a unique $l: Y \to V$ such that $l \circ e = h$.   
+\end{proof}
+
+\begin{corollary}\label{cor:reg_epi_components_reg_epi_nat_trans}
+    Let $\cat C$ be a category with pullbacks and $\phi : D \dot\to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
+\end{corollary}
+
+\begin{proof}
+    Let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $\phi_i$ for each $i$. Given an arrow $\alpha: i \to j$ of $\cat I$, we have
+    \begin{align*}
+        \phi_j \circ D(\alpha) \circ \pi_i^1 &= D'(\alpha) \circ \phi_i \circ \pi_i^1 \\
+                                             &= D'(\alpha) \circ \phi_i \circ \pi_i^2 \\
+                                             &= \phi_j \circ D(\alpha) \circ \pi_i^2
+    \end{align*}
+    Thus, the outer boundary of the diagram below commutes, yielding the arrow $K(\alpha)$
+    \[
+        \begin{tikzcd}[row sep=26, column sep=26]
+            {K_i} \ar[r, "{\pi_i^1}"] \ar[d, "{\pi_i^2}"swap] \ar[dr, dashed, "{K(\alpha)}"] & D(i) \ar[dr, "{D(\alpha)}"] \\
+            D(i) \ar[dr, "{D(\alpha)}"swap] & K_j \ar[r, "{\pi_j^1}"] \ar[d, "{\pi_j^2}"swap] & D(j) \ar[d, "{\phi_j}"] \\
+            & D(j) \ar[r, "{\phi_j}"swap] & D'(j)
+        \end{tikzcd}
+    \]
+
+    In this way, we get a functor $K: \cat{I \to C}$, 
+    which maps each $i$ onto $K_i$ and each arrow $\alpha$ onto $K(\alpha)$. 
+	We have in fact $K(id_i) : K_i \to K_i$ is the arrow such that
+        \[
+            \begin{split}
+                D(id_i) \circ \pi_i^1 &= \pi_i^1 \circ K(id_i) \\
+                \pi_i^1 &= \pi_i^1 \circ K(id_i)
+            \end{split}
+                \qquad
+            \begin{split}
+                D(id_i) \circ \pi_i^2 &= \pi_i^2 \circ K(id_i) \\
+                \pi_i^2 &= \pi_i^2 \circ K(id_i)
+            \end{split}
+        \]
+	Thus, for the universal property of pullbacks, $K(id_i) = id_{K_i}$.
+
+        Suppose now $\alpha : i \to j$ and $\beta: j \to k$. Computing, we have
+        \[
+            \begin{split}
+                \pi_k^1 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^1 \\
+                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^1 \\
+                                                    &= D(\beta) \circ \pi_j^1 \circ K(\alpha) \\
+                                                    &= \pi_k^1 \circ K(\beta) \circ K(\alpha)
+            \end{split} \qquad
+            \begin{split}
+                \pi_k^2 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^2 \\
+                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^2 \\
+                                                    &= D(\beta) \circ \pi_j^2 \circ K(\alpha) \\
+                                                    &= \pi_k^2 \circ K(\beta) \circ K(\alpha)
+            \end{split}
+        \]
+        Again, for universal property of pullbacks, necessarily we have $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving functoriality of $K$.
+   
+    
+     Hence, we have two natural transformations $\pi^1, \pi^2 : E \dot\to D$. By \Cref{prop:reg_epi_coeq}, every component $\phi_i$ is the coequalizer of $\pi_i^1, \pi_i^2: E \to D$, and so $\phi$ is the coequalizer of $\pi^1$ and $\pi^2$.   
+\end{proof}
+
+\begin{lemma}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
+    Let $D, D': \cat{I \to C}$ be two diagrams, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. If $\cat C$ has all colimits, for diagrams of shape $\cat I$ and $\phi: D \dot\to D'$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $C$ to $C'$ (\Cref{prop:nat_tran_induces_unique_arrow_between_colimits}) is a regular epimorphism too.
+\end{lemma}
+
+\begin{proof}
+    By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi: D \dot\to D'$ is a regular epimorphism, so that there is a functor $E: \cat{I \to C}$ and $\eta, \theta: E \dot\to D$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $((p_i)_{i \in \cat I}, P)$ be the colimit of $E$, by \Cref{prop:nat_tran_induces_unique_arrow_between_colimits}, we have $a, b: P \to C$ fitting in the diagram below.
+    \[
+        \begin{tikzcd}[row sep = 26, column sep = 26]
+            E(i) \ar[r, "{p_i}"] \ar[d, "{\eta_i}"swap] & P \ar[d, dashed, "a"] \\
+            D(i) \ar[r, "{c_i}"swap] & C
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}[row sep = 26, column sep = 26]
+            E(i) \ar[r, "{p_i}"] \ar[d, "{\theta_i}"swap] & P \ar[d, dashed, "b"] \\
+            D(i) \ar[r, "{c_i}"swap] & C
+        \end{tikzcd}
+    \]
+
+    We want to show that $c$ coequalizes $\eta$ and $\theta$. Let thus $t: C \to T$ be an arrow such that $t \circ a = t \circ b$. Then, for every $i$, we have
+    \begin{align*}
+        t \circ c_i \circ \eta_i &= t \circ a \circ p_i \\
+                                 &= t \circ b \circ p_i \\
+                                 &= t \circ c_i \circ \theta_i
+    \end{align*}    
+
+    Thus, there is $t_i: D(i) \to T$ such that $t\circ c_i = t_i \circ \phi_i$. It is now easy to see that $((t_i)_{i \in \cat I}, T)$ is a cocone of $D'$: suppose $\alpha: i \to j$ be an arrow of $\cat I$, obtaining
+    \begin{align*}
+        t_i \circ \phi_i &= t \circ c_i \\
+                         &= t \circ c_j \circ D(\alpha) \\
+                         &= t_j \circ \phi_j \circ D(\alpha) \\
+                         &= t_j \circ D'(\alpha) \circ \phi_i
+    \end{align*}
+    By the hypothesis that $\phi_i$ is regular epi for each $i$, therefore epi (by the dual of \Cref{prop:eq_are_mono}), we can conclude $t_i = t_j \circ D'(\alpha)$.
+    
+    Hence, we have an arrow $k: C' \to T$ such that $k \circ c_i' = t_i$. But then
+    \begin{align*}
+        c \circ c \circ c_i &= k \circ c_i' \circ \phi_i \\
+                            &= t_i \circ \phi \\
+                            &= t \circ c_i
+    \end{align*}
+    Showing that $k \circ c = t$.
+
+    For the uniqueness, let $k': C' \to T$ be another arrow such that $k' \circ c = t$. Then we have
+    \begin{align*}
+        k' \circ c_i' \circ \phi_i &= k' \circ c \circ c_i \\
+                                   &= t \circ c_i \\
+                                   &= t_i \circ \phi_i
+    \end{align*}    
+    Since $\phi_i$ is a regular epimorphism, we have $k' \circ c_i' = t_i$, and, because $k \circ c_i' = t_i$ by construction, we can conclude that $k'=k$ since $((c_i')_{i \in \cat I}, C')$ is a colimit.   
+\end{proof}
+
+\input{./fact_sys}
+
+
+\section{Hypergraphical structures}\label{sec:hyper}
+
+In this section we briegly recall the notion \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,wadler1995monads}. We will recall some of its proprieties.
+
+\begin{proposition}
+	The following facts are true:
+	\begin{enumerate}
+		\item for every set $X$ and $n\in \mathbb{N}$ there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
+		\item for every arrow $f\colon X\to Y$, $f^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
+		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves all pullbacks and equalizers.
+	\end{enumerate}
+\end{proposition}
+
+\begin{remark}\label{rem:mono}
+	Preservation of pullbacks implies that $(-)^\star$ sends monos to monos.
+\end{remark}
+
+
+\subsection{The category of hypergraphs}
+
+We will start this section with the definition of hypergraphs and we will see how to label them with an algebraic signature.  
+
+
+\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the set of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
+	
+	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
+	We define $\hyp$ to be the resulting category.
+\end{definition}
+
+Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we can present $\hyp$ as a comma category.
+\begin{proposition}\label{prop:com}
+	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
+\end{proposition}
+\begin{proof}
+	 Define two functors $F\colon  \hyp \to \comma{\id{\Set}}{\pro^\star} $
+	and $G\colon \comma{\id{\Set}}{\pro^\star}\to \hyp$	 as follows 
+	\begin{align*}
+		\functor[l]{(E_\mathcal{{G}}, V_\mathcal{{G}}, s_\mathcal{{G}}, t_\mathcal{{G}})}{(f,g)}{\left(E_\mathcal{{H}}, V_\mathcal{{H}}, s_\mathcal{{H}}, t_\mathcal{{H}}\right)}
+		\functormapsto
+		\rfunctor{\left(E_\mathcal{{G}}, V_\mathcal{{G}}, 	\left(s_\mathcal{{G}}, t_\mathcal{{G}}\right)\right)}{(f, g) }{\left(E_\mathcal{{H}}, V_\mathcal{{H}}, \left(s_\mathcal{{H}}, t_\mathcal{{H}}\right)\right)}
+	\end{align*}
+	 \begin{align*}
+		\functor[l]{(E_\mathcal{{G}}, V_\mathcal{{G}}, p_{\mathcal{G}})}{(f,g)}{(E_\mathcal{{H}}, V_\mathcal{{H}}, p_{\mathcal{H}})}
+		\functormapsto
+		\rfunctor{(E_\mathcal{{G}}, V_\mathcal{{G}}, 	\pi_1\circ  p_{\mathcal{G}}, \pi_2\circ  p_{\mathcal{G}})}{(f, g) }{(E_\mathcal{{H}}, V_\mathcal{{H}}, 	\pi_1\circ  p_{\mathcal{H}}, \pi_2\circ  p_{\mathcal{H}})}
+	\end{align*} 
+	Now it is immediate to notice that they are one the inverse of the other.   
+\end{proof}
+
+\begin{corollary}\label{prop:hypadh}
+	 $\hyp$ is an adhesive category.
+\end{corollary}
+\begin{proof}
+	By hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the thesis follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
+\end{proof}
+
+Another useful corollary of \Cref{prop:com} is the following one.
+
+\begin{corollary}\label{cor:monhyper}
+A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
+\end{corollary}
+
+\Cref{prop:left,prop:com} allows us to deduce immediately the following.
+
+\begin{proposition}\label{cor:left}  The forgetful functor $U_{\X}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\X}$.
+\end{proposition}
+
+\begin{example}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\Set}(X)$ is the hypergraph which has $X$ as set of nodes and $\emptyset$ as set of hyperedges and $?_X$ as both source and target function.
+\end{example}
+
+\todo{forse possiamo anche cancellare tutti gli esempi sotto}
+
+We can represent hypergraphs graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
+
+
+\begin{example}Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G}}$ to be $\{h_1, h_2, h_3\}$. Sources and targets are given by:
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 2\to V_{\mathcal{G}}  & \begin{matrix}
+			0 \mapsto v_1\\
+			1\mapsto v_2
+		\end{matrix} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_3\\
+			1\mapsto v_4 
+		\end{matrix} && s_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 
+		0 \mapsto v_5\\
+		t_{\mathcal{G}}(h_1)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_3\\
+			1\mapsto v_4
+		\end{matrix} && t_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & 0\mapsto v_5 && t_{\mathcal{G}}(h_3)\colon 0\to V_{\mathcal{G}} &  t_{\mathcal{G}}(h_3)=?_{ V_{\mathcal{G}}} 
+	\end{matrix}\]
+	
+	We can draw the resulting $\mathcal{G}$ as follows:
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_5$}] (E) at (6,-0.75) {};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5](4.75,-0.75)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](E)--(7,-0.75)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1) rectangle (4.75, -0.5) {};
+			\node at (4.5, -0.3){$h_2$};
+			\node at (1.5, -0.3){$h_1$};
+			\node at (7.25, -0.3){$h_3$};
+			\draw[rounded corners] (7, -1) rectangle (7.5, -0.5) {};
+			\draw(A)[->-=.5]..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw(B)[->-=.5]..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw(C)[->-=.5]..controls(3.5,0)and(4.2,-0.25)..(4.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw(D)[->-=.5]..controls(3.5,-1.5)and(4.2,-1.3)..(4.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5](1.75,-0.9)..controls(1.8,-1.3)and(2.5,-1.5)..(D)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5] (1.75,-0.6)..controls(1.8,-0.25)and(2.5,0)..(C) node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+\begin{example}\label{exa_2} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+			0 \mapsto v_1\\
+			1\mapsto v_2
+		\end{matrix}&& s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
+			0 \mapsto v_1\\
+			1\mapsto v_4	
+		\end{matrix}\\
+		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 
+		0 \mapsto v_1 && 		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&   t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5
+	\end{matrix}\]
+	
+	Now we can depict $\mathcal{G}$ as
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,-0.75) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-2.25) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=right:{$v_5$}] (E) at (6,-1.5) {};
+			\draw[->-=.5] (1.75,-0.75)--(C)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5] (4.75,-1.5)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (-1.5,0)--(A)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1.75) rectangle (4.75, -1.25) {};
+			\node at (4.5, -1.05){$h_3$};
+			\node at (1.5, -0.3){$h_2$};
+			\node at (-1.75, 0.45){$h_1$};
+			\draw[rounded corners] (-2, -0.25) rectangle (-1.5, 0.25) {};
+			\draw[->-=.5] (A)..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (B)..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5] (C)..controls(3.5,-0.75)and(4.2,-0.95)..(4.25,-1.35)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (D)..controls(3.5,-2.25)and(4.2,-2.05)..(4.25,-1.65)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\subsubsection{$\hyp$ as a category of functors}
+
+Following \cite{bonchi2022string}, we can present $\hyp_\X$ as a category of functor over a suitable category.
+
+\begin{definition}Let $\catname{H}$ be the category in which:
+	\begin{itemize}
+		\item the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$
+		\item arrows are given by the identities $\id{k,l}$ and $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$;
+		\item composition is defined simply putting, for every $f_i\colon (k,l)\rightarrow \bullet$:
+		\begin{equation*}
+			f_i=f_i\circ \id{k,l} \qquad f_i = \id{\bullet}\circ f_i 
+		\end{equation*}
+	\end{itemize}
+\end{definition}
+
+Given $F\colon \catname{H}\to \catname{Set}$ we can define
+\[E_F:=\sum_{k,l\in \mathbb{N}}F(k,l)\]
+
+Now, for every $k$, $l$, $i$ and $j$ in $\mathbb{N}$ with $i< k$ and $j< l$ we can define $s^F_{k,l}\colon F(k,l)\to F(\bullet)^k$,  $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ as the unique ones fitting in the diagrams below, where the vertical arrows are the projections.
+\[\xymatrix{F(k,l)  \ar@{.>}[r]^{s^F_{k,l}} \ar[dr]_{F(f_i)}& F(\bullet)^{k} \ar[d]^{\pi^F_{k,i}} & F(k,l) \ar@{.>}[r]^{t^F_{k,l}} \ar[dr]_{F(f_{k+j})} & F(\bullet)^{l} \ar[d]^{\pi^F_{l,j}} \\ & F(\bullet) && F(\bullet)}\]
+
+In turn, these arrows allow us to consider
+$s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections.
+\[\xymatrix{F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{s^{F}_{k,l}}& F(\bullet)^{k} \ar[d]^{b^F_{k}} & F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{t^{F}_{k,l}}& F(\bullet)^{l} \ar[d]^{b^F_{l}}\\ E_F \ar@{.>}[r]_-{s_F}& F(\bullet)^\star & E_F \ar@{.>}[r]_-{t_F}& F(\bullet)^\star}\]
+
+Let $\mathcal{G}_F$ be the resulting hypergraph. Now, every $\eta\colon F\rightarrow H$ in $\catname{Set}^{\catname{H}}$ has components $\eta_{k,l}\colon F(k,l)\to H(k,l)$, $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$. In particular we can define $\hat{\eta}\colon E_F\rightarrow E_H$ as $\sum_{k,l\in \mathbb{N}}\eta_{k,l}$. Now, on the one hand, we have
+\[\begin{split}
+	\pi^H_i\circ \eta^k_\bullet \circ  s^F_{k,l}&=\eta_\bullet \circ \pi^F_i \circ s^F_{k,l}\\&=\eta_\bullet \circ F(f_i)\\&=H(f_i)\circ \eta_{k,l}\\&=\pi^H_{k,i}\circ s^{H}_{k,l}\circ \eta_{k,l}
+\end{split} \qquad \begin{split}
+\pi^H_j\circ \eta^k_\bullet \circ  t^F_{k,l}&=\eta_\bullet \circ \pi^F_j \circ t^F_{k,l}\\&=\eta_\bullet \circ F(f_{k+j})\\&=H(f_{k+j})\circ \eta_{k,l}\\&=\pi^H_{l,j}\circ t^{H}_{k,l}\circ \eta_{k,l}
+\end{split} \]
+so that $\eta^k_\bullet \circ  s^F_{k,l}=s^{H}_{k,l}\circ \eta_{k,l}$ and $\eta^k_\bullet \circ  t^F_{k,l}= t^{H}_{k,l}\circ \eta_{k,l}$. On the other hand, these equalities give us the following:
+\[\begin{split}
+	\eta_{\bullet}^\star \circ s_{F}\circ a^F_{k,l}&=\eta_{\bullet}^\star \circ b^F_k\circ s^F_{k,l}\\&=b^H_k\circ \eta^k_{\bullet}\circ s^{F}_{k,l} \\&=b^H_{k}\circ s^H_{k,l}\circ \eta_{k,l}\\&=s_H\circ a^H_{k,l}\circ \eta_{k,l}\\&=	s_H\circ \hat{\eta}\circ a^F_{k,l}
+\end{split} \qquad \begin{split}
+	\eta_{\bullet}^\star \circ s_{F}\circ a^F_{k,l}&=\eta_{\bullet}^\star \circ b^F_k\circ t^F_{k,l}\\&=b^H_k\circ \eta^k_{\bullet}\circ t^{F}_{k,l} \\&=b^H_{k}\circ t^H_{k,l}\circ \eta_{k,l}\\&=t_H\circ a^H_{k,l}\circ \eta_{k,l}\\&=	t_H\circ \hat{\eta}\circ a^F_{k,l}
+\end{split}\]
+which, in turn, entail that  that the following squares commute
+\[\xymatrix{E_F \ar[r]^{s_F} \ar@{.>}[d]_{\hat{\eta}}& F(\bullet)^\star \ar[d]^{\eta^\star_\bullet} & E_F \ar[r]^{t_F} \ar[d]_{\hat{\eta}} & F(\bullet)^\star \ar[d]^{\eta^\star_\bullet}\\ E_H \ar[r]_{s_H} & H(\bullet)^\star & E_H \ar[r]_{t_H}& H(\bullet)^\star}\]
+
+This is the same as saying that $\eta$ induces a morphism $(\hat{\eta}, \eta_{\bullet})\colon \mathcal{G}_F\to \mathcal{G}_H$. It is now clear that sending $F$ to $\mathcal{G}_F$ and $\eta$ to $(\hat{\eta}, \eta_{\bullet})$ defines a faithful functor $\mathcal{G}_{-}\colon \Set^{\catname{H}}\to \hyp$.
+
+It is now a a straightforward exercise to see that this functor it is actually an equivalence (see \cite{castelnovo2023thesis} for details), yielding the following result.
+
+	\iffalse 
+\begin{remark}\label{rem:utile}
+Now, notice that in $\Set$ countable coproducts distributes over pullbacks, \Cref{rem:salv} we know that countably distributivity entails that, for every $k,l\in \mathbb{N}$, the arrow $b^F_k\times b^F_l$ is a coprojection, thus extensivity entails that the square is a pullback 
+	\[\xymatrix@C=30pt{F(k,l) \ar[d]_{(s^F_{k,l}, t^F_{k,l})}  \ar[r]^{a^F_{k,l}}& E_F \ar[d]^{(s_F, t_F)} \\ F(\bullet)^k\times F(\bullet)^l \ar[r]_{b^F_k\times b^F_l} & F(\bullet)^\star\times F(\bullet)^\star}\]
+	
+	
+
+	As in \Cref{rem:pb}, countably extensivity of $X$ guarantees that, for every $k\in \mathbb{N}$ following square is a pullback.	
+	\[\xymatrix{F(\bullet)^k  \ar[r]^{b^F_k} \ar[d]_{!_{F(\bullet)^k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ 1 \ar[r]_{o_k} & 1^\star}\]
+	
+	
+	
+	
+	
+	Now, notice that 
+	\[\begin{split}
+		\lgh_{F(\bullet)}\circ b^{F}_k\circ s^{F}_{k,l}&=o_{k}\circ !_{F(\bullet)^k}\circ s^F_{k,l}\\&=o_k\circ !_{F(k,l)}
+	\end{split} \qquad \begin{split}
+	\lgh_{F(\bullet)}\circ b^{F}_k\circ t^{F}_{k,l}&=o_{k}\circ !_{F(\bullet)^k}\circ t^F_{k,l}\\&=o_k\circ !_{F(k,l)}
+	\end{split}\]
+so that we have two diagrams:
+	\[\xymatrix{F(k,l)\ar[r]^{s^F_{k,l}} \ar@{.>}[dr]^{u^1_{k,l}}  \ar@/_.5cm/[ddr]_{!_{F(k,l)}}&F(\bullet)^k \ar[dr]^{b^F_k}&& F(k,l) \ar@/_.5cm/[ddr]_{!_{F(k,l)}} \ar[r]^{s^F_{k,l}} \ar@{.>}[dr]^{u^2_{k,l}} &F(\bullet)^k \ar[dr]^{b^F_k}\\ & F(\bullet)_k  \ar[r]^{q_{k}} \ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} && F(\bullet)_k  \ar[r]^{q_{k} }\ar[d]_{!_{F(\bullet)_k}}& F(\bullet)^\star \ar[d]^{\lgh_{F(\bullet)}} \\ &  1 \ar[r]_{o_k} & 1^\star && 1 \ar[r]_{o_k} & 1^\star}\]
+	
+	Moreover we have
+	\[\begin{split}
+		s_F\circ a^F_{k,l}&=b^F_k\circ s^{F}_{k,l}\\&=
+		q_{k}\circ u^1_{k,l}	\end{split} \qquad \begin{split}
+		t_F\circ a^F_{k,l}&=b^F_k\circ t^{F}_{k,l}\\&=
+		q_{k}\circ u^2_{k,l}	\end{split}  \]	
+		
+	Therefore these two arrows, in turn, yield the dotted $v^1_{k,l}\colon F(k,l)\to F(\bullet)_k $ and $v^2_{k,l}\colon F(k,l)\to F(\bullet)_l$ as in the diagram below, where the right and bottom squares are pullbacks.
+	\[\xymatrix@C=45pt{F(k,l)  \ar[dr]^{a^F_{k,l}} \ar@{.>}[r]^{v^2_{k,l}} \ar@{.>}[d]^{v^1_{k,l}} \ar@/^.8cm/[rr]^{u^2_{k,l}} \ar@/_.5cm/[dd]_{u^1_{k,l}}& P_{l} \ar[r]_{p_{l,1}} \ar[d]_{p_{l,2}}& F(\bullet)_{l} \ar[d]^{q_{l}}\\ P_k \ar[r]^{p_{k,2}} \ar[d]^{p_{k,1}}& E_F \ar[r]_{s_F}  \ar[d]^{t_F}& F(\bullet)^\star \\ F(\bullet)_k  \ar[r]_{q_{k}}& F(\bullet)^\star}\]
+	
+ By hypothesis, $\X$ is countably extensive, thus for every $k, l\in \mathbb{N}$, the following diagrams are pullbacks.
+ \[\xymatrix{F(k,l) \ar[r]^{a^F_{k,l}} & E_F \ar[d]^{}\\ 
+ F(\bullet)^k& F(\bullet)^\star}\]
+ 
+ 
+ Let now $d_1\colon Z\to P_l$ and $d_2\colon Z\to P_k $ be two arrows such that
+ \[p_{k,2}\circ d_2=p_{t,2}\circ d_1\]
+ 
+ Then we have
+ \begin{align*}
+ t_{F}\circ 	p_{t_2}\circ d_1&= \end{align*}
+ 
+ 
+ Showing, finally, that
+ 
+\end{remark}
+\fi  
+
+
+\begin{proposition}
+	$\hyp_\X$ is equivalent to the category $\catname{\X}^{\catname{H}}$.
+\end{proposition}
+
+
+\iffalse 
+\begin{proof}	
+We already know that $\mathcal{G}_{-}$ is faithful, we still have to show that it is full and essentially surjective.
+	\begin{itemize}
+		\item For fullness, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of $\X$-hypergraphs. By \Cref{rem:utile}, for every $k,l\in \mathbb{N}$, the front square in diagram below is a pullback, yielding the dotted arrow $\eta_{k,l}\colon F(k,l)\to H(k,l)$.
+		\[\xymatrix@C=10pt{F(k,l)   \ar[dd]_{(s^F_{k,l}, t^F_{k,l})}\ar[rr]^-{a^F_{k,l}} \ar@{.>}[dr]_{\eta_{k,l }}&& E_F \ar[dd]|\hole^(.7){(s_F, t_F)}  \ar[dr]^{f}\\ & H(k,l) \ar[dd]_(.3){(s^H_{k,l}, t^H_{k,l})}\ar[rr]^(.4){a^H_{k,l}} &&  E_H \ar[dd]^{(s_H, t_H)}\\F(\bullet)^k\times F(\bullet)^l \ar[dr]_{g^k\times g^l} \ar[rr]|\hole^(.65){b^F_{k,l}\times b^F_{k,l}}& &F(\bullet)^\star \times F(\bullet)^\star  \ar[dr]^{g^\star\times g^\star}\\&H(\bullet)^k\times H(\bullet)^l \ar[rr]_{b^H_k\times b^H_l} && H(\bullet)^\star \times H(\bullet)^\star  }\]
+		
+		As $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ we can simply take  $g$.  Then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, given an arrow $f_i\colon(k,l)\to \bullet$ then we have :	
+		\begin{align*}
+			\eta_\bullet \circ F(f_i)&=g\circ F(f_i)
+			\\&= \begin{cases}
+			g\circ \pi^F_i\circ s^F_{k,l} & i <k\\
+			g\circ \pi^F_i\circ t^F_{k,l} & \text{otherwise}
+			\end{cases}
+			\\&=
+			\begin{cases}
+		\pi^H_i\circ g^k\circ s^F_{k,l} & i <k\\
+		\pi^H_i\circ g^k\circ t^F_{k,l} 	& \text{otherwise}
+			\end{cases}\\&=
+		\begin{cases}
+	\pi^H_i\circ s^H_{k,l} \circ \eta_{k,l}& i <k\\
+	\pi^H_i\circ t^H_{k,l} \circ \eta_{k,l}	& \text{otherwise}
+	\end{cases}\\&=H(i)\circ \eta_{k,l}
+		\end{align*}
+		Finally, by construction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
+		
+		\item  Let us turn to essential surjectivity. Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define $F_{\mathcal{G}}(\bullet):=V_{\mathcal{G}}$ and $F_{\mathcal{G}}(k,l)$ by the following pullback. Notice that, by \Cref{rem:salv} and countably extensivity, $(E_{\mathcal{{G}}}, \{a_{k,l}\}_{k,l\in \mathbb{N}})$ is a coproduct.
+		\[\xymatrix@C=30pt{F_\mathcal{G}(k,l) \ar[d]_{p_{k,l}}  \ar[r]^{a_{k,l}}& E_{\mathcal{G}} \ar[d]^{(s_F, t_F)} \\ V_{\mathcal{G}}^k\times V_{\mathcal{G}}^l \ar[r]_{b_k\times b_l} & V_{\mathcal{G}}^\star\times V_{\mathcal{G}}^\star}\]
+		
+		Let $q_{i;k,l}\colon V_\mathcal{G}^k\times V_{\mathcal{G}}^l\to V_\mathcal{G} $ be the $i^{\text{th}}$ projection, then for every morphism $f_i\colon (k,l)\to \bullet$ in $\catname{H}$ we can define $F_{\mathcal{G}}(f_i)$ as $q_{i; k,l}\circ p_{k,l}$. $F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$. 
+		
+		Notice that $p_{k,l}=(s^{F_{\mathcal{G}}}_{k,l}, t^{F_{\mathcal{G}}}_{k,l})$. To see this, it is enough to compose with the projections:
+		\begin{align*}
+			q_{i;k,l}\circ p_{k,l}&=F_{\mathcal{G}}(f_i)\\&=\begin{cases}
+				\pi^{F_{\mathcal{G}}}_{k, i} \circ F_{\mathcal{G}}(f_i) & i<k\\
+				\pi^{F_{\mathcal{G}}}_{l, i} \circ F_{\mathcal{G}}(f_i) &\text{otherwise}
+			\end{cases}\\&=\begin{cases}
+		s^{F_{\mathcal{G}}}_{k,l} & i<k\\
+		t^{F_{\mathcal{G}}}_{k,l} &\text{otherwise}
+			\end{cases}\\&=q_{i;k,l}\circ (s^{F_{\mathcal{G}}}_{k,l}, t^{F_{\mathcal{G}}}_{k,l})
+		\end{align*}
+		In particular, this entails that 
+		\[\begin{split}
+	s^{F_{\mathcal{G}}}\circ a^{F_{\mathcal{G}}}_{k,l}&=b^{F_{\mathcal{G}}}_k \circ s^{F_{\mathcal{G}}}_{k,l}\\&= b_k \circ s^{F_{\mathcal{G}}}_{k,l}\\&=s_F\circ a_{k,l}
+		\end{split} \qquad \begin{split}
+	t^{F_{\mathcal{G}}}\circ a^{F_{\mathcal{G}}}_{k,l}&=b^{F_{\mathcal{G}}}_l \circ t^{F_{\mathcal{G}}}_{k,l}\\&= b_l \circ s^{F_{\mathcal{G}}}_{k,l}\\&=t_F\circ a_{k,l}
+		\end{split}\]
+	
+		Now, we know that there is an isomorphism $\phi \colon E_{\mathcal{G}} \to \sum_{k,l\in \mathbb{N}} F_{\mathcal{G}}(k,l)$ making the diagram below commutative.
+	\[\xymatrix{& F_{\mathcal{G}}(k,l) \ar[dr]^{a^{F_\mathcal{{G}}}_{k,l}} \ar[dl]_{a_{k,l}} \\E_{\mathcal{G}} \ar[rr]_-{\phi} & & \Sum_{k,l\in \mathbb{N}} F_{\mathcal{G}}(k,l)}\]
+	
+	Therefore we have
+	\[\begin{split}
+	s_{F_{\mathcal{G}}} \circ \phi \circ a_{k,l}&=	s_{F_{\mathcal{G}}}  \circ a^{F_{\mathcal{G}}}_{k,l}	\\&= s_F\circ a_{k,l} \end{split} \qquad \begin{split}
+	t_{F_{\mathcal{G}}} \circ \phi \circ a_{k,l}&=	t_{F_{\mathcal{G}}}  \circ a^{F_{\mathcal{G}}}_{k,l}	\\&= t_F\circ a_{k,l} \end{split}\]
+	
+	This allows us to conclude that $(\phi, \id{V_{\mathcal{G}}})$ is an isomorphism in $\hyp_\X$, from which the thesis now follows. 
+	\end{itemize}
+\end{proof}
+\fi 
+
+
+\subsubsection{Labelling hypergraph with an algebraic signature}
+
+\begin{definition}
+An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
+
+We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as setof nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
+\end{definition}
+
+
+\begin{example}\label{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as:
+	\begin{center}
+		\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v$}] (V) at (0,0) {};
+			\node(E)at(-2, 0.4){$e$};
+			\node(M)at(0, 2.15){$\cdot$};
+			\node(I)at(2, 0.5){$(-)^{-1}$};
+			\draw[->-=.5](-1.75,0)--(V)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)..controls(-0.5,0.5)and(-0.8,1)..(-0.25,1.6)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5](V)..controls(-1,0.6)and(-1,1.1)..(-0.25,1.9)node[pos=0.5, left,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](0.25,1.75)..controls(0.8,0.8)and(0.5,0.5)..(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)--(1.75,0)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](2.25,0)..controls(3.5,0)and(2.5,-2)..(V)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[rounded corners] (-2.25, -0.25) rectangle (-1.75, 0.25) {};
+			\draw[rounded corners] (-0.25, 1.5) rectangle (0.25, 2) {};
+			\draw[rounded corners] (2.25, -0.25) rectangle (1.75, 0.25) {};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterization of monomorphisms in it.
+
+\begin{proposition}\label{prop:mono} Let $\X$ be a (strict) $\mathcal{N}$-adhesive category, then the following hold true:
+	\begin{enumerate}
+		\item a morphism $(h,k)$ between two object of $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective functions;
+		\item every algebraic signature $\Sigma$, $\hyps$ is an (strict) $\mathcal{M}$-adhesive category, where a morphism $(h,k)$ in $\hyps$ belongs to $\mathcal{M}$ if and only if both $h$ and $k$ are in $\mathcal{N}$. 
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{remark}\label{rem:label}	
+	Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares below commute.
+	\[\xymatrix{E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{s_{\mathcal{H}}}& O_\Sigma \ar[d]^{\ari_\Sigma}& E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{t_{\mathcal{H}}} & O_\Sigma \ar[d]^{o_1\circ !_{O_\Sigma}}\\ V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}}& 1^\star & V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}} & 1^\star}\]
+	
+	Let $v_n\colon V^n_\mathcal{H}\colon  V^\star_{\mathcal{H}}$ be a coprojection.  The second diagram above entails that $t_{\mathcal{H}}$ factors through $v_1\colon V_{\mathcal{H}}\to V^{\star}$. Indeed, in the diagram below, the inner square is a pullback by extensivity and its outer boundaries yields the second square above, so that we get the dotted $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
+	\[\xymatrix{E_{\mathcal{H}} \ar@{.>}[dr]^{\tau}\ar@/^.4cm/[drr]^{t_{\mathcal{H}}} \ar[d]_{h} \\	O_\Sigma \ar@/_.2cm/[dr]_{!_{O_\Sigma}}&V_{\mathcal{H}} \ar[r]^{v_1}\ar[d]^{!_{V_\mathcal{H}}}& V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}}\\ & 1 \ar[r]_{o_1}& 1^\star}\]
+\end{remark}
+
+$\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\X}(\mathcal{H}$). Now, $U_{\X}(\mathcal{G}^{\Sigma})=1$ thus, for every object $X$, there is only one arrow $X\to U_{\X}(\mathcal{G}^{\Sigma})$. Define $\Delta_{\Sigma}(X)\colon \Delta_{\X}(X)\to \mathcal{G}^{\Sigma}$ as the transpose of this arrow. Explicitly, $\Delta_{\X}(X)=(0, X, ?_{X^\star}, ?_{X^\star})$ and $\Delta_\Sigma(X)$ is simply $(?_{O_\Sigma}, !_{X})$.
+
+\begin{proposition} $U_\Sigma$
+	has a left adjoint $\Delta_\Sigma$.
+\end{proposition}
+\begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since, $U_{\Sigma}(\mathcal{H})=U_{\X}(\mathcal{H})$ and $\id{\X}$ is the unit of $\Delta_\X \dashv U_{\X}$, we get a morphism $(?_{E_{\mathcal{H}}},f)\colon \Delta_{\X}(X)\to \mathcal{H}$ of $\hyp_\X$. But then we have
+	\begin{align*}
+		(h, !_{V_{\mathcal{{H}}}})\circ (?_{E_{\mathcal{H}}}, f)&=(h\circ ?_{E_{\mathcal{H}}}, !_{V_{\mathcal{{H}}}}\circ f)\\&=(?_{0_{\Sigma}}, !_{X})\\&=\Delta_{\X}(X)
+	\end{align*}
+and the thesis follow.   
+\end{proof}
+
+\todo{anche questo forse val la pena toglierlo}
+We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+\begin{example}\label{lab_1}
+	The simplest example is given by the identity $\id{\mathcal{G}^\Sigma}\colon \mathcal{G}^\Sigma\rightarrow \mathcal{G}^{\Sigma}$. If $\Sigma$ is the signature of groups $\Sigma_G$we get 
+	\begin{center}
+		\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$\heartsuit$}] (V) at (0,0) {};
+			\node(E)at(-2, 0.4){$e$};
+			\node(M)at(0, 2.15){$\cdot$};
+			\node(I)at(2, 0.75){$(-)^{-1}$};
+			
+			\node(E')at(-2, 0){$e$};
+			\node(M')at(0, 1.75){$\cdot$};
+			\node(I')at(2, 0){$(-)^{-1}$};
+			\draw[->-=.5](-1.75,0)--(V)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)..controls(-0.5,0.5)and(-0.8,1)..(-0.25,1.6)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[->-=.5](V)..controls(-1,0.6)and(-1,1.1)..(-0.25,1.9)node[pos=0.5, left,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](0.25,1.75)..controls(0.8,0.8)and(0.5,0.5)..(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](V)--(1.5,0)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5](2.5,0)..controls(4,0)and(2.5,-2)..(V)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			\draw[rounded corners] (-2.25, -0.25) rectangle (-1.75, 0.25) {};
+			\draw[rounded corners] (-0.25, 1.5) rectangle (0.25, 2) {};
+			\draw[rounded corners] (2.5, -0.5) rectangle (1.5, 0.5) {};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+\begin{example}\label{lab_2}
+	Take again $\Sigma_G$ the signature of groups, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled defining
+	\begin{align*}
+		e=f(h_1) \quad \cdot=f(h_2)\quad \cdot=f(h_3)
+	\end{align*}
+	In this case we get the following picture
+	
+	\begin{center}\begin{tikzpicture}
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_3$}] (C) at (3,-0.75) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_4$}] (D) at (3,-2.25) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=right:{$v_5$}] (E) at (6,-1.5) {};
+			\draw[->-=.5] (1.75,-0.75)--(C)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (1.25, -1) rectangle (1.75, -0.5) {};
+			\draw[->-=.5] (4.75,-1.5)--(E)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (-1.5,0)--(A)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[rounded corners] (4.25, -1.75) rectangle (4.75, -1.25) {};
+			\node at (4.5, -1.05){$h_3$};
+			\node at (1.5, -0.3){$h_2$};
+			\node at (-1.75, 0.45){$h_1$};
+			\draw[rounded corners] (-2, -0.25) rectangle (-1.5, 0.25) {};
+			\draw[->-=.5] (A)..controls(0.5,0)and(1.2,-0.2)..(1.25,-0.6)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (B)..controls(0.5,-1.5)and(1.2,-1.3)..(1.25,-0.9)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\draw[->-=.5] (C)..controls(3.5,-0.75)and(4.2,-0.95)..(4.25,-1.35)node[pos=0.5, above,font=\fontsize{7}{0}\selectfont]{$1$};
+			\draw[->-=.5] (D)..controls(3.5,-2.25)and(4.2,-2.05)..(4.25,-1.65)node[pos=0.5, below,font=\fontsize{7}{0}\selectfont]{$2$};
+			
+			\node at (-1.75,0) {$e$};
+			\node at (1.5,-0.75) {$\cdot$};
+			\node at (4.5,-1.5) {$\cdot$};
+		\end{tikzpicture}
+	\end{center}
+\end{example}
+
+
+\subsection{Term Graphs}
+\todo{a very nice introduction}
+
+Let us start using labelled hypergraphs to define term graphs.
+
+\begin{definition}\label{def:tg}\index{term graph}
+	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
+\end{definition}
+
+
+\begin{remark}\label{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice, moreover that since $t_{\mathcal{G}}$is mono then $\tau_{\mathcal{G}}$ is mono too.
+\end{remark}
+
+We are now going back to examine the properties of $\tg$, with the purpose of studying its adhesivity properties.
+
+\begin{proposition}\label{term:left}The forgetful functor $U_{\tg}$ has a left adjoint $\Delta_{\tg}$.
+\end{proposition}
+\begin{proof}
+	This follows noticing that, for every object $X$, $\Delta_{\Sigma}(X)$ is a term graph.   
+\end{proof}
+
+Take now a mono $(i,j)\colon \mathcal{H}\to \mathcal{G}$ between  $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$. In particular we have a commutative square
+
+\[\xymatrix{E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{i}& V^\star_{\mathcal{G}} \ar[d]^{j} \\ E_{\mathcal{H}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}}}\]
+
+By  \Cref{prop:mono} $i$ and $j$ are monos, thus if $t_{\mathcal{H}}$ is mono then $t_{\mathcal{G}}$  is mono too. This show that if $(l', !_{V_\mathcal{H}})$ is a term graph then $(l, !_{V_\mathcal{G}})$ belongs to $\tg$ too.  Since $\X$ is assumed to have finite limits, applying this argument when $(i,j)$ is the equalizer in $\hyp_\Sigma$ of two parallel arrows between term graphs we get the following.
+
+\begin{proposition}\label{prop:equ}$\tg$ has equalizers and $I_{\Sigma}$ creates them.
+\end{proposition}
+
+We have a similar result also for binary products.
+
+\begin{proposition} $\tg$ has binary products and $I_\Sigma$ creates them.
+\end{proposition}
+\begin{proof}
+	Let $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be two term graphs, their product in $\hyp_{\Sigma}$ is given by $(p, !_{V_\mathcal{P}})\colon \mathcal{P}\to \mathcal{G}^{\Sigma}$, where the square below  is a pullback in $\hyp$ and $(p, !_{V_\mathcal{P}})$ is the diagonal filling it.
+	\[\xymatrix@C=35pt{\mathcal{P} \ar[r]^{(p_E, p_V)} \ar[d]_{(q_E, e_V)} & \mathcal{G} \ar[d]^{(l, !_{V_\mathcal{G}})}\\ \mathcal{H} \ar[r]_{(l', !_{V_{\mathcal{H}}})}& \mathcal{G}^\Sigma}\]
+	By \Cref{prop:com} we have two pullback square in $\X$:
+	\[\xymatrix{E_\mathcal{P} \ar[r]^{p_E} \ar[d]_{q_E} & E_\mathcal{G} \ar[d]^{l} &V_{\mathcal{P}} \ar[r]^{p_V} \ar[d]_{q_V}&V_{\mathcal{G}}\ar[d]^{!_{V_\mathcal{G}}} \\ E_\mathcal{H} \ar[r]_{l'}& O_\Sigma & V_\mathcal{H}\ar[r]_{!_{V_\mathcal{H}}} & 1}\]
+	Moreover $t_{\mathcal{P}}$ fits in the following diagram.
+	\[\xymatrix{V^\star_{\mathcal{P}} \ar[rrr]^{p^\star_V} \ar[ddd]_{q^\star_V}& & &V_{\mathcal{G}}^\star \ar[ddd]^{!^\star_{V_\mathcal{G}}}\\&E_\mathcal{P} \ar[ul]^{t_{\mathcal{P}}}\ar[r]^{p_E} \ar[d]_{q_E} & E_\mathcal{G} \ar[ur]_{t_{\mathcal{G}}} \ar[d]^{l}  \\ &E_\mathcal{H} \ar[dl]_{t_{\mathcal{H}}} \ar[r]_{l'}& O_\Sigma \ar[dr]_{o_1\circ !_{O_\Sigma}} \\V^\star_{\mathcal{H}} \ar[rrr]_{!^\star_{V_\mathcal{H}}}& & &1^\star}\]
+	If we show that $\mathcal{P}$ is a term graph we are done. Take two arrows $h_1, h_{2}\colon Z\rightrightarrows  E_{\mathcal{P}}$ such that 
+	\[t_{\mathcal{P}}\circ h_1= t_{\mathcal{P}}\circ h_2 \]
+	
+	We have the following chains of equalities 
+	\[\begin{split}
+		t_{\mathcal{G}}\circ p_E \circ h_1&=p^\star_V\circ t_{\mathcal{P}} \circ h_1 \\&=p^\star_V\circ t_{\mathcal{P}}\circ h_2\\&=t_{\mathcal{G}}\circ p_E\circ h_2
+	\end{split} \qquad \begin{split}
+		t_{\mathcal{H}}\circ q_E\circ h_1&=q^\star_V\circ t_{\mathcal{P}} \circ h_1\\&=q^\star_V\circ t_{\mathcal{P}}\circ h_2\\&=t_{\mathcal{H}} \circ q_E\circ h_2
+	\end{split}\]
+	Since $t_{\mathcal{G}}$ and $t_{\mathcal{H}}$ are monomorphisms we get
+	\[p_E \circ h_1=p_E\circ h_2 \qquad q_E\circ h_1=q_E \circ h_2\]
+	which, in turn, imply  $h_1=h_2$.	  
+\end{proof}
+Since pullbacks can be computed from products and equalizers we also get the following.
+
+\begin{corollary}\label{cor:pb}$\tg$ has pullbacks and they are created by $I_\Sigma$.
+\end{corollary}
+\begin{remark}
+	$\tg$ in general does not have terminal objects. Consider an algebraic signature in $\Set$. Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton $\{h\}$. Now take as signature the one given by two operations $a$ and $b$, both of arity $0$; we have three term graphs with only one node $v$: $\Delta_{\tg{\Sigma}}(\{v\})$, $(l_a, !_{V_{\mathcal{G}}})\colon \mathcal{G}_a\to \mathcal{G}^{\Sigma}$ and $(l_b, !_{V_{\mathcal{G}}})\colon \mathcal{G}_b\to \mathcal{G}^{\Sigma}$.
+	\begin{center}\begin{tikzpicture}
+			
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=left:{$v$}] (V) at (5,0) {};
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=left:{$v$}] (U) at (3,0) {};
+			\node at(5,1.25){$a$};	
+			\node at(5,1.7){$h$};	
+			
+			\draw[->-=.5](5,1)--(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			
+			\draw[rounded corners] (4.75, 1) rectangle (5.25, 1.5) {};
+			
+			
+			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=left:{$v$}] (V) at (7,0) {};
+			
+			\node at(7,1.25){$b$};	
+			\node at(7,1.7){$h$};	
+			
+			\draw[->-=.5](7,1)--(V)node[pos=0.5, right,font=\fontsize{7}{0}\selectfont]{$1$};
+			
+			\draw[rounded corners] (6.75, 1) rectangle (7.25, 1.5) {};
+			
+		\end{tikzpicture}
+	\end{center}
+	There are no morphisms in $\tg$ between the last two and from the last two to the first one, therefore none of them can be terminal.
+\end{remark}
+
+\begin{remark}
+	$\tg$, even when $\Sigma$ is an algebraic signature in $\Set$ is not an adhesive category. In particular it does not have pushouts along all monomorphisms. For instance, if we take the three term graphs of the previous remark, then have two arrows
+	$(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_a, !_{V_{\mathcal{G}_a}})$ and $(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_b, !_{V_{\mathcal{G}_a}})$ which cannot be completed to a square. Indeed if $(q, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^\Sigma$ is another term graph with $(g_E, g_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$ and $(k_E, k_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$  such that 
+	\[(g_E, g_V)\circ (?_{\{h\}}, \id{\{v\}}) = (k_E, k_V)\circ (?_{\{h\}}, \id{\{v\}})\]
+	then $g_V=k_V$ and
+	\begin{align*}t_{\mathcal{H}}(g_E(h))&=g^\star_V(t_{\mathcal{G}}(h))\\&=g_V^\star(\delta_v)\\&=k^\star_V(\delta_V)\\&=k^\star_V(t_{\mathcal{G}}(h))\\&=t_{\mathcal{H}}(k_E(h))
+	\end{align*}
+	so that we also have $g_E=k_E$, but then
+	\begin{align*}
+		a&=l_a(h)\\&=q(g_E(h))\\&=q(k_E(h))\\&=l_b(h)\\&=b
+	\end{align*}
+\end{remark}
+
+
+\begin{definition}
+	Let $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l, !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be two term graph and $(f,g)$ a morphism $\mathcal{G}\to \mathcal{H}$. As in \Cref{rem:label}, let also $t_{\mathcal{G}}$ and $t_{\mathcal{H}}$ be $o_{1}\circ \tau_\mathcal{G}$ and $o_1\circ \tau_{\mathcal{H}}$. Consider the diagram below, in which the right square is a pullback, we say that $(f,g)$ \emph{preserves inputs} if the dotted arrow  $t_g\colon I_{\mathcal{{H}}, f}\to E_{\mathcal{{G}}}$ exists.
+	\[\xymatrix{E_{\mathcal{G}} \ar[dr]_{\tau_{\mathcal{G}}}&I_{\mathcal{H}, g} \ar@{.>}[l]_{t_g} \ar[r]^{w^{\mathcal{G}}_1} \ar[d]_{w^{\mathcal{G}}_2} & E_{\mathcal{H}} \ar[d]^{\tau_{\mathcal{H}}}\\ & V_{\mathcal{G}} \ar[r]_{g}  & V_{\mathcal{{H}}}}\]
+	
+	
+\end{definition}
+
+
+\begin{remark}\label{prop:image}
+	Notice that we have
+	\begin{align*}
+		t_{\mathcal{H}}\circ w^{\mathcal{G}}_1&=o_{\mathcal{H},1}\circ \tau_{\mathcal{H}}\circ w^{\mathcal{G}}_1\\&=o_{\mathcal{H},1}\circ g\circ w^{\mathcal{G}}_2\\&=g^\star\circ o_{\mathcal{G},1}\circ w^{\mathcal{G}}_2\\&=g^\star \circ o_{\mathcal{G},1}\circ \tau_{\mathcal{G}}\circ t_g\\&=g^\star \circ t_{\mathcal{G}}\circ t_g\\&=t_{\mathcal{H}}\circ f\circ t_g
+	\end{align*}
+	and thus, since $t_{\mathcal{H}}$ is mono, we get $w^{\mathcal{G}}_1=f\circ t_g$.
+\end{remark}
+We are now ready to show that regular monos are preserves inputs.
+
+\begin{lemma}\label{lem:reg} If a mono $(i,j)$ between two term graphs  $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and  $(l', !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ then it preserves inputs.
+\end{lemma}
+
+\begin{proof}
+	Let $(i,j)$ be the equalizer of $(f_1, g_1)$ and $(f_2, g_2)$ are arrows from $(l', !_{V_\mathcal{H}})$ to $(k, !_{V_\mathcal{K}})\colon \mathcal{K}\to \mathcal{G}^\Sigma$. Suppose that the domain of $(i,j)$ is  $(e, !_{V_{\mathcal{E}}})\colon \mathcal{E}\to \mathcal{{G}}^\Sigma$.
+	By \Cref{prop:equ} such morphism is a regular mon also in $\hyp_\Sigma$. Since we have assumed that $(-)^\star$ preserves equalizer, by \Cref{lim} the  horizontal rows in the diagrams below are equalizers in $\X$.
+	
+	\[\xymatrix{I_{\mathcal{H}, j} \ar@/^.4cm/[drr]^{w^{\mathcal{G}}_1}  \ar@/_.4cm/[ddr]_{w^{\mathcal{G}}_2} \ar@{.>}[dr]^{t_j}\\&E_{\mathcal{E}} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar[r]^{i}& E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}  \ar@<.5ex>[r]^{f_1} \ar@<-.5ex>[r]_{f_2} & E_{\mathcal{K}}  \\ &V_{\mathcal{E}} \ar[r]_{j}& V_{\mathcal{H}}  \ar@<.5ex>[r]^{g_1} \ar@<-.5ex>[r]_{g_2}& V_{\mathcal{K}}}\]
+	
+	Now, we have
+	\begin{align*}
+		\tau_{\mathcal{K}}\circ f_1\circ w^{\mathcal{G}}_1&=g_1\circ \tau_\mathcal{H}\circ w^{\mathcal{G}}_1\\&=g_1\circ j\circ w^{\mathcal{G}}_2\\&=g_2\circ j\circ w^{\mathcal{G}}_2\\&=g_2\circ \tau_{\mathcal{H}}\circ w^{\mathcal{G}}_1\\&=\tau_{\mathcal{K}}\circ f_2\circ w^{\mathcal{G}}_1
+	\end{align*}
+	
+	By \Cref{rem:mono2}, $\tau_{\mathcal{K}}$ is a mono and so we can conclude.   
+\end{proof}
+
+
+\begin{lemma}\label{prop:push}Let $\X$ be a strict $\mathcal{M}$-adhesive category and consider two term graphs $(l_0, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$, $(l_1, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ and $(l_2, !_{V_\mathcal{K}})\colon \mathcal{K}\to \mathcal{G}^{\Sigma}$. Given $(f_1, g_1)\colon (l_0, !_{V_\mathcal{G}})\to (l_1, !_{V_\mathcal{H}})$, $(f_2, g_2)\colon (l_0, !_{V_\mathcal{G}})\to (l_2, !_{V_\mathcal{K}})$, if $(f_1, g_1)$ preserves inputs and both $f_1$ and $g_1$ are in $\mathcal{M}$,  then their pushout $(p, !_{V_{\mathcal{P}}})\colon \mathcal{P}\to \mathcal{G}^{\Sigma}$ in $\hyp_{\Sigma}$ is a term graph too.
+\end{lemma}
+
+
+\Cref{cor:varie3,lem:reg,prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{corradini2005term}.
+\begin{corollary}
+	The category $\tg$ is quasiadhesive.
+\end{corollary}
+
+
+\subsection{Hierarchical hypergraphs}
+
+\todo{da fare? lasciare per una versione estesa?}
+
+
+\input{Hypergraphs_with_equivalences}
+
+
+\subsection{title}
+
+\section{EGGS}
+
+\section{Conclusions and further works}
+\todo{Some very nice conclusions}
+\bibliography{biblio}
+
+\appendix
+\section{Some properties of comma categories}
+In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
+\begin{definition}\index{category!comma -}
+	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which
+	\begin{itemize}
+		\item objects are triples $(A, B, f)$ with $A\in \A$, $B\in \B$, and $f\colon L(A)\rightarrow R(B)$; 
+		\item a morphism $(A, B, f)\rightarrow (A', B', g)$ is a pair $(h, k)$ with $h\colon A\rightarrow A'$ in $\A$ and $k\colon B\rightarrow B'$ in $\B$ such that the following diagram commutes
+		\[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+	\end{itemize}
+\end{definition} 
+We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \comma{L}{R} \to \B$ given, respectively by
+\[
+\begin{split}
+	\functor[l]{(A,B, f)}{(h,k)}{(A', B', g)}
+	& \functormapsto
+	\rfunctor{A}{h}{A'}
+\end{split}\quad 
+\begin{split}
+	\functor[l]{(A,B, f)}{(h,k)}{(A', B', g)}
+	& \functormapsto
+	\rfunctor{B}{k}{B'}
+\end{split}
+\]
+
+
+Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same ting as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$, thus $\left(\comma{L}{R}\right)$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the commutativity in  $\X$ of the square
+\[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+is tantamount to the commutativity in $\X^{op}$ of the square 
+\[\xymatrix@C=25pt{ R(B') \ar[d]_{g} \ar[r]^{R(k)}& R(B) \ar[d]^{f}\\ L(A') \ar[r]_{L(h)}  & L(A) }\]
+Summing up we have just proved the following fact.
+\begin{proposition}\label{prop:dual}
+	$(\comma{L}{R})^{op}$ is equal to	$\comma{R^{op}}{L^{op}}$, moreover $U^{op}_L=U_{L^{op}}$ and $U^{op}_R=U_{R^{op}}$.
+\end{proposition}
+
+
+\begin{lemma}\label{colim}
+	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comma{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite{castelnovo2023thesis,castelnovo2022newcriterionmathcalmmathcalnadhesivity}).
+\end{lemma}
+\begin{proof}
+	Suppose that $U_L\circ F$ and $U_R\circ F$ have colimiting cocones  $\left(A, \{a_D\}_{D\in \D}\right)$ and $\left(B, \{b_D\}_{D\in \D}\right)$ respectively. By hypothesis $\left(L(A), \{L\left(a_D\right)\}_{D\in \D}\right)$ is colimiting for $L\circ U_L\circ F$. Now, if we define
+	\[F(D):=(A_D, B_D, f_D)\]
+	then we have arrows $R(a_i)\circ f_D\colon L(A_D)\to R(B)$ that forms a cocone on $L\circ U_L\circ F$: if $d\colon D\to D'$ is an arrow in $\D$ then $F(d)$ is an arrow in $\comma{L}{R}$ and so
+	\begin{align*}
+		R\left(b_{D'}\right)\circ f_{D'}\circ L(U_L(F(d)))&=R\left(b_{D'}\right)\circ R\left(U_R\left(F(d)\right)\right)\circ f_D\\&=R\left(b_{D'}\circ U_R\left(F(d)\right)\right)\circ f_D\\&=R\left(b_D\right)\circ f_D
+	\end{align*}
+	Thus there exists $f\colon L(A)\rightarrow R(B)$ such that
+	\[\xymatrix@C=35pt{ L(A_D) \ar[r]^{L(a_D)} \ar[d]_{f_D}& L(A) \ar[d]^{f}\\ R(B_D) \ar[r]_{R(b_D)} &R(B)}\]
+	Notice that $f$ is the unique arrow in $\X$ wich makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comma{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.
+	
+	First of all, let us show that it is a cocone. Given $d\colon D\to D'$ in $\D$ we have:
+	\begin{align*}
+		\left(a_{D'}, b_{D'}\right)\circ F(d)&=	\left(a_{D'}, b_{D'}\right)\circ \left(U_L(F(d)), U_R(F(d))\right)\\&=\left( a_{D'}\circ U_L(F(d)),  b_{D'}\circ U_R(F(d)) \right)\\&=\left(a_D, b_D\right)
+	\end{align*}
+	For the colimiting property, let $\left((X, Y, g), \left\{\left(x_D, y_D\right)\right\}_{D\in \D}\right)$ be another cocone on $F$. In particular $\left(X, \left\{x_D\right\}_{D\in \D}\right)$ and $\left(Y, \left\{y_D\right\}_{D\in \D}\right)$ are cocones on $U_L\circ F$ and $U_R\circ F$ respectively, so we have uniquely determined arrows $x\colon A\rightarrow X$ and $y\colon B\rightarrow Y$ such that 
+	\[x\circ a_D= x_D \qquad y\circ b_D= y_D\]
+	Let us show that $(x,y)$ is an arrow of $\comma{L}{R}$. Given $D\in \D$ we have
+	\begin{align*}
+		R(y)\circ f\circ L(a_D)&=R(y)\circ R\left(b_D\right)\circ f_D\\&=R\left(y\circ b_D\right)\circ f_D\\&=R\left(y_D\right)\circ f_D\\&= g\circ L\left(x_D\right)\\&=g\circ L\left(x\circ a_D\right)\\&=g\circ L(x)\circ L\left(a_D\right)
+	\end{align*}
+	from which it follows  that the following diagram commutes.
+	\[\xymatrix@C=35pt{L(A)\ar[d]_{f} \ar[r]^{L(x)} & X \ar[d]^{g}\\ R(B) \ar[r]_{R(y)}& Y}\]
+	This shows that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ and the thesis follows.    
+\end{proof} 
+
+
+\Cref{prop:dual} and \Cref{colim} now yields the following.
+\begin{corollary}\label{lim} The family $\{U_L, U_R\}$ jointly creates limits along every diagram $F\colon \D\to \comma{L}{R}$ such that $R$ preserves the limit of $U_R\circ I$.
+\end{corollary}
+
+We can use \Cref{lim} to characterize monos in comma categories. 
+\begin{corollary}\label{cor:mono}
+	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monomorphisms.
+\end{corollary}
+\begin{proof}
+	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the following square is a pullback in $\comma{L}{R}$
+	\[\xymatrix@C=50pt{(A, B, f)  \ar[r]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}& (A, B, f)  \ar[d]^{(h,k)} \\ (A, B, f)  \ar[r]_{(h,k)}& (A', B', g) }\]
+	Using \Cref{lim} we deduce that the following two squares are pullbacks in $\A$ and $\B$.
+	\[\xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
+	From which it follows that $h$ and $k$ are monos.
+	
+	\smallskip\noindent 
+	$(\Leftarrow)$ Since $h$ and $k$ are monos then we have two pullback squares 	
+	\[\xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
+	By \Cref{lim} this implies that 
+	\[\xymatrix@C=50pt{(A, B, f)  \ar[r]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}& (A, B, f)  \ar[d]^{(h,k)} \\ (A, B, f)  \ar[r]_{(h,k)}& (A', B', g) }\]
+	is a pullback in $\comma{L}{R}$ and we are done.   
+\end{proof}
+
+We end this section pointing out another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
+
+\begin{proposition}\label{prop:left}
+	If $\A$ has initial objects and $L$ preserves them then the forgetful functor $U_R\colon \comma{L}{R}\to \B$ has a left adjoint $\Delta$.
+\end{proposition}
+\begin{proof} For an object $B\in \B$ we can define $\Delta(B)$ as $(0, B, ?_{B})$, where $0$ is an initial object in $\A$ and $?_{R(B)}$ is the unique arrow $L(0)\to R(B)$. Consider $\id{B}\colon B\to U_R(\Delta(B))$ be the identity, and suppose that a $k\colon B\to U_R(A, B', f)$ in $\B$ is given. By initiality of $0$, there is only one arrow $?_A\colon 0\to A $ in $\A$ and, since $L$ preserves initial objects, the following square commutes.
+	\[\xymatrix@C=30pt{L(0) \ar[r]^{L(?_A)} \ar[d]_{?_{R(B)}} & L(A) \ar[d]^{f}\\ R(B) \ar[r]_{R(k)}& R(B')}\]
+	Thus $(h,k)$ is the unique morphism $\Delta(B)\to (A, B', f)$	such that $U_R(h,k)=k$.   
+\end{proof}
+Dualizing we get immediately the following.
+\begin{corollary}If $\B$ has terminal objects preserved by $R$ then $U_L\colon \comma{L}{R}\to \A$ has a right adjoint.
+\end{corollary}
+
+\subsection{Slice categories}
+
+This section is devoted to recall some basic facts about the so called \emph{slice categories}.
+\begin{definition}\index{category!slice -}
+	Let $X$ be an object of a category $\X$, we will define the following two categories.
+	
+	\begin{itemize}
+		\item The \emph{ slice category over $X$} is the category $\X/X$ which has as objects arrows $f\colon Y\to X$ and  in which an arrow $h\colon f\to g$ is $h\colon Y\to Y'$ in $\X$ such that the following triangle commutes.
+		\[\xymatrix@C=15pt{Y \ar[dr]_{f} \ar[rr]^{h}&& Y' \ar[dl]^{g}\\ & X}\] 
+		\item  	 Dually, the \emph{ slice category under $X$} is the category $X/\X$ in which objects are arrows $f\colon X\to Y$  with domain $X$ and a morphism $h\colon  f\to g$ is an arrow of $\X$ fitting in a triangle as the one below.
+		\[\xymatrix@C=15pt{&X \ar[dr]^{g}\ar[dl]_{f}\\ Y  \ar[rr]_{h}&& Y'}\] 
+	\end{itemize}
+\end{definition}
+
+\begin{remark} For every $X\in\ X$ we have forgetful functors
+	\[\begin{split}
+		\dom_X&\colon \X/X\to \X\\
+		\functor[l]{f}{h}{g}
+		&\functormapsto
+		\rfunctor{\dom(f) }{h}{\dom(g)}
+	\end{split}\qquad \begin{split}
+		\cod_X&\colon X/\X\to \X\\
+		\functor[l]{f}{h}{g}
+		&\functormapsto
+		\rfunctor{\cod(f) }{h}{\cod(g)}
+	\end{split}\]
+\end{remark}
+
+
+We can realize the slice over and under an object $X\in \X$ as comma categories.
+
+\begin{proposition}\label{prop:commaapp}
+	For every object $X$ in a category $\X$, if $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object $*$, then $\X/X$ and $X/\X$ are isomorphic to, respectively,  $\comma{\id{X}}{\delta_X}$ and $\comma{\delta_X}{\id{X}}$ .
+\end{proposition}
+\begin{proof} Define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
+	\[	\begin{split}
+		\functor[l]{(Y, *,  f)}{(h, \id{*} )}{( Y', *,  g)}
+		\functormapsto
+		\rfunctor{f }{h}{g}
+	\end{split} \qquad \begin{split}
+		\functor[l]{f }{h}{g}
+		\functormapsto
+		\rfunctor{(\dom(f), *, f)}{(h, \id{*} )}{(\dom(g), *, g)}
+	\end{split}\]
+	Similarly, we have $F_2\colon \comma{\delta_X}{\id{X}}\to X/\X$ and $G_2\colon X/\X\to \comma{\delta_X}{\id{X}}$
+	\[	\begin{split}
+		\functor[l]{(*, Y, f)}{(\id{*},h )}{(*, Y', g)}
+		\functormapsto
+		\rfunctor{f }{h}{g}
+	\end{split} \qquad \begin{split}
+		\functor[l]{f }{h}{g}
+		\functormapsto
+		\rfunctor{(*, \cod(f), f)}{(\id{*}, h )}{(*, \cod(g), g)}
+	\end{split}\]
+	It is now obvious to see that $F_1,G_1$ and $F_2, G_2$ are pairs of inverses.   
+\end{proof}
+
+A straightforward application of \Cref{lim} now yields the following.
+\begin{corollary}\label{cor:pbapp}
+	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
+\end{corollary}
+
+
+
+
+\section{Comparison with Ghica}
+\todo{Lo vogliamo fare?}
+
+
+\end{document}
+
