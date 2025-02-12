@@ -70,6 +70,236 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 	By \Cref{rem:eqhyp_morphs}, we can conclude also $h_C = k_C$, and hence the faithfulness of $T$.
 \end{remark}
 
+\section{Hypergraphs and term graphs with equivalences}
 
 
+\begin{definition}
+	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $C_\mathcal{G}$ is an object and $q_{\mathcal{G}}: V_{\mathcal{G}}\to C_{\mathcal{G}}$ is a regular epimorphism called \emph{quotient map}. 
+	
+	A morphism $h:\mathcal{G\to H}$ is a triple $(h_E, h_V, h_C)$ such that the following diagrams commute.
+	\[\xymatrix{
+		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {C_{\mathcal{G}}} \ar[d]^{h_C} \\
+		{E_\mathcal{H}}\ar[r]_{s_\mathcal{H}} & {V_{\mathcal{H}}^\star}	& {E_\mathcal{H}}\ar[r]_{t_\mathcal{H}} & {V_{\mathcal{H}^\star}}& {V_\mathcal{H}}\ar[r]_{q_\mathcal{H}} & {C_\mathcal{H}}
+	}\]
+	The category of hypergraphs with equivalences and their morphisms is denoted $\EqHyp$.
+
+\end{definition}
+
+\begin{remark}\label{rem:eqhyp_morphs}
+	Morphisms of hypergraphs with equivalences are uniquely determined by the first two components. That is, if $h_1 = (h_E, h_V, f)$ and $h_2 = (h_E, h_V, g)$ are two morphisms $\mathcal{G \to H}$, then we have
+	\[\xymatrix{
+			{V_\mathcal{G}} \ar[r]^{h_V}\ar[d]_{q_\mathcal{G}} & V_\mathcal{H} \ar[d]^{q_\mathcal{H}} & V_\mathcal{G}\ar[l]_{h_V}\ar[d]^{q_\mathcal{G}}\\
+			C_{\mathcal{G}}\ar[r]_{f} & C_{\mathcal{H}} & C_{\mathcal{G}}\ar[l]^{g}
+	}\]
+	Hence,
+	\begin{align*}
+		f \circ q_\mathcal{G} &= q_\mathcal{H}\circ h_V \\ &=g\circ q_\mathcal{G}
+	\end{align*}
+	Since $q_\mathcal{G}$ is epi, we obtain $f = g$.
+\end{remark}
+
+$\EqHyp$ has a forgetful functor $U_{\EqHyp}:\EqHyp \to \Set$, which sends each $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ into $V_\mathcal{G}$, and each $h = (h_E, h_V, h_C)$ onto $h_V$. 
+
+\begin{proposition}
+	$U_\EqHyp$ has a left adjoint $\Delta_{\EqHyp}: \Set \to \EqHyp$.
+\end{proposition}
+
+\begin{proof}
+	For each set $X$, define $\Delta_\EqHyp(X):= (\emptyset, X, \{\bullet\}, ?_X, ?_X, !_X)$. Consider now $h: \Delta_{\EqHyp}(X) \to \mathcal{H}$.
+	\[\xymatrix@C=2.3cm{
+			\Delta_{\EqHyp}(X) \ar@{.>}[d]_{\Delta_\EqHyp(f)} \ar[dr]^{h} & \\
+			\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
+	}\]
+	Where $\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) = (\emptyset, V_\mathcal{H}, \{\bullet\}, ?_{V_\mathcal{H}}, ?_{V_\mathcal{H}}, !_{V_\mathcal{H}})$ and $\epsilon_{\mathcal{H}} = (?_{E_\mathcal{H}}, \id{V_\mathcal{H}}, g)$.
+	Note that, since $\Delta_{\EqHyp}(X)$ has the empty set as object of edges, $h_E = ?_{E_\mathcal{H}}$, then, the unique arrow that fits in the diagram is $\Delta_{\EqHyp}(f) = (?_{E_\mathcal{H}}, h_V, \id{\{\bullet\}})$.
+
+\end{proof}
+
+We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotient part, mapping each hypergraph with equivalence $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ onto $T(\mathcal{G})=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_\mathcal{G}, t_{\mathcal{G}})$. Then, we have the following result.
+
+\begin{proposition}
+	$T$ has a left adjoint $L: \hyp \to \EqHyp$.
+\end{proposition}
+
+\begin{proof}
+	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
+	\[\xymatrix@C=2.3cm{
+		L(\mathcal{G}) \ar@{.>}[d]_{L(f)} \ar[dr]^{h}\\ L(T(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
+	}\]
+	Where $L(T(\mathcal{H}))=(E_\mathcal{H}, V_{\mathcal{H}}, \{\bullet\}, s_\mathcal{H}, t_\mathcal{H}, !_{V_\mathcal{H}})$. Then, $\epsilon_\mathcal{H} = (\id{E_\mathcal{H}}, \id{V_\mathcal{H}}, h_C)$ (recall that by \Cref{rem:eqhyp_morphs}, the last component is uniquely determined by the first two), and $L(f)$ must be $(h_E, h_V, \id{\{\bullet\}})$.
+\end{proof}
+
+\begin{remark}
+	$T$ is faithful. Indeed, consider two morphisms $h = (h_E, h_V, h_C)$ and $k = (k_E, k_V, k_C)$, and suppose $T(h) = T(k)$, that is, $(h_E, h_V) = (k_E, k_V)$.
+	By \Cref{rem:eqhyp_morphs}, we can conclude also $h_C = k_C$, and hence the faithfulness of $T$.
+\end{remark}
+
+Let now $K: \EqHyp \to \Set$ be the functor which sends each hypergraph with equivalence $\mathcal{G} = (E, V, C, s, t, q)$ onto $K(\mathcal{G}) = C$, and each morphsism $(h_E, h_V, h_C)$ to $h_C$.
+
+\begin{proposition}
+	\EqHyp is complete and cocomplete, and $T$ preserves limits and colimits.
+\end{proposition}
+
+\begin{proof}
+	Let $D: \cat{I}\to \EqHyp$ be a diagram, and, for each $i \in \cat{I}$, $D(i) = (E_i, V_i, C_i, s_i, t_i, q_i)$.
+	Suppose now $(E, V, s, t)$, together with morphisms $(\pi_i^E, \pi_i^V)$, be the limit of $T \circ D$.
+	Then, $V$, together with $(q_i\circ \pi_V^i)_{i\in \cat I}$, is a cone for $K \circ D$. Indeed, let $\alpha: i \to j$ be an arrow of $\cat I$, $D(\alpha) = (h_E,h_V, h_C)$.
+	By definition of $T$, $(T \circ D)(\alpha) = (h_E, h_V)$, hence we have the following situation.
+	\[\xymatrix{
+		& V \ar[dl]_{\pi_V^i} \ar[dr]^{\pi_V^j} & \\V_i\ar[rr]^{h_V}\ar[d]_{q_i}&&V_j\ar[d]^{q_j}\\C_i\ar[rr]_{h_C}&&C_j
+	}\]
+	Suppose now that $L$, with morphisms $(l_i)_{i\in \cat I}$ be the limit of $K\circ D$. Hence, we have an arrow $l:V \to L$, which is not epi in general.
+	Let then $l = m \circ q$ be the epi-mono factorization of it. Consider the following situation, where the outer rectangle commutes by definition, and the dotted arrow is yielded by ({\color{red}cite left lifting prop}).
+	\[\xymatrix{
+			V\ar[r]^{\pi_V^i}\ar[d]_{q}&V_i\ar[r]^{q_i}&C_i\ar[d]^{\id{C_i}}\\C\ar[r]_{m}\ar@{.>}[urr]^{\pi_C^i}&L\ar[r]_{l_i}&{C_i}
+	}\]
+	Thus, $(E, V, C, s, t, q)$, together with $(\pi_E^i, \pi_V^i, \pi_C^i)$ is a cone over $D$. {\color{red} remain to show that this cone is terminal}
+	
+	Suppose now $(E', V', s', t')$, together with $(\kappa_E^i, \kappa_V^i)_{i \in \cat I}$, be the colimit of $T \circ D$, and $C'$, with $(c_i)_{i \in \cat I}$ be the colimit of $K \circ D$.
+	Then, we have the folliwing situation.
+	\[\xymatrix{
+								  &  {V'} &                             \\
+		V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
+		C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
+								  &  {C'} &
+	}\]
+	Then, $C'$ with morphisms $(c_i \circ q_i)_{i\in \cat I}$ is a conone for $U \circ D$. Then, there exists a unique morphism $q': V' \to C'$ such that $q'\circ \kappa_V^i = c_i\circ q_i$.
+	Such morphism is epi ({\color{red}cite Lemma 1.3.45 of the thesis}), and thus $(E', V', C', s', t', q')$, together with $(\kappa_E^i, \kappa_V^i, c_i)_{i\in \cat I}$ is the colimit of $D$.
+	
+\end{proof}
+
+\begin{corollary}\label{cor:mono1}
+	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ is mono if and only if $T(h)$ is mono.
+\end{corollary}
+
+\begin{proof}
+	The ``if'' part is given by the faithfulness of $T$.
+	The ``only if'' part is given by \Cref{rem:eqhyp_morphs}.
+\end{proof}
+
+\begin{corollary}\label{cor:mono2}
+	If $h = (h_E, h_V, h_C): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
+\end{corollary}
+
+\begin{proof}
+	If $h$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. Suppose now $f, g: \mathcal{H\rightrightarrows K}$ be the arrows equalized by $h$. Then, we have:
+	\begin{align*} f_C \circ h_C \circ q_\mathcal{G} &= f_C\circ q_\mathcal{H} \circ h_V\\&=q_\mathcal{K}\circ g_V \circ h_V\\&=q_\mathcal{K}\circ f_V \circ h_V\\&=g_C \circ h_C \circ q_\mathcal{G} \end{align*}
+	Since $q_\mathcal{G}$ is epi, we have $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, and thus a monomorphism.
+\end{proof}
+
+\begin{proposition}
+	Let $h = (h_E, h_V, h_C): \mathcal{G \to H}$ be a regular monomorphism in $\EqHyp$.
+	Then, $h_E$ and $h_V$ are monos and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{H}\circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$.
+\end{proposition}
+
+\begin{proof}
+	By \Cref{cor:mono2}, we have that $h_E, h_V$ and $h_C$ are all monos.
+	Hence, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$ if and only if it is the kernel pair also of $h_C \circ q_\mathcal{G}$, since $h_C$ is mono by hypothesis.
+	The thesis follows from $h_C \circ q_\mathcal{G} = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
+\end{proof}
+
+
+\begin{remark}
+    It is possible to restate the last proposition, by \Cref{ex:kernel_pairs_in_Set}, as 
+    \begin{displayquote}
+    \textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
+    \end{displayquote}
+    That is, a regular monomorphism in $\EqHyp$ is a morphism that reflects equivalences besides preserving them.
+\end{remark}
+
+Let us turn to another functor $\EqHyp \to \hyp$.
+
+\begin{definition}
+The \emph{quotient functor} $Q:\EqHyp\to \hyp $ is defined as
+the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ t)$ and an arrow $(h_E, h_V, h_C)$ to $(h_E, h_C)$.
+\end{definition}
+
+\begin{remark}
+	The action of the functor on a morphism of hypergraphs with equivalences gives a morphism of hypergraphs,
+	in fact 
+	\begin{align*}
+		q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E &= q^{\star}_\mathcal{H} \circ h_V \circ s_\mathcal{G}\\ &= h_C \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}
+	\end{align*}
+	The same is valid for $t_\mathcal{H}$ and $t_\mathcal{G}$. 
+\end{remark}
+
+\begin{lemma}\label{lemma:quot_funct_left_adj}
+    $Q$ is a left adjoint.
+\end{lemma}
+
+\begin{proof}
+	Let $R((A, B, s, t))$ be $(A, B, B, s, t, \id{B})$, so that $Q(R((A, B, s, t))) = (A, B, s, t)$. Now, suppose that $h = (h_E, h_V): Q((E, V, C, s', t', q)) \to (A, B, s, t)$  is an arrow in $\hyp$, and consider the triple $(h_E, h_V, h_V \circ q)$. Since $h$ is a morphism of $\hyp$, 
+    \[h_V^{\star}\circ q^{\star}\circ s'= s\circ h_E \qquad  h_V^{\star}\circ q^{\star}\circ t' = t\circ h_E\]
+    Then we have the following squares:
+    \[\xymatrix{
+		    E \ar[r]^{h_E}\ar[d]_{s'} & A \ar[d]^{s} & E \ar[r]^{h_E}\ar[d]_{t'} & A \ar[d]^{t} & V \ar[r]^{h_V \circ q} \ar[d]_{q} & B \ar[d]^{\id{B}} \\
+		    V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & C \ar[r]_{h_V} & B
+    }\]
+
+    \iffalse\[
+        \begin{tikzcd}
+            E \arrow[r, "{h_E}"] \arrow[d, "{s_G}"swap] & A \arrow[d, "s"] \\
+            V \arrow[r, "{h_V \circ q}"swap] & B
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}
+            E \arrow[r, "{h_E}"] \arrow[d, "{t_G}"swap] & A \arrow[d, "t"] \\
+            V \arrow[r, "{h_V \circ q}"swap] & B
+        \end{tikzcd}
+        \qquad
+        \begin{tikzcd}
+            V \arrow[r, "{h_V\circ q}"] \arrow[d, "q" swap] & B \arrow[d, "{id_B}"] \\
+            C \arrow[r, "{h_V}"swap] & B
+        \end{tikzcd}
+    \]\fi
+
+    We have therefore found a morphism $(E, V, C, s', t', q) \to R((A, B, s, t))$ whose image through $Q$ fits in the diagram below.
+
+    \[\xymatrix{
+		    (A, B, s, t) \ar[r]^{(\id{A}, \id{B})} & (A, B, s, t)\\
+		    (E, C, q^\star\circ s', q^\star\circ t') \ar[u]^{Q(h_E, h_V \circ q, h_V)} \ar[ur]_{(h_E, h_V)}
+    }\]
+   
+    Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow with such property.
+    Then, it must be $(\id A, \id B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
+\end{proof}
+
+\begin{proposition}\label{prop:quot_creat_colims}
+    $Q$ creates colimits.
+\end{proposition}
+
+
+\begin{proof}
+    Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
+	Let $D: \cat I \to \EqHyp$ be a diagram, and let $((c_i)_{i\in \cat I}, \mathcal{C})$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
+	Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.
+	Let then $((b_i)_{i\in \cat I}, B)$ be the colimit of $T \circ D$.
+	Consider the following situation.
+	\[\begin{tikzcd}[row sep = 24, column sep = 24]
+		& B & \\
+		B_i \ar[ur, "{b_i}"] \ar[rr, "h_V"] \ar[d, "{q_i}"] & & B_j \ar[ul, "{b_j}"swap] \ar[d, "{q_j}" swap] \\
+		C_i \ar[dr, "{c_C^i}" swap] \ar[rr, "{h_C}"swap] & & C_j \ar[dl, "{c_C^j}"] \\
+		& C &
+	\end{tikzcd}\]
+
+	Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $T \circ D$, there exists a unique $q: B \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
+	Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component. By \Cref{prop:eqgrph_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, A)$ is the colimit of $W \circ D$.
+	Notice that $((b_i \circ s_i)_{i \in \cat{I}}, B)$ and $((b_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(A, B, C, s, t, q)$, together with $(c_E^i, b_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
+\end{proof}
+
+\begin{example}
+	$Q$ does not preserve limits. Indeed, let $\mathcal{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\mathcal{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\mathcal{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \mathcal{G}_1 \to \mathcal{G}_3$, $k = (k_E, \iota_B, !_B): \mathcal{G}_2 \to \mathcal{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.
+	The following two diagrams show the pullback of $h$ and $k$ and the pullback of $Q(h)$ and $Q(k)$, on the second component (the vertices of the graphs)
+	\[\begin{tikzcd}[row sep = 20, column sep = 20]
+		\initial \ar[r, "{p_1}"] \ar[d, "{p_2}" swap] & A \ar[d, "{\iota_A}"] \\
+		B \ar[r, "{\iota_B}"swap] & A+B
+	\end{tikzcd}\
+	\qquad
+	\begin{tikzcd}[row sep = 20, column sep = 20]
+		{A \times B} \ar[r, "{\pi_A}"] \ar[d, "{\pi_B}"swap] & A \ar[d, "{!_A}"] \\
+		B \ar[r, "{!_B}"swap] & \terminal
+	\end{tikzcd}\]
+
+	But the arrow $\initial \to A\times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
+\end{example}
 
