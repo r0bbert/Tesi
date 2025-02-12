@@ -270,11 +270,15 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 
 
 \begin{proof}
-    Preserve from \Cref{th:adjoints_preserves_lim}. Remain to see Reflect.
-	Let $D: \cat I \to \EqHyp$ be a diagram, and let $((c_i)_{i\in \cat I}, \mathcal{C})$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
-	Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.
-	Let then $((b_i)_{i\in \cat I}, B)$ be the colimit of $T \circ D$.
+    Since $Q$ is a left adjoint, it preserves colimits.
+	Let $D: \cat I \to \EqHyp$ be a diagram, and let $\mathcal{C}$, together with  $(c_i)_{i\in \cat I}$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
+	\iffalse
+	Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.\fi
+	Let $((b_i)_{i\in \cat I}, B)$ be the colimit of $U_\EqHyp \circ D$.
 	Consider the following situation.
+	\[\xymatrix{
+		
+	}\]
 	\[\begin{tikzcd}[row sep = 24, column sep = 24]
 		& B & \\
 		B_i \ar[ur, "{b_i}"] \ar[rr, "h_V"] \ar[d, "{q_i}"] & & B_j \ar[ul, "{b_j}"swap] \ar[d, "{q_j}" swap] \\
