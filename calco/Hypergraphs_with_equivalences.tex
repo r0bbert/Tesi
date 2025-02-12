@@ -136,7 +136,7 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 
 Let now $K: \EqHyp \to \Set$ be the functor which sends each hypergraph with equivalence $\mathcal{G} = (E, V, C, s, t, q)$ onto $K(\mathcal{G}) = C$, and each morphsism $(h_E, h_V, h_C)$ to $h_C$.
 
-\begin{proposition}
+\begin{proposition}\label{prop:eqhyp_complete}
 	\EqHyp is complete and cocomplete, and $T$ preserves limits and colimits.
 \end{proposition}
 
@@ -274,36 +274,65 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 	Let $D: \cat I \to \EqHyp$ be a diagram, and let $\mathcal{C}$, together with  $(c_i)_{i\in \cat I}$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
 	\iffalse
 	Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.\fi
-	Let $((b_i)_{i\in \cat I}, B)$ be the colimit of $U_\EqHyp \circ D$.
+	Let $((\kappa_i)_{i\in \cat I}, V)$ be the colimit of $U_\EqHyp \circ D$.
 	Consider the following situation.
 	\[\xymatrix{
-		
+								  &  {V} &                             \\
+		V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
+		C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
+								  &  {C} &
 	}\]
-	\[\begin{tikzcd}[row sep = 24, column sep = 24]
-		& B & \\
-		B_i \ar[ur, "{b_i}"] \ar[rr, "h_V"] \ar[d, "{q_i}"] & & B_j \ar[ul, "{b_j}"swap] \ar[d, "{q_j}" swap] \\
-		C_i \ar[dr, "{c_C^i}" swap] \ar[rr, "{h_C}"swap] & & C_j \ar[dl, "{c_C^j}"] \\
-		& C &
-	\end{tikzcd}\]
-
-	Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $T \circ D$, there exists a unique $q: B \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
-	Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component. By \Cref{prop:eqgrph_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, A)$ is the colimit of $W \circ D$.
-	Notice that $((b_i \circ s_i)_{i \in \cat{I}}, B)$ and $((b_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(A, B, C, s, t, q)$, together with $(c_E^i, b_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
+	Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $U_\EqHyp \circ D$, there exists a unique $q: V \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
+	Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component.
+	By \Cref{prop:eqhyp_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, E)$ is the colimit of $W \circ D$.
+	Notice that $((\kappa_i \circ s_i)_{i \in \cat{I}}, B)$ and $((\kappa_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(E, V, C, s, t, q)$, together with $(c_E^i, \kappa_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
 \end{proof}
 
 \begin{example}
 	$Q$ does not preserve limits. Indeed, let $\mathcal{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\mathcal{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\mathcal{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \mathcal{G}_1 \to \mathcal{G}_3$, $k = (k_E, \iota_B, !_B): \mathcal{G}_2 \to \mathcal{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.
 	The following two diagrams show the pullback of $h$ and $k$ and the pullback of $Q(h)$ and $Q(k)$, on the second component (the vertices of the graphs)
-	\[\begin{tikzcd}[row sep = 20, column sep = 20]
-		\initial \ar[r, "{p_1}"] \ar[d, "{p_2}" swap] & A \ar[d, "{\iota_A}"] \\
-		B \ar[r, "{\iota_B}"swap] & A+B
-	\end{tikzcd}\
+	\[\xymatrix{
+			\initial \ar[r]^{p_1} \ar[d]_{p_2}& A \ar[d]^{\iota_A} \\
+			B \ar[r]_{\iota_B} & A+B
+	}
 	\qquad
-	\begin{tikzcd}[row sep = 20, column sep = 20]
-		{A \times B} \ar[r, "{\pi_A}"] \ar[d, "{\pi_B}"swap] & A \ar[d, "{!_A}"] \\
-		B \ar[r, "{!_B}"swap] & \terminal
-	\end{tikzcd}\]
+	\xymatrix{
+		{A \times B} \ar[r]^{\pi_A} \ar[d]_{\pi_B} & A \ar[d]^{!_A} \\
+		B \ar[r]_{!_B} & \terminal
+	}\]
 
-	But the arrow $\initial \to A\times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
+	But the arrow $\initial \to A \times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
 \end{example}
+
+\begin{proposition}
+	In $\EqHyp$, pushouts along regular monos are stable.
+\end{proposition}
+
+\begin{proof}
+	Let $\mathcal{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, C'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
+	and, in the diagram below, suppose all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is regular mono.
+                \[
+		\xymatrix@C=10pt@R=6pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{t'} \\ \mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d}\\&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{t} \\\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 }
+	\]
+	By \Cref{prop:eqgrph_complete} and \Cref{cor:mono1}, the following cubes in $\Set$ have pushouts as bottom faces and pullbacks as vertical faces, hence their top faces are pushouts.
+	\[
+        \xymatrix@C=10pt@R=6pt{&A_1'\ar[dd]|\hole_(.65){a_V}\ar[rr]^{h_V'} \ar[dl]_{k_V'} && A_2' \ar[dd]^{b_V} \ar[dl]_{t_V'} \\ A_3'  \ar[dd]_{c_V}\ar[rr]^(.7){p_V'} & & A_4' \ar[dd]_(.3){d_V}\\&A_1\ar[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && A_2 \ar[dl]^{t_V} \\A_3 \ar[rr]_{p_V} & & A_4 }
+	\qquad
+        \xymatrix@C=10pt@R=6pt{&B_1'\ar[dd]|\hole_(.65){a_E}\ar[rr]^{h_E'} \ar[dl]_{k_E'} && B_2' \ar[dd]^{b_E} \ar[dl]_{t_E'} \\ B_3'  \ar[dd]_{c_E}\ar[rr]^(.7){p_E'} & & B_4' \ar[dd]_(.3){d_E}\\&B_1\ar[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && B_2 \ar[dl]^{t_E} \\B_3 \ar[rr]_{p_E} & & B_4 }
+	\]
+	Consider now the following pullbacks.
+	\[\xymatrix{
+			Y \ar[d]_{y_2}\ar[r]^{y_1}&{C_4'}\ar[d]^{d_C}&U\ar[d]_{u_2}\ar[r]^{u_1}&{C_4'}\ar[d]^{d_C}&T\ar[r]^{x_1}\ar[d]_{x_2}&U\ar[d]^{u_2}\\
+			C_3\ar[r]_{p_C}&C_4&C_2\ar[r]_{t_C}&C_4&C_1\ar[r]_{h_C}&C_2
+	}\]
+	Thus, [???]\todo{inserire in sezione 1 la proposizione} yields the following situation, in which the bottom face is a pushout, and the vertical faces are pullbacks, hence the top face is a pushout too.
+        \[\xymatrix@C=10pt@R=6pt{&T\ar[dd]|\hole_(.65){x_2}\ar[rr]^{x_1} \ar@{.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]^(.7){y_1} & & C_4' \ar[dd]_(.3){d_C}\\&C_1\ar[rr]|\hole^(.65){h_C} \ar[dl]^{k_C} && C_2 \ar[dl]^{t_C} \\C_3 \ar[rr]_{p_C} & & C_4 }\]
+	By the proof of \Cref{prop:eqhyp_complete}, we have that $m_2 \circ q'_3 : B'_3 \to Y$ and $m_3 \circ q'_2 : B_2' \to U$ are two epi-mono factorizations, with $m_2$ and $m_3$ monos.
+	At the same way, let the following square to be a pullback.
+	\[\xymatrix{S\ar[r]^{s_1}\ar[d]_{s_2}&C'_2\ar[d]^{m_3}\\T\ar[r]_{x_1}&U}\]
+	Then, there exists a mono $m_1$ such that $m_1\circ q_1' : B_1' \to S$.
+	
+\end{proof}
+
+
 
