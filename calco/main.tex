@@ -153,9 +153,9 @@
 \newcommand{\eto}{\twoheadrightarrow}
 \newcommand{\id}[1]{\mathsf{id}_{#1}}
 
-%\tikzset{->-/.style={decoration={
-%			markings,
-%			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+
+\title{On the adhesivity properties of equivalence graphs\thanks{???????}}
 
 %\titlerunning{????} %TODO optional, please use if title is longer than one line
 
@@ -169,36 +169,24 @@
 	% \email{fabio.gadducci@unipi.it}
 %}
 
+
+
+
+
+
 \authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
-\Copyright{R.~Biondo, D.~Castelnovo, F.~Gadducci}
 
-\ccsdesc[500]{Theory of Computation~Models of computation}
-\ccsdesc[500]{Theory of Computation~Semantics and reasoning}
-
-\keywords{Adhesive categories, EGGS} %TODO mandatory; please add comma-separated list of keywords
-
-%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\EventEditors{John Q. Open and Joan R. Access}
-\EventNoEds{2}
-\EventLongTitle{42nd Conference on Very Important Topics (CVIT 2016)}
-\EventShortTitle{CVIT 2016}
-\EventAcronym{CVIT}
-\EventYear{2016}
-\EventDate{December 24--27, 2016}
-\EventLocation{Little Whinging, United Kingdom}
-\EventLogo{}
-\SeriesVolume{42}
-\ArticleNo{23}
-
-
-\title{On the adhesivity of EGGS}
 
 \begin{document}
-\maketitle
 
-\begin{abstract}
+
+\tikzset{->-/.style={decoration={
+			markings,
+			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+	\maketitle \todo{Scegliere un titolo vero e mettere i ringraziamenti}
+	\begin{abstract}
 \todo{a very nice abstract}
-\end{abstract}
+	\end{abstract}
 
 
 \section{Introduction}
@@ -206,15 +194,14 @@
 \section{$\mathcal{M}$-adhesive categories}
 
 
-This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}
-and investigate some simple results for their relationship with kernel pairs.
+This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
 
 %\begin{notation}
 Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
 ``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we will denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one.
 %\end{notation}
 
-\subsection{Background on $\mathcal{M}$-adhesivity}\label{subsec:ade}
+\subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. 
 
 In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is called
@@ -338,7 +325,7 @@ Finally, another  useful properties of $\mathcal{M}$-adhesive category are the f
 	\end{enumerate}
 \end{proof}
 
-\subsection{Some Results on Kernel Pairs and Regular Epis}
+\subsection{Kernel Pairs and Regular Epimorphisms}
 
 \begin{definition}[Kernel Pair]
     A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f : K_f \to A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
@@ -1068,10 +1055,6 @@ This characterization, in turn, provides us with the following result \cite{cast
 	The category $\tg$ is quasiadhesive.
 \end{corollary}
 
-
-\subsection{Hierarchical hypergraphs}
-
-\todo{da fare? lasciare per una versione estesa?}
 
 
 \input{Hypergraphs_with_equivalences}
