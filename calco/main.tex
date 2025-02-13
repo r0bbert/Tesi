@@ -659,7 +659,7 @@ Finally, another  useful properties of $\mathcal{M}$-adhesive category are the f
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briegly recall the notion \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,wadler1995monads}. We will recall some of its proprieties.
+In this section we briefly recall the notion \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}. We will recall some of its proprieties.
 
 \begin{proposition}
 	The following facts are true:
@@ -824,7 +824,7 @@ In turn, these arrows allow us to consider
 $s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections.
 \[\xymatrix{F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{s^{F}_{k,l}}& F(\bullet)^{k} \ar[d]^{b^F_{k}} & F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{t^{F}_{k,l}}& F(\bullet)^{l} \ar[d]^{b^F_{l}}\\ E_F \ar@{.>}[r]_-{s_F}& F(\bullet)^\star & E_F \ar@{.>}[r]_-{t_F}& F(\bullet)^\star}\]
 
-Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending $F$ to $\mathcal{G}_F$ can be extended to an equivalence $\mathcal{G}_{-}\colon \Set^{\catname{H}}\to \hyp$ (see \cite{castelnovo2023thesis, castelnovo2022newcriterionmathcalmmathcalnadhesivity} for details).
+Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending $F$ to $\mathcal{G}_F$ can be extended to an equivalence $\mathcal{G}_{-}\colon \Set^{\catname{H}}\to \hyp$ (see \cite{castelnovo2023thesis,CastelnovoGM24} for details).
 
 
 \begin{proposition}
@@ -1046,13 +1046,13 @@ Preservation of inputs, characterizes regular monos in $\tg$.
 	\end{enumerate}	
 \end{proposition}
 
-This characterization, in turn, provides us with the following result \cite{castelnovo2022newcriterionmathcalmmathcalnadhesivity,castelnovo2023thesis}. 
+This characterization, in turn, provides us with the following result \cite{CastelnovoGM24,castelnovo2023thesis}. 
 
 \begin{lemma}\label[lemma]{prop:push} Consider three term graphs $(l_0, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$, $(l_1, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ and $(l_2, !_{V_\mathcal{K}})\colon \mathcal{K}\to \mathcal{G}^{\Sigma}$. Given $(f_1, g_1)\colon (l_0, !_{V_\mathcal{G}})\to (l_1, !_{V_\mathcal{H}})$, $(f_2, g_2)\colon (l_0, !_{V_\mathcal{G}})\to (l_2, !_{V_\mathcal{K}})$, if $(f_1, g_1)$ is a regular mono, then its pushout along $(f_2, g_2)$,  then their pushout $(p, !_{V_{\mathcal{P}}})\colon \mathcal{P}\to \mathcal{G}^{\Sigma}$ in $\hyp_{\Sigma}$ is a term graph too.
 \end{lemma}
 
 
-\Cref{thm:slice-functors}, \Cref{lem:reg} and \Cref{prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{corradini2005term}.
+\Cref{thm:slice-functors}, \Cref{lem:reg} and \Cref{prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{CorradiniG05}.
 \begin{corollary}
 	The category $\tg$ is quasiadhesive.
 \end{corollary}
@@ -1136,7 +1136,7 @@ Summing up we have just proved the following fact.
 
 
 \begin{lemma}\label[lemma]{colim}
-	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comma{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite{castelnovo2023thesis,castelnovo2022newcriterionmathcalmmathcalnadhesivity}).
+	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comma{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite{castelnovo2023thesis,CastelnovoGM24}).
 \end{lemma}
 \begin{proof}
 	Suppose that $U_L\circ F$ and $U_R\circ F$ have colimiting cocones  $\left(A, \{a_D\}_{D\in \D}\right)$ and $\left(B, \{b_D\}_{D\in \D}\right)$ respectively. By hypothesis $\left(L(A), \{L\left(a_D\right)\}_{D\in \D}\right)$ is colimiting for $L\circ U_L\circ F$. Now, if we define
@@ -1263,11 +1263,8 @@ A straightforward application of \Cref{lim} now yields the following.
 	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
 \end{corollary}
 
-
-
-
-\section{Comparison with Ghica}
-\todo{Lo vogliamo fare?}
+%\section{Comparison with Ghica}
+%\todo{Lo vogliamo fare?}
 
 
 \end{document}
