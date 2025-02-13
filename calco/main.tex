@@ -155,7 +155,7 @@
 
 
 
-\title{On the adhesivity properties of equivalence graphs\thanks{???????}}
+\title{On the adhesivity of EGGS}
 
 %\titlerunning{????} %TODO optional, please use if title is longer than one line
 
@@ -183,10 +183,12 @@
 \tikzset{->-/.style={decoration={
 			markings,
 			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
-	\maketitle \todo{Scegliere un titolo vero e mettere i ringraziamenti}
-	\begin{abstract}
+
+\maketitle 
+
+\begin{abstract}
 \todo{a very nice abstract}
-	\end{abstract}
+\end{abstract}
 
 
 \section{Introduction}
@@ -1065,9 +1067,36 @@ This characterization, in turn, provides us with the following result \cite{cast
 \section{EGGS}
 
 \section{Conclusions and further works}
-\todo{Some very nice conclusions}
-Citare gli iper-grafi gerarchici come future work.
-Accennare al confronto con Ghica, lasciando il confronto puntuale a future work.
+The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
+an up-and-coming formalism for program optimisation and synthesis via a compact representation and 
+efficient implementation of equality saturation.
+%
+To do so, we revisited and generalised the notions of hyper-graph and term graph with equivalence, and
+we extended it in order to capture EGGS as term graphs satisfying a suitable closure property.
+
+Our result opens two threads of research. The first is to use the quasi-adhesivity of EGGS in order to
+model their rewriting via the double-pushout (DPO) approach. This is likely to be straightforward, since 
+the rules adopted in the literature of EGGS seems to be span of regular monos, and such rules
+perfectly fit the mold of rewriting on quasi-adhesive categories. 
+For example, the equivalence $x \div x = 1$, taken from the introductory example in~\cite{xxx}, 
+can be modelled as the rule
+\[to draw DPO rule\]
+
+It still needs to be investigated what concurrency and termination, the key properties for DPO rewriting
+on adhesive categories, 
+means in the context of EGGS. More interestingly, another venue for development is using the adhesive 
+machinery to extend the EGGS formalism. In fact, most of the results
+presented here for hyper-graphs can be generalised to hierarchical hyper-graphs, that is, 
+hypergraphs with a hierarchy (a partial order) among 
+edges that is useful for adding structural information, such as encapsulation and sandboxing~\cite{xxx}.
+
+Finally, we will delve into and draw a comparison with an alternative categorical presentation for EGGS 
+advanced in~\cite{ghica}. The proposal is quite different from our own. Simplifying, the key is to use categories 
+of tree which are equipped with a lattice on hom-sets. We can recover trees in our approach, even 
+if we opted for term graphs in order to obtain a simpler categorical presentation. Instead of going through 
+an enrichment on hom-sets, we chose to obtain closure via suitable requirements on morphisms, even if it 
+seems that the former generalises the latter, at the expenses of a more complex machinery.
+
 \bibliography{biblio}
 
 \appendix
