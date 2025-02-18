@@ -12,6 +12,57 @@
 	$\egg$ has all limits, and $I$ preserves them.
 \end{lemma}
 
-\beign{proof}
-	
+\begin{proof}
+        Let $D: \cat{I} \to \egg$ be a diagram, with $D(i) = (A_i, B_i, C_i, s_i, t_i, q_i)$, let $(U_i, u_1^i, u_2^i)$ be the kernel pair of $q_i\circ s_i$.
+	Let now be $(A, B, C, s, t, q)$, togehter with projections $(\pi_E^i, \pi_V^i, \pi_C^i)_{i \in \cat I}$ the limit of $I \circ D$,
+	let $(U, u_1, u_2)$ be the kernel pair of $q\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ D$.
+        By construction (proof of \Cref{prop:eqhyp_complete}), there exists a monomorphism $m: C \to L$ such that $\pi_C^i = l_i \circ m$. Notice that
+        \begin{align*}
+                q_i^\star \circ s_i\circ \pi^i_E\circ u_1      &= q_i^\star\circ (\pi^i_V)^\star \circ s\circ u_1\\
+                                                        &= (\pi_C^i)^\star\circ q^\star\circ s\circ u_1\\
+                                                        &=(\pi_C^i)^\star\circ q^\star\circ s\circ u_2\\
+                                                        &= q_i^\star \circ s_i \circ \pi_E^i \circ u_2
+        \end{align*}
+        Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
+	\[
+                \xymatrix{
+			U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_i} & A \ar[drr]^{\pi_E^i} && \\
+			A \ar[ddr]_{\pi_E^i} & U_i \ar[rr]_{u_1^i} \ar[dd]^{u_2^i}&& A_i \ar[d]^{s_i} \\
+					     & & & B_i \ar[d]^{q_i}\\
+					     & A_i \ar[r]_{s_i} & B_i \ar[r]_{q_i}& C_i
+                }
+        \]
+        We have then
+        \begin{align*}
+                l_i^\star\circ m^\star \circ q^\star \circ t \circ u_1    &= q_i^\star\circ (\pi_V^i)^\star \circ t \circ u_1 \\
+                                                        &= q_i^\star \circ t_i \circ \pi_E^i \circ u_1 \\
+                                                        &= q_i^\star \circ t_i \circ u_1^i \circ a_i \\
+                                                        &= q_i^\star \circ t_i \circ u_2^i \circ a_i \\
+                                                        &= q_i^\star \circ t_i \circ \pi_E^i \circ u_2 \\
+                                                        &= q_i^\star \circ (\pi_V^i)^\star \circ t \circ u_2 \\
+                                                        &= l_i^\star \circ m^\star \circ q^\star \circ t \circ u_2
+        \end{align*}
+        By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$, and, since $m$ is mono, $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the thesis.
+\end{proof}
+
+\begin{corollary}
+	$I$ creates limits.
+\end{corollary}
+
+\begin{corollary}
+	$h: \mathcal{G \to H}$ is a regular mono in $\egg$ if and only if it is a regular mono in $\EqHyp$.
+\end{corollary}
+
+\begin{lemma}
+	Consider the following pushout square in $\EqHyp$.
+	\[\xymatrix{\mathcal{G}_1 \ar[r]^{h}\ar[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]_{k}&\mathcal{P}}\]
+with $m$ regular mono. If $\mathcal{G}_1$, $\mathcal{G}_2$ and $\mathcal{G}_3$ are e-hypergraphs, then $\mathcal{P}$ is an e-hypergraph too, and $n$ is regular mono.
+\end{lemma}
+
+\begin{proof}
+	Let $\mathcal{P} = (A, B, C, s, t, q)$, $(K_i, \pi_i^1, \pi_i^2)$ the kernel pair of $q_i^\star \circ s_i$, and let $(U, u_1, u_2)$ the kernel pair of $q^\star \circ s$ .
+	Consider then the following situation.
+	\[\xymatrix@C=10pt@R=6pt{&A_1\ar[dd]|\hole_(.65){q_1^\star \circ s_1}\ar[rr]^{h_E} \ar[dl]_{m_E} && A_2 \ar[dd]^{q_2^\star \circ s_2} \ar[dl]_{k_E} \\ A_3 \ar[dd]_{q_3^\star \circ s_3}\ar[rr]^(.7){k_E} & & A \ar[dd]_(.3){q^\star \circ s}\\&{C_1^\star}\ar[rr]|\hole^(.65){h_C^\star}\ar[dl]^{m_C^\star} && {C_2^\star} \ar[dl]^{n_C^\star} \\{C_3^\star} \ar[rr]_{k_C^\star} & & C}\]
+	Since $m$ is regular mono, $m_C$ is mono ({\color{red}{inserire citazione}}). Then, by adhesivity of $\Set$, the bottom face is a Van Kampen square, hence a pushout. Therefore, by ({\color{red}{citazione}}), the square below is a pushout.
+	\[\xymatrix{K_1\ar[r]^{f_k}\ar[d]_{f_m}&K_2\ar[d]^{f_n}\\K_3\ar[r]_{f_k}&U}\]
 \end{proof}
