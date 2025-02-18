@@ -1,5 +1,4 @@
-\documentclass[runningheads,envcountsect]{lipics-v2021}
-
+\documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect]{lipics-v2021}
 \usepackage{stmaryrd}
 \usepackage{bbding}
 %\Envelope
@@ -193,7 +192,7 @@
 
 \section{Introduction}
 \todo{A very nice introduction}
-\section{$\mathcal{M}$-adhesive categories}
+\section{$\mathcal{M}$-adhesive categories}\label{sec:ade}
 
 
 This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
@@ -207,11 +206,13 @@ Given a category $\X$ we will not distinguish notationally between $\X$ and its 
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. 
 
 In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is called
-\begin{itemize}
-	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one  below, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-	\[\xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}\]
+
+\parbox{11cm}{\begin{itemize}
+	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one aside, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
 		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.
-\end{itemize}
+\end{itemize}}\hfill
+\parbox{1cm}{
+\xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}}
 
 \begin{definition}
 	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the following diagram.
@@ -309,23 +310,15 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 
 
 Finally, another  useful properties of $\mathcal{M}$-adhesive category are the following.
-\begin{proposition}\label[proposition]{prop:regmono}
+\begin{restatable}{proposition}{regmono}\label[proposition]{prop:regmono}
 	If $\X$ is $\mathcal{M}$-adhesive then the following are true:
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
 		\item every arrow in $\mathcal{M}$ is a regular mono.
 	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout.
-		\[\xymatrix@C=15pt@R=9pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{f} & & D}\]
-		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono, thus the Van Kampen property yields that the front and the right faces are pullbacks too and the thesis follows.
-		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback.
-		\[\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}\]
-		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.  
-	\end{enumerate}
-\end{proof}
+\end{restatable}
+  [Proof in \Cref{regmono-proof}]
+
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
@@ -706,7 +699,7 @@ Another useful corollary of \Cref{prop:com} is the following one.
 A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
 \end{corollary}
 
-\Cref{prop:left,prop:com} allows us to deduce immediately the following.
+\Cref{prop:left,prop:com} allow us to deduce immediately the following.
 
 \begin{proposition}\label[proposition]{cor:left}  The forgetful functor $U_{\hyp}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{proposition}
@@ -1060,7 +1053,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 
 
 \input{Hypergraphs_with_equivalences}
-\input{Labeled_hyp_with_eq}
+%\input{Labeled_hyp_with_eq}
 
 \subsection{title}
 
@@ -1100,6 +1093,22 @@ seems that the former generalises the latter, at the expenses of a more complex 
 \bibliography{biblio}
 
 \appendix
+
+\section{Omitted proofs}
+\subsection{Proofs for \Cref{sec:ade}}
+\regmono*
+
+\begin{proof}\label{regmono-proof}
+	\begin{enumerate}
+		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout.
+		\[\xymatrix@C=15pt@R=9pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{f} & & D}\]
+		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono, thus the Van Kampen property yields that the front and the right faces are pullbacks too and the thesis follows.
+		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback.
+		\[\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}\]
+		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.   \qedhere
+	\end{enumerate}
+\end{proof}
+
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
 \begin{definition}\index{category!comma -}
