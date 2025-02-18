@@ -215,18 +215,19 @@ In order to define it we need to introduce some terminology.  Let  $\X$ be a cat
 \parbox{1cm}{
 \xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}}
 
-\begin{definition}
-	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the following diagram.
+	\begin{definition}
 	
-		\[
-	\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }\]
-	
-	We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
-		\begin{enumerate}
-			\item it is a pushout square;
-			\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
-			if and only if the front and right faces are pullbacks.
-	\end{enumerate}
+	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the cube below on the right. 
+
+\parbox{9.5cm}{We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
+	\begin{enumerate}
+		\item it is a pushout square;
+		\item 	whenever the cube above has pullbacks as back and left faces and the vertical arrows belong to $\mathcal{A}$, then its top face is a pushout 
+		if and only if the front and right faces are pullbacks.
+	\end{enumerate}} \hfill
+	\parbox{3cm}{
+	\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar[dl]_{m'} && B' \ar[dd]^{b} \ar[dl]_{n'} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n} \\C \ar[rr]_{g} & & D }
+}
 
 
 	Pushout squares that enjoy only the ``if'' half of item (2) above are called \emph{$\mathcal{A}$-stable}. A $\mor(\X)$-Van Kampen square is called  \emph{Van
@@ -295,22 +296,22 @@ We will briefly list some examples of $\mathcal{M}$-adhesive categories.
 	quasiadhesive.
 \end{example}
 
-
+\iffalse 
 \begin{remark}\label{rem:deco}
-	We can point out an important property of strict $\mathcal{M}$-adhesive categories with pullbacks and consider the $\mathcal{M}$-pushout square below.
-	\[\xymatrix{A \ar[r]^{f} \ar@{>->}[d]_{m}& B \ar@{>->}[d]^{n}\\ C \ar[r]_{g} & D}\]
+We can point out an important property of strict $\mathcal{M}$-adhesive categories with pullbacks.  Consider the solid part of the cube aside, whose bottom case is an $\mathcal{M}$-pushout.
 	
-	Given an arrow $d\colon X\to D$, we can present the object $X$ has a pushout: indeed, consider the following cube, in which all the three vertical squares are pullbacks.
-	\[
-	\xymatrix@C=15pt@R=9pt{&V\ar[dd]|\hole_(.65){a}\ar[rr]^{v} \ar@{>.>}[dl]_{u} && Y \ar[dd]^{b} \ar@{>->}[dl]_{y} \\ Z  \ar[dd]_{c}\ar[rr]^(.7){z} & & X \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{g} & & D }\]
+	\parbox{9.5cm}{	Given an arrow $d\colon X\to D$, we can present the object $X$ has a pushout: indeed, consider the following cube, in which all the three vertical squares are pullbacks.}
+	\parbox{3cm}{
+	\xymatrix@C=15pt@R=9pt{&V\ar[dd]|\hole_(.65){a}\ar[rr]^{v} \ar@{>.>}[dl]_{u} && Y \ar[dd]^{b} \ar@{>->}[dl]_{y} \\ Z  \ar[dd]_{c}\ar[rr]^(.7){z} & & X \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{g} & & D }}
 
 Now, notice that, since the front square is a pullback, then the dotted arrow $u\colon V\to Z$ exists. Moreover, the usual composition and decomposition property of pullbacks \cite{mac2013categories} entails that the left face of the cube so obtained is a pullback too, proving that $u$ is in $\mathcal{M}$ and that the top square is a pushout.
 
 	Clearly if the arrow $p\colon X\to D$ is in $\mathcal{M}$, we can omit the assumptions of strictness and the existence of all pullbacks.
 \end{remark}
+\fi 
 
 
-Finally, another  useful properties of $\mathcal{M}$-adhesive category are the following.
+We can state some useful properties of $\mathcal{M}$-adhesive category.
 \begin{restatable}{proposition}{regmono}\label[proposition]{prop:regmono}
 	If $\X$ is $\mathcal{M}$-adhesive then the following are true:
 	\begin{enumerate}
@@ -323,330 +324,71 @@ Finally, another  useful properties of $\mathcal{M}$-adhesive category are the f
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
-\begin{definition}[Kernel Pair]
-    A \emph{kernel pair} for an arrow $f: A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f : K_f \to A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
-    \[
-        \begin{tikzcd}
-            K_f \ar[r, "{\pi^1_f}"] \ar[d, "{\pi^2_f}" swap] & A \arrow[d, "f"] \\
-            A \ar[r, "f"swap] & B
-        \end{tikzcd}
-    \]
-\end{definition}
+In this section we recall the definition and some useful properties of \emph{kernel pairs} which will be useful in the next sections. 
 
-\begin{remark}
-	If a category $\cat{C}$ has pullbacks then every arrow has a kernel pair.
+\noindent 
+\parbox{11cm}{
+\begin{definition}
+    A \emph{kernel pair} for an arrow $f\colon A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f\colon K_f \rightrightarrows A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
+\end{definition}}\hfill 
+\parbox{2cm}{\xymatrix@R=15pt{K_f \ar[r]_{\pi^1_f} \ar[d]_{\pi^1_f}& A \ar[d]^f \\ A \ar[r]^{f}& B}}
+
+
+\begin{remark}\label{prop:pairng_of_kernel_pairs_mono}
+If $(K_f, \pi^1_f, \pi^2_f)$ is a a kernel pair for $f\colon X \to Y$ and a product of $X$ with itself exists, then the canonical arrow $\langle \pi^1_f, \pi^2_f\rangle \colon K_f \to X \times X$ is a mono.
 \end{remark}
 
-\begin{remark}
-    Since a kernel pair is nothing more that a pullback, that is, a limit, by \Cref{rem:limits_are_unique_up_to_isomorphisms}, it make sense to refer to it as \emph{the} kernel pair for a morphism $f$.
+\begin{remark}\label{prop:kermono}
+An arrow $m\colon M\to X$ is a mono if and only if it admits $(M, \id{M}, \id{M})$ as a kernel pair.
 \end{remark}
 
-\begin{example}\label[example]{ex:kernel_pairs_in_Set}
-    In $\Set$, a kernel pair for a function $f: A\to B$ is the set
-    \[
-        K_f=\{(x, y) \in A \times A \mid f(x) = f(y)\}
-    \]
-    together with the canonical projection on the first and the second component of the pairs.
-\end{example}
+Together with \Cref{lem:pb1}, the two previous remarks while elementary, allow us to prove the following result.
 
-\begin{proposition}\label[proposition]{prop:pairng_of_kernel_pairs_mono}
-    Let $(K, p_1, p_2)$ be the kernel pair of $f: X \to Y$, and let $(X\times X, \pi_1, \pi_2)$ be the product of $X$ with itself. Then, the mediating arrow $\langle p_1, p_2\rangle : K \to X \times X$ is mono.
+\begin{proposition}\label{cor:kermono}
+	Let $f\colon X\to Y$ be an arrow and $m\colon Y\to Z$ be a mono. If
+	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{proposition}
 
-\begin{proof}
-	Suppose $\langle p_1, p_2 \rangle \circ f = \langle p_1, p_2 \rangle \circ g$ for $f, g: Z \to K$. Then, we have
-	\[
-		\begin{split}
-			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
-			\pi_1 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_1 \circ \langle p_1, p_2 \rangle \circ g \\
-			p_1 \circ f &= p_1 \circ g
-		\end{split}
-		\qquad
-		\begin{split}
-			\langle p_1, p_2 \rangle \circ f &=  \langle p_1, p_2 \rangle \circ g \\
-			\pi_2 \circ \langle p_1, p_2 \rangle \circ f &=  \pi_2 \circ \langle p_1, p_2 \rangle \circ g \\
-			p_2 \circ f &= p_2 \circ g
-		\end{split}
-	\]
-	Thus, from the universal property of the pullback, $f = g$.   
-\end{proof}
+We are now going to explore some further properties of kernel pairs 
 
-\begin{proposition}\label[proposition]{prop:kermono}
-	An arrow $m\colon M\to X$ is mono if and only if $(M, MM, \id{M})$ is a kernel pair for it.
-\end{proposition}
+\begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
+	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ compliting them.
+	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
+	
+    Moreover, if the leftmost is a pullback, then also the other ones are so.
+\end{restatable}
+[Proof in \Cref{kpp-proof}]
 
-\begin{proof}
-    To prove the ``if'' part of the statement, let $f, g: A \to M$ be such that $m\circ f = m\circ g$, and consider the following situation.
-    \[
-        \begin{tikzcd}[row sep=26, column sep = 26]
-        A \arrow[drr, bend left=30, "f"] \arrow[ddr, bend right=30,"g" swap] \arrow[dr, dashed, "u"] & & \\
-        & M  \arrow[d, "{\id{M}}"] \arrow[r, "{\id{M}}"] & M \arrow[d, "m"] \\
-        & M  \arrow[r, "m" swap] & X
-        \end{tikzcd}
-    \]
-    For the universal property of pullbacks, we have that $$f  =  \id{M} \circ u =  g$$
-    Hence, $m$ is mono.
+The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
 
-    Conversely, if $m$ is mono, then, we have that
-    \begin{align*}
-        m \circ f = m \circ g   &\Rightarrow    f = g \\
-                                &\Rightarrow    f \circ \id{M} = g\circ \id{M}
-    \end{align*}
-    Hence, $f$ is the unique arrow that makes the commutative square illustrated above a pushout.   
-\end{proof}
+\noindent
+\parbox{7cm}{
+\begin{restatable}{lemma}{mpo}\label{lem:mpo}
+	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout. Then the right square is a pushout.
+\end{restatable}}\hfill 
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
 
-\begin{remark}\label{rem:monos_in_presh_cats}
-    From characterization of monos via pullbacks in \Cref{prop:kermono} and \Cref{lemma:limits_of_presheaves}, we have that a mono in a category of presheaves is a natural transformation of which each component is mono.
-\end{remark}
+[Proof in \Cref{mpo-proof}]
 
-\begin{corollary}\label[corollary]{cor:kermono}
-	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$ if and only if, for each mono $m\colon Y\to Z$, $(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair also for $m\circ f$.
-\end{corollary}
-\begin{proof}
-    It is enough to see that, by \Cref{lemma:pullback_lemma} and \Cref{prop:kermono} the outer boundary of the following square is a pullback.
-        \[\begin{tikzcd}[row sep=13 pt, column sep=13 pt]
-    	{K_f} && X && X \\
-    	\\
-    	X && Y && Y \\
-    	\\
-    	X && Y && Z
-    	\arrow["{\pi_f^2}", from=1-1, to=1-3]
-    	\arrow["{\pi_f^2}"', from=1-1, to=3-1]
-    	\arrow["{id{X}}", from=1-3, to=1-5]
-    	\arrow["f", from=1-3, to=3-3]
-    	\arrow["f", from=1-5, to=3-5]
-    	\arrow["f", from=3-1, to=3-3]
-    	\arrow["{id_X}"', from=3-1, to=5-1]
-    	\arrow["{id_Y}", from=3-3, to=3-5]
-    	\arrow["{id_Y}", from=3-3, to=5-3]
-    	\arrow["m", from=3-5, to=5-5]
-    	\arrow["f"', from=5-1, to=5-3]
-    	\arrow["m"', from=5-3, to=5-5]
-    \end{tikzcd}\]
-    The leftward part of the statement follows by definition of monomorphism an \Cref{lemma:pullback_lemma}.   
-\end{proof}
 
-\begin{lemma}\label[lemma]{lemma:kern_pairs_pres_pullbacks}
-    Suppose the following situation, and that $f: X \to Y$ and $g: Z \to W$ have kernel pairs.
-    \[
-        \begin{tikzcd}
-            X \ar[r, "h"] \ar[d, "f"swap] & Z \ar[d, "g"] \\
-            Y \ar[r, "t"swap] & W
-        \end{tikzcd}
-    \]
-    
-    Then, there exists a unique arrow $k_h: K_f \to K_g$ making the squares below commute.
-    \[
-        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
-            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^1}"swap] & K_g \ar[d, "{\pi_g^1}"] \\
-            X \ar[r, "h"swap] & Z 
-        \end{tikzcd}
-        \qquad
-        \begin{tikzcd}[row sep = 25 pt, column sep= 25 pt]
-            K_f \ar[r, dashed, "{k_h}"] \ar[d, "{\pi_f^2}"swap] & K_g \ar[d, "{\pi_g^2}"] \\
-            X \ar[r, "h"swap] & Z 
-        \end{tikzcd}
-    \]
+As a final step, we explore the relationship between regular epimorphisms and kernel pairs.
 
-    Moreover, if the beginning square is a pullback, then also the preceding ones are so.
-\end{lemma}
+\begin{restatable}{proposition}{epic}\label{prop:reg_epi_coeq}
+    Let $e\colon X \to Y$ be a regular epimorphism in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
+\end{restatable}
+[Proof in \Cref{epic-proof}]
 
-\begin{proof}
-    Computing, we have
-    \begin{align*}
-        g \circ h \circ \pi_f^1 &=  t \circ f \circ \pi_f^1     \\
-                                &=  t \circ f \circ \pi_f^2     \\
-                                &=  g \circ h \circ \pi_f^2
-    \end{align*}
-    By the universal property of $K_g$ as the pullback of $g$ along itself, such $k_h$ exists and it is unique.
+\begin{restatable}{corollary}{natepi}\label{cor:reg_epi_components_reg_epi_nat_trans}
+    Let $\X$ be a category with pullbacks and $\phi\colon F \dot\to G$ be a natural transformation between two functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$ in $\D$, then $\phi$ is a regular epi.
+\end{restatable}
+[Proof in \Cref{natepi-proof}]
 
-    To prove the second half of the thesis, let us consider the two rectangles below, which, by \Cref{lemma:pullback_lemma} are pullbacks.
-    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
-	{K_f} & X & Z \\
-	X & Y & W
-	\arrow["{\pi_f^1}", from=1-1, to=1-2]
-	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
-	\arrow["h", from=1-2, to=1-3]
-	\arrow["f", from=1-2, to=2-2]
-	\arrow["g", from=1-3, to=2-3]
-	\arrow["f"', from=2-1, to=2-2]
-	\arrow["t"', from=2-2, to=2-3]
-    \end{tikzcd}
-    \qquad
-    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
-	{K_f} & X & Z \\
-	X & Y & W
-	\arrow["{\pi_f^2}", from=1-1, to=1-2]
-	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
-	\arrow["h", from=1-2, to=1-3]
-	\arrow["f", from=1-2, to=2-2]
-	\arrow["g", from=1-3, to=2-3]
-	\arrow["f"', from=2-1, to=2-2]
-	\arrow["t"', from=2-2, to=2-3]
-    \end{tikzcd}
-    \]
-    But then the following ones are pullbacks too.
-    \[\begin{tikzcd}[row sep= 25 pt, column sep= 25 pt]
-	{K_f} & {K_g} & Z \\
-	X & Y & W
-	\arrow["{k_h}"', from=1-1, to=1-2]
-	\arrow["{\pi_f^1}"', from=1-1, to=2-1]
-	\arrow["{\pi_g^2}"', from=1-2, to=1-3]
-	\arrow["{\pi_g^1}", from=1-2, to=2-2]
-	\arrow["g", from=1-3, to=2-3]
-	\arrow["h", from=2-1, to=2-2]
-	\arrow["g", from=2-2, to=2-3]
-        \arrow["{h\circ \pi_f^2}", from=1-1, to=1-3, bend left = 30]
-        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
-    \end{tikzcd}
-    \qquad
-    \begin{tikzcd}[row sep = 25 pt, column sep=25 pt]
-	{K_f} & {K_g} & Z \\
-	X & Y & W
-	\arrow["{k_h}"', from=1-1, to=1-2]
-	\arrow["{\pi_f^2}"', from=1-1, to=2-1]
-	\arrow["{\pi_g^1}"', from=1-2, to=1-3]
-	\arrow["{\pi_g^2}", from=1-2, to=2-2]
-	\arrow["g", from=1-3, to=2-3]
-	\arrow["h", from=2-1, to=2-2]
-	\arrow["g", from=2-2, to=2-3]
-        \arrow["{h\circ \pi_f^1}", from=1-1, to=1-3, bend left = 30]
-        \arrow["{t \circ f}"', from=2-1, to=2-3, bend right = 30]
-    \end{tikzcd}
-    \]
+From the previous result we can now deduce that the class of regular epis is closed under colimits, as shown by the next lemma
+\begin{restatable}{lemma}{epicol}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
+    Let $F,G'\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in \S})$ be, respectively, the colimit of $F$ and $G$.  If $\phi\colon  F \to G$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $X$ to $Y$ is a regular epimorphism too.
+\end{restatable}
+[Proof in \Cref{epicol-proof}]
 
-    The thesis follows again by \Cref{lemma:pullback_lemma}.   
-\end{proof}
-
-\begin{proposition}\label[proposition]{prop:reg_epi_coeq}
-    Let $e: X \to Y$ be a regular epimorphism in a category $\cat C$ with a kernel pair $(K, \pi_1, \pi_2)$. Then, $e$ is the coequalizer of $\pi_1$ and $\pi_2$.
-\end{proposition}
-
-\begin{proof}
-    By hypothesis, there exists a pair $f, g: Z \to X$ of which $e$ is the coequalizer. Since $e \circ f = e \circ g$, we have
-    \[
-        \begin{tikzcd}[row sep= 20, column sep = 13]
-            Z \ar[drr, "f", bend left=30] \ar[ddr, "g"swap, bend right=30] \ar[dr, dashed, "k"] & & \\
-            & K \ar[r, "{\pi_1}"] \ar[d, "{\pi_2}" swap] & X \ar[d, "e"] \\
-            & X \ar[r, "e"swap] & Y
-        \end{tikzcd}
-    \]
-    thus there exists the unique $k: Z \to K$. Let now $h: Z \to V$ be an arrow such that $h \circ \pi_1 = h \circ \pi_2$, then
-    \begin{align*}
-        h \circ f &= h \circ \pi_1 \circ k \\
-                  &= h \circ \pi_2 \circ k \\
-                  &= h \circ g
-    \end{align*}
-    and thus there exists a unique $l: Y \to V$ such that $l \circ e = h$.   
-\end{proof}
-
-\begin{corollary}\label[corollary]{cor:reg_epi_components_reg_epi_nat_trans}
-    Let $\cat C$ be a category with pullbacks and $\phi : D \dot\to D'$ be a natural transformation between two functors $D, D': \cat{I \to C}$. If $\phi_i$ is a regular epi for every $i$, then $\phi$ is a regular epi.
-\end{corollary}
-
-\begin{proof}
-    Let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $\phi_i$ for each $i$. Given an arrow $\alpha: i \to j$ of $\cat I$, we have
-    \begin{align*}
-        \phi_j \circ D(\alpha) \circ \pi_i^1 &= D'(\alpha) \circ \phi_i \circ \pi_i^1 \\
-                                             &= D'(\alpha) \circ \phi_i \circ \pi_i^2 \\
-                                             &= \phi_j \circ D(\alpha) \circ \pi_i^2
-    \end{align*}
-    Thus, the outer boundary of the diagram below commutes, yielding the arrow $K(\alpha)$
-    \[
-        \begin{tikzcd}[row sep=26, column sep=26]
-            {K_i} \ar[r, "{\pi_i^1}"] \ar[d, "{\pi_i^2}"swap] \ar[dr, dashed, "{K(\alpha)}"] & D(i) \ar[dr, "{D(\alpha)}"] \\
-            D(i) \ar[dr, "{D(\alpha)}"swap] & K_j \ar[r, "{\pi_j^1}"] \ar[d, "{\pi_j^2}"swap] & D(j) \ar[d, "{\phi_j}"] \\
-            & D(j) \ar[r, "{\phi_j}"swap] & D'(j)
-        \end{tikzcd}
-    \]
-
-    In this way, we get a functor $K: \cat{I \to C}$, 
-    which maps each $i$ onto $K_i$ and each arrow $\alpha$ onto $K(\alpha)$. 
-	We have in fact $K(id_i) : K_i \to K_i$ is the arrow such that
-        \[
-            \begin{split}
-                D(id_i) \circ \pi_i^1 &= \pi_i^1 \circ K(id_i) \\
-                \pi_i^1 &= \pi_i^1 \circ K(id_i)
-            \end{split}
-                \qquad
-            \begin{split}
-                D(id_i) \circ \pi_i^2 &= \pi_i^2 \circ K(id_i) \\
-                \pi_i^2 &= \pi_i^2 \circ K(id_i)
-            \end{split}
-        \]
-	Thus, for the universal property of pullbacks, $K(id_i) = id_{K_i}$.
-
-        Suppose now $\alpha : i \to j$ and $\beta: j \to k$. Computing, we have
-        \[
-            \begin{split}
-                \pi_k^1 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^1 \\
-                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^1 \\
-                                                    &= D(\beta) \circ \pi_j^1 \circ K(\alpha) \\
-                                                    &= \pi_k^1 \circ K(\beta) \circ K(\alpha)
-            \end{split} \qquad
-            \begin{split}
-                \pi_k^2 \circ K(\beta \circ \alpha) &= D(\beta \circ \alpha) \circ \pi_i^2 \\
-                                                    &= D(\beta) \circ D(\alpha) \circ \pi_i^2 \\
-                                                    &= D(\beta) \circ \pi_j^2 \circ K(\alpha) \\
-                                                    &= \pi_k^2 \circ K(\beta) \circ K(\alpha)
-            \end{split}
-        \]
-        Again, for universal property of pullbacks, necessarily we have $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving functoriality of $K$.
-   
-    
-     Hence, we have two natural transformations $\pi^1, \pi^2 : E \dot\to D$. By \Cref{prop:reg_epi_coeq}, every component $\phi_i$ is the coequalizer of $\pi_i^1, \pi_i^2: E \to D$, and so $\phi$ is the coequalizer of $\pi^1$ and $\pi^2$.   
-\end{proof}
-
-\begin{lemma}\label[lemma]{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
-    Let $D, D': \cat{I \to C}$ be two diagrams, and let $((c_i)_{i \in \cat I}, C)$ and $((c_i')_{i\in \cat I}, C')$ be, respectively, the colimit of $D$ and $D'$. If $\cat C$ has all colimits, for diagrams of shape $\cat I$ and $\phi: D \dot\to D'$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $C$ to $C'$ (\Cref{prop:nat_tran_induces_unique_arrow_between_colimits}) is a regular epimorphism too.
-\end{lemma}
-
-\begin{proof}
-    By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi: D \dot\to D'$ is a regular epimorphism, so that there is a functor $E: \cat{I \to C}$ and $\eta, \theta: E \dot\to D$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $((p_i)_{i \in \cat I}, P)$ be the colimit of $E$, by \Cref{prop:nat_tran_induces_unique_arrow_between_colimits}, we have $a, b: P \to C$ fitting in the diagram below.
-    \[
-        \begin{tikzcd}[row sep = 26, column sep = 26]
-            E(i) \ar[r, "{p_i}"] \ar[d, "{\eta_i}"swap] & P \ar[d, dashed, "a"] \\
-            D(i) \ar[r, "{c_i}"swap] & C
-        \end{tikzcd}
-        \qquad
-        \begin{tikzcd}[row sep = 26, column sep = 26]
-            E(i) \ar[r, "{p_i}"] \ar[d, "{\theta_i}"swap] & P \ar[d, dashed, "b"] \\
-            D(i) \ar[r, "{c_i}"swap] & C
-        \end{tikzcd}
-    \]
-
-    We want to show that $c$ coequalizes $\eta$ and $\theta$. Let thus $t: C \to T$ be an arrow such that $t \circ a = t \circ b$. Then, for every $i$, we have
-    \begin{align*}
-        t \circ c_i \circ \eta_i &= t \circ a \circ p_i \\
-                                 &= t \circ b \circ p_i \\
-                                 &= t \circ c_i \circ \theta_i
-    \end{align*}    
-
-    Thus, there is $t_i: D(i) \to T$ such that $t\circ c_i = t_i \circ \phi_i$. It is now easy to see that $((t_i)_{i \in \cat I}, T)$ is a cocone of $D'$: suppose $\alpha: i \to j$ be an arrow of $\cat I$, obtaining
-    \begin{align*}
-        t_i \circ \phi_i &= t \circ c_i \\
-                         &= t \circ c_j \circ D(\alpha) \\
-                         &= t_j \circ \phi_j \circ D(\alpha) \\
-                         &= t_j \circ D'(\alpha) \circ \phi_i
-    \end{align*}
-    By the hypothesis that $\phi_i$ is regular epi for each $i$, therefore epi (by the dual of \Cref{prop:eq_are_mono}), we can conclude $t_i = t_j \circ D'(\alpha)$.
-    
-    Hence, we have an arrow $k: C' \to T$ such that $k \circ c_i' = t_i$. But then
-    \begin{align*}
-        c \circ c \circ c_i &= k \circ c_i' \circ \phi_i \\
-                            &= t_i \circ \phi \\
-                            &= t \circ c_i
-    \end{align*}
-    Showing that $k \circ c = t$.
-
-    For the uniqueness, let $k': C' \to T$ be another arrow such that $k' \circ c = t$. Then we have
-    \begin{align*}
-        k' \circ c_i' \circ \phi_i &= k' \circ c \circ c_i \\
-                                   &= t \circ c_i \\
-                                   &= t_i \circ \phi_i
-    \end{align*}    
-    Since $\phi_i$ is a regular epimorphism, we have $k' \circ c_i' = t_i$, and, because $k \circ c_i' = t_i$ by construction, we can conclude that $k'=k$ since $((c_i')_{i \in \cat I}, C')$ is a colimit.   
-\end{proof}
 
 \input{./fact_sys}
 
@@ -832,7 +574,7 @@ Our interest intohypergraph stems fromm their use as a graphical representation 
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
 
-We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as setof nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
+We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
 
@@ -1096,6 +838,46 @@ seems that the former generalises the latter, at the expenses of a more complex 
 \appendix
 
 \section{Omitted proofs}
+
+This section contains the proofs which are omitted from the main body oof the paper. We begin stating  a well-known fact about composition and decomposition of pullbacks \cite{mac2013categories}.
+
+\noindent
+\parbox{10cm}{
+\begin{lemma}\label{lem:pb1}
+	Let $\X$ be a category, and consider the diagram aside, in which the right square is a pullback. Then the whole rectangle is a pullback if and only if the left square is one.
+\end{lemma}} 
+	\parbox{4cm}{
+	\xymatrix@R=18pt{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}}
+\begin{proof}
+	$(\Rightarrow)$ Let $q_1\colon Q\to Y$ and $q_2\colon Q\to A$ be two arrows such that $b\circ q_1=h\circ q_2$, if we compute we get
+	\[c\circ g\circ q_1  =k\circ b\circ q_1=k\circ h\circ q_2\]
+	\parbox{9cm}{Thus by the pullback property of the whole rectangle we get the dotted $l$ in the diagram on the side. 
+	All we have to prove is that $f\circ l=q_1$. By construction we know that $g\circ f\circ l= g\circ q_1$, while we also have}
+	\hfill \parbox{4cm}{\xymatrix@R=18pt{Q \ar@/_.3cm/[dr]_{q_2}\ar@/^.4cm/[rrr]^{g\circ q_1} \ar@{.>}[r]_{l} & X \ar[d]_{a} \ar[r]_{f}& \ar[r]_{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ & A \ar[r]_{h}& B \ar[r]_{k}& C}}
+	\[	b\circ f\circ l = h\circ a\circ l= h\circ q_2=b\circ q_1\]
+	and we can conclude since the right square in the original diagram is a pullback.
+	
+	For uniqueness: if $l'\colon Q\to X$ is such that $f\circ l'= q_1$ and $a\circ l'=q_2$
+	then  $g\circ f \circ l' = g\circ q_1$ and we can conclude applying the pullback property of the outer rectangle.
+	
+	\smallskip \noindent 
+	\parbox{9cm}{
+	$(\Leftarrow)$ Take two arrows $q_1\colon Q\to Z$ and $q_2\colon Q\to A$ such that $c\circ q_1=k\circ h \circ q_2$
+	We can apply the pullback property of the right square to get the dotted $q\colon Q\to Y$ in the following 
+
+	Now, by construction we have $b\circ q =h\circ q_2$
+	and thus, since the left square is a pullback, we get also a unique $l\colon Q\to X$ such that  $f\circ l = q$ and $a \circ l = q_2$
+	but then we clearly have} \hfill 
+	\parbox{6cm}{\vspace{7pt}
+		\xymatrix@R=18pt{Q \ar@/_.3cm/[ddr]_{q_2}\ar@/^.5cm/[drrr]^{ q_1} \ar@{.>}@/^.3cm/[drr]^(.6){ q} \ar@{.>}[dr]^{l}  \\& X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]_{b}& Z \ar[d]^{c}\\ & A \ar[r]_{h}& B \ar[r]_{k}& C}}
+	\[	g\circ f \circ l = g\circ q = q_1	\] 
+	
+	We are left with uniqueness. Let $l'\colon Q\to X$ be another arrow such that $q_1 = g\circ f \circ l'$ and $q_2=a\circ l'$,  then we must also have
+	\[
+	b\circ f \circ l'= h\circ a \circ l' = h\circ q_2= b\circ q\]
+	which implies $f\circ l' = q$, from which $l=l'$ follows.
+\end{proof}
+
 \subsection{Proofs for \Cref{sec:ade}}
 \regmono*
 
@@ -1108,6 +890,116 @@ seems that the former generalises the latter, at the expenses of a more complex 
 		\[\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}\]
 		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.   \qedhere
 	\end{enumerate}
+\end{proof}
+
+\kpp*
+\begin{proof}\label{kpp-proof}
+Computing, we have
+\[g \circ h \circ \pi_f^1 =  t \circ f \circ \pi_f^1     =  t \circ f \circ \pi_f^2     =  g \circ h \circ \pi_f^2\]
+
+Therefore the existence  and uniqueness of the wanted $k_h$ follows at once from the the universal property of $K_g$ as the pullback of $g$ along itself.
+
+To prove the second half of the thesis, we can notice that, by \Cref{lem:pb1},  two rectangles below are pullbacks.
+\[\xymatrix{K_f \ar[r]^{\pi^2_f} \ar[d]_{\pi^1_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g} &  K_f \ar[r]^{\pi^1_f} \ar[d]_{\pi^2_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g}\\
+	X \ar[r]_{f}& Y \ar[r]_{t} & W & X \ar[r]_{f} & Y  \ar[r]_{t}& W}\]
+
+But then the following ones are pullbacks too.
+\[\xymatrix{	K_f  \ar@/^.4cm/[rr]^{h\circ\pi^2_f}\ar[r]_{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]_{\pi^1_g}  \ar[r]_{\pi^2_g}& Z \ar[d]_{g} & K_f  \ar@/^.4cm/[rr]^{h\circ\pi^2_f}\ar[r]_{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]_{\pi^1_g}  \ar[r]_{\pi^2_g}& Z \ar[d]_{g} \\
+	X \ar[r]_{h} \ar@/_.4cm/[rr]_{t\circ f}& Y \ar[r]_{g} & W & X \ar[r]_{h} \ar@/_.4cm/[rr]_{t\circ f}& Y \ar[r]_{g} & W}\]
+
+The thesis now follows again by \Cref{lem:pb1}.   
+\end{proof}
+
+\noindent
+\parbox{7cm}{\mpo*}\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+
+\noindent 
+\parbox{4cm}{\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_{k_{m'}} && K_n\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_{k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }} \hfill \parbox{9cm}{\begin{proof}\label{mpo-proof}
+	By  \Cref{prop:regmono}  we know that the the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the following cube the vertical faces are pullbacks.
+	The thesis now follows from strict $\mathcal{M}$-adhesivity.
+	\end{proof}}
+		
+
+\epic*
+
+\noindent 
+\parbox{10cm}{
+\begin{proof}\label{epic-proof}
+	By hypothesis, there exists a pair $f, g\colon Z \rightrightarrows X$ of which $e$ is the coequalizer.
+	 Since $e \circ f = e \circ g$ we get the dotted arrow fitting in the digram aside.
+
+	\parbox{\textwidth}{Let now $h: Z \to V$ be an arrow such that $h \circ \pi_1 = h \circ \pi_2$, then
+	\[	h \circ f = h \circ \pi_1 \circ k 
+	= h \circ \pi_2 \circ k 
+	= h \circ g\]
+	and thus there exists a unique $l: Y \to V$ such that $l \circ e = h$. \qedhere}
+\end{proof}}\hfill
+\parbox{9cm}{\vspace{-2cm}\xymatrix{Z \ar@{.>}[r]_k \ar@/_.3cm/[dr]_{g} \ar@/^.4cm/[rr]^{f} & K_e \ar[r]_{\pi^{1}_e}  \ar[d]_{\pi^2_e}& X \ar[d]^{e}\\ & X \ar[r]_{e} & Y}} 
+
+\natepi*
+\begin{proof}\label{natepi-proof}
+	Let $(K_i, \pi_d^1, \pi_d^2)$ be the kernel pair of $\phi_d$ for each object $d$ in $\D$. Given an arrow $\alpha: d \to d'$ of $\D$, we have
+	\[\phi_{d'} \circ F(\alpha) \circ \pi_d^1 = G(\alpha) \circ \phi_d \circ \pi_d^1 
+	= G(\alpha) \circ \phi_d\circ \pi_d^2 
+	= \phi_{d'} \circ F(\alpha) \circ \pi_d^2
+	\]
+	
+	Thus, the solid part of the diagram below commutes, yielding the dotted arrow $K(\alpha)$.
+	
+	\noindent 
+\parbox{5cm}{\xymatrix{K_d \ar[r]^{\pi^1_d} \ar[d]_{\pi^2_d} \ar@{.>}[dr]^{K(\alpha)}& F(d) \ar[dr]^{F(\alpha)} \\ F(d) \ar[dr]_{F(\alpha)} & K_{d'} \ar[r]^{\pi^1_{d'}} \ar[d]_{\pi^2_{d'}}& F(d') \ar[d]^{\phi_{d'}}\\ & F(d') \ar[r]_{\phi_{d'}} & G(d')}} \hfill \parbox{9cm}{In this way, we get a functor $K\colon \D\to \X$ mapping $d$ to $K_d$ and each arrow $\alpha$ onto $K(\alpha)$. Indeed, notice that $K(\id{d}) \colon  K_d \to K_d$ is the arrow such that
+\begin{align*}
+\pi_d^1 \circ K(\id{d})&=F(\id{d})\circ \pi^1_d=\id{F(d)}\circ \pi^{1}_d=\pi^1_d\\
+\pi_d^2 \circ K(\id{d})&=F(\id{d})\circ \pi^2_d=\id{F(d)}\circ \pi^{2}_d=\pi^2_d
+\end{align*}
+Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
+}
+
+	Let now $\alpha \colon a \to b$ and $\beta\colon b \to c$ be two arrows in $\D$,  computing, we have
+	\begin{align*}
+		\pi_c^1 \circ K(\beta \circ \alpha) &
+		= F(\beta) \circ F(\alpha) \circ \pi_a^1 
+		= F(\beta) \circ \pi_b^1 \circ K(\alpha) 
+		= \pi_c^1 \circ K(\beta) \circ K(\alpha)\\
+			\pi_c^2 \circ K(\beta \circ \alpha) &
+		= F(\beta) \circ F(\alpha) \circ \pi_a^2 
+		= F(\beta) \circ \pi_b^2 \circ K(\alpha) 
+		= \pi_c^2 \circ K(\beta) \circ K(\alpha)
+	\end{align*}
+	Allowing us to conclude that $K(\beta \circ \alpha) = K(\beta) \circ K(\alpha)$, proving the functoriality of $K$.
+	
+	
+	Hence,  by construction we have two natural transformations $\pi^1, \pi^2\colon  K \rightrightarrows F$. By \Cref{prop:reg_epi_coeq}, every component $\phi_d$ is the coequalizer of $\pi_d^1, \pi_d^2\colon K(d) \rightrightarrows F$, and so $\phi$ is the coequalizer of $\pi^1$ and $\pi^2$.   
+\end{proof}
+
+
+\epicol*
+
+\begin{proof}\label{epicol-proof}
+	By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi\colon F \to G$ is a regular epimorphism, so that there is a functor $E\colon \D\to \X$ and $\eta, \theta\colon E \rightrightarrows F$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $(P, \{p_d\}_{d \in \D})$ be the colimit of $E$ and consider the unique arrows $a, b\colon P \rightrightarrows X$ fitting in the squares below
+	
+	
+\noindent 
+	\parbox{4cm}{\xymatrix{E(d) \ar[r]^{p_d} \ar[d]_{\eta_d}& P \ar@{.>}[d]^{a} &E(d) \ar[d]_{\theta_d}
+		 \ar[r]^{p_d}& P \ar@{.>}[d]^{b}\\ F(d) \ar[r]_{x_d} & X & F(d) \ar[r]_{x_d} & X}} \hfill	\parbox{8cm}{
+	We want to show that $\phi$ coequalizes $a$ and $n$. Let thus $h\colon X \to Z$ be an arrow such that $h \circ a = h \circ b$. Then, for every $d$, we have
+	\[	h \circ x_d \circ \eta_d = h \circ a \circ p_d 
+	= h \circ b \circ p_d 
+	= h \circ x_d \circ \theta_d\]}
+	
+	Thus, there is $h_d: G(d) \to Z$ such that $h\circ x_d = h_d \circ \phi_d$. It is now easy to see that $(Z, \{h_d\}_{d \in \D})$ is a cocone on $G$. Suppose $\alpha: d \to d'$ is an arrow of $\D$, then
+	\[h_d\circ \phi_d=h\circ y_d=h\circ y_{d'}\circ F(\alpha)=h_{d'}\circ \phi_{d'}\circ F(\alpha)=h_{d'}\circ G(\alpha)\circ \phi_d\]
+		By the hypothesis $\phi_d$ is regular epi for each $d$ and so we can conclude that $h_d = h_{d'} \circ G(\alpha)$.
+	
+	Therefore, we have an arrow $k\colon Y \to Z$ such that $k \circ y_d = h_d$. But then
+	\[
+	k \circ \phi \circ x_d = k \circ y_d \circ \phi_d = h_d \circ \phi_d = h\circ x_d\]
+	Showing that $k \circ \phi = h$.
+	
+	For the uniqueness, let $k': Y \to Z$ be another arrow such that $k' \circ \phi = h$. Then we have
+	\[k'\circ y_d\circ \phi_d=k'\circ \phi \circ x_d=h\circ x_d=h_d\circ \phi_d\]
+	
+	Since $\phi_d$ is a regular epimorphism, we have $k' \circ y_d = h_d$ allowing us to conclude.
 \end{proof}
 
 \section{Some properties of comma categories}
