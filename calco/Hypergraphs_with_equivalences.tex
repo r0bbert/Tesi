@@ -216,7 +216,7 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 	The action of the functor on a morphism of hypergraphs with equivalences gives a morphism of hypergraphs,
 	in fact 
 	\begin{align*}
-		q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E &= q^{\star}_\mathcal{H} \circ h_V \circ s_\mathcal{G}\\ &= h_C \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}
+		q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E &= q^{\star}_\mathcal{H} \circ h_V^\star \circ s_\mathcal{G}\\ &= h_C^\star \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}
 	\end{align*}
 	The same is valid for $t_\mathcal{H}$ and $t_\mathcal{G}$. 
 \end{remark}
@@ -346,7 +346,7 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 						       &C_1'\ar[rr]|\hole^(.65){h_C'} \ar[dl]_{k_C'} && C_2' \ar[dl]^{t_C'}\ar[dr]^{z_C}\\
 		C'_3 \ar[rr]_{p_C'} & & C'_4\ar@{.>}[rr]_{v_C} && C
 	}\]
-	By {\color{red}{cite: Lemma: kernel pairs pushout M-adh cats}}, we know that the top face of the cube below is a pushout.
+	By \Cref{lem:mpo}, we know that the top face of the cube below is a pushout.
 \[\xymatrix@C=15pt@R=15pt{&K_{s_2\circ m_1\circ q'_1}\ar[dd]|\hole_(.65){\pi_{s_2\circ m_1\circ q'_1}^{1}}\ar[rr]^{k_{h'_2}} \ar[dl]_{k_{k'_2}} && K_{m_2\circ q'_2} \ar[dd]^{\pi_{m_2\circ q'_2}^{1}} \ar[dl]_{k_{t'_2}} \\ K_{m_3\circ q'_3}  \ar[dd]_{\pi_{m_3\circ q'_3}^{1}}\ar[rr]^(.7){k_{p'_2}} & & K_{q'_4} \ar[dd]_(.3){\pi_{q'_4}^{1}}\\&B'_1\ar[rr]|\hole^(.65){h'_2} \ar[dl]^{k'_2} && B'_2 \ar[dl]^{t'_2} \\B'_3 \ar[rr]_{p'_2} & & C_4}\]
 	And, since $m_3$ and $m_2$ are monos,
 	\[\begin{split}
@@ -383,7 +383,7 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 \end{proof}
 
 \begin{lemma}\label{lemma:van_kampen}
-	In $\EqHyp$, pushouts along regular monos are $\mathcal{R}eg(\EqHyp)$-Van Kampen.
+	In $\EqHyp$, pushouts along regular monos are $\reg(\EqHyp)$-Van Kampen.
 \end{lemma}
 
 \begin{proof}
