@@ -26,10 +26,9 @@
         Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
 	\[
                 \xymatrix{
-			U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_i} & A \ar[drr]^{\pi_E^i} && \\
-			A \ar[ddr]_{\pi_E^i} & U_i \ar[rr]_{u_1^i} \ar[dd]^{u_2^i}&& A_i \ar[d]^{s_i} \\
-					     & & & B_i \ar[d]^{q_i}\\
-					     & A_i \ar[r]_{s_i} & B_i \ar[r]_{q_i}& C_i
+			U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_i} & A \ar[dr]^{\pi_E^i} & \\
+			A \ar[dr]_{\pi_E^i} & U_i \ar[r]^{u_1^i} \ar[d]_{u_2^i}& A_i \ar[d]^{q_i^\star \circ s_i} \\
+					     & A_i  \ar[r]_{q_i^\star \circ s_i}& C_i^\star
                 }
         \]
         We have then
