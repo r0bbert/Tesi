@@ -1165,6 +1165,42 @@ A straightforward application of \Cref{lim} now yields the following.
 	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
 \end{corollary}
 
+In a category $\cat X$ with pullbacks, each $f: X \to Y$ induces a functor $f^*: \cat X/Y \to \cat X/X$,
+which sends each morphism $a: A \to Y$ of $\cat X$ onto its pullback along $f$, $p_a$, and each morphism $h: a \to b$ onto the unique arrow from the pullback of $a$ along $f$ to the pullback of $b$ along $f$.
+
+Then, we have the following result.
+
+\begin{proposition}
+	Let $\cat X$ be a category with pullbacks, $R: \cat{Y \to X}$ be a functor and $L: \cat{X \to Y}$ be its left adjoint, and $\eta$ the unit of the adjunction.
+	Then, each object $X$ of $\cat X$ induces an adjoint pair of functors $L_X: \cat X/X \to \cat Y/L(X)$, $R_X: \cat Y/L(X) \to \cat X/X$, 
+	where $L_X$ is the obvious functor, and $R_X$ is the composite $(\eta_X)^* \circ R$.
+\end{proposition}
+
+\begin{proof}
+	Let $f: L(l) \to b$ be a morphism of $\cat Y/L(X)$, where $l: A \to X$ in $\cat X$ and $b: B \to L(X)$ in $\cat Y$, as shown below.
+	\[\xymatrix{L(A)\ar[rr]^{f}\ar[dr]_{L(l)}&&B\ar[dl]_{b}\\&L(X)}\]
+	Then, we have the following situation in $\cat X$.
+	\[\xymatrix{
+			A \ar[rr]^{\eta_A}\ar[dr]_{l} \ar@/^2.0pc/@[black][rrrr]^{g} && R(L(A)) \ar[rr]^{R(f)} \ar[dr]_{R(L(l))} && R(B) \ar[dl]^{R(b)}\\
+						      & X \ar[rr]_{\eta_X} && R(L(X))
+	}\]
+	Where $g$ is the adjunct of $f$.
+	Consider now the pullback $P$ of $R(p)$ along $\eta_X$, as shown below.
+	\[\xymatrix{
+		A \ar@/^1.0pc/[drr]^{g}\ar@/_2.0pc/[ddr]_{l} \ar@{.>}[dr]^{v}\\&P\ar[r]^{q}\ar[d]_{\eta_X^*(R(b))}&R(B)\ar[d]^{R(b)}\\&X \ar[r]_{\eta_X}&R(L(X))
+	}\]
+	By universal property of pullbacks, the two diagrams express the same morphism $g$.
+	Hence, we can rewrite the first diagram as follows.
+	\[\xymatrix{
+			L(A)\ar[r]^{L(g)}\ar[d]_{L(l)}\ar@/^2.0pc/[rr]^{f}&(L(R(B)))\ar[d]_{L(R(b))}\ar[r]^{\epsilon_B}&B\ar[d]^{b}\\
+			L(X)\ar[r]_{L(\eta_X)}\ar@/_2.0pc/[rr]_{\id{L(X)}}&L(R(L(X)))\ar[r]_{\epsilon_{L(X)}}& L(X)
+	}\]
+	where $\epsilon$ is the counit of the adjunction.
+	This descriveb the action of functors and thus the adjunction, obtained considering the isomorphism on hom-sets of the categories.
+
+\end{proof}
+
+
 %\section{Comparison with Ghica}
 %\todo{Lo vogliamo fare?}
 
