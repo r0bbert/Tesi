@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for "lack2006toposes"
+Warning--I didn't find a database entry for "xxx"
+You've used 19 entries,
+            2118 wiz_defined-function locations,
+            626 strings with 6805 characters,
+and the built_in function-call counts, 6463 in all, are:
+= -- 629
+> -- 320
+< -- 6
++ -- 125
+- -- 104
+* -- 474
+:= -- 1101
+add.period$ -- 60
+call.type$ -- 19
+change.case$ -- 101
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 242
+empty$ -- 491
+format.name$ -- 104
+if$ -- 1332
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 20
+newline$ -- 98
+num.names$ -- 44
+pop$ -- 97
+preamble$ -- 1
+purify$ -- 87
+quote$ -- 0
+skip$ -- 164
+stack$ -- 0
+substring$ -- 378
+swap$ -- 51
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 70
+warning$ -- 0
+while$ -- 66
+width$ -- 21
+write$ -- 214
+(There were 2 warnings)
