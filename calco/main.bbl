@@ -48,6 +48,11 @@ A.~Corradini and F.~Gadducci.
 \newblock In M.~Fern{\'{a}}ndez, editor, {\em TERMGRAPH 2004}, volume 127(5) of
   {\em ENTCS}, pages 43--56. Elsevier, 2004.
 
+\bibitem{DetlefsNS05}
+D.~Detlefs, G.~Nelson, and J.~B. Saxe.
+\newblock Simplify: a theorem prover for program checking.
+\newblock {\em J. {ACM}}, 52(3):365--473, 2005.
+
 \bibitem{ehrig2006fundamentals}
 H.~Ehrig, K.~Ehrig, U.~Prange, and G.~Taentzer.
 \newblock {\em Fundamentals of Algebraic Graph Transformation}.
@@ -109,5 +114,10 @@ P.~Wadler.
 \newblock Monads for functional programming.
 \newblock In J.~Jeuring and E.~Meijer, editors, {\em Advanced Functional
   Programming}, volume 925 of {\em LNCS}, pages 24--52. Springer, 1995.
+
+\bibitem{WillseyNWFTP21}
+M.~Willsey, C.~Nandi, Y.~R. Wang, O.~Flatt, Z.~Tatlock, and P.~Panchekha.
+\newblock egg: Fast and extensible equality saturation.
+\newblock {\em Proc. {ACM} Program. Lang.}, 5({POPL}):1--29, 2021.
 
 \end{thebibliography}

@@ -5,45 +5,45 @@ The style file: abbrv.bst
 Database file #1: biblio.bib
 Warning--I didn't find a database entry for "lack2006toposes"
 Warning--I didn't find a database entry for "xxx"
-You've used 19 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            626 strings with 6807 characters,
-and the built_in function-call counts, 6463 in all, are:
-= -- 629
-> -- 320
+            641 strings with 7163 characters,
+and the built_in function-call counts, 7257 in all, are:
+= -- 706
+> -- 371
 < -- 6
-+ -- 125
-- -- 104
-* -- 474
-:= -- 1101
-add.period$ -- 60
-call.type$ -- 19
-change.case$ -- 101
++ -- 145
+- -- 122
+* -- 545
+:= -- 1238
+add.period$ -- 66
+call.type$ -- 21
+change.case$ -- 116
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 242
-empty$ -- 491
-format.name$ -- 104
-if$ -- 1332
+cite$ -- 21
+duplicate$ -- 264
+empty$ -- 542
+format.name$ -- 122
+if$ -- 1487
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 20
-newline$ -- 98
-num.names$ -- 44
-pop$ -- 97
+int.to.str$ -- 21
+missing$ -- 22
+newline$ -- 108
+num.names$ -- 48
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 100
 quote$ -- 0
-skip$ -- 164
+skip$ -- 178
 stack$ -- 0
-substring$ -- 378
-swap$ -- 51
+substring$ -- 429
+swap$ -- 53
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
+type$ -- 78
 warning$ -- 0
-while$ -- 66
-width$ -- 21
-write$ -- 214
+while$ -- 74
+width$ -- 23
+write$ -- 236
 (There were 2 warnings)
