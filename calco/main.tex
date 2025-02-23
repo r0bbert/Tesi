@@ -197,6 +197,26 @@
 
 \section{Introduction}
 \todo{A very nice introduction}
+
+\emph{Synopsis}
+The paper has the following structure. 
+In Section~\ref{sec:ade} we briefly recall 
+the theory of
+\emph{$\mathcal{M}$-adhesive categories}
+and of \emph{kernel pairs}.
+In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
+namely (labelled) hypergraphs and term graphs, and we provide a
+functorial characterisation, which allows for proving their adhesivity properties.
+This is further expended in Section~\ref{hypereq} for describing hypergraphs 
+and term graphs with equivalence and in Section~\ref{eggs} for capturing
+their variants where the equivalences are closed with respect to operator application,
+thus subsuming EGGs.
+%
+All the proofs have been moved to the appendix. For the sake of completeness, 
+and in order to fix the notation, we prove all the results 
+recalled in the background section, besides those that are original 
+to our work.
+
 \section{$\mathcal{M}$-adhesive categories}\label{sec:ade}
 
 
@@ -210,7 +230,9 @@ Given a category $\X$ we do not distinguish notationally between $\X$ and its cl
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive},
 %
-and to define it we introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is
+and for defining it we need some notions.
+%and to define it we introduce some notions.  
+Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 
 \parbox{11cm}{\begin{itemize}
 	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one aside, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
@@ -248,7 +270,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 		\item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
 		\item  $\mathcal{M}$-pushouts are $\mathcal{M}$-Van Kampen squares.
 	\end{enumerate}
-	
+	%
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
 	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{definition}
@@ -266,9 +288,9 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
 
-\begin{theorem}
+\begin{proposition}
 	\label{thm:slice-functors}
-	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category, then the following hold true:
+	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then it holds
 	\begin{enumerate}
 		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
@@ -280,9 +302,9 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
 		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
-		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ and  stable under pullbacks and pushout, containing all isomorphisms and closed under composition and decomposition.
+		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all the isomorphisms, and is closed under composition and decomposition.
 	\end{enumerate} 
-\end{theorem}
+\end{proposition}
 
 We will briefly list some examples of $\mathcal{M}$-adhesive categories.
 
@@ -318,7 +340,7 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 We can state some useful properties of $\mathcal{M}$-adhesive category.
 
 \begin{restatable}{proposition}{regmono}\label{prop:regmono}
-	If $\X$ is $\mathcal{M}$-adhesive then the following are true:
+	If $\X$ is $\mathcal{M}$-adhesive then it holds
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
 		\item every arrow in $\mathcal{M}$ is a regular mono.
@@ -355,13 +377,13 @@ Together with \Cref{lem:pb1}, the previous remarks allow us to prove the followi
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{proposition}
 
-We are now going to explore some further properties of kernel pairs 
+We are now going to explore some further properties of kernel pairs.
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
-	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ completing them.
+	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ completing them.     Moreover, if the leftmost is a pullback, then also the other two are so.
+%
 	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
 	
-    Moreover, if the leftmost is a pullback, then also the other two are so.
 \end{restatable}
 [Proof in \Cref{kpp-proof}]
 
@@ -393,7 +415,7 @@ From the previous result we deduce that the class of regular epis is closed unde
 % as shown by the next lemma
 
 \begin{restatable}{lemma}{epicol}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
-    Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in \S})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epi, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi too.
+    Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in D})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epis, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi.
 \end{restatable}
 [Proof in \Cref{epicol-proof}]
 
@@ -403,11 +425,12 @@ From the previous result we deduce that the class of regular epis is closed unde
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briefly recall the notion \emph{$\X$-hypergraph}. It is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}
- $(-)^\star\colon \Set\to \Set$, also known as \emph{list monad}, sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}. We recall some of its proprieties.
+In this section we briefly recall the notion \emph{$\X$-hypergraph}. It is necessary to have a monad $(-)^\star\colon \Set\to \Set$, also known as \emph{list monad},
+sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95} and playing a role analogous to the usual \emph{Kleene star}.
+We recall some of its proprieties.
 
 \begin{proposition}
-	The following facts are true:
+	The following facts hold
 	\begin{enumerate}
 		\item for every set $X$ and $n\in \mathbb{N}$ there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
@@ -548,7 +571,7 @@ We can represent hypergraphs graphically. We will use dots to denote nodes and s
 
 Following \cite{bonchi2022string}, we can present $\hyp$ as a category of functor over a suitable category.
 
-\begin{definition}Let $\catname{H}$ be the category isuch that
+\begin{definition}Let $\catname{H}$ be the category such that
 	\begin{itemize}
 		\item the set of objects is $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$;
 		\item arrows are given by the identities $\id{k,l}$ and $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$;
@@ -583,7 +606,7 @@ Our interest for hypergraphs stems from their use as a graphical representation 
 
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
-
+%
 We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
@@ -610,7 +633,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 
 \Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
-\begin{proposition}\label[proposition]{prop:mono} For every algebraic signature $\Sigma$, the following are true:
+\begin{proposition}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then it holds
 	\begin{enumerate}
 		\item a morphism $(h,k)$ between two object of $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective functions;
 		\item $\hyp_{\Sigma}$ is an adhesive category. 
@@ -619,10 +642,10 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 
 
 \begin{remark}\label[remark]{rem:label}	
-	Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares below commute (cfr.~ \Cref{rem:length}).
+Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares below commute (cfr.~ \Cref{rem:length}).
 	\[\xymatrix{E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{s_{\mathcal{H}}}& O_\Sigma \ar[d]^{\ari_\Sigma}& E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{t_{\mathcal{H}}} & O_\Sigma \ar[d]^{\delta_1}\\ V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}}& \mathbb{N} & V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}\]
-	
-	Let $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$ be a coprojection.  The second diagram in particular above entails that $t_{\mathcal{H}}$ factors through the inclusion $v_1\colon V_{\mathcal{H}}\to V^{\star}$ of words of length $1$, i.e. that $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to \tau_{\mathcal{H}}$.
+%	
+Let $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$ be a coprojection.  The second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V^{\star}$ of words of length $1$, i.e. $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to \tau_{\mathcal{H}}$.
 \end{remark}
 
 $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\X}(\mathcal{H}$). Now, $U_{\X}(\mathcal{G}^{\Sigma})=1$ thus, for every object $X$, there is only one arrow $X\to U_{\X}(\mathcal{G}^{\Sigma})$. Define $\Delta_{\Sigma}(X)\colon \Delta_{\X}(X)\to \mathcal{G}^{\Sigma}$ as the transpose of this arrow. Explicitly, $\Delta_{\X}(X)=(0, X, ?_{X^\star}, ?_{X^\star})$ and $\Delta_\Sigma(X)$ is simply $(?_{O_\Sigma}, !_{X})$.
@@ -630,10 +653,10 @@ $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ 
 \begin{proposition} $U_\Sigma$
 	has a left adjoint $\Delta_\Sigma$.
 \end{proposition}
-\begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since, $U_{\Sigma}(\mathcal{H})=U_{\X}(\mathcal{H})$ and the identity is the unit of $\Delta_\hyp \dashv U_{\hyp}$, we get a morphism $(?_{E_{\mathcal{H}}},f)\colon \Delta_{\X}(X)\to \mathcal{H}$ of $\hyp$. But then we have
+\begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since, $U_{\Sigma}(\mathcal{H})=U_{\X}(\mathcal{H})$ and the identity is the unit of $\Delta_\hyp \dashv U_{\hyp}$, we get a morphism $(?_{E_{\mathcal{H}}},f)\colon \Delta_{\X}(X)\to \mathcal{H}$ of $\hyp$. And then the thesis follows since we have
 	\[
 	(h, !_{V_{\mathcal{{H}}}})\circ (?_{E_{\mathcal{H}}}, f)=(h\circ ?_{E_{\mathcal{H}}}, !_{V_{\mathcal{{H}}}}\circ f)=(?_{0_{\Sigma}}, !_{X})=\Delta_{\hyp}(X)\]
-and the thesis follow.   
+%and the thesis follow.   
 \end{proof}
 
 \todo{anche questo forse val la pena toglierlo}
@@ -712,7 +735,7 @@ Let us start using labelled hypergraphs to define term graphs.
 \begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice that since $t_{\mathcal{G}}$ is mono then $\tau_{\mathcal{G}}$ is mono too.
 \end{remark}
 
-We are now going back to examine the properties of $\tg$, with the purpose of studying its adhesivity properties.
+We now examine some properties of $\tg$, in order to study its adhesivity properties.
 
 \begin{proposition}\label[proposition]{term:left}The forgetful functor $U_{\tg}$ has a left adjoint $\Delta_{\tg}$.
 \end{proposition}
@@ -724,7 +747,7 @@ We can list some categorical properties of $\tg$
 
 
 \begin{proposition}
-For every algebraic signatur $\Sigma$, the following are true:
+Let $\Sigma$ be an algebraic signature. Then it holds
 \begin{enumerate}
 	\item if  $(i,j)\colon \mathcal{H}\to \mathcal{G}$ is a mono between  $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$ and the latter is a term graph, then also the former is in $\tg$
 	\item $\tg$ has equalizers, binary products and pullbacks and they are created by $I_\Sigma$.
@@ -781,13 +804,9 @@ For every algebraic signatur $\Sigma$, the following are true:
 	Suppose that $(f,g)\colon ((l, !_{V_{\mathcal{G}}}))\to (l', !_{V_{\mathcal{H}}})$ preserves input nodes. Then  if $\tau_{\mathcal{H}}(h)=g(v)$ for some $v\in V_{\mathcal{G}}$ then $h$ belongs to the image of $f$. Indeed, by hypothesis $v$ must be in the image of $\tau_{\mathcal{G}}$ and so there exists $k$ such that $\tau_{\mathcal{G}}(k)=v$. But then $\tau_{\mathcal{H}}(f(k))=g(v)$ and we can conclude that $f(k)=h$.
 \end{remark}
 
-Preservation of inputs, characterizes regular monos in $\tg$.
+Preservation of inputs characterizes regular monos in $\tg$.
 
-\begin{proposition}\label[proposition]{lem:reg} The following are equivalent for a a mono $(i,j)$ between two term graphs  $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and  $(l', !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$:
-	\begin{enumerate}
-		\item $(i, j)$ is a regular mono;
-		\item $(i,j)$ preserves input nodes.
-	\end{enumerate}	
+\begin{proposition}\label[proposition]{lem:reg} Let $(i,j)$ be a mon between two term graphs  $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and  $(l', !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$. Then it is a regular mono if and only if it preserves the input nodes.
 \end{proposition}
 
 This characterization, in turn, provides us with the following result \cite{CastelnovoGM24,castelnovo2023thesis}. 
@@ -821,12 +840,12 @@ we extended it in order to capture EGGS as term graphs satisfying a suitable clo
 Our result opens two threads of research. The first is to use the quasi-adhesivity of EGGs to
 model their rewriting via the double-pushout (DPO) approach. This seems now easy, since 
 the rules adopted in the literature of EGGs appears to be span of regular monos, and such rules
-perfectly fit the mold of rewriting on quasi-adhesive categories. 
+perfectly fit the mold of rewriting on $\mathcal{M}$-adhesive categories. 
 For example, the equivalence $x \div x = 1$, from the introductory example in~\cite{xxx}, 
 can be modelled as the rule
 \[to draw DPO rule\]
 
-It still needs to be investigated what concurrency and termination, the key properties for DPO rewriting
+It still needs to be investigated what parallelism and termination, the key properties for DPO rewriting
 on adhesive categories, 
 mean in the context of EGGs. More interestingly, another venue for development is using the adhesive 
 machinery to extend the EGGs formalism. In fact, most of the results
@@ -836,9 +855,12 @@ edges that is useful for adding structural information, such as encapsulation an
 
 Finally, we need to draw a comparison with an alternative categorical presentation for EGGs 
 advanced in~\cite{ghica}. The proposal is quite different from our own. Simplifying, the key is to equip categories 
-of trees with a lattice on hom-sets. Instead of going through 
-such an enrichment, we chose to obtain closure via suitable requirements on morphisms, even if it 
-seems that the former generalises the latter, at the expenses of a more complex machinery.
+of trees with a lattice on hom-sets. 
+It seems that such proposal generalises our own, 
+even if at the expenses of a more complex machinery.
+%Instead of going through 
+%such an enrichment, we chose to obtain closure via suitable requirements on morphisms, even if it 
+%seems that the former generalises the latter, at the expenses of a more complex machinery.
 
 \bibliography{biblio}
 

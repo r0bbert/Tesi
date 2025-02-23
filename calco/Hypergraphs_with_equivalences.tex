@@ -67,10 +67,10 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 }
 
 \section{Hypergraphs and term graphs with equivalences}
-
+\label{hypereq}
 
 \begin{definition}
-	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $C_\mathcal{G}$ is an object and $q_{\mathcal{G}}: V_{\mathcal{G}}\to C_{\mathcal{G}}$ is a regular epi called \emph{quotient map}. 
+	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $C_\mathcal{G}$ is a set and $q_{\mathcal{G}}: V_{\mathcal{G}}\to C_{\mathcal{G}}$ is a regular epi called \emph{quotient map}. 
 	%
 	A morphism $h:\mathcal{G\to H}$ is a triple $(h_E, h_V, h_C)$ such that the following diagrams commute
 	\[\xymatrix{
@@ -113,7 +113,7 @@ We now define another functor $T: \EqHyp \to \hyp$, which ``forgets'' the quotie
 \end{proposition}
 
 \begin{proof}
-	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation.
+	Let $\mathcal{G}$ be a hypergraph, and define $L(\mathcal{G}) := (E_\mathcal{G}, V_{\mathcal{G}}, \{\bullet\}, s_\mathcal{G}, t_\mathcal{G}, !_{V_\mathcal{G}})$. Let now $h: L(\mathcal{G})\to \mathcal{H}$ be a morphism in $\EqHyp$, and consider the following situation
 	\[\xymatrix@C=2.3cm{
 		L(\mathcal{G}) \ar@{.>}[d]_{L(f)} \ar[dr]^{h}\\ L(T(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
 	}\]
@@ -160,7 +160,7 @@ Let now $K: \EqHyp \to \Set$ be the functor which sends each hypergraph with equ
 \end{proof}
 
 \begin{corollary}\label{cor:mono1}
-	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ is mono if and only if $T(h)$ is mono.
+	Let $h = (h_E, h_V, h_C): \mathcal{G \to H}$ be an arrow in  $\EqHyp$. Then it is a mono if and only if $T(h)$ is a mono.
 \end{corollary}
 
 \begin{proof}
@@ -286,7 +286,7 @@ the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ
 		B \ar[r]_{!_B} & \terminal
 	}\]
 
-	But the arrow $\initial \to A \times B$ is not epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
+	But the arrow $\initial \to A \times B$ is not an epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
 \end{example}
 
 \begin{lemma}\label{lemma:stab}
