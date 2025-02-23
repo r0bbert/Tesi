@@ -139,6 +139,7 @@
 \newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}#2}
 \newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
 
+\newcommand{\commentato}[1]{ {} }
 
 %sommatoria e prodotto per xy
 
@@ -199,17 +200,17 @@
 \section{$\mathcal{M}$-adhesive categories}\label{sec:ade}
 
 
-This  section recalls the basic theory of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
-
+This  section briefly recalls \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
+%
 %\begin{notation}
-Given a category $\X$ we will not distinguish notationally between $\X$ and its class of objects, so
-``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we will denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one.
+Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one.
 %\end{notation}
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
-The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive}. 
-
-In order to define it we need to introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is called
+The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive},
+%
+and to define it we introduce some terminology.  Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is
 
 \parbox{11cm}{\begin{itemize}
 	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one aside, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
@@ -279,7 +280,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
 		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
-		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ and  stable under pullbacks, pushout, containing all isomorphism and closed under composition and decomposition.
+		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ and  stable under pullbacks and pushout, containing all isomorphisms and closed under composition and decomposition.
 	\end{enumerate} 
 \end{theorem}
 
@@ -315,7 +316,8 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 
 
 We can state some useful properties of $\mathcal{M}$-adhesive category.
-\begin{restatable}{proposition}{regmono}\label[proposition]{prop:regmono}
+
+\begin{restatable}{proposition}{regmono}\label{prop:regmono}
 	If $\X$ is $\mathcal{M}$-adhesive then the following are true:
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
@@ -327,16 +329,17 @@ We can state some useful properties of $\mathcal{M}$-adhesive category.
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
 
-In this section we recall the definition and some useful properties of \emph{kernel pairs} which will be useful in the next sections. 
+In this section we recall the definition and some properties of \emph{kernel pairs}.
+%which will be useful in the next sections. 
 
 \noindent 
 \parbox{11cm}{
 \begin{definition}
-    A \emph{kernel pair} for an arrow $f\colon A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f\colon K_f \rightrightarrows A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the following square is a pullback.
+    A \emph{kernel pair} for an arrow $f\colon A \to B$ is an object $K_f$ together with two arrows $\pi^1_f, \pi^2_f\colon K_f \rightrightarrows A$, denoted as $(K_f, \pi^1_f, \pi^2_f)$, such that the square aside is a pullback.
 \end{definition}}\hfill 
-\parbox{2cm}{\xymatrix@R=15pt{K_f \ar[r]_{\pi^1_f} \ar[d]_{\pi^1_f}& A \ar[d]^f \\ A \ar[r]^{f}& B}}
+\parbox{2cm}{\xymatrix@R=15pt{K_f \ar[r]_{\pi^2_f} \ar[d]_{\pi^1_f}& A \ar[d]^f \\ A \ar[r]^{f}& B}}
 
-
+\smallskip
 \begin{remark}\label{prop:pairng_of_kernel_pairs_mono}
 If $(K_f, \pi^1_f, \pi^2_f)$ is a a kernel pair for $f\colon X \to Y$ and a product of $X$ with itself exists, then the canonical arrow $\langle \pi^1_f, \pi^2_f\rangle \colon K_f \to X \times X$ is a mono.
 \end{remark}
@@ -345,20 +348,20 @@ If $(K_f, \pi^1_f, \pi^2_f)$ is a a kernel pair for $f\colon X \to Y$ and a prod
 An arrow $m\colon M\to X$ is a mono if and only if it admits $(M, \id{M}, \id{M})$ as a kernel pair.
 \end{remark}
 
-Together with \Cref{lem:pb1}, the two previous remarks while elementary, allow us to prove the following result.
+Together with \Cref{lem:pb1}, the previous remarks allow us to prove the following result.
 
 \begin{proposition}\label{cor:kermono}
-	Let $f\colon X\to Y$ be an arrow and $m\colon Y\to Z$ be a mono. If
+	Let $f\colon X\to Y$ be an arrow and $m\colon Y\to Z$ a mono. If
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{proposition}
 
 We are now going to explore some further properties of kernel pairs 
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
-	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ compliting them.
+	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ completing them.
 	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
 	
-    Moreover, if the leftmost is a pullback, then also the other ones are so.
+    Moreover, if the leftmost is a pullback, then also the other two are so.
 \end{restatable}
 [Proof in \Cref{kpp-proof}]
 
@@ -374,21 +377,23 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 [Proof in \Cref{mpo-proof}]
 
 
-As a final step, we explore the relationship between regular epimorphisms and kernel pairs.
+As a final step, we explore the link between regular epis and kernel pairs.
 
 \begin{restatable}{proposition}{epic}\label{prop:reg_epi_coeq}
-    Let $e\colon X \to Y$ be a regular epimorphism in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
+    Let $e\colon X \to Y$ be a regular epi in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
 \end{restatable}
 [Proof in \Cref{epic-proof}]
 
 \begin{restatable}{corollary}{natepi}\label{cor:reg_epi_components_reg_epi_nat_trans}
-    Let $\X$ be a category with pullbacks and $\phi\colon F \dot\to G$ be a natural transformation between two functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$ in $\D$, then $\phi$ is a regular epi.
+    Let $\X$ be a category with pullbacks and $\phi\colon F \dot\to G$ a natural transformation between functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$ in $\D$, then $\phi$ is a regular epi.
 \end{restatable}
 [Proof in \Cref{natepi-proof}]
 
-From the previous result we can now deduce that the class of regular epis is closed under colimits, as shown by the next lemma
+From the previous result we deduce that the class of regular epis is closed under colimits.
+% as shown by the next lemma
+
 \begin{restatable}{lemma}{epicol}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
-    Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in \S})$ be, respectively, the colimit of $F$ and $G$.  If $\phi\colon  F \to G$ is a natural transformation in which all components are regular epimorphisms, then, the arrow induced by $\phi$ from $X$ to $Y$ is a regular epimorphism too.
+    Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in \S})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epi, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi too.
 \end{restatable}
 [Proof in \Cref{epicol-proof}]
 
@@ -398,14 +403,15 @@ From the previous result we can now deduce that the class of regular epis is clo
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briefly recall the notion \emph{$\X$-hypergraph}. In order to do it is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}, also known as \emph{list monad}, $(-)^\star\colon \Set\to \Set$ sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}. We will recall some of its proprieties.
+In this section we briefly recall the notion \emph{$\X$-hypergraph}. It is necessary to have a monad $(-)^\star$ playing a role analogous to the usual \emph{Kleene star}
+ $(-)^\star\colon \Set\to \Set$, also known as \emph{list monad}, sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}. We recall some of its proprieties.
 
 \begin{proposition}
 	The following facts are true:
 	\begin{enumerate}
 		\item for every set $X$ and $n\in \mathbb{N}$ there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
-		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves all pullbacks and equalizers.
+		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves pullbacks and equalizers.
 	\end{enumerate}
 \end{proposition}
 
@@ -413,21 +419,21 @@ In this section we briefly recall the notion \emph{$\X$-hypergraph}. In order to
 	Preservation of pullbacks implies that $(-)^\star$ sends monos to monos.
 \end{remark}
 
-\begin{remark}\label[remark]{rem:length}Notice that, $1^\star$ can be canonically identified with $\mathbb{N}$, thus for every set $X$, the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $!^\star_X\colon X^\star \to \mathbb{N}$ which simply sends a word length.
+\begin{remark}\label[remark]{rem:length}Notice that $1^\star$ can be canonically identified with $\mathbb{N}$, thus for every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $!^\star_X\colon X^\star \to \mathbb{N}$, which sends a word to its length.
 \end{remark}
 
 \subsection{The category of hypergraphs}
 
-We will start this section with the definition of hypergraphs and we will see how to label them with an algebraic signature.  
+We open this section with the definition of hypergraphs and we will see how to label them with an algebraic signature.  
 
 
-\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the set of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute.
-	
+\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the set of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute
 	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
 	We define $\hyp$ to be the resulting category.
 \end{definition}
 
-Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$, then we can present $\hyp$ as a comma category.
+Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$: we can get $\hyp$ as a comma category.
+
 \begin{proposition}\label[proposition]{prop:com}
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{proposition}
@@ -450,7 +456,7 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 \begin{proposition}\label[proposition]{cor:left}  The forgetful functor $U_{\hyp}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{proposition}
 
-\begin{example}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\Set}(X)$ is the hypergraph which has $X$ as set of nodes and $\emptyset$ as set of hyperedges and $?_X$ as both source and target function.
+\begin{example}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\Set}(X)$ is the hypergraph which has $X$ as set of nodes, $\emptyset$ as set of hyperedges, and $?_X$ as source and target function.
 \end{example}
 
 \todo{forse possiamo anche cancellare tutti gli esempi sotto}
@@ -542,25 +548,26 @@ We can represent hypergraphs graphically. We will use dots to denote nodes and s
 
 Following \cite{bonchi2022string}, we can present $\hyp$ as a category of functor over a suitable category.
 
-\begin{definition}Let $\catname{H}$ be the category in which:
+\begin{definition}Let $\catname{H}$ be the category isuch that
 	\begin{itemize}
-		\item the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$
+		\item the set of objects is $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$;
 		\item arrows are given by the identities $\id{k,l}$ and $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$;
-		\item composition is defined simply putting, for every $f_i\colon (k,l)\rightarrow \bullet$:
-		\begin{equation*}
-			f_i=f_i\circ \id{k,l} \qquad f_i = \id{\bullet}\circ f_i 
-		\end{equation*}
+		\item composition is defined by putting
+		%\begin{equation*}
+			$f_i=f_i\circ \id{k,l}$ and $f_i = \id{\bullet}\circ f_i$
+		%\end{equation*}
+		for every $f_i\colon (k,l)\rightarrow \bullet$.
 	\end{itemize}
 \end{definition}
 
-The idea now is that for every functor $F\colon \catname{H}\to \catname{Set}$ we can define
+The idea is that for every functor $F\colon \catname{H}\to \catname{Set}$ we can define
 \[E_F:=\sum_{k,l\in \mathbb{N}}F(k,l)\]
-
-Now, for every $k$, $l$, $i$ and $j$ in $\mathbb{N}$ with $i< k$ and $j< l$ we can define $s^F_{k,l}\colon F(k,l)\to F(\bullet)^k$,  $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ as the unique ones fitting in the diagrams below, where the vertical arrows are the projections.
+%
+Now, for every $k$, $l$, $i$ and $j$ in $\mathbb{N}$ with $i< k$ and $j< l$ we define $s^F_{k,l}\colon F(k,l)\to F(\bullet)^k$ and  $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ as the unique arrows fitting in the diagrams below, where the vertical arrows are the projections
 \[\xymatrix{F(k,l)  \ar@{.>}[r]^{s^F_{k,l}} \ar[dr]_{F(f_i)}& F(\bullet)^{k} \ar[d]^{\pi^F_{k,i}} & F(k,l) \ar@{.>}[r]^{t^F_{k,l}} \ar[dr]_{F(f_{k+j})} & F(\bullet)^{l} \ar[d]^{\pi^F_{l,j}} \\ & F(\bullet) && F(\bullet)}\]
-
+%
 In turn, these arrows allow us to consider
-$s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections.
+$s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections
 \[\xymatrix{F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{s^{F}_{k,l}}& F(\bullet)^{k} \ar[d]^{b^F_{k}} & F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{t^{F}_{k,l}}& F(\bullet)^{l} \ar[d]^{b^F_{l}}\\ E_F \ar@{.>}[r]_-{s_F}& F(\bullet)^\star & E_F \ar@{.>}[r]_-{t_F}& F(\bullet)^\star}\]
 
 Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending $F$ to $\mathcal{G}_F$ can be extended to an equivalence $\mathcal{G}_{-}\colon \Set^{\catname{H}}\to \hyp$ (see \cite{castelnovo2023thesis,CastelnovoGM24} for details).
@@ -572,7 +579,7 @@ Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending 
 
 \subsubsection{Labelling hypergraph with an algebraic signature}\label{sssect:hyp_alg_sign}
 
-Our interest intohypergraph stems fromm their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a given algebraic signature.
+Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a signature.
 
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
@@ -581,7 +588,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 \end{definition}
 
 
-\begin{example}\label[example]{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as:
+\begin{example}\label[example]{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as
 	\begin{center}
 		\begin{tikzpicture}
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v$}] (V) at (0,0) {};
@@ -601,7 +608,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 	\end{center}
 \end{example}
 
-\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterization of monomorphisms in it.
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
 \begin{proposition}\label[proposition]{prop:mono} For every algebraic signature $\Sigma$, the following are true:
 	\begin{enumerate}
@@ -702,7 +709,7 @@ Let us start using labelled hypergraphs to define term graphs.
 \end{definition}
 
 
-\begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice, moreover that since $t_{\mathcal{G}}$ is mono then $\tau_{\mathcal{G}}$ is mono too.
+\begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice that since $t_{\mathcal{G}}$ is mono then $\tau_{\mathcal{G}}$ is mono too.
 \end{remark}
 
 We are now going back to examine the properties of $\tg$, with the purpose of studying its adhesivity properties.
@@ -710,12 +717,10 @@ We are now going back to examine the properties of $\tg$, with the purpose of st
 \begin{proposition}\label[proposition]{term:left}The forgetful functor $U_{\tg}$ has a left adjoint $\Delta_{\tg}$.
 \end{proposition}
 \begin{proof}
-	This follows noticing that, for every object $X$, $\Delta_{\Sigma}(X)$ is a term graph.   
+	This follows noticing that $\Delta_{\Sigma}(X)$ is a term graph for every object $X$.
 \end{proof}
 
-
-
-We canlist some categorical properties of $\tg$
+We can list some categorical properties of $\tg$
 
 
 \begin{proposition}
@@ -755,7 +760,7 @@ For every algebraic signatur $\Sigma$, the following are true:
 \end{remark}
 
 \begin{remark}
-	$\tg$ is not an adhesive category. In particular it does not have pushouts along all monomorphisms. For instance, if we take the three term graphs of the previous remark, then have two arrows
+	$\tg$ is not an adhesive category. In particular it does not have pushouts along all monos. For instance, if we take the three term graphs of the previous remark, then have two arrows
 	$(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_a, !_{V_{\mathcal{G}_a}})$ and $(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_b, !_{V_{\mathcal{G}_a}})$ which cannot be completed to a square. Indeed if $(q, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^\Sigma$ is another term graph with $(g_E, g_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$ and $(k_E, k_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$  such that 
 	\[(g_E, g_V)\circ (?_{\{h\}}, \id{\{v\}}) = (k_E, k_V)\circ (?_{\{h\}}, \id{\{v\}})\]
 	then $g_V=k_V$ and
@@ -813,27 +818,26 @@ efficient implementation of equality saturation.
 To do so, we revisited and generalised the notions of hyper-graph and term graph with equivalence, and
 we extended it in order to capture EGGS as term graphs satisfying a suitable closure property.
 
-Our result opens two threads of research. The first is to use the quasi-adhesivity of EGGS in order to
-model their rewriting via the double-pushout (DPO) approach. This seems to be straightforward, since 
-the rules adopted in the literature of EGGS appears to be span of regular monos, and such rules
+Our result opens two threads of research. The first is to use the quasi-adhesivity of EGGs to
+model their rewriting via the double-pushout (DPO) approach. This seems now easy, since 
+the rules adopted in the literature of EGGs appears to be span of regular monos, and such rules
 perfectly fit the mold of rewriting on quasi-adhesive categories. 
-For example, the equivalence $x \div x = 1$, taken from the introductory example in~\cite{xxx}, 
+For example, the equivalence $x \div x = 1$, from the introductory example in~\cite{xxx}, 
 can be modelled as the rule
 \[to draw DPO rule\]
 
 It still needs to be investigated what concurrency and termination, the key properties for DPO rewriting
 on adhesive categories, 
-mean in the context of EGGS. More interestingly, another venue for development is using the adhesive 
-machinery to extend the EGGS formalism. In fact, most of the results
+mean in the context of EGGs. More interestingly, another venue for development is using the adhesive 
+machinery to extend the EGGs formalism. In fact, most of the results
 presented here for hyper-graphs can be generalised to hierarchical hyper-graphs, that is, 
 hypergraphs with a hierarchy (a partial order) among 
 edges that is useful for adding structural information, such as encapsulation and sandboxing~\cite{xxx}.
 
-Finally, we will delve into and draw a comparison with an alternative categorical presentation for EGGS 
-advanced in~\cite{ghica}. The proposal is quite different from our own. Simplifying, the key is to use categories 
-of tree which are equipped with a lattice on hom-sets. We can recover trees in our approach, even 
-if we opted for term graphs in order to obtain a simpler categorical presentation. Instead of going through 
-an enrichment on hom-sets, we chose to obtain closure via suitable requirements on morphisms, even if it 
+Finally, we need to draw a comparison with an alternative categorical presentation for EGGs 
+advanced in~\cite{ghica}. The proposal is quite different from our own. Simplifying, the key is to equip categories 
+of trees with a lattice on hom-sets. Instead of going through 
+such an enrichment, we chose to obtain closure via suitable requirements on morphisms, even if it 
 seems that the former generalises the latter, at the expenses of a more complex machinery.
 
 \bibliography{biblio}
@@ -883,7 +887,6 @@ This section contains the proofs which are omitted from the main body oof the pa
 
 \subsection{Proofs for \Cref{sec:ade}}
 \regmono*
-
 \begin{proof}\label{regmono-proof}
 	\begin{enumerate}
 		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout.
@@ -979,17 +982,19 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 \epicol*
 
 \begin{proof}\label{epicol-proof}
-	By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi\colon F \to G$ is a regular epimorphism, so that there is a functor $E\colon \D\to \X$ and $\eta, \theta\colon E \rightrightarrows F$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $(P, \{p_d\}_{d \in \D})$ be the colimit of $E$ and consider the unique arrows $a, b\colon P \rightrightarrows X$ fitting in the squares below
-	
-	
+	By \Cref{cor:reg_epi_components_reg_epi_nat_trans}, we know that $\phi\colon F \to G$ is a regular epi, so that there is a functor $E\colon \D\to \X$ and $\eta, \theta\colon E \rightrightarrows F$ such that $\phi$ is the coequalizer of $\eta$ and $\theta$. Let now $(P, \{p_d\}_{d \in \D})$ be the colimit of $E$ and consider the unique arrows $a, b\colon P \rightrightarrows X$ fitting in the squares below
+\medskip
+
 \noindent 
 	\parbox{4cm}{\xymatrix{E(d) \ar[r]^{p_d} \ar[d]_{\eta_d}& P \ar@{.>}[d]^{a} &E(d) \ar[d]_{\theta_d}
 		 \ar[r]^{p_d}& P \ar@{.>}[d]^{b}\\ F(d) \ar[r]_{x_d} & X & F(d) \ar[r]_{x_d} & X}} \hfill	\parbox{8cm}{
-	We want to show that $\phi$ coequalizes $a$ and $n$. Let thus $h\colon X \to Z$ be an arrow such that $h \circ a = h \circ b$. Then, for every $d$, we have
-	\[	h \circ x_d \circ \eta_d = h \circ a \circ p_d 
+	We want to show that $\phi$ coequalizes $a$ and $n$. Let thus $h\colon X \to Z$ be an arrow such that $h \circ a = h \circ b$. Then, for every $d$, 
+	we have
+	\[h \circ x_d \circ \eta_d = h \circ a \circ p_d 
 	= h \circ b \circ p_d 
 	= h \circ x_d \circ \theta_d\]}
 	
+	\noindent
 	Thus, there is $h_d: G(d) \to Z$ such that $h\circ x_d = h_d \circ \phi_d$. It is now easy to see that $(Z, \{h_d\}_{d \in \D})$ is a cocone on $G$. Suppose $\alpha: d \to d'$ is an arrow of $\D$, then
 	\[h_d\circ \phi_d=h\circ y_d=h\circ y_{d'}\circ F(\alpha)=h_{d'}\circ \phi_{d'}\circ F(\alpha)=h_{d'}\circ G(\alpha)\circ \phi_d\]
 		By the hypothesis $\phi_d$ is regular epi for each $d$ and so we can conclude that $h_d = h_{d'} \circ G(\alpha)$.
@@ -1002,7 +1007,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 	For the uniqueness, let $k': Y \to Z$ be another arrow such that $k' \circ \phi = h$. Then we have
 	\[k'\circ y_d\circ \phi_d=k'\circ \phi \circ x_d=h\circ x_d=h_d\circ \phi_d\]
 	
-	Since $\phi_d$ is a regular epimorphism, we have $k' \circ y_d = h_d$ allowing us to conclude.
+	Since $\phi_d$ is a regular epi, we have $k' \circ y_d = h_d$ allowing us to conclude.
 \end{proof}
 
 \section{Some properties of comma categories}
@@ -1076,7 +1081,7 @@ Summing up we have just proved the following fact.
 
 We can use \Cref{lim} to characterize monos in comma categories. 
 \begin{corollary}\label[corollary]{cor:mono}
-	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monomorphisms.
+	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monos.
 \end{corollary}
 \begin{proof}
 	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the following square is a pullback in $\comma{L}{R}$
