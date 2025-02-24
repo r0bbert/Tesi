@@ -776,7 +776,18 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 \end{proposition}
 
 \begin{remark}
-	$\tg$ in general does not have terminal objects. Consider an algebraic signature in $\Set$. Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton $\{h\}$. Now take as signature the one given by two operations $a$ and $b$, both of arity $0$; we have three term graphs with only one node $v$: $\Delta_{\tg{\Sigma}}(\{v\})$, $(l_a, !_{V_{\mathcal{G}}})\colon \mathcal{G}_a\to \mathcal{G}^{\Sigma}$ and $(l_b, !_{V_{\mathcal{G}}})\colon \mathcal{G}_b\to \mathcal{G}^{\Sigma}$.
+	$\tg$ in general does not have terminal objects. 
+	%Consider an algebraic signature in $\Set$. 
+	Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton. 
+	Hence, for a counterexample, it suffices to take as signature the one given by two operations $a$ and $b$, both of arity $0$.
+	$\tg$ is not an adhesive category, either. 
+	In particular, as noted in e.g.~\cite{CastelnovoGM24}, 
+	 it does not have pushouts along all monos. 
+\end{remark}
+	
+\commentato{
+\begin{remark}
+	$\tg$ in general does not have terminal objects. Consider an algebraic signature in $\Set$. Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton $\{h\}$. Hence, for a counterexaqmple it suffices to take as signature the one given by two operations $a$ and $b$, both of arity $0$; we have three term graphs with only one node $v$: $\Delta_{\tg{\Sigma}}(\{v\})$, $(l_a, !_{V_{\mathcal{G}}})\colon \mathcal{G}_a\to \mathcal{G}^{\Sigma}$ and $(l_b, !_{V_{\mathcal{G}}})\colon \mathcal{G}_b\to \mathcal{G}^{\Sigma}$.
 	\begin{center}\begin{tikzpicture}
 			
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=left:{$v$}] (V) at (5,0) {};
@@ -813,7 +824,7 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 	\[
 	a=l_a(h)=q(g_E(h))=q(k_E(h))=l_b(h)=b\]
 \end{remark}
-
+}
 
 \begin{definition}
 	Let $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$  be a term graph. A \emph{input node} is an element of $V_{\mathcal{G}}$ not in the image of $\tau_{\mathcal{H}}$.  A morphism $(f,g)$ between
