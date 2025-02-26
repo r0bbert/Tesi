@@ -199,6 +199,9 @@
 \section{Introduction}
 \todo{A very nice introduction}
 
+This  section briefly recalls \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
+
+
 \begin{itemize}
 \item general on adhesive categories
 \item general on the use of eggs
@@ -236,9 +239,10 @@ All the proofs have been moved to the appendices.
 \section{Facts about $\mathcal{M}$-adhesive categories and kernel pairs}\label{sec:ade}
 
 
-This  section briefly recalls \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
 %
 %\begin{notation}
+We open this background section by fixing some notation.
+%
 Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
 ``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one. We will also use the notation $e\colon X\eto Y$ to denote that an arrow $e\colon X\to Y$ is a regular epi. 
 %\end{notation}
@@ -281,7 +285,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 \begin{definition}
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
-	$\mon(\X)$  including  all isomorphisms, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	$\mon(\X)$  including  all isos, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
 		\item it has \emph{$\mathcal{M}$-pullbacks}, i.e.~pullbacks along arrows of $\mathcal{M}$;
 		\item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
@@ -319,7 +323,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
 		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
-		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all the isomorphisms, and is closed under composition and decomposition.
+		\item if $\Y$ is a full subcategory of $\X$ closed in it under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all isos, and is closed under composition and decomposition.
 	\end{enumerate} 
 \end{proposition}
 
@@ -445,7 +449,8 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briefly recall the notion of \emph{hypergraph}. In order to so, a pivotal role is played by the \emph{Kleen star} monad $(-)^\star\colon \Set\to \Set$, also known as \emph{list monad},
+In this section we briefly recall the notion of \emph{hypergraph}. In order to so, a pivotal role is played by the \emph{Kleen star monad} $(-)^\star\colon \Set\to \Set$, also known as 
+\emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
 We recall some of its proprieties.
 
@@ -470,7 +475,7 @@ We recall some of its proprieties.
 We open this section with the definition of hypergraphs and we show how to label them with an algebraic signature.  
 
 
-\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the set of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute
+\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the sets of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute
 	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
 	We define $\hyp$ to be the resulting category.
 \end{definition}
@@ -674,7 +679,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 
 \begin{proposition}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then it holds
 	\begin{enumerate}
-		\item a morphism $(h,k)$ between two object of $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective functions;
+		\item an arrow $(h,k)$ in $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective functions;
 		\item $\hyp_{\Sigma}$ is an adhesive category. 
 	\end{enumerate}
 \end{proposition}
@@ -1436,7 +1441,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 	\noindent 
 	\parbox{11.5cm}{
 	\begin{enumerate} 
-		\item Every arrow $f\colon X\to Y$ can be factored as $m\circ e$, where $e\colon X\eto Q$ is a regular epi and $m\colon Q\mto Y$ is a monomorphism;
+		\item Every arrow $f\colon X\to Y$ can be factored as $m\circ e$, where $e\colon X\eto Q$ is a regular epi and $m\colon Q\mto Y$ is a mono;
 			\item for every square as the one on the right, with $e\colon X\eto E$ a surjection and $m\colon N\mto Y$ a mono, there exists a unique $k\colon E\to N$ making it commutative.
 	\end{enumerate}}\hfill \parbox{2cm}{\xymatrix{X \ar@{>>}[d]_{e}\ar[r]^{f}& N \ar@{>->}[d]^{m} \\ E \ar[r]_{g} & Y}}
 	
