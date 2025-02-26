@@ -219,19 +219,20 @@ the theory of
 \emph{$\mathcal{M}$-adhesive categories}
 and of \emph{kernel pairs}.
 In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
-namely (labelled) hypergraphs and term graphs, and we provide a
+ (labelled, acyclic) hypergraphs and term graphs, and we provide a
 functorial characterisation, which allows for proving their adhesivity properties.
-This is further expended in Section~\ref{hypereq} for describing hypergraphs 
+This is expended in Section~\ref{hypereq} for describing hypergraphs 
 and term graphs with equivalence and in Section~\ref{eggs} for capturing
 their variants where the equivalences are closed with respect to operator application,
 thus subsuming EGGs.
 %
-All the proofs have been moved to the appendix. For the sake of completeness, 
-and in order to fix the notation, we prove all the results 
-recalled in the background section, besides those that are original 
-to our work.
+All the proofs have been moved to the appendices. 
+%For the sake of completeness, 
+%and in order to fix the notation, we prove all the results 
+%recalled in the background section, besides those that are original 
+%to our work.
 
-\section{$\mathcal{M}$-adhesive categories}\label{sec:ade}
+\section{Facts about $\mathcal{M}$-adhesive categories and kernel pairs}\label{sec:ade}
 
 
 This  section briefly recalls \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
@@ -259,6 +260,7 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 	
 	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the cube below on the right. 
 
+\vspace{-.25cm}
 \parbox{9.5cm}{We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
 	\begin{enumerate}
 		\item it is a pushout square;
@@ -320,7 +322,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of sl
 	\end{enumerate} 
 \end{proposition}
 
-We will briefly list some examples of $\mathcal{M}$-adhesive categories.
+We briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 \begin{example}
 	\label{ex:adhesive}
@@ -360,7 +362,7 @@ We can state some useful properties of $\mathcal{M}$-adhesive category.
 		\item every arrow in $\mathcal{M}$ is a regular mono.
 	\end{enumerate}
 \end{restatable}
-  [Proof in \Cref{regmono-proof}]
+%  [Proof in \Cref{regmono-proof}]
 
 
 \subsection{Kernel Pairs and Regular Epimorphisms}
@@ -391,39 +393,18 @@ Together with \Cref{lem:pb1}, the previous remarks allow us to prove the followi
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{proposition}
 
-We are now going to explore some further properties of kernel pairs.
-
-\begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
-	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. Then there exists a a unique arrow $k_h: K_f \to K_g$ completing them.     Moreover, if the leftmost is a pullback, then also the other two are so.
-%
-	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
-	
-\end{restatable}
-[Proof in \Cref{kpp-proof}]
-
-The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
-
-\noindent
-\parbox{7cm}{
-\begin{restatable}{lemma}{mpo}\label{lem:mpo}
-	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout. Then the right square is a pushout.
-\end{restatable}}\hfill 
-\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
-
-[Proof in \Cref{mpo-proof}]
-
-
-As a final step, we explore the link between regular epis and kernel pairs.
+We explore the link between regular epis and kernel pairs.
 
 \begin{restatable}{proposition}{epic}\label{prop:reg_epi_coeq}
     Let $e\colon X \to Y$ be a regular epi in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
 \end{restatable}
-[Proof in \Cref{epic-proof}]
+%[Proof in \Cref{epic-proof}]
+
 
 \begin{restatable}{corollary}{natepi}\label{cor:reg_epi_components_reg_epi_nat_trans}
-    Let $\X$ be a category with pullbacks and $\phi\colon F \dot\to G$ a natural transformation between functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$ in $\D$, then $\phi$ is a regular epi.
+    Let $\X$ be a category with pullbacks and $\phi\colon F \dot\to G$ a natural transformation between functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$, then $\phi$ is a regular epi.
 \end{restatable}
-[Proof in \Cref{natepi-proof}]
+%[Proof in \Cref{natepi-proof}]
 
 From the previous result we deduce that the class of regular epis is closed under colimits.
 % as shown by the next lemma
@@ -431,11 +412,35 @@ From the previous result we deduce that the class of regular epis is closed unde
 \begin{restatable}{lemma}{epicol}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
     Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in D})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epis, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi.
 \end{restatable}
-[Proof in \Cref{epicol-proof}]
+%[Proof in \Cref{epicol-proof}]
 
+We now explore some properties of kernel pairs and their link with adhesive categories. 
+The results below appear to be original, and we give their proofs in \Cref{kpp-proof}.
 
-\input{./fact_sys}
+\begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
+	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. 
+	%
+	If the leftmost square is commutative, then there exists a a unique arrow $k_h: K_f \to K_g$ making the other two commutative.
+	%
+	Moreover, if the leftmost is a pullback, then also the other two are so.
+%
+	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
+	
+\end{restatable}
+%[Proof in \Cref{kpp-proof}]
 
+The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
+
+\noindent
+\parbox{7cm}{
+\begin{restatable}{proposition}{mpo}\label{lem:mpo}
+	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout. Then the right square is a pushout.
+\end{restatable}}\hfill 
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+
+%[Proof in \Cref{mpo-proof}]
+%
+%\input{./fact_sys}
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
@@ -461,7 +466,7 @@ We recall some of its proprieties.
 
 \subsection{The category of hypergraphs}
 
-We open this section with the definition of hypergraphs and we will see how to label them with an algebraic signature.  
+We open this section with the definition of hypergraphs and we show how to label them with an algebraic signature.  
 
 
 \begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the set of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute
@@ -497,6 +502,7 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 \end{example}
 
 \todo{forse possiamo anche cancellare tutti gli esempi sotto}
+\todo{FG ne lascerei uno, ripreso magari dalla intro e presentato come string diagram}
 
 We can represent hypergraphs graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
 
@@ -674,6 +680,8 @@ $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ 
 \end{proof}
 
 \todo{anche questo forse val la pena toglierlo}
+\todo{presentarlo come string diagram e magari prendere la segnatura de un esempio egg}
+
 We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
 \begin{example}\label[example]{lab_1}
 	The simplest example is given by the identity $\id{\mathcal{G}^\Sigma}\colon \mathcal{G}^\Sigma\rightarrow \mathcal{G}^{\Sigma}$. If $\Sigma$ is the signature of groups $\Sigma_G$we get 
@@ -769,7 +777,18 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 \end{proposition}
 
 \begin{remark}
-	$\tg$ in general does not have terminal objects. Consider an algebraic signature in $\Set$. Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton $\{h\}$. Now take as signature the one given by two operations $a$ and $b$, both of arity $0$; we have three term graphs with only one node $v$: $\Delta_{\tg{\Sigma}}(\{v\})$, $(l_a, !_{V_{\mathcal{G}}})\colon \mathcal{G}_a\to \mathcal{G}^{\Sigma}$ and $(l_b, !_{V_{\mathcal{G}}})\colon \mathcal{G}_b\to \mathcal{G}^{\Sigma}$.
+	$\tg$ in general does not have terminal objects. 
+	%Consider an algebraic signature in $\Set$. 
+	Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton. 
+	Hence, for a counterexample, it suffices to take as signature the one given by two operations $a$ and $b$, both of arity $0$.
+	$\tg$ is not an adhesive category, either. 
+	In particular, as noted in e.g.~\cite{CastelnovoGM24}, 
+	 it does not have pushouts along all monos. 
+\end{remark}
+	
+\commentato{
+\begin{remark}
+	$\tg$ in general does not have terminal objects. Consider an algebraic signature in $\Set$. Since $U_{\tg}$ preserves limits, if a terminal object exists it must have the singleton as set of nodes, therefore the set of hyperedges must be empty or a singleton $\{h\}$. Hence, for a counterexaqmple it suffices to take as signature the one given by two operations $a$ and $b$, both of arity $0$; we have three term graphs with only one node $v$: $\Delta_{\tg{\Sigma}}(\{v\})$, $(l_a, !_{V_{\mathcal{G}}})\colon \mathcal{G}_a\to \mathcal{G}^{\Sigma}$ and $(l_b, !_{V_{\mathcal{G}}})\colon \mathcal{G}_b\to \mathcal{G}^{\Sigma}$.
 	\begin{center}\begin{tikzpicture}
 			
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=left:{$v$}] (V) at (5,0) {};
@@ -806,7 +825,7 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 	\[
 	a=l_a(h)=q(g_E(h))=q(k_E(h))=l_b(h)=b\]
 \end{remark}
-
+}
 
 \begin{definition}
 	Let $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$  be a term graph. A \emph{input node} is an element of $V_{\mathcal{G}}$ not in the image of $\tau_{\mathcal{H}}$.  A morphism $(f,g)$ between
@@ -882,7 +901,9 @@ even if at the expenses of a more complex machinery.
 
 \section{Omitted proofs}
 
-This section contains the proofs which are omitted from the main body oof the paper. We begin stating  a well-known fact about composition and decomposition of pullbacks \cite{mac2013categories}.
+This section contains the proofs which are omitted from the main body of the paper. 
+%
+We begin recalling  a well-known fact about composition and decomposition of pullbacks \cite{mac2013categories}.
 
 \noindent
 \parbox{10cm}{
@@ -891,6 +912,7 @@ This section contains the proofs which are omitted from the main body oof the pa
 \end{lemma}} 
 	\parbox{4cm}{
 	\xymatrix@R=18pt{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}}
+\commentato{
 \begin{proof}
 	$(\Rightarrow)$ Let $q_1\colon Q\to Y$ and $q_2\colon Q\to A$ be two arrows such that $b\circ q_1=h\circ q_2$, if we compute we get
 	\[c\circ g\circ q_1  =k\circ b\circ q_1=k\circ h\circ q_2\]
@@ -920,7 +942,9 @@ This section contains the proofs which are omitted from the main body oof the pa
 	b\circ f \circ l'= h\circ a \circ l' = h\circ q_2= b\circ q\]
 	which implies $f\circ l' = q$, from which $l=l'$ follows.
 \end{proof}
-
+}
+%
+\commentato{
 \subsection{Proofs for \Cref{sec:ade}}
 \regmono*
 \begin{proof}\label{regmono-proof}
@@ -933,6 +957,7 @@ This section contains the proofs which are omitted from the main body oof the pa
 		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.   \qedhere
 	\end{enumerate}
 \end{proof}
+}
 
 \kpp*
 \begin{proof}\label{kpp-proof}
@@ -962,8 +987,8 @@ The thesis now follows again by \Cref{lem:pb1}.
 	\end{proof}}
 		
 
+\commentato{
 \epic*
-
 \noindent 
 \parbox{10cm}{
 \begin{proof}\label{epic-proof}
@@ -1045,6 +1070,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 	
 	Since $\phi_d$ is a regular epi, we have $k' \circ y_d = h_d$ allowing us to conclude.
 \end{proof}
+}
 
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
