@@ -4,7 +4,7 @@ As we have done in \Cref{sssect:hyp_alg_sign}, we can define the category of hyp
 
 \begin{definition}
 	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to $\Sigma$.
-	Then the \emph{hypergraph with equivalence} associated to $\Sigma$ is $L(\mathcal{G}^\Sigma)$ and the category of hypergraphs with 
+	Then the \emph{hypergraph with equivalence} associated to $\Sigma$ is $R(\mathcal{G}^\Sigma)$ and the category of hypergraphs with 
 	equivalence labeled over $\Sigma$ is the 
 	slice category $\EqHyp_\Sigma = \EqHyp/L(\mathcal{G}^\Sigma)$.
 \end{definition}
@@ -15,9 +15,9 @@ By \Cref{thm:slice_functors}, we can deduce the following.
 	$\EqHyp_\Sigma$ is $\reg (\EqHyp_\Sigma)$-adhesive.
 \end{proposition}
 
-We can lift the adjunction given by $T$ and $L$ to $EqHyp_\Sigma$ and $\hyp_\Sigma$.\todo{Non capisco se è uno svarione mio o ha senso}
+%We can lift the adjunction given by $T$ and $L$ to $\EqHyp_\Sigma$ and $\hyp_\Sigma$.\todo{Non capisco se è uno svarione mio o ha senso}
 
-By \Cref{cor:mono1}, we can deduce what follows.
+We can define a functor $T_\Sigma: \EqHyps \to \hyps$ which sends each labeled hypergraph $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ to $T_\Sigma(l) = T(l)$, and each morphism $h = (h_E, h_V, h_C)$ onto $T_\Sigma(h) = T(h)$. Such functor is faithful since so is $T$, hence we have the following property.
 
 \begin{proposition}\label{prop:monos_in_eqhyps}
 	A morphism $h$ between two objects of $\EqHyps$ is mono if and only if $T(h)$ is mono.
