@@ -62,6 +62,7 @@
 \setstackgap{L}{1.3\normalbaselineskip}
 
 \newcommand{\lgh}{\mathsf{lg}}
+\newcommand{\eq}{\mathsf{eq}}
 
 \DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
 
@@ -365,7 +366,7 @@ We can state some useful properties of $\mathcal{M}$-adhesive category.
 %  [Proof in \Cref{regmono-proof}]
 
 
-\subsection{Kernel Pairs and Regular Epimorphisms}
+\subsection{Some properties of kernel pairs and regular epimorphisms}
 
 In this section we recall the definition and some properties of \emph{kernel pairs}.
 %which will be useful in the next sections. 
@@ -393,14 +394,14 @@ Together with \Cref{lem:pb1}, the previous remarks allow us to prove the followi
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{proposition}
 
-We explore the link between regular epis and kernel pairs.
+Regular epis are particular well-behaved with respect to their kernel pairs.
 
 \begin{restatable}{proposition}{epic}\label{prop:reg_epi_coeq}
     Let $e\colon X \eto Y$ be a regular epi in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
 \end{restatable}
 %[Proof in \Cref{epic-proof}]
 
-
+\commentato{ 
 \begin{restatable}{corollary}{natepi}\label{cor:reg_epi_components_reg_epi_nat_trans}
     Let $\X$ be a category with pullbacks and $\phi\colon F \to G$ a natural transformation between functors $F, G: \D \rightrightarrows \X$. If $\phi_d$ is a regular epi for every $d$, then $\phi$ is a regular epi.
 \end{restatable}
@@ -413,8 +414,8 @@ From the previous result we deduce that the class of regular epis is closed unde
     Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in D})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epis, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi.
 \end{restatable}
 %[Proof in \Cref{epicol-proof}]
-
-We now explore some properties of kernel pairs and their link with adhesive categories. 
+}
+We conclude this section exploring some properties of kernel pairs in an $\mathcal{M}$-adhesive category. 
 The results below appear to be original, and we give their proofs in \Cref{kpp-proof}.
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
@@ -436,7 +437,7 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 \begin{restatable}{proposition}{mpo}\label{lem:mpo}
 	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout. Then the right square is a pushout.
 \end{restatable}}\hfill 
-\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
 
 %[Proof in \Cref{mpo-proof}]
 %
@@ -448,7 +449,7 @@ In this section we briefly recall the notion of \emph{hypergraph}. In order to s
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
 We recall some of its proprieties.
 
-\begin{proposition}
+\begin{proposition}\label{prop:fact}
 	The following facts hold
 	\begin{enumerate}
 		\item for every set $X$ and $n\in \mathbb{N}$ there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
@@ -495,7 +496,7 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 
 \Cref{prop:left,prop:com} allow us to deduce immediately the following.
 
-\begin{proposition}\label[proposition]{cor:left}  The forgetful functor $U_{\hyp}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\hyp}$.
+\begin{proposition}\label{cor:left}  The forgetful functor $U_{\hyp}$ which sends an hypergraph $\mathcal{G}$ to its object of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{proposition}
 
 \begin{example}Since the initial object of $\catname{Set}$ is the empty set,  $\Delta_{\Set}(X)$ is the hypergraph which has $X$ as set of nodes, $\emptyset$ as set of hyperedges, and $?_X$ as source and target function.
@@ -908,14 +909,14 @@ Let us start with the case of general hypergraphs.
 
 Forgetting the quotient part yields a functor $T\colon \EqHyp \to \hyp$ which sends an hypergraph with equivalence $(E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ to $(E_{\mathcal{G}}, V_{\mathcal{G}}, s_\mathcal{G}, t_{\mathcal{G}})$.   We can now explore some of its properties to deduce some information on the structure of $\EqHyp$.  
 
-\begin{restatable}{proposition}{fhyp}  The following are true:
+\begin{restatable}{proposition}{fhyp}\label{prop:forghyp}  The following are true:
 	\begin{enumerate}
 		\item$T$ is faithful;
 		\item $T$ has a left adjoint;
 		\item $T$ has a right adjoint.
 	\end{enumerate}
 \end{restatable}
-A proof is provided in \Cref{prop:forghyp}.
+A proof is provided in \Cref{proof:forghyp}.
 
 
 \begin{corollary}\label{cor:limcolim}
@@ -928,25 +929,13 @@ Combining together the previous corollary with \Cref{rem:eqhyp_morphs} we get th
 	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
 \end{corollary}
 
-\commentato{
-	\todo{questo non serve a nulla e in più è pure scritto sbagliato}
-$\EqHyp$ has a forgetful functor $U_{\EqHyp}:\EqHyp \to \Set$, which sends each $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ into $V_\mathcal{G}$, and each $h = (h_E, h_V, h_C)$ onto $h_V$. 
+Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtained composing $T$ and $U_{\hyp}$.  By \Cref{cor:left} and the second point of \Cref{prop:forghyp} we get the following.
 
 \begin{corollary}\label{cor:ladj}
-	$U_\EqHyp$ has a left adjoint $\Delta_{\EqHyp}: \Set \to \EqHyp$.
+	$U_{\eq}$ has a left adjoint $\Delta_{\eq}\colon \Set \to \EqHyp$.
 \end{corollary}
 
-\begin{proof}
-	For each set $X$, define $\Delta_\EqHyp(X):= (\emptyset, X, \{\bullet\}, ?_X, ?_X, !_X)$. Consider now $h: \Delta_{\EqHyp}(X) \to \mathcal{H}$.
-	\[\xymatrix@C=2.3cm{
-		\Delta_{\EqHyp}(X) \ar@{.>}[d]_{\Delta_\EqHyp(f)} \ar[dr]^{h} & \\
-		\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) \ar[r]_{\epsilon_{\mathcal{H}}} & \mathcal{H}
-	}\]
-	Where $\Delta_\EqHyp(U_{\EqHyp}(\mathcal{H})) = (\emptyset, V_\mathcal{H}, \{\bullet\}, ?_{V_\mathcal{H}}, ?_{V_\mathcal{H}}, !_{V_\mathcal{H}})$ and $\epsilon_{\mathcal{H}} = (?_{E_\mathcal{H}}, \id{V_\mathcal{H}}, g)$.
-	Note that, since $\Delta_{\EqHyp}(X)$ has the empty set as object of edges, $h_E = ?_{E_\mathcal{H}}$, then, the unique arrow that fits in the diagram is $\Delta_{\EqHyp}(f) = (?_{E_\mathcal{H}}, h_V, \id{\{\bullet\}})$.
-\end{proof}}
-
-Let us notice that there $K: \EqHyp \to \Set$ sending $(E, V, C, s, t, q)$ to $C$, and a morphism $(h_E, h_V, h_C)$ to $h_C$. We are now going to exploit it to compute limits and colimits in $\EqHyp$. In order to do so. A full proof of the following lemma can be found in \Cref{proof:comp}.
+Let us notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, C, s, t, q)$ to $C$, and a morphism $(h_E, h_V, h_C)$ to $h_C$. We are now going to exploit it to compute limits and colimits in $\EqHyp$. In order to do so. A full proof of the following lemma can be found in \Cref{proof:comp}.
 
 \noindent
 \parbox{11cm}{
@@ -957,17 +946,12 @@ Let $F\colon \D \to \EqHyp$ be a diagram, and let $(\mathcal{E}_d, V_d, Q_d, s_d
 	\item let $(L, \{l_d\}_{d\in \D})$ be a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
 \end{enumerate}
 \end{restatable}}\hfill 
-\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>->}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
+\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
-\begin{corollary}\label{cor:mono2}
-	If $h = (h_E, h_V, h_C): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
-\end{corollary}
-\todo{Questa è da rifare completamente}
-\begin{proof}
-	If $h$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. Suppose now $f, g: \mathcal{H\rightrightarrows K}$ be the arrows equalized by $h$. Then, we have:
-	\begin{align*} f_C \circ h_C \circ q_\mathcal{G} &= f_C\circ q_\mathcal{H} \circ h_V\\&=q_\mathcal{K}\circ g_V \circ h_V\\&=q_\mathcal{K}\circ f_V \circ h_V\\&=g_C \circ h_C \circ q_\mathcal{G} \end{align*}
-	Since $q_\mathcal{G}$ is epi, we have $f_C \circ h_C = g_C \circ h_C$, hence $h_C$ is an equalizer for $f_C$ and $g_C$, and thus a mono.
-\end{proof}
+\begin{restatable}{corollary}{mn}\label{cor:mono2}
+	If $(h_E, h_V, h_Q): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
+\end{restatable}
+
 
 \iffalse 
 \begin{proposition}
@@ -1331,11 +1315,12 @@ But then the following ones are pullbacks too.
 The thesis now follows again by \Cref{lem:pb1}.   
 \end{proof}
 
+
 \noindent
-\parbox{7cm}{\mpo*}\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_{m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_{n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+\parbox{7cm}{\mpo*}\hfill \parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
 
 \noindent 
-\parbox{4cm}{\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_{k_{m'}} && K_n\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_{k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }} \hfill \parbox{9cm}{\begin{proof}\label{mpo-proof}
+\parbox{4cm}{\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_n\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }} \hfill \parbox{9cm}{\begin{proof}\label{mpo-proof}
 	By  \Cref{prop:regmono}  we know that the the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the following cube the vertical faces are pullbacks.
 	The thesis now follows from strict $\mathcal{M}$-adhesivity.
 	\end{proof}}
@@ -1430,7 +1415,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
 \fhyp*
 
-\begin{proof}\label{prop:forghyp}
+\begin{proof}\label{proof:forghyp}
 	\begin{enumerate}
 		\item  This follows at once from \Cref{rem:eqhyp_morphs}.
 		\item  	Let $\mathcal{H}$ be a hypergraph, and define $L(\mathcal{H}) := (E_\mathcal{H}, V_{\mathcal{H}}, V_{\mathcal{H}}, s_\mathcal{H}, t_\mathcal{H}, \id{V_\mathcal{H}})$.  By construction we have $T(L(\mathcal{H}))=\mathcal{H}$, thus we can define
@@ -1446,7 +1431,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 \end{proof}
 
 \begin{remark}\label{rem:fact}
-	Before proceeding further, let us recall the following result about the classes of regular epis (i.e.~ surjections) and of monos in$\Set$. In particular, we need the fact thatthey form a a \emph{factorization system} \cite{kelly2006note} on $\Set$.  This amount to ask that:
+	Before proceeding further, let us recall the following result about the classes of regular epis (i.e.~ surjections) and of monos in $\Set$. In particular, we need the fact that they form a a \emph{factorization system} \cite{kelly2006note} on $\Set$.  This amount to ask that:
 	
 	\noindent 
 	\parbox{11.5cm}{
@@ -1459,6 +1444,11 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 	From these properties, one can deduce that if $f=m\circ e$ and $f=m'\circ e'$ are two factorizations of $f$ then there is an isomorphism $\phi$ such that $m=m'\circ \phi$ and $\phi \circ e=e'$.
 \end{remark}
 
+We will also need the following well-known fact about regular epis.
+
+\begin{lemma}\label{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}
+	Let $F,G\colon \D\rightrightarrows \X$ be two diagrams, and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in D})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epis, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi.
+\end{lemma}
 
 \noindent
 \parbox{11cm}{
@@ -1467,22 +1457,26 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 
 \begin{proof}\label{proof:comp}
 	\begin{enumerate}
-		\item Suppose now $(E', V', s', t')$, together with $(\kappa_E^i, \kappa_V^i)_{i \in \cat I}$, be the colimit of $T \circ D$, and $C'$, with $(c_i)_{i \in \cat I}$ be the colimit of $K \circ D$.
-		Then, we have the folliwing situation.
-		\[\xymatrix{
-			&  {V'} &                             \\
-			V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
-			C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
-			&  {C'} &
-		}\]
-		Then, $C'$ with morphisms $(c_i \circ q_i)_{i\in \cat I}$ is a conone for $U \circ D$. Then, there exists a unique morphism $q': V' \to C'$ such that $q'\circ \kappa_V^i = c_i\circ q_i$.
-		Such morphism is epi ({\color{red}cite Lemma 1.3.45 of the thesis}), and thus $(E', V', C', s', t', q')$, together with $(\kappa_E^i, \kappa_V^i, c_i)_{i\in \cat I}$ is the colimit of $D$.
-		\item  We know by \Cref{prop:cocomp} that $\hyp$ is complete, we can then consider a cone $((E, V, s, t), \{(\pi^i_E, \pi^d_V)\}_{d\in \D})$ limiting for of $T \circ D$. Now, $(V, \{q_d\circ \pi_V^d\}_{d\in \D})$, is a cone for $K \circ D$: indeed, if $\alpha: d \to d'$ is an arrow of $\D$, and $F(\alpha)=(h_1, h_2, f_3)$, then we have
-	\[h_2\circ q_d\circ \pi^d_V =q_{d'} \circ h_2\circ \pi^d_{V}=q_{d'}\circ \pi^{d'}_V\]
+		\item We know by \Cref{prop:cocomp} that $\hyp$ is cocomplete. Let thus $(E, V, s, t)$ together with $\{(\kappa_E^d, \kappa_V^d)\}_{d \in \D}$ be a colimit for $T \circ F$. By \Cref{colim} we also know that 
+		 
+		 \noindent 
+		 \parbox{10.5cm}{$(V, \{\kappa^d_V\}_{d\in \D})$ is a colimit for $U_\eq\circ F$. Moreover, since $\Set$ is cocomplete too we can also take a colimit $(C, \{c_d\}_{d\in \D})$ for $K\circ F$. Now,  let $\alpha$ be an arrow $d\to d'$ in $\D$, and suppose that $F(\alpha)$ is $(h_1, h_2, h_3)$. By definition of morphisms in $\EqHyp$, the square on the right commutes.}
+		\hfill 
+		\parbox{2cm}{\xymatrix{V_d \ar[r]^{h_2} \ar@{>>}[d]_{q_d} & V_{d'} \ar@{>>}[d]^{q_{d'}}\\ Q_{d} \ar[r]_{h_3} & Q_{d'}}}
+		
+		Thus the family $\{q_d\}_{d\in \D}$ form a natural transformation $U_\eq\circ F\to K\circ F$.  By \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}, the induced arrow $q: V \to C$ between the colimits is a surjection.  We can then consider the object $(E, V, C, s, t, q)$ of $\EqHyp$, together with the family  $\{(\kappa_E^d, \kappa_V^d, c_d)\}_{d\in \D}$ which, by construction is a cocone on $F$. Let $((E_\mathcal{G},V_\mathcal{G}, Q_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}}, q_{\mathcal{G}}), \{(h^d_E, h^d_V, h^d_Q)\}_{d\in \D})$ be a cocone, then $((E_\mathcal{G},V_\mathcal{G},, s_{\mathcal{G}}, t_{\mathcal{G}}), \{(h^d_E, h^d_V)\}_{d\in \D})$ and $(Q_{\mathcal{G}}, \{h^d_Q\}_{d\in \D})$ are cocone on, respectively, $T\circ F$ and $K\circ D$, giving arrows $(h_E, h_V)$ in $\hyp$ and $h_Q$ in $\Set$ such that
+		\[(h_E, h_V)\circ (\kappa_E^d, \kappa_V^d)=(h^d_E, h^d_V) \qquad h_Q\circ c_D=h^d_Q\]
+		Now, to show that $(h_E, h_V, h_Q)$ is an arrow of $\EqHyp$ we can compute:
+		\[h_Q\circ q\circ \kappa^d_V=h_Q\circ c_d\circ q_d=h^d_Q\circ q_d=q_{\mathcal{G}} \circ h^d_V=q_{\mathcal{G}}\circ h_V\circ \kappa^d_V \]
+		
+		Uniqueness of such arrow follows form the fact that $T$ is faithful and \Cref{rem:eqhyp_morphs}.
+		
+		\item   $\hyp$ is complete, again by \Cref{prop:cocomp}, we can then consider a limiting cone $((E, V, s, t), \{(\pi^i_E, \pi^d_V)\}_{d\in \D})$ over of $T \circ F$. Now, $(V, \{q_d\circ \pi_V^d\}_{d\in \D})$, is a cone for $K \circ F$: indeed, if $\alpha: d \to d'$ is an arrow of $\D$, and $F(\alpha)=(h_1, h_2, h_3)$, then we have
+	\[h_3\circ q_d\circ \pi^d_V =q_{d'} \circ h_2\circ \pi^d_{V}=q_{d'}\circ \pi^{d'}_V\]
 
 \noindent 
-\parbox{9.5cm}{Thus there is an arrow $V\colon L$ such that $l_d\circ l=q_d\circ \pi^d_V$. We know that there exist $m\colon Q\mto L$ and $q\colon X\eto Q $ such that $m\circ q=l$. Since the identity is mono then there exists a unique arrow $\pi^d_Q$ fitting in the rectangle aside.} 	\hfill \parbox{3cm}{\xymatrix{
-	V\ar[r]^{\pi_V^d}\ar@{>>}[d]_{q}&V_d\ar@{>>}[r]^{q_d}&Q_d\ar[d]^{\id{Q_d}}\\Q\ar@{>->}[r]_{m}\ar@{.>}[urr]^{\pi_Q^d}&L\ar[r]_{l_d}&{Q_d}
+\parbox{9.5cm}{Thus there is an arrow $l\colon V\to L$ such that $l_d\circ l=q_d\circ \pi^d_V$. We know that there exist $m\colon Q\mto L$ and $q\colon X\eto Q $ such that $m\circ q=l$. Since the identity is mono then there exists a unique arrow $\pi^d_Q$ fitting in the rectangle aside.} 	\hfill \parbox{3cm}{\xymatrix{
+	V\ar[r]^{\pi_V^d}\ar@{>>}[d]_{q}&V_d\ar@{>>}[r]^{q_d}&Q_d\ar[d]^{\id{Q_d}}\\Q\ar@{>->}[r]_{m}\ar@{.>}[urr]_{\pi_Q^d}&L\ar[r]_{l_d}&{Q_d}
 	}}
 	
 	Let $\alpha$ be an arrow $d\to d'$ in $\D$, then we have:
@@ -1498,11 +1492,24 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 		\[l_d\circ h\circ q_\mathcal{G}=h^d_Q\circ q_{\mathcal{G}}=q_{d}\circ h^d_V=q_d\circ \pi^d\circ h_V=l_d\circ l\circ h_V\]
 
 \noindent 
-\parbox{2cm}{\xymatrix{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[ur]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square below commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that
-\[(\pi^d_E, \pi^d_V, \pi^dQ)\circ (h_E, h_V, k_Q)=(h^d_E, h^d_V, h^d_Q)\]} 
+\parbox{2cm}{\xymatrix{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[ur]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that}
+\[(\pi^d_E, \pi^d_V, \pi^dQ)\circ (h_E, h_V, k_Q)=(h^d_E, h^d_V, h^d_Q)\] 
 
-Uniqueness follows at once from faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
+As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
 	\end{enumerate}
+\end{proof}
+
+\mn*
+
+\begin{proof}
+	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
+	
+	\noindent 
+	\parbox{2cm}{\xymatrix{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
+	\hfill 	\parbox{11cm}{Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in $\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono $m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
+	}\hfill 
+	\[e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}\]
+	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the thesis follows.
 \end{proof}
 
 \section{Some properties of comma categories}
