@@ -63,6 +63,7 @@
 
 \newcommand{\lgh}{\mathsf{lg}}
 \newcommand{\eq}{\mathsf{eq}}
+\newcommand{\quo}{\mathsf{Q}}
 
 \DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
 
@@ -160,7 +161,7 @@
 
 
 
-\title{On the adhesivity of EGGS}
+\title{On the adhesivity of EGGs}
 
 %\titlerunning{????} %TODO optional, please use if title is longer than one line
 
@@ -199,7 +200,6 @@
 \section{Introduction}
 \todo{A very nice introduction}
 
-This  section briefly recalls \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}. 
 
 
 \begin{itemize}
@@ -283,7 +283,7 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 
 We can now define $\mathcal{M}$-adhesive categories.
 
-\begin{definition}
+\begin{definition}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}]
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
 	$\mon(\X)$  including  all isos, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
@@ -429,7 +429,7 @@ The results below appear to be original, and we give their proofs in \Cref{kpp-p
 	%
 	Moreover, if the leftmost is a pullback, then also the other two are so.
 %
-	\[\xymatrix{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
+	\[\xymatrix@R=15pt{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
 	
 \end{restatable}
 %[Proof in \Cref{kpp-proof}]
@@ -474,11 +474,13 @@ We recall some of its proprieties.
 
 We open this section with the definition of hypergraphs and we show how to label them with an algebraic signature.  
 
+\noindent 
+\parbox{10.8cm}{\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the sets of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. 
+		
+\hspace{10pt} A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the diagrams on the right are commutative.
 
-\begin{definition}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the sets of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the following diagrams commute
-	\[\xymatrix{ E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}& E_{\mathcal{G}} \ar[r]^{t_{\mathcal{G}}} \ar[d]_{h} & V^\star_{\mathcal{G}} \ar[d]^{k^\star}  \\ E_{\mathcal{G}} \ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} & E_{\mathcal{G}} \ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} }\]
-	We define $\hyp$ to be the resulting category.
-\end{definition}
+\hspace{10pt}	We define $\hyp$ to be the resulting category.
+\end{definition}}\hfill\parbox{3cm}{\xymatrix@R=15pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]_{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{s_{\mathcal{H}}} & V^\star_{\mathcal{H}}} \hspace{1pt}\\ \xymatrix@R=15pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]_{t_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{t_{\mathcal{H}}} & V^\star_{\mathcal{H}}} }
 
 Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$: we can get $\hyp$ as a comma category.
 
@@ -684,13 +686,12 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 	\end{enumerate}
 \end{proposition}
 
+\noindent 
+\parbox{10.8cm}{\begin{remark}\label[remark]{rem:label}	
+Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
 
-\begin{remark}\label[remark]{rem:label}	
-Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares below commute (cfr.~ \Cref{rem:length}).
-	\[\xymatrix{E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{s_{\mathcal{H}}}& O_\Sigma \ar[d]^{\ari_\Sigma}& E_{\mathcal{H}} \ar[r]^{h} \ar[d]_{t_{\mathcal{H}}} & O_\Sigma \ar[d]^{\delta_1}\\ V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}}& \mathbb{N} & V^\star_{\mathcal{{H}}} \ar[r]_{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}\]
-%	
-Let $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$ be a coprojection.  The second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V^{\star}$ of words of length $1$, i.e. $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
-\end{remark}
+\hspace{10pt}Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$.  The second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V^{\star}$ of words of length $1$, i.e. $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
+\end{remark}} \hfill \parbox{3cm}{\xymatrix@R=15pt{E_{\mathcal{H}} \ar[r]_{h}\ar[d]_{s_{\mathcal{H}}} & O_\Sigma \ar[d]^{\ari_\Sigma} \\ V_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}} \hspace{1pt}\\ \xymatrix@R=15pt{E_{\mathcal{H}} \ar[r]_{h}\ar[d]_{t_{\mathcal{H}}} & O_\Sigma \ar[d]^{\ari_\Sigma}\\ V_{\mathcal{H}}\ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}}
 
 $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\X}(\mathcal{H}$). Now, $U_{\hyp}(\mathcal{G}^{\Sigma})=1$ thus, for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\X}(X)\to \mathcal{G}^{\Sigma}$  as $(?_{O_\Sigma}, !_{X})$. It is straightforward to see that in this way we get a left adjoint to $U_\Sigma$.
 
@@ -893,7 +894,7 @@ Let us start with the case of general hypergraphs.
 	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, Q_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $Q_\mathcal{G}$ is a set and $q_{\mathcal{G}}: V_{\mathcal{G}}\eto Q_{\mathcal{G}}$ is a surjection called \emph{quotient map}. 
 	%
 	A morphism $h\colon \mathcal{G\to H}$ is a triple $(h_E, h_V, h_C)$ such that the following diagrams commute
-	\[\xymatrix{
+	\[\xymatrix@R=15pt{
 		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar@{>>}[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {Q_{\mathcal{G}}} \ar[d]^{h_C} \\
 		{E_\mathcal{H}}\ar[r]_{s_\mathcal{H}} & {V_{\mathcal{H}}^\star}	& {E_\mathcal{H}}\ar[r]_{t_\mathcal{H}} & {V_{\mathcal{H}^\star}}& {V_\mathcal{H}}\ar@{>>}[r]_{q_\mathcal{H}} & {Q_\mathcal{H}}
 	}\]
@@ -951,7 +952,7 @@ Let $F\colon \D \to \EqHyp$ be a diagram, and let $(\mathcal{E}_d, V_d, Q_d, s_d
 	\item let $(L, \{l_d\}_{d\in \D})$ be a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
 \end{enumerate}
 \end{restatable}}\hfill 
-\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
+\parbox{3cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
 \begin{restatable}{corollary}{mn}\label{cor:mono2}
 	If $(h_E, h_V, h_Q): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
@@ -981,94 +982,37 @@ Let $F\colon \D \to \EqHyp$ be a diagram, and let $(\mathcal{E}_d, V_d, Q_d, s_d
 \fi 
 
 
-Let us turn to another functor $\EqHyp \to \hyp$.
+We can now build another functor $\EqHyp \to \hyp$: the idea is that from an object of $\EqHyp$ one can build an hypergraph taking as set of nodes directly the codomain of the quotient map.  
 
 \begin{definition}
-	The \emph{quotient functor} $Q:\EqHyp\to \hyp $ is defined as
-	the one sending $(E, V, C, s, t, q)$ to $(E, C, q^{\star}\circ s, q^{\star}\circ t)$ and an arrow $(h_E, h_V, h_C)$ to $(h_E, h_C)$.
+	We define the \emph{quotient functor} $\quo :\EqHyp\to \hyp $ as the one sending $(E, V, Q, s, t, q)$ to $(E, Q, q^{\star}\circ s, q^{\star}\circ t)$ and an arrow $(h_E, h_V, h_Q)$ to $(h_E, h_Q)$.
 \end{definition}
 
+\commentato{
 \begin{remark}
 	The action of the functor on a morphism of hypergraphs with equivalences gives a morphism of hypergraphs,
 	in fact $q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E = q^{\star}_\mathcal{H} \circ h_V^\star \circ s_\mathcal{G} = h_C^\star \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}$.
 	The same is valid for $t_\mathcal{H}$ and $t_\mathcal{G}$. 
 \end{remark}
-
-\begin{lemma}\label{lemma:quot_funct_left_adj}
-	$Q$ is a left adjoint.
-\end{lemma}
-
-\begin{proof}
-	Let $R((A, B, s, t))$ be $(A, B, B, s, t, \id{B})$, so that $Q(R((A, B, s, t))) = (A, B, s, t)$. Now, suppose that $h = (h_E, h_V): Q((E, V, C, s', t', q)) \to (A, B, s, t)$  is an arrow in $\hyp$, and consider the triple $(h_E, h_V, h_V \circ q)$. Since $h$ is a morphism of $\hyp$, we have $h_V^{\star}\circ q^{\star}\circ s'= s\circ h_E$ and $h_V^{\star}\circ q^{\star}\circ t' = t\circ h_E$.
-	Then we have the following squares
-	\[\xymatrix{
-		E \ar[r]^{h_E}\ar[d]_{s'} & A \ar[d]^{s} & E \ar[r]^{h_E}\ar[d]_{t'} & A \ar[d]^{t} & V \ar[r]^{h_V \circ q} \ar[d]_{q} & B \ar[d]^{\id{B}} \\
-		V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & C \ar[r]_{h_V} & B
-	}\]
-	
-	\iffalse\[
-	\begin{tikzcd}
-		E \arrow[r, "{h_E}"] \arrow[d, "{s_G}"swap] & A \arrow[d, "s"] \\
-		V \arrow[r, "{h_V \circ q}"swap] & B
-	\end{tikzcd}
-	\qquad
-	\begin{tikzcd}
-		E \arrow[r, "{h_E}"] \arrow[d, "{t_G}"swap] & A \arrow[d, "t"] \\
-		V \arrow[r, "{h_V \circ q}"swap] & B
-	\end{tikzcd}
-	\qquad
-	\begin{tikzcd}
-		V \arrow[r, "{h_V\circ q}"] \arrow[d, "q" swap] & B \arrow[d, "{id_B}"] \\
-		C \arrow[r, "{h_V}"swap] & B
-	\end{tikzcd}
-	\]\fi
-	We have therefore found a morphism $(E, V, C, s', t', q) \to R((A, B, s, t))$ whose image through $Q$ fits in the diagram below
-	\[\xymatrix{
-		(A, B, s, t) \ar[r]^{(\id{A}, \id{B})} & (A, B, s, t)\\
-		(E, C, q^\star\circ s', q^\star\circ t') \ar[u]^{Q(h_E, h_V \circ q, h_V)} \ar[ur]_{(h_E, h_V)}
-	}\]   
-	Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow with such property.
-	Then, it must be $(\id A, \id B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
-\end{proof}
-
-\begin{proposition}\label{prop:quot_creat_colims}
-	$Q$ creates colimits.
-\end{proposition}
+}
 
 
-\begin{proof}
-	Since $Q$ is a left adjoint, it preserves colimits.
-	Let $D: \cat I \to \EqHyp$ be a diagram, and let $\mathcal{C}$, together with  $(c_i)_{i\in \cat I}$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
-	\iffalse
-	Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.\fi
-	Let $((\kappa_i)_{i\in \cat I}, V)$ be the colimit of $U_\EqHyp \circ D$.
-	Consider the following situation
-	\[\xymatrix{
-		&  {V} &                             \\
-		V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
-		C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
-		&  {C} &
-	}\]
-	Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $U_\EqHyp \circ D$, there exists a unique $q: V \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
-	Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component.
-	By \Cref{prop:eqhyp_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, E)$ is the colimit of $W \circ D$.
-	Notice that $((\kappa_i \circ s_i)_{i \in \cat{I}}, B)$ and $((\kappa_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(E, V, C, s, t, q)$, together with $(c_E^i, \kappa_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}.
-\end{proof}
+This functor enjoys some usefule propery, as shown by the following lemma, a proof of which can be found in \Cref{proof:quot}.
 
-\begin{example}
-	$Q$ does not preserve limits. Indeed, let $\mathcal{G}_1 = (E_1, A, A, s_1, t_1, id_A)$, $\mathcal{G}_2 = (E_2, B, B, s_2, t_2, id_B)$ and $\mathcal{G}_3 = (E_3, A + B, \terminal, s_3, t_3, !_{A + B})$, and let $h = (h_E, \iota_A, !_A): \mathcal{G}_1 \to \mathcal{G}_3$, $k = (k_E, \iota_B, !_B): \mathcal{G}_2 \to \mathcal{G}_3$, where $(\iota_A, \iota_B, A + B)$ is the coproduct of $A$ and $B$, $\terminal$ is the intial object (in $\Set$, the singleton set as shown in \Cref{ex:set_init_term}), and $!_X$ the unique arrow $X \to \terminal$.
-	The following two diagrams show the pullback of $h$ and $k$ and the pullback of $Q(h)$ and $Q(k)$, on the second component (the vertices of the graphs)
-	\[\xymatrix{
-		\initial \ar[r]^{p_1} \ar[d]_{p_2}& A \ar[d]^{\iota_A} \\
-		B \ar[r]_{\iota_B} & A+B
-	}
-	\qquad
-	\xymatrix{
-		{A \times B} \ar[r]^{\pi_A} \ar[d]_{\pi_B} & A \ar[d]^{!_A} \\
-		B \ar[r]_{!_B} & \terminal
-	}\]
-	
-	But the arrow $\initial \to A \times B$ is not an epi in general (this is easy to see taking $\Set$ as example), hence such pullback is not preserved by $Q$.
+\begin{restatable}{lemma}{quot}\label{lemma:quot} The following are true:
+	\begin{enumerate}
+		\item $Q$ is a left adjoint;
+		\item $Q$ creates colimits.
+	\end{enumerate}
+\end{restatable}
+
+\begin{example} Notice that, due to the way in which limits in $\EqHyp$ are computed (see \Cref{prop:eqhyp_complete}), $\quo$ does not preserve them.  For instance,  let $A$ and $B$ be two non-empty sets and define
+	\begin{gather*}
+	\mathcal{G}_1:=(\emptyset, A, A, ?_{A^\star}, ?_{A^\star}, \id{A}) \qquad \mathcal{G}_2 := (\emptyset, B, B, ?_{B^\star}, ?_{B^\star}, \id{B}) \\ \mathcal{G}_3 := (\emptyset, A + B, 1, ?_{(A+B)^\star}, ?_{(A+B)^\star}, !_{A + B})	\end{gather*}
+		
+Now, we have two morphisms $(\id{\emptyset}, \iota_A, !_A)\colon \mathcal{G}_1 \to \mathcal{G}_3$,  $(\id{\emptyset}, \iota_B, !_B)\colon  \mathcal{G}_2 \to \mathcal{G}_3$, where $\iota_A\colon A\mto A+B$  and $\iota_B\colon B \mto A+B$  are the coprojections.
+
+On the one hand, if we apply $\quo$ and compute the pullback of the resulting morphisms, we obtain an hypergraph with no hyperdeges and $A\times B$ as set of nodes. On the other hand, \Cref{prop:eqhyp_complete} we know that taking the pullback of the original two morphisms gives us the hypergraph with equivalence $(\emptyset, \emptyset, Q, ?_{\emptyset^\star}, ?_{\emptyset^\star}, q)$ where $Q$ is the image of $?_{A\times B}$, so that $Q$ is also empty.  
 \end{example}
 
 We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$. In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
@@ -1197,11 +1141,144 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 
 
 %\input{Hypergraphs_with_equivalences}
-\input{Labeled_hyp_with_eq}
+%\input{Labeled_hyp_with_eq}
 
-\input{Equivalence_term_graphs}
+\subsection{Labeling hypergraphs with equivalence}
 
-\input{eggs}
+As we have done in \Cref{sssect:hyp_alg_sign}, we can define the category of hypergraphs with equivalence labeled over an algebraic signature.
+
+\begin{definition}
+	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to $\Sigma$.
+	Then the \emph{hypergraph with equivalence} associated to $\Sigma$ is $R(\mathcal{G}^\Sigma)$ and the category of hypergraphs with 
+	equivalence labeled over $\Sigma$ is the 
+	slice category $\EqHyp_\Sigma = \EqHyp/L(\mathcal{G}^\Sigma)$.
+\end{definition}
+
+By \Cref{thm:slice_functors}, we can deduce the following.
+
+\begin{proposition}
+	$\EqHyp_\Sigma$ is $\reg (\EqHyp_\Sigma)$-adhesive.
+\end{proposition}
+
+%We can lift the adjunction given by $T$ and $L$ to $\EqHyp_\Sigma$ and $\hyp_\Sigma$.\todo{Non capisco se è uno svarione mio o ha senso}
+
+We can define a functor $T_\Sigma: \EqHyps \to \hyps$ which sends each labeled hypergraph $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ to $T_\Sigma(l) = T(l)$, and each morphism $h = (h_E, h_V, h_C)$ onto $T_\Sigma(h) = T(h)$. Such functor is faithful since so is $T$, hence we have the following property.
+
+\begin{proposition}\label{prop:monos_in_eqhyps}
+	A morphism $h$ between two objects of $\EqHyps$ is mono if and only if $T(h)$ is mono.
+\end{proposition}
+
+\subsubsection{Term Graphs with Equivalences}
+
+\begin{definition}
+	Let $\Sigma$ be an algebraic signature.
+	A labeled hypergraph with equivalence $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ is a \emph{term graph with equivalence} if $t_{\mathcal{G}}$ is mono.
+	We define category of term graphs with equivalence over $\Sigma$, denoted $\EqTG_{\Sigma}$, as the full subcategory of $\EqHyp_\Sigma$,
+	and the corresponding inclusion functor $I_{\EqTG_\Sigma}$.
+\end{definition}
+
+\begin{proposition}
+	If $l: \mathcal{G \to G}^\Sigma$ is a term graph, then $R(l)$ is a term graph with equivalence.
+\end{proposition}
+
+We have a functor $T_{\eq} : \EqTGs \to \tg$, defined to be $T_\Sigma \circ I_\eq$. Since both $T_\Sigma$ and $I_\eq$ are faithful, so is $T_\eq$.
+
+If $h: \mathcal{H \to G}$ is a mono between $l': \mathcal{H} \to L(\mathcal{G}^\Sigma)$ and $l: \mathcal{G}\to L(\mathcal{G}^\Sigma)$, then, if $l\in\EqTGs$, $l'\in\EqTGs$ as well. This let us deduce what follows.
+
+\begin{proposition}
+	$\EqTGs$ has equalizers, and $I_{\EqTGs}$ creates them.
+\end{proposition}
+
+
+\section{EGGs}
+\label{eggs}
+
+\todo{introduction}
+
+\begin{definition}
+	Let $\mathcal{G} = (E, V, C, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair of $q^\star \circ s$.
+	Then, $\mathcal{G}$ is an \emph{e-hypergraph} whenever $q^\star \circ t \circ \pi_1 = q^\star \circ t \circ \pi_2$.
+	$\egg$ is the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and $I: \egg \to \EqHyp$ is the inclusion functor.
+\end{definition}
+
+\begin{lemma}
+	$\egg$ has all limits and $I$ preserves them.
+\end{lemma}
+
+\begin{proof}
+	Let $D: \cat{I} \to \egg$ be a diagram, with $D(i) = (A_i, B_i, C_i, s_i, t_i, q_i)$, let $(U_i, u_1^i, u_2^i)$ be the kernel pair of $q_i\circ s_i$.
+	Let now be $(A, B, C, s, t, q)$, togehter with projections $(\pi_E^i, \pi_V^i, \pi_C^i)_{i \in \cat I}$ the limit of $I \circ D$,
+	let $(U, u_1, u_2)$ be the kernel pair of $q\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ D$.
+	By construction (proof of \Cref{prop:eqhyp_complete}), there exists a mono $m: C \to L$ such that $\pi_C^i = l_i \circ m$. Notice that
+	\begin{align*}
+		q_i^\star \circ s_i\circ \pi^i_E\circ u_1      &= q_i^\star\circ (\pi^i_V)^\star \circ s\circ u_1\\
+		&= (\pi_C^i)^\star\circ q^\star\circ s\circ u_1\\
+		&=(\pi_C^i)^\star\circ q^\star\circ s\circ u_2\\
+		&= q_i^\star \circ s_i \circ \pi_E^i \circ u_2
+	\end{align*}
+	Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
+	\[
+	\xymatrix{
+		U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_i} & A \ar[dr]^{\pi_E^i} & \\
+		A \ar[dr]_{\pi_E^i} & U_i \ar[r]^{u_1^i} \ar[d]_{u_2^i}& A_i \ar[d]^{q_i^\star \circ s_i} \\
+		& A_i  \ar[r]_{q_i^\star \circ s_i}& C_i^\star
+	}
+	\]
+	We have then
+	\begin{align*}
+		l_i^\star\circ m^\star \circ q^\star \circ t \circ u_1    &= q_i^\star\circ (\pi_V^i)^\star \circ t \circ u_1 \\
+		&= q_i^\star \circ t_i \circ \pi_E^i \circ u_1 \\
+		&= q_i^\star \circ t_i \circ u_1^i \circ a_i \\
+		&= q_i^\star \circ t_i \circ u_2^i \circ a_i \\
+		&= q_i^\star \circ t_i \circ \pi_E^i \circ u_2 \\
+		&= q_i^\star \circ (\pi_V^i)^\star \circ t \circ u_2 \\
+		&= l_i^\star \circ m^\star \circ q^\star \circ t \circ u_2
+	\end{align*}
+	By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$, and, since $m$ is mono, $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the thesis.
+\end{proof}
+
+\begin{corollary}
+	$I$ creates limits.
+\end{corollary}
+
+\begin{corollary}
+	Let $h: \mathcal{G \to H}$ be an arrow in $\egg$. Then it is a regular mono 
+	%in $\egg$
+	if and only if $I(h)$ is a regular mono.
+	% in $\EqHyp$.
+\end{corollary}
+
+\begin{lemma}
+	Consider the following pushout square in $\EqHyp$.
+	\[\xymatrix{\mathcal{G}_1 \ar[r]^{h}\ar[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]_{k}&\mathcal{P}}\]
+	with $m$ regular mono. If $\mathcal{G}_1$, $\mathcal{G}_2$ and $\mathcal{G}_3$ are e-hypergraphs, then $\mathcal{P}$ is an e-hypergraph too, and $n$ is regular mono.
+\end{lemma}
+
+\begin{proof}
+	Let $\mathcal{P} = (A, B, C, s, t, q)$, $(K_i, \pi_i^1, \pi_i^2)$ the kernel pair of $q_i^\star \circ s_i$, and let $(U, u_1, u_2)$ the kernel pair of $q^\star \circ s$ .
+	Consider then the following situation.
+	\[\xymatrix@C=10pt@R=6pt{&A_1\ar[dd]|\hole_(.65){q_1^\star \circ s_1}\ar[rr]^{h_E} \ar[dl]_{m_E} && A_2 \ar[dd]^{q_2^\star \circ s_2} \ar[dl]_{k_E} \\ A_3 \ar[dd]_{q_3^\star \circ s_3}\ar[rr]^(.7){k_E} & & A \ar[dd]_(.3){q^\star \circ s}\\&{C_1^\star}\ar[rr]|\hole^(.65){h_C^\star}\ar[dl]^{m_C^\star} && {C_2^\star} \ar[dl]^{n_C^\star} \\{C_3^\star} \ar[rr]_{k_C^\star} & & C^\star}\]
+	Since $m$ is regular mono, $m_E$ is mono ({\color{red}{inserire citazione}}).
+	Then, by construction, the top face is a pushout, and since $\Set$ is adhesive, by \Cref{lem:mpo} , the square below is a pushout.
+	\[\xymatrix{K_1\ar[r]^{f_k}\ar[d]_{f_m}&K_2\ar[d]^{f_n}\\K_3\ar[r]_{f_k}&U}\]
+	Computing, we have
+	\[
+	\begin{split}
+		q^\star \circ t \circ u_1 \circ f_n &= q^\star \circ t \circ n_E \circ \pi_2^1 \\ &= n_C^\star \circ q_2^\star \circ s_2 \circ \pi_2^1 \\&= n_C^\star \circ q_2^\star \circ s_2 \circ \pi_2^2 \\&=q^\star \circ t \circ u_2 \circ f_n 
+	\end{split}
+	\qquad
+	\begin{split} q^\star \circ t \circ u_1 \circ f_k &= q^\star \circ t \circ k_E \circ \pi_3^1 \\ &= k_C^\star \circ q_3^\star \circ s_3 \circ \pi_3^1 \\&= k_C^\star \circ q_3^\star \circ s_3 \circ \pi_3^2 \\&=q^\star \circ t \circ u_2 \circ f_k
+	\end{split}
+	\]
+	By universal property of pushouts, we deduce $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, and the thesis follows.
+\end{proof}
+
+By direct application of \Cref{thm:slice-functors}, we can conclude what follows.
+
+\begin{corollary}
+	$\egg$ is $\reg(\egg)$-adhesive.
+\end{corollary}
+
 
 \section{Conclusions and further works}
 The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
@@ -1516,6 +1593,61 @@ As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 	\[e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}\]
 	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the thesis follows.
 \end{proof}
+
+\quot*
+\begin{proof}\label{proof:quot}
+	\begin{enumerate}
+		\item 
+		Let $R((A, B, s, t))$ be $(A, B, B, s, t, \id{B})$, so that $Q(R((A, B, s, t))) = (A, B, s, t)$. Now, suppose that $h = (h_E, h_V): Q((E, V, C, s', t', q)) \to (A, B, s, t)$  is an arrow in $\hyp$, and consider the triple $(h_E, h_V, h_V \circ q)$. Since $h$ is a morphism of $\hyp$, we have $h_V^{\star}\circ q^{\star}\circ s'= s\circ h_E$ and $h_V^{\star}\circ q^{\star}\circ t' = t\circ h_E$.
+		Then we have the following squares
+		\[\xymatrix{
+			E \ar[r]^{h_E}\ar[d]_{s'} & A \ar[d]^{s} & E \ar[r]^{h_E}\ar[d]_{t'} & A \ar[d]^{t} & V \ar[r]^{h_V \circ q} \ar[d]_{q} & B \ar[d]^{\id{B}} \\
+			V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & C \ar[r]_{h_V} & B
+		}\]
+		
+		\iffalse\[
+		\begin{tikzcd}
+			E \arrow[r, "{h_E}"] \arrow[d, "{s_G}"swap] & A \arrow[d, "s"] \\
+			V \arrow[r, "{h_V \circ q}"swap] & B
+		\end{tikzcd}
+		\qquad
+		\begin{tikzcd}
+			E \arrow[r, "{h_E}"] \arrow[d, "{t_G}"swap] & A \arrow[d, "t"] \\
+			V \arrow[r, "{h_V \circ q}"swap] & B
+		\end{tikzcd}
+		\qquad
+		\begin{tikzcd}
+			V \arrow[r, "{h_V\circ q}"] \arrow[d, "q" swap] & B \arrow[d, "{id_B}"] \\
+			C \arrow[r, "{h_V}"swap] & B
+		\end{tikzcd}
+		\]\fi
+		We have therefore found a morphism $(E, V, C, s', t', q) \to R((A, B, s, t))$ whose image through $Q$ fits in the diagram below
+		\[\xymatrix{
+			(A, B, s, t) \ar[r]^{(\id{A}, \id{B})} & (A, B, s, t)\\
+			(E, C, q^\star\circ s', q^\star\circ t') \ar[u]^{Q(h_E, h_V \circ q, h_V)} \ar[ur]_{(h_E, h_V)}
+		}\]   
+		Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow with such property.
+		Then, it must be $(\id A, \id B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
+		
+		\item 	Since $Q$ is a left adjoint, it preserves colimits.
+		Let $D: \cat I \to \EqHyp$ be a diagram, and let $\mathcal{C}$, together with  $(c_i)_{i\in \cat I}$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
+		\iffalse
+		Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.\fi
+		Let $((\kappa_i)_{i\in \cat I}, V)$ be the colimit of $U_\EqHyp \circ D$.
+		Consider the following situation
+		\[\xymatrix{
+			&  {V} &                             \\
+			V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
+			C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
+			&  {C} &
+		}\]
+		Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $U_\EqHyp \circ D$, there exists a unique $q: V \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
+		Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component.
+		By \Cref{prop:eqhyp_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, E)$ is the colimit of $W \circ D$.
+		Notice that $((\kappa_i \circ s_i)_{i \in \cat{I}}, B)$ and $((\kappa_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(E, V, C, s, t, q)$, together with $(c_E^i, \kappa_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}. \qedhere 
+	\end{enumerate}
+\end{proof}
+
 
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
