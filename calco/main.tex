@@ -437,9 +437,9 @@ The results below appear to be original, and we give their proofs in \Cref{kpp-p
 The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
 
 \noindent
-\parbox{7cm}{
+\parbox{7.5cm}{
 \begin{restatable}{proposition}{mpo}\label{lem:mpo}
-	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout. Then the right square is a pushout.
+	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top is an $\mathcal{M}$-pushout and all the vertical faces are pullbacks. Then the right square is a pushout.
 \end{restatable}}\hfill 
 \parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
 
@@ -944,9 +944,9 @@ Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtain
 Let us notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, C, s, t, q)$ to $C$, and a morphism $(h_E, h_V, h_C)$ to $h_C$. We are now going to exploit it to compute limits and colimits in $\EqHyp$. In order to do so. A full proof of the following lemma can be found in \Cref{proof:comp}.
 
 \noindent
-\parbox{11cm}{
+\parbox{11.4cm}{
 \begin{restatable}{lemma}{comp}\label{prop:eqhyp_complete}
-Let $F\colon \D \to \EqHyp$ be a diagram, and let $(\mathcal{E}_d, V_d, Q_d, s_d, t_d, q_d)$ be the image of an object $d$. Then the following hold true:
+Let $F\colon \D \to \EqHyp$ be a diagram, and let $(E_d, V_d, Q_d, s_d, t_d, q_d)$ be the image of an object $d$. Then the following hold true:
 \begin{enumerate}
 		\item $F$ has a colimit which is preserved by $K$;
 	\item let $(L, \{l_d\}_{d\in \D})$ be a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
@@ -982,6 +982,9 @@ Let $F\colon \D \to \EqHyp$ be a diagram, and let $(\mathcal{E}_d, V_d, Q_d, s_d
 \fi 
 
 
+
+\todo{Ripensandoci il funtore quoziente non serve: l'unico punto in cui si usa nella tesi è che il quoziente di un colimite è il colimite dei quozienti, ma questo segue dal punto $1$ di \Cref{prop:eqhyp_complete}. Inoltre la dimostrazione della creazione è sbagliata (e probabilmente quella è una cosa falsa), io cancellerei}
+
 We can now build another functor $\EqHyp \to \hyp$: the idea is that from an object of $\EqHyp$ one can build an hypergraph taking as set of nodes directly the codomain of the quotient map.  
 
 \begin{definition}
@@ -996,14 +999,9 @@ We can now build another functor $\EqHyp \to \hyp$: the idea is that from an obj
 \end{remark}
 }
 
+ A proof of the following result can be found in \Cref{proof:quot}.
 
-This functor enjoys some usefule propery, as shown by the following lemma, a proof of which can be found in \Cref{proof:quot}.
-
-\begin{restatable}{lemma}{quot}\label{lemma:quot} The following are true:
-	\begin{enumerate}
-		\item $Q$ is a left adjoint;
-		\item $Q$ creates colimits.
-	\end{enumerate}
+\begin{restatable}{lemma}{quot}\label{lemma:quot} The functor $\quo$ is a left adjoint.
 \end{restatable}
 
 \begin{example} Notice that, due to the way in which limits in $\EqHyp$ are computed (see \Cref{prop:eqhyp_complete}), $\quo$ does not preserve them.  For instance,  let $A$ and $B$ be two non-empty sets and define
@@ -1022,37 +1020,51 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 \end{lemma}
 
 \begin{proof}
-	Let $\mathcal{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, C'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
-	and, in the diagram below, suppose all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is regular mono.
+	Let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, Q'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
+	and that suppose in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is regular mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are mono and so the top faces of these cubes are pushouts.
 	\[
-	\xymatrix@C=10pt@R=6pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{t'} \\ \mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d}\\&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{t} \\\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 }
+	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{z_V'} \\ 
+		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
+		&&B_3'  \ar[dd]_{c_V}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar[dd]_(.3){d_V}\\
+		&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{z} & &A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E} &&B_1\ar@{>->}[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{z_V} \\
+		\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 && A_3 \ar@{>->}[rr]_{p_E} & & A_4&&B_3 \ar@{>->}[rr]_{p_V} & & B_4 }
 	\]
-	By \Cref{prop:eqhyp_complete} and \Cref{cor:mono1}, the following cubes in $\Set$ have pushouts as bottom faces and pullbacks as vertical faces, hence their top faces are pushouts.
-	\[
-	\xymatrix@C=10pt@R=6pt{&A_1'\ar[dd]|\hole_(.65){a_E}\ar[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]^{b_E} \ar[dl]_{t_E'} \\ A_3'  \ar[dd]_{c_E}\ar[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}\\&A_1\ar[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{t_E} \\A_3 \ar[rr]_{p_E} & & A_4 }
-	\qquad
-	\xymatrix@C=10pt@R=6pt{&B_1'\ar[dd]|\hole_(.65){a_V}\ar[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{t_V'} \\ B_3'  \ar[dd]_{c_V}\ar[rr]^(.7){p_V'} & & B_4' \ar[dd]_(.3){d_V}\\&B_1\ar[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{t_V} \\B_3 \ar[rr]_{p_V} & & B_4 }
-	\]
-	Consider now the following pullbacks.
-	\[\xymatrix{
-		Y \ar[d]_{y_2}\ar[r]^{y_1}&{C_4'}\ar[d]^{d_C}&U\ar[d]_{u_2}\ar[r]^{u_1}&{C_4'}\ar[d]^{d_C}&T\ar[r]^{x_1}\ar[d]_{x_2}&U\ar[d]^{u_2}\\
-		C_3\ar[r]_{p_C}&C_4&C_2\ar[r]_{t_C}&C_4&C_1\ar[r]_{h_C}&C_2
-	}\]
-	Thus, [???]\todo{inserire in sezione 1 la proposizione} yields the following situation, in which the bottom face is a pushout, and the vertical faces are pullbacks, hence the top face is a pushout too.
-	\[\xymatrix@C=10pt@R=6pt{&T\ar[dd]|\hole_(.65){x_2}\ar[rr]^{x_1} \ar@{.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar[rr]^(.7){y_1} & & C_4' \ar[dd]_(.3){d_C}\\&C_1\ar[rr]|\hole^(.65){h_C} \ar[dl]^{k_C} && C_2 \ar[dl]^{t_C} \\C_3 \ar[rr]_{p_C} & & C_4 }\]
-	By the proof of \Cref{prop:eqhyp_complete}, we have that $m_2 \circ q'_3 : B'_3 \to Y$ and $m_3 \circ q'_2 : B_2' \to U$ are two epi-mono factorizations, with $m_2$ and $m_3$ monos.
-	At the same way, let the following square to be a pullback.
-	\[\xymatrix{S\ar[r]^{s_1}\ar[d]_{s_2}&C'_2\ar[d]^{m_3}\\T\ar[r]_{x_1}&U}\]
-	Hence, in the following diagram, the outer rectangle is a pullback.
-	\[\xymatrix{
-		S\ar[r]^{s_1}\ar[d]_{s_2}&C'_2\ar[d]^{m_3}\\T\ar[r]_{x_1}\ar[d]_{x_2}&U\ar[d]^{u_2}\\C_1\ar[r]_{h_C}&C_2
-	}\]
-	By the same argument as before, there exists a mono $m_1$ such that $m_1\circ q_1' : B_1' \to S$.
-	% Uguaglianze da capire se servono davvero
 	
-	We have to show that the top face of the cube ate the beginning of the proof is a pushout.
-	Suppose then that $z: \mathcal{G}_2' \to \mathcal{H}$ and $w: \mathcal{G}_3' \to \mathcal{H}$, with $\mathcal{H} = (E, V, C, s, t, q)$,
-	are two morphisms such that $z \circ h' = w \circ h'$, and let $v_V: B'_4 \to V$ the arrow induced by $z_V$ and $w_V$.
+	\noindent 
+\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pullback the third component to get the solid part of the cube aside. Notice, moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left fact is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_C} \ar[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
+
+
+	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below.
+	
+	\[\xymatrix@R=15pt{B'_3 \ar@{>>}[d]^{q'_3} \ar@/_.3cm/[dd]_{c_V} \ar@{>->}[r]^{p'_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} & & B'_2 \ar[r]^{z_V} \ar@{>>}[d]^{q'_2} \ar@/_.3cm/[dd]_{b_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4}\\ Q'_3 \ar@{>.>}[r]^{m_3}& Y  \ar@{>->}[r]^{y_1} \ar[d]_{y_2}& Q'_4 \ar[d]_{d_C}& Q'_2 \ar@{>.>}[r]^{m_2} & U \ar[d]_{u_2} \ar[r]^{u_1} & Q'_4 \ar[d]_{d_C} \\ B_3 \ar@{>>}[r]_{q_3} & Q_3 \ar@{>->}[r]_{p_Q} & Q_4 &B_2 \ar@{>>}[r]_{q_3} & Q_2 \ar[r]_{z_Q} & Q_4}\]
+
+	\noindent 
+	\parbox{8.5cm}{
+	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ which makes the diagram aside commutative.}\hfill
+	\parbox{4cm}{\xymatrix@R=15pt{B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]_{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\& Q'_2 \ar@{>->}[r]_{m_2}& U \ar[r]_{u_2}& Q_2 }}
+	
+	\commentato {Now, notice that
+	\[s_1 \circ m_1 \circ q_1 = q'_2 \circ h'_V = h'_C \circ q'_1 \quad  	q'_4 \circ z'_V = z'_Q \circ q'_2= u_1\circ m_2 \circ q'_2\]
+	
+	\[
+\begin{split}
+	y_1 \circ m_3 \circ q'_3 &= p'_V \circ q'_4\\ &= p'_C \circ q'_3
+\end{split}%\qquad\begin{split}TODO:\ w \circ s_2 \circ m_1 = m_3 \circ k_C'\end{split}
+\]
+Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p'_C = y_1 \circ m_3$.}
+
+	We have to show that the top face of the cube with which we have began is a pushout. Let $\mathcal{H}$ be $(E, V, C, s, t, q)$ and suppose that there exists  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that	
+\[v_E\circ h'_E=w_E\circ k'_E\qquad v_V\circ h'_V=w_V\circ k'_V\]
+	
+	We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
+	
+	Now, \Cref{lem:mpo}, let us take the kernel pair
+	
+	
+	
+	
+	
+	
 	We want to construct the dotted arrow $v_C$ which fits in the diagram below.
 	\[
 	\xymatrix@C=10pt@R=6pt{
@@ -1061,7 +1073,7 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 		&C_1'\ar[rr]|\hole^(.65){h_C'} \ar[dl]_{k_C'} && C_2' \ar[dl]^{t_C'}\ar[dr]^{z_C}\\
 		C'_3 \ar[rr]_{p_C'} & & C'_4\ar@{.>}[rr]_{v_C} && C
 	}\]
-	By \Cref{lem:mpo}, we know that the top face of the cube below is a pushout.
+	By , we know that the top face of the cube below is a pushout.
 	\[\xymatrix@C=15pt@R=15pt{&K_{s_2\circ m_1\circ q'_1}\ar[dd]|\hole_(.65){\pi_{s_2\circ m_1\circ q'_1}^{1}}\ar[rr]^{k_{h'_2}} \ar[dl]_{k_{k'_2}} && K_{m_2\circ q'_2} \ar[dd]^{\pi_{m_2\circ q'_2}^{1}} \ar[dl]_{k_{t'_2}} \\ K_{m_3\circ q'_3}  \ar[dd]_{\pi_{m_3\circ q'_3}^{1}}\ar[rr]^(.7){k_{p'_2}} & & K_{q'_4} \ar[dd]_(.3){\pi_{q'_4}^{1}}\\&B'_1\ar[rr]|\hole^(.65){h'_2} \ar[dl]^{k'_2} && B'_2 \ar[dl]^{t'_2} \\B'_3 \ar[rr]_{p'_2} & & C_4}\]
 	And, since $m_3$ and $m_2$ are monos,
 	\[\begin{split}
@@ -1095,6 +1107,86 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 	\[
 	v_C \circ q'_4 \circ \pi_{q'_4}^1 = v_C \circ q'_4 \circ \pi_{q'_4}^2
 	\]
+	
+	
+
+%	Let now $z: \graph{G}'_2 \to \graph H = (E, V, Q, s, t, q)$, $w: \graph G_3^1 \to \graph H$ be two morphisms such that $z \circ h' = w \circ k'$, and let $\phi:B'_4 \to V$ be the arrow induced by $z_V$ and $w_V$. We want to construct the arrow $v: C'_4 \to Q$ in the diagram below.
+	\[\begin{tikzcd}[row sep = 20, column sep = 20]
+		& {B_1'} && {B_2'} \\
+		{B_3'} && {B_4'} && V \\
+		& T && U \\
+		Y && {C_4'} && Q \\
+		& {C_1} && {C_2} \\
+		{C_3} && {C_4}
+		\arrow["{h_V'}", from=1-2, to=1-4]
+		\arrow["{k_V'}"', from=1-2, to=2-1]
+		\arrow["{s_2\circ m_1 \circ q_1'}"{description, pos=0.7}, from=1-2, to=3-2]
+		\arrow["{t_V'}", from=1-4, to=2-3]
+		\arrow["{z_V}", from=1-4, to=2-5]
+		\arrow["{m_2\circ q'_2}"{pos=0.7}, from=1-4, to=3-4]
+		\arrow["{m_3 \circ q'_3}"', from=2-1, to=4-1]
+		\arrow["q", from=2-5, to=4-5]
+		\arrow["{x_1}"{pos=0.8}, from=3-2, to=3-4]
+		\arrow["w"', from=3-2, to=4-1]
+		\arrow["{x_2}"'{pos=0.7}, from=3-2, to=5-2]
+		\arrow["{u_1}", from=3-4, to=4-3]
+		\arrow["{u_2}"{pos=0.7}, from=3-4, to=5-4]
+		\arrow["{y_2}"', from=4-1, to=6-1]
+		\arrow["{h_C}"{pos=0.8}, from=5-2, to=5-4]
+		\arrow["{k_C}", from=5-2, to=6-1]
+		\arrow["{t_C}", from=5-4, to=6-3]
+		\arrow["{p_C}"', from=6-1, to=6-3]
+		\arrow["{p_V'}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+		\arrow["\phi"{pos=0.8}, from=2-3, to=2-5, crossing over]
+		\arrow["{q'_4}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+		\arrow["{y_1}"{pos=0.7}, from=4-1, to=4-3, crossing over]
+		\arrow["{d_C}"'{pos=0.7}, from=4-3, to=6-3, crossing over]
+		\arrow["v"{pos=0.8}, dashed, from=4-3, to=4-5, crossing over]
+	\end{tikzcd}\]
+	
+	By \Cref{prop:reg_epi_coeq}, $d_C$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lemma:pushouts_kernel_pairs}, we know that the top face of the cube below is a pushout.
+	\[\begin{tikzcd}[row sep=20, column sep = 20]
+		& {K_{s_2\circ m_1 \circ q_1'}} && {K_{m_2\circ q_2'}} \\
+		{K_{m_3 \circ q_3'}} && {K_{q_4'}} \\
+		& {B'_1} && {B'_2} \\
+		{B'_3} && {B'_4}
+		\arrow["{k_{h'_V}}", from=1-2, to=1-4]
+		\arrow["{k_{k_V'}}"', from=1-2, to=2-1]
+		\arrow["{\pi_{s_2\circ m_1 \circ q_1'}^1}"'{pos=0.7}, from=1-2, to=3-2]
+		\arrow["{k_{t_V'}}", from=1-4, to=2-3]
+		\arrow["{\pi_{m_2\circ q_2'}^1}", from=1-4, to=3-4]
+		\arrow["{k_{p_V'}}"{pos=0.8}, from=2-1, to=2-3, crossing over]
+		\arrow["{\pi_{m_3 \circ q_3'}^1}"', from=2-1, to=4-1]
+		\arrow["{h_V'}"{pos=0.7}, from=3-2, to=3-4]
+		\arrow["{\pi_{q_4'}^1}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
+		\arrow["{k_V'}"', from=3-2, to=4-1]
+		\arrow["{t_V'}", from=3-4, to=4-3]
+		\arrow["{p_V'}"', from=4-1, to=4-3]
+	\end{tikzcd}\]
+	And, since $m_3$ and $m_2$ are monos,
+	\[\begin{split}
+		q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2
+	\end{split}\qquad\begin{split}
+		q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2
+	\end{split}\]
+	
+	Computing, we obtain
+	\[\begin{split}
+		q \circ \phi \circ \pi_{q_4'}^1 \circ k_{p_V'} &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\ &= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\ &= q \circ w_V \circ \pi_{m_3 \circ q_3'} \\ &= q \circ \phi \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{p'_V}
+	\end{split}\qquad\begin{split}
+		q \circ \phi \circ \pi_{q'_4}^1 \circ k_{t_V'} &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^1 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\ &= z_C \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\ &= q \circ z_V \circ \pi_{m_2 \circ q_2'} \\ &= q \circ \phi \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\ &= q \circ \phi \circ \pi_{q'_4}^2 \circ k_{t'_V}
+	\end{split}\]
+	
+	Since the previous cube has a pushout as top face, by universal property, we have
+	\[
+	q \circ \phi \circ \pi_{q'_4}^1 = q \circ \phi \circ \pi_{q'_4}^2
+	\]
+	hence, $v$ is the mediating arrow.
+	\[
+	v \circ q'_4 \circ \pi_{q'_4}^1 = v \circ q'_4 \circ \pi_{q'_4}^2
+	\]
+	
+	
 \end{proof}
 
 \begin{lemma}\label{lemma:van_kampen}
@@ -1168,7 +1260,6 @@ We can define a functor $T_\Sigma: \EqHyps \to \hyps$ which sends each labeled h
 	A morphism $h$ between two objects of $\EqHyps$ is mono if and only if $T(h)$ is mono.
 \end{proposition}
 
-\subsubsection{Term Graphs with Equivalences}
 
 \begin{definition}
 	Let $\Sigma$ be an algebraic signature.
@@ -1533,7 +1624,7 @@ We will also need the following well-known fact about regular epis.
 \end{lemma}
 
 \noindent
-\parbox{11cm}{
+\parbox{11.4cm}{
 \comp*}\hfill 
 \parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>->}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
@@ -1574,7 +1665,7 @@ We will also need the following well-known fact about regular epis.
 		\[l_d\circ h\circ q_\mathcal{G}=h^d_Q\circ q_{\mathcal{G}}=q_{d}\circ h^d_V=q_d\circ \pi^d\circ h_V=l_d\circ l\circ h_V\]
 
 \noindent 
-\parbox{2cm}{\xymatrix{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[ur]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that}
+\parbox{2cm}{\xymatrix@R=15pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[ur]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that}
 \[(\pi^d_E, \pi^d_V, \pi^dQ)\circ (h_E, h_V, k_Q)=(h^d_E, h^d_V, h^d_Q)\] 
 
 As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
@@ -1587,7 +1678,7 @@ As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
 	
 	\noindent 
-	\parbox{2cm}{\xymatrix{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
+	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
 	\hfill 	\parbox{11cm}{Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in $\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono $m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
 	}\hfill 
 	\[e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}\]
@@ -1596,57 +1687,42 @@ As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 
 \quot*
 \begin{proof}\label{proof:quot}
-	\begin{enumerate}
-		\item 
-		Let $R((A, B, s, t))$ be $(A, B, B, s, t, \id{B})$, so that $Q(R((A, B, s, t))) = (A, B, s, t)$. Now, suppose that $h = (h_E, h_V): Q((E, V, C, s', t', q)) \to (A, B, s, t)$  is an arrow in $\hyp$, and consider the triple $(h_E, h_V, h_V \circ q)$. Since $h$ is a morphism of $\hyp$, we have $h_V^{\star}\circ q^{\star}\circ s'= s\circ h_E$ and $h_V^{\star}\circ q^{\star}\circ t' = t\circ h_E$.
-		Then we have the following squares
-		\[\xymatrix{
-			E \ar[r]^{h_E}\ar[d]_{s'} & A \ar[d]^{s} & E \ar[r]^{h_E}\ar[d]_{t'} & A \ar[d]^{t} & V \ar[r]^{h_V \circ q} \ar[d]_{q} & B \ar[d]^{\id{B}} \\
-			V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & V^{\star} \ar[r]_{h_V^\star\circ q^\star} & B^{\star} & C \ar[r]_{h_V} & B
+  Given an hypergraph $\mathcal{H}:=(E, V, s, t)$, let us define $R(E, V, s, t)$ as $(E, V, V, s, t, \id{B})$. By construction $\quo(R(\mathcal{{H}})) =\mathcal{H}$ so that we can take the identity as $\epsilon_{\mathcal{H}}\colon \quo(R(\mathcal{H}))\to \mathcal{H} $.
+		
+		Suppose that $\mathcal{G}$ is an object of $\EqHyp$ and take an arrow $(h_E, h_V): \quo(\mathcal{G}) \to \mathcal{H}$, then the three squares below commute, so that $(h_E,  h_V \circ q_{\mathcal{G}}, h_V)$ is a morphism of $\EqHyp$.
+		\[\xymatrix@R=15pt@C=30pt{
+			E_{\mathcal{G}} \ar[r]^{h_E}\ar[d]_{s_{\mathcal{G}}} & E \ar[d]^{s} & E_\mathcal{G} \ar[r]^{h_E}\ar[d]_{t_{\mathcal{G}}} & V \ar[d]^{t} & V_{\mathcal{G}} \ar[r]^{h_V \circ q_{\mathcal{G}}} \ar@{>>}[d]_{q_{\mathcal{G}}} & V \ar@{>>}[d]^{\id{V}} \\
+			V_{\mathcal{G}}^{\star} \ar[r]_-{h_V^\star\circ q_{\mathcal{G}}^\star} & V^{\star} & V_{\mathcal{G}}^{\star} \ar[r]_{h_V^\star\circ q_\mathcal{G}^\star} & V^{\star} & C \ar[r]_{h_V} & V
 		}\]
 		
-		\iffalse\[
-		\begin{tikzcd}
-			E \arrow[r, "{h_E}"] \arrow[d, "{s_G}"swap] & A \arrow[d, "s"] \\
-			V \arrow[r, "{h_V \circ q}"swap] & B
-		\end{tikzcd}
-		\qquad
-		\begin{tikzcd}
-			E \arrow[r, "{h_E}"] \arrow[d, "{t_G}"swap] & A \arrow[d, "t"] \\
-			V \arrow[r, "{h_V \circ q}"swap] & B
-		\end{tikzcd}
-		\qquad
-		\begin{tikzcd}
-			V \arrow[r, "{h_V\circ q}"] \arrow[d, "q" swap] & B \arrow[d, "{id_B}"] \\
-			C \arrow[r, "{h_V}"swap] & B
-		\end{tikzcd}
-		\]\fi
-		We have therefore found a morphism $(E, V, C, s', t', q) \to R((A, B, s, t))$ whose image through $Q$ fits in the diagram below
-		\[\xymatrix{
-			(A, B, s, t) \ar[r]^{(\id{A}, \id{B})} & (A, B, s, t)\\
-			(E, C, q^\star\circ s', q^\star\circ t') \ar[u]^{Q(h_E, h_V \circ q, h_V)} \ar[ur]_{(h_E, h_V)}
-		}\]   
-		Such arrow is unique. Suppose $f = (f_E, f_V, f_C)$ to be another arrow with such property.
-		Then, it must be $(\id A, \id B) \circ Q(f) = (f_E, f_C) = (h_E, h_C)$. Finally, $f_C = f_V \circ q = h_V \circ q$. 
-		
-		\item 	Since $Q$ is a left adjoint, it preserves colimits.
-		Let $D: \cat I \to \EqHyp$ be a diagram, and let $\mathcal{C}$, together with  $(c_i)_{i\in \cat I}$ be the colimit of $Q \circ D$, where $\mathcal{C} = (A, C, q\circ s, q\circ t)$, and $D(i)$ is $(A_i, B_i, C_i, s_i, t_i, q_i)$.
-		\iffalse
-		Let now $T: \EqHyp \to \Set$ be the functor mapping each graph with equivalence onto its second component, $T((X, Y, Z, x, y, z)) = Y$, and each morphims onto its second component.\fi
-		Let $((\kappa_i)_{i\in \cat I}, V)$ be the colimit of $U_\EqHyp \circ D$.
-		Consider the following situation
-		\[\xymatrix{
-			&  {V} &                             \\
-			V_i \ar[ur]^{\kappa_i} \ar[rr]^{h_V} \ar[d]_{q_i} && V_j \ar[ul]_{\kappa_j} \ar[d]^{q_j}\\
-			C_i \ar[dr]_{c_i}      \ar[rr]_{h_C}              &&C_j  \ar[dl]^{c_j}                  \\
-			&  {C} &
-		}\]
-		Now, since $((c^i_C \circ q_i)_{i \in \cat I}, C)$ is a cocone for $U_\EqHyp \circ D$, there exists a unique $q: V \to C$, which is epi by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
-		Consider now the functor $W: \EqHyp \to \Set$ mapping each $(X, Y, Z, x, y, z)$ onto $X$, and each morphism on its first component.
-		By \Cref{prop:eqhyp_complete} and \Cref{lemma:limits_of_presheaves}, we have that $((c_E^i)_{i \in \cat I}, E)$ is the colimit of $W \circ D$.
-		Notice that $((\kappa_i \circ s_i)_{i \in \cat{I}}, B)$ and $((\kappa_i \circ t_i)_{i \in \cat I}, B)$ are cocones for $W \circ D$, so let $s$ and $t$ be, respectively, the mediating arrow for the first one and the mediating arrow for the second one. It remains now to show that $(E, V, C, s, t, q)$, together with $(c_E^i, \kappa_i, c_C^i)_{i \in \cat I}$, is a colimit for $D$, but this follows by the proof of \Cref{prop:eqgrph_complete}. \qedhere 
-	\end{enumerate}
+		By construction $\epsilon_{\mathcal{H}}\circ\quo(h_E,  h_V\circ q, h_V)=(h_E, h_V)$. To see that such an arrow is unique, let $(f_E, f_V, f_Q)$ be a morphism such that $\epsilon_{\mathcal{H}}\circ\quo(f_E, f_V, f_Q)=(h_E, h_V)$, then $f_E=h_E$ and $f_Q=h_V$, moreover
+		\[f_V=\id{V}\circ f_V=f_Q\circ q_{\mathcal{G}}=h_{V}\circ q_\mathcal{G}  \]
+	allowing us to conclude.		
 \end{proof}
+\commentato{		\item 	Since $\quo$ is a left adjoint, it preserves colimits.
+		Let $F\colon \D \to \EqHyp$ be a diagram, to fix the notation, let  $\mathcal{C}$ be  $(E, V, s, t)$,  and $F(d)$ be $(E_d, V_d, Q_d, s_d, t_d, q_d)$. 
+		
+		By \Cref{prop:eqhyp_complete} we know that $F$ has a colimit, thus we only have to proof that $\quo$ reflects colimits.  Let $(\mathcal{G}, \{\kappa^d_E, \kappa^d_V, \kappa^d_Q\}_{d\in \D})$ be a cocone over $F$ such that $(\quo(\mathcal{G}). \{\kappa^d_E, \kappa^d_Q\}_{d\in \D})$ is colimiting for $\quo\circ F$. 
+		
+		
+		
+		
+		and let $(\mathcal{C}, \{(c^d_E, c^d_V)\}_{d\in \D})$, be a colimiting cocone for $\quo \circ F$.  
+		
+		Let $, )$ be a colimit of $F$, which exists by \Cref{prop:eqhyp_complete},  then by the same proposition we know that $(Q, \{\kappa^d_Q\}_{d\in \D})$ is colimiting for 
+		
+		
+		Now, let $(U, \{\kappa_d\}_{d\in \D})$  be a colimit for $U_\eq\circ F$. We have already noticed in the proof of the first point of \Cref{prop:eqhyp_complete} that  the family $\{q_d\}_{d\in \D}$ defines a natural transformation $U_{\eq}\circ F\to K\circ F$, moreover, by \Cref{prop:com,colim}, $(V, \{c^d_V\}_{d\in \D})$ is colimiting for  $K\circ F$, yielding an arrow $q: V \to C$, which is a surjection by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}.
+	
+	
+Define now $W: \EqHyp \to \Set$ as the functors $(X, Y, Z, x, y, z)$ to the set of hyperedges $X$ and each morphism to its first component. Again by \Cref{prop:com,colim} $(E, \{c^d_E\}_{d\in \D})$ is colimiting for $W \circ F$. Moreover, let $\alpha\colon d\to d'$  be an arrow in $\D$ and suppose that $F(\alpha)=(h_1, h_2, h_3)$, then we have
+\begin{align*}
+	\kappa^\star_{d'}\circ s_{d'} \circ W(F(\alpha))&= \kappa^\star_{d'}\circ s_{d'} \circ h_1= \kappa^\star_{d'}\circ h_2\circ s_{d}=\kappa^\star\_{d'}circ U(F(\alpha))\circ s^d =\kappa^\star_d\circ s_d
+	\\\kappa^\star_{d'}\circ t_{d'} \circ W(F(\alpha))&= \kappa^\star_{d'}\circ t_{d'} \circ h_1= \kappa^\star_{d'}\circ h_2\circ t_{d}=\kappa^\star\_{d'}circ U(F(\alpha))\circ s^d =\kappa^\star_d\circ t_d
+\end{align*}
+So that $(U^\star, \{\kappa^\star_d\circ s_d\}_{d\in \D})$ and $(U^\star, \{\kappa^\star_d\circ t_d\}_{d\in \D})$ are cocones over $W\circ F$, yielding two arrows $s, t\colon E\rightrightarrows U^\star$.
+
+By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 
 
 \section{Some properties of comma categories}
