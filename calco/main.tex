@@ -361,7 +361,7 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 We can state some useful properties of $\mathcal{M}$-adhesive category.
 
 \begin{restatable}{proposition}{regmono}\label{prop:regmono}
-	If $\X$ is $\mathcal{M}$-adhesive then it holds
+	Let $\X$ be an $\mathcal{M}$-adhesive categoru. Then it holds
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
 		\item every arrow in $\mathcal{M}$ is a regular mono.
@@ -449,15 +449,15 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briefly recall the notion of \emph{hypergraph}. In order to so, a pivotal role is played by the \emph{Kleen star monad} $(-)^\star\colon \Set\to \Set$, also known as 
+In this section we briefly recall the notion of \emph{hypergraph}. In order to do so, a pivotal role is played by the \emph{Kleen star monad} $(-)^\star\colon \Set\to \Set$, also known as 
 \emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
 We recall some of its proprieties.
 
 \begin{proposition}\label{prop:fact}
-	The following facts hold
+	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
 	\begin{enumerate}
-		\item for every set $X$ and $n\in \mathbb{N}$ there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
+		\item there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
 		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves pullbacks and equalizers.
 	\end{enumerate}
@@ -511,7 +511,7 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 
 \todo{FG ne lascerei uno, ripreso magari dalla intro e presentato come string diagram}
 
-We can represent hypergraphs graphically. We will use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge will be put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge will have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets will have arrowheads pointing to the target nodes.  We will decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
+We can represent hypergraphs graphically. We use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge is put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets have arrowheads pointing to the target nodes.  We  decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
 \todo{Ho lasciato un unico esempio (che è anche un term graph): occorre riscrivere questo paragrafo una volta che abbiamo deciso come rappresentare i grafi}
 \iffalse 
 \begin{example}Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G}}$ to be $\{h_1, h_2, h_3\}$. Sources and targets are given by:
@@ -597,11 +597,11 @@ We can represent hypergraphs graphically. We will use dots to denote nodes and s
 \end{example}
 
 \begin{remark}\label{rem:functor}
-	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is actually equivalent to a category of functors. 
-	
+	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of functors. 
+	%
 	Indeed, consider the category $\catname{H}$ in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
-	
-	It is quite straightforward to see that functors $\catname{H}\to \Set$ corresponds exactly to hypergaphs: nodes correspond to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
+	%
+	The functors $\catname{H}\to \Set$ corresponds exactly to hypergaphs: nodes correspond to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
 \end{remark}
 
 In particular, \Cref{rem:functor} entails the following result. 
@@ -800,7 +800,7 @@ We can list some categorical properties of $\tg$
 \begin{proposition}
 Let $\Sigma$ be an algebraic signature. Then it holds
 \begin{enumerate}
-	\item if  $(i,j)\colon \mathcal{H}\to \mathcal{G}$ is a mono between  $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$ and the latter is a term graph, then also the former is in $\tg$
+	\item if  $(i,j)\colon \mathcal{H}\to \mathcal{G}$ is a mono between  $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$ and the latter is in $\tg$, then also the former is in $\tg$
 	\item $\tg$ has equalizers, binary products and pullbacks and they are created by $I_\Sigma$.
 \end{enumerate}
 \end{proposition}
@@ -863,7 +863,7 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 
 \todo{Se questo remark sotto non serve nel pezzo sulle equivalenze possiamo toglierlo}
 \begin{remark}\label{prop:image}
-	Suppose that $(f,g)\colon ((l, !_{V_{\mathcal{G}}}))\to (l', !_{V_{\mathcal{H}}})$ preserves input nodes. Then  if $\tau_{\mathcal{H}}(h)=g(v)$ for some $v\in V_{\mathcal{G}}$ then $h$ belongs to the image of $f$. Indeed, by hypothesis $v$ must be in the image of $\tau_{\mathcal{G}}$ and so there exists $k$ such that $\tau_{\mathcal{G}}(k)=v$. But then $\tau_{\mathcal{H}}(f(k))=g(v)$ and we can conclude that $f(k)=h$.
+	Suppose that $(f,g)\colon (l, !_{V_{\mathcal{G}}})\to (l', !_{V_{\mathcal{H}}})$ preserves input nodes. Then  if $\tau_{\mathcal{H}}(h)=g(v)$ for some $v\in V_{\mathcal{G}}$ then $h$ belongs to the image of $f$. Indeed, by hypothesis $v$ must be in the image of $\tau_{\mathcal{G}}$ and so there exists $k$ such that $\tau_{\mathcal{G}}(k)=v$. But then $\tau_{\mathcal{H}}(f(k))=g(v)$ and we can conclude that $f(k)=h$.
 \end{remark}
 
 Preservation of inputs characterizes regular monos in $\tg$.
@@ -908,8 +908,9 @@ Let us start with the case of general hypergraphs.
 
 \begin{remark}\label{rem:eqhyp_morphs}
 	Morphisms of hypergraphs with equivalences are uniquely determined by the first two components. That is, if $h_1 = (h_E, h_V, f)$ and $h_2 = (h_E, h_V, g)$ are two morphisms $\mathcal{G} \rightrightarrows \mathcal{H}$, then we have
-	\[f \circ q_\mathcal{G} = q_\mathcal{H}\circ h_V =g\circ q_\mathcal{G}\]
-	
+	$
+	f \circ q_\mathcal{G} = q_\mathcal{H}\circ h_V =g\circ q_\mathcal{G}.
+	$
 	Since $q_\mathcal{G}$ is epi, we obtain $f = g$.
 \end{remark}
 
@@ -946,10 +947,10 @@ Let us notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V,
 \noindent
 \parbox{11.4cm}{
 \begin{restatable}{lemma}{comp}\label{prop:eqhyp_complete}
-Let $F\colon \D \to \EqHyp$ be a diagram, and let $(E_d, V_d, Q_d, s_d, t_d, q_d)$ be the image of an object $d$. Then the following hold true:
+Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ the image of an object $d$. Then it holds
 \begin{enumerate}
 		\item $F$ has a colimit which is preserved by $K$;
-	\item let $(L, \{l_d\}_{d\in \D})$ be a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
+	\item if $(L, \{l_d\}_{d\in \D})$ is a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
 \end{enumerate}
 \end{restatable}}\hfill 
 \parbox{3cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
