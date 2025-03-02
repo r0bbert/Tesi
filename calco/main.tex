@@ -779,11 +779,11 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 Let us start using labelled hypergraphs to define term graphs.
 
 \begin{definition}\label[definition]{def:tg}\index{term graph}
-	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
+	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is a mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
 \end{definition}
 
 
-\begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice that since $t_{\mathcal{G}}$ is mono then $\tau_{\mathcal{G}}$ is mono too.
+\begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice that since $t_{\mathcal{G}}$ is a mono then $\tau_{\mathcal{G}}$ is a mono too.
 \end{remark}
 
 We now examine some properties of $\tg$, in order to study its adhesivity properties.
@@ -933,7 +933,7 @@ A proof is provided in \Cref{proof:forghyp}.
 Combining together the previous corollary with \Cref{rem:eqhyp_morphs} we get the following characterization of monos in $\EqHyp$.
 
 \begin{corollary}\label{cor:mono1}
-	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
+	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
 \end{corollary}
 
 Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtained composing $T$ and $U_{\hyp}$.  By \Cref{cor:left} and the second point of \Cref{prop:forghyp} we get the following.
@@ -984,6 +984,7 @@ Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ th
 
 
 
+\commentato{
 \todo{Ripensandoci il funtore quoziente non serve: l'unico punto in cui si usa nella tesi è che il quoziente di un colimite è il colimite dei quozienti, ma questo segue dal punto $1$ di \Cref{prop:eqhyp_complete}. Inoltre la dimostrazione della creazione è sbagliata (e probabilmente quella è una cosa falsa), io cancellerei}
 
 We can now build another functor $\EqHyp \to \hyp$: the idea is that from an object of $\EqHyp$ one can build an hypergraph taking as set of nodes directly the codomain of the quotient map.  
@@ -1013,6 +1014,7 @@ Now, we have two morphisms $(\id{\emptyset}, \iota_A, !_A)\colon \mathcal{G}_1 \
 
 On the one hand, if we apply $\quo$ and compute the pullback of the resulting morphisms, we obtain an hypergraph with no hyperdeges and $A\times B$ as set of nodes. On the other hand, \Cref{prop:eqhyp_complete} we know that taking the pullback of the original two morphisms gives us the hypergraph with equivalence $(\emptyset, \emptyset, Q, ?_{\emptyset^\star}, ?_{\emptyset^\star}, q)$ where $Q$ is the image of $?_{A\times B}$, so that $Q$ is also empty.  
 \end{example}
+}
 
 We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$. In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
 
@@ -1022,7 +1024,7 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 
 \begin{proof}
 	Let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, Q'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
-	and that suppose in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is regular mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are mono and so the top faces of these cubes are pushouts.
+	and that suppose in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is a regular mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts.
 	\[
 	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{z_V'} \\ 
 		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
@@ -1258,7 +1260,7 @@ By \Cref{thm:slice_functors}, we can deduce the following.
 We can define a functor $T_\Sigma: \EqHyps \to \hyps$ which sends each labeled hypergraph $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ to $T_\Sigma(l) = T(l)$, and each morphism $h = (h_E, h_V, h_C)$ onto $T_\Sigma(h) = T(h)$. Such functor is faithful since so is $T$, hence we have the following property.
 
 \begin{proposition}\label{prop:monos_in_eqhyps}
-	A morphism $h$ between two objects of $\EqHyps$ is mono if and only if $T(h)$ is mono.
+	A morphism $h$ between two objects of $\EqHyps$ is a mono if and only if $T(h)$ is a mono.
 \end{proposition}
 
 
@@ -1686,6 +1688,7 @@ As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the thesis follows.
 \end{proof}
 
+\commentato{
 \quot*
 \begin{proof}\label{proof:quot}
   Given an hypergraph $\mathcal{H}:=(E, V, s, t)$, let us define $R(E, V, s, t)$ as $(E, V, V, s, t, \id{B})$. By construction $\quo(R(\mathcal{{H}})) =\mathcal{H}$ so that we can take the identity as $\epsilon_{\mathcal{H}}\colon \quo(R(\mathcal{H}))\to \mathcal{H} $.
@@ -1724,7 +1727,7 @@ Define now $W: \EqHyp \to \Set$ as the functors $(X, Y, Z, x, y, z)$ to the set 
 So that $(U^\star, \{\kappa^\star_d\circ s_d\}_{d\in \D})$ and $(U^\star, \{\kappa^\star_d\circ t_d\}_{d\in \D})$ are cocones over $W\circ F$, yielding two arrows $s, t\colon E\rightrightarrows U^\star$.
 
 By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
-
+}
 
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
