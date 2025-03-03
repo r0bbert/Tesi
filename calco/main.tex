@@ -15,8 +15,14 @@
 \usepackage{csquotes}
 
 
-\usepackage{tikz-cd}
+%\usepackage{tikz-cd}
+
+%String Diagrams
 \usepackage{tikz}
+%\input{hypergraph.tikzdefs}
+%\input{hypergraphs.tikzstyles}
+
+
 \usetikzlibrary{decorations.markings}
 
 % General Setting diagrams
@@ -472,18 +478,21 @@ The results below appear to be original, and we give their proofs in \Cref{kpp-p
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
 	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. 
-	%
+	
 	If the leftmost square is commutative, then there exists a a unique arrow $k_h: K_f \to K_g$ making the other two commutative.
-	%
-	Moreover, if the leftmost is a pullback, then also the other two are so.
-%
 	\[\xymatrix@R=15pt{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z}\]
 	
+		Moreover, the following hold true:
+		\begin{enumerate}
+			\item if the leftmost squareis a pullback, then also the other two are so;
+			\item if $h$ is mono then $k_h$ is mono too.
+		\end{enumerate} 
 \end{restatable}
 %[Proof in \Cref{kpp-proof}]
 
-The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
 
+The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
+\todo{A questo punto la proposizione seguente possiamo anche buttarla via se serve recuperare spazio}
 \noindent
 \parbox{7.5cm}{
 \begin{restatable}{proposition}{mpo}\label{lem:mpo}
@@ -494,6 +503,17 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 %[Proof in \Cref{mpo-proof}]
 %
 %\input{./fact_sys}
+
+\todo{Inserire bla bla}
+
+\noindent
+\parbox{7.5cm}{
+	\begin{restatable}{proposition}{mps}\label{prop:kerset}
+		Suppose that in $\Set$ the cube aside is given, whose top and bootom faces are pushout and such that $m\colon A\mto C$ and $m'\colon A'\mto C'4$ are injections. Then the right square, made by the kernel pairs of the vertical arrows is a pushout.
+\end{restatable}}\hfill 
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+
+
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
@@ -604,9 +624,9 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
-\fi 
+\fi
 
-\begin{example}\label[example]{exa_2} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
+\begin{example}\label[example]{exa_21} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
 	\[\begin{matrix}
 		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
 			0 \mapsto v_1\\
@@ -643,6 +663,30 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
+
+\iffalse
+%% Questa roba la devo aggiustare sennò non compila %%
+\begin{example}\label[example]{exa_2}
+	Let $V_\mathcal{G} = \{v_1, v_2, v_3, v_4, v_5\}$, and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$. Then we define:
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} &&
+		s_{\mathcal{G}}(h_2)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_2)=?_{V_\mathcal{G}} &&
+		s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
+					0 \mapsto v_1\\
+					1\mapsto v_4
+				\end{matrix}&&
+		s_{\mathcal{G}}(h_4)\colon 2 \to V_\mathcal{G} & \begin{matrix}
+					0 \mapsto v_3 \\
+					1\mapsto v_2 
+				\end{matrix}\\
+
+		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 0 \mapsto v_1 &&
+		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&
+		t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5 &&
+		t_\mathcal{G}(h_4)\colon 1 \to V_\mathcal{G} & 0 \mapsto v_4
+	\end{matrix}\]
+\end{example}
+\fi
 
 \begin{remark}\label{rem:functor}
 	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of functors. 
@@ -1679,6 +1723,102 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 	Since $\phi_d$ is a regular epi, we have $k' \circ y_d = h_d$ allowing us to conclude.
 \end{proof}
 }
+
+To prove \Cref{prop:kerset} we need some results about pushouts and coproducts in $\Set$.
+
+
+\begin{lemma}\label{lem:po_set}
+	The following are true:
+	\begin{enumerate}
+		\item if $(P, \{p_i\}_{i\in I})$ is a coproduct, then for every arrow $f\colon 1\to P$ there is exactly one $k\in I$ and $f_k\colon 1\to P_k$ such that $f=p_k\circ f_k$;
+		
+		\parbox{11cm}{
+		\item suppose that the square on the right is a pushout and let $\iota_{m}\colon E\mto B$ be the inclusion of the complement of the image of $m$, then $(D, \{n, h\circ \iota_m \})$ is a coproduct; in particular, $h\circ \iota_f$ is mono.}\hfill \parbox{2cm}{\xymatrix@R=15pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}}
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item This is obvious.
+		\item Let $f\colon E\to Z$ and $k\colon C\to Z$ be two arrows with the same codomain. . By definition of complement and since $m$ is mono we know that $(B, \{m, \iota_m\})$ is a coproduct. Define $\phi\colon B\to Z$ as the unique arrow such that \[\phi\circ m=k\circ g \qquad \phi \circ \iota_m=f\] 
+		By construction there is a unique arrow $\psi \circ D\to Z$ such that 
+		\[\psi \circ n=k \qquad \psi \circ h=\phi \]
+		But this entails that 
+		\[
+		\psi \circ h\circ \iota_m =\phi \circ \iota_m=f\]
+		
+		On the other hand, if $\psi'\colon D\to Z$ is another arrow such that
+		\[\psi' \circ n=k \qquad \psi' \circ h\circ \iota_m=f \]
+		then we have
+		\[\psi'\circ h\circ m=\psi'\circ n\circ g=k\circ g=\phi \circ m =\psi \circ h\circ n \]
+		showing $\psi'=\psi$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\noindent
+\parbox{7.5cm}{
+\mps*}
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+
+\begin{proof} 
+	Let $u\colon K_b\to Z$ and $v\colon K_c\to Z$ be two arrows such that $u\circ k_{f'}=v\circ k_{m'}$. We want to construct an arrow $w\colon K_d\to Z$ such that 
+	\[w\circ k_{g'}=v \qquad w\circ k_{n'}=u\] 
+	
+	Now, if $E'\subseteq C'$ is the complement of the image of $m'$ and $\iota\colon E'\mto B'$ the corresponding inclusion, then by \Cref{lem:po_set} we know that $(D', \{n', g'\circ \iota\})$ is a coproduct. Thus if $x$ is an element of $K_d$, we have exactly four cases.
+	
+	\begin{enumerate}
+		\item $\pi^1_d(x)$ and $\pi^2_d(x)$ both belong to the image of $n'$. Let $x_1$ and $x_2$ be such that $\pi^1_d(x)=n'(x_1)$ and $\pi^2_d(x)=n'(x_2)$, then 
+		\[n(b(x_1))=d(n'(x_1))=d(\pi^1_d(x))=d(\pi^1_d(x))=d(n'(x_2))=n(b(x_2)) \]
+		Since $n$ is mono we deduce that $b(x_1)=b(x_2)$ and so there exists $y\in K_{b}$ such that $\pi^1_d(y)=x_1$ and $\pi^2_d(x)=x_2$. But then we have
+		\begin{align*}
+	\pi^1_d(k_{n'}(y))&=n'(\pi^1_d(y)) =n'(x_1)=\pi^1_d(x)\\
+	\pi^2_d(k_{n'}(y))&=n'(\pi^2_d(y)) =n'(x_2)=\pi^2_d(x)
+		\end{align*}
+		Thus, by \Cref{lemma:kern_pairs_pres_pullbacks} $y$ is the unique element $k_{n'}(y)=x$. We can thus define $w(x)=u(y)$. 
+		\item $\pi^1_d(x)$ and $\pi^2_d(x)$ both belong to the image of $g'\circ \iota$. Consider $x_1$ and $x_2$ in $E'$ such that
+		\[g'(\iota(x_1))=\pi^1_d(x) \qquad  g'(\iota(x_2))=\pi^1_d(x)\]
+		Thus we have
+		\begin{align*}
+			g(c(\iota(x_1)))=d(g'(\iota(x_1)))=d(\pi^1_d(x))=d(\pi^2(x))=
+		\end{align*}
+		
+		\item $\pi^1_d(x)$ belongs to the image of $n'$  and $\pi^2_d(x)$ to that of $g'\circ \iota$;
+		\item $\pi^2_d(x)$ belongs to the image of $n'$  and $\pi^1_d(x)$ to that of $g'\circ \iota$;
+	\end{enumerate} 
+
+	
+	To prove uniqueness, let we split the cases as above.
+	\begin{enumerate}
+		\item 
+		\item 
+		\item 
+		\item \qedhere
+	\end{enumerate}
+	
+	Since $\Set$ is cocomplete, we can take a pushout square as the one  on the right below. 
+	
+	\parbox{10.5cm}{Now, notice that \begin{align*}
+		n'\circ \pi^1_{b}\circ k_{f'}&=n'\circ f'\circ \pi^1_{a}=g'\circ m'\circ \pi^1_{a}=g'\circ \pi^{1}_{c}\circ k_{m'}\\
+		n'\circ \pi^2_{b}\circ k_{f'}&=n'\circ f'\circ \pi^2_{a}=g'\circ m'\circ \pi^2_{a}=g'\circ \pi^{2}_{c}\circ k_{m'}
+		\end{align*}}\hfill \parbox{2cm}{\xymatrix@R=15pt{K_a \ar[r]_{k_{f'}} \ar[d]_{k_{m'}}& K_b  \ar[d]^{p_2}\\ K_c \ar[r]^{p_1} & P}}
+	
+	In particular, this entails that there are two arrows $\pi_1, \pi_2\colon P\rightrightarrows D'$ such that 
+	\[\pi_1\circ p_1=g'\circ \pi^1_c \quad \pi_1\circ p_2=n'\circ \pi^1_b \quad \pi_2\circ p_1=g'\circ \pi^2_c \quad \pi_2\circ p_2=n'\circ \pi^2_b\]
+ 
+ Moreover,  we have
+ \begin{align*}
+ 	d\circ \pi_1\circ p_1&=d\circ g'\circ \pi^1_c=g\circ c\circ \circ \pi^1_c=g\circ c\circ \pi^2_c=d\circ g'\circ \pi^2_c=d\circ \pi_2 \circ p_1\\
+ 	d\circ \pi_1\circ p_2&=d\circ n'\circ \pi^1_b=n\circ b \circ \pi^1_b=n\circ b\circ \pi^2_b=d\circ n'\circ \pi^2_b=d\circ \pi_2 \circ p_2
+ \end{align*}
+	so that $d\circ \pi_1=d\circ p_2$.
+	
+	We want now to show that $(P, \pi_1, \pi_2)$ is a kernel pair for $d$. Let $aa$
+
+
+We 
+For every $t$ in $T$
+	
+	
+\end{proof}
 
 
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
