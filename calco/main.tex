@@ -215,7 +215,7 @@ categories, where most properties of classical approaches to graph transformatio
 such as those on parallelism and causality, can be rephrased and proved in a general and 
 uniform way.
 %
-E-graphs (or EGGs) are a formalism for program optimisation 
+E-graphs (EGGs) are a formalism for program optimisation 
 via an efficient implementation of equality saturation. 
 In short, EGGs can be  defined as (acyclic) term graphs with an additional notion of 
 equivalence on nodes that is closed under the operators of the signature.
@@ -223,11 +223,17 @@ Instead of replacing the components of a program, the optimisation step
 is performed by adding new components and linking them to 
 the existing ones via an equivalence relation, until an optimal program is reached.
 %
-This work describes EGGs by adhesive categories. Besides 
-the benefits \emph{per se} of a formal presentation, making precise the properties of 
-the data structure, describing the addition of equivalent program components 
-via the standard tools of graph transformation offers the advantages given by the 
-adhesive framework in modelling e.g. concurrent updates.
+This work describes EGGs via adhesive categories. 
+Besides the benefits in itself of a formal presentation, which renders the 
+properties of the data structure precise, the description of the addition of equivalent 
+program components using standard graph transformation tools offers the advantages 
+of the adhesive framework in modelling, for example, concurrent updates.
+%
+%Besides 
+%the benefits \emph{per se} of a formal presentation, making precise the properties of 
+%the data structure, describing the addition of equivalent program components 
+%via the standard tools of graph transformation offers the advantages given by the 
+%adhesive framework in modelling e.g. concurrent updates.
 \end{abstract}
 
 
@@ -281,10 +287,13 @@ and term graphs with equivalence and in Section~\ref{eggs} for capturing
 their variants where the equivalences are closed with respect to operator application,
 thus subsuming EGGs.
 %
-Finally, in Section~\ref{conclusioni} we show draw our conclusions: we poi to further work
-and we show how optimisation steps can ve described via DPO transformation.
+In Section~\ref{rewriting} we put the former machinery at work, showing how the optimisation steps
+can be rephrased as suitable applications of term graph rewriting rules.
 %
-For the sake of space, all the proofs have been moved to the appendices. 
+Finally, in Section~\ref{conclusioni} we draw our conclusions, hint at future endeavours and offer some 
+brief remarks on related works.
+%
+For the sake of space, proofs have been moved to the appendices. 
 %For the sake of completeness, 
 %and in order to fix the notation, we prove all the results 
 %recalled in the background section, besides those that are original 
@@ -1466,6 +1475,7 @@ By direct application of \Cref{thm:slice-functors}, we can conclude what follows
 \end{corollary}
 
 \section{Pros and cons of adhesive rewriting}
+\label{rewriting}
 The previous sections has shown how term graphs with (possibly) closed equivalence
 can be described as a suitable $\mathcal{M},\mathcal{N}$-adhesive category. 
 The latter precisely capture EGGS, as originally
