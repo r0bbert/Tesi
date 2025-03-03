@@ -106,6 +106,8 @@
 \newcommand{\EqHyps}{\catname{EqHyp}_{\Sigma}}
 \newcommand{\EqTG}{\catname{EqTG}}
 \newcommand{\EqTGs}{\catname{EqTG}_{\Sigma}}
+\newcommand{\GEqTGs}{\catname{GEqTG}_{\Sigma}}
+\newcommand{\GEqATGs}{\catname{GEqATG}_{\Sigma}}
 \newcommand{\gr}{\textbf{\textup{Graph}}}
 \newcommand{\dgr}{\catname{SGraph}}
 \newcommand{\dg}{\catname{DAG}}
@@ -131,7 +133,7 @@
 \newcommand{\dom}{\mathsf{dom}}
 \newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
 \newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
-\newcommand{\egg}{\catname{EGG}}
+\newcommand{\egg}{\catname{GEqHyp}}
 
 \newcommand{\ari}{\mathsf{ar}}
 \newcommand{\abs}[1]{\lvert #1\rvert}
@@ -204,10 +206,10 @@ The use of rewriting-based visual formalisms is on the rise.
 %
 In the formal methods community, this is due also to the introduction of adhesive
 categories, where most properties of classical approaches to graph transformation, 
-such as parallelism and confluence, can be rephrased and proved in a general and 
+such as those on parallelism and causality, can be rephrased and proved in a general and 
 uniform way.
 %
-E-graphs (shortly, EGGs) are a formalism for program optimisation 
+E-graphs (or EGGs) are a formalism for program optimisation 
 via an efficient implementation of equality saturation. 
 In short, EGGs can be  defined as (acyclic) term graphs with an additional notion of 
 equivalence on nodes that is closed under the operators of the signature.
@@ -215,7 +217,7 @@ Instead of replacing the components of a program, the optimisation step
 is performed by adding new components and linking them to 
 the existing ones via an equivalence relation, until an optimal program is reached.
 %
-This work describes EGGs by means of adhesive categories. Besides 
+This work describes EGGs by adhesive categories. Besides 
 the benefits \emph{per se} of a formal presentation, making precise the properties of 
 the data structure, describing the addition of equivalent program components 
 via the standard tools of graph transformation offers the advantages given by the 
@@ -1419,32 +1421,76 @@ By direct application of \Cref{thm:slice-functors}, we can conclude what follows
 	$\egg$ is $\reg(\egg)$-adhesive.
 \end{corollary}
 
+\section{Pros and cons of adhesive rewriting}
+The previous sections has shown how term graphs with (possibly) closed equivalence
+can be described as a suitable $\mathcal{M},\mathcal{N}$-adhesive category. 
+The latter precisely capture EGGS, as originally
+presented in~\cite{WillseyNWFTP21}. 
+%
+Of course, being a purely graphical representation, there can be redundancy and possibly ambiguity,
+so that e.g. a term such as $f(a,a)$ admits a few different representations as a term graphs, given below
 
-\section{Conclusions and further works}
+\[f(a,a) \mbox{ con 2 a sharate, con 2 a nella stessa classe di equivalenze, e con 2 a separate}\]
+
+Admittedly, the third one is illegal, i.e. it is not an object of $\EqTGs$ but not one of $\GEqTGs$: constants have no input, 
+and nodes that are targets of edges with the same label and source the empty word must be equivalent,
+and possibly be the same.
+%
+In general, note that a maximally shared representation of an EGG exists, and for our 
+toy example is the left-most above. In general terms,
+for an EGG $\mathcal{G}$, such a canonical form is the final object of the comma category 
+$\mathcal{G}  \downarrow \GEqTGs$. 
+This is a standard result in term graph rewriting, see e.g.~\cite{xxx}, and it holds also in the setting with equivalences.
+In fact, if $\mathcal{G}$ has no empty nodes, the unique arrow from $\mathcal{G}$ to the terminal object
+is injective on equivalence classes.
+%
+\todo{vedere se mettere qualcosa prima sugli aciclici}
+The restriction to the full category $\GEqATGs$ of those objects whose underlying graph is \emph{acyclic} is 
+straightforward, replicating all the considerations 
+above and in the previous sections, even if we refrain from explicitly presenting it.
+
+What about rewriting? The theory of $\mathcal{M},\mathcal{N}$-adhesivity ensures that if the rules are spans of 
+arrows in $\mathcal{M}$ and the match is an arrow in $\mathcal{N}$, then we can lift all the standard properties
+of the DPO approach to the category at hand. Luckily, this is the structure of the rules that is advanced in~\cite{DetlefsNS05},
+which is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity and the second
+component is a regular mono, simply adding the equivalences of interest.
+%
+For example, the equivalence $x \div x = 1$, from the introductory example in~\cite{xxx}, 
+can be modelled as the rule
+\[\mbox{to draw DPO rule, x in the same equivalence class} \]
+
+An immediate drawback of choosing the identity as the left-hand side is the possibilty to keep on repeating the same rewriting step.
+However, this is easily forbidden adopting rules \emph{with negative application conditions}~\cite{xxx}, i.e. the usual span 
+$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
+be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side.
+
+
+\section{Conclusions and further and related works}
 \label{conclusioni}
 The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
-an up-and-coming formalism for program optimisation and synthesis via a compact representation and 
+a formalism for program optimisation via a compact representation and 
 efficient implementation of equality saturation.
 %
 To do so, we revisited and generalised the notions of hyper-graph and term graph with equivalence, and
 we extended it in order to capture EGGS as term graphs satisfying a suitable closure property.
 
-Our result opens two threads of research. The first is to use the quasi-adhesivity of EGGs to
-model their rewriting via the double-pushout (DPO) approach. This seems now easy, since 
-the rules adopted in the literature of EGGs appears to be span of regular monos, and such rules
-perfectly fit the mold of rewriting on $\mathcal{M}$-adhesive categories. 
-For example, the equivalence $x \div x = 1$, from the introductory example in~\cite{xxx}, 
-can be modelled as the rule
-\[to draw DPO rule\]
-
-It still needs to be investigated what parallelism and termination, the key properties for DPO rewriting
-on adhesive categories, 
-mean in the context of EGGs. More interestingly, another venue for development is using the adhesive 
+\emph{Future works.}
+Our result opens two threads of research. The first is to check how much of the $\mathcal{M},\mathcal{N}$-adhesivity 
+of EGGs can be used to model their rewriting via the double-pushout (DPO) approach. We have seen that 
+the rules adopted in the literature of EGGs appears to be span of regular monos, and as such they
+perfectly fit the mold of rewriting on $\mathcal{M}-\mathcal{N}$adhesive categories. The restriction on matches 
+though still need to be further investigated.
+%
+Also, it still needs to be investigated how parallelism and causality, the key features for DPO rewriting
+on adhesive categories, can be exploited in the context of EGGs implementation. 
+Another venue for development is using the adhesive 
 machinery to extend the EGGs formalism. In fact, most of the results
 presented here for hyper-graphs can be generalised to hierarchical hyper-graphs, that is, 
 hypergraphs with a hierarchy (a partial order) among 
-edges that is useful for adding structural information, such as encapsulation and sandboxing~\cite{xxx}.
+edges that is useful for adding structural information, such as encapsulation and sandboxing~\cite{ghica, noi}.
 
+\emph{Related works.}
+\todo{espandere un poco}
 Finally, we need to draw a comparison with an alternative categorical presentation for EGGs 
 advanced in~\cite{ghica}. The proposal is quite different from our own. Simplifying, the key is to equip categories 
 of trees with a lattice on hom-sets. 
