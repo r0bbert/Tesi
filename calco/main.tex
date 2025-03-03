@@ -15,8 +15,14 @@
 \usepackage{csquotes}
 
 
-\usepackage{tikz-cd}
+%\usepackage{tikz-cd}
+
+%String Diagrams
 \usepackage{tikz}
+%\input{hypergraph.tikzdefs}
+%\input{hypergraphs.tikzstyles}
+
+
 \usetikzlibrary{decorations.markings}
 
 % General Setting diagrams
@@ -616,9 +622,9 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
-\fi 
+\fi
 
-\begin{example}\label[example]{exa_2} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
+\begin{example}\label[example]{exa_21} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
 	\[\begin{matrix}
 		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
 			0 \mapsto v_1\\
@@ -655,6 +661,30 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
+
+\iffalse
+%% Questa roba la devo aggiustare sennò non compila %%
+\begin{example}\label[example]{exa_2}
+	Let $V_\mathcal{G} = \{v_1, v_2, v_3, v_4, v_5\}$, and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$. Then we define:
+	\[\begin{matrix}
+		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} &&
+		s_{\mathcal{G}}(h_2)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_2)=?_{V_\mathcal{G}} &&
+		s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
+					0 \mapsto v_1\\
+					1\mapsto v_4
+				\end{matrix}&&
+		s_{\mathcal{G}}(h_4)\colon 2 \to V_\mathcal{G} & \begin{matrix}
+					0 \mapsto v_3 \\
+					1\mapsto v_2 
+				\end{matrix}\\
+
+		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 0 \mapsto v_1 &&
+		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&
+		t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5 &&
+		t_\mathcal{G}(h_4)\colon 1 \to V_\mathcal{G} & 0 \mapsto v_4
+	\end{matrix}\]
+\end{example}
+\fi
 
 \begin{remark}\label{rem:functor}
 	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of functors. 
