@@ -159,78 +159,124 @@
 \newcommand{\eto}{\twoheadrightarrow}
 \newcommand{\id}[1]{\mathsf{id}_{#1}}
 
+\tikzset{->-/.style={decoration={
+			markings,
+			mark=at position #1 with {\arrow{>}}},
+			postaction={decorate}
+			}}
 
+\title{EGGs are adhesive!}
+\titlerunning{EGGs are adhesive!} %TODO optional, please use if title is longer than one line
 
-\title{On the adhesivity of EGGs}
+% Author with single affiliation.
+\author{Roberto Biondo}
+{Department of Computer Science, University of Pisa, Pisa, IT}
+{r.biondo@studenti.unipi.it}{}{}
 
-%\titlerunning{????} %TODO optional, please use if title is longer than one line
+\author{Davide Castelnovo}
+{Department of Computer Science, University of Pisa, Pisa, IT}
+{castelnovod@gmail.com}
+{https://orcid.org/0000-0002-5926-5615}{}
 
-%% Author with single affiliation.
-%\author{Roberto Biondo \inst{1}{\small\Envelope}\and Davide Castelnovo\inst{1}\orcidID{0000-0002-5926-5615}
-	%\and \\Fabio Gadducci\inst{1}\orcidID{0000-0003-0690-3051}
-%}
-%\institute{Dept.~of Computer Science, University of Pisa, Italy. 
-	%\email{r.biondo@studenti.unipi.it},
-	%\email{castelnovod@gmail.com},
-	% \email{fabio.gadducci@unipi.it}
-%}
-
-
-
-
-
+\author{Fabio Gadducci}
+{Department of Computer Science, University of Pisa, Pisa, IT}
+{fabio.gadducci@unipi.it}
+{https://orcid.org/0000-0003-0690-3051}{}
 
 \authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
 
+\Copyright{Roberto Biondo and Davide Castelnovo and Fabio Gadducci} 
+\ccsdesc[500]{Theory of Computation~Models of computation}
+\ccsdesc[500]{Theory of Computation~Semantics and reasoning}
+
+\keywords{Hypergraphs, terms graphs, e-graphs, adhesive categories.} %TODO mandatory; please add comma-separated list of keywords
+
+\funding{The research has been partially supported by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 ``Spatio-Temporal Enhancement of Neural nets for Deeply
+Hierarchical Automatised Logic'' (STENDHAL) 
+and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information'' (FM4HD).}
 
 \begin{document}
 
-
-\tikzset{->-/.style={decoration={
-			markings,
-			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
-
-\maketitle 
+\maketitle
 
 \begin{abstract}
-\todo{a very nice abstract}
+The use of rewriting-based visual formalisms is on the rise. 
+%
+In the formal methods community, this is due also to the introduction of adhesive
+categories, where most properties of classical approaches to graph transformation, 
+such as parallelism and confluence, can be rephrased and proved in a general and 
+uniform way.
+%
+E-graphs (shortly, EGGs) are a formalism for program optimisation 
+via an efficient implementation of equality saturation. 
+In short, EGGs can be  defined as (acyclic) term graphs with an additional notion of 
+equivalence on nodes that is closed under the operators of the signature.
+Instead of replacing the components of a program, the optimisation step 
+is performed by adding new components and linking them to 
+the existing ones via an equivalence relation, until an optimal program is reached.
+%
+This work describes EGGs by means of adhesive categories. Besides 
+the benefits \emph{per se} of a formal presentation, making precise the properties of 
+the data structure, describing the addition of equivalent program components 
+via the standard tools of graph transformation offers the advantages given by the 
+adhesive framework in modelling e.g. concurrent updates.
 \end{abstract}
 
 
 \section{Introduction}
 \todo{A very nice introduction}
-
-
-
 \begin{itemize}
 \item general on adhesive categories
-\item general on the use of eggs
+%\item general on the use of eggs
 \end{itemize}
 
-In the original definition, e-graphs are defined as term graphs with an additional notion of equivalence on nodes. 
-Adopting the more modern presentation via string diagrams, they are tree with sharing of subtrees, and with an 
-an equivalence $\equiv$ on nodes that is closed under xxx. In plain words, if $a$ and $b$ are two constants such that
-$a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
+E-graphs (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
+representation and efficient implementation of equality saturation. 
+%
+Albeit a classical data structure~\cite{DetlefsNS05}, EGGs received 
+new impulse after the seminal~\cite{WillseyNWFTP21} and
+developed a thriving community, as witnessed by the official website~\cite{eggs}.
+%
+The key idea of rewriting-based program optimisation is to perform the manipulation of a syntactical description 
+of a program, replacing some of its components in such a way that the semantics is preserved while improving 
+e.g. time or space costs of its actual computation. Instead of directly removing sub-programs, EGGs just add the 
+new components and link them to the older ones via the equivalence relation, until an optimal program is 
+reached and extracted.
 
-\cite[Section~4.2]{DetlefsNS05}
-\cite{WillseyNWFTP21}
+EGGs can be concisely defined as (acyclic) term graphs with an additional notion of equivalence on nodes
+that is closed under the operators of the signature~\cite[Section~4.2]{DetlefsNS05}.
+In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper-)trees equipped with 
+the possibility of sharing subtrees, as in terms graphs, with an additional equivalence relation $\equiv$ on nodes that 
+is closed under composition. In plain words and using a toy example:
+if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
+
+%EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
+%a fast way to recover equality saturation. 
+
+The aim of this work is to describe EGGs by means of adhesive categories. The advantages are two-fold. On the one side, 
+we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
+On the other side, describing the addition of equivalent sub-programs 
+in terms of DPO transformation offer the possibility of modelling parallel execution of optimisation steps as well as discussing
+about confluence and termination.
 
 \emph{Synopsis}
 The paper has the following structure. 
 In Section~\ref{sec:ade} we briefly recall 
-the theory of
-\emph{$\mathcal{M}$-adhesive categories}
-and of \emph{kernel pairs}.
+the theory of $\mathcal{M}$-adhesive categories
+and of kernel pairs.
 In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
  (labelled, acyclic) hypergraphs and term graphs, and we provide a
 functorial characterisation, which allows for proving their adhesivity properties.
-This is expended in Section~\ref{hypereq} for describing hypergraphs 
+This is expanded in Section~\ref{hypereq} for describing hypergraphs 
 and term graphs with equivalence and in Section~\ref{eggs} for capturing
 their variants where the equivalences are closed with respect to operator application,
 thus subsuming EGGs.
 %
-All the proofs have been moved to the appendices. 
+Finally, in Section~\ref{conclusioni} we show draw our conclusions: we poi to further work
+and we show how optimisation steps can ve described via DPO transformation.
+%
+For the sake of space, all the proofs have been moved to the appendices. 
 %For the sake of completeness, 
 %and in order to fix the notation, we prove all the results 
 %recalled in the background section, besides those that are original 
@@ -970,7 +1016,7 @@ Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ th
 \parbox{3cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
 \begin{restatable}{corollary}{mn}\label{cor:mono2}
-	If $(h_E, h_V, h_Q): \mathcal{G\to H}$ is a regular mono in $\EqHyp$, then $h_E, h_V$ and $h_C$ are all monos.
+	An arrow $(h_E, h_V, h_Q): \mathcal{G\to H}$ in $\EqHyp$ is a regular mono if and only if $h_E, h_V$ and $h_C$ are all monos.
 \end{restatable}
 
 
@@ -1389,6 +1435,7 @@ By direct application of \Cref{thm:slice-functors}, we can conclude what follows
 
 
 \section{Conclusions and further works}
+\label{conclusioni}
 The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
 an up-and-coming formalism for program optimisation and synthesis via a compact representation and 
 efficient implementation of equality saturation.

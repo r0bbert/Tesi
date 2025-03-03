@@ -115,6 +115,11 @@ J.~Sakarovitch.
 \newblock {\em Elements of automata theory}.
 \newblock Cambridge University Press, 2009.
 
+\bibitem{eggs}
+VV.AA.
+\newblock egg: e-graphs good.
+\newblock https://egraphs-good.github.io/.
+
 \bibitem{Wadler95}
 P.~Wadler.
 \newblock Monads for functional programming.
