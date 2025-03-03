@@ -200,31 +200,65 @@ and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Method
 \maketitle
 
 \begin{abstract}
-\todo{a very nice abstract}
+The use of rewriting-based visual formalisms is on the rise. 
+%
+In the formal methods community, this is due also to the introduction of adhesive
+categories, where most properties of classical approaches to graph transformation, 
+such as parallelism and confluence, can be rephrased and proved in a general and 
+uniform way.
+%
+E-graphs (shortly, EGGs) are a formalism for program optimisation 
+via an efficient implementation of equality saturation. 
+In short, EGGs can be  defined as (acyclic) term graphs with an additional notion of 
+equivalence on nodes that is closed under the operators of the signature.
+Instead of replacing the components of a program, the optimisation step 
+is performed by adding new components and linking them to 
+the existing ones via an equivalence relation, until an optimal program is reached.
+%
+This work describes EGGs by means of adhesive categories. Besides 
+the benefits \emph{per se} of a formal presentation, making precise the properties of 
+the data structure, describing the addition of equivalent program components 
+via the standard tools of graph transformation offers the advantages given by the 
+adhesive framework in modelling e.g. concurrent updates.
 \end{abstract}
 
 
 \section{Introduction}
 \todo{A very nice introduction}
-
-
-
 \begin{itemize}
 \item general on adhesive categories
-\item general on the use of eggs
+%\item general on the use of eggs
 \end{itemize}
 
-E-graphs can be concisely defined as (acyclic) term graphs with an additional notion of equivalence on nodes
+E-graphs (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
+representation and efficient implementation of equality saturation. 
+%
+Albeit a classical data structure~\cite{DetlefsNS05}, EGGs received 
+new impulse after the seminal~\cite{WillseyNWFTP21} and
+developed a thriving community, as witnessed by the official website~\cite{eggs}.
+%
+The key idea of rewriting-based program optimisation is to perform the manipulation of a syntactical description 
+of a program, replacing some of its components in such a way that the semantics is preserved while improving 
+e.g. time or space costs of its actual computation. Instead of directly removing sub-programs, EGGs just add the 
+new components and link them to the older ones via the equivalence relation, until an optimal program is 
+reached and extracted.
+
+EGGs can be concisely defined as (acyclic) term graphs with an additional notion of equivalence on nodes
 that is closed under the operators of the signature~\cite[Section~4.2]{DetlefsNS05}.
-In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, e-graphs are trees equipped with 
-the possibility of
-sharing subtrees, and with an additional equivalence relation $\equiv$ on nodes that is closed under composition. 
-In plain words and with a toy example:
+In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper-)trees equipped with 
+the possibility of sharing subtrees, as in terms graphs, with an additional equivalence relation $\equiv$ on nodes that 
+is closed under composition. In plain words and using a toy example:
 if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
-\cite[Section~4.2]{DetlefsNS05}
-\cite{WillseyNWFTP21}
 
+%EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
+%a fast way to recover equality saturation. 
+
+The aim of this work is to describe EGGs by means of adhesive categories. The advantages are two-fold. On the one side, 
+we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
+On the other side, describing the addition of equivalent sub-programs 
+in terms of DPO transformation offer the possibility of modelling parallel execution of optimisation steps as well as discussing
+about confluence and termination.
 
 \emph{Synopsis}
 The paper has the following structure. 
@@ -234,12 +268,15 @@ and of kernel pairs.
 In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
  (labelled, acyclic) hypergraphs and term graphs, and we provide a
 functorial characterisation, which allows for proving their adhesivity properties.
-This is expended in Section~\ref{hypereq} for describing hypergraphs 
+This is expanded in Section~\ref{hypereq} for describing hypergraphs 
 and term graphs with equivalence and in Section~\ref{eggs} for capturing
 their variants where the equivalences are closed with respect to operator application,
 thus subsuming EGGs.
 %
-All the proofs have been moved to the appendices. 
+Finally, in Section~\ref{conclusioni} we show draw our conclusions: we poi to further work
+and we show how optimisation steps can ve described via DPO transformation.
+%
+For the sake of space, all the proofs have been moved to the appendices. 
 %For the sake of completeness, 
 %and in order to fix the notation, we prove all the results 
 %recalled in the background section, besides those that are original 
@@ -1384,6 +1421,7 @@ By direct application of \Cref{thm:slice-functors}, we can conclude what follows
 
 
 \section{Conclusions and further works}
+\label{conclusioni}
 The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
 an up-and-coming formalism for program optimisation and synthesis via a compact representation and 
 efficient implementation of equality saturation.
