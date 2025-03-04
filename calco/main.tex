@@ -743,18 +743,18 @@ We can represent hypergraphs graphically. We use dots to denote nodes and boxex 
 	Now, we can depict $\mathcal{G}$ as
 
 	\begin{center}
-        \begin{tikzpicture}
+		        \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
                         \node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
                         \node[style=small box] (h1) at (-1.8, 0.3) {};
                         \node[style=small box] (2) at (-1.8, -0.5) {};
                         \node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
                         \node[style=none] (h1b) at (-1.8, 0.3) {};
-                        \node[style=none] (th2) at (0, 0.3) {};
-                        \node[style=none] (bh2) at (0, -0.3) {};
+                        \node[style=none] (th2) at (-0.3, 0.3) {};
+                        \node[style=none] (bh2) at (-0.3, -0.3) {};
                         \node[style=none] (h2b) at (0, 0) {};
-                        \node[style=none] (th3) at (1.8, 0){};
-                        \node[style=none] (bh3) at (1.8, -0.6){};
+                        \node[style=none] (th3) at (1.5, 0){};
+                        \node[style=none] (bh3) at (1.5, -0.6){};
                         \node[style=none] (h3c) at (1.8, -0.3){};
                         \node[style=none] (2c) at (-1.8, -0.5){};
                         \node[style=none] (lab3) at (0, 0.8) {$h_3$};
@@ -771,16 +771,17 @@ We can represent hypergraphs graphically. We use dots to denote nodes and boxex 
                         \node[style=node] (v4) at (2.7, -0.3) {};
                 \end{pgfonlayer}
                 \begin{pgfonlayer}{edgelayer}
-                        \draw (h1b.center) to (th2.center);
-                        \draw (2c.center) to (v2);
-                        \draw[in=180, out=30] (v2) to (bh2.center);
-                        \draw (h2b.center) to (th3.center);
-                        \draw (v4) to (h3c.center);
-                        %\draw (h3c) to (v4);
-                        \draw[in=180, out=-30](v2) to (bh3);
+                        \draw[style=diredge] (h1b.center) to (v1);
+                        \draw[style=diredge] (v1) to (th2.center);
+                        \draw[style=diredge] (2c.center) to (v2);
+                        \draw[style=diredge, in=180, out=30] (v2) to (bh2.center);
+                        \draw[style=diredge] (v3) to (th3.center);
+                        \draw[style=diredge] (h3c.center) to (v4);
+                        \draw[style=diredge] (h2b.center) to (v3);
+                        \draw[style=diredge,in=180, out=-30](v2) to (bh3);
                 \end{pgfonlayer}
         \end{tikzpicture}
-	\end{center}
+\end{center}
 
 \end{example}
 
@@ -871,49 +872,49 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be the algebraic signature with $O_\Sigma =  \{n, a, *, /\}$, where $n$ is any natural number and $a$ is any variable,
 	and $\ari_\Sigma(n)=\ari_\Sigma(x) = 0$, $\ari_\Sigma(*) = \ari_\Sigma(/) = 2$. Then, $\mathcal{G}^\Sigma$ can be depicted as
 	\begin{center}
-		\begin{tikzpicture}
-			\begin{pgfonlayer}{nodelayer}
-				\node[style=node] (v) at (0, 0){};
-				\node[style=none] (vlab) at (0, -0.4){$v$};
-				
-				\node[style=small box] (n) at (-1.8, 0.4) {};
-				\node[style=none] (nlab) at (-1.8, 0.9) {$n$};
-				\node[style=none] (nattach) at (-1.6, 0.4) {};
+\begin{tikzpicture}
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=node] (v) at (0, 0){};
+                \node[style=none] (vlab) at (0, -0.4){$v$};
+                
+                \node[style=small box] (n) at (-1.8, 0.4) {};
+                \node[style=none] (nlab) at (-1.8, 0.9) {$n$};
+                \node[style=none] (nattach) at (-1.6, 0.4) {};
 
-				\node[style=small box] (const) at (-1.8, -0.4) {};
-				\node[style=none] (constlab) at (-1.8, -0.9){$a$};
-				\node[style=none] (constattach) at (-1.6, -0.4){};
+                \node[style=small box] (const) at (-1.8, -0.4) {};
+                \node[style=none] (constlab) at (-1.8, -0.9){$a$};
+                \node[style=none] (constattach) at (-1.6, -0.4){};
 
-				\node[style=medium box] (times) at (0, 1.8) {};
-				\node[style=none] (timeslab) at (0, 2.6) {$*$};
-				\node[style=none] (timesin1) at (-0.2, 2.1) {};
-				\node[style=none] (timesin2) at (-0.2, 1.5) {};
-				\node[style=none] (timesout) at (0.2, 1.8){};
+                \node[style=medium box] (times) at (0, 1.8) {};
+                \node[style=none] (timeslab) at (0, 2.6) {$*$};
+                \node[style=none] (timesin1) at (-0.3, 2.1) {};
+                \node[style=none] (timesin2) at (-0.3, 1.5) {};
+                \node[style=none] (timesout) at (0.2, 1.8){};
 
-				\node[style=medium box] (div) at (0, -1.8) {};
-				\node[style=none] (divlab) at (0, -2.6) {$/$};
-				\node[style=none] (divin1) at (-0.2, -2.1) {};
-				\node[style=none] (divin2) at (-0.2, -1.5) {};
-				\node[style=none] (divout) at (0.2, -1.8){};
+                \node[style=medium box] (div) at (0, -1.8) {};
+                \node[style=none] (divlab) at (0, -2.6) {$/$};
+                \node[style=none] (divin1) at (-0.3, -2.1) {};
+                \node[style=none] (divin2) at (-0.3, -1.5) {};
+                \node[style=none] (divout) at (0.2, -1.8){};
 
-			\end{pgfonlayer}
+        \end{pgfonlayer}
 
-			\begin{pgfonlayer}{edgelayer}
-				\draw[out=180, in= 112.5] (timesin2.center) to (v); 
-				\draw[in=135, out = 180] (timesin1.center) to (v);
-				\draw[in=165, out=0] (nattach.center) to (v);
-				
-				\draw[out=0, in=-165] (constattach.center) to (v);
-				\draw[out=180, in= -112.5] (divin2.center) to (v); 
-				\draw[in=-135, out = 180] (divin1.center) to (v);
+        \begin{pgfonlayer}{edgelayer}
+                \draw[style=diredge, in=180, out= 112.5] (v) to (timesin2.center); 
+                \draw[style=diredge,out=135, in= 180] (v) to (timesin1.center);
+                \draw[style=diredge,in=165, out=0] (nattach.center) to (v);
+                
+                \draw[style=diredge,out=0, in=-165] (constattach.center) to (v);
+                \draw[style=diredge,in=180, out= -112.5] (v) to (divin2.center); 
+                \draw[style=diredge,out=-135, in= 180] (v) to (divin1.center);
 
-				\draw[in=30, out=0] (v) to (timesout.center);
-				\draw[in=-30, out=0] (v) to (divout.center);
+                \draw[style=diredge, in=30, out=0] (timesout.center) to (v);
+                \draw[style=diredge, in=-30, out=0] (divout.center) to (v);
 
-			\end{pgfonlayer}
+        \end{pgfonlayer}
 
-		\end{tikzpicture}
-	\end{center}
+\end{tikzpicture}
+\end{center}
 \end{example}
 
 \Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
@@ -985,46 +986,49 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 		a=f(h_1) & 2=f(h_2) & *=f(h_3) & / =f(h_4)
 	\end{matrix}\]
 	In this case we get the following picture
-	
+
+
+
 	\begin{center}
-		\begin{tikzpicture}
-			\begin{pgfonlayer}{nodelayer}
-				\node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
-				\node[style=small box] (h1) at (-1.8, 0.3) {$a$};
-				\node[style=small box] (2) at (-1.8, -0.5) {$2$};
-				\node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
-				\node[style=none] (h1b) at (-1.8, 0.3) {};
-				\node[style=none] (th2) at (0, 0.3) {};
-				\node[style=none] (bh2) at (0, -0.3) {};
-				\node[style=none] (h2b) at (0, 0) {};
-				\node[style=none] (th3) at (1.8, 0){};
-				\node[style=none] (bh3) at (1.8, -0.6){};
-				\node[style=none] (h3c) at (1.8, -0.3){};
-				\node[style=none] (2c) at (-1.8, -0.5){};
-				\node[style=none] (lab3) at (0, 0.8) {$h_3$};
-				\node[style=medium box] (h2) at (0, 0) {$*$};
-				\node[style=none] (lab4) at (1.8, 0.5) {$h_4$};
-				\node[style=medium box] (h3) at (1.8, -0.3) {$/$};
-				\node[style=none](labv2) at (-0.9, -0.9) {$v_2$};
-				\node[style=node] (v2) at (-0.9, -0.5) {};
-				\node[style=none] (labv1) at (-0.9, 0.7) {$v_1$};
-				\node[style=node] (v1) at (-0.9, 0.3) {};
-				\node[style=none] (labv3) at (0.9, 0.4) {$v_3$};
-				\node[style=node] (v3) at (0.9, 0) {};
-				\node[style=none] (labv4) at (2.7, 0.1) {$v_4$};
-				\node[style=node] (v4) at (2.7, -0.3) {};
-			\end{pgfonlayer}
-			\begin{pgfonlayer}{edgelayer}
-				\draw (h1b.center) to (th2.center);
-				\draw (2c.center) to (v2);
-				\draw[in=180, out=30] (v2) to (bh2.center);
-				\draw (h2b.center) to (th3.center);
-				\draw (v4) to (h3c.center);
-				%\draw (h3c) to (v4);
-				\draw[in=180, out=-30](v2) to (bh3);
-			\end{pgfonlayer}
-        	\end{tikzpicture}
-	\end{center}
+		        \begin{tikzpicture}
+                \begin{pgfonlayer}{nodelayer}
+                        \node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
+                        \node[style=small box] (h1) at (-1.8, 0.3) {$a$};
+                        \node[style=small box] (2) at (-1.8, -0.5) {$2$};
+                        \node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
+                        \node[style=none] (h1b) at (-1.8, 0.3) {};
+                        \node[style=none] (th2) at (-0.3, 0.3) {};
+                        \node[style=none] (bh2) at (-0.3, -0.3) {};
+                        \node[style=none] (h2b) at (0, 0) {};
+                        \node[style=none] (th3) at (1.5, 0){};
+                        \node[style=none] (bh3) at (1.5, -0.6){};
+                        \node[style=none] (h3c) at (1.8, -0.3){};
+                        \node[style=none] (2c) at (-1.8, -0.5){};
+                        \node[style=none] (lab3) at (0, 0.8) {$h_3$};
+                        \node[style=medium box] (h2) at (0, 0) {$*$};
+                        \node[style=none] (lab4) at (1.8, 0.5) {$h_4$};
+                        \node[style=medium box] (h3) at (1.8, -0.3) {$/$};
+                        \node[style=none](labv2) at (-0.9, -0.9) {$v_2$};
+                        \node[style=node] (v2) at (-0.9, -0.5) {};
+                        \node[style=none] (labv1) at (-0.9, 0.7) {$v_1$};
+                        \node[style=node] (v1) at (-0.9, 0.3) {};
+                        \node[style=none] (labv3) at (0.9, 0.4) {$v_3$};
+                        \node[style=node] (v3) at (0.9, 0) {};
+                        \node[style=none] (labv4) at (2.7, 0.1) {$v_4$};
+                        \node[style=node] (v4) at (2.7, -0.3) {};
+                \end{pgfonlayer}
+                \begin{pgfonlayer}{edgelayer}
+                        \draw[style=diredge] (h1b.center) to (v1);
+                        \draw[style=diredge] (v1) to (th2.center);
+                        \draw[style=diredge] (2c.center) to (v2);
+                        \draw[style=diredge, in=180, out=30] (v2) to (bh2.center);
+                        \draw[style=diredge] (v3) to (th3.center);
+                        \draw[style=diredge] (h3c.center) to (v4);
+                        \draw[style=diredge] (h2b.center) to (v3);
+                        \draw[style=diredge,in=180, out=-30](v2) to (bh3);
+                \end{pgfonlayer}
+        \end{tikzpicture}
+\end{center}
 
 	\iffalse
 	\begin{center}\begin{tikzpicture}
