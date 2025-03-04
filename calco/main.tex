@@ -4,6 +4,7 @@
 %\Envelope
 \newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
+\usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
 \usepackage[all, cmtip]{xy}
 
@@ -499,7 +500,6 @@ The results below appear to be original, and we give their proofs in \Cref{kpp-p
 \end{restatable}
 %[Proof in \Cref{kpp-proof}]
 
-
 The previous result allows us to deduce the following lemma in an $\mathcal{M}$-adhesive context.
 \todo{A questo punto la proposizione seguente possiamo anche buttarla via se serve recuperare spazio}
 \noindent
@@ -515,12 +515,13 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 
 \todo{Inserire bla bla}
 
+\todo{'sta cragna che segue è falsa come una moneta da 3 euro: cancellare}
 \noindent
 \parbox{7.5cm}{
 	\begin{restatable}{proposition}{mps}\label{prop:kerset}
-		Suppose that in $\Set$ the cube aside is given, whose top and bootom faces are pushout and such that $m\colon A\mto C$ and $m'\colon A'\mto C'4$ are injections. Then the right square, made by the kernel pairs of the vertical arrows is a pushout.
+		Suppose that in $\Set$ the cube aside is given, whose top and bottom faces are pushout and such that $m\colon A\mto C$, $m'\colon A'\mto C'$ and $g\colon C\mto D$ are injections. Then the right square, made by the kernel pairs of the vertical arrows, is a pushout.
 \end{restatable}}\hfill 
-\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
 
 
 
@@ -1117,15 +1118,16 @@ On the one hand, if we apply $\quo$ and compute the pullback of the resulting mo
 \end{example}
 }
 
+
 We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$. In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
 
 \begin{lemma}\label{lemma:stab}
-	In $\EqHyp$, pushouts along regular monos are stable.
+	In $\EqHyp$, $\reg(\EqHyp), \mathcal{N}$-pushouts are stable.
 \end{lemma}
 
 \begin{proof}
 	Let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, Q'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
-	and that suppose in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout and $h$ is a regular mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts.
+	and that suppose in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout $h$ is a regular mono and $k_Q\colon Q_1\mto Q_3$ is mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts.
 	\[
 	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{z_V'} \\ 
 		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
@@ -1135,7 +1137,7 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 	\]
 	
 	\noindent 
-\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pullback the third component to get the solid part of the cube aside. Notice, moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left fact is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_C} \ar[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
+\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice, moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_C} \ar@{>->}[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
 
 
 	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below.
@@ -1146,6 +1148,23 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 	\parbox{8.5cm}{
 	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ which makes the diagram aside commutative.}\hfill
 	\parbox{4cm}{\xymatrix@R=15pt{B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]_{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\& Q'_2 \ar@{>->}[r]_{m_2}& U \ar[r]_{u_2}& Q_2 }}
+
+We have to show that the top face of the cube with which we have began is a pushout. Let $\mathcal{H}$ be $(E, V, C, s, t, q)$ and suppose that there exists  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that	
+\[v_E\circ h'_E=w_E\circ k'_E\qquad v_V\circ h'_V=w_V\circ k'_V\]
+
+We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
+
+
+
+Now, $d_V$ is a regular epi, thus 
+
+
+
+
+
+
+
+
 	
 	\commentato {Now, notice that
 	\[s_1 \circ m_1 \circ q_1 = q'_2 \circ h'_V = h'_C \circ q'_1 \quad  	q'_4 \circ z'_V = z'_Q \circ q'_2= u_1\circ m_2 \circ q'_2\]
@@ -1157,12 +1176,6 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 \]
 Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = u_1 \circ m_2$ and $p'_C = y_1 \circ m_3$.}
 
-	We have to show that the top face of the cube with which we have began is a pushout. Let $\mathcal{H}$ be $(E, V, C, s, t, q)$ and suppose that there exists  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that	
-\[v_E\circ h'_E=w_E\circ k'_E\qquad v_V\circ h'_V=w_V\circ k'_V\]
-	
-	We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
-	
-	Now, \Cref{lem:mpo}, let us take the kernel pair
 	
 	
 	
@@ -1291,7 +1304,42 @@ Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = 
 	\]
 	
 	
+	\begin{example}
+		Un controesempio:
+		Consideriamo i grafi senza edge e con nodi dati dal seguente cubo in cui le facce verticali sono pb e le due orizzontali sono po (tutte le frecce sono inclusioni)
+		\[
+	\xymatrix@C=10pt@R=10pt{&\emptyset \ar[dd]|\hole_(.65){\id{\emptyset}}\ar@{>->}[rr]^{?_2} \ar[dl]_{?_1} && 2 \ar[dd]^{\id{2}} \ar[dl]_{i_{2,3}} \\ 1  \ar[dd]_{i_{1,2}}\ar@{>->}[rr]^(.7){i_{1,3}} & & 3 \ar[dd]_(.3){i_{3,4}}\\&\emptyset \ar@{>->}[rr]|\hole^(.65){?_2} \ar@{>->}[dl]^{?_2} && 2 \ar[dl]^{j} \\2 \ar@{>->}[rr]_{j'} & & 4 }
+		\] 
+		
+		Qui abbiamo $j'(0)=2, j'(1)=3$ e  $i_{1,3}(0)=2$
+		Come quozienti consideriamo il seguente cubo
+		
+		\[
+		\xymatrix@C=10pt@R=10pt{&\emptyset \ar[dd]|\hole_(.65){\id{\emptyset}}\ar@{>->}[rr]^{?_1} \ar[dl]_{?_1} && 1 \ar[dd]^{\id{1}} \ar[dl]_{i_{1,3}} \\ 1  \ar[dd]_{i_{1,2}}\ar@{>->}[rr]^(.7){i_{1,3}} & & 3 \ar[dd]_(.3){\id{3}}\\&\emptyset \ar@{>->}[rr]|\hole^(.65){?_2} \ar@{>->}[dl]^{?_1} && 1 \ar[dl]^{k} \\2 \ar@{>->}[rr]_{k'} & & 3 }
+		\] 
+		
+		
+	\end{example}
+	
+	
 \end{proof}
+
+
+\begin{example}
+	Considet the following hypergaphs with equivalence:
+	\[\mathcal{G}:=(\emptyset, 2, 2, ?_{2}, ?_2, \id{2}) \quad \mathcal{H}:=(\emptyset, 1,1, ?_{1}, ?_1, \id{1}) \quad \mathcal{G}'=(\emptyset, 2, 1, ?_{2}, ?_{2}, !_{2}) \]
+	
+There is a morphism $d:=(\id{\emptyset}, !_2, \id{1})\colon \mathcal{G}'\to \mathcal{H}$. We can then construct the cube aside, where the bottom face is a pushout and the vertical ones pullbacks.
+	\[
+\xymatrix@C=30pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'}  \\ 
+	\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}' \ar[dd]^(.3){d} \\
+	&\mathcal{G}\ar[rr]|\hole^(.3){({\emptyset, !_{2}, !_2})} \ar[dl]_{\id{\mathcal{G}}} && \mathcal{H} \ar[dl]^{\id{\mathcal{H}}}  \\
+	\mathcal{G} \ar[rr]_{({\emptyset, !_{2}, !_2})} & & \mathcal{H}  }
+\]\todo{sposta di lato}
+
+\todo{finisci}
+
+\end{example}
 
 \begin{lemma}\label{lemma:van_kampen}
 	In $\EqHyp$, pushouts along regular monos are $\reg(\EqHyp)$-Van Kampen.
@@ -1570,7 +1618,7 @@ We begin recalling  a well-known fact about composition and decomposition of pul
 	Let $\X$ be a category, and consider the diagram aside, in which the right square is a pullback. Then the whole rectangle is a pullback if and only if the left square is one.
 \end{lemma}} 
 	\parbox{4cm}{
-	\xymatrix@R=18pt{X \ar[d]_{a} \ar[r]^{f}& \ar[r]^{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]_{h}& B \ar[r]_{k}& C}}
+	\xymatrix@R=15pt{X \ar[d]_{a} \ar[r]_{f}& \ar[r]_{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]^{h}& B \ar[r]^{k}& C}}
 \commentato{
 \begin{proof}
 	$(\Rightarrow)$ Let $q_1\colon Q\to Y$ and $q_2\colon Q\to A$ be two arrows such that $b\circ q_1=h\circ q_2$, if we compute we get
@@ -1764,10 +1812,65 @@ To prove \Cref{prop:kerset} we need some results about pushouts and coproducts i
 	\end{enumerate}
 \end{proof}
 
+
+
+The category of $\Set$ enjoys two other remarkable and useful properties; it is \emph{distributive} and \emph{extensive}. Distributivity amount to the following property: for every family $\{X_i\}_{i}$ and an object $Y$, the unique morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms.
+\[\xymatrix@C=15pt@R=15pt{&Y\times X_i \ar@{>->}[dl]_{j_i} \ar@{>->}[dr]^{\id{Y}\times h_i} &&&X_i \times Y \ar@{>->}[dl]_{k_i} \ar@{>->}[dr]^{ h_i \times \id{Y}} \\ \Sum_{i\in I} Y\times X_i \ar@{.>}[rr]_{\phi}&& Y\times (\Sum_{i\in I}X_i) & \Sum_{i\in I}  X_i \times Y \ar@{.>}[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \times Y }\]
+
+\noindent 
+\parbox{11.5cm}{\hspace{15pt} Extensivity means that given a family of objects $\{X_{i}\}_{i\in I}$ and a family of squares as the one on the right, where $j_i$ is a  coprojection, then all the squares are pullbacks if and only if $(Z, \{k_i\}_{i\in I})$ is a coproduct.}\hfill 
+\parbox{2cm}{\xymatrix@R=15pt{Z_i \ar[r]_{k_i} \ar[d]_{f_i} & Z\ar[d]^{f} \\ X_i \ar@{>->}[r]^{j_i} & X}}
+
+These two property together yields the following fact.
+
+
+\begin{lemma}\label{lem:nodim}
+	Let $f,g\colon A\rightrightarrows B+C$ be two arrows with a coproduct as codomain. Then $(A, \{j_i\}_{i=0}^
+	3)$ is a coproduct, where $j_i\colon A_i\mto A $ is defined by the following pullback squares.
+	\[\xymatrix@C=30pt{A_0 \ar@{>->}[r]^{j_0}  \ar[d]_{p_0}& A   \ar[d]^{(f,g)}& A_1 \ar@{>->}[r]^{j_1}  \ar[d]_{p_1} & A \ar[d]^{(f,g)} \\
+		B\times B \ar@{>->}[r]_-{i_B\times i_B} & (B+C)\times (B+C) & B\times C \ar@{>->}[r]_-{i_B\times i_C} & (B+C)\times (B+C)}\]
+	\[ \xymatrix@C=30pt{A_2 \ar@{>->}[r]^{j_2}  \ar[d]_{p_2}& A   \ar[d]^{(f,g)}& A_3 \ar@{>->}[r]^{j_3}  \ar[d]_{p_3} & A \ar[d]^{(f,g)} \\
+		C\times B \ar@{>->}[r]_-{i_C\times i_B} & (B+C)\times (B+C) & C\times C \ar@{>->}[r]_-{i_C\times i_C} & (B+C)\times (B+C)}\]
+\end{lemma}
+
+
+
 \noindent
 \parbox{7.5cm}{
 \mps*}
-\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }}
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
+
+\begin{proof}
+		Let $E'\subseteq C'$ be the complement of the image of $m'$ and $\iota\colon E'\mto B'$ be the corresponding inclusion. By \Cref{lem:po_set} we know that $(D', \{n', g'\circ \iota\})$ is a coproduct. Thus by \Cref{lem:nodim} we also know that there exists $K_0$, $K_1$, $K_2$ and $K_3$ fitting in the following four pullback diagrams and such that $\{K_d, \{j_i\}_{i=0}^3\}$ is a coproduct.
+	\[\xymatrix@C=45pt{K_0 \ar@{>->}[r]^{j_0}  \ar[d]_{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+		B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota)} & D'\times D'}\]
+	\[ \xymatrix@C=45pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+		E'\times B' \ar@{>->}[r]_-{(g'\circ \iota) \times n'} & D'\times D' & E'\times E' \ar@{>->}[r]_-{(g'\circ \iota)\times (g'\circ \iota)} & D'\times D'}\]
+	
+	Now, if we compute we get
+	\begin{align*}
+		n\circ b\circ p_0&= d\circ n'\circ p_0= d\circ \pi^1_d\circ j_0=d\circ \pi^2_d\circ j_0=d\circ n'\circ q_0=n\circ b\circ q_0\\
+g\circ c \circ  \iota \circ p_3&=d\circ g' \circ  \iota p_3=d\circ \pi^1_d\circ j_3=d\circ \pi^2_d\circ j_3=d\circ g'\circ \iota \circ q_3= g \circ c\circ \iota\circ q_3
+	\end{align*}
+	Thus, since $n$ and $g$ are mono we get the dotted arrows in the diagram below.
+\[\xymatrix{K_0 \ar@/^.3cm/[drr]^{p_0} \ar@{.>}[dr]^{\phi_0} \ar@/_.3cm/[ddr]_{q_0} &&& K_3 \ar[r]^{p_3} \ar@{.>}[dr]^{\phi_3} \ar[d]_{q_3}& E' \ar[dr]^{\iota} \\ &K_b \ar[r]^{\pi^1_d} \ar[d]_{\pi^2_d}& B' \ar[d]^{b} & E' \ar[dr]_{\iota}&K_c \ar[r]^{\pi^1_d} \ar[d]_{\pi^2_d} & C'  \ar[d]^{c}\\ & B' \ar[r]_{b} & B && C' \ar[r]_{c} & C }\]
+	
+	Now, we also know that $(C', \{m', \iota\})$ is a coproduct, thus we can apply again \Cref{lem:nodim} to $K_c$ to conclude that $(K_c, \{k_i\}_{i=0}^4)$ is a coproduct, where $k_i\colon K^i_c\to K_c$ is defined by the following pullbacks.
+	
+	\[\xymatrix@C=45pt{K_0 \ar@{>->}[r]^{j_0}  \ar[d]_{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+		B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota)} & D'\times D'}\]
+	\[ \xymatrix@C=45pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+		E'\times B' \ar@{>->}[r]_-{(g'\circ \iota) \times n'} & D'\times D' & E'\times E' \ar@{>->}[r]_-{(g'\circ \iota)\times (g'\circ \iota)} & D'\times D'}\]
+	
+	
+	
+	
+	
+	Let $u\colon K_b\to Z$ and $v\colon K_c\to Z$ be two arrows such that $u\circ k_{f'}=v\circ k_{m'}$. We want to construct an arrow $w\colon K_d\to Z$ such that $w\circ k_{g'}=v$ and $w\circ k_{n'}=u$.
+	
+	
+\end{proof}
+
 
 \begin{proof} 
 	Let $u\colon K_b\to Z$ and $v\colon K_c\to Z$ be two arrows such that $u\circ k_{f'}=v\circ k_{m'}$. We want to construct an arrow $w\colon K_d\to Z$ such that 
