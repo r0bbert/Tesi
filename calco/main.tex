@@ -252,7 +252,7 @@ where many of these general results could be recast and uniformly proved once an
  
 \vspace{.1cm}
 \noindent
-\begin{minipage}[l]{.78\linewidth }In short, following the double-pushout (DPO) approach
+\begin{minipage}[l]{.78\linewidth}In short, following the double-pushout (DPO) approach
 to graph transformation~\cite{xxx}, a rule is given by two arrows $: K \to L$ and $r: K \rightarrow R$
 and its execution requires a match $m: L \to G$ such that the rewriting step from $G$
 to $H$ is given by the diagram aside, whose square are pushouts.
@@ -885,16 +885,18 @@ Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending 
 
 Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a signature.
 
+\noindent
+\begin{minipage}[l]{.73\linewidth}
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
 %
-We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
+We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $\{1\}$ as set of nodes, so that $\{1\}^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, which always picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
 \iffalse
 \todo{Decidere se tenere questo esempio}
 
-\begin{example}\label[example]{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as
+\begin{example}\label[example]{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as the picture aside.
 	\begin{center}
 		\begin{tikzpicture}
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v$}] (V) at (0,0) {};
@@ -915,11 +917,15 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 \end{example}\fi
 
 \begin{example}\label[example]{exa_3}
-	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be the algebraic signature with $O_\Sigma =  \mathbb{N} \uplus A \uplus \{*, /\}$, 
-	let $n$ stands for any natural number and $a$ for any element in $A$, both sets interpreted as sets of constants, and
+	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be the signature with $O_\Sigma =  \mathbb{N} \uplus A \uplus \{*, /\}$, 
+	where $n$ stands for any natural number and $a$ for any element in $A$, both sets of constants, and
 	%so that $\ari_\Sigma(n)=\ari_\Sigma(a) = 0$, 
-	$\ari_\Sigma(*) = \ari_\Sigma(/) = 2$. Then the hypergraph $\mathcal{G}^\Sigma$ can be depicted as
-	\begin{center}
+	$\ari_\Sigma(*) = \ari_\Sigma(/) = 2$. Then the hypergraph $\mathcal{G}^\Sigma$ is depicted as the picture aside.
+\end{example}
+\end{minipage}
+%\begin{center}
+\hfill
+\begin{minipage}[r]{.22\linewidth}
 \begin{tikzpicture}
         \begin{pgfonlayer}{nodelayer}
                 \node[style=node] (v) at (0, 0){};
@@ -944,7 +950,6 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
                 \node[style=none] (divin1) at (-0.3, -2.1) {};
                 \node[style=none] (divin2) at (-0.3, -1.5) {};
                 \node[style=none] (divout) at (0.2, -1.8){};
-
         \end{pgfonlayer}
 
         \begin{pgfonlayer}{edgelayer}
@@ -958,12 +963,9 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 
                 \draw[style=diredge, in=30, out=0] (timesout.center) to (v);
                 \draw[style=diredge, in=-30, out=0] (divout.center) to (v);
-
         \end{pgfonlayer}
-
 \end{tikzpicture}
-\end{center}
-\end{example}
+\end{minipage}
 
 \Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
@@ -1032,15 +1034,15 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
 	$f: \mathcal{G} \to \mathcal{G}^\Sigma$ that is characterised by the image of the edges. 
 	If $f(h(1) = a$, $f(h_2) = 2$, $f(h_3) = *$, and $f(h_3) = /$, we represent it visually 
-	by putting the identifiers of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$
-	as
+	by putting the identifiers of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$,
+	and removing the idetifiers on the nodes and edges of the latter, as
 		\begin{center}
 		\begin{tikzpicture}
 			\begin{pgfonlayer}{nodelayer}
-				\node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
+				\node[style=none] (lab1) at (-1.8, 0.8) {};
 				\node[style=small box] (h1) at (-1.8, 0.3) {$a$};
 				\node[style=small box] (2) at (-1.8, -0.5) {$2$};
-				\node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
+				\node[style=none] (lab2) at (-1.8, -1.0) {};
 				\node[style=none] (h1b) at (-1.8, 0.3) {};
 				\node[style=none] (th2) at (0, 0.3) {};
 				\node[style=none] (bh2) at (0, -0.3) {};
@@ -1049,17 +1051,17 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 				\node[style=none] (bh3) at (1.8, -0.6){};
 				\node[style=none] (h3c) at (1.8, -0.3){};
 				\node[style=none] (2c) at (-1.8, -0.5){};
-				\node[style=none] (lab3) at (0, 0.8) {$h_3$};
+				\node[style=none] (lab3) at (0, 0.8) {};
 				\node[style=medium box] (h2) at (0, 0) {$*$};
-				\node[style=none] (lab4) at (1.8, 0.5) {$h_4$};
+				\node[style=none] (lab4) at (1.8, 0.5) {};
 				\node[style=medium box] (h3) at (1.8, -0.3) {$/$};
-				\node[style=none](labv2) at (-0.9, -0.9) {$v_2$};
+				\node[style=none](labv2) at (-0.9, -0.9) {};
 				\node[style=node] (v2) at (-0.9, -0.5) {};
-				\node[style=none] (labv1) at (-0.9, 0.7) {$v_1$};
+				\node[style=none] (labv1) at (-0.9, 0.7) {};
 				\node[style=node] (v1) at (-0.9, 0.3) {};
-				\node[style=none] (labv3) at (0.9, 0.4) {$v_3$};
+				\node[style=none] (labv3) at (0.9, 0.4) {};
 				\node[style=node] (v3) at (0.9, 0) {};
-				\node[style=none] (labv4) at (2.7, 0.1) {$v_4$};
+				\node[style=none] (labv4) at (2.7, 0.1) {};
 				\node[style=node] (v4) at (2.7, -0.3) {};
 			\end{pgfonlayer}
 			\begin{pgfonlayer}{edgelayer}
@@ -1219,7 +1221,8 @@ This characterization, in turn, provides us with the following result \cite{Cast
 
 \subsection{Hypergraphs with equivalence}
 
-Let us start with the case of general hypergraphs.
+Let us start with the case of general hypergraphs. These were introduced in~\cite{concur2006}, even if no general consideration about their structure as a category was proved, and adhesivity, 
+which is the main focus here, was yet to be presented to the world.
 
 \begin{definition}
 	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, Q_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $Q_\mathcal{G}$ is a set and $q_{\mathcal{G}}: V_{\mathcal{G}}\eto Q_{\mathcal{G}}$ is a surjection called \emph{quotient map}. 
@@ -1777,7 +1780,7 @@ toy example is the left-most above. In general terms,
 for an EGG $\mathcal{G}$, such a canonical form is the final object of the comma category 
 $\mathcal{G}  \downarrow \GEqTGs$. 
 This is a standard result in term graph rewriting, see e.g.~\cite{xxx}, and it holds also in the setting with equivalences.
-I%
+%
 The same construction carries on when restricting to the full category of $\GEqTGs$ of those objects whose 
 underlying term graph is \emph{acyclic}, and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
 from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
@@ -1800,12 +1803,7 @@ However, this is easily forbidden adopting rules \emph{with negative application
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
 be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
 %
-The theory of $\mathcal{M},\mathcal{N}$-adhesivity carries on with such enriched rules, see e.g~\cite{xxx}.
-
-Summing up, showing that EGGs are objects of an $\mathcal{M},\mathcal{N}$-adhesive category $\GEqTGs$ and that optimisation 
-steps are obtained via DPO rules with negative application conditions with rules whose arrows are in $\mathcal{M}$ and via a match 
-that is in $\mathcal{N}$ allows for exploiting all the 
-
+The theory of $\mathcal{M},\mathcal{N}$-adhesivity carries on with such extended rules, see e.g~\cite{xxx}.
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
@@ -1816,6 +1814,10 @@ a formalism for program optimisation
 %
 To do so, we revisited and generalised the notions of hyper-graph and term graph with equivalence, and
 we extended it in order to capture EGGS as term graphs satisfying a suitable closure property.
+Summing up, we proved that EGGs are objects of an $\mathcal{M},\mathcal{N}$-adhesive category $\GEqTGs$ 
+and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
+arrows are in $\mathcal{M}$ and via a match that is in $\mathcal{N}$. This fact allows for exploiting all the properties 
+of the adhesive framework when discussing about the optimisation process.
 
 \emph{Future works.}
 Our result on $\GEqTGs$ opens a few threads of research. The first is to check how the $\mathcal{M},\mathcal{N}$-adhesivity 
@@ -1834,25 +1836,22 @@ hypergraphs with a hierarchy (a partial order) among
 edges~\cite{ghicaZan,CastelnovoGM24}, which is useful for adding structural information, such as encapsulation and sandboxing.
 
 \emph{Related works.}
-\todo{espandere un poco}
-Despite their wide acceptance, we are not aware of any recent attempt to provide an algebraic characterisation of EGGs,
-the only exception being in~\cite{ghica}. We leave for future works also a in-depth comparison among the two proposals,
-which appear to be related yet nevertheless quite different.
+%\todo{espandere un poco}
+Despite the interest they have ben raising as an efficient data structure, we are not aware of any attempt to provide an 
+algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
+among the two proposals, which appear to be related yet quite different.
 %
-The key intuition is always to use string diagrams to represents (acyclic) term graphs or, in other words,
-props over a symmetric monoidal category. In our case we adopted a more down-to-Earth approach by equipping
-concretely the nodes of a term graph with an equivalence relation, thus extending and generalising~\cite{concur2006} 
-in the contemporary jargon of adhesive categories.
-The route chosen in~\cite{ghica} is to consider as models symmetric monoidal categories enriched over semilattices,
-so that the 
-
-Simplifying, the key is to equip categories 
-of trees with a lattice on hom-sets. 
-It seems that such proposal generalises our own, 
-even if at the expenses of a more complex machinery.
-%Instead of going through 
-%such an enrichment, we chose to obtain closure via suitable requirements on morphisms, even if it 
-%seems that the former generalises the latter, at the expenses of a more complex machinery.
+In both cases, the key intuition is  to use string diagrams to represents (acyclic) term graphs. We adopted a
+more down-to-Earth approach by equipping
+concretely the nodes of a term graph with an equivalence relation, thus directly equivalent to the original presentation~\cite{DetlefsNS05},
+at the same time extending and generalising~\cite{concur2006} in the contemporary jargon of adhesive categories.
+The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
+and equipping them with an enrichment over semilattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
+Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
+$\Set$.
+%
+At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
+is actually adhesive, thus allowing to exploit all the features of the framework.
 
 \bibliography{biblio}
 
