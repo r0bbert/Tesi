@@ -253,7 +253,7 @@ developed a thriving community, as witnessed by the official website~\cite{eggs}
 %
 The key idea of rewriting-based program optimisation is to perform the manipulation of a syntactical description 
 of a program, replacing some of its components in such a way that the semantics is preserved while improving 
-e.g. time or space costs of its actual computation. Instead of directly removing sub-programs, EGGs just add the 
+the computational costs of its actual execution. Instead of directly removing sub-programs, EGGs just add the 
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
@@ -268,11 +268,11 @@ if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$
 %EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
 %a fast way to recover equality saturation. 
 
-The aim of this work is to describe EGGs by means of adhesive categories. The advantages are two-fold. On the one side, 
+The aim of this work is to prove that EGGs form an adhesive category. The advantages are two-fold. On the one side, 
 we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
 On the other side, describing the addition of equivalent sub-programs 
-in terms of DPO transformation offer the possibility of modelling parallel execution of optimisation steps as well as discussing
-about confluence and termination.
+in terms of DPO transformation offer the possibility of modelling parallelism and concurrency for optimisation steps 
+and discussing confluence and termination.
 
 \emph{Synopsis}
 The paper has the following structure. 
@@ -280,7 +280,7 @@ In Section~\ref{sec:ade} we briefly recall
 the theory of $\mathcal{M}$-adhesive categories
 and of kernel pairs.
 In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
- (labelled, acyclic) hypergraphs and term graphs, and we provide a
+ (labelled) hypergraphs and term graphs, and we provide a
 functorial characterisation, which allows for proving their adhesivity properties.
 This is expanded in Section~\ref{hypereq} for describing hypergraphs 
 and term graphs with equivalence and in Section~\ref{eggs} for capturing
@@ -1511,7 +1511,7 @@ above and in the previous sections.
 
 What about rewriting? The theory of $\mathcal{M},\mathcal{N}$-adhesivity ensures that if the rules are spans of 
 arrows in $\mathcal{M}$ and the match is an arrow in $\mathcal{N}$, then we can lift all the standard properties
-of the DPO approach to the category at hand. Luckily, this is the structure of the rules that is advanced in~\cite{DetlefsNS05},
+of the DPO approach to the category at hand. Luckily, this is the structure of rules that is advanced in~\cite{DetlefsNS05},
 which is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity and the second
 component is a regular mono, simply adding the edges, nodes, and equivalence classes of interest.
 %
@@ -1530,8 +1530,10 @@ be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n
 %
 The theory of $\mathcal{M},\mathcal{N}$-adhesivity carries on with such enriched rules, see e.g~\cite{xxx}.
 
-Summing up, showing that EGGs are objects of $\GEqTGs$ and that optimisation steps are obtained via 
-DPO rules with negative application conditions unleash the xxx.
+Summing up, showing that EGGs are objects of an $\mathcal{M},\mathcal{N}$-adhesive category $\GEqTGs$ and that optimisation 
+steps are obtained via DPO rules with negative application conditions with rules whose arrows are in $\mathcal{M}$ and via a match 
+that is in $\mathcal{N}$ allows for 
+
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
