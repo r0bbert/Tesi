@@ -15,12 +15,13 @@
 \usepackage{csquotes}
 
 
-%\usepackage{tikz-cd}
+\usepackage{tikz-cd}
 
 %String Diagrams
 \usepackage{tikz}
-%\input{hypergraph.tikzdefs}
-%\input{hypergraphs.tikzstyles}
+\usepackage[draft]{tikzit}
+\input{hypergraph.tikzdefs}
+\input{hypergraph.tikzstyles}
 
 
 \usetikzlibrary{decorations.markings}
@@ -634,8 +635,9 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 
 \todo{FG ne lascerei uno, ripreso magari dalla intro e presentato come string diagram}
 
-We can represent hypergraphs graphically. We use dots to denote nodes and squares to denote hyperedges, the name of a node or of an hyperedge is put near the corresponding dot or square. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge have an arrowhead in the middle pointing towards the hyperedge, while the lines to the targets have arrowheads pointing to the target nodes.  We  decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
-\todo{Ho lasciato un unico esempio (che è anche un term graph): occorre riscrivere questo paragrafo una volta che abbiamo deciso come rappresentare i grafi}
+We can represent hypergraphs graphically. We use dots to denote nodes and boxex to denote hyperedges, the name of a node or of an hyperedge is put near the corresponding dot or box. Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge comes from the left of the box, while the lines to the targets exit from the right of the box.
+%We  decorate the arrow corresponding to the $i^{th}$ letter of a target or a source with a label $i$.
+%\todo{Ho lasciato un unico esempio (che è anche un term graph): occorre riscrivere questo paragrafo una volta che abbiamo deciso come rappresentare i grafi}
 \iffalse 
 \begin{example}Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G}}$ to be $\{h_1, h_2, h_3\}$. Sources and targets are given by:
 	\[\begin{matrix}
@@ -679,18 +681,18 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
-\fi
+
 
 \begin{example}\label[example]{exa_21} Let $V_{\mathcal{G}}$ be as in the previous example and $E_{\mathcal{G}}=\{h_1, h_2, h_3\}$.	Then we define
 	\[\begin{matrix}
-		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
+		A && s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}}  & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} && s_{\mathcal{G}}(h_2)\colon 2\to V_{\mathcal{G}} & \begin{matrix}
 			0 \mapsto v_1\\
 			1\mapsto v_2
 		\end{matrix}&& s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
 			0 \mapsto v_1\\
 			1\mapsto v_4	
 		\end{matrix}\\
-		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 
+			B && t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 
 		0 \mapsto v_1 && 		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&   t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5
 	\end{matrix}\]
 	
@@ -718,30 +720,70 @@ We can represent hypergraphs graphically. We use dots to denote nodes and square
 		\end{tikzpicture}
 	\end{center}
 \end{example}
+\fi
 
-\iffalse
-%% Questa roba la devo aggiustare sennò non compila %%
 \begin{example}\label[example]{exa_2}
 	Let $V_\mathcal{G} = \{v_1, v_2, v_3, v_4, v_5\}$, and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$. Then we define:
 	\[\begin{matrix}
 		s_{\mathcal{G}}(h_1)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_1)=?_{V_\mathcal{G}} &&
-		s_{\mathcal{G}}(h_2)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_2)=?_{V_\mathcal{G}} &&
+		s_{\mathcal{G}}(h_2)\colon 0\to V_{\mathcal{G}} & s_{\mathcal{G}}(h_2)=?_{V_\mathcal{G}}\\
 		s_{\mathcal{G}}(h_3)\colon 2\to V_{\mathcal{G}} & \begin{matrix} 
 					0 \mapsto v_1\\
-					1\mapsto v_4
-				\end{matrix}&&
-		s_{\mathcal{G}}(h_4)\colon 2 \to V_\mathcal{G} & \begin{matrix}
-					0 \mapsto v_3 \\
-					1\mapsto v_2 
+					1\mapsto v_2
+				\end{matrix}&& s_{\mathcal{G}}(h_4)\colon 2 \to V_\mathcal{G} & \begin{matrix}
+					0 \mapsto v_3\\
+					1\mapsto v_2
 				\end{matrix}\\
-
 		t_{\mathcal{G}}(h_1)\colon 1\to V_{\mathcal{G}} & 0 \mapsto v_1 &&
-		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3 &&
-		t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_5 &&
+		t_{\mathcal{G}}(h_2)\colon 1\to V_{\mathcal{G}} & 0\mapsto v_3\\
+		t_{\mathcal{G}}(h_3)\colon 1\to V_{\mathcal{G}} & 1\mapsto v_3 &&
 		t_\mathcal{G}(h_4)\colon 1 \to V_\mathcal{G} & 0 \mapsto v_4
 	\end{matrix}\]
+
+	Now, we can depict $\mathcal{G}$ as
+
+	\begin{center}
+        \begin{tikzpicture}
+                \begin{pgfonlayer}{nodelayer}
+                        \node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
+                        \node[style=small box] (h1) at (-1.8, 0.3) {};
+                        \node[style=small box] (2) at (-1.8, -0.5) {};
+                        \node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
+                        \node[style=none] (h1b) at (-1.8, 0.3) {};
+                        \node[style=none] (th2) at (0, 0.3) {};
+                        \node[style=none] (bh2) at (0, -0.3) {};
+                        \node[style=none] (h2b) at (0, 0) {};
+                        \node[style=none] (th3) at (1.8, 0){};
+                        \node[style=none] (bh3) at (1.8, -0.6){};
+                        \node[style=none] (h3c) at (1.8, -0.3){};
+                        \node[style=none] (2c) at (-1.8, -0.5){};
+                        \node[style=none] (lab3) at (0, 0.8) {$h_3$};
+                        \node[style=medium box] (h2) at (0, 0) {};
+                        \node[style=none] (lab4) at (1.8, 0.5) {$h_4$};
+                        \node[style=medium box] (h3) at (1.8, -0.3) {};
+                        \node[style=none](labv2) at (-0.9, -0.9) {$v_2$};
+                        \node[style=node] (v2) at (-0.9, -0.5) {};
+                        \node[style=none] (labv1) at (-0.9, 0.7) {$v_1$};
+                        \node[style=node] (v1) at (-0.9, 0.3) {};
+                        \node[style=none] (labv3) at (0.9, 0.4) {$v_3$};
+                        \node[style=node] (v3) at (0.9, 0) {};
+                        \node[style=none] (labv4) at (2.7, 0.1) {$v_4$};
+                        \node[style=node] (v4) at (2.7, -0.3) {};
+                \end{pgfonlayer}
+                \begin{pgfonlayer}{edgelayer}
+                        \draw (h1b.center) to (th2.center);
+                        \draw (2c.center) to (v2);
+                        \draw[in=180, out=30] (v2) to (bh2.center);
+                        \draw (h2b.center) to (th3.center);
+                        \draw (v4) to (h3c.center);
+                        %\draw (h3c) to (v4);
+                        \draw[in=180, out=-30](v2) to (bh3);
+                \end{pgfonlayer}
+        \end{tikzpicture}
+	\end{center}
+
 \end{example}
-\fi
+
 
 \begin{remark}\label{rem:functor}
 	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of functors. 
@@ -802,6 +844,7 @@ An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given
 We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, where $\delta_1$ picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
+\iffalse
 \todo{Decidere se tenere questo esempio}
 
 \begin{example}\label[example]{exa_3} Let $\Sigma=(O_\Sigma, \ari_\Sigma)$ be an algebraic signature in $\Set$. This simply amount to a set of \emph{operations} with an associated natural number, called \emph{arity}. 	For instance let $\Sigma_G$ be the signature of groups, then $\mathcal{G}^{\Sigma_G}$ can be depicted as
@@ -820,6 +863,55 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 			\draw[rounded corners] (-2.25, -0.25) rectangle (-1.75, 0.25) {};
 			\draw[rounded corners] (-0.25, 1.5) rectangle (0.25, 2) {};
 			\draw[rounded corners] (2.25, -0.25) rectangle (1.75, 0.25) {};
+		\end{tikzpicture}
+	\end{center}
+\end{example}\fi
+
+\begin{example}\label[example]{exa_3}
+	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be the algebraic signature where $O_\Sigma =  \{n, x, *, /\}$, where $n$ is any natural number and $x$ is any variable,
+	and $\ari_\Sigma(n)=\ari_\Sigma(x) = 0$, $\ari_\Sigma(*) = \ari_\Sigma(/) = 2$. Then, $\mathcal{G}^\Sigma$ can be depicted as
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{pgfonlayer}{nodelayer}
+				\node[style=node] (v) at (0, 0){};
+				\node[style=none] (vlab) at (0, -0.4){$v$};
+				
+				\node[style=small box] (n) at (-1.8, 0.4) {};
+				\node[style=none] (nlab) at (-1.8, 0.9) {$n$};
+				\node[style=none] (nattach) at (-1.6, 0.4) {};
+
+				\node[style=small box] (const) at (-1.8, -0.4) {};
+				\node[style=none] (constlab) at (-1.8, -0.9){$a$};
+				\node[style=none] (constattach) at (-1.6, -0.4){};
+
+				\node[style=medium box] (times) at (0, 1.8) {};
+				\node[style=none] (timeslab) at (0, 2.6) {$*$};
+				\node[style=none] (timesin1) at (-0.2, 2.1) {};
+				\node[style=none] (timesin2) at (-0.2, 1.5) {};
+				\node[style=none] (timesout) at (0.2, 1.8){};
+
+				\node[style=medium box] (div) at (0, -1.8) {};
+				\node[style=none] (divlab) at (0, -2.6) {$/$};
+				\node[style=none] (divin1) at (-0.2, -2.1) {};
+				\node[style=none] (divin2) at (-0.2, -1.5) {};
+				\node[style=none] (divout) at (0.2, -1.8){};
+
+			\end{pgfonlayer}
+
+			\begin{pgfonlayer}{edgelayer}
+				\draw[out=180, in= 112.5] (timesin2.center) to (v); 
+				\draw[in=135, out = 180] (timesin1.center) to (v);
+				\draw[in=165, out=0] (nattach.center) to (v);
+				
+				\draw[out=0, in=-165] (constattach.center) to (v);
+				\draw[out=180, in= -112.5] (divin2.center) to (v); 
+				\draw[in=-135, out = 180] (divin1.center) to (v);
+
+				\draw[in=30, out=0] (v) to (timesout.center);
+				\draw[in=-30, out=0] (v) to (divout.center);
+
+			\end{pgfonlayer}
+
 		\end{tikzpicture}
 	\end{center}
 \end{example}
@@ -851,12 +943,11 @@ $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ 
 	(h, !_{V_{\mathcal{{H}}}})\circ (?_{E_{\mathcal{H}}}, f)=(h\circ ?_{E_{\mathcal{H}}}, !_{V_{\mathcal{{H}}}}\circ f)=(?_{0_{\Sigma}}, !_{X})=\Delta_{\hyp}(X)\]
 %and the thesis follow.   
 \end{proof}
-\fi 
+ 
 
 \todo{anche questo forse val la pena toglierlo}
 \todo{presentarlo come string diagram e magari prendere la segnatura de un esempio egg}
 
-We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
 \begin{example}\label[example]{lab_1}
 	The simplest example is given by the identity $\id{\mathcal{G}^\Sigma}\colon \mathcal{G}^\Sigma\rightarrow \mathcal{G}^{\Sigma}$. If $\Sigma$ is the signature of groups $\Sigma_G$ we get 
 	\begin{center}
@@ -884,13 +975,58 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 
 
 \todo{Decidere se tenere questo esempio (io direi di no)}
+\fi
+
+We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+
 \begin{example}\label[example]{lab_2}
-	Take again $\Sigma_G$ the signature of groups, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled defining
-	\begin{align*}
-		e=f(h_1) \quad \cdot=f(h_2)\quad \cdot=f(h_3)
-	\end{align*}
+	Take again $\Sigma_G$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled defining
+	\[\begin{matrix}
+		a=f(h_1) & 2=f(h_2) & *=f(h_3) & / =f(h_4)
+	\end{matrix}\]
 	In this case we get the following picture
 	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{pgfonlayer}{nodelayer}
+				\node[style=none] (lab1) at (-1.8, 0.8) {$h_1$};
+				\node[style=small box] (h1) at (-1.8, 0.3) {$a$};
+				\node[style=small box] (2) at (-1.8, -0.5) {$2$};
+				\node[style=none] (lab2) at (-1.8, -1.0) {$h_2$};
+				\node[style=none] (h1b) at (-1.8, 0.3) {};
+				\node[style=none] (th2) at (0, 0.3) {};
+				\node[style=none] (bh2) at (0, -0.3) {};
+				\node[style=none] (h2b) at (0, 0) {};
+				\node[style=none] (th3) at (1.8, 0){};
+				\node[style=none] (bh3) at (1.8, -0.6){};
+				\node[style=none] (h3c) at (1.8, -0.3){};
+				\node[style=none] (2c) at (-1.8, -0.5){};
+				\node[style=none] (lab3) at (0, 0.8) {$h_3$};
+				\node[style=medium box] (h2) at (0, 0) {$*$};
+				\node[style=none] (lab4) at (1.8, 0.5) {$h_4$};
+				\node[style=medium box] (h3) at (1.8, -0.3) {$/$};
+				\node[style=none](labv2) at (-0.9, -0.9) {$v_2$};
+				\node[style=node] (v2) at (-0.9, -0.5) {};
+				\node[style=none] (labv1) at (-0.9, 0.7) {$v_1$};
+				\node[style=node] (v1) at (-0.9, 0.3) {};
+				\node[style=none] (labv3) at (0.9, 0.4) {$v_3$};
+				\node[style=node] (v3) at (0.9, 0) {};
+				\node[style=none] (labv4) at (2.7, 0.1) {$v_4$};
+				\node[style=node] (v4) at (2.7, -0.3) {};
+			\end{pgfonlayer}
+			\begin{pgfonlayer}{edgelayer}
+				\draw (h1b.center) to (th2.center);
+				\draw (2c.center) to (v2);
+				\draw[in=180, out=30] (v2) to (bh2.center);
+				\draw (h2b.center) to (th3.center);
+				\draw (v4) to (h3c.center);
+				%\draw (h3c) to (v4);
+				\draw[in=180, out=-30](v2) to (bh3);
+			\end{pgfonlayer}
+        	\end{tikzpicture}
+	\end{center}
+
+	\iffalse
 	\begin{center}\begin{tikzpicture}
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_1$}] (A) at (0,0) {};
 			\node[circle,fill=black,inner sep=0pt,minimum size=6pt,label=above:{$v_2$}] (B) at (0,-1.5) {};
@@ -916,7 +1052,7 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 			\node at (1.5,-0.75) {$\cdot$};
 			\node at (4.5,-1.5) {$\cdot$};
 		\end{tikzpicture}
-	\end{center}
+	\end{center}\fi
 \end{example}
 
 
@@ -2199,6 +2335,7 @@ A straightforward application of \Cref{lim} now yields the following.
 \end{corollary}
 
 
+\iffalse
 \todo{Tutta la parte qua sotto non mi è chiaro a cosa serva}
 In a category $\cat X$ with pullbacks, each $f: X \to Y$ induces a functor $f^*: \cat X/Y \to \cat X/X$,
 which sends each morphism $a: A \to Y$ of $\cat X$ onto its pullback along $f$, $p_a$, and each morphism $h: a \to b$ onto the unique arrow from the pullback of $a$ along $f$ to the pullback of $b$ along $f$.
@@ -2234,7 +2371,7 @@ Then, we have the following result.
 	This descriveb the action of functors and thus the adjunction, obtained considering the isomorphism on hom-sets of the categories.
 
 \end{proof}
-
+\fi
 
 %\section{Comparison with Ghica}
 %\todo{Lo vogliamo fare?}
