@@ -212,7 +212,7 @@ The use of rewriting-based visual formalisms is on the rise.
 %
 In the formal methods community, this is due also to the introduction of adhesive
 categories, where most properties of classical approaches to graph transformation, 
-such as those on parallelism and causality, can be rephrased and proved in a general and 
+such as those on parallelism and confluence, can be rephrased and proved in a general and 
 uniform way.
 %
 E-graphs (EGGs) are a formalism for program optimisation 
@@ -238,13 +238,57 @@ of the adhesive framework in modelling, for example, concurrent updates.
 
 
 \section{Introduction}
-\todo{A very nice introduction}
-\begin{itemize}
-\item general on adhesive categories
-%\item general on the use of eggs
-\end{itemize}
+The introduction of \emph{adhesive categories} marked a watershed moment for the algebraic approaches 
+to the rewriting of graph-like structures~\cite{lack2005adhesive,ehrig2006fundamentals}.
+%
+Until then, key results of the approaches on e.g. parallelism and confluence had to be proven 
+over and over again for each different formalism at hand, %let it be either xxx or xx, 
+despite the obvious similarity of the procedure.
+%
+Adhesive categories provides such a disparate set of formalisms with a common abstract framework 
+where many of these general results could be recast and uniformly proved once and for all.
+ 
+\vspace{.1cm}
+\noindent
+\begin{minipage}[l]{.78\linewidth }In short, following the double-pushout (DPO) approach
+to graph transformation~\cite{xxx}, a rule is given by two arrows $: K \to L$ and $r: K \rightarrow R$
+and its execution requires a match $m: L \to G$ such that the rewriting step from $G$
+to $H$ is given by the diagram aside, whose square are pushouts.
+  \end{minipage}%
+    \hfill
+  \begin{minipage}[r]{.20\linewidth }
+    \xymatrix@C=.5cm@R=.5cm{
+      L \ar[d]_{m}
+      & K \ar[r]^r \ar[l]_{l} \ar[d] & R \ar [d] \\
+      G & C \ar[r] \ar[l]                    & H
+    }
+%    \xymatrix@C=.5cm@R=.5cm{
+%      L \ar[d]_{m} \ar@{}[dr]|{(1)}
+%      & I \ar[r]^r \ar@{>->}[l]_{l} \ar[d] \ar@{}[dr]|{(2)} & R \ar [d] \\
+%      G & C \ar@{->}[r] \ar@{>->}[l]                    & H\\
+ %     & J \ar@{->}[ul] \ar@{->}[u]|{k} \ar@{->}[ur]
+ %   }
+  \end{minipage}
+\vspace{.1cm}
 
-E-graphs (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
+\noindent
+Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
+be present for the rule to be executed, yet they are not affected by the rule itself.
+%
+If a category is adhesive, and the arrows of the rules are monomorphisms, then the presence of a match ensures that the
+two pushouts exist, hence a rewriting step can be performed.
+%
+The theory of $\mathcal{M}, \mathcal{N}$-adhesivity~\cite{xxx} extend the core framework, still ensuring that if the arrow 
+of the rules are in $\mathcal{M}$ and the match is in $\mathcal{N}$, then the classical results from the theory of graph 
+transformation can still be lifted~\cite{xxx}. 
+%
+However, despite the elegance and effectiveness and the obvious advantages of proving a category 
+to be adhesive, proving that a given category satisfies the conditions 
+for being adhesive can be a daunting task. For this reason,  sufficient criteria have been provided for the core 
+framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, as well as for the extended one of
+$\mathcal{M}, \mathcal{N}$-adhesivity~\cite{CastelnovoGM24}.
+
+\emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
 representation and efficient implementation of equality saturation. 
 %
 Albeit a classical data structure~\cite{DetlefsNS05}, EGGs received 
@@ -252,8 +296,8 @@ new impulse after the seminal~\cite{WillseyNWFTP21} and
 developed a thriving community, as witnessed by the official website~\cite{eggs}.
 %
 The key idea of rewriting-based program optimisation is to perform the manipulation of a syntactical description 
-of a program, replacing some of its components in such a way that the semantics is preserved while improving 
-the computational costs of its actual execution. Instead of directly removing sub-programs, EGGs just add the 
+of a program, replacing some of its components in such a way that the semantics is preserved while 
+the computational costs of its actual execution are improved. Instead of directly removing sub-programs, EGGs just add the 
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
@@ -268,11 +312,13 @@ if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$
 %EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
 %a fast way to recover equality saturation. 
 
-The aim of this work is to prove that EGGs form an adhesive category. The advantages are two-fold. On the one side, 
+Building on the criterion developed in~\cite{CastelnovoGM24}, the aim of this work is to prove that EGGs form an 
+$\mathcal{M}, \mathcal{N}$-adhesive category for a suitable choice of $\mathcal{M}$ and $\mathcal{N}$.
+The advantages derived from this characterisation are two-fold. On the one side, 
 we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
-On the other side, describing the addition of equivalent sub-programs 
-in terms of DPO transformation offer the possibility of modelling parallelism and concurrency for optimisation steps 
-and discussing confluence and termination.
+On the other side, describing the optimisation steps via the DPO approach
+offers the tools for modelling their parallel and concurrent execution
+and for proving their confluence and termination.
 
 \emph{Synopsis}
 The paper has the following structure. 
