@@ -81,6 +81,11 @@ D.~R. Ghica, C.~Barrett, and A.~Tiurin.
 \newblock Equivalence hypergraphs: E-graphs for monoidal theories.
 \newblock {\em CoRR}, abs/2406.15882, 2024.
 
+\bibitem{ghicaZan}
+D.~R. Ghica and F.~Zanasi.
+\newblock Hierarchical string diagrams and applications.
+\newblock {\em CoRR}, abs/2305.18945, 2023.
+
 \bibitem{heindel2009category}
 T.~Heindel.
 \newblock {\em A category theoretical approach to the concurrent semantics of
@@ -96,14 +101,22 @@ P.~T. Johnstone, S.~Lack, and P.~Sobocinski.
 \bibitem{kelly2006note}
 G.~M. Kelly.
 \newblock A note on relations relative to a factorization system.
-\newblock In {\em Category Theory: Proceedings of the International Conference
-  held in Como, Italy, July 22--28, 1990}, pages 249--261. Springer, 2006.
+\newblock In A.~Carboni, M.~Pedicchio, and G.~Rosolini, editors, {\em Category
+  Theory 1990}, volume 1488 of {\em Lecture Notes in Mathematics}, pages
+  249--261. Springer, 2006.
 
 \bibitem{lack2005adhesive}
 S.~Lack and P.~Soboci{\'n}ski.
 \newblock Adhesive and quasiadhesive categories.
 \newblock {\em RAIRO-Theoretical Informatics and Applications}, 39(3):511--545,
   2005.
+
+\bibitem{lack2006toposes}
+S.~Lack and P.~Sobocinski.
+\newblock Toposes are adhesive.
+\newblock In A.~Corradini, H.~Ehrig, U.~Montanari, L.~Ribeiro, and
+  G.~Rozenberg, editors, {\em ICGT 2006}, volume 4178 of {\em LNCS}, pages
+  184--198. Springer, 2006.
 
 \bibitem{mac2013categories}
 S.~Mac~Lane.
@@ -129,6 +142,6 @@ P.~Wadler.
 \bibitem{WillseyNWFTP21}
 M.~Willsey, C.~Nandi, Y.~R. Wang, O.~Flatt, Z.~Tatlock, and P.~Panchekha.
 \newblock egg: Fast and extensible equality saturation.
-\newblock {\em Proc. {ACM} Program. Lang.}, 5({POPL}):1--29, 2021.
+\newblock In {\em POPL 2021}, volume~5 of {\em PACMPL}, pages 1--29. ACM, 2021.
 
 \end{thebibliography}
