@@ -1201,7 +1201,7 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 
 Preservation of inputs characterizes regular monos in $\tg$.
 
-\begin{proposition}\label[proposition]{lem:reg} Let $(i,j)$ be a mon between two term graphs  $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and  $(l', !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$. Then it is a regular mono if and only if it preserves the input nodes.
+\begin{proposition}\label[proposition]{lem:reg} Let $(i,j)$ be a mono between two term graphs  $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and  $(l', !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$. Then it is a regular mono if and only if it preserves the input nodes.
 \end{proposition}
 
 This characterization, in turn, provides us with the following result \cite{CastelnovoGM24,castelnovo2023thesis}. 
@@ -1290,7 +1290,7 @@ Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ th
 \parbox{3cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
 \begin{restatable}{corollary}{mn}\label{cor:mono2}
-	An arrow $(h_E, h_V, h_Q): \mathcal{G\to H}$ in $\EqHyp$ is a regular mono if and only if $h_E, h_V$ and $h_C$ are all monos.
+	An arrow $(h_E, h_V, h_Q): \mathcal{G\to H}$ in $\EqHyp$ is a regular mono if and only if all its components are injective functions.
 \end{restatable}
 
 
