@@ -1495,7 +1495,41 @@ Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = 
 	\]
 	
 	
-	\begin{example}
+	\begin{example} 
+		We can consider the following four graphs with equivalence:
+		\[\begin{split}
+		\mathcal{G}_1&=(\emptyset, \emptyset, \emptyset, \id{\emptyset^\star}, \id{\emptyset^\star}, \id{\emptyset})\\
+		\mathcal{G}_3&=(\emptyset, 2, 2, ?_{2^\star}, ?_{2^\star}, \id{2})
+		\end{split} \qquad \begin{split}
+		\mathcal{G}_2&=(\emptyset, 2, 1, ?_{2^\star}, ?_{2^\star}, !_2)\\
+		\qquad \mathcal{G}_4&=(\emptyset, 4, 3, ?_{4^\star}, ?_{4^\star}, \pi)
+		\end{split}\]
+		where $\pi\colon 4\to 3$ is defined as
+		\[0\mapsto 0 \quad 1\mapsto 0 \quad 2\mapsto 1 \quad 3\mapsto 2 \]
+		
+		Now, we have morphisms $h\colon \mathcal{G}_1\to \mathcal{G}_2$, $k\colon \mathcal{G}_1\to \mathcal{G}_3$, $z\colon \mathcal{G}_2\to \mathcal{G}_4$, $p\colon \mathcal{G}_3\to \mathcal{G}_4$ defined as:
+		\[
+		h:=(\id{\emptyset}, ?_2, ?_1)\quad k:=(\id{\emptyset}, ?_2, ?_2)
+		\quad 
+		z:=(\id{\emptyset}, j, z_Q)\quad p:=(\id{\emptyset}, j', p_Q)
+		\]
+		where 
+		\[\begin{matrix}
+			j\colon 2\to 4 & \begin{matrix}
+			0\mapsto 0\\
+			1  \mapsto 1
+			\end{matrix} & z_Q\colon 1\to 3 &0\mapsto 0 & j'\colon 2\to 4 &\begin{matrix}0 \mapsto 2\\
+			1 \mapsto 3
+			\end{matrix} & p_Q\colon 2\to 3  &\begin{matrix}
+		0\mapsto 1\\
+		1\mapsto 2
+			\end{matrix}
+		\end{matrix} \]
+		
+		Notice that  $\pi\circ j=z_Q$ and$\pi\circ j'=p_Q$  Thus in this way $(\mathcal{G}_4, \{z, p\})$ becomes a pushout for $h$ along $k$.
+		
+		Let now $a$
+		
 		Un controesempio:
 		Consideriamo i grafi senza edge e con nodi dati dal seguente cubo in cui le facce verticali sono pb e le due orizzontali sono po (tutte le frecce sono inclusioni)
 		\[
