@@ -3,6 +3,8 @@
 \usepackage{bbding}
 %\Envelope
 \newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
+
+\newcommand{\pbc}{\mathsf{Pb}}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 \usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
@@ -481,7 +483,7 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 We can state some useful properties of $\mathcal{M}$-adhesive category.
 
 \begin{restatable}{proposition}{regmono}\label{prop:regmono}
-	Let $\X$ be an $\mathcal{M}$-adhesive categoru. Then it holds
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Then it holds
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
 		\item every arrow in $\mathcal{M}$ is a regular mono.
@@ -570,15 +572,17 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 %
 %\input{./fact_sys}
 
-\todo{Inserire bla bla}
+Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for the proof).
 
-%\todo{'sta cragna che segue è falsa come una moneta da 3 euro: cancellare}
-%\noindent
-%\parbox{7.5cm}{
-%	\begin{restatable}{proposition}{mps}\label{prop:kerset}
-%		Suppose that in $\Set$ the cube aside is given, whose top and bottom faces are pushout and such that $m\colon A\mto C$, $m'\colon A'\mto C'$ and $g\colon C\mto D$ are injections. Then the right square, made by the kernel pairs of the vertical arrows, is a pushout.
-%\end{restatable}}\hfill 
-%\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
+\noindent
+\parbox{7.5cm}{\begin{restatable}{lemma}{mps}\label{prop:kerset}
+	Suppose that in $\Set$ the cube in the diagram on the left is given, whose top and bottom faces are pushout, the left face a pulllback and such that $m\colon A\mto C$ is an injection. Then the following are true:
+	\parbox{14cm}{\begin{enumerate}
+		\item the right face of the cube is a pullback too;
+		\item the right square, made by the kernel pairs of the vertical arrows, is a pushout.
+	\end{enumerate}}
+\end{restatable}}\hfill 
+\parbox{6cm}{\vspace{-1.1cm}\xymatrix@C=10pt@R=5pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
@@ -1132,11 +1136,12 @@ We now examine some properties of $\tg$, in order to study its adhesivity proper
 
 \begin{proposition}\label[proposition]{term:left}The forgetful functor $U_{\tg}$ has a left adjoint $\Delta_{\tg}$.
 \end{proposition}
+\commentato{
 \begin{proof}
 	This follows noticing that $\Delta_{\Sigma}(X)$ is a term graph for every object $X$.
-\end{proof}
+\end{proof}}
 
-We can list some categorical properties of $\tg$
+We can list some other categorical properties of $\tg$.
 
 
 \begin{proposition}
@@ -1300,30 +1305,9 @@ Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ th
 
 \begin{restatable}{corollary}{mn}\label{cor:mono2}
 	An arrow $(h_E, h_V, h_Q): \mathcal{G\to H}$ in $\EqHyp$ is a regular mono if and only if all its components are injective functions.
-\end{restatable}
+\end{restatable}\todo{manca ancora la dimostrazione dell'implicazione da destra a sinistra}
 
 
-\iffalse 
-\begin{proposition}
-	Let $h = (h_E, h_V, h_C): \mathcal{G \to H}$ be a regular mono in $\EqHyp$.
-	Then, $h_E$ and $h_V$ are monos and $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{H}\circ h_V$ if and only if $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$.
-\end{proposition}
-
-\begin{proof}
-	By \Cref{cor:mono2}, we have that $h_E, h_V$ and $h_C$ are all monos.
-	Hence, by \Cref{cor:kermono}, $(K, \pi_1, \pi_2)$ is the kernel pair of $q_\mathcal{G}$ if and only if it is the kernel pair also of $h_C \circ q_\mathcal{G}$, since $h_C$ is mono by hypothesis.
-	The thesis follows from $h_C \circ q_\mathcal{G} = q_H \circ h_V$, and from the hypothesis of $h_E$ mono.
-\end{proof}
-
-\begin{remark}
-	It is possible to restate the last proposition, by \Cref{ex:kernel_pairs_in_Set}, as 
-	\begin{displayquote}
-		\textit{$h_E$ and $h_V$ are mono and, for every $v, v'\in V_H$, $q_H(h_V(v))=q_H(h_V(v'))$ if and only if $q_G(v)=q_G(v')$}
-	\end{displayquote}
-	That is, a regular mono in $\EqHyp$ is a morphism that both reflects and preserves equivalences.
-	% besides preserving them.
-\end{remark}
-\fi 
 
 
 
@@ -1360,7 +1344,23 @@ On the one hand, if we apply $\quo$ and compute the pullback of the resulting mo
 }
 
 
-We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$. In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
+We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$.  As a first step we need to introduce a class $\mathcal{M}$ of monos.
+
+\begin{definition}
+	contenuto...
+\end{definition}
+
+
+\begin{restatable}{lemma}{pbm}\label{lem:pbmono}
+	The class $\pbc$ is closed under composition, decomposition and it is stable under pullbacks and pushouts
+\end{restatable}
+
+
+
+
+
+
+In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
 
 \begin{lemma}\label{lemma:stab}
 	In $\EqHyp$, $\reg(\EqHyp), \mathcal{N}$-pushouts are stable.
@@ -2125,8 +2125,31 @@ The category of $\Set$ enjoys two other remarkable and useful properties; it is 
 \parbox{11.5cm}{\hspace{15pt} Extensivity means that given a family of objects $\{X_{i}\}_{i\in I}$ and a family of squares as the one on the right, where $j_i$ is a  coprojection, then all the squares are pullbacks if and only if $(Z, \{k_i\}_{i\in I})$ is a coproduct.}\hfill 
 \parbox{2cm}{\xymatrix@R=15pt{Z_i \ar[r]_{k_i} \ar[d]_{f_i} & Z\ar[d]^{f} \\ X_i \ar@{>->}[r]^{j_i} & X}}
 
-These two property together yields the following fact.
+\noindent
+\parbox{11cm}{
+\begin{remark}\label{rem:disj}
+	Notice that extensivity entails that coproducts are \emph{disjoint}, i.e.~ that the pullback between two coproduct injections is given by the initial object (with initial maps ad coprojections). To see this, let $\{X, \{j_i\}_{i\in I}\}$ be the coproduct of the family $\{X_i\}_{i\in I}$ and let $k$ be an element of $I$. Then  $(X_k, \{t_i\}_{i\in I})$ with
+	\[t_i=\begin{cases}
+		\id{X_k} & i=k\\?_{X_k} & i\neq k
+	\end{cases}\]
+	is a coproduct and so the squares on the right are pullbacks.
+\end{remark}}\hfill\parbox{2cm}{\vspace{-1.5cm}\xymatrix@R=15pt{\emptyset \ar@{>->}[d]_{?_{X_i}} \ar@{>->}[r]_{?_{X_k}}& X_k \ar@{>->}[d]^{j_k} \\ X_i \ar@{>->}[r]^{j_i} & X} \xymatrix@R=15pt{X_k \ar[r]_{\id{X}} \ar[d]_{\id{X}}& X_k \ar@{>->}[d]^{j_k}\\X_k \ar@{>->}[r]^{j_k} & X}}
 
+
+In particular, the previous remark yields at once the following fact.
+
+\noindent 
+\parbox{11.5cm}{\begin{proposition}\label{prop:isempty}
+	Suppose that the square on the right is a pullback. Let $\iota \colon E\mto Y$ be the inclusion of the complement of the image of $p_1$. If there exist two  arrows $t_1\colon T\to E$ and $t_2\colon T\to X$ such that \[g\circ \iota\circ t_1= f\circ t_2\] then $T$ is empty.
+\end{proposition}}\hfill \parbox{2cm}{\vspace{-1.5cm}\xymatrix@R=15pt{P \ar[r]_{p_1} \ar[d]_{p_2}& Y \ar[d]^{g}\\X \ar[r]^{f}& Z}}
+\begin{proof}
+	By the universal property of pullbacks we get an arrow $t\colon T\to P$ such that 
+	\[p_1\circ t=\iota \circ t_1 \qquad p_2\circ t=t_2\]
+	\parbox{2cm}{\xymatrix{T \ar@{.>}[r]^{s}\ar@{>>}[dr]_{\pi} \ar@/^.4cm/[rr]^{t_1} & \emptyset \ar@{>->}[r]_{?_{E}} \ar@{>->}[d]_{?_I}& E \ar@{>->}[d]^{\iota}\\ & I \ar@{>->}[r]_{i} & Y}}\hfill \parbox{10.5cm}{Let $i\colon I\mto Y$ be the inclusion of the image of $p_1$, so that we have also an epi $q\colon P\eto I$. By definition of complement $(Y, \{i, \iota\})$ is a coproduct, thus by  \Cref{rem:disj} the inner square in the diagram on the left is a pullback and we get a dotted arrow $s\colon T\to \emptyset$ filling the diagram. But a set with an arrow towards the empty set must be empty and we conclude. \qedhere }
+\end{proof}
+
+
+Extensivity and distributivity, moreover, yield the following fact.
 
 \begin{lemma}\label{lem:nodim}
 	Let $f,g\colon A\rightrightarrows B+C$ be two arrows with a coproduct as codomain. Then $(A, \{j_i\}_{i=0}^
@@ -2137,43 +2160,140 @@ These two property together yields the following fact.
 		C\times B \ar@{>->}[r]_-{i_C\times i_B} & (B+C)\times (B+C) & C\times C \ar@{>->}[r]_-{i_C\times i_C} & (B+C)\times (B+C)}\]
 \end{lemma}
 
+We are now ready to exploit the previous propertis to prove \Cref{prop:kerset}, as promised.
 
-
-\commentato{
 \noindent
-\parbox{7.5cm}{
-\mps*}
-\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
+\parbox{7.5cm}{\mps*}\hfill
+\parbox{6cm}{\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{->}[rr]_{g} & & D }}
 
-\begin{proof}
-		Let $E'\subseteq C'$ be the complement of the image of $m'$ and $\iota\colon E'\mto B'$ be the corresponding inclusion. By \Cref{lem:po_set} we know that $(D', \{n', g'\circ \iota\})$ is a coproduct. Thus by \Cref{lem:nodim} we also know that there exists $K_0$, $K_1$, $K_2$ and $K_3$ fitting in the following four pullback diagrams and such that $\{K_d, \{j_i\}_{i=0}^3\}$ is a coproduct.
-	\[\xymatrix@C=45pt{K_0 \ar@{>->}[r]^{j_0}  \ar[d]_{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
-		B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota)} & D'\times D'}\]
-	\[ \xymatrix@C=45pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
-		E'\times B' \ar@{>->}[r]_-{(g'\circ \iota) \times n'} & D'\times D' & E'\times E' \ar@{>->}[r]_-{(g'\circ \iota)\times (g'\circ \iota)} & D'\times D'}\]
+\begin{proof}\label{proof:kerset}
+	We can start noticing that $m'$, being the pullback of $m$ is mono too. This, in turn, entails that $n$ and $n'$ are mono too because in $\Set$, as in any adhesive category, monomorphisms are stable under pushouts.  
 	
+	\noindent 
+	\parbox{11.5cm}{\hspace{15pt}
+	Let $\iota' \colon E'\mto C'$ and $\iota\colon E\to C$ be the inclusions of the complement of the images of of $m'$ and $m$ respectively . By \Cref{lem:po_set}, $(D', \{n', g'\circ \iota\})$ and $(D, \{n, g\circ \iota\})$ are coproducts. We can also notice that $c\circ \iota'$ factors through $E$, as shown by the square on the right.}\hfill \parbox{4cm}{\vspace{-5pt}\xymatrix@R=15pt{E' \ar@{.>}[d]_{w} \ar@{>->}[r]_{\iota'} & C' \ar[d]^{c}\\ E \ar@{>->}[r]_{\iota} & C}}
+	
+	\noindent
+	\parbox{10.5cm}{\hspace{15pt}To see this, let $e$ be in $E'$ and suppose that  $c(\iota'(e))=m(x)$ for some $x\in A$. Then we can apply the  universal property of pullbacks to build the dotted arrow in the diagram aside, where $v_0$ and $v_1$ are the arrows picking $x$ and $\iota'(e)$, respectively. But then $e$ must belong to the image of $m'$, which is a contradiction.}\hfill  \parbox{4cm}{\xymatrix@R=15pt{1 \ar[dr]_{v_0}  \ar@/^.3cm/[rr]^{v_1} \ar@{.>}[r]_{v}& A' \ar[d]_{a} \ar@{>->}[r]_{m'} & C' \ar[d]^{c}\\& A  \ar@{>->}[r]^{m}& C}}
+	
+	
+	\begin{enumerate}
+		\item Consider two arrows $t_1\colon T\to D' $ and $t_2\colon T\to B$ such that $d\circ t_1=n\circ t_2$. By extensivity
+		
+		\noindent\parbox{9.5cm}{ of $\Set$, we already know that $(T, \{l_i\}_{i=0}^1)$ is a coproduct, where $l_i\colon T_i\mto T$ are defined by the diagram aside, whose two halves are pullbacks aside. }\hfill\parbox{4cm}{\xymatrix@R=15pt{T_0 \ar@{>->}[r]_{l_0} \ar[d]_{h_0} & T \ar[d]^{t_1} & T_1 \ar@{>->}[l]^{l_1} \ar[d]^{h_1}\\ E' \ar@{>->}[r]^{g'\circ \iota'} & D' & B' \ar@{>->}[l]_{n'}}}
+		
+		If we compute we get
+		\[g\circ c \circ \iota' \circ h_0=d\circ g'\circ \iota' \circ h_0=d\circ t_1\circ l_0=n\circ t_2\circ l_0\]
+		
+		By adhesivity of $\Set$ and \Cref{prop:regmono} the bottom face of the given cube is a pullback, therefore there exists an arrow $u\colon T_0\to A$ such that 
+		\[f\circ u=b\circ t_2\circ l_0 \qquad m\circ u=c\circ \iota'\circ h_0\]
+		
+	By \Cref{prop:isempty} we conclude that $T_0$ is empty. Therefore $l_1$ is an isomorphism and we have $n'\circ h_1\circ l^{-1}_1=t_1$. On the other hand
+\[n\circ b\circ h_1\circ l^{-1}_1=d\circ n'\circ h_1\circ l^{-1}_1=d\circ t_1=n\circ t_2\]
+And we can conclude that $b\circ \circ h_1\circ l^{-1}_1=t_2$ because $n$ is a mono. The thesis now follows from the fact that  also $n'$ is mono.
+		
+		\item  By \Cref{lem:nodim} we know that there exists $K_0$, $K_1$, $K_2$ and $K_3$ fitting in the following four pullback diagrams and such that $\{K_d, \{j_i\}_{i=0}^3\}$ is a coproduct.
+		\[\xymatrix@C=45pt{K_0 \ar@{>->}[r]^{j_0}  \ar[d]_{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+			B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota')} & D'\times D'}\]
+		\[ \xymatrix@C=45pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+			E'\times B' \ar@{>->}[r]_-{(g'\circ \iota') \times n'} & D'\times D' & E'\times E' \ar@{>->}[r]_-{(g'\circ \iota')\times (g'\circ \iota')} & D'\times D'}\]
+			
 	Now, if we compute we get
-	\begin{align*}
-		n\circ b\circ p_0&= d\circ n'\circ p_0= d\circ \pi^1_d\circ j_0=d\circ \pi^2_d\circ j_0=d\circ n'\circ q_0=n\circ b\circ q_0\\
-g\circ c \circ  \iota \circ p_3&=d\circ g' \circ  \iota p_3=d\circ \pi^1_d\circ j_3=d\circ \pi^2_d\circ j_3=d\circ g'\circ \iota \circ q_3= g \circ c\circ \iota\circ q_3
-	\end{align*}
-	Thus, since $n$ and $g$ are mono we get the dotted arrows in the diagram below.
-\[\xymatrix{K_0 \ar@/^.3cm/[drr]^{p_0} \ar@{.>}[dr]^{\phi_0} \ar@/_.3cm/[ddr]_{q_0} &&& K_3 \ar[r]^{p_3} \ar@{.>}[dr]^{\phi_3} \ar[d]_{q_3}& E' \ar[dr]^{\iota} \\ &K_b \ar[r]^{\pi^1_d} \ar[d]_{\pi^2_d}& B' \ar[d]^{b} & E' \ar[dr]_{\iota}&K_c \ar[r]^{\pi^1_d} \ar[d]_{\pi^2_d} & C'  \ar[d]^{c}\\ & B' \ar[r]_{b} & B && C' \ar[r]_{c} & C }\]
-	
-	Now, we also know that $(C', \{m', \iota\})$ is a coproduct, thus we can apply again \Cref{lem:nodim} to $K_c$ to conclude that $(K_c, \{k_i\}_{i=0}^4)$ is a coproduct, where $k_i\colon K^i_c\to K_c$ is defined by the following pullbacks.
-	
-	\[\xymatrix@C=45pt{K_0 \ar@{>->}[r]^{j_0}  \ar[d]_{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
-		B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota)} & D'\times D'}\]
-	\[ \xymatrix@C=45pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
-		E'\times B' \ar@{>->}[r]_-{(g'\circ \iota) \times n'} & D'\times D' & E'\times E' \ar@{>->}[r]_-{(g'\circ \iota)\times (g'\circ \iota)} & D'\times D'}\]
-	
-	
-	
-	
-	
-	Let $u\colon K_b\to Z$ and $v\colon K_c\to Z$ be two arrows such that $u\circ k_{f'}=v\circ k_{m'}$. We want to construct an arrow $w\colon K_d\to Z$ such that $w\circ k_{g'}=v$ and $w\circ k_{n'}=u$.
+\begin{align*}
+	n\circ b\circ p_0&= d\circ n'\circ p_0= d\circ \pi^1_d\circ j_0=d\circ \pi^2_d\circ j_0=d\circ n'\circ q_0=n\circ b\circ q_0\\
+	g\circ c \circ  \iota' \circ p_3&=d\circ g' \circ  \iota' p_3=d\circ \pi^1_d\circ j_3=d\circ \pi^2_d\circ j_3=d\circ g'\circ \iota' \circ q_3= g \circ c\circ \iota'\circ q_3
+\end{align*}
+Thus, since $n$ and $g$ are mono we get the dotted arrows in the diagram below.
+\[\xymatrix{K_0 \ar@/^.3cm/[drr]^{p_0} \ar@{.>}[dr]^{\phi_0} \ar@/_.3cm/[ddr]_{q_0} &&& K_3 \ar[r]^{p_3} \ar@{.>}[dr]^{\phi_3} \ar[d]_{q_3}& E' \ar[dr]^{\iota'} \\ &K_b \ar[r]^{\pi^1_b} \ar[d]_{\pi^2_b}& B' \ar[d]^{b} & E' \ar[dr]_{\iota'}&K_c \ar[r]^{\pi^1_c} \ar[d]_{\pi^2_c} & C'  \ar[d]^{c}\\ & B' \ar[r]_{b} & B && C' \ar[r]_{c} & C }\]
+
+Notice, moreover, that 
+\[(\pi^1_d, \pi^2_d)\circ k_{g'}\circ \phi_3=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ \phi_3=(g'\times g')\circ (\iota'\circ p_3, \iota'\circ q_3)\]
+and so $k_{g'}\circ \phi_3=j_3$.
+
+
+Now, we also have
+\begin{align*}
+	n\circ b\circ p_1&=d\circ n'\circ p_1=d\circ \pi^1_d\circ j_1=d\circ \pi^2_d\circ j_1=d\circ g'\circ \iota'\circ q_1\\
+	n\circ b\circ q_2 &=d\circ n'\circ p_2=d\circ\pi^2_D\circ j_2
+	=d\circ \pi^1_d\circ j_2=d\circ g'\circ \iota'\circ p_2
+\end{align*}
+			
+			Since the bottom face of the original cube is a pullback (again by \Cref{prop:regmono}), we conclude that there exist arrows $k_1\colon  K_1\to A$ and $k_2\colon K_2\to A$ such that
+			\[m\circ k_1=\iota'\circ q_1 \quad f\circ k_1=b\circ p_1 \quad m\circ k_2=\iota'\circ q_2 \quad f\circ k_2=b\circ q_2\]
+			
+			By \Cref{prop:isempty} we conclude that $K_1$ and $K_2$
+ are both empty. In particular, we can also deduce that $(K_d, \{j_0, j_3\})$ is a coproduct.
+ 
+ 	\smallskip
+ \parbox{7.5cm}{We can go further. The outer part of the diagram on the right commutes, so that we have the dotted $\psi_0\circ K_b\to K_0$.
+ Now, on the one hand $\phi_0\circ \psi_0=\id{K_b}$ because if we compute we get:
+  \[(\pi^1_b, \pi^2_b)\circ \phi_0\circ \psi_0=(p_0, q_0)\circ \psi_0=(\pi^1_b, \pi^2_b)\]}\hfill \parbox{4cm}{\vspace{-.5cm}\xymatrix{K_b \ar[dr]_{(\pi^1_b, \pi^2_b)}  \ar@{>->}@/^.4cm/[rr]^{k_{n'}} \ar@{.>}[r]_{\psi_0}& K_0 \ar@{>->}[r]_{j_0}  \ar[d]^{(p_0, q_0)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)} \\
+ 	& B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' }
+ 	}
+
+ On the other hand, notice that 
+ \[\pi^1_{d}\circ k_{n'}\circ \phi_0=n'\circ \pi^1_b\circ \phi_0=n'\circ p_0=\pi^1_d\circ j_0 \qquad \pi^2_{d}\circ k_{n'}\circ \phi_0=n'\circ \pi^2_b\circ \phi_0=n'\circ p_0=\pi^2_d\circ j_0\]
+ 
+ Thus $k_{n'}\circ \phi_0=j_0$ and we have
+ \[(p_0, q_0)\circ \psi_0\circ \phi_0=(\pi^1_b, \pi^2_b)\circ \phi_0=(p_0, q_0)= \quad  j_0\circ \psi_0\circ \phi_0 = k_{n'}\circ \phi_0=j_0\]
+We can conclude that $\phi_0$ is an isomorphism and that $k_{n'}$ is a coproduct injection.
+
+
+ Furthermore, by definition of complement, $(C', \{\iota', m'\})$ is a coproduct. Applying again \Cref{lem:nodim} we can decompose $K_c$ in four parts, given by the pullbacks below:
+ \[\xymatrix@C=45pt{H_0 \ar@{>->}[r]^{x_0}  \ar[d]_{(y_0, z_0)}& K_c   \ar[d]^{(\pi^1_c, \pi^2_c)}& H_1 \ar@{>->}[r]^{x_1}  \ar[d]_{(y_1, z_1)} & K_c \ar[d]^{(\pi^1_c, \pi^2_c)} \\
+ 	A'\times A' \ar@{>->}[r]_-{m'\times m'} & C'\times C' & A'\times E' \ar@{>->}[r]_-{m'\times  \iota'} & C'\times C'}\]
+ \[ \xymatrix@C=45pt{H_2 \ar@{>->}[r]^{x_2}  \ar[d]_{(y_2, z_2)}& K_c   \ar[d]^{(\pi^1_c, \pi^2_c)}& H_3 \ar@{>->}[r]^{x_3}  \ar[d]_{(y_3, z_3)} & K_c \ar[d]^{(\pi^1_c, \pi^2_c)} \\
+ 	E'\times A' \ar@{>->}[r]_-{\iota' \times m'} & C'\times C' & E'\times E' \ar@{>->}[r]_-{ \iota'\times  \iota'} & C'\times C'}\]
+ 
+ 
+ Now, notice that
+ \small
+ \[\begin{split}
+(\pi^1_d, \pi^2_d)\circ k_{g'}\circ x_1&=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ x_1\\=&(g'\times g')\circ (m'\times \iota')\circ (y_1, z_1)\\=&((g'\circ m') \times (g'\circ \iota'))\circ (y_1, z_1)\\=&((n'\circ f') \times (g'\circ \iota'))\circ (y_1, z_1)\\=&(n'\times  (g'\circ \iota'))\circ (f'\circ y_1, z_1)
+ \end{split} \hspace{1pt} \begin{split}
+ (\pi^1_d, \pi^2_d)\circ k_{g'}\circ x_2&=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ x_2\\=&(g'\times g')\circ ( \iota' \times m')\circ (y_2, z_2)\\=&((g'\circ \iota') \times (g'\circ m'))\circ (y_2, z_2)\\=&( (g'\circ \iota') \times (n'\circ f'))\circ (y_2, z_2)\\=&((g'\circ \iota') \times n')\circ (y_2, f'\circ z_2)
+ \end{split} \]
+\normalsize
+ thus we have arrows $h_1\colon H_1\to K_1$ and $h_2\colon H_2\to K_2$, showing that $H_1$ and $H_2$ are empty. On the other hand, let us consider the two diagrams below.
+
+ \[ \xymatrix@C=45pt{ H_3 \ar@{.>}[d]^{\alpha_3} \ar[r]^{x_3} \ar@/_.4cm/[dd]_{(y_3, z_3)} & K_c \ar[d]_{k_{g'}}& K_3 \ar@{.>}[d]^{\beta_3} \ar@/^.3cm$ $/[dr]^{\phi_3} \ar@/_.4cm/[dd]_{(p_3, q_3)}\\K_3 \ar@{>->}[r]^{j_3}  \ar[d]^{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} &  H_3 \ar@{>->}[r]^{x_3}  \ar[d]^{(y_3, z_3)} & K_c \ar[d]^{(\pi^1_c, \pi^2_c)}  \\
+   E'\times E' \ar@{>->}[r]_-{(g'\circ \iota')\times (g'\circ \iota')} & D'\times D' & E'\times E' \ar@{>->}[r]_-{ \iota'\times  \iota'} & C'\times C'}\]
+ Their solid part commute, indeed we have:
+ \[\begin{split}
+ 	(\pi^1_d, \pi^2_d\circ k_{g'})\circ x_3&=(g'\times g')\circ (\pi^1_c, \pi^2_c) \circ x_3\\=&(g'\times g')\circ (\iota'\times \iota')\circ (y_3\times z_3)\\=&(g'\circ \iota') \times (g'\circ \iota')\circ (y_3, z_3)
+ \end{split}\qquad \begin{split}
+ (\pi^1_c, \pi^2_c)\circ \phi_3=&(\iota'\circ p_3, \iota' \circ q_3)\\=&
+(\iota'\times \iota')\circ (p_3, q_3)\\& \end{split}\] 
+ 
+Thus we get the dotted arrows $\alpha_3$ and $\beta_3$. Now, they are one the inverse of the other. Indeed on the one hand we have:
+\begin{align*}
+j_3\circ \alpha_3\circ \beta_3&=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=\phi_3 \\
+(p_3, q_3)\circ \alpha_3\circ \beta_3&=(y_3, z_3)\circ \beta_3=(p_3, q_3) 
+\end{align*}
+ On the other, notice that
+ \[(\pi^1_c, \pi^2_c)\circ \phi_3\circ \alpha_3 =(\iota'\times \iota')\circ (p_3, q_3)\circ \alpha_3= (\iota'\times \iota')\circ (y_3, z_3)=(\pi^1_c, \pi^2_c)\circ x_3\]
+ Therefore $\phi_3\circ \alpha_3=x_3$ and thus $x_3\circ \beta_3\circ \alpha_3=x_3$. Moreover:
+ \[(y_3, z_3)\circ \beta_3\circ \alpha_3=(p_3, q_3\circ \alpha_3)=(y_3, z_3)\]
+ 
+ Summing up, we have just proved that $(K_c, \{x_0, \phi_3\})$ is a coproduct.
+ 
+ 
+ Let now $\gamma\colon K_b\to Z$ and $\delta\colon K_c\to Z$ be two arrows such that $\gamma\circ k_{f'}=\delta\circ k_{m'}$. We want to construct an arrow $\theta\colon K_d\to Z$ such that $\theta\circ k_{g'}=\delta$ and $\theta\circ k_{n'}=\gamma$.	
+ 
+ Now, we have already proved that $(K_d, \{k'_n, j_3\})$ is a coproduct, thus there is a unique arrow $\theta\colon K_d\to Z$ such that 
+ \[\theta \circ k'_n=\gamma \qquad \theta \circ j_3=\delta \circ \phi_3 \]
+ Now, on the one hand we have
+ \begin{align*}
+ 	\theta \circ k_{g'}\circ \phi_3=\theta \circ  j_3=\delta\circ \phi_3 
+ \end{align*}
+ 
+ On the other hand, 
+ \[(\pi^1_d, \pi^2_d)\circ k_{g'}\circ x_0=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ x_0=(g'\times g')\times (m'\times m')\circ (y_0, x_0)=(n'\circ n')\ (f')\]
+ 
+			 \qedhere 
+	\end{enumerate}
 \end{proof}
-}
+
 
 \begin{proof} 
 	Let $u\colon K_b\to Z$ and $v\colon K_c\to Z$ be two arrows such that $u\circ k_{f'}=v\circ k_{m'}$. We want to construct an arrow $w\colon K_d\to Z$ such that 
