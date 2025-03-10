@@ -7,6 +7,11 @@ G.~G. Azzi, A.~Corradini, and L.~Ribeiro.
 \newblock {\em Journal of Logical and Algebraic Methods in Programming},
   109:100482, 2019.
 
+\bibitem{concur2006}
+P.~Baldan, F.~Gadducci, and U.~Montanari.
+\newblock Concurrent rewriting for graphs with equivalences.
+\newblock {\em CONCUR2006}, 2006.
+
 \bibitem{BehrHK23}
 N.~Behr, R.~Harmer, and J.~Krivine.
 \newblock Fundamentals of compositional rewriting theory.
