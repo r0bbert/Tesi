@@ -1459,7 +1459,68 @@ Now, $q'_4$ is a regular epi and so it is the coequalizer of its kernel pair, he
 \end{proof}
 
 
-\begin{example} 
+\begin{example}
+		\[
+                \xymatrix@C=10pt@R=6pt{
+                &\emptyset \ar@{>->}[dd]|\hole_(.65){a}\ar@{>->}[rr]^{v} \ar@{>->}[dl]_{u} &&
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                                \node[style=node](v) at (0, 0){};
+                                \node[style=none] at(0, 0.5){$c$};
+		\end{pgfonlayer}
+                \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
+                \end{tikzpicture} \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{y} \\
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(0, 0){};
+                        \node[style=none]at(0, 0.5){$b$};
+                \end{pgfonlayer}
+                \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
+        \end{tikzpicture}
+                \ar@{>->}[dd]_{c}\ar@{>->}[rr]^(.7){z} & &
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(-0.5, 0){};
+                        \node[style=none]at(-0.5, 0.5){$b$};
+                        \node[style=node]at(0.5, 0){};
+                        \node[style=none]at(0.5, 0.5){$c$};
+                \end{pgfonlayer}\begin{pgfonlayer}{eqlayer}
+                        \draw[dashed, rounded corners](-0.8, 0.3) rectangle (0.8, -0.3);
+                \end{pgfonlayer}\end{tikzpicture}
+                \ar@<2ex>@{>->}[dd]_(.3){d}\\&
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(0, 0){};
+                        \node[style=none]at(0, 0.5){$a$};
+                \end{pgfonlayer}
+                \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
+        \end{tikzpicture}
+                \ar@{>->}[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && 
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(-0.5, 0){};
+                        \node[style=none]at(-0.5, 0.5){$a$};
+                        \node[style=node]at(0.5, 0){};
+                        \node[style=none]at(0.5, 0.5){$c$};
+                \end{pgfonlayer}\begin{pgfonlayer}{eqlayer}
+                        \draw[dashed, rounded corners](-0.8, 0.3) rectangle (0.8, -0.3);
+                \end{pgfonlayer}\end{tikzpicture}
+                \ar@{>->}[dl]^{n} \\
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(-0.5, 0){};
+                        \node[style=none]at(-0.5, 0.5){$a$};
+                        \node[style=node]at(0.5, 0){};
+                        \node[style=none]at(0.5, 0.5){$b$};
+                \end{pgfonlayer}\begin{pgfonlayer}{eqlayer}
+                        \draw[dashed, rounded corners](-0.8, 0.3) rectangle (0.8, -0.3);
+                \end{pgfonlayer}\end{tikzpicture}
+                \ar@{>->}[rr]_{g} & & 
+                \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
+                        \node[style=node](v)at(0, 0){};
+                        \node[style=none]at(0, 0.5){$a$};
+                        \node[style=node]at(1, 0){};
+                        \node[style=none]at(1, 0.5){$b$};
+                        \node[style=node]at(2, 0){};
+                        \node[style=none]at(2, 0.5){$c$};
+                \end{pgfonlayer}\begin{pgfonlayer}{eqlayer}
+                        \draw[dashed, rounded corners](-.3, 0.3) rectangle (2.3, -0.3);
+                \end{pgfonlayer}\end{tikzpicture} }
+\]
 	
 	\todo{Qua va l'esempio di Fabio}
 \end{example}
