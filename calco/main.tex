@@ -1662,6 +1662,77 @@ Being a purely graphical representation, EGGS allows for redundancy and possibly
 so that e.g. a term such as $a \div a$ admits a few different representations as a term graph, as shown below
 %
 \[a \div a \mbox{ con 2 a sharate, con 2 a nella stessa classe di equivalenze, e con 2 a separate}\]
+
+\begin{center}\begin{tikzpicture}
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=small box](a) at (-1.8, 0){$a$};
+                \node[style=none] (aatt) at (-1.5, 0){};
+                \node[style=node](v) at (-0.9, 0){};
+                \node[style=medium box](div) at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, -0.3){};
+                \node[style=none] (divsnd) at (-0.3, 0.3){};
+                \node[style=none] (divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{edgelayer}
+                \draw(aatt.center) to (v);
+                \draw[out=-60, in=-180] (v) to (divfst.center);
+                \draw[out=60, in=-180](v) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=small box](a1) at (-1.8, -0.5){$a$};
+                \node[style=none] (a1att) at (-1.5, -0.5){};
+                \node[style=node](v1) at (-0.9, -0.5){};
+                \node[style=small box](a2) at (-1.8, 0.5){$a$};
+                \node[style=none] (a2att) at (-1.5, 0.5){};
+                \node[style=node](v2) at (-0.9, 0.5){};
+                \node[style=medium box](div) at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, -0.3){};
+                \node[style=none] (divsnd) at (-0.3, 0.3){};
+                \node[style=none] (divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{edgelayer}
+                \draw(a1att.center) to (v1);
+                \draw(a2att.center) to (v2);
+                \draw[out=0, in=-120] (v1) to (divfst.center);
+                \draw[out=0, in=120](v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+                \draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-0.6, 0.8);
+        \end{pgfonlayer}
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=small box](a1) at (-1.8, -0.5){$a$};
+                \node[style=none] (a1att) at (-1.5, -0.5){};
+                \node[style=node](v1) at (-0.9, -0.5){};
+                \node[style=small box](a2) at (-1.8, 0.5){$a$};
+                \node[style=none] (a2att) at (-1.5, 0.5){};
+                \node[style=node](v2) at (-0.9, 0.5){};
+                \node[style=medium box](div) at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, -0.3){};
+                \node[style=none] (divsnd) at (-0.3, 0.3){};
+                \node[style=none] (divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{edgelayer}
+                \draw(a1att.center) to (v1);
+                \draw(a2att.center) to (v2);
+                \draw[out=0, in=-120] (v1) to (divfst.center);
+                \draw[out=0, in=120](v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+\end{tikzpicture}
+\end{center}
+
+
 %
 Admittedly, the third one is illegal, i.e. it is an object of $\EqTGs$ but not one of $\GEqTGs$: constants have no input, 
 and nodes that are targets of edges with the same label and source the empty word must be equivalent,
