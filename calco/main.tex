@@ -2323,21 +2323,28 @@ We will also need the following well-known fact about regular epis.
 \parbox{2cm}{\xymatrix@R=15pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[ur]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that}
 \[(\pi^d_E, \pi^d_V, \pi^dQ)\circ (h_E, h_V, k_Q)=(h^d_E, h^d_V, h^d_Q)\] 
 
-As in the point aboce, uniqueness is guaranteed by faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
+As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
 	\end{enumerate}
 \end{proof}
 
 \mn*
 
 \begin{proof}
-	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
-	
-	\noindent 
+\emph{Only if}
+
+	\parbox{11cm}{	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. 
+	Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
+	$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
+	is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono 
+	$m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
+	$e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}$.
+	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the thesis follows.}
+	\hfill
 	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
-	\hfill 	\parbox{11cm}{Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in $\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono $m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
-	}\hfill 
-	\[e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}\]
-	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the thesis follows.
+	
+	\noindent
+	\emph{If}
+	Let us assume instead that $h_E$, $h_V$, and $h_Q$  are monos. XXXXX
 \end{proof}
 
 \commentato{
