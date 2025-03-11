@@ -1345,16 +1345,19 @@ On the one hand, if we apply $\quo$ and compute the pullback of the resulting mo
 }
 
 
-We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$.  As a first step we need to introduce a class $\mathcal{M}$ of monos.
+We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$.  As a first step we need to introduce a class of monos.
 
 \begin{definition}
-	contenuto...
+	We define $\pbc$ as the class of all regular monos $(h_E, h_V, h_Q)\colon \mathcal{G}\to \mathcal{H}$ in $\EqHyp$ such that the square on the right is a pullback
 \end{definition}
 
 
 \begin{restatable}{lemma}{pbm}\label{lem:pbmono}
-	The class $\pbc$ is closed under composition, decomposition and it is stable under pullbacks and pushouts
+	The class $\pbc$ is closed under composition, decomposition and it is stable under pullbacks and pushouts.
 \end{restatable}
+\begin{proof}
+	Closure under composition and decomposition follows from \Cref{lem:pb1}, while stability under pushouts is the first point of \Cref{prop:kerset}. We are left with stability under pullbacks.
+\end{proof}
 
 
 
@@ -1364,7 +1367,7 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
 
 \begin{lemma}\label{lemma:stab}
-	In $\EqHyp$, $\reg(\EqHyp), \mathcal{N}$-pushouts are stable.
+	In $\EqHyp$, $\pbc$-pushouts are stable.
 \end{lemma}
 
 \begin{proof}
@@ -1391,18 +1394,59 @@ In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive
 	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ which makes the diagram aside commutative.}\hfill
 	\parbox{4cm}{\xymatrix@R=15pt{B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]_{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\& Q'_2 \ar@{>->}[r]_{m_2}& U \ar[r]_{u_2}& Q_2 }}
 
-We have to show that the top face of the cube with which we have began is a pushout. Let $\mathcal{H}$ be $(E, V, C, s, t, q)$ and suppose that there exists  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that	
-\[v_E\circ h'_E=w_E\circ k'_E\qquad v_V\circ h'_V=w_V\circ k'_V\]
+We have to show that the top face of the cube with which we have began is a pushout. Let $\mathcal{H}$ be $(E, V, Q, s, t, q)$ and suppose that there exists  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that	$v_E\circ h'_E=w_E\circ k'_E$ and $v_V\circ h'_V=w_V\circ k'_V$.
 
-We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
+\noindent 
+\parbox{9cm}{ We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}.  Concretely we have to construct the dotted arrow $v_C$ which fits in the diagram aside.} \hfill \parbox{3cm}{
+\xymatrix@C=10pt@R=6pt{
+	&B_1'\ar@{>>}[dd]|\hole_(.65){q_1'}\ar@{>->}[rr]^{h_V'} \ar[dl]_(.6){k_V'} && B_2' \ar@{>>}[dd]|\hole_(.65){q_2'} \ar[dl]_(.6){z_V'}\ar[dr]^{o_V}\\
+	B_3'  \ar@{>>}[dd]_{q_3'}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar@{>>}[dd]_(.3){q_4'} \ar[rr]^(.7){v_V}&&  V\ar[dd]^{q}\\
+	&Q_1'\ar@{>->}[rr]|\hole^(.65){h'_Q} \ar[dl]_{k'_Q} && Q_2' \ar[dl]^(.4){z_Q'}\ar[dr]^{o_Q}\\
+	Q'_3 \ar@{>->}[rr]_{p_Q'} & & Q'_4\ar@{.>}[rr]_{v_C} && Q
+}}
+
+Now, consider the cube below, $h$ is in $\pbc$ so by \Cref{lem:pb1} we know that its back face is a pullback. We can then apply the second point of \Cref{prop:kerset} to deduce that the square on the right is a pushout.
+\[\xymatrix@C=10pt@R=10pt{
+	&B_1'\ar@{>>}[dd]|(.53)\hole^(.67){s_2\circ m_1\circ q_1'}\ar@{>->}[rrrr]^{h_V'} \ar[dl]_(.6){k_V'} &&&& B_2' \ar@{>}[dd]^{m_2\circ q_2'} \ar[dl]_(.6){z_V'} & & K_{s_2\circ m_1\circ q'_1}  \ar@{>->}[rr]^-{k_{x_1}} \ar[dd]_{k_{w}}&& K_{m_2\circ q'_2} \ar[dd]^{k_{u_1}}\\
+	B_3'  \ar[dd]_{m_3\circ q_3'}\ar@{>->}[rrrr]^(.7){p_V'} & & &&B_4' \ar@{>>}[dd]_(.3){q_4'} \\
+	&T\ar@{>->}[rrrr]|(.68)\hole_{x_1} \ar[dl]_{w} &&&& U\ar[dl]^(.4){u_1} && K_{m_3\circ q'_3} \ar@{>->}[rr]_-{k_{y_1}} && K_{q'_4} \\
+	Y \ar@{>->}[rrrr]_{y_1} & & && Q'_4}\]
+
+By construction we have that 	$m_3\circ q'_3 \circ \pi_{m_3 \circ q'_3}^1 = m_3\circ q'_3 \circ \pi_{m_3\circ q_3'}^2$ and
 
 
-
-Now, $d_V$ is a regular epi, thus 
-
-
-
-
+Since $m_3$ and $m_2$ are monos we have
+\[\begin{split}
+	q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2
+\end{split}\qquad\begin{split}
+	q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2
+\end{split}\]
+Computing, we obtain
+\[\begin{split}
+	q \circ v_V \circ \pi_{q_4'}^1 \circ k_{p_V'} &= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\
+	&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\
+	&= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\
+	&= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\
+	&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^2 \\
+	&= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\
+	&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{p'_V}
+\end{split}\qquad\begin{split}
+	q \circ v_V \circ \pi_{q'_4}^1 \circ k_{t_V'} &= q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^1 \\
+	&= q \circ z_V \circ \pi_{m_2 \circ q_2'}^1 \\
+	&= z_C \circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\
+	&= z_C \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\
+	&= q \circ z_V \circ \pi_{m_2 \circ q_2'}^2 \\
+	&= q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\
+	&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{t'_V}
+\end{split}\]
+Since the previous cube has a pushout as top face, by universal property, we have
+\[
+q \circ v_V \circ \pi_{q'_4}^1 = q \circ v_V \circ \pi_{q'_4}^2
+\]
+hence, $v_C$ is the mediating arrow.
+\[
+v_C \circ q'_4 \circ \pi_{q'_4}^1 = v_C \circ q'_4 \circ \pi_{q'_4}^2
+\]
 
 
 
@@ -1423,85 +1467,6 @@ Hence, $s_1\circ m_1 = h'_C$, $w \circ s_2 \circ m_1 = m_3 \circ k_C'$, $t'_C = 
 	
 	
 	
-	
-	We want to construct the dotted arrow $v_C$ which fits in the diagram below.
-	\[
-	\xymatrix@C=10pt@R=6pt{
-		&B_1'\ar[dd]|\hole_(.65){q_1'}\ar[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]|\hole_(.65){q_2'} \ar[dl]_{t_V'}\ar[dr]^{z_V}\\
-		B_3'  \ar[dd]_{q_3'}\ar[rr]^(.7){p_V'} & & B_4' \ar[dd]_(.3){q_4'} \ar[rr]^(.7){v_V}&&  V\ar[dd]^{q}\\
-		&C_1'\ar[rr]|\hole^(.65){h_C'} \ar[dl]_{k_C'} && C_2' \ar[dl]^{t_C'}\ar[dr]^{z_C}\\
-		C'_3 \ar[rr]_{p_C'} & & C'_4\ar@{.>}[rr]_{v_C} && C
-	}\]
-	By , we know that the top face of the cube below is a pushout.
-	\[\xymatrix@C=15pt@R=15pt{&K_{s_2\circ m_1\circ q'_1}\ar[dd]|\hole_(.65){\pi_{s_2\circ m_1\circ q'_1}^{1}}\ar[rr]^{k_{h'_2}} \ar[dl]_{k_{k'_2}} && K_{m_2\circ q'_2} \ar[dd]^{\pi_{m_2\circ q'_2}^{1}} \ar[dl]_{k_{t'_2}} \\ K_{m_3\circ q'_3}  \ar[dd]_{\pi_{m_3\circ q'_3}^{1}}\ar[rr]^(.7){k_{p'_2}} & & K_{q'_4} \ar[dd]_(.3){\pi_{q'_4}^{1}}\\&B'_1\ar[rr]|\hole^(.65){h'_2} \ar[dl]^{k'_2} && B'_2 \ar[dl]^{t'_2} \\B'_3 \ar[rr]_{p'_2} & & C_4}\]
-	And, since $m_3$ and $m_2$ are monos,
-	\[\begin{split}
-		q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2
-	\end{split}\qquad\begin{split}
-		q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2
-	\end{split}\]
-	Computing, we obtain
-	\[\begin{split}
-		q \circ v_V \circ \pi_{q_4'}^1 \circ k_{p_V'} &= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\
-		&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\
-		&= w_C \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\
-		&= w_C \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\
-		&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^2 \\
-		&= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\
-		&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{p'_V}
-	\end{split}\qquad\begin{split}
-		q \circ v_V \circ \pi_{q'_4}^1 \circ k_{t_V'} &= q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^1 \\
-		&= q \circ z_V \circ \pi_{m_2 \circ q_2'}^1 \\
-		&= z_C \circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\
-		&= z_C \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\
-		&= q \circ z_V \circ \pi_{m_2 \circ q_2'}^2 \\
-		&= q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\
-		&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{t'_V}
-	\end{split}\]
-	Since the previous cube has a pushout as top face, by universal property, we have
-	\[
-	q \circ v_V \circ \pi_{q'_4}^1 = q \circ v_V \circ \pi_{q'_4}^2
-	\]
-	hence, $v_C$ is the mediating arrow.
-	\[
-	v_C \circ q'_4 \circ \pi_{q'_4}^1 = v_C \circ q'_4 \circ \pi_{q'_4}^2
-	\]
-	
-	
-
-%	Let now $z: \graph{G}'_2 \to \graph H = (E, V, Q, s, t, q)$, $w: \graph G_3^1 \to \graph H$ be two morphisms such that $z \circ h' = w \circ k'$, and let $\phi:B'_4 \to V$ be the arrow induced by $z_V$ and $w_V$. We want to construct the arrow $v: C'_4 \to Q$ in the diagram below.
-	\[\begin{tikzcd}[row sep = 20, column sep = 20]
-		& {B_1'} && {B_2'} \\
-		{B_3'} && {B_4'} && V \\
-		& T && U \\
-		Y && {C_4'} && Q \\
-		& {C_1} && {C_2} \\
-		{C_3} && {C_4}
-		\arrow["{h_V'}", from=1-2, to=1-4]
-		\arrow["{k_V'}"', from=1-2, to=2-1]
-		\arrow["{s_2\circ m_1 \circ q_1'}"{description, pos=0.7}, from=1-2, to=3-2]
-		\arrow["{t_V'}", from=1-4, to=2-3]
-		\arrow["{z_V}", from=1-4, to=2-5]
-		\arrow["{m_2\circ q'_2}"{pos=0.7}, from=1-4, to=3-4]
-		\arrow["{m_3 \circ q'_3}"', from=2-1, to=4-1]
-		\arrow["q", from=2-5, to=4-5]
-		\arrow["{x_1}"{pos=0.8}, from=3-2, to=3-4]
-		\arrow["w"', from=3-2, to=4-1]
-		\arrow["{x_2}"'{pos=0.7}, from=3-2, to=5-2]
-		\arrow["{u_1}", from=3-4, to=4-3]
-		\arrow["{u_2}"{pos=0.7}, from=3-4, to=5-4]
-		\arrow["{y_2}"', from=4-1, to=6-1]
-		\arrow["{h_C}"{pos=0.8}, from=5-2, to=5-4]
-		\arrow["{k_C}", from=5-2, to=6-1]
-		\arrow["{t_C}", from=5-4, to=6-3]
-		\arrow["{p_C}"', from=6-1, to=6-3]
-		\arrow["{p_V'}"{pos=0.8}, from=2-1, to=2-3, crossing over]
-		\arrow["\phi"{pos=0.8}, from=2-3, to=2-5, crossing over]
-		\arrow["{q'_4}"'{pos=0.7}, from=2-3, to=4-3, crossing over]
-		\arrow["{y_1}"{pos=0.7}, from=4-1, to=4-3, crossing over]
-		\arrow["{d_C}"'{pos=0.7}, from=4-3, to=6-3, crossing over]
-		\arrow["v"{pos=0.8}, dashed, from=4-3, to=4-5, crossing over]
-	\end{tikzcd}\]
 	
 	By \Cref{prop:reg_epi_coeq}, $d_C$ is the coequalizer of its kernel pair. On the other hand, by \Cref{lemma:pushouts_kernel_pairs}, we know that the top face of the cube below is a pushout.
 	\[\begin{tikzcd}[row sep=20, column sep = 20]
@@ -2267,7 +2232,7 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  
  We are left with uniqueness. If $\theta'$ is another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k'_{g'}= \delta$. If we compute we get
  \[\theta'\circ j_3=\theta'\circ k_{g'}\circ x_3=\delta \circ x_3=\theta \circ k_{g'}\circ x_3=\theta \circ j_3 \]
- We already now that $\theta'\circ k_{n'}=\theta \circ k_{n'}$, so the previous identity entails that $\theta =\theta'$ as wanted.
+ We already know that $\theta'\circ k_{n'}=\theta \circ k_{n'}$, so the previous identity entails that $\theta =\theta'$.
 			 \qedhere 
 	\end{enumerate}
 \end{proof}
