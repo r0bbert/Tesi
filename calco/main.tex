@@ -1821,7 +1821,75 @@ Consider e.g. an EGG rule such $x \div x \to 1$, from the introductory example i
 can be modelled as the DPO rule below,
 which can be applied with a match that is injective on equivalence classes to the left-most and the middle EGG
 in the picture above
-\[\mbox{to draw DPO rule, x in the same equivalence class} \]
+\begin{center}
+\[\xymatrix{
+                \begin{tikzpicture}[baseline=(w)]\begin{pgfonlayer}{nodelayer}
+                \node[style=node](v1) at (-0.9, 0.3){};
+                \node[style=node](v2) at (-0.9, -0.3){};
+                \node[style=medium box] at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, 0.3){};
+                \node[style=none](divsnd) at (-0.3, -0.3){};
+                \node[style=none](divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}        
+        \begin{pgfonlayer}{edgelayer}
+                \draw(v1) to (divfst.center);
+                \draw(v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+                \draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
+        \end{pgfonlayer}\begin{pgfonlayer}{background}
+                        \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+        \end{pgfonlayer}\end{tikzpicture}
+        & \begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
+                \node[style=node](v1) at (-0.9, 0.3){};
+                \node[style=node](v2) at (-0.9, -0.3){};
+                \node[style=medium box] at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, 0.3){};
+                \node[style=none](divsnd) at (-0.3, -0.3){};
+                \node[style=none](divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}        
+        \begin{pgfonlayer}{edgelayer}
+                \draw(v1) to (divfst.center);
+                \draw(v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+                \draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
+                \end{pgfonlayer}\begin{pgfonlayer}{background}
+                        \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+                \end{pgfonlayer}
+        \end{tikzpicture}
+	\ar[l] \ar[r] &
+        \begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
+                \node[style=node](v1) at (-0.9, 0.3){};
+                \node[style=node](v2) at (-0.9, -0.3){};
+                \node[style=medium box] at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, 0.3){};
+                \node[style=none](divsnd) at (-0.3, -0.3){};
+                \node[style=none](divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+                \node[style=small box] at (0, -1){$1$};
+                \node[style=none](one) at (0.3, -1){};
+                \node[style=node](z) at (0.9, -1){};
+                \node[style=none](nil) at (0, -0.5){};
+        \end{pgfonlayer}        
+        \begin{pgfonlayer}{edgelayer}
+                \draw(v1) to (divfst.center);
+                \draw(v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+                \draw(one.center) to (z);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+                \draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
+                \draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+        \end{pgfonlayer}\begin{pgfonlayer}{background}
+                        \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+        \end{pgfonlayer}\end{tikzpicture}
+}\]\end{center}
+
 The right-hand side is a regular mono, though, and if the starting term graph is acyclic, so is also the arriving one.
 Such an asymmetry between and left- and right-hand side falls in the research about left-linear rules for 
 adhesive categories that has 
