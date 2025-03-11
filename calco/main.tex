@@ -1121,9 +1121,9 @@ We will extend our graphical notation of hypergraphs to labeled ones putting the
 
 
 \subsection{Term Graphs}
-\todo{a very nice introduction}
-
-Let us start using labelled hypergraphs to define term graphs.
+Term graphs have been adopted as a convenient way to represents terms over a signature with an explicit sharing of sub-terms,
+and as such have been a convenient tool for an efficient implementation of term rewriting~\cite{Plu:TGR-ENTCS}.
+We elaborate here on the presentation given in~\cite{CastelnovoGM24}.
 
 \begin{definition}\label[definition]{def:tg}\index{term graph}
 	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is a mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
@@ -1232,7 +1232,8 @@ This characterization, in turn, provides us with the following result \cite{Cast
 
 \section{Adding equivalences to hypergraphical structures}
 \label{hypereq}
-\todo{A very nice instroduction}
+The use of hypergraphs equipped with an equivalence relation over their nodes has been argued as a convenient way to express concurrency in the DPO approach to rewriting~\cite{concur2006}
+This section presents the framework by means of adhesive categories, including also its version for term graphs, as a stepping stone towards a analogous characterisation for e-graphs.
 
 \subsection{Hypergraphs with equivalence}
 
@@ -1460,7 +1461,12 @@ Now, $q'_4$ is a regular epi and so it is the coequalizer of its kernel pair, he
 
 
 \begin{example}
-		\[
+It is noteworthy to show that pushouts along regular monos are not stable. 
+\begin{minipage}[l]{.35\linewidth}Consider e.g. the cube aside: the vertices are just graphs without edges, and in the graphs themselves the equivalence classes 
+are denoted by encircling nodes with a dotted line. All the arrows are regular mono. It is immediate to see that the bottom face is a pushout and the side faces are pullback. Unfortunately, 
+the top face fails to be a pushout
+  \end{minipage}\hfill
+\begin{minipage}[r]{.60\linewidth}
                 \xymatrix@C=10pt@R=6pt{
                 &\emptyset \ar@{>->}[dd]|\hole_(.65){a}\ar@{>->}[rr]^{v} \ar@{>->}[dl]_{u} &&
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
@@ -1520,9 +1526,7 @@ Now, $q'_4$ is a regular epi and so it is the coequalizer of its kernel pair, he
                 \end{pgfonlayer}\begin{pgfonlayer}{eqlayer}
                         \draw[dashed, rounded corners](-.3, 0.3) rectangle (2.3, -0.3);
                 \end{pgfonlayer}\end{tikzpicture} }
-\]
-	
-	\todo{Qua va l'esempio di Fabio}
+  \end{minipage}
 \end{example}
 
 
@@ -1720,9 +1724,9 @@ The latter precisely capture EGGS, as originally
 presented in~\cite{WillseyNWFTP21}. 
 %
 Being a purely graphical representation, EGGS allows for redundancy and possibly ambiguity,
-so that e.g. a term such as $a \div a$ admits a few different representations as a term graph, as shown below
+so that e.g. a term such as $a / a$ admits a few different representations as a term graph, as shown below
 %
-\[a \div a \mbox{ con 2 a sharate, con 2 a nella stessa classe di equivalenze, e con 2 a separate}\]
+%\[a \div a \mbox{ con 2 a sharate, con 2 a nella stessa classe di equivalenze, e con 2 a separate}\]
 
 \begin{center}\begin{tikzpicture}[baseline=(w)]
         \begin{pgfonlayer}{nodelayer}
@@ -1792,8 +1796,6 @@ so that e.g. a term such as $a \div a$ admits a few different representations as
         \end{pgfonlayer}
 \end{tikzpicture}
 \end{center}
-
-
 %
 Admittedly, the third one is illegal, i.e. it is an object of $\EqTGs$ but not one of $\GEqTGs$: constants have no input, 
 and nodes that are targets of edges with the same label and source the empty word must be equivalent,
@@ -1813,36 +1815,22 @@ underlying term graph is \emph{acyclic}.
 
 What about rewriting? The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
 arrows in $\mathcal{M}$, then we can lift all the standard properties
-of the DPO approach to the category at hand. However, the structure of rules that is advanced in~\cite{DetlefsNS05},
+of the DPO approach.
+% to the category at hand. 
+However, the structure of rules that is advanced in~\cite{DetlefsNS05},
 is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity, hence in $\mathcal{M}$,
-while the second component does not necessarily belong to $\mathcal{M}$. 
-%
-Consider e.g. an EGG rule such $x \div x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}, 
-can be modelled as the DPO rule below,
-which can be applied with a match that is injective on equivalence classes to the left-most and the middle EGG
-in the picture above
-\begin{center}
-\[\xymatrix{
-                \begin{tikzpicture}[baseline=(w)]\begin{pgfonlayer}{nodelayer}
-                \node[style=node](v1) at (-0.9, 0.3){};
-                \node[style=node](v2) at (-0.9, -0.3){};
-                \node[style=medium box] at (0, 0){$/$};
-                \node[style=none](divfst) at (-0.3, 0.3){};
-                \node[style=none](divsnd) at (-0.3, -0.3){};
-                \node[style=none](divout) at (0.3, 0){};
-                \node[style=node] (w) at (0.9, 0){};
-        \end{pgfonlayer}        
-        \begin{pgfonlayer}{edgelayer}
-                \draw(v1) to (divfst.center);
-                \draw(v2) to (divsnd.center);
-                \draw(divout.center) to (w);
-        \end{pgfonlayer}
-        \begin{pgfonlayer}{eqlayer}
-                \draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
-        \end{pgfonlayer}\begin{pgfonlayer}{background}
-                        \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
-        \end{pgfonlayer}\end{tikzpicture}
-        & \begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
+while the second component may not belong to $\mathcal{M}$. 
+
+\noindent
+\begin{minipage}[l]{.48\linewidth}
+Consider e.g. an EGG rule such $x / x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}.
+It can be modelled as the DPO rule aside, concisely represented as the arrow $L \rightarrow R$,
+which can be applied with a match that is injective on equivalence classes to the legal EGGs
+above.
+\end{minipage}\hfill
+\begin{minipage}[r]{.60\linewidth}
+\xymatrix{        
+ \begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
                 \node[style=node](v1) at (-0.9, 0.3){};
                 \node[style=node](v2) at (-0.9, -0.3){};
                 \node[style=medium box] at (0, 0){$/$};
@@ -1862,7 +1850,7 @@ in the picture above
                         \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
                 \end{pgfonlayer}
         \end{tikzpicture}
-	\ar[l] \ar[r] &
+	\ar@{=>}[r] &
         \begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
                 \node[style=node](v1) at (-0.9, 0.3){};
                 \node[style=node](v2) at (-0.9, -0.3){};
@@ -1888,8 +1876,10 @@ in the picture above
         \end{pgfonlayer}\begin{pgfonlayer}{background}
                         \draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
         \end{pgfonlayer}\end{tikzpicture}
-}\]\end{center}
+}
+\end{minipage}
 
+\noindent
 The right-hand side is a regular mono, though, and if the starting term graph is acyclic, so is also the arriving one.
 Such an asymmetry between and left- and right-hand side falls in the research about left-linear rules for 
 adhesive categories that has 
@@ -2475,9 +2465,8 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 \mn*
 
 \begin{proof}
-\emph{Only if}
-
-	\parbox{11cm}{	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos. 
+	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
+	\parbox{11cm}{
 	Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
 	$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
 	is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono 
@@ -2487,8 +2476,6 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 	\hfill
 	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
 	
-	\noindent
-	\emph{If}
 	Let us assume instead that $h_E$, $h_V$, and $h_Q$  are monos. XXXXX
 \end{proof}
 
