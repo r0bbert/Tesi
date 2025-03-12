@@ -1307,11 +1307,7 @@ Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ th
 
 \begin{restatable}{corollary}{mn}\label{cor:mono2}
 	An arrow $(h_E, h_V, h_Q): \mathcal{G\to H}$ in $\EqHyp$ is a regular mono if and only if all its components are injective functions.
-\end{restatable}\todo{manca ancora la dimostrazione dell'implicazione da destra a sinistra}
-
-
-
-
+\end{restatable}
 
 \commentato{
 \todo{Ripensandoci il funtore quoziente non serve: l'unico punto in cui si usa nella tesi è che il quoziente di un colimite è il colimite dei quozienti, ma questo segue dal punto $1$ di \Cref{prop:eqhyp_complete}. Inoltre la dimostrazione della creazione è sbagliata (e probabilmente quella è una cosa falsa), io cancellerei}
@@ -1442,20 +1438,20 @@ the top face fails to be a pushout
   \end{minipage}\hfill
 \begin{minipage}[r]{.60\linewidth}
                 \xymatrix@C=10pt@R=6pt{
-                &\emptyset \ar@{>->}[dd]|\hole_(.65){a}\ar@{>->}[rr]^{v} \ar@{>->}[dl]_{u} &&
+                &\emptyset \ar@{>->}[dd]|\hole \ar@{>->}[rr] \ar@{>->}[dl] &&
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
                                 \node[style=node](v) at (0, 0){};
                                 \node[style=none] at(0, 0.5){$c$};
 		\end{pgfonlayer}
                 \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
-                \end{tikzpicture} \ar@{>->}[dd]^{b} \ar@{>->}[dl]_{y} \\
+                \end{tikzpicture} \ar@{>->}[dd] \ar@{>->}[dl] \\
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
                         \node[style=node](v)at(0, 0){};
                         \node[style=none]at(0, 0.5){$b$};
                 \end{pgfonlayer}
                 \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
         \end{tikzpicture}
-                \ar@{>->}[dd]_{c}\ar@{>->}[rr]^(.7){z} & &
+                \ar@{>->}[dd]\ar@{>->}[rr] & &
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
                         \node[style=node](v)at(-0.5, 0){};
                         \node[style=none]at(-0.5, 0.5){$b$};
@@ -1471,7 +1467,7 @@ the top face fails to be a pushout
                 \end{pgfonlayer}
                 \begin{pgfonlayer}{eqlayer}\draw[dashed, rounded corners] (-0.3, -0.3) rectangle (0.3, 0.3);\end{pgfonlayer}
         \end{tikzpicture}
-                \ar@{>->}[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && 
+                \ar@{>->}[rr]|\hole \ar@{>->}[dl] && 
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
                         \node[style=node](v)at(-0.5, 0){};
                         \node[style=none]at(-0.5, 0.5){$a$};
