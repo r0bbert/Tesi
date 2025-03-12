@@ -1470,7 +1470,7 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a ri
 $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 \end{proposition}
 
-Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and let $\pbc_\Sigma$ be the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
+Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
 
 \begin{proposition}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then it holds
 	\begin{enumerate}
@@ -1479,13 +1479,13 @@ Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the label
 	\end{enumerate}
 \end{proposition}
 
-In particular, $\EqHyp_\Sigma$ has all equalizers and pullbacks.
+%In particular, $\EqHyp_\Sigma$ has all equalizers and pullbacks.
 Using \Cref{cor:mono1,cor:mono2} we immediately get the following result. 
 
 \begin{corollary}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$. Then it holds
 	\begin{enumerate}
 		\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
-		\item $h$ is a regular mono if and onky if $h_E$, $h_V$ and $h_Q$ are injective.
+		\item $h$ is a regular mono if and only if $h_E$, $h_V$ and $h_Q$ are injective.
 	\end{enumerate}
 \end{corollary}
 
@@ -1493,7 +1493,7 @@ Using \Cref{cor:mono1,cor:mono2} we immediately get the following result.
 We can now easily define term graphs with equivalence.
 
 \begin{definition}Let $\Sigma$ be an algebraic signature.
-	An object $(\mathcal{H}, l)$ of $\EqHyp_\Sigma$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We will denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyp_\Sigma$ so defined and by $I_{\eq}$ the correspoding inclusion functor.
+	An object $(\mathcal{H}, l)$ of $\EqHyp_\Sigma$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyp_\Sigma$ so defined and by $I_{\eq}$ the corresponding inclusion functor.
  \end{definition}
 
 \noindent 
@@ -1512,7 +1512,7 @@ $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are crea
  \end{restatable}
  
 \noindent
-\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image trhough $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
+\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image through $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
 
 \smallskip 
 In particular, by \Cref{cor:term} and \Cref{lemma:stab}, $\mathcal{T}$ contains all isomorphisms, is closed under composition and decomposition and stable under pushout and pullbacks.
