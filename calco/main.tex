@@ -1351,33 +1351,13 @@ We have now all the ingredient necessary to study the adhesivity properties of $
 	We define $\pbc$ as the class of all regular monos $(h_E, h_V, h_Q)\colon \mathcal{G}\to \mathcal{H}$ in $\EqHyp$ such that the square on the right is a pullback
 \end{definition}
 
+We can now prove that $\pbc$ is a class suitable to prove adhesivity with respect to it (a proof can be found in \Cref{proof:pbmono}).
 
 \begin{restatable}{lemma}{pbm}\label{lem:pbmono}
-	The class $\pbc$ is closed under composition, decomposition and it is stable under pullbacks and pushouts.
+	The class $\pbc$ contains all isomorphisms, it is closed under composition, decomposition and it is stable under pullbacks and pushouts.
 \end{restatable}
-\begin{proof}
-	Closure under composition and decomposition follows from \Cref{lem:pb1}, while stability under pushouts is the first point of \Cref{prop:kerset}. We are left with stability under pullbacks. Consider the diagrams below, in which the first square is a pullback with $h$ in $\pbc$. In particular, by \Cref{prop:eqhyp_complete}, the two halves of the diagram on the right are pullbacks and so, by \Cref{lem:pb1} the whole rectangle is a pullback too.
-	
-	\[\]
-	
-	
-		\[
-	\xymatrix@C=10pt@R=10pt{&& & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'}  \\\mathcal{P} & & \mathcal{G}_1 &
-	A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
-	&& V_{\mathcal{P}} && V_1 && Q_1\\
-	 &&&&A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E}  \\
-		\mathcal{G}_2 && \mathcal{G}_3 & V_3 \ar@{>->}[rr]_{p_E} & & A_4 && V_2 && V_3 && Q_3 }
-	\]
-	
-	Thus, by \Cref{lem:pb1} also the right rectangle is a pullback.
-\end{proof}
 
-
-
-
-
-
-In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive.
+We are now going to show that $\EqHyp$ is $\pbc$-adhesive.
 
 \begin{lemma}\label{lemma:stab}
 	In $\EqHyp$, $\pbc$-pushouts are stable.
@@ -1403,7 +1383,7 @@ In particular, we are now going to show that $\EqHyp$ is $\reg(\EqHyp)$-adhesive
 	\[\xymatrix@R=15pt{B'_3 \ar@{>>}[d]^{q'_3} \ar@/_.3cm/[dd]_{c_V} \ar@{>->}[r]^{p'_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} & & B'_2 \ar[r]^{z_V} \ar@{>>}[d]^{q'_2} \ar@/_.3cm/[dd]_{b_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4}\\ Q'_3 \ar@{>.>}[r]^{m_3}& Y  \ar@{>->}[r]^{y_1} \ar[d]_{y_2}& Q'_4 \ar[d]_{d_C}& Q'_2 \ar@{>.>}[r]^{m_2} & U \ar[d]_{u_2} \ar[r]^{u_1} & Q'_4 \ar[d]_{d_C} \\ B_3 \ar@{>>}[r]_{q_3} & Q_3 \ar@{>->}[r]_{p_Q} & Q_4 &B_2 \ar@{>>}[r]_{q_3} & Q_2 \ar[r]_{z_Q} & Q_4}\]
 
 	\noindent 
-	\parbox{8.5cm}{
+	\parbox{8.5cm}{\hspace{15pt}
 	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ which makes the diagram aside commutative.}\hfill
 	\parbox{4cm}{\xymatrix@R=15pt{B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]_{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\& Q'_2 \ar@{>->}[r]_{m_2}& U \ar[r]_{u_2}& Q_2 }}
 
@@ -1417,40 +1397,34 @@ We have to show that the top face of the cube with which we have began is a push
 		Q'_3 \ar@{>->}[rr]_{p_Q'} & & Q'_4\ar@{.>}[rr]_{v_C} && Q
 }}
 
-
-We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
-
-Now, consider the cube below, $h$ is in $\pbc$ so by \Cref{lem:pb1} we know that its back face is a pullback. We can then apply the second point of \Cref{prop:kerset} to deduce that the square on the right is a pushout.
-\[\xymatrix@C=10pt@R=10pt{
-	&B_1'\ar@{>>}[dd]|(.53)\hole^(.67){s_2\circ m_1\circ q_1'}\ar@{>->}[rrrr]^{h_V'} \ar[dl]_(.6){k_V'} &&&& B_2' \ar@{>}[dd]^{m_2\circ q_2'} \ar[dl]_(.6){z_V'} & & K_{s_2\circ m_1\circ q'_1}  \ar@{>->}[rr]^-{k_{h'_V}} \ar[dd]_{k_{k'_V}}&& K_{m_2\circ q'_2} \ar[dd]^{k_{z'_V}}\\
-	B_3'  \ar[dd]_{m_3\circ q_3'}\ar@{>->}[rrrr]^(.7){p_V'} & & &&B_4' \ar@{>>}[dd]_(.3){q_4'} \\
-	&T\ar@{>->}[rrrr]|(.68)\hole_{x_1} \ar[dl]_{w} &&&& U\ar[dl]^(.4){u_1} && K_{m_3\circ q'_3} \ar@{>->}[rr]_-{k_{p'_V}} && K_{q'_4} \\
-	Y \ar@{>->}[rrrr]_{y_1} & & && Q'_4}\]
-
-By construction we have that 
-\[m_3\circ q'_3 \circ \pi_{m_3 \circ q'_3}^1 = m_3\circ q'_3 \circ \pi_{m_3\circ q_3'}^2 \qquad  m_2\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 = m_2\circ q'_2 \circ \pi_{m_2 \circ q_2'}^2 \]
-but since $m_3$ and $m_2$ are monos this implies
+\smallskip \noindent 
+\parbox{8cm}{ \hspace{15pt}We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
+	
+	\hspace{15pt}Now, consider the cube aside, $h$ is in $\pbc$ so by \Cref{lem:pb1} we know that its back face is a pullback. We can then apply the second point of \Cref{prop:kerset} to deduce that the square on the right is a pushout.
+	
+	By construction we have that 
+	\begin{align*}
+		m_3\circ q'_3 \circ \pi_{m_3 \circ q'_3}^1& = m_3\circ q'_3 \circ \pi_{m_3\circ q_3'}^2 \\
+		m_2\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 &= m_2\circ q'_2 \circ \pi_{m_2 \circ q_2'}^2
+		\end{align*} 
+	}\hfill\parbox{4cm}{\xymatrix@C=10pt@R=10pt{
+	&B_1'\ar@{>>}[dd]|(.53)\hole_(.67){s_2\circ m_1\circ q_1'}\ar@{>->}[rr]^{h_V'} \ar[dl]_(.6){k_V'} && B_2' \ar@{>}[dd]^{m_2\circ q_2'} \ar[dl]_(.6){z_V'} & & \\
+	B_3'  \ar[dd]_{m_3\circ q_3'}\ar@{>->}[rr]^(.7){p_V'}  &&B_4' \ar@{>>}[dd]_(.3){q_4'} \\
+	&T\ar@{>->}[rr]_(.3){x_1}|(.5)\hole \ar[dl]_{w} && U\ar[dl]^(.4){u_1} \\
+	Y \ar@{>->}[rr]_{y_1} & &  Q'_4\\K_{s_2\circ m_1\circ q'_1}  \ar@{>->}[rr]_-{k_{h'_V}} \ar[dd]_{k_{k'_V}}&& K_{m_2\circ q'_2} \ar[dd]^{k_{z'_V}}\\ \\ K_{m_3\circ q'_3} \ar@{>->}[rr]^-{k_{p'_V}} && K_{q'_4}}
+}
+	but since $m_3$ and $m_2$ are monos this implies
 \[q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2 \qquad q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2\]
 	
 Computing, we obtain
-\[\begin{split}
-	q \circ v_V \circ \pi_{q_4'}^1 \circ k_{p_V'} &= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^1 \\
-	&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 \\
-	&= w_Q \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\
-	&= w_Q \circ q_3' \circ \pi_{m_3 \circ q_3}^2 \\
-	&= q \circ w_V \circ \pi_{m_3 \circ q_3'}^2 \\
-	&= q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 \\
-	&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{p'_V}
-\end{split}\qquad\begin{split}
-	q \circ v_V \circ \pi_{q'_4}^1 \circ k_{z_V'} &= q \circ v_V \circ z_V' \circ \pi_{m_2 \circ q_2'}^1 \\
-	&= q \circ o_V \circ \pi_{m_2 \circ q_2'}^1 \\
-	&= o_Q\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\
-	&= o_Q \circ q_2' \circ \pi_{m_2 \circ q_2}^2 \\
-	&= q \circ o_V \circ \pi_{m_2 \circ q_2'}^2 \\
-	&= q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 \\
-	&= q \circ v_V \circ \pi_{q'_4}^2 \circ k_{z'_V}
-\end{split}\]
-Since the previous cube has a pushout as top face, by universal property, we have
+\begin{align*}
+	&q \circ v_V \circ \pi_{q_4'}^1 \circ k_{p_V'} = q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^1= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 = w_Q \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\
+	=& w_Q \circ q_3' \circ \pi_{m_3 \circ q_3}^2 = q \circ w_V \circ \pi_{m_3 \circ q_3'}^2 = q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^2 = q \circ v_V \circ \pi_{q'_4}^2 \circ k_{p'_V}\\
+&q \circ v_V \circ \pi_{q'_4}^1 \circ k_{z_V'} = q \circ v_V \circ z_V' \circ \pi_{m_2 \circ q_2'}^1 = q \circ o_V \circ \pi_{m_2 \circ q_2'}^1 = o_Q\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 \\
+	= &o_Q \circ q_2' \circ \pi_{m_2 \circ q_2}^2 = q \circ o_V \circ \pi_{m_2 \circ q_2'}^2 = q \circ v_V \circ t_V' \circ \pi_{m_2 \circ q_2'}^2 = q \circ v_V \circ \pi_{q'_4}^2 \circ k_{z'_V}
+\end{align*}
+
+As already nopticed the square above is a pushout, hence we can conclude that
 \[
 q \circ v_V \circ \pi_{q'_4}^1 = q \circ v_V \circ \pi_{q'_4}^2
 \]
@@ -1465,45 +1439,48 @@ Now, $q'_4$ is a regular epi and so it is the coequalizer of its kernel pair, he
 \end{example}
 
 
+Having prove stability of $\pbc$-pushouts, we now turn to prove that they are Van Kampen with respect to regular monos.
+
 \begin{lemma}\label{lemma:van_kampen}
-	In $\EqHyp$, pushouts along regular monos are $\reg(\EqHyp)$-Van Kampen.
+	In $\EqHyp$, pushouts along arrows in $\pbc$ are $\reg(\EqHyp)$-Van Kampen.
 \end{lemma}
 
 \begin{proof}
-	In lieu of \Cref{lemma:stab}, it is enough to proof that, given a cube as the one below, with pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is a regular mono,
-	the front faces are pullbacks too, where $\mathcal{G}_i = (A_i, B_i, C_i, s_i, t_i, q_i)$, $\mathcal{G}'=(A_i', B_i', C_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$.
-	\[
-	\xymatrix@C=10pt@R=6pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{t'} \\ \mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d}\\&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{t} \\\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 }
-	\]
-	By \Cref{prop:eqhyp_complete} and \Cref{cor:mono_in_EqGrph}, the following two cubes have $\mathcal{M}$-pushouts as bottom faces and pullbacks as back faces,
+	
+Consider a cube as the one below on the left, with regular monos as vertical arrows,, with pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is in $\pbc$.
+In lieu of \Cref{lemma:stab}, if we show that 	the front faces are pullbacks too we can conclude.
+
+To fix the notation, let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'=(A_i', B_i', Q_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$. By \Cref{prop:eqhyp_complete} and \Cref{cor:mono2} we know that the central and right cube below have pushouts as bottom faces and pullbacks as back faces,
 	thus their front faces are pullbacks too.
 	\[
-	\xymatrix@C=10pt@R=6pt{&A_1'\ar[dd]|\hole_(.65){a_E}\ar[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]^{b_E} \ar[dl]_{t_E'} \\ A_3'  \ar[dd]_{c_E}\ar[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}\\&A_1\ar[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{t_E} \\A_3 \ar[rr]_{p_E} & & A_4 }
-	\qquad
-	\xymatrix@C=10pt@R=6pt{&B_1'\ar[dd]|\hole_(.65){a_V}\ar[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{t_V'} \\ B_3'  \ar[dd]_{c_V}\ar[rr]^(.7){p_V'} & & B_4' \ar[dd]_(.3){d_V}\\&B_1\ar[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{t_V} \\B_3 \ar[rr]_{p_V} & & B_4 }
+	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar@{>->}[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar@{>->}[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar@{>->}[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar@{>->}[dd]^{b_V} \ar[dl]_{z_V'} \\ 
+		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar@{>->}[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar@{>->}[dd]_(.3){d_E}
+		&&B_3'  \ar@{>->}[dd]_{c_V}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar@{>->}[dd]_(.3){d_V}\\
+		&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{z} & &A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E} &&B_1\ar@{>->}[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{z_V} \\
+		\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 && A_3 \ar@{>->}[rr]_{p_E} & & A_4&&B_3 \ar@{>->}[rr]_{p_V} & & B_4 }
 	\]
-	On the other hand we can consider the diagrams below, in which the inner squares are pullbacks.
-	Since the outer diagrams commute, by definition of morphism of $\EqHyp$, then we have the existence of $m_2\colon C'_2\to U$, $m_3\colon C'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
-	\[\xymatrix{C'_3 \ar@{.>}[dr]^{m_3} \ar@/^.3cm/[drr]^{p'_3} \ar@/_.3cm/[ddr]_{d_3} &&& C'_2 \ar@{.>}[dr]^{m_2} \ar@/^.3cm/[drr]^{t'_3} \ar@/_.3cm/[ddr]_{d_2}\\&Y \ar[r]_{y_1} \ar[d]_{y_2}& C'_4\ar[d]^{d_3}&& U \ar[d]_{u_2}\ar[r]_{u_1}& C'_4 \ar[d]^{d_3}\\&C_3 \ar[r]_{p_3}& C_4 &&C_2 \ar[r]_{t_3}& C_4 }\]
-	
-	\[\xymatrix{B'_3 \ar@{.>}[dr]^{a_3} \ar[r]^{p'_2} \ar[d]_{q'_3} &B'_4\ar[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{t'_2} \ar[d]_{q'_2} &B'_4\ar[dr]^{q'_4}\\C'_3 \ar[dr]_{d_3} &Y \ar[r]_{y_1} \ar[d]_{y_2}& C'_4\ar[d]^{d_3}&C_2' \ar[dr]_{d_2}& U \ar[d]_{u_2}\ar[r]_{u_1}& C'_4 \ar[d]^{d_3}\\&C_3 \ar[r]_{p_3}& C_4 &&C_2 \ar[r]_{t_3}& C_4 }\]
-	
-	Now, notice that  $m_3$ and $m_2$ are monos because $d_3$ and $d_2$ are regular monos. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that
+
+
+Let us now consider the diagrams below, in which the inner squares are pullbacks.	Since the outer diagrams commute, by definition of morphism of $\EqHyp$, then we have the existence of $m_2\colon Q'_2\to U$, $m_3\colon Q'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
+
+\smallskip 
+\noindent 
+\parbox{5.2cm}{\hspace{15pt}Now, notice that  $m_3$ and $m_2$ are monos because $c_Q$ and $b_2$ are injections. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that
 	\[m_3\circ q'_3 = a_3 \qquad m_2\circ q'_2=a_2\]
 	
-	Indeed, if the previous equations hold, then $C'_3$ and $C'_2$ are epi-mono factorizations of $a_3$ and $a_2$ and the thesis follows from \Cref{cor:unique} and the proof of \Cref{prop:eqhyp_complete}.
+		\hspace{15pt}Indeed, if the previous equations hold, then $Q'_3$ and   $Q'_2$ are images for $a_3$ and $a_2$ and the thesis follows from \Cref{prop:eqhyp_complete}.
+	}\hfill \parbox{3.5cm}{\xymatrix@R=16pt{Q'_3 \ar@{.>}[r]_{m_3} \ar@{>->}@/^.3cm/[rr]^{p'_Q} \ar@{>->}@/_.3cm/[dr]_{c_Q} &Y \ar@{>->}[d]_{y_2}\ar@{>->}[r]_{y_1}& Q'_4 \ar@{>->}[d]^{d_Q}& Q'_2 \ar@{.>}[r]_{m_2} \ar@/^.3cm/[rr]^{z'_Q} \ar@{>->}@/_.3cm/[dr]_{b_Q}&U \ar[r]_{u_1} \ar@{>->}[d]_{u_2}& Q'_4\ar[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_3}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }
+\xymatrix@R=16pt{B'_3 \ar@{.>}[dr]^{a_3} \ar@{>->}[r]^{p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_Q}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }}
 	
-	No if we compute we have:
-	\[\begin{split}
-		y_1\circ a_3&= q'_4\circ p'_2\\&=p'_3 \circ q'_3\\&=y_1\circ m_3\circ q'_3  
-	\end{split}\qquad \begin{split}
-		u_1\circ a_2&= q'_4\circ t'_2\\&=t'_3 \circ q'_3\\&=u_1\circ m_2\circ q'_2  
-	\end{split}\]
-	\[\begin{split}
-		y_2\circ a_3&= d_3\circ q_3'\\&=y_2\circ m_3\circ q'_3
-	\end{split}\qquad \begin{split}
-		u_2\circ a_2&= d_2\circ q_2'\\&=u_2\circ m_2\circ q'_2
-	\end{split}\]
+	
+	Now if we compute we have:
+\[\begin{split}
+	y_1\circ a_3&= q'_4\circ p'_2=p'_3 \circ q'_3=y_1\circ m_3\circ q'_3\\
+u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2 
+\end{split} \qquad \begin{split}
+ 	y_2\circ a_3&= d_3\circ q_3'=y_2\circ m_3\circ q'_3\\
+u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
+\end{split}\]	
 	And we have done.
 \end{proof} 
 
@@ -2325,6 +2302,31 @@ So that $(U^\star, \{\kappa^\star_d\circ s_d\}_{d\in \D})$ and $(U^\star, \{\kap
 
 By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 }
+
+
+\pbm*
+
+\begin{proof}\label{proof:pbmono}
+	Closure under composition and decomposition follows from \Cref{lem:pb1}, while stability under pushouts is the first point of \Cref{prop:kerset}. We are left with stability under pullbacks. 
+	Let $h\colon \mathcal{G}_1\to \mathcal{G}_3$ be an arrow in $\pbc$ and $k\colon \mathcal{G}_2\to \mathcal{G}_3$ be another morphism of $\EqHyp$, with $\mathcal{G}_{i}=(E_i, V_i, Q_i, s_i, t_i, q_i)$.
+	
+	Consider the diagrams below, in which the square on the left is a pullback in $\EqHyp$, with $\mathcal{P}=(E_{\mathcal{P}, V_{\mathcal{P}}}, Q_{\mathcal{P}}, s_{\mathcal{P}}, t_{\mathcal{P}}, q_{\mathcal{P}})$, and in which the right half of the right rectangle is a pullback too, so that the existence of $m_\mathcal{P}$ is guaranteed by \Cref{prop:eqhyp_complete}. 
+	
+	Again by \Cref{prop:eqhyp_complete} the two halves of the central rectangler are pullbacks and so, by \Cref{lem:pb1} the whole rectangle is a pullback too. This, in turn entails that the the whole right rectangle is a pullback and so, also its left half is a pullback (again by \Cref{lem:pb1}).
+	\[
+	\xymatrix@R=15pt{\mathcal{P} \ar[r]^{p} \ar[d]_{r}&  \mathcal{G}_1 \ar[d]^{h} &
+		V_{\mathcal{P}} \ar@/^.4cm/[rr]^{p_Q\circ q_{\mathcal{P}}} \ar[r]_{p_V} \ar@{>->}[d]_{r_V}& V_1  \ar@{>>}[r]_{q_1} \ar@{>->}[d]_{h_V}& Q_1 \ar@{>->}[d]^{h_Q}& V_{\mathcal{P}} \ar@{>>}[r]_{q_{\mathcal{P}}} \ar@{>->}[d]_{r_V} & Q_{\mathcal{P}} \ar@{>->}[dr]_{r_Q} \ar@/^.4cm/[rr]^{p_Q} \ar@{>->}[r]_{m_{\mathcal{P}}}& T \ar[r]_{t_1} \ar@{>->}[d]_{t_2} & Q_1 \ar@{>->}[d]^{h_Q}\\
+		\mathcal{G}_2 \ar[r]_{k} & \mathcal{G}_3 &   V_2  \ar@/_.3cm/[rr]_{k_Q\circ q_2}\ar[r]^{k_V}& V_3 \ar@{>>}[r]^{q_3} & Q_3 &V_2 \ar@{>>}[rr]^{q_2}&& Q_2 \ar[r]^{k_Q} & Q_3 }
+	\]
+	
+	
+	
+	Let now $z_1\colon Z\to Q_{\mathcal{P}}$ and $z_2\colon Z\to V_2$ be two arrows such that $q_2\circ z_2=r_Q\circ z_1$. Then there exists a unique arrow $z\colon Z\to V_{\mathcal{P}}$ such that
+	\[m_{\mathcal{P}}\circ q_{\mathcal{P}}\circ z= m_{\mathcal{P}}\circ z_1 \qquad r_V\circ z=z_2\]
+	Since $m_\mathcal{P}$ is mono we conclude that $q_{\mathcal{P}}\circ z=z_1$ as wanted.
+	
+	Uniqueness follows at once since $r_V$, being the pullback of $h_V$ is a mono.
+\end{proof}
 
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
