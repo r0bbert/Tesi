@@ -45,7 +45,9 @@
 
 \pgfdeclarelayer{edgelayer}
 \pgfdeclarelayer{nodelayer}
-\pgfsetlayers{background,edgelayer,nodelayer,main}
+\pgfdeclarelayer{eqlayer}
+\pgfsetlayers{background,edgelayer,nodelayer, eqlayer ,main}
+
 \tikzstyle{none}=[inner sep=0mm]
 \tikzstyle{every loop}=[]
 \tikzstyle{mark coordinate}=[inner sep=0pt,outer sep=0pt,minimum size=3pt,fill=black,circle]
