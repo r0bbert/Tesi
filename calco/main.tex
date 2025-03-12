@@ -290,13 +290,14 @@ transformation can still be lifted~\cite{xxx}.
 If only the left-hand side belongs to $\mathcal{M}$, the current theory is stil under development, as witnessed e.g.
 by~\cite{BaldanC0G24}.
 %
-However, despite the elegance and effectiveness and the immediate advantages of proving a category 
-to be adhesive, proving that a given category satisfies the conditions 
+However, despite the elegance and effectiveness and the immediate advantages, 
+%to be adhesive, 
+proving that a given category satisfies the conditions 
 for being adhesive can be a daunting task. For this reason,  sufficient criteria have been provided for the core 
 framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, as well as for the extended one of
 $\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
 %
-For some graph-like structures, such as those called \emph{hypergraph with equivalence} in~\cite{concur2006}, the question 
+For some structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
 of their adhesivity has not yet been settled.
 
 \emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
@@ -545,12 +546,12 @@ We conclude this section exploring some properties of kernel pairs in an $\mathc
 The results below appear to be original, and we give their proofs in \Cref{kpp-proof}.
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
-	Let $f\colon X \to Y$ and $g\colon Z \to W$ be two arrows admitting kernel pairs and suppose that the solid part of the three squares below is given. 
+	Let $f\colon X \to Y$ and $g\colon Z \to W$ be arrows admitting kernel pairs and suppose that the solid part of the four squares below is given. 
 	%
 	If the leftmost square is commutative, then there is a a unique arrow $k_h\colon K_f \to K_g$ making the other three commutative.
 	\[\xymatrix@R=15pt{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}& K_f  \ar@{.>}[r]^{k_h} \ar[d]_{(\pi^1_f,\pi^2_f)} & K_g \ar[d]^{(\pi^1_g, \pi^2_g)}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z & X\times X \ar[r]_{h\times h}& X\times Z}\]
 	
-		Moreover, the following hold true:
+		Moreover, it holds
 		\begin{enumerate}
 			\item if $h$ is mono then $k_h$ is mono too;
 			\item if the leftmost square is a pullback, then also the central too are so;
@@ -577,13 +578,14 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 
 \noindent
 \parbox{7.5cm}{\begin{restatable}{lemma}{mps}\label{prop:kerset}
-	Suppose that in $\Set$ the cube in the diagram on the left is given, whose top and bottom faces are pushout, the left face a pulllback and such that $m\colon A\mto C$ is an injection. Then the following are true:
-	\parbox{14cm}{\begin{enumerate}
+	Suppose that in $\Set$ the cube in the diagram on the left is given, whose top and bottom faces are pushout, the left face a pulllback and $m\colon A\mto C$ is an injection. 
+	Then it holds
+	\begin{enumerate}
 		\item the right face of the cube is a pullback too;
 		\item the right square, made by the kernel pairs of the vertical arrows, is a pushout.
-	\end{enumerate}}
+	\end{enumerate}
 \end{restatable}}\hfill 
-\parbox{6cm}{\vspace{-1.1cm}\xymatrix@C=10pt@R=5pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
+\parbox{6cm}{\xymatrix@C=10pt@R=5pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar@{>->}[rr]_{g} & & D }}
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
@@ -626,12 +628,11 @@ Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$: we can g
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{proposition}
 
+Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the result below follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
+
 \begin{corollary}\label[corollary]{prop:hypadh}
 	 $\hyp$ is an adhesive category.
 \end{corollary}
-%\begin{proof}
-%	By hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the thesis follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
-%\end{proof}
 
 Another useful corollary of \Cref{prop:com} is the following one.
 
@@ -1250,7 +1251,7 @@ which is the main focus here, was yet to be presented to the world.
 		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar@{>>}[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {Q_{\mathcal{G}}} \ar[d]^{h_C} \\
 		{E_\mathcal{H}}\ar[r]_{s_\mathcal{H}} & {V_{\mathcal{H}}^\star}	& {E_\mathcal{H}}\ar[r]_{t_\mathcal{H}} & {V_{\mathcal{H}^\star}}& {V_\mathcal{H}}\ar@{>>}[r]_{q_\mathcal{H}} & {Q_\mathcal{H}}
 	}\]
-	The category of hypergraphs with equivalences and their morphisms is denoted $\EqHyp$.
+	The category of hypergraphs with equivalence and their morphisms is denoted $\EqHyp$.
 	
 \end{definition}
 
@@ -1459,7 +1460,7 @@ A proof is found in \Cref{proof:pbvk}.
 We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{definition}
-	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\EqHyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(\mathcal{H})$.
+	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(\mathcal{H})$.
 	
 	We denote the resulting category by $\EqHyp_\Sigma$.
 \end{definition}
@@ -1721,7 +1722,7 @@ Admittedly, the third one is illegal, i.e. it is an object of $\EqTGs$ but not o
 and nodes that are targets of edges with the same label and source the empty word must be equivalent,
 and possibly the same.
 %
-In general, note that both a maximally minimally and a shared representation of an EGG exist, and for our 
+In general, note that both a maximally and a minimally shared representation of an EGG exist, and for our 
 toy example are the left-most and the middle one above, respectively. In general terms,
 for an EGG $\mathcal{G}$, such canonical forms are the final and the initial objects of the comma category 
 $\mathcal{G}  \downarrow \GEqTGs$. 
@@ -1738,11 +1739,12 @@ arrows in $\mathcal{M}$, then we can lift all the standard properties
 of the DPO approach.
 % to the category at hand. 
 However, the structure of rules that is advanced in~\cite{DetlefsNS05},
-is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity, hence in $\mathcal{M}$,
-while the second component may not belong to $\mathcal{M}$. 
+is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity, thus in $\pbc_\Sigma$,
+while the second component may not belong to $\pbc_\Sigma$. 
 
 \noindent
 \begin{minipage}[l]{.48\linewidth}
+\vspace{.1cm}
 Consider e.g. an EGG rule such $x / x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}.
 It can be modelled as the DPO rule aside, concisely represented as the arrow $L \rightarrow R$,
 which can be applied with a match that is injective on equivalence classes to the legal EGGs
@@ -1799,6 +1801,7 @@ above.
 }
 \end{minipage}
 
+\vspace{.1cm}
 \noindent
 The right-hand side is a regular mono, though, and if the starting term graph is acyclic, so is also the arriving one.
 Such an asymmetry between and left- and right-hand side falls in the current research about left-linear rules for 
