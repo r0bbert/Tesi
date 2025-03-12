@@ -1441,50 +1441,12 @@ the top face fails to be a pushout
 
 
 Having prove stability of $\pbc$-pushouts, we now turn to prove that they are Van Kampen with respect to regular monos.
+%
+A proof is found in \Cref{proof:pbvk}.
 
-\begin{lemma}\label{lemma:van_kampen}
+\begin{restatable}{lemma}{pbvk}\label{lemma:van_kampen}
 	In $\EqHyp$, pushouts along arrows in $\pbc$ are $\reg(\EqHyp)$-Van Kampen.
-\end{lemma}
-
-\begin{proof}
-	
-Consider a cube as the one below on the left, with regular monos as vertical arrows,, with pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is in $\pbc$.
-In lieu of \Cref{lemma:stab}, if we show that 	the front faces are pullbacks too we can conclude.
-
-To fix the notation, let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'=(A_i', B_i', Q_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$. By \Cref{prop:eqhyp_complete} and \Cref{cor:mono2} we know that the central and right cube below have pushouts as bottom faces and pullbacks as back faces,
-	thus their front faces are pullbacks
-	\[
-	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar@{>->}[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar@{>->}[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar@{>->}[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar@{>->}[dd]^{b_V} \ar[dl]_{z_V'} \\ 
-		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar@{>->}[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar@{>->}[dd]_(.3){d_E}
-		&&B_3'  \ar@{>->}[dd]_{c_V}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar@{>->}[dd]_(.3){d_V}\\
-		&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{z} & &A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E} &&B_1\ar@{>->}[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{z_V} \\
-		\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 && A_3 \ar@{>->}[rr]_{p_E} & & A_4&&B_3 \ar@{>->}[rr]_{p_V} & & B_4 }
-	\]
-
-
-Let us now consider the diagrams below, in which the inner squares are pullbacks.	Since the outer diagrams commute, by definition of morphism of $\EqHyp$, then we have the existence of $m_2\colon Q'_2\to U$, $m_3\colon Q'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
-
-\smallskip 
-\noindent 
-\parbox{5.2cm}{\hspace{15pt}Now, notice that  $m_3$ and $m_2$ are monos because $c_Q$ and $b_2$ are injections. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that
-	\[m_3\circ q'_3 = a_3 \qquad m_2\circ q'_2=a_2\]
-	
-		\hspace{15pt}Indeed, if the previous equations hold, then $Q'_3$ and   $Q'_2$ are images for $a_3$ and $a_2$ and the thesis follows from \Cref{prop:eqhyp_complete}.
-	}\hfill \parbox{3.5cm}{\xymatrix@R=16pt{Q'_3 \ar@{.>}[r]_{m_3} \ar@{>->}@/^.3cm/[rr]^{p'_Q} \ar@{>->}@/_.3cm/[dr]_{c_Q} &Y \ar@{>->}[d]_{y_2}\ar@{>->}[r]_{y_1}& Q'_4 \ar@{>->}[d]^{d_Q}& Q'_2 \ar@{.>}[r]_{m_2} \ar@/^.3cm/[rr]^{z'_Q} \ar@{>->}@/_.3cm/[dr]_{b_Q}&U \ar[r]_{u_1} \ar@{>->}[d]_{u_2}& Q'_4\ar[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_3}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }
-\xymatrix@R=16pt{B'_3 \ar@{.>}[dr]^{a_3} \ar@{>->}[r]^{p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_Q}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }}
-	
-	
-	Now if we compute we have:
-\[\begin{split}
-	y_1\circ a_3&= q'_4\circ p'_2=p'_3 \circ q'_3=y_1\circ m_3\circ q'_3\\
-u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2 
-\end{split} \qquad \begin{split}
- 	y_2\circ a_3&= d_3\circ q_3'=y_2\circ m_3\circ q'_3\\
-u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
-\end{split}\]	
-	And we have done.
-\end{proof} 
-
+\end{restatable}
 
 %\input{Hypergraphs_with_equivalences}
 %\input{Labeled_hyp_with_eq}
@@ -1495,9 +1457,9 @@ u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
 We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{definition}
-	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\EqHyp$. A \emph{morphsim of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(\mathcal{H})$.
+	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\EqHyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(\mathcal{H})$.
 	
-	We will denote the resulting category by $\EqHyp_\Sigma$.
+	We denote the resulting category by $\EqHyp_\Sigma$.
 \end{definition}
 
 Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ correponds to the arrow $(l, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G}^\Sigma)$. It is immediate to see that this correspondence extends to an equivalence with the slice over $R(\mathcal{G}^\Sigma)$.
@@ -1506,7 +1468,7 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a ri
 $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 \end{proposition}
 
-$V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and let $\pbc_\Sigma$ be the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
+Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and let $\pbc_\Sigma$ be the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
 
 \begin{proposition}\label{prop:lim}The following facts hold true:
 	\begin{enumerate}
@@ -2584,6 +2546,46 @@ q \circ v_V \circ \pi_{q'_4}^1 = q \circ v_V \circ \pi_{q'_4}^2
 Now, $q'_4$ is a regular epi and so it is the coequalizer of its kernel pair, hence there exists $v_Q\colon Q'_4\to Q$ such that $v_Q\circ q'_4=q\circ v_V$ and we can conclude.
 \end{proof}
 
+\pbvk*
+
+\begin{proof}\label{proof:pbvk}
+	
+Consider a cube as the one below on the left, with regular monos as vertical arrows, pullbacks as back faces, pushouts as bottom and top faces and such that $h$ is in $\pbc$.
+Given \Cref{lemma:stab}, if we show that the front faces are pullbacks too we can conclude.
+
+To fix notation, let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'=(A_i', B_i', Q_i', s_i', t_i', q_i')$, for $i = 1, 2, 3, 4$. By \Cref{prop:eqhyp_complete} and \Cref{cor:mono2} we know that the central and right cube below have pushouts as bottom faces and pullbacks as back faces,
+	thus their front faces are pullbacks
+	\[
+	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar@{>->}[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar@{>->}[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar@{>->}[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar@{>->}[dd]^{b_V} \ar[dl]_{z_V'} \\ 
+		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar@{>->}[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar@{>->}[dd]_(.3){d_E}
+		&&B_3'  \ar@{>->}[dd]_{c_V}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar@{>->}[dd]_(.3){d_V}\\
+		&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{z} & &A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E} &&B_1\ar@{>->}[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{z_V} \\
+		\mathcal{G}_3 \ar[rr]_{p} & & \mathcal{G}_4 && A_3 \ar@{>->}[rr]_{p_E} & & A_4&&B_3 \ar@{>->}[rr]_{p_V} & & B_4 }
+	\]
+
+
+Let us now consider the diagrams below, in which the inner squares are pullbacks.	Since the outer diagrams commute, by definition of morphism of $\EqHyp$, then we have the existence of $m_2\colon Q'_2\to U$, $m_3\colon Q'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
+
+\smallskip 
+\noindent 
+\parbox{5.2cm}{\hspace{15pt}Now, notice that  $m_3$ and $m_2$ are monos because $c_Q$ and $b_2$ are injections. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that
+	\[m_3\circ q'_3 = a_3 \qquad m_2\circ q'_2=a_2\]
+	
+		\hspace{15pt}Indeed, if the previous equations hold, then $Q'_3$ and   $Q'_2$ are images for $a_3$ and $a_2$ and the thesis follows from \Cref{prop:eqhyp_complete}.
+	}\hfill \parbox{3.5cm}{\xymatrix@R=16pt{Q'_3 \ar@{.>}[r]_{m_3} \ar@{>->}@/^.3cm/[rr]^{p'_Q} \ar@{>->}@/_.3cm/[dr]_{c_Q} &Y \ar@{>->}[d]_{y_2}\ar@{>->}[r]_{y_1}& Q'_4 \ar@{>->}[d]^{d_Q}& Q'_2 \ar@{.>}[r]_{m_2} \ar@/^.3cm/[rr]^{z'_Q} \ar@{>->}@/_.3cm/[dr]_{b_Q}&U \ar[r]_{u_1} \ar@{>->}[d]_{u_2}& Q'_4\ar[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_3}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }
+\xymatrix@R=16pt{B'_3 \ar@{.>}[dr]^{a_3} \ar@{>->}[r]^{p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_Q}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }}
+	
+	
+	Now we have done, since by computing we have
+\[\begin{split}
+	y_1\circ a_3&= q'_4\circ p'_2=p'_3 \circ q'_3=y_1\circ m_3\circ q'_3\\
+u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2 
+\end{split} \qquad \begin{split}
+ 	y_2\circ a_3&= d_3\circ q_3'=y_2\circ m_3\circ q'_3\\
+u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
+\end{split}\]	
+%	And we have done.
+\end{proof} 
 
 \trm*
 \begin{proof}\label{proof:term}
