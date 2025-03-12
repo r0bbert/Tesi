@@ -629,9 +629,9 @@ Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$: we can g
 \begin{corollary}\label[corollary]{prop:hypadh}
 	 $\hyp$ is an adhesive category.
 \end{corollary}
-\begin{proof}
-	By hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the thesis follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
-\end{proof}
+%\begin{proof}
+%	By hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the thesis follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
+%\end{proof}
 
 Another useful corollary of \Cref{prop:com} is the following one.
 
@@ -654,7 +654,7 @@ We represent hypergraphs visually: dots denote nodes and boxes hyperedges. Shoul
 Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
 Let us look at the picture below. It represent an hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4, v_5\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ are constants and $h_3, h_4$ are binary operators
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ a pair nodes
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
@@ -1042,7 +1042,7 @@ $\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ 
 \todo{Decidere se tenere questo esempio (io direi di no)}
 \fi
 
-We will extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+We extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
 
 \begin{example}\label[example]{lab_2}
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
@@ -1209,10 +1209,12 @@ Let $\Sigma$ be an algebraic signature. Then it holds
 	Let $(l, !_{V_{\mathcal{G}}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l, !_{V_{\mathcal{H}}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\tg$, is said to \emph{preserve input nodes} if $g$ sends input nodes to input nodes.
 \end{definition}
 
+\commentato{
 \todo{Se questo remark sotto non serve nel pezzo sulle equivalenze possiamo toglierlo}
 \begin{remark}\label{prop:image}
 	Suppose that $(f,g)\colon (l, !_{V_{\mathcal{G}}})\to (l', !_{V_{\mathcal{H}}})$ preserves input nodes. Then  if $\tau_{\mathcal{H}}(h)=g(v)$ for some $v\in V_{\mathcal{G}}$ then $h$ belongs to the image of $f$. Indeed, by hypothesis $v$ must be in the image of $\tau_{\mathcal{G}}$ and so there exists $k$ such that $\tau_{\mathcal{G}}(k)=v$. But then $\tau_{\mathcal{H}}(f(k))=g(v)$ and we can conclude that $f(k)=h$.
 \end{remark}
+}
 
 Preservation of inputs characterizes regular monos in $\tg$.
 
@@ -1470,16 +1472,17 @@ $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 
 Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and let $\pbc_\Sigma$ be the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
 
-\begin{proposition}\label{prop:lim}The following facts hold true:
+\begin{proposition}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then it holds
 	\begin{enumerate}
-		\item $\EqHyp_\Sigma$ has all colimits and all connected limits, which are created by the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$, in particular it has all equalizers and pullbacks;
+		\item $\EqHyp_\Sigma$ has all colimits and all connected limits, which are created by $V_{\Sigma}$;
 		\item $\EqHyp_\Sigma$ is $\pbc_\Sigma$-adhesive.
 	\end{enumerate}
 \end{proposition}
 
+In particular, $\EqHyp_\Sigma$ has all equalizers and pullbacks.
 Using \Cref{cor:mono1,cor:mono2} we immediately get the following result. 
 
-\begin{corollary}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$, then:
+\begin{corollary}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$. Then it holds
 	\begin{enumerate}
 		\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
 		\item $h$ is a regular mono if and onky if $h_E$, $h_V$ and $h_Q$ are injective.
@@ -1509,16 +1512,16 @@ $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are crea
  \end{restatable}
  
 \noindent
-\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image trhough $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using $\Cref{lem:reg}$, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
+\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image trhough $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
 
 \smallskip 
 In particular, by \Cref{cor:term} and \Cref{lemma:stab}, $\mathcal{T}$ contains all isomorphisms, is closed under composition and decomposition and stable under pushout and pullbacks.
 
-The following proposition is now an easy corollary of \Cref{prop:push,prop:lim,rem:obv}. We provide the details in \Cref{proof:tade}.
+The following proposition is now an easy corollary of \Cref{prop:push}, \Cref{prop:lim}, and \Cref{rem:obv}. We provide the details in \Cref{proof:tade}.
 
 
 \begin{restatable}{proposition}{po}\label{prop:po}
-$\EqTG_{\Sigma}$ has all $\mathcal{T}$.pushouts, which are created by $I_{\eq}$.
+$\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $I_{\eq}$.
 \end{restatable}
 
 \begin{corollary}\label{cor:tade}
