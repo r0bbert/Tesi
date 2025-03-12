@@ -904,7 +904,7 @@ Our interest for hypergraphs stems from their use as a graphical representation 
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
 %
-We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $\{1\}$ as set of nodes, so that $\{1\}^\star$ is $\mathbb{N}$, $\ari_\sigma$ as the source function and $\delta_1$ as target function, which always picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
+We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $\{1\}$ as set of nodes, so that $\{1\}^\star$ is $\mathbb{N}$, $\ari_\Sigma$ as the source function and $\delta_1$ as target function, which always picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
 \iffalse
@@ -1686,6 +1686,20 @@ By direct application of \Cref{thm:slice-functors}, we can conclude what follows
 \end{corollary}
 
 \subsection{Term graphs with closed equivalence}
+
+\begin{remark}\label[remark]{sig_egg}
+	Given a signature $\Sigma = (O_\Sigma, \ari_\Sigma)$,
+	the hypergraph 
+	$R(\mathcal{G}^\Sigma) = (O_\Sigma, 1, 1, \ari_\Sigma, \delta_1, \id{1})$
+	is an object of $\egg$.
+	Indeed, if $(S, \pi_1, \pi_2)$ is the kernel pair of $\id{1}^\star \circ \ari_\Sigma$,
+	we have that $\id{1}^\star \circ \delta_1 \circ \pi_1$ and $\id{1}^\star \circ \delta_1 \circ \pi_2$ are both the contant functions of value $1$.
+\end{remark}
+
+\begin{definition}\label[definintion]{def:GEqTGs}
+	Given a signature $\Sigma$, we define the category $\GEqTGs$ as the full subcategory of $\egg/R(\mathcal{G}^\Sigma)$ in which objects are arrows $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ where $t_\mathcal{G}$ is mono. The incusion functor is denoted $I_{\GEqTGs} : \GEqTGs \to \egg/R(\mathcal{G}^\Sigma)$.
+\end{definition}
+
 \todo{Here we must introduce $\GEqTGs$}
 
 \section{Pros and cons of adhesive rewriting}
