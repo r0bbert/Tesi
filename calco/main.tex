@@ -2453,7 +2453,21 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 	\hfill
 	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
 	
-	Let us assume instead that $h_E$, $h_V$, and $h_Q$  are monos. XXXXX
+	Let us assume that $h_E$, $h_V$, and $h_Q$  are monos. 
+	We can build the witnesses component-wise.
+	\parbox{11cm}{It suffices to take the co-kernels of the three arrows, as done 
+	for $h_Q$ in the pushout aside. The resulting triple $\mathcal{K}$ is indeed an hypergraph 
+	with equivalence, and the components of the arrows 
+	$(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ 
+	are equalised by $h_E$, $h_V$, and $h_Q$, respectively. It is immediate to check that as
+	arrows in $\EqHyp$ they are equalised by $(h_E, h_V, h_Q)$.
+	} \hfill
+	\parbox{2cm}{
+	     \xymatrix@R=18pt{
+	        Q_\mathcal{G} \ar@{>->}[d]_{h_Q} \ar@{>->}[r]^{h_Q}& Q_\mathcal{H} \ar@{>->}[d]^{g_Q} \\
+	        Q_H \ar@{>->}[r]_{f_Q} & Q_\mathcal{{K}}
+              }
+         }   
 \end{proof}
 
 \commentato{
