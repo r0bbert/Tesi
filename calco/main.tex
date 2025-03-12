@@ -1145,7 +1145,7 @@ We now examine some properties of $\tg$, in order to study its adhesivity proper
 We can list some other categorical properties of $\tg$.
 
 
-\begin{proposition}
+\begin{proposition}\label{prop:tlim}
 Let $\Sigma$ be an algebraic signature. Then it holds
 \begin{enumerate}
 	\item if  $(i,j)\colon \mathcal{H}\to \mathcal{G}$ is a mono between  $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ and $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$ and the latter is in $\tg$, then also the former is in $\tg$
@@ -1226,7 +1226,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 
 
 \Cref{thm:slice-functors}, \Cref{lem:reg} and \Cref{prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{CorradiniG05}.
-\begin{corollary}
+\begin{corollary}\label{cor:term}
 	The category $\tg$ is quasiadhesive.
 \end{corollary}
 
@@ -1274,7 +1274,6 @@ Forgetting the quotient part yields a functor $T\colon \EqHyp \to \hyp$ which se
 	\end{enumerate}
 \end{restatable}
 A proof is provided in \Cref{proof:forghyp}.
-
 
 \begin{corollary}\label{cor:limcolim}
 	The functor $T$ preserves limits and colimits.
@@ -1551,49 +1550,77 @@ u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
 
 \subsection{Term graphs with equivalence}
 
-As we have done in \Cref{sssect:hyp_alg_sign}, we can define the category of hypergraphs with equivalence labeled over an algebraic signature.
+
+We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{definition}
-	Let $\Sigma = (O_\Sigma, \ari_\Sigma)$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to $\Sigma$.
-	Then the \emph{hypergraph with equivalence} associated to $\Sigma$ is $R(\mathcal{G}^\Sigma)$ and the category of hypergraphs with 
-	equivalence labeled over $\Sigma$ is the 
-	slice category $\EqHyp_\Sigma = \EqHyp/L(\mathcal{G}^\Sigma)$.
+	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\EqHyp$. A \emph{morphsim of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(\mathcal{H})$.
+	
+	We will denote the resulting category by $\EqHyp_\Sigma$.
 \end{definition}
 
-By \Cref{thm:slice_functors}, we can deduce the following.
+Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ correponds to the arrow $(l, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G}^\Sigma)$. It is immediate to see that this correspondence extends to an equivalence with the slice over $R(\mathcal{G}^\Sigma)$.
 
-\begin{proposition}
-	$\EqHyp_\Sigma$ is $\reg (\EqHyp_\Sigma)$-adhesive.
+\begin{proposition}\label{prop:slice}
+$\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 \end{proposition}
 
-%We can lift the adjunction given by $T$ and $L$ to $\EqHyp_\Sigma$ and $\hyp_\Sigma$.\todo{Non capisco se è uno svarione mio o ha senso}
+$V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and let $\pbc_\Sigma$ be the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
 
-We can define a functor $T_\Sigma: \EqHyps \to \hyps$ which sends each labeled hypergraph $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ to $T_\Sigma(l) = T(l)$, and each morphism $h = (h_E, h_V, h_C)$ onto $T_\Sigma(h) = T(h)$. Such functor is faithful since so is $T$, hence we have the following property.
-
-\begin{proposition}\label{prop:monos_in_eqhyps}
-	A morphism $h$ between two objects of $\EqHyps$ is a mono if and only if $T(h)$ is a mono.
+\begin{proposition}\label{prop:lim}The following facts hold true:
+	\begin{enumerate}
+		\item $\EqHyp_\Sigma$ has all colimits and all connected limits, which are created by the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$, in particular it has all equalizers and pullbacks;
+		\item $\EqHyp_\Sigma$ is $\pbc_\Sigma$-adhesive.
+	\end{enumerate}
 \end{proposition}
 
+Using \Cref{cor:mono1,cor:mono2} we immediately get the following result. 
 
-\begin{definition}
-	Let $\Sigma$ be an algebraic signature.
-	A labeled hypergraph with equivalence $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ is a \emph{term graph with equivalence} if $t_{\mathcal{G}}$ is mono.
-	We define category of term graphs with equivalence over $\Sigma$, denoted $\EqTG_{\Sigma}$, as the full subcategory of $\EqHyp_\Sigma$,
-	and the corresponding inclusion functor $I_{\EqTG_\Sigma}$.
-\end{definition}
+\begin{corollary}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$, then:
+	\begin{enumerate}
+		\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
+		\item $h$ is a regular mono if and onky if $h_E$, $h_V$ and $h_Q$ are injective.
+	\end{enumerate}
+\end{corollary}
 
-\begin{proposition}
-	If $l: \mathcal{G \to G}^\Sigma$ is a term graph, then $R(l)$ is a term graph with equivalence.
-\end{proposition}
 
-We have a functor $T_{\eq} : \EqTGs \to \tg$, defined to be $T_\Sigma \circ I_\eq$. Since both $T_\Sigma$ and $I_\eq$ are faithful, so is $T_\eq$.
+We can now easily define term graphs with equivalence.
 
-If $h: \mathcal{H \to G}$ is a mono between $l': \mathcal{H} \to L(\mathcal{G}^\Sigma)$ and $l: \mathcal{G}\to L(\mathcal{G}^\Sigma)$, then, if $l\in\EqTGs$, $l'\in\EqTGs$ as well. This let us deduce what follows.
+\begin{definition}Let $\Sigma$ be an algebraic signature.
+	An object $(\mathcal{H}, l)$ of $\EqHyp_\Sigma$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We will denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyp_\Sigma$ so defined and by $I_{\eq}$ the correspoding inclusion functor.
+ \end{definition}
 
-\begin{proposition}
-	$\EqTGs$ has equalizers, and $I_{\EqTGs}$ creates them.
-\end{proposition}
+\noindent 
+\parbox{9.5cm}{\begin{remark}\label{rem:obv}
+Let $T_\Sigma$ be  $T\circ V_\Sigma$.   Notice that, by definition, $(\mathcal{H}, l)$ is in $\EqTG_{\Sigma}$ if and only if $T(\mathcal{H})$ is in $\tg$. Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
+\end{remark}}\hfill \parbox{4cm}{\xymatrix@R=15pt{\EqTG_{\Sigma} \ar[r]_{I_\eq}  \ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[d]^{T_\Sigma} \\ \tg \ar[r]^{I_\Sigma}& \hyp_{\Sigma}}}
 
+\begin{remark}\label{rem:t}
+	Notice that, by \Cref{cor:limcolim} and \Cref{prop:lim}, the functor $T_\Sigma$ preserves all connected limits and all colimits.
+\end{remark}
+
+ The previous remark allows us to prove an analog of \Cref{prop:tlim}. We refer the reader to \Cref{proof:term} for details.
+ 
+ \begin{restatable}{proposition}{trm}\label{prop:term}
+$\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are created by $I_\eq$.
+ \end{restatable}
+ 
+\noindent
+\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image trhough $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using $\Cref{lem:reg}$, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
+
+\smallskip 
+In particular, by \Cref{cor:term} and \Cref{lemma:stab}, $\mathcal{T}$ contains all isomorphisms, is closed under composition and decomposition and stable under pushout and pullbacks.
+
+The following proposition is now an easy corollary of \Cref{prop:push,prop:lim,rem:obv}. We provide the details in \Cref{proof:tade}.
+
+
+\begin{restatable}{proposition}{po}\label{prop:po}
+$\EqTG_{\Sigma}$ has all $\mathcal{T}$.pushouts, which are created by $I_{\eq}$.
+\end{restatable}
+
+\begin{corollary}\label{cor:tade}
+	$\EqTG_{\Sigma}$ is $\mathcal{T}$-adhesive.
+\end{corollary}
 
 \section{EGGs}
 \label{eggs}
@@ -2531,6 +2558,20 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 	Uniqueness follows at once since $r_V$, being the pullback of $h_V$ is a mono.
 \end{proof}
 
+\trm*
+\begin{proof}\label{proof:term}
+	Let $F\colon \D\to \EqTG_{\Sigma}$ be the diagram of an equalizer, a binary product or of a pullback. By \Cref{prop:lim} we can consider a limiting cone $((\mathcal{L}, l), \{\pi_d\}_{d\in \D})$. By \Cref{rem:t} we know that $T_\Sigma$ preserves limits, thus by \Cref{rem:obv}  $(l, \{T_\Sigma(\pi_d)\}_{d\in \D})$ is limiting for $I_\Sigma\circ S_\Sigma$. By \Cref{prop:tlim} then $l$ is a term graph. We conclude, again by \Cref{rem:obv} that $(\mathcal{L}, l)$ is in $\EqTG_{\Sigma}$ and the thesis follows. 
+\end{proof}
+
+\po*
+\begin{proof}\label{proof:tade}
+	Suppose that the square on the left below is a pushout in $\EqHyp_\Sigma$, with $h$ in $\mathcal{T}$. Then, by \Cref{rem:t} the square on the right is a pushout and by the definition of $\mathcal{T}$ and \Cref{rem:obv}, $T_\Sigma(h)$ is a regular mono in $\tg$.
+	\[\xymatrix{I_\eq(\mathcal{G}_0, l_0) \ar[r]^{k} \ar[d]_{h}& I_\eq(\mathcal{G}_1, l_1) \ar[d]^{p} &T_\Sigma (I_\eq(\mathcal{G}_0, l_0)) \ar[r]^{T_{\Sigma}(k)} \ar[d]_{T_{\Sigma}(h)}& T_\Sigma (I_\eq(\mathcal{G}_1, l_1)) \ar[d]^{T_\Sigma(p)}\\
+I_\eq(\mathcal{G}_1, l_1) \ar[r]_{q}& I_\eq(\mathcal{H}, l) & T_\Sigma(I_\eq(\mathcal{G}_1, l_1)) \ar[r]_{T_\Sigma(q)}& T_\Sigma(I_\eq(\mathcal{H}, l))}\]
+	
+	We conclude using \Cref{prop:push,rem:obv}.
+\end{proof}
+
 \section{Some properties of comma categories}
 In this section we will briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
 \begin{definition}\index{category!comma -}
@@ -2689,9 +2730,11 @@ We can realize the slice over and under an object $X\in \X$ as comma categories.
 	It is now obvious to see that $F_1,G_1$ and $F_2, G_2$ are pairs of inverses.   
 \end{proof}
 
-A straightforward application of \Cref{lim} now yields the following.
+A straightforward application of \Cref{lim,colim} now yields the following.
 \begin{corollary}\label[corollary]{cor:pbapp}
-	If $\X$ has pullbacks, then for every object $X$, the slice $\X/X$ has pullbacks too.
+For eery object $\X$, $\X/X$ has all colimits and connected limits that $\X$ has. Moreover such limits and colimits are created by $\dom_X$.
+
+In particular, if $\X$ has pullbacks, equalizers or pushouts, then for every object $X$, the slice $\X/X$ has such limits and colimits too.
 \end{corollary}
 
 
