@@ -283,11 +283,11 @@ be present for the rule to be executed, yet they are not affected by the rule it
 If a category is adhesive, and the arrows of the rules are monomorphisms, then the presence of a match ensures that the
 two pushouts exist, hence a rewriting step can be performed.
 %
-The theory of $\mathcal{M}$-adhesivity~\cite{xxx} extend the core framework, still ensuring that if the arrow 
-of the rules are in $\mathcal{M}$,
+The theory of $\mathcal{M}$-adhesivity~\cite{xxx} extend the core framework, still ensuring that if the arrows 
+of the rules are in a suitable class $\mathcal{M}$ of monomorphisms
 %and the match is in $\mathcal{N}$, 
 then the classical results from the theory of graph 
-transformation can still be lifted~\cite{xxx}. 
+transformation can still be obtained~\cite{xxx}. 
 If only the left-hand side belongs to $\mathcal{M}$, the current theory is stil under development, as witnessed e.g.
 by~\cite{BaldanC0G24}.
 %
@@ -1851,7 +1851,7 @@ The theory of $\mathcal{M}$-adhesivity carries on with such rules, see e.g~\cite
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
-The aim of our paper was to extend the theory of adhesive categories in order to include EGGS, 
+The aim of our paper was to extend the theory of $\mathcal{M}$-adhesive categories in order to include EGGS, 
 a formalism for program optimisation 
 %via a compact representation and 
 %efficient implementation of equality saturation.
@@ -1863,7 +1863,7 @@ and that optimisation steps are obtained via DPO rules (possibly with negative a
 left-hand side is in $\mathcal{M}$, and in fact an identity. 
 %and via a match that is in $\mathcal{N}$. 
 This fact allows for exploiting the properties 
-of the adhesive framework when discussing about the optimisation process.
+of the $\mathcal{M}$-adhesive framework when discussing about the optimisation process.
 
 \emph{Future works.}
 Our result on $\GEqTGs$ opens a few threads of research. The first is to check how the $\mathcal{M}$-adhesivity 
@@ -1875,7 +1875,7 @@ conditions), and as such they fit the mould of rewriting on left-linear rewritin
 %though need to be further investigated.
 %
 Also, it still needs to be exploited how parallelism and causality, the key features for DPO rewriting
-on adhesive categories, can be exploited in the context of EGGs implementation. 
+on $\mathcal{M}$-adhesive categories, can be exploited in the context of EGGs implementation. 
 Another venue for development is using the adhesive 
 machinery to extend the EGGs formalism. In fact, most of the results
 presented here for hypergraphs can be generalised to hierarchical hypergraphs, that is, 
@@ -1898,7 +1898,7 @@ Thus, the solution in~\cite{ghica}  is  more general than ours since it can be l
 $\Set$.
 %
 At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
-is actually adhesive, thus allowing to exploit all the features of the framework.
+is actually $\mathcal{M}$-adhesive, thus allowing to exploit all the features of the framework.
 
 \bibliography{biblio}
 
