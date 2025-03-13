@@ -1296,7 +1296,7 @@ Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtain
 	$U_{\eq}$ has a left adjoint $\Delta_{\eq}\colon \Set \to \EqHyp$.
 \end{corollary}
 
-Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, C, s, t, q)$ to $C$, and a morphism $(h_E, h_V, h_C)$ to $h_C$. We  exploit it to compute limits and colimits in $\EqHyp$. In order to do so. A full proof of the following lemma can be found in \Cref{proof:comp}.
+Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, t, q)$ to $Q$, and a morphism $(h_E, h_V, h_Q)$ to $h_Q$. We  exploit it to compute limits and colimits in $\EqHyp$. In order to do so. A full proof of the following lemma can be found in \Cref{proof:comp}.
 
 \noindent
 \parbox{11.4cm}{
@@ -2591,7 +2591,7 @@ Let us now consider the diagrams below, in which the inner squares are pullbacks
 \xymatrix@R=16pt{B'_3 \ar@{.>}[dr]^{a_3} \ar@{>->}[r]^{p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_Q}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }}
 	
 	
-	Now we have done, since by computing we have
+Computing we have
 \[\begin{split}
 	y_1\circ a_3&= q'_4\circ p'_2=p'_3 \circ q'_3=y_1\circ m_3\circ q'_3\\
 u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2 
@@ -2599,7 +2599,7 @@ u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2
  	y_2\circ a_3&= d_3\circ q_3'=y_2\circ m_3\circ q'_3\\
 u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
 \end{split}\]	
-%	And we have done.
+And we have done.
 \end{proof} 
 
 \trm*
