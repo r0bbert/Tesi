@@ -2390,8 +2390,9 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 
 $(\Rightarrow)$	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
 
+\noindent
 	\parbox{11cm}{
-	Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
+		\hspace{15pt}Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
 	$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
 	is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono 
 	$m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
@@ -2400,21 +2401,28 @@ $(\Rightarrow)$	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that
 	\hfill
 	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
 	
-	Let us assume that $h_E$, $h_V$, and $h_Q$  are monos. 
+	$(\Leftarrow)$ Suppose that $h_E$, $h_V$, and $h_Q$  are monos. 
 	We can build the witnesses component-wise.
-	\parbox{11cm}{It suffices to take the co-kernels of the three arrows, as done 
-	for $h_Q$ in the pushout aside. The resulting triple $\mathcal{K}$ is indeed an hypergraph 
-	with equivalence, and the components of the arrows 
-	$(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ 
-	are equalised by $h_E$, $h_V$, and $h_Q$, respectively. It is immediate to check that as
-	arrows in $\EqHyp$ they are equalised by $(h_E, h_V, h_Q)$.
-	} \hfill
-	\parbox{2cm}{
-	     \xymatrix@R=18pt{
-	        Q_\mathcal{G} \ar@{>->}[d]_{h_Q} \ar@{>->}[r]^{h_Q}& Q_\mathcal{H} \ar@{>->}[d]^{g_Q} \\
-	        Q_H \ar@{>->}[r]_{f_Q} & Q_\mathcal{{K}}
-              }
-         }   
+	
+	To do so, it suffices to build the cokernel pair of the three arrows, taking the pushout of $h_E$, $h_V$ and $h_Q$ along itself, obtaining the three diagrams below, which, by \Cref{prop:regmono}, are also pullbacks.
+	\[     \xymatrix@R=15pt{
+	E_\mathcal{G} \ar@{>->}[d]_{h_E} \ar@{>->}[r]^{h_E}&E_\mathcal{H} \ar@{>->}[d]^{g_E} &	V_\mathcal{G} \ar@{>->}[d]_{h_V} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>->}[d]^{g_V} &Q_\mathcal{G} \ar@{>->}[d]_{h_Q} \ar@{>->}[r]^{h_Q}& Q_\mathcal{H} \ar@{>->}[d]^{g_Q} \\
+		E_\mathcal{H} \ar@{>->}[r]_{f_E} & E_\mathcal{{K}} & V_H \ar@{>->}[r]_{f_V} & V_\mathcal{{K}} & Q_\mathcal{H} \ar@{>->}[r]_{f_Q} & Q_\mathcal{{K}}
+	}
+	\]   
+	
+	Now, we know by \Cref{prop:com} and \Cref{colim} that there exists arrows $s,t\colon E_{\mathcal{K}}\rightrightarrows V_{\mathcal{K}}$ such that the resulting hypergraph is the cokernel pair of $(h_E, h_V)$ in $\hyp$. Moreover, by \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi} we know that the unique arrow $q\colon V_{\mathcal{K}}\to Q_{\mathcal{K}}$
+	induced by $q_{Q}\circ q_{\mathcal{H}}$ and $f_{Q}\circ q_{\mathcal{H}}$ is a regular epi. Let thus $\mathcal{K}$ be the resulting hypergraph with equivalence.
+	
+	
+	By construction we have two arrows 	$(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ such that 
+	\[(f_E, f_V, f_Q)\circ (h_E, h_V, h_Q) =(g_E, g_V, g_Q)\circ (h_E, h_V, h_Q)\]
+	
+	Now, in $\Set$ every mono is regular \cite{maclane2012sheaves}, so by the dual of \Cref{prop:reg_epi_coeq} we deduce that $h_E$, $h_V$ adn $h_Q$ are the equalizers of the arrows built above. By \Cref{prop:com,lim} we also know that $(h_E, h_V)$ is the equalizer in $\hyp$ of $(f_E, f_V)$ and $(g_E, g_V)$.  Hence, if $(z_E, z_V, z_Q)\colon \mathcal{Z}\to \mathcal{H}$ is an arrow such that 
+			\[(f_E, f_V, f_Q)\circ (z_E, z_V, z_Q) =(g_E, g_V, g_Q)\circ (z_E, z_V, z_Q)\]
+	then we get a unique morphism $(a_E, a_V)\colon (E_{\mathcal{Z}}, V_{\mathcal{Z}})\to (E_{\mathcal{G}}, V_{\mathcal{G}})$ such that $(h_E, h_V)\circ (a_E, a_V) =(z_E, z_V)$. Moreover, since $g_Q\circ z_Q=f_Q\circ z_Q$ there is a unique $a_Q\colon Q_{\mathcal{Z}}\to Q_\mathcal{G}$ such that $h_Q\circ a_Q=z_Q$. Thus
+	\[h_Q\circ a_Q\circ q_{\mathcal{Z}}=z_Q\circ q_{\mathcal{Z}}=q_{\mathcal{H}}\circ z_{V}=q_{\mathcal{H}}\circ h_V\circ a_V=h_Q\circ q_{\mathcal{G}}\circ a_V\]
+	Since $h_Q$ is mono we conclude that $a_Q\circ q_{\mathcal{Z}}=q_{\mathcal{G}}\circ a_V$ and we conclude.
 \end{proof}
 
 \commentato{
