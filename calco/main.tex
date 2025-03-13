@@ -1518,7 +1518,8 @@ $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are crea
  \end{restatable}
  
 \noindent
-\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image through $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]^{h_Q}& Q_{\mathcal{H}}} }
+\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $I_\eq$ is in $\pbc_\Sigma$ and whose image through $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill 
+\parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]_{h_Q}& Q_{\mathcal{H}}} }
 
 \smallskip 
 In particular, by \Cref{cor:term} and \Cref{lemma:stab}, $\mathcal{T}$ contains all isomorphisms, is closed under composition and decomposition and stable under pushout and pullbacks.
@@ -1536,12 +1537,15 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $I_{\eq}$.
 
 \section{EGGs}
 \label{eggs}
-
-\todo{introduction}
+The previous section proved some adhesivity property for the categories $\EqHyp$ and $\EqTG_{\Sigma}$. We extends these results ito
+encompass equivalence classes which are closed under the target arrow, i.e. under operator composition for term graphs, thus precisely capturing EGGs.
+%
+%\todo{introduction}
 
 \subsection{E-hypergraphs}
 
-We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped with an equivalence relation which is closed under the source and target arrow. This means that whenever the relations identifies the source of an hyperedge, it identifies the targets too.
+We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped with an equivalence relation which is closed under the target arrow:
+in other words, whenever the relation identifies the source of two hyperedges, it identifies their targets too.
 
 \begin{definition}
 	Let $\mathcal{G} = (E, V, Q, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair for $q^\star \circ s$.
@@ -1599,7 +1603,7 @@ Let now $\pbe$ be the class of all regular monos in $\egg$ which are sent to $\p
 	$\egg$ is $\pbe$-adhesive.
 \end{corollary}
 
-\subsection{Labelling e-hypergraphs}
+\subsection{E-Term graphs, a.k.a. EGGs}
 
 \begin{remark}\label[remark]{sig_egg}
 	Given a signature $\Sigma = (O_\Sigma, \ari_\Sigma)$,
@@ -1611,7 +1615,7 @@ Let now $\pbe$ be the class of all regular monos in $\egg$ which are sent to $\p
 \end{remark}
 
 \begin{definition}\label[definintion]{def:GEqTGs}
-	Given a signature $\Sigma$, we define the category $\GEqTGs$ as the full subcategory of $\egg/R(\mathcal{G}^\Sigma)$ in which objects are arrows $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ where $t_\mathcal{G}$ is mono. The incusion functor is denoted $I_{\GEqTGs} : \GEqTGs \to \egg/R(\mathcal{G}^\Sigma)$.
+	Given a signature $\Sigma$, we define the category $\GEqTGs$ as the full subcategory of $\egg/R(\mathcal{G}^\Sigma)$ in which objects are arrows $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ where $t_\mathcal{G}$ is mono. The inclusion functor is denoted $I_{\GEqTGs} : \GEqTGs \to \egg/R(\mathcal{G}^\Sigma)$.
 \end{definition}
 
 \todo{Here we must introduce $\GEqTGs$}
