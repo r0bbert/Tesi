@@ -6,6 +6,7 @@
 
 \newcommand{\pbc}{\mathsf{Pb}}
 \newcommand{\pbe}{\mathsf{ePb}}
+\newcommand{\pbes}{\pbe_\Sigma}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 \usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
@@ -145,6 +146,7 @@
 \newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
 \newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
 \newcommand{\egg}{\catname{GEqHyp}}
+\newcommand{\eggs}{\egg_\Sigma}
 
 \newcommand{\ari}{\mathsf{ar}}
 \newcommand{\abs}[1]{\lvert #1\rvert}
@@ -1547,7 +1549,7 @@ encompass equivalence classes which are closed under the target arrow, i.e. unde
 We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped with an equivalence relation which is closed under the target arrow:
 in other words, whenever the relation identifies the source of two hyperedges, it identifies their targets too.
 
-\begin{definition}
+\begin{definition}\label[definition]{def:ehyp1}
 	Let $\mathcal{G} = (E, V, Q, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair for $q^\star \circ s$.
 	We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \circ \pi_1 = q^\star \circ t \circ \pi_2$.
 	
@@ -1562,7 +1564,7 @@ A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$
 
 
 \begin{corollary}\label{cor:ereg}
-	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is so in $\hyp$. 
+	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is so in $\EqHyp$. 
 \end{corollary}
 
 We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for the details.
@@ -1573,15 +1575,6 @@ We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for t
 \end{restatable}}\hfill 
 \parbox{4cm}{\xymatrix@R=15pt{\mathcal{G}_1 \ar[r]^{h}\ar[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]_{z}&\mathcal{P}}}
 
-\commentato{ 
-\begin{restatable}{corollary}{rege}\label{cor:rege}
-		An arrow $h\colon \mathcal{G \to H}$  is a regular mono in $\egg$ if and only if $I(h)$ is a regular mono in $\hyp$.  In particular a morphism of $\egg$ is a regular mono if and only if all its components are injections.
-\end{restatable}
-\begin{proof}
-	contenuto...
-\end{proof}
-}
-
 Let now $\pbe$ be the class of arrows in $\egg$ which are sent to $\pbc$ by $I$. By definition and \Cref{lem:pbmono} such class is closed under composition, decomposition, contains all isomorphisms and it is stable under pullbacks. Using \Cref{lem:pbmono,lem:epo} we can also deduce that it is stable under pushouts. Then \Cref{thm:slice-functors,cor:eqade} yield the following.
 
 \begin{corollary}\label{cor:pbe}
@@ -1589,7 +1582,6 @@ Let now $\pbe$ be the class of arrows in $\egg$ which are sent to $\pbc$ by $I$.
 \end{corollary}
 
 \subsection{E-term graphs, a.k.a. EGGs}
-
 
 We turn now to the labelled context.
 
@@ -1616,7 +1608,6 @@ To prove some adhesivity property of $\egg_\Sigma$ let us begin with the followi
 		\item There exists a functor $W_\Sigma \colon \egg_\Sigma\to \Sigma$ forgetting the labeling which creates all colimits, pullbacks and equalizers. 
 	\end{enumerate}
 \end{proposition}
-
 
 Let $\pbe_\Sigma$ be the class of morphisms in $\egg_\Sigma$ whose image in $\egg$ lies in $\pbe$. Notice that $\pbe_\Sigma$ is also the class of arrows whose image through $j_\Sigma$ is in $\pbc_\Sigma$.
 
@@ -1660,6 +1651,73 @@ Reasoning as in the previous sections, \Cref{prop:limt,prop:pot} now give us the
 \begin{corollary}
 	$\eg$ is $\mathcal{T}_\Sigma$-adhesive.
 \end{corollary}
+
+\commentato{ 
+\begin{remark}\label[remark]{rem:sig_egg}
+	Given a signature $\Sigma = (O_\Sigma, \ari_\Sigma)$,
+	the hypergraph 
+	$R(\mathcal{G}^\Sigma) = (O_\Sigma, 1, 1, \ari_\Sigma, \delta_1, \id{1})$
+	is an object of $\egg$.
+	Indeed, if $(S, \pi_1, \pi_2)$ is the kernel pair of $\id{1}^\star \circ \ari_\Sigma$,
+	we have that $\id{1}^\star \circ \delta_1 \circ \pi_1$ and $\id{1}^\star \circ \delta_1 \circ \pi_2$ are both the contant functions of value $1$.
+\end{remark}
+
+\begin{definition}\label[definition]{def:label_egraphs}
+	Let $\Sigma$ be an algebraic signature, and $\mathcal{G}^\Sigma$ the hypergraph associated to it.
+	A \emph{labeled e-hypergraph} is a pait $(\mathcal{E}, l)$, where $\mathcal{E}$ is an e-hypergraph and $l: T \circ I (\mathcal{H}) \to \mathcal{G}^\Sigma$ is a morphism of $\hyp$.
+	A \emph{morphism of labeled e-hypergraphs} $(\mathcal{E}, l)\to (\mathcal{E}', l')$ is a morphism $h: \mathcal{E \to E}'$ such that $l = l' \circ (T \circ I)(h)$.
+	We denote the resulting category by $\eggs$.
+\end{definition}
+
+%Functor from GEqhyp_S to EqHyp_S
+
+With a similar argument as the one done in \Cref{prop:slice}, and by \Cref{rem:sig_egg} we get a characterization of $\eggs$.
+
+\begin{proposition}
+	The category $\eggs$ is equivalent to $\egg/R(\mathcal{G}^\Sigma)$
+\end{proposition}
+
+Consider now the functor that forgets the label $V_\eq : \eggs \to \egg$, and $\pbes$ the class of morphisms in $\eggs$ whose image through $V_\eq$ is in $\pbe$. From \Cref{thm:slice-functors}, \Cref{lim},  \Cref{lem:elim,lem:epo}, we can deduce what follows.
+
+\begin{proposition}\label[proposition]{prop:eadh}
+	The following facts hold true:
+	\begin{enumerate}
+	\item $\eggs$ has all limits and pushouts along regular monos, which are created by $V_\eq$;
+	\item $\eggs$ is $\pbes$-adhesive.
+	\end{enumerate}
+\end{proposition}
+
+Now, by \Cref{cor:rege,cor:mono1,cor:mono2}, we get what follows.
+
+\begin{corollary}\label{cor:emon}
+	Let $h = (h_E, h_V, h_Q)$ be an arrow in $\eggs$. Then the following holds.
+	\begin{enumerate}
+	\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
+	\item $h$ is regular mono in and only if each component of it is injective.
+	\end{enumerate}
+\end{corollary}
+
+We can now introduce term graphs with closed equivalences.
+
+%\begin{definition}\label[definintion]{def:GEqTGs}
+%	Given a signature $\Sigma$, we define the category $\GEqTGs$ as the full subcategory of $\eggs$ in which objects are arrows $l: \mathcal{G} \to R(\mathcal{G}^\Sigma)$ where $t_\mathcal{G}$ is mono. The inclusion functor is denoted $I_{\GEqTGs} : \GEqTGs \to \egg/R(\mathcal{G}^\Sigma)$.
+%\end{definition}
+
+\begin{definition}\label[definition]{def:GEqTGs}
+	Let $\Sigma$ be an algebraic signature. An object $(\mathcal{T}, l)$ of $\eggs$ is an \emph{e-term graph} if $l: T(\mathcal{T})\to \mathcal{G}^\Sigma$ is a term graph. We denote by $\GEqTGs$ the full subcategory of $\eggs$ so defined, and denote by $I_{\GEqTGs}$ the corresponding inclusion functor.
+\end{definition}
+\noindent
+\parbox{8.5cm}{\begin{remark}\label[remark]{rem:inclusions}
+	The category $\GEqTGs$ is also a full subcategory of $\EqTGs$, since each object $(\mathcal{H}, l)$ is a term graph with equivalence too.
+	We denote the corresponding inclusion functor as $S_\eq$. Hence, we have a situation similiar to the one in \Cref{rem:obv}, as the diagram aside shows, where $T_\eq$ is the inclusion functor of \Cref{def:ehyp1} lifted to the slice category, i.e., is such that $V_\Sigma \circ T_\eq = I \circ V_\eq$.
+\end{remark}}
+	\hfill\parbox{4.5cm}{\[\xymatrix@R=20pt@C=38pt{\GEqTGs \ar[r]^{I_{\GEqTGs}}  \ar[d]_{S_\eq}& \eggs \ar[d]^{T_\eq} \\ \EqTGs \ar[r]_{I_\eq}& \EqHyp_{\Sigma}}\]}
+
+
+
+%\todo{Here we must introduce $\GEqTGs$}
+>>>>>>> refs/remotes/origin/main}
+
 
 \section{Pros and cons of adhesive rewriting}
 \label{rewriting}
