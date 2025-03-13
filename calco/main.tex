@@ -5,6 +5,7 @@
 \newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
 
 \newcommand{\pbc}{\mathsf{Pb}}
+\newcommand{\pbe}{\mathsf{ePb}}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 \usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
@@ -1451,6 +1452,10 @@ A proof is found in \Cref{proof:pbvk}.
 	In $\EqHyp$, pushouts along arrows in $\pbc$ are $\reg(\EqHyp)$-Van Kampen.
 \end{restatable}
 
+\begin{corollary}\label{cor:eqade}
+	$\EqHyp$ is $\pbc$-adhesive.
+\end{corollary}
+
 %\input{Hypergraphs_with_equivalences}
 %\input{Labeled_hyp_with_eq}
 
@@ -1471,7 +1476,7 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a ri
 $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 \end{proposition}
 
-Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:forghyp,lim} we can deduce the following.
+Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:eqhyp_complete,lim} we can deduce the following.
 
 \begin{proposition}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then it holds
 	\begin{enumerate}
@@ -1545,52 +1550,24 @@ We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped wi
 	We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and by $I\colon \egg \to \EqHyp$ the associated inclusion functor.
 \end{definition}
 
-\begin{lemma}
+A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$. Full proof are in \Cref{proof:elim}.
+
+\begin{restatable}{lemma}{elim}\label{lem:elim}
 	$\egg$ has all limits and $I$ creates them.
-\end{lemma}
+\end{restatable}
 
-\begin{proof}
-	Let $F: \D \to \egg$ be a diagram, with $F(d) = (A_d, B_d, C_d, s_d, t_d, q_d)$.  Let $(U_d, u_1^d, u_2^d)$ be a kernel pair for $q_d\circ s_d$.
-	Let now $(A, B, C, s, t, q)$, together with projections $(\pi_E^d, \pi_V^d, \pi_C^d)_{d\in \D}$ be the limit of $I \circ F$. Suppose that $(U, u_1, u_2)$ is the kernel pair of $q^\star\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ D$.
-	By construction (proof of \Cref{prop:eqhyp_complete}), there exists a mono $m: C \to L$ such that $\pi_C^i = l_i \circ m$. Notice that
-	\begin{align*}
-		q_i^\star \circ s_i\circ \pi^i_E\circ u_1      &= q_i^\star\circ (\pi^i_V)^\star \circ s\circ u_1\\
-		&= (\pi_C^i)^\star\circ q^\star\circ s\circ u_1\\
-		&=(\pi_C^i)^\star\circ q^\star\circ s\circ u_2\\
-		&= q_i^\star \circ s_i \circ \pi_E^i \circ u_2
-	\end{align*}
-	Then, for each $i$, there exists an arrow $a_i:U\to U_i$ making the following diagram to commute
-	\[
-	\xymatrix{
-		U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_i} & A \ar[dr]^{\pi_E^i} & \\
-		A \ar[dr]_{\pi_E^i} & U_i \ar[r]^{u_1^i} \ar[d]_{u_2^i}& A_i \ar[d]^{q_i^\star \circ s_i} \\
-		& A_i  \ar[r]_{q_i^\star \circ s_i}& C_i^\star
-	}
-	\]
-	We have then
-	\begin{align*}
-		l_i^\star\circ m^\star \circ q^\star \circ t \circ u_1    &= q_i^\star\circ (\pi_V^i)^\star \circ t \circ u_1 \\
-		&= q_i^\star \circ t_i \circ \pi_E^i \circ u_1 \\
-		&= q_i^\star \circ t_i \circ u_1^i \circ a_i \\
-		&= q_i^\star \circ t_i \circ u_2^i \circ a_i \\
-		&= q_i^\star \circ t_i \circ \pi_E^i \circ u_2 \\
-		&= q_i^\star \circ (\pi_V^i)^\star \circ t \circ u_2 \\
-		&= l_i^\star \circ m^\star \circ q^\star \circ t \circ u_2
-	\end{align*}
-	By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$, and, since $m$ is mono, $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the thesis.
-\end{proof}
 
-\begin{corollary}
-	Let $h: \mathcal{G \to H}$ be an arrow in $\egg$. Then it is a regular mono 
-	%in $\egg$
-	if and only if $I(h)$ is a regular mono.
-	% in $\EqHyp$.
+\begin{corollary}\label{cor:ereg}
+	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is so in $\hyp$. 
 \end{corollary}
 
+We can now turn to pushouts.
+
 \begin{lemma}
-	Consider the following pushout square in $\EqHyp$.
+	Suppose that the square on the right is a pushout in $\EqHyp$ with $m$ a regular mono. If $\mathcal{G}_1$, $\mathcal{G}_2$ and $\mathcal{G}_3$ are e-hypergraphs, then $\mathcal{P}$ is an e-hypergraph too.
+	following pushout square in $\EqHyp$.
 	\[\xymatrix{\mathcal{G}_1 \ar[r]^{h}\ar[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]_{k}&\mathcal{P}}\]
-	with $m$ regular mono. If $\mathcal{G}_1$, $\mathcal{G}_2$ and $\mathcal{G}_3$ are e-hypergraphs, then $\mathcal{P}$ is an e-hypergraph too, and $n$ is regular mono.
+	with $m$ regular mono. 
 \end{lemma}
 
 \begin{proof}
@@ -1612,13 +1589,17 @@ We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped wi
 	By universal property of pushouts, we deduce $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, and the thesis follows.
 \end{proof}
 
-By direct application of \Cref{thm:slice-functors}, we can conclude what follows.
-
-\begin{corollary}
-	$\egg$ is $\reg(\egg)$-adhesive.
+\begin{corollary}\label{cor:rege}
+		An arrow $h: \mathcal{G \to H}$  is a regular mono in $\egg$ if and onlu if $I(h)$ is a regular mono in $\hyp$. 
 \end{corollary}
 
-\subsection{Term graphs with closed equivalence}
+Let now $\pbe$ be the class of all regular monos in $\egg$ which are sent to $\pbc$ by $I$. By definition and \Cref{lem:pbmono} such class is closed under composition, decomposition, contains all isomorphisms and it is stable under pullbacks. Using \Cref{cor:rege} we can also deduce that it is stable under pushouts. Then \Cref{thm:slice-functors,cor:eqade} yield the following.
+
+\begin{corollary}
+	$\egg$ is $\pbe$-adhesive.
+\end{corollary}
+
+\subsection{Labelling e-hypergraphs}
 
 \begin{remark}\label[remark]{sig_egg}
 	Given a signature $\Sigma = (O_\Sigma, \ari_\Sigma)$,
@@ -2614,6 +2595,36 @@ And we have done.
 I_\eq(\mathcal{G}_1, l_1) \ar[r]_{q}& I_\eq(\mathcal{H}, l) & T_\Sigma(I_\eq(\mathcal{G}_1, l_1)) \ar[r]_{T_\Sigma(q)}& T_\Sigma(I_\eq(\mathcal{H}, l))}\]
 	
 	We conclude using \Cref{prop:push,rem:obv}.
+\end{proof}
+
+\subsection{Proofs for \Cref{eggs}}
+\elim*
+\begin{proof}\label{proof:elim}
+	Let $F: \D \to \egg$ be a diagram, with $F(d) = (A_d, B_d, Q_d, s_d, t_d, q_d)$.  Let $(U_d, u_1^d, u_2^d)$ be a kernel pair for $q_d\circ s_d$.
+	Let now $(A, B, Q, s, t, q)$, together with projections $(\pi_E^d, \pi_V^d, \pi_Q^d)_{d\in \D}$ be the limit of $I \circ F$. Suppose that $(U, u_1, u_2)$ is the kernel pair of $q^\star\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ F$. If we show that it lies in $\egg$ we are done.
+	
+	By \Cref{prop:eqhyp_complete} there exists a mono $m\colon Q \mto L$ such that $\pi_Q^d = l_d \circ m$. Notice that
+	\begin{align*}
+		&q_d^\star \circ s_d\circ \pi^d_E\circ u_1  = q_d^\star\circ (\pi^d_V)^\star \circ s\circ u_1= (\pi_Q^d)^\star\circ q^\star\circ s\circ u_1\\=&(\pi_Q^d)^\star\circ q^\star\circ s\circ u_2= q_d^\star\circ (\pi^d_V)^\star\circ s\circ u_2=q_d^\star \circ s_d \circ \pi_E^d \circ u_2\\
+	\end{align*}
+	
+	\noindent 
+	\parbox{9.5cm}{ \hspace{15pt}
+	Thus for each $d$ in $\D$, there exists an arrow $a_d:U\to U_i$ making the diagram on the right commutative.
+Then we have
+\begin{align*}
+	&l_d^\star\circ m^\star \circ q^\star \circ t \circ u_1    = q_d^\star\circ (\pi_V^d)^\star \circ t \circ u_1 \\
+	= &q_d^\star \circ t_d \circ \pi_E^d \circ u_1
+	= q_d^\star \circ t_d \circ u_1^d \circ a_d 
+	= q_d^\star \circ t_d \circ u_2^d \circ a_d\\ 
+	=& q_d^\star \circ t_d \circ \pi_E^d \circ u_2 = q_d^\star \circ (\pi_V^d)^\star \circ t \circ u_2 = l_d^\star \circ m^\star \circ q^\star \circ t \circ u_2
+\end{align*}}\hfill \parbox{4cm}{	\xymatrix{
+		U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_d} & A \ar[dr]^{\pi_E^d} & \\
+		A \ar[dr]_{\pi_E^d} & U_d \ar[r]^{u_1^d} \ar[d]_{u_2^d}& A_d \ar[d]^{q_d^\star \circ s_d} \\
+		& A_i  \ar[r]_{q_d^\star \circ s_d}& Q_d^\star
+	}}
+
+	By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$. Since $m$ is mono we deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the thesis.
 \end{proof}
 
 \section{Some properties of comma categories}
