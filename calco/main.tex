@@ -1627,15 +1627,19 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$.pushouts, which are created by $I_{\eq}$.
 
 \todo{introduction}
 
-\subsection{Hypergraph with closed equivalence}
+\subsection{E-hypergraphs}
+
+We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped with an equivalence relation which is closed under the source and target arrow. This means that whenever the relations identifies the source of an hyperedge, it identifies the targets too.
+
 \begin{definition}
-	Let $\mathcal{G} = (E, V, C, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair of $q^\star \circ s$.
-	Then, $\mathcal{G}$ is an \emph{e-hypergraph} whenever $q^\star \circ t \circ \pi_1 = q^\star \circ t \circ \pi_2$.
-	$\egg$ is the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and $I: \egg \to \EqHyp$ is the inclusion functor.
+	Let $\mathcal{G} = (E, V, Q, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair for $q^\star \circ s$.
+	We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \circ \pi_1 = q^\star \circ t \circ \pi_2$.
+	
+	We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and by $I\colon \egg \to \EqHyp$ the associated inclusion functor.
 \end{definition}
 
 \begin{lemma}
-	$\egg$ has all limits and $I$ preserves them.
+	$\egg$ has all limits and $I$ creates them.
 \end{lemma}
 
 \begin{proof}
@@ -1669,10 +1673,6 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$.pushouts, which are created by $I_{\eq}$.
 	\end{align*}
 	By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$, and, since $m$ is mono, $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the thesis.
 \end{proof}
-
-\begin{corollary}
-	$I$ creates limits.
-\end{corollary}
 
 \begin{corollary}
 	Let $h: \mathcal{G \to H}$ be an arrow in $\egg$. Then it is a regular mono 
@@ -2478,7 +2478,7 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 \mn*
 
 \begin{proof}
-	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
+$(\Rightarrow)$	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
 	\parbox{11cm}{
 	Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
 	$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
