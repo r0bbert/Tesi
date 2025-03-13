@@ -1550,9 +1550,8 @@ We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped wi
 \end{lemma}
 
 \begin{proof}
-	Let $D: \cat{I} \to \egg$ be a diagram, with $D(i) = (A_i, B_i, C_i, s_i, t_i, q_i)$, let $(U_i, u_1^i, u_2^i)$ be the kernel pair of $q_i\circ s_i$.
-	Let now be $(A, B, C, s, t, q)$, togehter with projections $(\pi_E^i, \pi_V^i, \pi_C^i)_{i \in \cat I}$ the limit of $I \circ D$,
-	let $(U, u_1, u_2)$ be the kernel pair of $q\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ D$.
+	Let $F: \D \to \egg$ be a diagram, with $F(d) = (A_d, B_d, C_d, s_d, t_d, q_d)$.  Let $(U_d, u_1^d, u_2^d)$ be a kernel pair for $q_d\circ s_d$.
+	Let now $(A, B, C, s, t, q)$, together with projections $(\pi_E^d, \pi_V^d, \pi_C^d)_{d\in \D}$ be the limit of $I \circ F$. Suppose that $(U, u_1, u_2)$ is the kernel pair of $q^\star\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ D$.
 	By construction (proof of \Cref{prop:eqhyp_complete}), there exists a mono $m: C \to L$ such that $\pi_C^i = l_i \circ m$. Notice that
 	\begin{align*}
 		q_i^\star \circ s_i\circ \pi^i_E\circ u_1      &= q_i^\star\circ (\pi^i_V)^\star \circ s\circ u_1\\
