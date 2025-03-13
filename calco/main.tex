@@ -1290,7 +1290,7 @@ A proof is in \Cref{proof:forghyp}.
 Combining together the previous corollary with \Cref{rem:eqhyp_morphs} we get the following characterization of monos in $\EqHyp$.
 
 \begin{corollary}\label{cor:mono1}
-	An arrow $h = (h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
+	An arrow $(h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
 \end{corollary}
 
 Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtained composing $T$ and $U_{\hyp}$.  By \Cref{cor:left} and the second point of \Cref{prop:forghyp} we get the following.
@@ -1506,7 +1506,12 @@ We can now easily define term graphs with equivalence.
 
 \noindent 
 \parbox{9.5cm}{\begin{remark}\label{rem:obv}
-Let $T_\Sigma$ be  $T\circ V_\Sigma$.   Notice that, by definition, $(\mathcal{H}, l)$ is in $\EqTG_{\Sigma}$ if and only if $T(\mathcal{H})$ is in $\tg$. Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
+Let $T_\Sigma:  \EqHyp_{\Sigma} \to \hyp_{\Sigma}$ the forgetful functor lifting
+$T:  \EqHyp \to \hyp$.
+%
+%$T_\Sigma = T\circ V_\Sigma$.   
+Notice that, by definition, $(\mathcal{H}, l)$ is in $\EqTG_{\Sigma}$ amounts to say that $(T(\mathcal{H}), l)$ is in $\tg$. 
+Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
 \end{remark}}\hfill \parbox{4cm}{\xymatrix@R=15pt{\EqTG_{\Sigma} \ar[r]_{I_\eq}  \ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[d]^{T_\Sigma} \\ \tg \ar[r]^{I_\Sigma}& \hyp_{\Sigma}}}
 
 \begin{remark}\label{rem:t}
