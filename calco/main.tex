@@ -256,9 +256,11 @@ where many of these general results can be recast and uniformly proved once and 
 \vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}In short, following the double-pushout (DPO) approach
-to graph transformation~\cite{ehrig1999handbook,ehrig2006fundamentals,corradini1997algebraic}, a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
-and its execution requires a match $m: L \to G$ such that the rewriting step from $G$
-to $H$ is given by the diagram aside, whose halves
+to graph transformation~\cite{CorradiniMREHL97,ehrig2006fundamentals}, 
+%~\cite{ehrig1999handbook,ehrig2006fundamentals,corradini1997algebraic}, 
+a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
+and its application requires a match $m: L \to G$: the rewriting step from $G$
+to $H$ is then given by the diagram aside, whose halves are pushouts.
   \end{minipage}%
     \hfill
   \begin{minipage}[r]{.20\linewidth }
@@ -277,7 +279,7 @@ to $H$ is given by the diagram aside, whose halves
 \vspace{.1cm}
 
 \noindent
- are pushouts. Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
+Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
 be present for the rule to be executed, yet they are not affected by the rule itself.
 %
 If a category is adhesive, and the arrows of the rules are monomorphisms, then the presence of a match ensures that the
@@ -315,10 +317,12 @@ the computational costs of its actual execution are improved. Instead of directl
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
-EGGs can be concisely defined as (acyclic) term graphs with an additional notion of equivalence on nodes
-that is closed under the operators of the signature~\cite[Section~4.2]{DetlefsNS05}.
-In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees equipped with 
-the possibility of sharing subtrees, as in terms graphs, with an additional equivalence relation $\equiv$ on nodes that 
+EGGs can be concisely defined as term graphs equipped with a notion of equivalence on nodes
+that is closed under the operators of a signature~\cite[Section~4.2]{DetlefsNS05}.
+%(i.e., graphs whose components are labelled with the operators of a signature)
+In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees 
+whose edges are labelled by operators and with
+the possibility of sharing subtrees, with an additional equivalence relation $\equiv$ on nodes that 
 is closed under composition. In plain words and using a toy example:
 if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
