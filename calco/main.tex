@@ -256,9 +256,9 @@ where many of these general results can be recast and uniformly proved once and 
 \vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}In short, following the double-pushout (DPO) approach
-to graph transformation~\cite{xxx}, a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
+to graph transformation~\cite{ehrig1999handbook,ehrig2006fundamentals,corradini1997algebraic}, a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
 and its execution requires a match $m: L \to G$ such that the rewriting step from $G$
-to $H$ is given by the diagram aside, whose square are pushouts.
+to $H$ is given by the diagram aside, whose halves
   \end{minipage}%
     \hfill
   \begin{minipage}[r]{.20\linewidth }
@@ -277,18 +277,18 @@ to $H$ is given by the diagram aside, whose square are pushouts.
 \vspace{.1cm}
 
 \noindent
-Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
+ are pushouts. Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
 be present for the rule to be executed, yet they are not affected by the rule itself.
 %
 If a category is adhesive, and the arrows of the rules are monomorphisms, then the presence of a match ensures that the
 two pushouts exist, hence a rewriting step can be performed.
 %
-The theory of $\mathcal{M}$-adhesivity~\cite{xxx} extend the core framework, still ensuring that if the arrows 
+The theory of $\mathcal{M}$-adhesivity~\cite{azzi2019essence,heindel2009category} extends the core framework, still ensuring that if the arrows 
 of the rules are in a suitable class $\mathcal{M}$ of monomorphisms
 %and the match is in $\mathcal{N}$, 
-then the benefiots of adhesivity
+then the benefits of adhesivity
 %the classical results from the theory of graph transformation 
-can still be obtained~\cite{xxx}. 
+can still be obtained~\cite{ehrig2012,ehrig2014adhesive}. 
 If only the left-hand side belongs to $\mathcal{M}$, the current theory is stil under development, as witnessed e.g.
 by~\cite{BaldanC0G24}.
 %
@@ -300,7 +300,7 @@ framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, 
 $\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
 %
 For some structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
-of their adhesivity has not yet been settled.
+of their $\mathcal{M}$-adhesivity has not yet been settled.
 
 \emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
 representation and efficient implementation of equality saturation. 
