@@ -2300,9 +2300,9 @@ By definition of complement, we also know that $(C', \{\iota', m'\})$ is a copro
  
  Thus we get the dotted arrow $h_0\colon H_0\to K_b$ in the diagram above. Moreover, we have
  \[m\circ a\circ y_0=c\circ m'\circ y_0=c\circ \pi^1_c\circ x_0=c\circ pi^2_c\circ x_0=c\circ m'\circ z_0=m\circ a \circ z_0\]
- Since $m$ is a monomorphism $a\circ y_0=a\circ z_0$ and there exists an arrow $h'_0\colon H_0\to K_a$ such that $\pi^1_a\circ h'_0=y_0$ and $\pi^2_a\circ h'_0=z_0$. Notice that
+ Since $m$ is a mono $a\circ y_0=a\circ z_0$ and there exists an arrow $h'_0\colon H_0\to K_a$ such that $\pi^1_a\circ h'_0=y_0$ and $\pi^2_a\circ h'_0=z_0$. 
+ We now can conclude that $k_{f'}\circ h'_0=h_0$, noticing that
  \[(\pi^1_b\circ \pi^2_b)\circ h_0=(f'\times f')\circ (y_0, z_0)=(f'\times f')\circ (\pi^1_a, \pi^2_a)\circ h'_0=(\pi^1_b, \pi^2_b)\circ k_{f'}\circ h'_0\]
-and therefore we can conclude that $k_{f'}\circ h'_0=h_0$.
 
 We can prove another property of $h'_0$. By computing we have
 \[(\pi^1_c, \pi^2_c)\circ k'_{m'}\circ h'_0=(m'\times m')\circ (\pi^1_a, \pi^2_a)\circ h'_0=(m'\times m')\circ (y_0, z_0)=(\pi^1_c, \pi^2_c)\circ x_0\]
@@ -2348,9 +2348,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  	\theta \circ k_{g'}\circ \phi_3=\theta \circ  j_3=\delta\circ \phi_3 
  \end{align*}
  
- On the other hand
+ On the other hand, we can conclude that $\theta \circ k_{g'}=\delta$ as wanted, since
  \[\theta \circ k_{g'}\circ x_0=\theta \circ k_{n'}\circ h_0=\gamma \circ h_0=\gamma \circ k_{f'}\circ h'_0=\delta \circ k_{m'}\circ h'_0=\delta \circ x_0 \]
- and we can conclude that $\theta \circ k_{g'}=\delta$ as wanted.
  
  
  We are left with uniqueness. If $\theta'$ is another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k'_{g'}= \delta$. If we compute we get
