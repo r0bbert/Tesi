@@ -1367,13 +1367,15 @@ We have now all the ingredient necessary to study the adhesivity properties of $
               }
          }   
 
+\vspace{.1cm}
 Now, we show that $\pbc$ is a suitable class for adhesivity. A proof is in \Cref{proof:pbmono}.
 
 \begin{restatable}{lemma}{pbm}\label{lem:pbmono}
 	The class $\pbc$ contains all isomorphisms, it is closed under composition, decomposition and it is stable under pullbacks and pushouts.
 \end{restatable}
 
-We now show that key lemma for $\pbc$-adhesivity of $\EqHyp$ is. A proof is in \Cref{proof:pbstable}.
+\vspace{.1cm}
+Finally, we show the key lemma for $\pbc$-adhesivity of $\EqHyp$. A proof is in \Cref{proof:pbstable}.
 
 \begin{restatable}{lemma}{pbs}\label{lemma:stab}
 	In $\EqHyp$, $\pbc$-pushouts are stable.
@@ -1652,7 +1654,7 @@ We turn now to term graphs with equivalence.
 
 \noindent 
 \parbox{7.5cm}{\begin{remark}
-	Now that we have introduced all the of this work in place, it is worthwhile to give a visual map of all the categories that we have introduced in this paper and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions.
+	Now that we have put all the structures of this work in place, it is worthwhile to give a visual map of all the categories that we have discussed/introduced and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions.
 \end{remark}}\hfill \parbox{4cm}{\xymatrix@R=15pt@C=15pt{\eg \ar@{^{(}->}[r]^-{Y_\Sigma} \ar@{^{(}->}[d]_{K_\Sigma} & \egg_\Sigma \ar@{^{(}->}[d]^{j_\Sigma} \ar[r]^{W_\Sigma}& \egg \ar@{^{(}->}[d]^{I}\\ \EqTG_{\Sigma} \ar@{^{(}->}[r]_{J_\Sigma}\ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[r]_{V_\Sigma} \ar[d]_{T_\Sigma}& \EqHyp \ar[d]_{T}\\ \tg \ar@{^{(}->}[r]_{I_\Sigma}& \hyp_{\Sigma} \ar[r]_{U_\Sigma}  &\hyp}}
 
 
@@ -1762,28 +1764,42 @@ Admittedly, the third one is illegal, i.e. it is an object of $\EqTGs$ but not o
 constants have no input, 
 and nodes that are targets of edges with the same label and source the empty word must be equivalent,
 and possibly the same.
-%
-In general, note that both a maximally and a minimally shared representation of an EGG exist, and for our 
-toy example are the left-most and the middle one above, respectively. In general terms,
-for an EGG $\mathcal{G}$, such canonical forms are the final and the initial objects of the comma category 
-$\mathcal{G}  \downarrow \eg$.
-%\GEqTGs$. 
-The former part is a standard result in term graph rewriting, see e.g.~\cite{xxx}, while the latter is specific 
-of the setting with equivalences.
-%
-The same construction carries on when restricting to the full subcategory of $\eg$
-%$\GEqTGs$ 
-of those objects whose 
-underlying term graph is \emph{acyclic}.
-%and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
-%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
 
-\newpage
+In general, for term graphs without equivalence, a maximally and a minimally shared representation
+exists, and for our toy example are the right-most and the left-most diagram above, respectively.
+These are standard results in term graph rewriting, see e.g.~\cite{AriolaKP00}, 
+and they can easily seen as the final and the initial objects of a suitable comma category 
+$\mathcal{G}  \downarrow \tg$, respectively.
+%
+The same properties carries on 
+%when restricting to the full subcategory of acyclic term graphs.
+%
+for EGGSs, even if the minimally shared representation is now 
+the middle diagram.
+%
+All the previous considerations can be lifted to the full sub-categories whose objects
+have underlying hypergraphs that are acyclic.
+%an EGG exist, and for our 
+%toy example are the left-most and the middle one above, respectively. In general terms,
+%for an EGG $\mathcal{G}$, such canonical forms are the final and the initial objects of the comma category 
+%$\mathcal{G}  \downarrow \eg$.
+%%\GEqTGs$. 
+%The former part is a standard result in term graph rewriting, see e.g.~\cite{xxx}, while the latter is specific 
+%of the setting with equivalences.
+%%
+%The same construction carries on when restricting to the full subcategory of $\eg$
+%%$\GEqTGs$ 
+%of those objects whose 
+%underlying term graph is \emph{acyclic}.
+%%and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
+%%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
+
+%\newpage
 What about rewriting? The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
 arrows in $\mathcal{M}$, then we can lift all the standard properties
 of the DPO approach.
 % to the category at hand. 
-However, the structure of rules that is advanced in~\cite{DetlefsNS05},
+However, the structure of rules that is advanced in~\cite{DetlefsNS05}
 is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity, thus in $\pbc_\Sigma$,
 while the second component may not belong to $\pbc_\Sigma$. 
 
@@ -1855,11 +1871,11 @@ adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
 Note also that for their nature, all the rules adopted for EGGs have the identity as the left-hand side. 
 Potentially, they thus belong to any choice of $\mathcal{M}$, even if the drawback is the 
 possibility to keep on repeating the same rewriting step.
-However, this is easily forbidden adopting rules \emph{with negative application conditions}~\cite{xxx}, which are given by the usual span 
+However, this is easily forbidden adopting rules \emph{with negative application conditions}, which are given by the usual span 
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
 be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
 %
-The theory of $\mathcal{M}$-adhesivity carries on with such rules, see e.g~\cite{xxx}.
+The theory of $\mathcal{M}$-adhesivity carries on with such rules, see~\cite{ehrig2012,ehrig2014adhesive}.
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
@@ -1869,8 +1885,8 @@ a formalism for program optimisation
 %efficient implementation of equality saturation.
 %
 To do so, we revisited the notion of hyper-graph and introduced  term graph with equivalence, 
-proving that they are $\mathcal{M}$-adhesive categories, and we extended this resulr in order to capture
-also prove the same property for EGGS as term graphs with equivalence satisfying a suitable closure constraint.
+proving that they are $\mathcal{M}$-adhesive categories, and we extended this results in order to capture
+also prove the same property for EGGs as term graphs with equivalence satisfying a suitable closure constraint.
 Summing up, we proved that EGGs are objects of an $\mathcal{M}$-adhesive category $\eg$ 
 and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
 left-hand side is in $\mathcal{M}$, and in fact an identity. 
