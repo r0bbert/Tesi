@@ -1871,9 +1871,9 @@ adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
 Note also that for their nature, all the rules adopted for EGGs have the identity as the left-hand side. 
 Potentially, they thus belong to any choice of $\mathcal{M}$, even if the drawback is the 
 possibility to keep on repeating the same rewriting step.
-However, this is easily forbidden adopting rules \emph{with negative application conditions}, which are given by the usual span 
+However, this is easily forbidden adopting rules \emph{with negative application conditions}, given as the usual span 
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
-be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
+be factorised through $n$~\cite{HabelHT96}. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
 %
 The theory of $\mathcal{M}$-adhesivity carries on with such rules, see~\cite{ehrig2012,ehrig2014adhesive}.
 
@@ -1884,15 +1884,17 @@ a formalism for program optimisation
 %via a compact representation and 
 %efficient implementation of equality saturation.
 %
-To do so, we revisited the notion of hyper-graph and introduced  term graph with equivalence, 
-proving that they are $\mathcal{M}$-adhesive categories, and we extended this results in order to capture
-also prove the same property for EGGs as term graphs with equivalence satisfying a suitable closure constraint.
+To do so, we revisited the notions of hyper-graphs and term graphs with equivalence, 
+proving that they are $\mathcal{M}$-adhesive categories, and we extended these results in order to
+prove the same property for EGGs as term graphs with equivalence satisfying a suitable closure constraint.
 Summing up, we proved that EGGs are objects of an $\mathcal{M}$-adhesive category $\eg$ 
 and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
-left-hand side is in $\mathcal{M}$, and in fact an identity. 
+left-hand side is in $\mathcal{M}$,
+%, and in fact an identity. 
 %and via a match that is in $\mathcal{N}$. 
-This fact allows for exploiting the properties 
-of the $\mathcal{M}$-adhesive framework when discussing about the optimisation process.
+and fact allows for exploiting the properties 
+of the $\mathcal{M}$-adhesive framework.
+% when discussing about the optimisation process.
 
 \emph{Future works.}
 Our result on $\eg$ opens a few threads of research. The first is to check how the $\mathcal{M}$-adhesivity 
@@ -1918,10 +1920,10 @@ Despite the interest they have ben raising as an efficient data structure, we ar
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
 among the two proposals, which appear to be related yet quite different.
 %
-In both cases, the key intuition is  to use string diagrams to represents (acyclic) term graphs. We adopted a
+In both cases, the key intuition is  to use string diagrams to represents term graphs. We adopted a
 more down-to-Earth approach by equipping
-concretely the nodes of a term graph with an equivalence relation, thus directly equivalent to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising~\cite{concur2006} in the contemporary jargon of adhesive categories.
+concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
+at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories.
 The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
 and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
 Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
