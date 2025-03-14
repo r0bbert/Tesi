@@ -256,9 +256,11 @@ where many of these general results can be recast and uniformly proved once and 
 \vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}In short, following the double-pushout (DPO) approach
-to graph transformation~\cite{ehrig1999handbook,ehrig2006fundamentals,corradini1997algebraic}, a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
-and its execution requires a match $m: L \to G$ such that the rewriting step from $G$
-to $H$ is given by the diagram aside, whose halves
+to graph transformation~\cite{CorradiniMREHL97,ehrig2006fundamentals}, 
+%~\cite{ehrig1999handbook,ehrig2006fundamentals,corradini1997algebraic}, 
+a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
+and its application requires a match $m: L \to G$: the rewriting step from $G$
+to $H$ is then given by the diagram aside, whose halves are pushouts.
   \end{minipage}%
     \hfill
   \begin{minipage}[r]{.20\linewidth }
@@ -277,7 +279,7 @@ to $H$ is given by the diagram aside, whose halves
 \vspace{.1cm}
 
 \noindent
- are pushouts. Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
+Thus, $L$ and $R$ are the lift- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
 be present for the rule to be executed, yet they are not affected by the rule itself.
 %
 If a category is adhesive, and the arrows of the rules are monomorphisms, then the presence of a match ensures that the
@@ -315,10 +317,12 @@ the computational costs of its actual execution are improved. Instead of directl
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
-EGGs can be concisely defined as (acyclic) term graphs with an additional notion of equivalence on nodes
-that is closed under the operators of the signature~\cite[Section~4.2]{DetlefsNS05}.
-In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees equipped with 
-the possibility of sharing subtrees, as in terms graphs, with an additional equivalence relation $\equiv$ on nodes that 
+EGGs can be concisely defined as term graphs equipped with a notion of equivalence on nodes
+that is closed under the operators of a signature~\cite[Section~4.2]{DetlefsNS05}.
+%(i.e., graphs whose components are labelled with the operators of a signature)
+In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees 
+whose edges are labelled by operators and with
+the possibility of sharing subtrees, with an additional equivalence relation $\equiv$ on nodes that 
 is closed under composition. In plain words and using a toy example:
 if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
@@ -1363,13 +1367,15 @@ We have now all the ingredient necessary to study the adhesivity properties of $
               }
          }   
 
+\vspace{.1cm}
 Now, we show that $\pbc$ is a suitable class for adhesivity. A proof is in \Cref{proof:pbmono}.
 
 \begin{restatable}{lemma}{pbm}\label{lem:pbmono}
 	The class $\pbc$ contains all isomorphisms, it is closed under composition, decomposition and it is stable under pullbacks and pushouts.
 \end{restatable}
 
-We now show that key lemma for $\pbc$-adhesivity of $\EqHyp$ is. A proof is in \Cref{proof:pbstable}.
+\vspace{.1cm}
+Finally, we show the key lemma for $\pbc$-adhesivity of $\EqHyp$. A proof is in \Cref{proof:pbstable}.
 
 \begin{restatable}{lemma}{pbs}\label{lemma:stab}
 	In $\EqHyp$, $\pbc$-pushouts are stable.
@@ -1648,7 +1654,7 @@ We turn now to term graphs with equivalence.
 
 \noindent 
 \parbox{7.5cm}{\begin{remark}
-	Now that we have introduced all the of this work in place, it is worthwhile to give a visual map of all the categories that we have introduced in this paper and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions.
+	Now that we have put all the structures of this work in place, it is worthwhile to give a visual map of all the categories that we have discussed/introduced and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions.
 \end{remark}}\hfill \parbox{4cm}{\xymatrix@R=15pt@C=15pt{\eg \ar@{^{(}->}[r]^-{Y_\Sigma} \ar@{^{(}->}[d]_{K_\Sigma} & \egg_\Sigma \ar@{^{(}->}[d]^{j_\Sigma} \ar[r]^{W_\Sigma}& \egg \ar@{^{(}->}[d]^{I}\\ \EqTG_{\Sigma} \ar@{^{(}->}[r]_{J_\Sigma}\ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[r]_{V_\Sigma} \ar[d]_{T_\Sigma}& \EqHyp \ar[d]_{T}\\ \tg \ar@{^{(}->}[r]_{I_\Sigma}& \hyp_{\Sigma} \ar[r]_{U_\Sigma}  &\hyp}}
 
 
@@ -1758,28 +1764,42 @@ Admittedly, the third one is illegal, i.e. it is an object of $\EqTGs$ but not o
 constants have no input, 
 and nodes that are targets of edges with the same label and source the empty word must be equivalent,
 and possibly the same.
-%
-In general, note that both a maximally and a minimally shared representation of an EGG exist, and for our 
-toy example are the left-most and the middle one above, respectively. In general terms,
-for an EGG $\mathcal{G}$, such canonical forms are the final and the initial objects of the comma category 
-$\mathcal{G}  \downarrow \eg$.
-%\GEqTGs$. 
-The former part is a standard result in term graph rewriting, see e.g.~\cite{xxx}, while the latter is specific 
-of the setting with equivalences.
-%
-The same construction carries on when restricting to the full subcategory of $\eg$
-%$\GEqTGs$ 
-of those objects whose 
-underlying term graph is \emph{acyclic}.
-%and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
-%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
 
-\newpage
+In general, for term graphs without equivalence, a maximally and a minimally shared representation
+exists, and for our toy example are the right-most and the left-most diagram above, respectively.
+These are standard results in term graph rewriting, see e.g.~\cite{AriolaKP00}, 
+and they can easily seen as the final and the initial objects of a suitable comma category 
+$\mathcal{G}  \downarrow \tg$, respectively.
+%
+The same properties carries on 
+%when restricting to the full subcategory of acyclic term graphs.
+%
+for EGGSs, even if the minimally shared representation is now 
+the middle diagram.
+%
+All the previous considerations can be lifted to the full sub-categories whose objects
+have underlying hypergraphs that are acyclic.
+%an EGG exist, and for our 
+%toy example are the left-most and the middle one above, respectively. In general terms,
+%for an EGG $\mathcal{G}$, such canonical forms are the final and the initial objects of the comma category 
+%$\mathcal{G}  \downarrow \eg$.
+%%\GEqTGs$. 
+%The former part is a standard result in term graph rewriting, see e.g.~\cite{xxx}, while the latter is specific 
+%of the setting with equivalences.
+%%
+%The same construction carries on when restricting to the full subcategory of $\eg$
+%%$\GEqTGs$ 
+%of those objects whose 
+%underlying term graph is \emph{acyclic}.
+%%and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
+%%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
+
+%\newpage
 What about rewriting? The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
 arrows in $\mathcal{M}$, then we can lift all the standard properties
 of the DPO approach.
 % to the category at hand. 
-However, the structure of rules that is advanced in~\cite{DetlefsNS05},
+However, the structure of rules that is advanced in~\cite{DetlefsNS05}
 is given as a span $L \leftarrow L \rightarrow R$, where the first component is the identity, thus in $\pbc_\Sigma$,
 while the second component may not belong to $\pbc_\Sigma$. 
 
@@ -1851,11 +1871,11 @@ adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
 Note also that for their nature, all the rules adopted for EGGs have the identity as the left-hand side. 
 Potentially, they thus belong to any choice of $\mathcal{M}$, even if the drawback is the 
 possibility to keep on repeating the same rewriting step.
-However, this is easily forbidden adopting rules \emph{with negative application conditions}~\cite{xxx}, which are given by the usual span 
+However, this is easily forbidden adopting rules \emph{with negative application conditions}, given as the usual span 
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
-be factorised through $n$. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
+be factorised through $n$~\cite{HabelHT96}. For EGGs and rules $L \leftarrow L \rightarrow R$, $n$ is simply the right-hand side itself.
 %
-The theory of $\mathcal{M}$-adhesivity carries on with such rules, see e.g~\cite{xxx}.
+The theory of $\mathcal{M}$-adhesivity carries on with such rules, see~\cite{ehrig2012,ehrig2014adhesive}.
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
@@ -1864,15 +1884,17 @@ a formalism for program optimisation
 %via a compact representation and 
 %efficient implementation of equality saturation.
 %
-To do so, we revisited the notion of hyper-graph and introduced  term graph with equivalence, 
-proving that they are $\mathcal{M}$-adhesive categories, and we extended this resulr in order to capture
-also prove the same property for EGGS as term graphs with equivalence satisfying a suitable closure constraint.
+To do so, we revisited the notions of hyper-graphs and term graphs with equivalence, 
+proving that they are $\mathcal{M}$-adhesive categories, and we extended these results in order to
+prove the same property for EGGs as term graphs with equivalence satisfying a suitable closure constraint.
 Summing up, we proved that EGGs are objects of an $\mathcal{M}$-adhesive category $\eg$ 
 and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
-left-hand side is in $\mathcal{M}$, and in fact an identity. 
+left-hand side is in $\mathcal{M}$,
+%, and in fact an identity. 
 %and via a match that is in $\mathcal{N}$. 
-This fact allows for exploiting the properties 
-of the $\mathcal{M}$-adhesive framework when discussing about the optimisation process.
+and fact allows for exploiting the properties 
+of the $\mathcal{M}$-adhesive framework.
+% when discussing about the optimisation process.
 
 \emph{Future works.}
 Our result on $\eg$ opens a few threads of research. The first is to check how the $\mathcal{M}$-adhesivity 
@@ -1898,10 +1920,10 @@ Despite the interest they have ben raising as an efficient data structure, we ar
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
 among the two proposals, which appear to be related yet quite different.
 %
-In both cases, the key intuition is  to use string diagrams to represents (acyclic) term graphs. We adopted a
+In both cases, the key intuition is  to use string diagrams to represents term graphs. We adopted a
 more down-to-Earth approach by equipping
-concretely the nodes of a term graph with an equivalence relation, thus directly equivalent to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising~\cite{concur2006} in the contemporary jargon of adhesive categories.
+concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
+at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories.
 The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
 and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
 Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
@@ -2278,9 +2300,9 @@ By definition of complement, we also know that $(C', \{\iota', m'\})$ is a copro
  
  Thus we get the dotted arrow $h_0\colon H_0\to K_b$ in the diagram above. Moreover, we have
  \[m\circ a\circ y_0=c\circ m'\circ y_0=c\circ \pi^1_c\circ x_0=c\circ pi^2_c\circ x_0=c\circ m'\circ z_0=m\circ a \circ z_0\]
- Since $m$ is a monomorphism $a\circ y_0=a\circ z_0$ and there exists an arrow $h'_0\colon H_0\to K_a$ such that $\pi^1_a\circ h'_0=y_0$ and $\pi^2_a\circ h'_0=z_0$. Notice that
+ Since $m$ is a mono $a\circ y_0=a\circ z_0$ and there exists an arrow $h'_0\colon H_0\to K_a$ such that $\pi^1_a\circ h'_0=y_0$ and $\pi^2_a\circ h'_0=z_0$. 
+ We now can conclude that $k_{f'}\circ h'_0=h_0$, noticing that
  \[(\pi^1_b\circ \pi^2_b)\circ h_0=(f'\times f')\circ (y_0, z_0)=(f'\times f')\circ (\pi^1_a, \pi^2_a)\circ h'_0=(\pi^1_b, \pi^2_b)\circ k_{f'}\circ h'_0\]
-and therefore we can conclude that $k_{f'}\circ h'_0=h_0$.
 
 We can prove another property of $h'_0$. By computing we have
 \[(\pi^1_c, \pi^2_c)\circ k'_{m'}\circ h'_0=(m'\times m')\circ (\pi^1_a, \pi^2_a)\circ h'_0=(m'\times m')\circ (y_0, z_0)=(\pi^1_c, \pi^2_c)\circ x_0\]
@@ -2326,9 +2348,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  	\theta \circ k_{g'}\circ \phi_3=\theta \circ  j_3=\delta\circ \phi_3 
  \end{align*}
  
- On the other hand
+ On the other hand, we can conclude that $\theta \circ k_{g'}=\delta$ as wanted, since
  \[\theta \circ k_{g'}\circ x_0=\theta \circ k_{n'}\circ h_0=\gamma \circ h_0=\gamma \circ k_{f'}\circ h'_0=\delta \circ k_{m'}\circ h'_0=\delta \circ x_0 \]
- and we can conclude that $\theta \circ k_{g'}=\delta$ as wanted.
  
  
  We are left with uniqueness. If $\theta'$ is another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k'_{g'}= \delta$. If we compute we get
