@@ -1,0 +1,238 @@
+1: weak accept
+Adhesivity plays a central role in graph rewriting, allowing well-behaved notions of transformation and composition, and for studying meta-results (concurrency, parallelism, etc.). However, establishing that specific categories of graphs are adhesive is often technically challenging. This paper establishes various forms of adhesivity for several categories of graphs: algebraically labelled hypergraphs (Hyp_Σ), hypergraphs with equivalence (EqHyp), labelled hypergraphs with equivalence (EqHyp_\Sigma), term graph with equivalence (EqTG_Σ), e-hypergraphs (GEqHyp), labelled e-hypergraphs (GEqHyp_Σ), and e-term graph (EGG).
+
+
+The content of the paper is valuable and merits publication. However, in its current form, the manuscript faces a significant challenge in terms of clarity. The writing lacks fluidity, with many sentences and arguments presented in a way that is difficult to follow. Several of the mathematical proofs are hard to parse, which makes it challenging to fully assess their correctness. Overall, the paper would benefit greatly from a careful revision aimed at improving readability and precision.
+
+
+Content: accept (2)
+Form: borderline (0)
+Overall: weak accept(1)
+
+
+Comments:
+
+91: Put this in a definition + add the definition of "closed under decomposition", since this is mentioned line 122.
+108: Add to the list that it is well-behaved w.r.t comma categories and certain subcategories.
+109: It would be helpful to include precise theorem numbers when referring to [14,24], as this would make it easier for readers to verify the claims without unnecessary effort. In this case, the first item of Proposition 2.4 seem to correspond to [14, Theorem 4.15], which speaks of (weak) adhesive HLR categories. If that's your reference, you should add how this notion relates to M-adhesivity, as done in Remark 2.3 for adhesivity and quasiadhesivity.
+112: R:X -> A should be preserve *M*-pullbacks, shouldn't it?
+113 and 116: add diagrams if space permits
+129: Why refer to strict Reg(sGraphs)-adhesive as quasiadhesive? Seems strange to use two naming conventions.
+159: Why mention here that a proof of Lemma 2.14 can be found in the appendix, and not for Lemma 2.12 or Proposition 2.13? Moreover, it is already mentioned in the synopsis that missing proofs would be in the appendix.
+160: Surprising that the bottom is now supposed to be a pullback, instead of a pushout as in Proposition 2.13. Can any intuition be given for this change in the assumptions?
+167: Give the type of f^*.
+171: Say explicitly that lg_X = (!_X)^*.
+162 and 173: Maybe mention that it is the definition of hypergraph **that you will work with in this paper**. There are multiple existing definitions.
+175: Why call V_G the set of nodes? Maybe denote it N_G or call it the set of vertices, to be consistent.
+176: Please give the type of prod*. Is it Set -> Set?. Also, split this sentence into two sentences.
+180: Corollary 3.7 basically says that Mono(Set) \downarrow Mono(Set) = Mono(Hyp), which is part of the (unwritten) proof of Corollary 3.6, yet this is not mentioned. The order of the results is not logical. Moreover, the fact that Corollary 3.7 follows from Corollary B.5 is not mentioned.
+180: Was this result not previously known in the literature?
+194: Did you forget to draw v_5 or is it on purpose?
+198: Why not more precisely say presheaf categories instead of functor categories?
+208: The target function \gamma_1 is supposed to output a list in {1}^*. Does it return the one element list [1]?
+214: Why have the two diagram squares been oriented differently that the ones in Definition 3.4? Moreover, it should be twice the set V_\mathcal{H}^* in the bottom left corners, and it should be \gamma_1 for the right morphism in the bottom square.
+214: It seems to me that the second diagram can first be explained in much simpler terms, such as "in labelled hypergraphs, all hyperedges must have a single target vertex", And then it could be restated as a factorisation result for t_\mathcal{H}. The current explanation is not clear enough.
+215: What is U_X? Is it U_Set? Or maybe U_Hyp that gives the set of vertices? There has been a lot of forgetful functor introduced so far, and here is one more being defined, so it would help to have a description in words added to this sentence.
+216: What is \Delta_X? Only \Delta_Hyp has been introduced so far, and from my understanding X (in bold) is a typo for Set or Hyp. Please draw the diagram for \Delta_\Sigma(X) = (?,!) to visualise and understand what it represents, and give additional explanations in words.
+217: What is the definition of the functor \Delta_\Sigma on morphisms? The proof of Proposition 3.17 is not straightforward and would be welcomed to be added.
+224-225: What do you mean by "identifier"? Do you mean "label"? And what does "the latter" refer to?
+233: Mention that the objects of TG_\Sigma are precisely the term graphs.
+234-237: Please add somewhere an example of a term graph.
+236: Since every labelled hyperedge has a unique vertex as target, being a term graph simply means each hyperedge having a distinct target. This could have been said more explicitly.
+238: What is the left adjoint \Delta_{TG_\Sigma}? Is it equal to \Delta_{\Sigma}? If that's the case, it's worth it to say in one sentence that there is nothing to be checked in order to prove that the resulting labelled hypergraph is a term graph, as there are no hyperedges.
+247: A little more explanation is required. Are you doing a proof by contradiction supposing a terminal object 1 (with at most one hyperedge) and then showing that two hypergraphs G_a and G_b, with one hyperedge each labeled a and b respectively, then the unique morphisms G_a -> 1 and G_b -> 1 lead to a contradiction about the label of the hyperedge in 1 (in the case 1 has an hyperedge, and with another argument in case 1 has no hyperedge)?
+259: The wording is confused: "then its pushout along (f2,g2), then their pushout"
+263: How does Corollary 3.27 follow from Proposition 2.4, Proposition 3.25, and Lemmma 3.26? This needs to be fleshed out. Does it use the fact that Hyp is adhesive (Corollary 3.6) and the subcategory property of Proposition 2.4?
+273: Why is the notation h_C and not h_Q?
+285: Do you mean to say that proofs (pural) of Section 4 can be found in Appendix A.2?
+293: Please add a proof of Corollary 4.6, even if it's only a short one.
+297: It wouldn't hurt to have the diagram showing the two adjunctions in arrow
+301: In item 2, the sentence wording uses once again the confusing structure of ending with a definition. Please restructure the sentence.
+301: Why draw a different diagram here than on line 753?
+306: Why is this square not in the same orientation as the one on line 277?
+307: Be more precise about the sense in which you mean "suitable", i.e., as the suitable class of monos M for which M-adhesivity holds.
+321: You could add a reference to Definition 3.13 for \mathcal{G}^\Sigma
+325: You could mention that EqHyp_\Sigma can be seen as the comma category T \downarrow "Constant functor at \mathcal{G}^\Sigma". This would make the parallel with the definition of the category of labelled hypergraphs that was defined as a slice category. Moreover, you could then give a reference for the proof of Proposition 4.17, such as [MacLane Categories for the working mathematician, IV.1, Exercise 2, p86].
+327: "to the arrow" -> "to an arrow"? And why is this arrow necessarily of the form (l,!)? Please provide more details
+332: Please provide details on how invoking those Proposition/Lemma/Corollary really prove Proposition 4.18
+343-344: Please provide an example of a term graph with equivalence.
+344: "Thus ... right": You meant to say that S_\Sigma makes the diagram on the right commute, right? Moreover, please describe what S_\Sigma does explicitly, and why it would make the diagram commute.
+345: Please provide a proof of this claim.
+351: Please turn this observation into a lemma and provide a detailed proof of it.
+367: What does it mean concretely to ask for q*t\pi_1=q*t\pi_2? Please add a connection between the intuitive explanation given in lines 364-365 and the mathematical equation given here.
+367: Also, add a diagram corresponding to the equality, in order to visualise the types of each morphism.
+368: Why does going from "hypergraph with equivalence" to "e-hypergraph" result in the category names going from "EqHyp" to "GEqHyp"? What does the "G" mean?
+369-370: Please add an example of an e-hypergraph.
+374: "is so" -> "is a regular mono"
+383: Does the use of the word "context" in this sentence refer to its common meaning in graph rewriting?
+391: Shouldn't "\id_\mathbb{N}" be "\id^*_1" instead?
+405: Why the name "EGG"? Why is this short for "e-term graph"?
+412: A detailed explanation and example of what lies precisely in the class \mathcal{T}_\Sigma is necessary to appreciate the next adhesivity result, and figure out its potential applications.
+418-448: The wording in Section 6 could be improved. Many sentences are confusing, use colloquial language, or unprecise wording.
+438: Why does the depicted DPO rule correspond to x/x -> 1?
+440: What is "the arriving one"?
+442: What is "their nature"?
+443-444: what do you mean by "the drawback ... same rewriting step"?
+447-448: Why is n necessarily the right-hand side itself? Couldn't we consider any n?
+448: What is exactly meant by this last sentence?
+465-466: What do you mean by "Another venue ... EGGs formalism."?
+473: Why "In both cases"? Aren't you referring to a single paper?
+
+571: The proof of the first claim of Lemma 2.12, i.e., that there exists a unique k_h such that ... , is currently in the proof of item 2, and should be instead at the start of the proof (or in its own item).
+576: Reasoning goes too fast. Explain why (Universal property of pullbacks) and draw the corresponding diagram.
+581: here and also at multiple other places, the word "thesis" is used in a way I haven't heard yet. Please check if this is a correct meaning of the word or replace it with something more appropriate like "claim" or "statement".
+581-582: "two rectangles below are pullbacks" Explain why in more details: left square is a pullback by definition of kernel pairs, and right square is a pullback by assumption, thus by Lemma A1 the outer square is also a pullback.
+584: following ones -> following outer rectangles
+587-588: Draw the relevant diagram
+589: Mention why this holds, namely item 2 and the current assumption.
+597: There is a lot of ad hoc reasoning done in order to prove Lemma 2.14. I'm curious if a more elegant and abstract proof could exist.
+600: unique arrow s.t. ...: why? Give the reasoning and add the coproduct diagram to help visualise.
+602: By construction -> By the universal property of pushouts
+602: Start a new sentence at "Thus"
+604: uniqueness of what? Specify it. Moreover, isn't uniqueness already guaranteed on line 602?
+607: Say that the first claim is by monotonicity of m.
+607: Why does (B,{m,\iota_m}) being a coproduct implies that \psi' = \psi? Explain more
+613: "where j_i is a coprojection" -> why not more directly say that (X, {j_i}) is a coproduct?
+631: "By Lemma A.2 … coproduct." Draw the diagram or mention explicitly which pushout square we consider (i.e., the one on top)
+631: Be careful about naming conventions. In Lemma A2, the pushout square is ABCD, whereas here it is ACBD.
+631: Put the sentence "We can … the right" in the same paragraph as its explanation.
+632: First define v0 and v1 then introduce v.
+632: "the dotted arrow": mention its name
+633: Draw the corresponding diagram
+634: Break down this sentence into more steps. Start by defining l0 and l1. Then mention extensivity.
+638: Draw the corresponding diagram
+640: More explanations are needed. It seems you're using that c \circ \iota' = \iota \circ w, but if that's the case it needs to be mentioned. Right now, the two equations above only have the inclusion of the complement of C', whereas we consider the square with C
+643-644 Mention more explicitly what "the thesis" is in order to guide the reader and make a stronger case for you proof. You're trying to prove the square B'D'BD is a pullback, i.e., to show there exists a unique morphism/function k: T -> B' such that bk=t_2 and n'k = t_1. For the existence of such a k, mention explicitly that h_1 \circ l_1^{-1} is one such morphism that satisfies the two desired equalities. For the uniqueness of k, detail more why it follows from n' being a mono.
+645: Please recall the goal (trying to prove KaKbKcKd is a pushout) and explain which strategy will be employed (Without warning, I'd expect a standard proof that assumes some morphisms K_b -> Z <- K_c and prove the existence and uniqueness of the fitting K_d -> Z.) In fact this happens but on line 695, two pages later. This proof is too long and should be splift into multiple sub results.
+645-647: Break this down into multiple steps.
+645-647: The usage of Lemma A.5 requires to see D' as the coproduct D' = B' + E' which has been said in the text, but never written down mathematically.
+645-647: What about j_0? Is j_0 = k_{n'} up to some unique isomorphism? Please be explicit.
+652: Rewriting those long series of equalities as only one equality per line with, in the margin, an explanation or a reference to the corresponding commuting square would help follow the reasoning. This applies to all other similar long series of equalities in the paper. Here, for instance, I cannot find the reason why d \circ \pi^1_d \circ j_1 = d \circ \pi^2_d \circ j_1.
+645-705: The rest of the proof is difficult to follow and could benefit from restructuring and more guiding. What is the prupose of seeing K_d and K_3 as coproducts? For K_d, this is used on lines 697-698, but I don't see a similar use for K_3 (maybe it's my bad).
+715-716: Please flesh out this last sentence finishing the proof in more details, and provide appopropriate diagrams.
+719-722: Same comment
+734: Please provide the diagram showing the arrow from X to Y induced by \phi
+737: Please provide the type of \kappa.
+737: The objects in D are denoted d, and are denoted D in the proof of Lemma B.3, please choose one notation. Same for \alpha: d -> d' and d: D -> D'.
+737: "By Lemma B.3 ...": The use of this lemma is too quick, with important details missing. Which comma category are you considering? The only one considered so far is Hyp = id_Set \downarrow prod*. If that's the case, which functor are you considering to play the role of "F" in Lemma B.3? Is it TF : D -> Hyp? The conclusion of your sentence is about the colimit of U_{eq}F, which has type D -> EqHyp -> Set, so are you instead considering Set as a (trivial) comma category? If you want to invoke Lemma B.3, you also need to prove that the functor "L" preserves colimits along "U_L F", which you don't mention.
+738-748: Please add diagrams everywhere where helpful.
+742: "by construction": Difficult to see without diagrams/equations/etc.
+748: Please add a summary of what has been just done to check that the two claims of item 1 have indeed be proven.
+753: Please add a diagram of the limiting cone with V,L,KF(d), and KF(d').
+753: "We know ...": it seems you're doing a (regular epi,mono) factorisation of l. If that's the case, please be explicit about it.
+753: "Since the identity ...": it seems you're using the property of q being a regular epi. If that's the case, please be explicit about it (and give a reference to Remark A.6)
+753: "fitting in the rectangle aside" -> making the rectangle aside commute.
+753: please use mono notation for id_{Q_d} in the diagram, i.e., add a tail.
+756: There is some confusion in this whole proof about the quotient set being denoted C or Q. Here, \pi_C is a typo for \pi_Q. Please use consistent notations.
+756: Why does proving that T(cone diagram) commutes necessarily implies that the cone diagram also commutes? Which property are you using? Please, be explicit.
+763: "Hence": You're using the uniqueness of the function V_G -> L in the universal property of L as the limit of KF. Please be explicit about it.
+763: The morphism k_Q has the wrong target in the diagram.
+768: Please go slower and add diagrams. Proposition 3.1.3 says that (-)^* preserves all connected limits. Where in the sentences here is it question at all of a set where the star operation has been applied? Corollary B.4 requires a diagram in a comma category; which comma category are you considering?
+768: Regarding the conclusive sentence: be more explicit about having e,m monos and having h_Q=em entailing that h_Q is mono.
+769: What are the "witnesses"? You're trying to prove that (h_E,H_V,h_Q) is a regular mono. Be more precise.
+773: Once again, please be more precise on how yo apply Lemma B.3.
+789-893: I didn't have time to go over this part of the proofs. Please check them and improve clarity whenever possible.
+894: There could have been a mention of this appendix earlier in the text than line 184. It could benefit from being properly mentioned earlier.
+911: What is the reference [9,10] for? For the statement or proof of Lemma B.3? For the definition of what "jointly creating colimits" means?
+911: Can you give a detailed explanation or example of what you mean by "{U_L, U_R} jointly creates colimits of F"? The definition is currently diluted in the proof, and the reader could benefit greatly from having it from the get-go.
+914: The word "define" does not really fit, as F is already defined. Maybe "denote"?
+916: Please draw the cocone diagram + the square diagram showing the two components (LU_LF(d),RU_RF(d)) of the morphism F(d):F(D) -> F(D'). Both would really help visualise the situation.
+918 and 921: Same comment as line 652.
+921: Shouldn't it be (L(a_D'),R(b_D')) everytime? Also, shouldn't F(d) = (LU_LF(d),RU_RF(d))?
+924: Please draw the cocone diagrams for (X,Y,g), (X,{x_D}), and (Y,{y_D}).
+930: "from which it follows": this uses the universal property of L(A) as the colimit of LU_LF, which should be explicitly mentioned (and a diagram wouldn't hurt).
+932: What is the functor I? Is this a typo for F?
+944 and 951: Why the mention of the initial object and terminal object with a plural?
+948: The argument for the uniqueness of (?_A,k) could be made clearer. A diagram of the universal morphism would have been helpful
+
+
+
+
+
+
+Bibliography:
+- Can you add the DOI of the references, or is it not in line with the assigned format?
+- It seems to me that there is a lack of citations regarding other publications with the similar goal of proving that certain categories of graphs satisfy some form of adhesivity. Here are some results from a quick google search. Maybe select and cite some relevant ones?
+[1] Attribution of Graphs by Composition of M, N-adhesive Categories. Christoph Peuser and Annegret Habel
+[2] Weak Adhesive High-Level Replacement Categories and Systems: A Unifying Framework for Graph and Petri Net Transformations. Hartmut Ehrig, Ulrike Golas
+[3] Adhesive Subcategories of Functor Categories with Instantiation to Partial Triple Graphs Extended Version. Jens Kosiol, Lars Fritsche, Andy Schürr, Gabriele Taentzer
+[4] Fuzzy Presheaves are Quasitoposes. Aloïs Rosset, Roy Overbeek, Jörg Endrullis
+[5] Towards M-Adhesive Categories Based on Coalgebras and Comma Categories. Julia Padberg
+507: Should M,N-adhesivity use math notation similarly to line 505?
+
+
+
+
+
+
+
+Sources of results or definitions are often lacking.
+Please add them (with theorem/definition numbers):
+109: [14,24] (as mentioned earlier)
+131: Proposition 2.6
+137: Remark 2.8
+139: Remark 2.9
+142: Proposition 2.10
+165: Proposition 3.1
+436: Definition/theorem number in [13]
+438: "introductory example in [32]" -> give example number if it exists, or section/page number.
+560: Give theorem number in [26]. You can moreover mention the name of the lemma (either pullback lemma or pasting law for pullbacks).
+608: Proofs that Set satisfies both properties
+609: Definition of distributivity
+613: Definition of extensivity
+621: Lemma A.5
+169: Remark 3.2
+175: Definition 3.4: There are various definitions of hypergraphs. Why this one in particular?
+177: Proposition 3.5
+178: Property of the list monad preserving pullbacks
+178: Property of prod being continuous + definition of what is a continuous functor
+240: Proposition 3.22
+731: Lemma A.7
+911: Theorem numbers
+
+
+
+
+
+Typos:
+37: left-
+38: yet they are -> yet that are
+110: Then it holds -> The following holds: (this happens multiple times in the paper)
+111: category L -> category, L
+114: forgotten to put the category in bold in the coslice category "X/ \boldsymbol{X}"
+150: solid -> non-dotted?
+185: object -> set
+187: \Delta_{Set} -> \Delta_{Hyp}
+190: interested -> be interested
+214: V -> V_\mathcal{H}
+223: h(1 -> h_1
+225: idetifiers -> identifiers, as -> as follows:
+251: \tau_\mathcal{H} -> \tau_\mathcal{G}
+251: remove "Let"
+253: inputs -> input nodes
+295: composing -> by composing
+301: limiting cocone -> limiting cone (I think)
+324: T(\mathcal{H}) -> T(h)
+327: correponds -> corresponds
+332: , ,
+360: extends -> extend
+360: ito -> to
+424: , i.e. -> , i.e.,
+431: EGGSs -> EGGs
+451: EGGS -> EGGs
+451: optimisation To -> optimisation. To
+474: down-to-Earth -> down-to-earth
+575: pi -> \pi
+593: now at once -> now once
+607: (B,{m, h \circ \iota_m}) -> (B,{m,\iota_m})
+631: iota -> iota'
+634: twice the word "aside"
+639: "b \circ t_2 \circ l_0" -> "t_2 \circ l_0"
+643: \circ \circ
+743: ,,
+750: \pi^i_E -> \pi^d_E
+756: \pi^i_C -> \pi^d_C
+763: \pi^dQ -> \pi^d_Q
+914: R(a_i) -> R(b_D)
+946: ?_{R(B)}
+947: Consider -> Let
