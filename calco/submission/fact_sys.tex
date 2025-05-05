@@ -1,0 +1,70 @@
+
+\iffalse 
+\subsection{Factorization systems}
+
+\begin{definition}[Factorization System]\label{def:fact_sys}
+	Let $\X$ be a category, and let $\E$, $\M$ be two classes of arrows.
+	Then, $(\E, \M)$ is a \emph{factorization system} if:
+	\begin{enumerate}
+		\item $\E$ and $\M$ are closed under composition with isomorphisms: if $f: X \to Y$ belongs to $\E$ (to $\M$), and $h: Y\to Z$ is an isomorphism, then $h \circ f$ belongs to $\E$ (to $\M$);
+		\item every arrow $f: X \to Y$ of $\X$ admits an \emph{$(\E, \M)$-factorization}, that is, there are arrows $e \in \E$ and $m \in \M$ such that $f = m\circ e$;
+		\item every $e \in \E$ has the \emph{left lifting property} with respect to every $m \in \M$: for every commutative square as the one below, with $e \in \E$ and $m \in \M$,
+			there exists a unique $k: Y \to Z$ whitch fits in it.
+			\[\xymatrix{
+					X\ar[r]^{g} \ar[d]_e & Z \ar[d]^m \\ Y \ar@{.>}[ur]^k \ar[r]_f & V
+			}\]
+	\end{enumerate}
+	A factorization system $(\E, \M)$ is \emph{proper} if every $e \in \E$ is epi and every $m \in \M$ is mono, while it is \emph{stable} is $\E$ is stable under pullbacks.
+\end{definition}
+
+\begin{remark}\label{rem:dual_fact_sys}
+	It is immediate to notice that, given a factorization system $(\E, \M)$ on a category $\X$, then $(\M, \E)$ is a factorization system on $\X^{op}$, which is proper if $(\E, \M)$ is so, and it is stable if
+	$\M$ is stable under pushouts in $\X$.
+\end{remark}
+
+\begin{remark}
+	If $(\E, \M)$ is a factorization system for a category $\X$, then $\E$ is the class of all the arrows with the left lifting property with respect to every $m\in \M$.
+	Indeed, if $f:X \to Y$ is an arrow with such a property with respect to every element of $\M$, it is possible to factorize it as $f = m \circ e$, with $m: M \to Y$ in $\M$ and 
+	$e: X \to M$ in $\E$, obtaining the above situation by definition.
+	\[\xymatrix{X \ar[r]^e\ar[d]_f & M \ar[d]^m \\ Y \ar[r]_{\id{Y}} \ar@{.>}[ur]^k & Y}\]
+	From this, it is possible to prove that $k$ and $m$ are mutually inverses, hence $f = m\circ e$ belongs to $\E$ due to closure under isomorphisms.
+\end{remark}
+
+\begin{proposition}
+	Let $(\E, \M)$ be a factorization system on $\X$. Then $\E$ contains every isomorphism, and it is closed under composition.
+\end{proposition}
+
+By \Cref{rem:dual_fact_sys}, we have also that $\M$ is closed under composition, and contains every isomorphism.
+
+\begin{lemma}
+	Let $(\E, \M)$ be a factorization system on $\X$. If $e:Y \to E$, $e': Y\to E'$ and $m: E \to X$, $m':E'\to X$ are arrows, respectively, in $\E$ and in $\M$ such that $e'\circ m' = e \circ m$,
+	then there exists a unique isomorphism $\phi: E \to E'$ such that the diagram below commutes.
+	\[\xymatrix{Y\ar[r]^{e'}\ar[d]_{e}&E'\ar[d]^{m'}\\E\ar[r]_{m}\ar@{.>}[ur]^{\phi}\ar[r]_{m}&X}\]
+\end{lemma}
+
+\begin{proof}
+	Suppose the following situation.
+	\[\xymatrix{X \ar[r]^e\ar[d]_{e'}&E\ar[d]^{m}&&X\ar[r]^{e'}\ar[d]_{e}&{E'}\ar[d]^{m'}\\{E'}\ar[r]_{m'}\ar@{.>}[ur]^{\phi}&Y&&E\ar[r]_{m}\ar@{.>}[ur]^{\psi}&Y}\]
+	From the commutativity of the diagrams below, we obtain at once $\phi\circ\psi=\id{E'}$ and $\psi\circ\phi=\id{E}$.
+	\[\xymatrix{
+			X\ar[rr]^{e}\ar[dd]_{e}\ar[dr]_{e'}&&E\ar[r]^{m}\ar[dl]^{\psi}&Y\ar[dd]^{\id{Y}} &&& X\ar[rr]^{e'}\ar[dd]_{e'}\ar[dr]_{e}&&{E'}\ar[r]^{m}\ar[dl]^{\phi}&Y\ar[dd]^{\id{Y}}\\
+							     & {E'}\ar[dl]_{\phi}\ar[drr]^{m'}& & &&&  & {E'}\ar[dl]_{\psi}\ar[drr]^{m'}& & \\
+			E\ar[rrr]_{m} &&& Y &&& {E'} \ar[rrr]_{m'} &&& Y
+	}\]
+\end{proof}
+
+The previous lemma allows us to deduce other useful properties of factorization systems.
+
+\begin{proposition}
+	Given a factorization system $(\E, \M)$ on a category $\X$, it holds that:
+	\begin{enumerate}
+		\item an arrow $f:X\to Y$ that factors as $m \circ e$ belongs to $\M$ if and only if $e$ is an isomorphism;
+		\item $f\in \E$ and $f\in\M$ if and only if $f$ is an isomorphism;
+		\item $\M$ is stable under pullbacks;
+		\item if $(\E, \M)$ is proper, then $g\circ f \in \M$ implies $f \in \M$.
+	\end{enumerate}
+\end{proposition}
+
+\todo{proof?}
+\fi 
+
