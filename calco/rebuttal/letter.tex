@@ -1,6 +1,7 @@
 \documentclass[english,11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
+\usepackage{amsfonts}
 \usepackage{cleveref}
 \usepackage{fullpage}
 
@@ -18,7 +19,107 @@ We wish to thank the reviewers for the time they have dedicated to our paper, an
 \section*{Reviewer 1}
 \subsection*{Comments}
 \begin{itemize}
-\item  
+\item  $91$:  Put this in a definition + add the definition of ``closed under decomposition'', since this is mentioned line $122$.
+
+ANSWER: Since this notions are well known and we are recalling them only for the sake of completeness, we prefer to keep the present style, without using a definition box. We added the definition of closure under decomposition.
+
+\item $108$: Add to the list that it is well-behaved w.r.t comma categories and certain subcategories.
+
+ANSWER: We added the reference to subcategories. Since comma categories are slices that case is already covered.
+
+\item $109$: It would be helpful to include precise theorem numbers when referring to [14,24], as this would make it easier for readers to verify the claims without unnecessary effort. In this case, the first item of Proposition 2.4 seem to correspond to [14, Theorem 4.15], which speaks of (weak) adhesive HLR categories. If that's your reference, you should add how this notion relates to M-adhesivity, as done in Remark 2.3 for adhesivity and quasiadhesivity.
+
+ANSWER: Added the references to the relevant theorems or proposition. and the comparison with [14].
+
+\item $112$: R:X -> A should be preserve *M*-pullbacks, shouldn't it? 
+
+ANSWER: fixed.
+
+\item $113$ and $116$: add diagrams if space permits.
+
+ANSWER: we think that adding diagrams at lines 113 and 116 would not  significantly enhance clarity or understanding.
+
+\item $129$: Why refer to strict Reg(sGraphs)-adhesive as quasiadhesive? Seems strange to use two naming conventions.
+
+ANSWER: it is conventional to use the term quasiadhesive for categories which are strictly adhesive with respect to the class of regular monos. Other proposals have been made (e.g.~ in [18]) but we prefer to stick with the more used convention.
+
+\item $159$: Why mention here that a proof of Lemma 2.14 can be found in the appendix, and not for Lemma 2.12 or Proposition 2.13? Moreover, it is already mentioned in the synopsis that missing proofs would be in the appendix.
+
+ANSWER: there is a pointer to the appenix befor Lemma 2.12. Such pointer (and all the others) are there to provide the reader with a quick link to the correct proof in the appendix.
+
+\item $160$: Surprising that the bottom is now supposed to be a pullback, instead of a pushout as in Proposition 2.13. Can any intuition be given for this change in the assumptions?
+
+ANSWER: In Prop.~2.13 it is not assumed that the bottom face is a pushout, eve if this property can be deduced from $\mathcal{M}$-adhesivity. Notice, however that to Prop.~2.13 it should be enough to ask for stability of $\mathcal{M}$-pushouts: in such a case the bottom face of the cube is not guaranteed to be a pushout (we do not need such level of generality here). 
+
+On the other hand, we need a result allowing us to present the kernel pair of $d$ as a pushout even without the hypothesis that the back face is a pullback. This is the content of Lem.~$2.14$ and the proof relies on some peculiar properties of the category of sets. We suspect that the proof carry on in any extensive and distributive category but, again, we do not need such a level of generality here.
+
+Notice, by the way, that distributivity and extensivity are exactly the properties needed to build a Kleene star functor satisfying Prop.~3.1.
+
+\item $167$: Give the type of f$^\star$.
+
+ANSWER: Fixed.
+
+
+\item $171$: Say explicitly that $\mathsf{lg}_X$ = $(!_X)^\star$.
+
+ANSWER: this would be slightly imprecise since $1^\star$ is not $\mathbb{N}$, but only canonically isomorphic to it.
+
+\item $162$ and $173$: Maybe mention that it is the definition of hypergraph **that you will work with in this paper**. There are multiple existing definitions.
+
+ANSWER: while there exists multiple definitions of hypergraphs, it seems to us that this is well known and widely used, at least in the field of algebraic models of graph rewriting. We believe that it would be redundant to specify that this definition is the one used in the paper in which it appears.
+
+\item $175$: Why call $V_G$ the set of nodes? Maybe denote it $N_G$ or call it the set of vertices, to be consistent.
+
+ANSWER: we do not believe that this issue is crucial to the readability of understandability of the paper.
+
+\item $176$: Please give the type of $\mathsf{prod}^\star$. Is it $\mathbf{Set} \to \mathbf{Set}$?. Also, split this sentence into two sentences.
+
+ANSWER: Fixed
+
+
+\item $180$: Corollary 3.7 basically says that $\mathsf{Mono}(\mathbf{Set}) \downarrow \mathsf{Mono}(\mathbf{Set}) = \mathsf{Mono}(\mathbf{Hyp})$, which is part of the (unwritten) proof of Corollary 3.6, yet this is not mentioned. The order of the results is not logical. Moreover, the fact that Corollary 3.7 follows from Corollary B.5 is not mentioned.
+
+ANSWER: Fixed.
+
+\item $180$: Was this result not previously known in the literature?
+
+ANSWER: Indeed it was, we added a pointer to [14].
+
+\item $194$: Did you forget to draw $v_5$ or is it on purpose?
+
+ANSWER: It's a typo, $v_5$ is not needed.
+
+\item $198$: Why not more precisely say presheaf categories instead of functor categories?
+
+ANSWER: we changed the text.
+
+\item $208$: The target function $\gamma_1$ is supposed to output a list in $1^\star$. Does it return the one element list [1]?
+
+ANSWER: we removed the brackets since they were useless. Since we are identifying $1^\star$ with $\mathbb{N}$, $\gamma_1$ as codomain $\mathbb{N}$is precisely the element $1\in \mathbb{N}$.
+
+\item $214$: Why have the two diagram squares been oriented differently that the ones in Definition 3.4? Moreover, it should be twice the set $V_\mathcal{H}^*$ in the bottom left corners, and it should be $\gamma_1$ for the right morphism in the bottom square.
+
+ANSWER: Fixed
+
+ \item $214$: It seems to me that the second diagram can first be explained in much simpler terms, such as "in labelled hypergraphs, all hyperedges must have a single target vertex", and then it could be restated as a factorisation result for $t_\mathcal{H}$. The current explanation is not clear enough.
+ 
+ ANSWER: Fixed.
+ 
+ \item $215$: What is $U_{\mathbf{X}}$? Is it $U_{\mathbf{Set}}$? Or maybe $U_{\mathbf{Hyp}}$ that gives the set of vertices? There has been a lot of forgetful functor introduced so far, and here is one more being defined, so it would help to have a description in words added to this sentence.
+ 
+ ANSWER: $U_{\mathbf{X}}$ should be $U_{\mathbf{Hyp}}$. Fixed.
+ 
+ \item $216$: What is $\Delta_{\mathbf{X}}$? Only $\Delta_{\mathbf{Hyp}}$ has been introduced so far, and from my understanding $\mathbf{X}$ (in bold) is a typo for $\mathbf{Set}$ or $\mathbf{Hyp}$. Please draw the diagram for $\Delta_\Sigma(X) = (?,!)$ to visualise and understand what it represents, and give additional explanations in words. 
+
+ANSWER: same as above. $\Delta_\Sigma(X)$ is the discrete hypergraph on $X$ (the one with no edges) labeled in the unique possible way. In our opinion drawing a diagram of it would not enhance the clarity of the paragraph.
+
+\item $217$: What is the definition of the functor $\Delta_\Sigma$ on morphisms? The proof of Proposition 3.17 is not straightforward and would be welcomed to be added.
+
+ANSWER: The proof is omitted for lack of space and since it is neither particularly informative nor useful. Indeed, given $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$,  a morphism $X\to U_{\Sigma}(h,k)$ is just an arrow from $X$ to the set of nodes of $\mathcal{H}$. Since the set of hyperedges of $\Delta_{\Sigma}(X)$ is empty, it can be extended in a unique way to a morphism of hypergraph which, moreover, respect the labeling (because on $\Delta_{\Sigma}(X)$ there is nothing to label).
+
+\item $224-225$: What do you mean by "identifier"? Do you mean "label"? And what does "the latter" refer to? 
+
+ANSWER: we haveused "labels"
 \end{itemize}
 \subsection*{Bibliography}
 \begin{itemize}
@@ -27,7 +128,9 @@ We wish to thank the reviewers for the time they have dedicated to our paper, an
 
 \subsection*{Sources of theorems and definitions}
 \begin{itemize}
-	\item 
+	\item $109$: [14,24] (as mentioned earlier)
+	
+	ANSWER: added a pointer to the relevant results.
 \end{itemize}
 
 
