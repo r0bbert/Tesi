@@ -385,7 +385,8 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 
 \parbox{11cm}{\begin{itemize}
 	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one aside, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
-		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable.
+		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable;
+		\item \emph{closed under decomposition}, or \emph{left-cancellable}, if whenever $g$ and $g\circ f$ belong to $\mathcal{A}$, then $f\in \mathcal{A}$. 
 \end{itemize}}\hfill
 \parbox{1cm}{
 \xymatrix{A \ar[r]^{f} \ar[d]_{m}& B \ar[d]^{n} \\ C \ar[r]_{g} & D}}
@@ -414,7 +415,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 \begin{definition}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}]
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
-	$\mon(\X)$  including  all isos, closed under composition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
+	$\mon(\X)$  including  all isos, closed under composition, decomposition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
 		\item it has \emph{$\mathcal{M}$-pullbacks}, i.e.~pullbacks along arrows of $\mathcal{M}$;
 		\item it has \emph{$\mathcal{M}$-pushouts}, i.e.~pushouts along arrows of $\mathcal{M}$;
@@ -428,21 +429,20 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 
 \begin{remark}
-	\label{rem:salva}
-	\emph{Adhesivity} and \emph{quasiadhesivity} 
+	\label{rem:salva} Our notion of $\mathcal{M}$-adhesive category corresponds to what in \cite{ehrig2006fundamentals} is called \emph{weak adhesive HLR category}, while a strict $\mathcal{M}$-adhesive categories corresponds to \emph{adhesive HLR} ones. Finally, 	\emph{Adhesivity} and \emph{quasiadhesivity} 
 	\cite{lack2005adhesive,garner2012axioms} coincide with strict
 	$\mon(\X) $-adhesivity and strict $\reg(\X)$-adhesivity,
-	respectively.
+	respectively. On the other hand
 \end{remark}
 
 
-$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of slice and functor categories \cite{mac2013categories}, as shown by the following theorems~\cite{ehrig2006fundamentals,lack2005adhesive}.
+$\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (co-)slice and functor categories \cite{mac2013categories}, as well with respect to subcategories, as shown by the following theorems~\cite[Thm.~4.15]{ehrig2006fundamentals}, \cite[Prop.~3.5]{lack2005adhesive} and  \cite[Thm.~2.12]{CastelnovoGM24}.
 
 \begin{proposition}
 	\label{thm:slice-functors}
 	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then it holds
 	\begin{enumerate}
-		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to A$ one preserving pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
 		the categories $\X/X$  and $X/X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
@@ -595,7 +595,7 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 
 \section{Hypergraphical structures}\label{sec:hyper}
 
-In this section we briefly recall the notion of \emph{hypergraph}. In order to do so, a pivotal role is played by the \emph{Kleen star monad} $(-)^\star\colon \Set\to \Set$, also known as 
+In this section we briefly recall the notion of \emph{hypergraph}. In order to do so, a pivotal role is played by the \emph{Kleene star monad} $(-)^\star\colon \Set\to \Set$, also known as 
 \emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
 We recall some of its proprieties.
@@ -604,7 +604,7 @@ We recall some of its proprieties.
 	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
 	\begin{enumerate}
 		\item there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
-		\item for every arrow $f\colon X\to Y$, $f^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
+		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
 		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves pullbacks and equalizers.
 	\end{enumerate}
 \end{proposition}
@@ -628,22 +628,23 @@ We open this section with the definition of hypergraphs and we show how to label
 \hspace{10pt}	We define $\hyp$ to be the resulting category.
 \end{definition}}\hfill\parbox{3cm}{\xymatrix@R=15pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]_{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{s_{\mathcal{H}}} & V^\star_{\mathcal{H}}} \hspace{1pt}\\ \xymatrix@R=15pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]_{t_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{t_{\mathcal{H}}} & V^\star_{\mathcal{H}}} }
 
-Let $\pro^\star$ be the functor sending $X$ to $X^\star\times X^\star$: we can get $\hyp$ as a comma category.
+Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\star\times X^\star$.  We can use it to present $\hyp$ as a comma category.
 
 \begin{proposition}\label[proposition]{prop:com}
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{proposition}
 
-Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, thus the result below follows from  \Cref{thm:slice-functors} and \Cref{prop:com}.   
+Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
+
+
+\begin{corollary}\label[corollary]{cor:monhyper}
+	A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
+\end{corollary}
+
+Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fact 4.17]{ehrig2006fundamentals}).
 
 \begin{corollary}\label[corollary]{prop:hypadh}
 	 $\hyp$ is an adhesive category.
-\end{corollary}
-
-Another useful corollary of \Cref{prop:com} is the following one.
-
-\begin{corollary}\label[corollary]{cor:monhyper}
-A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
 \end{corollary}
 
 \Cref{prop:left,prop:com} allow us to deduce immediately the following.
@@ -660,7 +661,7 @@ A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are in
 We represent hypergraphs visually: dots denote nodes and boxes hyperedges. Should we interested in their identity, we put a name near the corresponding dot or box. 
 Sources and targets are represented by lines between dots and squares: the lines from the sources of an hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
-Let us look at the picture below. It represent an hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4, v_5\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
+Let us look at the picture below. It represent an hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
 and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ a pair nodes
 	\begin{center}
         \begin{tikzpicture}
@@ -854,7 +855,7 @@ Take $V_{\mathcal{G}}$ to be be $\{v_1, v_2, v_3, v_4, v_5\}$ and $E_{\mathcal{G
 }
 
 \begin{remark}\label{rem:functor}
-	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of functors. 
+	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of presheaves. 
 	%
 	Indeed, consider the category $\catname{H}$ in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
 	%
@@ -911,7 +912,7 @@ Our interest for hypergraphs stems from their use as a graphical representation 
 \begin{definition}
 An \emph{algebraic signature} $\Sigma$ is a pair $(O_\Sigma, \ari_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ and an \emph{arity function} $\ari_\Sigma\colon O_\Sigma \to \mathbb{N}$. 
 %
-We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $\{1\}$ as set of nodes, so that $\{1\}^\star$ is $\mathbb{N}$, $\ari_\Sigma$ as the source function and $\gamma_1$ as target function, which always picks the element $1$. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
+We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes, so that $1^\star$ is $\mathbb{N}$, $\ari_\Sigma$ as the source function and $\gamma_1$, which always picks the element $1$, as target function. The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{definition}
 
 \iffalse
@@ -1001,10 +1002,11 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 \parbox{10.8cm}{\begin{remark}\label[remark]{rem:label}	
 Let $\mathcal{H}=(E, V, s, t)$ be an hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a morphism $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
 
-\hspace{10pt}Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$.  The second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V^{\star}$ of words of length $1$, i.e. $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
-\end{remark}} \hfill \parbox{3cm}{\xymatrix@R=15pt{E_{\mathcal{H}} \ar[r]_{h}\ar[d]_{s_{\mathcal{H}}} & O_\Sigma \ar[d]^{\ari_\Sigma} \\ V_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}} \hspace{1pt}\\ \xymatrix@R=15pt{E_{\mathcal{H}} \ar[r]_{h}\ar[d]_{t_{\mathcal{H}}} & O_\Sigma \ar[d]^{\ari_\Sigma}\\ V_{\mathcal{H}}\ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}}
+\hspace{10pt}Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$.  By the second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V_\mathcal{H}^{\star}$ of words of length $1$, i.e.~all hyperedges must have a single target vertex, that is $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
+\end{remark}} \hfill \parbox{3cm}{\xymatrix@R=15pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\ari_\Sigma}& \mathbb{N}} \hspace{1pt}\\ \xymatrix@R=15pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\gamma_1}& \mathbb{N}}}
 
-$\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\X}(\mathcal{H}$). Now, $U_{\hyp}(\mathcal{G}^{\Sigma})=1$ thus, for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\X}(X)\to \mathcal{G}^{\Sigma}$  as $(?_{O_\Sigma}, !_{X})$. It is straightforward to see that in this way we get a left adjoint to $U_\Sigma$.
+$\hyp_{\Sigma}$, has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\hyp}(\mathcal{H}$). Now, $U_{\hyp}(\mathcal{G}^{\Sigma})=1$ thus, for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \mathcal{G}^{\Sigma}$  as $(?_{O_\Sigma}, !_{X})$. It is straightforward to see that in this way we get a left adjoint to $U_\Sigma$.
+
 
 \begin{proposition} $U_\Sigma$
 	has a left adjoint $\Delta_\Sigma$.
@@ -1055,8 +1057,7 @@ We extend our graphical notation of hypergraphs to labeled ones putting the labe
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
 	$(l, !_{V_\mathcal{G}}): \mathcal{G} \to \mathcal{G}^\Sigma$ that is characterised by the image of the edges. 
 	If $l(h(1) = a$, $l(h_2) = 2$, $l(h_3) = *$, and $l(h_4) = /$, we represent it visually 
-	by putting the identifiers of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$,
-	and removing the idetifiers on the nodes and edges of the latter, as
+	by putting the labels of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$.
 		\begin{center}
 		\begin{tikzpicture}
 			\begin{pgfonlayer}{nodelayer}
