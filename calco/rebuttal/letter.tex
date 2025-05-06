@@ -119,8 +119,142 @@ ANSWER: The proof is omitted for lack of space and since it is neither particula
 
 \item $224-225$: What do you mean by "identifier"? Do you mean "label"? And what does "the latter" refer to? 
 
-ANSWER: we haveused "labels"
-\end{itemize}
+ANSWER: changed with "labels"
+
+\item $233$: Mention that the objects of $\mathbf{TG}_\Sigma$ are precisely the term graphs.
+
+ANSWER: Fixed.
+
+\item $234-237$: Please add somewhere an example of a term graph.
+
+ANSWER: added
+
+\item $236$: Since every labelled hyperedge has a unique vertex as target, being a term graph simply means each hyperedge having a distinct target. This could have been said more explicitly.
+
+ANSWER: That's true but it seems to us that this formulation is neither clearer nor more informative that ours.
+
+\item $238$: What is the left adjoint $\Delta_{\mathbf{TG}_\Sigma}$? Is it equal to $\Delta_{\Sigma}$? If that's the case, it's worth it to say in one sentence that there is nothing to be checked in order to prove that the resulting labelled hypergraph is a term graph, as there are no hyperedges.
+
+ANSWER: Added.
+
+\item $247$: A little more explanation is required. Are you doing a proof by contradiction supposing a terminal object $1$ (with at most one hyperedge) and then showing that two hypergraphs $\mathcal{G}_a$ and $\mathcal{G}_b$, with one hyperedge each labeled $a$ and $b$ respectively, then the unique morphisms $\mathcal{G}_a \to 1$ and $\mathcal{G}_b \to 1$ lead to a contradiction about the label of the hyperedge in 1 (in the case 1 has an hyperedge, and with another argument in case $1$ has no hyperedge)? 
+
+ANSWER: if $1$ has no hyperedge than no argument is needed since $\mathcal{G}_a$ does not have arrows into it. If $1$ has one hyperedge than the existence of arrows $\mathcal{G}_a\to 1$ and $\mathcal{G}_b\to 1$ entails that $a=b$, which is a contradiction. Alll the details are in the cited reference [10].
+
+\item $259$: The wording is confused: "then its pushout along (f2,g2), then their pushout".
+
+ANSWER: Fixed.
+
+\item $263$: How does Corollary 3.27 follow from Proposition 2.4, Proposition 3.25, and Lemmma 3.26? This needs to be fleshed out. Does it use the fact that $\mathbf{Hyp}$ is adhesive (Corollary 3.6) and the subcategory property of Proposition 2.4?
+
+ANSWER: $\mathbf{Hyp}_\Sigma$ is adhesive, $\mathbf{TG}_\Sigma$ is closed in it under pullbacks and pushout along monos which preserve input nodes. Since these are the regular monos Prop.~2.4(4) entails the thesis. We add (another) pointer to [10] for details.
+
+
+\item $273$: Why is the notation $h_C$ and not $h_Q$?
+ANSWER: Fixed.
+
+\item $285$: Do you mean to say that proofs (pural) of Section 4 can be found in Appendix A.2?
+
+ANSWER: This pointer refers to the proof of Prop.~4.4. There is another pointer some lines below for the proof of Lem,~4.8.
+
+\item $293$: Please add a proof of Corollary 4.6, even if it's only a short one.
+
+ANSWER: We would rather not. As stated Cor. 4.6 is an immediate consequence of Prop.~4.4 because a faithful right adjoint preserves and reflects monos. We have eliminated the reference to Rem.~4.3 as it was misleading.
+
+
+\item $297$: It wouldn't hurt to have the diagram showing the two adjunctions in arrow.
+
+ANSWER: in our opinion it would not enhance the clarity of the paper.
+
+\item $301$: In item 2, the sentence wording uses once again the confusing structure of ending with a definition. Please restructure the sentence.
+
+ANSWER: we do not find the original sentence confusing at all. We nonetheless rephrased it.
+
+\item $301$: Why draw a different diagram here than on line 753?
+
+ANSWER: on line 753 there the same exact diagram, just turned by 90 degree for typographical reasons. 
+
+\item $306$: Why is this square not in the same orientation as the one on line 277?
+
+ANSWER: Fixed, even if this change does not affect in the slightest way the readability of the paper. 
+
+\item $307$: Be more precise about the sense in which you mean ``suitable", i.e., as the suitable class of monos $\mathcal{M}$ for which $\mathcal{M}$-adhesivity holds.
+
+ANSWER: we find the meaning completely clear from the context. Moreover, the meaning of ``suitable'' is made explicit by the content of Lem.~4.11.
+
+\item $321$: You could add a reference to Definition 3.13 for $\mathcal{G}^\Sigma$.
+
+ANSWER: we find no need to do so: Def.~3.13 is just three pages before.
+
+
+\item $325$: You could mention that $EqHyp_\Sigma$ can be seen as the comma category $T \downarrow$ ``Constant functor at $\mathcal{G}^\Sigma$". This would make the parallel with the definition of the category of labelled hypergraphs that was defined as a slice category. Moreover, you could then give a reference for the proof of Proposition 4.17, such as [MacLane Categories for the working mathematician, IV.1, Exercise 2, p86].
+
+ANSWER: We rather not: what the reviewer asked us to mention is exactly the content of Prop.~4.17. In turn, we do not see any need to quote the exercise of MacLane's book since the proof Prop.~4.17 it's a complete triviality.
+
+\item $327$: ``to the arrow" -> ``to an arrow"? And why is this arrow necessarily of the form (l,!)? Please provide more details
+
+ANSWER:  no: as mentioned, $R$  is the right adjoint to $T$ so $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to a unique arrow $\mathcal{H}\to R(\mathcal{G}_\Sigma)$. That this mate is exactly $(l, !_{V_{\mathcal{H}}})$ follows from the proof of Prop.~4.4 but it's also commpletely obvious given the definition of $\mathcal{G}^\Sigma$.
+
+
+\item $332$: Please provide details on how invoking those Proposition/Lemma/Corollary really prove Proposition 4.18.
+
+ANSWER: we do not think that these details should be provided because they are already contained in the  Proposition, Lemma and Corollaries quoted.  added a reference to Cor.~B.11 in which the details are spelled out even more explicitly.  Point $1$ follows immediately from Cor.~B.11 and Lem.~4.8 and point $2$ is simply the closure of adhesivity properties under the slice construction.
+
+
+\item$343-344$: Please provide an example of a term graph with equivalence.
+
+ANSWER: we do not think that there is a need to provide an explicit example. If the reviewer needs one, it can equip the term graph of Ex.~3.21 with the equality
+
+\item $344$: ``Thus ... right": You meant to say that $S_\Sigma$ makes the diagram on the right commute, right? Moreover, please describe what $S_\Sigma$ does explicitly, and why it would make the diagram commute.
+
+ANSWER: the action of $S_\Sigma$ is already in the text: it sends $(\mathcal{H},l)$ to $(T(\mathcal{H}),l)$. 
+
+\item $345$: Please provide a proof of this claim.
+ANSWER: we have already provided the proof citing Cor.~4.5 and Prop.~4.18.
+
+\item $351$: Please turn this observation into a lemma and provide a detailed proof of it.
+
+ANSWER: we added a reference to Cor.~4.19  and we believe that this is all that's needed. 
+
+
+\item $367$: What does it mean concretely to ask for $q^\star \circ t\circ \pi_1= q^\star \circ t \circ \pi_2$? Please add a connection between the intuitive explanation given in lines 364-365 and the mathematical equation given here. 
+
+ANSWER: we do not think that a further explanation is needed because the equation $q^\star \circ t\circ \pi_1= q^\star \circ t \circ \pi_2$ is \emph{exactly} the symbolic translation of ``whenever the relation identifies the source of two hyperedges, it identifies their targets too''.
+
+\item $367$: Also, add a diagram corresponding to the equality, in order to visualise the types of each morphism.
+
+ANSWER: this would be unnecessary and space consuming.
+
+\item $368$: Why does going from ``hypergraph with equivalence" to ``e-hypergraph" result in the category names going ``EqHyp" to ``GEqHyp"? What does the ``G" mean?
+
+ANSWER: notation changed to $\mathsf{e}-\mathbf{EqHyp}$
+
+
+\item $369-370$: Please add an example of an e-hypergraph.
+ANSWER: added an example
+
+
+\item $374$: "is so" -> "is a regular mono"
+
+ANSWER: fixed.
+
+\item $383$: Does the use of the word ``context" in this sentence refer to its common meaning in graph rewriting?
+
+ANSWER: no.
+
+
+\item $391$: Shouldn't $\mathsf{id}_\mathbb{N}$ be $\mathsf{id}^\star_1$ instead? 
+
+ANSWER: no, see the answers above about the isomorphism between $\mathbb{N}$ and $1^\star$.
+
+\item $405$: Why the name ``EGG"? Why is this short for ``e-term graph"?
+
+ANSWER: indeed the name ``EGG'', which comes from the already existing literature, is short for ``e-term graph'' or for ``e-graph''.
+
+\item $412$: A detailed explanation and example of what lies precisely in the class $\mathcal{T}_\Sigma$ is necessary to appreciate the next adhesivity result, and figure out its potential applications.
+
+ANSWER: we disagree on the fact that such an explanation is necessary: it is simply the restriction of $\mathcal{T}$ to the subcategory $\mathbf{EGG}$ and $\mathcal{T}$ has been already descripted in elementary terms.
+ \end{itemize}
 \subsection*{Bibliography}
 \begin{itemize}
 	\item 
