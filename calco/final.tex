@@ -142,7 +142,7 @@
 \newcommand{\dom}{\mathsf{dom}}
 \newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
 \newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
-\newcommand{\egg}{\catname{GEqHyp}}
+\newcommand{\egg}{\mathsf{e}\text{-}\catname{EqHyp}}
 
 \newcommand{\ari}{\mathsf{ar}}
 \newcommand{\abs}[1]{\lvert #1\rvert}
@@ -1134,14 +1134,20 @@ and as such have been a convenient tool for an efficient implementation of term 
 We elaborate here on the presentation given in~\cite{CastelnovoGM24}.
 
 \begin{definition}\label[definition]{def:tg}\index{term graph}
-	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is a mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
+	Given an algebraic signature $\Sigma$, we say that a labelled hypergraph $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ is a \emph{term graph} if $t_\mathcal{G}$ is a mono. We define $\tg$ to be the full subcategory of $\hyp_{\Sigma}$ given by term graphs and denote by $I_\Sigma$ the inclusion. Restricting $U_\Sigma\colon \hyp_{\Sigma}\to \catname{Set}$ we get a forgetful functor $U_{\tg}\colon \tg\to \catname{Set}$.
 \end{definition}
 
 
 \begin{remark}\label[remark]{rem:mono2}By \Cref{rem:label}, we know that if $\mathcal{G}$ is a term graph then $t_{\mathcal{G}}=v_1\circ \tau_{\mathcal{G}}$, where $v_1$ is the coprojection of $V_{\mathcal{G}}$ into $V^\star_{\mathcal{G}}$.  Notice that since $t_{\mathcal{G}}$ is a mono then $\tau_{\mathcal{G}}$ is a mono too.
 \end{remark}
 
-We now examine some properties of $\tg$, in order to study its adhesivity properties.
+
+\begin{example}
+The labelled hypergraph of \Cref{lab_2} is a term graph.
+\end{example}
+
+
+We now examine some properties of $\tg$, in order to study its adhesivity properties. We begin noticing that, for every set $X$,  $\Delta_\Sigma(X)$ has no hyperedges and so is a term graph. this yields at once the following.
 
 \begin{proposition}\label[proposition]{term:left}The forgetful functor $U_{\tg}$ has a left adjoint $\Delta_{\tg}$.
 \end{proposition}
@@ -1231,11 +1237,11 @@ Preservation of inputs characterizes regular monos in $\tg$.
 
 This characterization, in turn, provides us with the following result \cite{CastelnovoGM24,castelnovo2023thesis}. 
 
-\begin{lemma}\label[lemma]{prop:push} Consider three term graphs $(l_0, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$, $(l_1, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ and $(l_2, !_{V_\mathcal{K}})\colon \mathcal{K}\to \mathcal{G}^{\Sigma}$. Given $(f_1, g_1)\colon (l_0, !_{V_\mathcal{G}})\to (l_1, !_{V_\mathcal{H}})$, $(f_2, g_2)\colon (l_0, !_{V_\mathcal{G}})\to (l_2, !_{V_\mathcal{K}})$, if $(f_1, g_1)$ is a regular mono, then its pushout along $(f_2, g_2)$,  then their pushout $(p, !_{V_{\mathcal{P}}})\colon \mathcal{P}\to \mathcal{G}^{\Sigma}$ in $\hyp_{\Sigma}$ is a term graph too.
+\begin{lemma}\label[lemma]{prop:push} Consider three term graphs $(l_0, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$, $(l_1, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ and $(l_2, !_{V_\mathcal{K}})\colon \mathcal{K}\to \mathcal{G}^{\Sigma}$. Given $(f_1, g_1)\colon (l_0, !_{V_\mathcal{G}})\to (l_1, !_{V_\mathcal{H}})$, $(f_2, g_2)\colon (l_0, !_{V_\mathcal{G}})\to (l_2, !_{V_\mathcal{K}})$, if $(f_1, g_1)$ is a regular mono, then its pushout  $(p, !_{V_{\mathcal{P}}})\colon \mathcal{P}\to \mathcal{G}^{\Sigma}$ in $\hyp_{\Sigma}$ along $(f_2, g_2)$ is a term graph too.
 \end{lemma}
 
 
-\Cref{thm:slice-functors}, \Cref{lem:reg} and \Cref{prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{CorradiniG05}.
+\Cref{thm:slice-functors,prop:mono}, \Cref{lem:reg} and \Cref{prop:push} allow us to recover the following result, previously proved by direct computation in \cite[Thm.~4.2]{CorradiniG05} (see also \cite[Cor.~5.15]{CastelnovoGM24} for the details of the argument presented here).
 \begin{corollary}\label{cor:term}
 	The category $\tg$ is quasiadhesive.
 \end{corollary}
@@ -1253,9 +1259,9 @@ which is the main focus here, was yet to be presented to the world.
 \begin{definition}
 	A \emph{hypergraph with equivalence} $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, Q_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ is a 6-tuple such that $\mathcal{G} = (E_\mathcal{G}, V_{\mathcal{G}}, s_\mathcal{G}, t_\mathcal{G})$ is a hypergraph, $Q_\mathcal{G}$ is a set and $q_{\mathcal{G}}: V_{\mathcal{G}}\eto Q_{\mathcal{G}}$ is a surjection called \emph{quotient map}. 
 	%
-	A morphism $h\colon \mathcal{G\to H}$ is a triple $(h_E, h_V, h_C)$ such that the following diagrams commute
+	A morphism $h\colon \mathcal{G\to H}$ is a triple $(h_E, h_V, h_Q)$ such that the following diagrams commute
 	\[\xymatrix@R=15pt{
-		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar@{>>}[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {Q_{\mathcal{G}}} \ar[d]^{h_C} \\
+		{E_\mathcal{G}}\ar[r]^{s_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}}^\star}\ar[d]^{h_V^\star} & {E_\mathcal{G}}\ar[r]^{t_\mathcal{G}}\ar[d]_{h_E} & {V_{\mathcal{G}^\star}}\ar[d]^{h_V^\star} & {V_\mathcal{G}}\ar@{>>}[r]^{q_\mathcal{G}}\ar[d]_{h_V} & {Q_{\mathcal{G}}} \ar[d]^{h_Q} \\
 		{E_\mathcal{H}}\ar[r]_{s_\mathcal{H}} & {V_{\mathcal{H}}^\star}	& {E_\mathcal{H}}\ar[r]_{t_\mathcal{H}} & {V_{\mathcal{H}^\star}}& {V_\mathcal{H}}\ar@{>>}[r]_{q_\mathcal{H}} & {Q_\mathcal{H}}
 	}\]
 	The category of hypergraphs with equivalence and their morphisms is denoted $\EqHyp$.
@@ -1291,10 +1297,10 @@ A proof is in \Cref{proof:forghyp}.
 	The functor $T$ preserves limits and colimits.
 \end{corollary}
 
-Combining together the previous corollary with \Cref{rem:eqhyp_morphs} we get the following characterization of monos in $\EqHyp$.
+From the previous results we get the following characterization of monos in $\EqHyp$.
 
 \begin{corollary}\label{cor:mono1}
-	An arrow $(h_E, h_V, h_C): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
+	An arrow $(h_E, h_V, h_Q): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
 \end{corollary}
 
 Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtained composing $T$ and $U_{\hyp}$.  By \Cref{cor:left} and the second point of \Cref{prop:forghyp} we get the following.
@@ -1311,7 +1317,7 @@ Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, 
 Let $F\colon \D \to \EqHyp$ be a diagram and $(E_d, V_d, Q_d, s_d, t_d, q_d)$ the image of an object $d$. Then it holds
 \begin{enumerate}
 		\item $F$ has a colimit which is preserved by $K$;
-	\item if $(L, \{l_d\}_{d\in \D})$ is a limiting cocone for $K \circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$, where $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ is limiting for $T\circ F$.
+	\item consider a cone $(L, \{l_d\}_{d\in \D})$ limiting  for $K \circ F$ and let $((E, V), \{(\pi^d_E, \pi^d_V)\}_{d\in \D})$ be one for $T\circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $d\in \D$.
 \end{enumerate}
 \end{restatable}}\hfill 
 \parbox{3cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
@@ -1332,7 +1338,7 @@ We can now build another functor $\EqHyp \to \hyp$: the idea is that from an obj
 \commentato{
 \begin{remark}
 	The action of the functor on a morphism of hypergraphs with equivalences gives a morphism of hypergraphs,
-	in fact $q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E = q^{\star}_\mathcal{H} \circ h_V^\star \circ s_\mathcal{G} = h_C^\star \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}$.
+	in fact $q^{\star}_\mathcal{H} \circ s_\mathcal{H} \circ h_E = q^{\star}_\mathcal{H} \circ h_V^\star \circ s_\mathcal{G} = h_Q^\star \circ q^{\star}_\mathcal{G} \circ s_\mathcal{G}$.
 	The same is valid for $t_\mathcal{H}$ and $t_\mathcal{G}$. 
 \end{remark}
 }
@@ -1356,15 +1362,15 @@ A proof is in \Cref{proof:regmono}.
 We have now all the ingredient necessary to study the adhesivity properties of $\EqHyp$.  As a first step we need to introduce a class of monos.
 
 \noindent
-\parbox{10cm}{
+\parbox{11cm}{
 \begin{definition}
 	We define $\pbc$ as the class of  regular monos $(h_E, h_V, h_Q)\colon \mathcal{G}\to \mathcal{H}$ in $\EqHyp$ such that the square on the right is a pullback
 \end{definition}
 } \hfill
 	\parbox{2cm}{
 	     \xymatrix@R=18pt{
-	        V_\mathcal{G} \ar@{>>}[d]_{q_\mathcal{G}} \ar@{>->}[r]_{h_V}& V_\mathcal{H} \ar@{>>}[d]^{q_\mathcal{H}} \\
-	        Q_\mathcal{G} \ar@{>->}[r]^{h_Q} & Q_\mathcal{{H}}
+	        V_\mathcal{G} \ar@{>>}[r]_{q_\mathcal{G}} \ar@{>->}[d]_{h_V}& Q_\mathcal{G} \ar@{>->}[d]^{h_Q}\\
+	        V_\mathcal{H} \ar@{>>}[r]^{q_\mathcal{H}}  & Q_\mathcal{{H}}
               }
          }   
 
@@ -1484,7 +1490,7 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$, then, since $T$ has a ri
 $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 \end{proposition}
 
-Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From the second point of \Cref{thm:slice-functors,prop:eqhyp_complete,lim} we can deduce the following.
+Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors,cor:eqade}, we can deduce the following.
 
 \begin{proposition}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then it holds
 	\begin{enumerate}
@@ -1534,7 +1540,7 @@ $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are crea
  \end{restatable}
  
 \noindent
-\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $J_\Sigma$ is in $\pbc_\Sigma$ and whose image through $S_\Sigma$ is a regular mono in $\tg$.  Unwrapping the definition and using \Cref{lem:reg}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill 
+\parbox{11cm}{\hspace{15pt}Let now $\mathcal{T}$ be the class of morphism in $\EqTG_{\Sigma}$ whose image through $J_\Sigma$ is in $\pbc_\Sigma$ and whose image through $S_\Sigma$ is a regular mono in $\tg$.  By \Cref{lem:reg,prop:monos_in_eqhyps}, we have that a morphism $(h_E, h_V, h_Q)\colon (\mathcal{G},l)\to (\mathcal{H}, l')$ is in $\mathcal{T}$ if and only if all of its components are injections and the square on the right is a pullback.} \hfill 
 \parbox{2cm}{\xymatrix{V_{\mathcal{G}}\ar@{>->}[r]^{h_V} \ar@{>>}[d]_{q_{\mathcal{H}}}& V_{\mathcal{H}} \ar@{>>}[d]^{q_{\mathcal{H}}}\\ Q_{\mathcal{G}} \ar@{>->}[r]_{h_Q}& Q_{\mathcal{H}}} }
 
 \smallskip 
@@ -1570,6 +1576,10 @@ in other words, whenever the relation identifies the source of two hyperedges, i
 	We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and by $I\colon \egg \to \EqHyp$ the associated inclusion functor.
 \end{definition}
 
+
+\begin{example}
+	Consider the hypergraph of $\mathcal{G}$ \Cref{exa_2} and consider as quotient the identity $\id{V_\mathcal{G}}\colon V_\mathcal{G}\colon \to\mathcal{G}$. Then the kernel pair of $\id{V^\star_\mathcal{G}} \circ s$ concide with the kernel pair of $s$ which is empty. Thus  $\mathcal{G}$ is, trivially, an e-hypergraph
+\end{example}
 A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$. Full proof are in \Cref{proof:elim}.
 
 \begin{restatable}{lemma}{elim}\label{lem:elim}
@@ -1578,7 +1588,7 @@ A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$
 
 
 \begin{corollary}\label{cor:ereg}
-	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is so in $\hyp$. 
+	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is a regular mono in $\hyp$. 
 \end{corollary}
 
 We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for the details.
@@ -2404,7 +2414,7 @@ We will also need the following well-known fact about regular epis.
 \noindent
 \parbox{11.4cm}{
 \comp*}\hfill 
-\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>->}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
+\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^d_V}& V_d \ar@{>>}[dd]^{q_d}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_d}}   
 
 \begin{proof}\label{proof:comp}
 	\begin{enumerate}
@@ -2572,7 +2582,7 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 	\]
 	
 	\noindent 
-\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_C} \ar@{>->}[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
+\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_Q} \ar@{>->}[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
 
 
 	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below.
