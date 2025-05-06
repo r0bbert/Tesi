@@ -254,23 +254,901 @@ ANSWER: indeed the name ``EGG'', which comes from the already existing literatur
 \item $412$: A detailed explanation and example of what lies precisely in the class $\mathcal{T}_\Sigma$ is necessary to appreciate the next adhesivity result, and figure out its potential applications.
 
 ANSWER: we disagree on the fact that such an explanation is necessary: it is simply the restriction of $\mathcal{T}$ to the subcategory $\mathbf{EGG}$ and $\mathcal{T}$ has been already descripted in elementary terms.
+
+\item $418-448$: The wording in Section 6 could be improved. Many sentences are confusing, use colloquial language, or unprecise wording.
+
+TO DO
+
+\item $438$: Why does the depicted DPO rule correspond to $x/x -> 1$?
+
+TO DO
+
+\item $440$: What is ``the arriving one"?
+
+TO DO
+\item $442$: What is ``their nature"?
+
+TO DO
+\item $443-444$: what do you mean by ``the drawback ... same rewriting step"?
+
+TO DO
+
+\item $447-448$: Why is $n$ necessarily the right-hand side itself? Couldn't we consider any $n$?
+
+TO DO
+
+\item $448$: What is exactly meant by this last sentence?
+
+TO DO
+
+\item $465-466$: What do you mean by ``Another venue ... EGGs formalism."?
+
+TO DO
+
+\item $473$: Why ``In both cases"? Aren't you referring to a single paper? 
+
+TO DO
+
+\item $571$: The proof of the first claim of Lemma 2.12, i.e., that there exists a unique $k_h$ such that ... , is currently in the proof of item 2, and should be instead at the start of the proof (or in its own item).
+
+ANSWER: fixed.
+
+
+
+\item $576$: Reasoning goes too fast. Explain why (Universal property of pullbacks) and draw the corresponding diagram.
+
+ANSWER: we disagree with the reviewer and we think that all the details needed for the proof to be followed have been provided. 
+
+\item $581$: here and also at multiple other places, the word ``thesis" is used in a way I haven't heard yet. Please check if this is a correct meaning of the word or replace it with something more appropriate like ``claim" or ``statement".
+
+ANSWER: fixed. 
+
+\item $581-582$: ``two rectangles below are pullbacks" Explain why in more details: left square is a pullback by definition of kernel pairs, and right square is a pullback by assumption, thus by Lemma A1 the outer square is also a pullback.
+
+ANSWER: all the details cited by the reviewer are already in the text (they are quite literally the hypotheses of Lem.~2.12) and so we do not find necesary to recall them again in the proof.
+
+\item $584$: following ones -> following outer rectangles
+
+ANSWER: fixed.
+
+\item $587-588$: Draw the relevant diagram
+
+ANSWER: we think that such diagram is not needed and a waste of space.
+
+
+\item $589$ : Mention why this holds, namely item 2 and the current assumption.
+
+ANSWER: fixed.
+
+
+\item $597$: There is a lot of ad hoc reasoning done in order to prove Lemma 2.14. I'm curious if a more elegant and abstract proof could exist.
+
+ANSWER: we didn't find a more abstract proof, even if we suspect that the present proof works in any extensive and distributive monoidal category (see the answer above regarding the Kleene star).
+
+
+\item $600$: unique arrow s.t. ...: why? Give the reasoning and add the coproduct diagram to help visualise.
+
+ANSWER: in line $600$ we are using the universal property of a product to \emph{define} the arrow $\phi$, so we do not understand the reviewer's question. Adding a diagram here would be completely uninformative.
+
+
+\item $602$: By construction -> By the universal property of pushouts
+
+ANSWER : fixed.
+
+\item $602$: Start a new sentence at ``Thus"
+
+ANSWER: fixed
+
+\item $604$: uniqueness of what? Specify it. Moreover, isn't uniqueness already guaranteed on line 602?
+
+ANSWER: fixed. No, the uniqueness invoked in line $602$ is not the same that we must be proved: we know that $\psi$ is the unique arrow such that $\psi \circ n=k$ and $\psi \circ h =\phi$. A further (even if elementary) step is needed to show that it is the unque arrow such that it is the unique one such that $\psi \circ n=k$ and $\psi \circ h \circ \iota_m=f$. Notice that the uniqueness cited in line $602$ is used in the last line to conclude the proof.
+
+
+\item $607$: Say that the first claim is by monotonicity of $m$.
+ANSWER: fixed.
+
+\item $607$: Why does $(B,{m,\iota_m})$ being a coproduct implies that $\psi' = \psi$? Explain more
+
+ANSWER: this is an error which we have fixed. What we are using here is that $(D, \{n, h\})$ is a pushout.
+
+
+\item $613$: ``where $j_i$ is a coprojection" -> why not more directly say that $(X, \{j_i\})$ is a coproduct?
+
+ANSWER: we prefer our formulation.
+
+\item $631$: ``By Lemma A.2 … coproduct." Draw the diagram or mention explicitly which pushout square we consider (i.e., the one on top)
+
+ANSWER: there is no need to draw a diagram since we already mention that we are referring to $(D', \{n', g'\circ \iota\})$ and there is only one pushout in which $D'$ appears.
+
+\item $631$: Be careful about naming conventions. In Lemma A2, the pushout square is ABCD, whereas here it is ACBD.
+
+ANSWER: this change, which amounts to a rotation of the cube, has been done for typographical reason and it is completely harmful.
+
+
+\item $631$: Put the sentence ``We can … the right" in the same paragraph as its explanation.
+
+ANSWER: Fixed.
+
+\item $632$: First define $v_0$ and $v_1$ then introduce $v$.
+
+ANSWER: we prefer the actual formulation.
+
+\item $632$: ``the dotted arrow": mention its name
+
+ANSWER: fixed.
+
+\item $633$: Draw the corresponding diagram
+
+ANSWER: there is no need to do so and it would be simply a waste of space.
+
+
+\item $634$: Break down this sentence into more steps. Start by defining $l_0$ and $l_1$. Then mention extensivity.
+
+ANSWER: we find this sentence clear as it is.
+
+\item $638$: Draw the corresponding diagram
+
+ANSWER: as in many previous answers, such diagram is not needed since the two equations are as informative as that. 
+
+\item $640$: More explanations are needed. It seems you're using that $c \circ \iota' = \iota \circ w$, but if that's the case it needs to be mentioned. Right now, the two equations above only have the inclusion of the complement of $C'$, whereas we consider the square with $C$
+
+ANSWER: indeed we are using that propery, which hold by the observations before the bullet points. As in the answers before, we do not think that repeating all the hypotheses used every half of a page is needed. 
+
+\item $643-644$ Mention more explicitly what "the thesis" is in order to guide the reader and make a stronger case for you proof. You're trying to prove the square $B'D'BD$ is a pullback, i.e., to show there exists a unique morphism/function $k \colon  T \to B'$ such that $b\circ k=t_2$ and $n'\circ k = t_1$. For the existence of such a $k$, mention explicitly that $h_1 \circ l_1^{-1}$ is one such morphism that satisfies the two desired equalities. For the uniqueness of $k$, detail more why it follows from $n'$ being a mono.
+
+ANSWER:  we do not believe that such additional observations are needed, especially if they amounts to restating that we are trying to prove the universal property of pullbacks! Similarly, it's a completely trivial observation that then monotonicity of $n'$ entails uniqueness.
+
+\item $645$: Please recall the goal (trying to prove $K_aK_bK_cK_d$ is a pushout) and explain which strategy will be employed (Without warning, I'd expect a standard proof that assumes some morphisms $K_b \to Z \textleftarrow K_c$ and prove the existence and uniqueness of the fitting $K_d \to Z$.) In fact this happens but on line 695, two pages later. This proof is too long and should be splift into multiple sub results.
+
+ANSWER: we agree that this result is very technical and its proof quite involved. That's why it's been deferred to the appendix. However, as in the answer above we do not find the need to restate our claims. We also find the strategy quite natural and a standard application of extensivity and distributivty.
+
+
+\item $645-647$: Break this down into multiple steps.
+
+ANSWER: we prefer to maintain the current formulation.
+
+
+\item $645-647$: The usage of Lemma A.5 requires to see D' as the coproduct $D' = B' + E'$ which has been said in the text, but never written down mathematically.
+
+ANSWER: we've added a reference to Lem.~A.2
+
+\item $645-647$: What about $j_0$? Is $j_0 = k_{n'}$ up to some unique isomorphism? Please be explicit.
+
+ANSWER: $j_0$ \emph{is} $k_{n'}$, compare the third rectangle of Lem.~2.12. That's why there is a pointer to such lemma.
+
+\item $652$: Rewriting those long series of equalities as only one equality per line with, in the margin, an explanation or a reference to the corresponding commuting square would help follow the reasoning. This applies to all other similar long series of equalities in the paper. Here, for instance, I cannot find the reason why $d \circ \pi^1_d \circ j_1 = d \circ \pi^2_d \circ j_1$.
+
+ANSWER: this approach would occupy much more space and, in our opinion, not add much in terms of clarity. The equation mentioned by the reviewer follows from the definition of kernel pair. 
+
+
+\item $645-705$: The rest of the proof is difficult to follow and could benefit from restructuring and more guiding. What is the prupose of seeing $K_d$ and $K_3$ as coproducts? For $K_d$, this is used on lines $697-698$, but I don't see a similar use for $K_3$ (maybe it's my bad).
+
+ANSWER: we did not decompose $K_3$ as a coproduct. Lines $659-666$ are needed to build $\phi_3$, which is used later. As pointed out by the reviewer, the decomposition of $K_d$ is used in lines $697-698$.
+
+\item $715-716$: Please flesh out this last sentence finishing the proof in more details, and provide appopropriate diagrams.
+
+ANSWER: as in some answers above, we do not find useful to draw the diagram alongide the equation.
+
+
+\item $719-722$: Same comment
+
+ANSWER: same as above.
+
+\item $734$: Please provide the diagram showing the arrow from X to Y induced by $\phi$.
+
+ANSWER: same as above. It is a very well known fact that a natural transformation between two diagrams induces an arrow between the colimits and there is no need to restate it.
+
+
+\item $737$: Please provide the type of $\kappa$.
+
+ANSWER: they are \emph{defined} as coprojojections, so there is no need to further specify their typings.
+
+
+\item $737$: The objects in $\mathbf{D}$ are denoted $d$, and are denoted $D$ in the proof of Lemma B.3, please choose one notation. Same for $\alpha: D \to  D'$ and $d: D \to  D'$.
+
+ANSWER: fixed.
+
+\item $737$: ``By Lemma B.3 ...": The use of this lemma is too quick, with important details missing. Which comma category are you considering? The only one considered so far is $\mathbf{Hyp} = \mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. If that's the case, which functor are you considering to play the role of $F$ in Lemma B.3? Is it $T\circ F : \mathbf{D} \to  \mathbf{Hyp}$? The conclusion of your sentence is about the colimit of $U_{\mathsf{eq}}\circ F$, which has type $\mathbf{D} \to \mathbf{EqHyp} \to \mathbf{Set}$, so are you instead considering $\mathbf{Set}$ as a (trivial) comma category? If you want to invoke Lemma B.3, you also need to prove that the functor $L$ preserves colimits along $U_L \circ F$, which you don't mention.
+
+ANSWER: We beg to disagree that the use of this lemma is too quick. The further comments of the reviewer suggest that some misunderstanding is at play here. Indeed we are considering the fact that $\mathbf{Hyp}$ is equivalent to $\mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. By Lem.~B.3 $\{U_L, U_R\}$ jointly creates colimits of $F$, in particular $U_L$ preserves colimits and so $(V, \{\kappa^D_V\})$ is colimiting as claimed. Notice that, In our case $L$  is the identity and so it preserves colimits along any $F$, moreover $U_L$ becomes $U_{\mathsf{eq}}$.
+
+\item $738-748$: Please add diagrams everywhere where helpful.
+
+ANSWER: see answers above: we do not find necessary to draw diagrams here. 
+
+\item $742$: ``by construction": Difficult to see without diagrams/equations/etc.
+
+ANSER: see above.
+
+\item $748$: Please add a summary of what has been just done to check that the two claims of item 1 have indeed be proven.
+
+ANSWER: we believe that such summary is neither needed nor informative.
+
+\item $753$: Please add a diagram of the limiting cone with$ V,L,KF(d)$, and $KF(d')$.
+
+ANSWER:  see answers above: we do not think that adding such diagram is useful.
+
+\item $753$: ``We know ...": it seems you're doing a (regular epi,mono) factorisation of $l$. If that's the case, please be explicit about it.
+
+ANSWER: indeed we are doing such a factorization. We have out a reference to Rem.~A.6 
+
+\item $753$: ``Since the identity ...": it seems you're using the property of q being a regular epi. If that's the case, please be explicit about it (and give a reference to Remark A.6)
+
+ANSWER: added.
+
+\item $753$: "fitting in the rectangle aside" -> making the rectangle aside commute.
+
+ANSWER: we prefer our original formulation. 
+
+\item $753$: please use mono notation for $\mathsf{id}_{Q_d}$ in the diagram, i.e., add a tail.
+
+ANSWER: We have sistematically avoided the use the tail for isos as the identities. Moreover adding the tail here is completely not informative.
+
+
+\item $756$: There is some confusion in this whole proof about the quotient set being denoted C or Q. Here, $\pi_C$ is a typo for $\pi_Q$. Please use consistent notations.
+
+ANSWER: fixed
+
+
+\item $756$: Why does proving that T(cone diagram) commutes necessarily implies that the cone diagram also commutes? Which property are you using? Please, be explicit.
+
+ANSWER: this is just an application of faithfullness of $T$. Added.
+
+
+\item $763$: ``Hence": You're using the uniqueness of the function $V_G \to L$ in the universal property of L as the limit of KF. Please be explicit about it.
+
+ANSWER: Indeed we are using that property, and, given the computation which happens just above, there is no need to further remark on it.
+
+
+\item $763$: The morphism $k_Q$ has the wrong target in the diagram.
+
+ANSWER: fixed.
+
+\item $768$: Please go slower and add diagrams. Proposition 3.1.3 says that $(-)^\star$ preserves all connected limits. Where in the sentences here is it question at all of a set where the star operation has been applied? Corollary B.4 requires a diagram in a comma category; which comma category are you considering?
+
+ANSWER:  We are applying Cor.~B.4 to the category of hypergraphs. Since the Kleene stars preserves connected limits then, in particular, equalizers are computed componentwise (another proof is obtained appealing to the presentation of term graphs as presheaves). 
+
+\item $768$: Regarding the conclusive sentence: be more explicit about having $e,m$ monos and having $h_Q=e\circ m$ entailing that $h_Q$ is mono.
+
+ANSWER: we do not think that it should be mentioned explicitly that the composit of two monos is mono.
+
+\item $769$: What are the ``witnesses"? You're trying to prove that $(h_E,H_V,h_Q)$ is a regular mono. Be more precise.
+
+ANSWER: rephrased.
+
+\item $773$: Once again, please be more precise on how yo apply Lemma B.3.
+
+ANSWER: it seems to us that the application of Lemma B.3 is clear here, since $\mathbf{Hyp}$ is cited explicitly.
+
+\item $789-893$: I didn't have time to go over this part of the proofs. Please check them and improve clarity whenever possible.
+
+ANSWER: Done.
+
+\item $894$: There could have been a mention of this appendix earlier in the text than line 184. It could benefit from being properly mentioned earlier.
+
+ANSWER: this appendix is entirely technical and contains only very well known results. As such it has been quoted only when needed.
+
+
+\item $911$: What is the reference [9,10] for? For the statement or proof of Lemma B.3? For the definition of what "jointly creating colimits" means?
+
+ANSWER: Precisely.
+
+\item $911$: Can you give a detailed explanation or example of what you mean by ``$\{U_L, U_R\}$ jointly creates colimits of $F$"? The definition is currently diluted in the proof, and the reader could benefit greatly from having it from the get-go.
+
+ANSWER: see the answers above. Since this is a technical appendix we think that it sufficient to provide a pointer to the relevant literature.
+
+\item $914$: The word ``define" does not really fit, as F is already defined. Maybe "denote"?
+
+ANSWER: fixed.
+
+\item $916$: Please draw the cocone diagram + the square diagram showing the two components $(LU_LF(d),RU_RF(d))$ of the morphism $F(d):F(D) \to F(D')$. Both would really help visualise the situation.
+
+ANSWER: since this result is entriely known and elementary, we do not think that drawing a diagram is necessary.
+
+
+\item $918$ and $921$: Same comment as line $652$.
+
+ANSWER: same answer as above.
+
+\item $921$: Shouldn't it be $(L(a_D'),R(b_D'))$ everytime? Also, shouldn't $F(d) = (LU_LF(d),RU_RF(d))$?
+
+
+ANSWER:  no, it's correct in this formulation.
+
+\item $924$: Please draw the cocone diagrams for $(X,Y,g)$, $(X,{x_D})$, and $(Y,{y_D})$.
+
+ANSWER: same answers regardin the diagrams as above.
+
+\item $930$: "from which it follows": this uses the universal property of $L(A)$ as the colimit of $LU_LF$, which should be explicitly mentioned (and a diagram wouldn't hurt).
+
+ANSWER: same answer as above.
+
+\item $932$: What is the functor I? Is this a typo for F?
+ANSWER: Indeed, fixed.
+
+\item $944$ and $951$: Why the mention of the initial object and terminal object with a plural?
+
+ANSWER: a category can have more than one terminal/inital objects, albeit if they are, obviously, all isomorphic.
+
+\item $948$: The argument for the uniqueness of $(?_A,k)$ could be made clearer. A diagram of the universal morphism would have been helpful
+
+ANSWER: fixed a typo. We do not think that a further clarification is needed.
+
+
  \end{itemize}
 \subsection*{Bibliography}
 \begin{itemize}
-	\item 
+	\item  Can you add the DOI of the references, or is it not in line with the assigned format?
+	
+	ANSWER: We prefer not to add them.
+	
+	\item It seems to me that there is a lack of citations regarding other publications with the similar goal of proving that certain categories of graphs satisfy some form of adhesivity. Here are some results from a quick google search. Maybe select and cite some relevant ones?
+	\begin{enumerate}
+		\item  Attribution of Graphs by Composition of M, N-adhesive Categories. Christoph Peuser and Annegret Habel
+		\item Weak Adhesive High-Level Replacement Categories and Systems: A Unifying Framework for Graph and Petri Net Transformations. Hartmut Ehrig, Ulrike Golas
+		\item Adhesive Subcategories of Functor Categories with Instantiation to Partial Triple Graphs Extended Version. Jens Kosiol, Lars Fritsche, Andy Schürr, Gabriele Taentzer
+		\item  Fuzzy Presheaves are Quasitoposes. Aloïs Rosset, Roy Overbeek, Jörg Endrullis
+		\item  Towards M-Adhesive Categories Based on Coalgebras and Comma Categories. Julia Padberg
+	\end{enumerate}
+	
+	ANSWER: we do not believe that citing the suggested works would be helpful or appropriate, as they appear to be unrelated to the topic at hand.
+	
+	
+	507: Should M,N-adhesivity use math notation similarly to line 505?
+	
+	ANSWER: indeed, fixed.
+	
+	
 \end{itemize}
 
 \subsection*{Sources of theorems and definitions}
+
+Please add them (with theorem/definition numbers):
 \begin{itemize}
 	\item $109$: [14,24] (as mentioned earlier)
 	
 	ANSWER: added a pointer to the relevant results.
+	
+	\item $131$: Proposition 2.6
+
+	ANSWER: added a pointer to the relevant results. We added in appendix the proof of the second point for which, while well known, we were unable to find a source in the literature (likely because it follows at once from the first point).
+
+
+\item $137$: Remark 2.8
+
+
+ANSWER: this is a basic and elementary result of basic category theory.
+
+\item $139$: Remark 2.9
+
+
+ANSWER: this is a basic and elementary result of basic category theory.
+
+\item $142$: Proposition 2.10
+
+ANSWER: this is a basic and elementary result of basic category theory.
+
+\item $165$: Proposition 3.1
+
+ANSWER: the only not obvious property of the Kleene star is the first and the reference is provided.
+	
+	\item $436$: Definition/theorem number in [13]
+	
+TO DO	
+	
+	\item  $438$: "introductory example in [32]" -> give example number if it exists, or section/page number.
+	
+TO DO	
+
+
+	\item $560$: Give theorem number in [26]. You can moreover mention the name of the lemma (either pullback lemma or pasting law for pullbacks).
+	
+ANSWER: added the reference. 
+	
+	\item $608$: Proofs that Set satisfies both properties
+	
+	ANSWER: this is a well known fact and so we believe that no further reference is needed.
+	
+	\item $609$: Definition of distributivity
+	
+	ANSWER: added the relevant references.
+	
+	\item $613$: Definition of extensivity
+	
+	ANSWER: added the relevant references.
+	
+	\item $621$: Lemma A.5
+	
+	ANSWER: this is an exercise using the definition of distributivity and extensivity.
+	
+\item 	$169$: Remark 3.2
+
+ANSWER: preservation of pullbacks always entails preservation of monos. This is again an exercise in basic category theory.
+	
+	\item $175$: Definition 3.4: There are various definitions of hypergraphs. Why this one in particular?
+	
+	ANSWER: see answer above.
+
+
+	\item $177$: Proposition 3.5
+	
+	ANSWER: This is not a reference to an already published result. Is a fact which holds basically by definition.
+
+\item $178$: Property of the list monad preserving pullbacks
+
+ANSWER: see above.
+
+	\item $178$: Property of prod being continuous + definition of what is a continuous functor.
+	
+ANSWER: we do not believe that there is the need to recall the definition of continuity nor that limits commute with limits.	
+	
+	
+	\item $240$: Proposition 3.22
+	
+	ANSWER: added references.
+	
+\item 	$731$: Lemma A.7
+	
+	ANSWER: this is, again, an easy exercise of basic category theory.
+	
+	
+\item $	911$: Theorem numbers
+	
+	ANSWER: added references.
+	
+	
 \end{itemize}
 
+\subsection*{Typos}
 
+\begin{itemize}
+\item $37$: left-
+
+ANSWER: fixed.
+
+\item $38$: yet they are -> yet that are
+
+ANSWER: fixed.
+
+\item $110$: Then it holds -> The following holds: (this happens multiple times in the paper)
+
+ANSWER: fixed.
+
+\item $111$: category L -> category, L
+ANSWER: fixed.
+
+\item $114$: forgotten to put the category in bold in the coslice category "$X/ \mathbf{X}$"
+ANSWER: fixed.
+
+\item $150$: solid -> non-dotted?
+
+ANSWER: correct as it is.
+
+\item $185$: object -> set
+ANSWER: fixed.
+
+\item $187$: $\Delta_{Set}$ -> $\Delta_{Hyp}$
+
+ANSWER: fixed.
+
+\item $190$: interested -> be interested
+
+ANSWER: fixed.
+
+\item $214$: V -> $V_\mathcal{H}$
+ANSWER: fixed.
+
+\item $223$: $h(1$ -> $h_1$
+
+ANSWER: fixed.
+
+\item $225$: idetifiers -> identifiers, as -> as follows:
+
+ANSWER: fixed.
+
+\item $251$: $\tau_\mathcal{H}$ -> $\tau_\mathcal{G}$
+
+ANSWER: fixed.
+
+\item $251$: remove "Let"
+
+ANSWER: fixed.
+
+\item $253$: inputs -> input nodes
+
+ANSWER: fixed.
+
+\item $295$: composing -> by composing
+
+ANSWER: fixed.
+\item $301$: limiting cocone -> limiting cone (I think)
+
+ANSWER: fixed.
+
+
+\item $324$: $T(\mathcal{H})$ -> $T(h)$
+
+ANSWER: fixed.
+
+\item $327$: correponds -> corresponds
+
+ANSWER: fixed.
+
+\item $332$: , ,
+
+ANSWER: fixed.
+
+
+\item $360$: extends -> extend
+
+ANSWER: fixed.
+
+\item $360$: ito -> to
+
+ANSWER: fixed.
+
+\item $424$: , i.e. -> , i.e.,
+
+ANSWER: fixed.
+
+\item $431$: EGGSs -> EGGs
+
+ANSWER: fixed.
+
+\item $451$: EGGS -> EGGs
+
+ANSWER: fixed.
+
+\item $451$: optimisation To -> optimisation. To
+
+ANSWER: fixed.
+
+\item $474$: down-to-Earth -> down-to-earth
+
+ANSWER: fixed.
+
+\item $575$: pi -> $\pi$
+
+ANSWER: fixed.
+
+\item $593$: now at once -> now once
+ANSWER: fixed.
+\item $607$: $(B,{m, h \circ \iota_m})$ -> $(B,{m,\iota_m})$
+
+ANSWER: fixed.
+
+\item $631$: iota -> iota'
+
+ANSWER: fixed.
+
+\item $634$: twice the word "aside"
+
+ANSWER: fixed.
+
+\item $639$: "$b \circ t_2 \circ l_0$" -> "$t_2 \circ l_0$"
+ANSWER: replaced $b$ with $n$.
+
+\item $643$: $\circ \circ$
+
+ANSWER: fixed.
+
+\item $743$: ,,
+
+ANSWER: fixed.
+
+\item $750$: $\pi^i_E$ -> $\pi^d_E$
+
+ANSWER: fixed.
+
+\item $756$: $\pi^i_C$ -> $\pi^d_C$
+
+ANSWER: fixed.
+
+\item $763$: $\pi^dQ$ -> $\pi^d_Q$
+
+ANSWER: fixed.
+
+\item $914$: $R(a_i)$ -> $R(b_D)$
+
+ANSWER: fixed.
+
+\item $946$: $?_{R(B)}$
+
+ANSWER: fixed.
+
+\item $947$: Consider -> Let
+
+ANSWER: fixed.
+
+\end{itemize} 
 \section*{Reviewer 2}
 
+\begin{itemize}
+\item l. 37 lift -> left
 
+ANSWER: fixed
+
+\item l. 40 "the presence of the match ensures that the two pushouts exist,
+hence a rewriting step can be 41 performed." not true, even if l is
+mono. What is true if l is mono is that if the pushout complement C
+exists then it is unique up to iso.
+
+TO DO 
+
+\item l. 44 stil -> still
+
+ANSWER: fixed
+
+\item l. 114 $X/X$ -> $X/\mathbf{X}$
+
+ANSWER: fixed
+
+\item l. 119 "closed in it" not very clear. "closed under pullback" should be enough.
+
+ANSWER: fixed
+
+\item l. 122 please define "closed under decomposition"
+
+ANSWER: fixed
+
+\item l. 155 too -> two
+
+ANSWER: fixed
+
+
+\item l. 156 first, last -> leftmost, rightmost (to be consistent)
+
+ANSWER: fixed
+
+\item l. 163 Kleen -> Kleene
+
+ANSWER: fixed
+
+\item l. 175 and many others: an hypergraph -> a hypergraph
+
+ANSWER: fixed
+
+\item l.187 $\Delta_Set$ -> $\Delta_Hyp$ (as in Prop 3.8)
+
+ANSWER: fixed
+
+\item l. 190 should we -> should we be
+
+ANSWER: fixed
+
+\item l. 194 you don't need $v_5$
+
+ANSWER: fixed
+
+\item l. 195 a pair -> a pair of
+
+ANSWER: fixed
+
+\item l. 214 (and elsewhere) arrow -> morphism
+a morphism h -> a function h (this is more precise)
+above -> aside
+$V^\star$ -> $V^\star_H$
+in the diagrams, $V_H$ -> $V^*_H$
+in the second diagram, $\mathsf{ar}_\Sigma$ -> $\gamma_1$
+
+ANSWER: we prefer to keep using the term arrow as synonymous to morphism, as standard usage of category theory. We fixed the other observations.
+
+\item  l. 215 $\mathbf{X}$ -> $\mathbf{Set}$
+$U_X$ -> $U_Hyp$
+
+ANSWER: fixed
+
+
+\item l. 223 $l(h(1)$ -> $l(h_1)$
+
+ANSWER: fixed
+
+\item l. 228 to represents -> to represent
+
+ANSWER: fixed
+
+\item l. 232 is a mono -> is injective
+same thing on l. 236
+
+ANSWER: since monos and injective functions are the same in $\mathbf{Set}$ we have chosen to use both.
+
+\item l. 241 between ... and -> from ... to
+
+ANSWER: fixed
+
+\item l. 250 A input -> An input
+
+ANSWER: fixed
+
+\item l. 259 "then its pushout along (f2,g2), then their pushout ..." remove
+the last part
+
+ANSWER: fixed
+
+
+\item l. 268 a analogous -> an analogous
+
+ANSWER: fixed
+
+\item 
+l. 277 middle diagram, $V_{G^\star}$ and $V_{H^\star}$ should be $V^\star_G$ and $V^\star_H$
+
+ANSWER: fixed
+
+\item l. 300 "In order to do so." what?
+
+ANSWER: fixed
+
+\item l. 313 are regular mono -> monos
+
+ANSWER: fixed
+
+\item l. 324 $T(H)$ -> $T(h)$
+
+ANSWER: fixed
+
+\item l. 360 extends -> extend
+ito -> to
+
+ANSWER: fixed
+
+\item l. 373 arrow -> morphism
+
+ANSWER: see answer above
+
+\item l. 376 an arrow in Pb -> a mono in Pb
+
+ANSWER: fixed
+
+\item l. 397 "-> $\Sigma$" should be GEqHyp
+
+ANSWER: fixed
+
+
+
+\item l. 404 a e-term -> an e-term
+
+ANSWER: fixed
+
+
+\item l. 421 possibly ambiguity -> possible ambiguity
+
+ANSWER: fixed
+
+
+\item l. 430 can easily seen -> can be easily seen
+
+ANSWER: fixed
+
+
+\item l. 451 optimisation To -> optimisation. To
+
+ANSWER: fixed
+
+
+\item l. 456 fact -> that
+
+ANSWER: fixed
+
+
+l. 566 rightmost square, $X\times Z$ -> $Z\times Z$
+
+ANSWER: fixed
+
+
+\item l. 575 pi -> $\pi$
+
+ANSWER: fixed
+
+
+\item l. 579 the the
+
+ANSWER: fixed
+
+
+\item l. 595 $K_n$ -> $K_b$
+
+ANSWER: fixed
+
+\item l. 612 $\sum_{i\in I}X_i\times Y$ -> $\sum_{i\in I}(X_i\times Y)$ 
+
+ANSWER: fixed
+
+\item l. 613 of squares -> of commuting squares
+
+ANSWER: fixed
+
+\item l. 614 coproduct, coproduct injections -> coprojections
+ad -> as
+
+ANSWER: fixed
+
+\item l. 627 the cube -> the commuting cube
+
+ANSWER: fixed
+
+\item l. 639 b -> n
+
+\item l. 643 $\circ\circ$ -> $\circ$
+
+ANSWER: fixed
+
+\item l. 652 add = $g \circ c \circ i \circ q_1$ at the end
+
+ANSWER: fixed
+
+\item l. 653 similarly
+
+ANSWER: fixed
+
+\item l. 654 by Proposition 2.6 -> by hypothesis
+
+ANSWER: fixed
+
+\item l. 656 $i' \circ q_1$ -> $c \circ i' \circ q_1$
+$i' \circ q_2 $-> $c \circ i' \circ p_2$
+
+
+ANSWER: fixed
+
+
+\item l. 673 pi -> $\pi$
+
+ANSWER: fixed
+
+\item l. 676 $(\pi^1_b \circ \pi^2_b)$ -> $(\pi^1_b , \pi^2_b)$
+
+ANSWER: fixed
+
+\item  l. 678 $k'_{m'}$ -> $k_{m'}$
+
+ANSWER: fixed
+
+\item l. 679 $k'_{m'}$ -> $k_{m'}$
+
+ANSWER: fixed
+
+l. 686 $(\pi^1_d , \pi^2_d \circ k_{g'})$ -> $(\pi^1_d , \pi^2_d) \circ k_{g'}$
+
+ANSWER: fixed
+
+
+\item l. 689 $= \phi_3$ -> $= j_3$
+
+ANSWER: fixed
+
+\item l. 693 $(p_3, q_3 \circ \alpha_3)$ -> $(p_3, q_3) \circ \alpha_3$
+
+ANSWER: fixed
+
+\item l. 697 $ k'_n$ -> $k_{n'}$
+
+ANSWER: fixed
+
+\item l. 698 $k'_{n'}$ -> $k_{n'}$
+
+ANSWER: fixed
+
+\item l. 703 $k'_{g'}$ -> $k_{g'}$
+
+ANSWER: fixed
+
+\item l. 704 $x_3$ -> $\phi_3$ (3 occ.)
+
+ANSWER: fixed
+
+l. 725 a a, This amount to -> amounts to
+
+ANSWER: fixed
+
+l. 726 every square -> every commuting square
+
+ANSWER: fixed
+
+l. 729 an isomorphism -> a bijection
+
+ANSWER: fixed
+\end{itemize} 
 
 	
 	
