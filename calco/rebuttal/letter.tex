@@ -4,6 +4,7 @@
 \usepackage{amsfonts}
 \usepackage{cleveref}
 \usepackage{fullpage}
+\usepackage{xcolor}
 
 \title{``EGGs are adhesive!''\\
 	Answer to reviewers}
@@ -45,11 +46,11 @@ ANSWER: it is conventional to use the term quasiadhesive for categories which ar
 
 \item $159$: Why mention here that a proof of Lemma 2.14 can be found in the appendix, and not for Lemma 2.12 or Proposition 2.13? Moreover, it is already mentioned in the synopsis that missing proofs would be in the appendix.
 
-ANSWER: there is a pointer to the appenix befor Lemma 2.12. Such pointer (and all the others) are there to provide the reader with a quick link to the correct proof in the appendix.
+ANSWER: there is a pointer to the appendix before Lemma 2.12. Such pointer (and all the others) are there to provide the reader with a quick link to the correct proof in the appendix.
 
 \item $160$: Surprising that the bottom is now supposed to be a pullback, instead of a pushout as in Proposition 2.13. Can any intuition be given for this change in the assumptions?
 
-ANSWER: In Prop.~2.13 it is not assumed that the bottom face is a pushout, eve if this property can be deduced from $\mathcal{M}$-adhesivity. Notice, however that to Prop.~2.13 it should be enough to ask for stability of $\mathcal{M}$-pushouts: in such a case the bottom face of the cube is not guaranteed to be a pushout (we do not need such level of generality here). 
+ANSWER: In Prop.~2.13 it is not assumed that the bottom face is a pushout, even if this property can be deduced from $\mathcal{M}$-adhesivity. Notice however that to Prop.~2.13 it should be enough to ask for stability of $\mathcal{M}$-pushouts: in such a case the bottom face of the cube is not guaranteed to be a pushout (we do not need such level of generality here). 
 
 On the other hand, we need a result allowing us to present the kernel pair of $d$ as a pushout even without the hypothesis that the back face is a pullback. This is the content of Lem.~$2.14$ and the proof relies on some peculiar properties of the category of sets. We suspect that the proof carry on in any extensive and distributive category but, again, we do not need such a level of generality here.
 
@@ -95,17 +96,17 @@ ANSWER: we changed the text.
 
 \item $208$: The target function $\gamma_1$ is supposed to output a list in $1^\star$. Does it return the one element list [1]?
 
-ANSWER: we removed the brackets since they were useless. Since we are identifying $1^\star$ with $\mathbb{N}$, $\gamma_1$ as codomain $\mathbb{N}$is precisely the element $1\in \mathbb{N}$.
+ANSWER: we removed the brackets since they were useless. Since we are identifying $1^\star$ with $\mathbb{N}$, $\gamma_1$ as codomain $\mathbb{N}$ is precisely the element $1\in \mathbb{N}$.
 
 \item $214$: Why have the two diagram squares been oriented differently that the ones in Definition 3.4? Moreover, it should be twice the set $V_\mathcal{H}^*$ in the bottom left corners, and it should be $\gamma_1$ for the right morphism in the bottom square.
 
 ANSWER: Fixed
 
- \item $214$: It seems to me that the second diagram can first be explained in much simpler terms, such as "in labelled hypergraphs, all hyperedges must have a single target vertex", and then it could be restated as a factorisation result for $t_\mathcal{H}$. The current explanation is not clear enough.
+ \item $214$: It seems to me that the second diagram can first be explained in much simpler terms, such as ``in labelled hypergraphs, all hyperedges must have a single target vertex'', and then it could be restated as a factorisation result for $t_\mathcal{H}$. The current explanation is not clear enough.
  
  ANSWER: Fixed.
  
- \item $215$: What is $U_{\mathbf{X}}$? Is it $U_{\mathbf{Set}}$? Or maybe $U_{\mathbf{Hyp}}$ that gives the set of vertices? There has been a lot of forgetful functor introduced so far, and here is one more being defined, so it would help to have a description in words added to this sentence.
+ \item $215$: What is $U_{\mathbf{X}}$? Is it $U_{\mathbf{Set}}$? Or maybe $U_{\mathbf{Hyp}}$ that gives the set of vertices? There has been a lot of forgetful functors introduced so far, and here is one more being defined, so it would help to have a description in words added to this sentence.
  
  ANSWER: $U_{\mathbf{X}}$ should be $U_{\mathbf{Hyp}}$. Fixed.
  
@@ -117,9 +118,9 @@ ANSWER: same as above. $\Delta_\Sigma(X)$ is the discrete hypergraph on $X$ (the
 
 ANSWER: The proof is omitted for lack of space and since it is neither particularly informative nor useful. Indeed, given $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$,  a morphism $X\to U_{\Sigma}(h,k)$ is just an arrow from $X$ to the set of nodes of $\mathcal{H}$. Since the set of hyperedges of $\Delta_{\Sigma}(X)$ is empty, it can be extended in a unique way to a morphism of hypergraph which, moreover, respect the labeling (because on $\Delta_{\Sigma}(X)$ there is nothing to label).
 
-\item $224-225$: What do you mean by "identifier"? Do you mean "label"? And what does "the latter" refer to? 
+\item $224-225$: What do you mean by ``identifier''? Do you mean ``label'' And what does ``the latter'' refer to? 
 
-ANSWER: changed with "labels"
+ANSWER: Changed with ``labels''.
 
 \item $233$: Mention that the objects of $\mathbf{TG}_\Sigma$ are precisely the term graphs.
 
@@ -127,11 +128,11 @@ ANSWER: Fixed.
 
 \item $234-237$: Please add somewhere an example of a term graph.
 
-ANSWER: added
+ANSWER: Added.
 
 \item $236$: Since every labelled hyperedge has a unique vertex as target, being a term graph simply means each hyperedge having a distinct target. This could have been said more explicitly.
 
-ANSWER: That's true but it seems to us that this formulation is neither clearer nor more informative that ours.
+ANSWER: That is true but it seems to us that this formulation is neither clearer nor more informative that ours.
 
 \item $238$: What is the left adjoint $\Delta_{\mathbf{TG}_\Sigma}$? Is it equal to $\Delta_{\Sigma}$? If that's the case, it's worth it to say in one sentence that there is nothing to be checked in order to prove that the resulting labelled hypergraph is a term graph, as there are no hyperedges.
 
@@ -139,23 +140,24 @@ ANSWER: Added.
 
 \item $247$: A little more explanation is required. Are you doing a proof by contradiction supposing a terminal object $1$ (with at most one hyperedge) and then showing that two hypergraphs $\mathcal{G}_a$ and $\mathcal{G}_b$, with one hyperedge each labeled $a$ and $b$ respectively, then the unique morphisms $\mathcal{G}_a \to 1$ and $\mathcal{G}_b \to 1$ lead to a contradiction about the label of the hyperedge in 1 (in the case 1 has an hyperedge, and with another argument in case $1$ has no hyperedge)? 
 
-ANSWER: if $1$ has no hyperedge than no argument is needed since $\mathcal{G}_a$ does not have arrows into it. If $1$ has one hyperedge than the existence of arrows $\mathcal{G}_a\to 1$ and $\mathcal{G}_b\to 1$ entails that $a=b$, which is a contradiction. Alll the details are in the cited reference [10].
+ANSWER: If $1$ has no hyperedge than no argument is needed since $\mathcal{G}_a$ does not have arrows into it. If $1$ has one hyperedge than the existence of arrows $\mathcal{G}_a\to 1$ and $\mathcal{G}_b\to 1$ entails that $a=b$, which is a contradiction. All the details are in the cited reference [10].
 
-\item $259$: The wording is confused: "then its pushout along (f2,g2), then their pushout".
+\item $259$: The wording is confused: ``then its pushout along (f2,g2), then their pushout''.
 
 ANSWER: Fixed.
 
-\item $263$: How does Corollary 3.27 follow from Proposition 2.4, Proposition 3.25, and Lemmma 3.26? This needs to be fleshed out. Does it use the fact that $\mathbf{Hyp}$ is adhesive (Corollary 3.6) and the subcategory property of Proposition 2.4?
+\item $263$: How does Corollary 3.27 follow from Proposition 2.4, Proposition 3.25, and Lemma 3.26? This needs to be fleshed out. Does it use the fact that $\mathbf{Hyp}$ is adhesive (Corollary 3.6) and the subcategory property of Proposition 2.4?
 
 ANSWER: $\mathbf{Hyp}_\Sigma$ is adhesive, $\mathbf{TG}_\Sigma$ is closed in it under pullbacks and pushout along monos which preserve input nodes. Since these are the regular monos Prop.~2.4(4) entails the thesis. We add (another) pointer to [10] for details.
 
 
 \item $273$: Why is the notation $h_C$ and not $h_Q$?
+
 ANSWER: Fixed.
 
-\item $285$: Do you mean to say that proofs (pural) of Section 4 can be found in Appendix A.2?
+\item $285$: Do you mean to say that proofs (plural) of Section 4 can be found in Appendix A.2?
 
-ANSWER: This pointer refers to the proof of Prop.~4.4. There is another pointer some lines below for the proof of Lem,~4.8.
+ANSWER: This pointer refers to the proof of Prop.~4.4. There is another pointer some lines below for the proof of Lem.~4.8.
 
 \item $293$: Please add a proof of Corollary 4.6, even if it's only a short one.
 
@@ -164,11 +166,11 @@ ANSWER: We would rather not. As stated Cor. 4.6 is an immediate consequence of P
 
 \item $297$: It wouldn't hurt to have the diagram showing the two adjunctions in arrow.
 
-ANSWER: in our opinion it would not enhance the clarity of the paper.
+ANSWER: We believe it would not enhance the clarity of the paper.
 
 \item $301$: In item 2, the sentence wording uses once again the confusing structure of ending with a definition. Please restructure the sentence.
 
-ANSWER: we do not find the original sentence confusing at all. We nonetheless rephrased it.
+ANSWER: We do not find the original sentence confusing. We nonetheless rephrased it.
 
 \item $301$: Why draw a different diagram here than on line 753?
 
@@ -178,343 +180,329 @@ ANSWER: on line 753 there the same exact diagram, just turned by 90 degree for t
 
 ANSWER: Fixed, even if this change does not affect in the slightest way the readability of the paper. 
 
-\item $307$: Be more precise about the sense in which you mean ``suitable", i.e., as the suitable class of monos $\mathcal{M}$ for which $\mathcal{M}$-adhesivity holds.
+\item $307$: Be more precise about the sense in which you mean ``suitable'', i.e., as the suitable class of monos $\mathcal{M}$ for which $\mathcal{M}$-adhesivity holds.
 
-ANSWER: we find the meaning completely clear from the context. Moreover, the meaning of ``suitable'' is made explicit by the content of Lem.~4.11.
+ANSWER: We find the meaning  clear from the context. Moreover, the meaning of ``suitable'' is made explicit by the content of Lem.~4.11.
 
 \item $321$: You could add a reference to Definition 3.13 for $\mathcal{G}^\Sigma$.
 
 ANSWER: we find no need to do so: Def.~3.13 is just three pages before.
 
+\item $325$: You could mention that $EqHyp_\Sigma$ can be seen as the comma category $T \downarrow$ ``Constant functor at $\mathcal{G}^\Sigma$''. This would make the parallel with the definition of the category of labelled hypergraphs that was defined as a slice category. Moreover, you could then give a reference for the proof of Proposition 4.17, such as [MacLane Categories for the working mathematician, IV.1, Exercise 2, p86].
 
-\item $325$: You could mention that $EqHyp_\Sigma$ can be seen as the comma category $T \downarrow$ ``Constant functor at $\mathcal{G}^\Sigma$". This would make the parallel with the definition of the category of labelled hypergraphs that was defined as a slice category. Moreover, you could then give a reference for the proof of Proposition 4.17, such as [MacLane Categories for the working mathematician, IV.1, Exercise 2, p86].
+ANSWER: We rather not: what the reviewer asked us to mention is exactly the content of Prop.~4.17. In turn, we do not see any need to quote the exercise of MacLane's book since the proof Prop.~4.17 is trivial.
 
-ANSWER: We rather not: what the reviewer asked us to mention is exactly the content of Prop.~4.17. In turn, we do not see any need to quote the exercise of MacLane's book since the proof Prop.~4.17 it's a complete triviality.
+\item $327$: ``to the arrow'' -> ``to an arrow''? And why is this arrow necessarily of the form (l,!)? Please provide more details
 
-\item $327$: ``to the arrow" -> ``to an arrow"? And why is this arrow necessarily of the form (l,!)? Please provide more details
-
-ANSWER:  no: as mentioned, $R$  is the right adjoint to $T$ so $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to a unique arrow $\mathcal{H}\to R(\mathcal{G}_\Sigma)$. That this mate is exactly $(l, !_{V_{\mathcal{H}}})$ follows from the proof of Prop.~4.4 but it's also commpletely obvious given the definition of $\mathcal{G}^\Sigma$.
+ANSWER:  No: as mentioned, $R$  is the right adjoint to $T$ so $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to a unique arrow $\mathcal{H}\to R(\mathcal{G}_\Sigma)$. That this mate is exactly $(l, !_{V_{\mathcal{H}}})$ follows from the proof of Prop.~4.4 but it is also obvious given the definition of $\mathcal{G}^\Sigma$.
 
 
 \item $332$: Please provide details on how invoking those Proposition/Lemma/Corollary really prove Proposition 4.18.
 
-ANSWER: we do not think that these details should be provided because they are already contained in the  Proposition, Lemma and Corollaries quoted.  added a reference to Cor.~B.11 in which the details are spelled out even more explicitly.  Point $1$ follows immediately from Cor.~B.11 and Lem.~4.8 and point $2$ is simply the closure of adhesivity properties under the slice construction.
+ANSWER: We do not think that these details should be provided because they are already contained in the  Proposition, Lemma and Corollaries quoted. We added a reference to Cor.~B.11 in which the details are spelled out even more explicitly.  Point $1$ follows immediately from Cor.~B.11 and Lem.~4.8 and point $2$ is simply the closure of adhesivity properties under the slice construction.
 
 
 \item$343-344$: Please provide an example of a term graph with equivalence.
 
-ANSWER: we do not think that there is a need to provide an explicit example. If the reviewer needs one, it can equip the term graph of Ex.~3.21 with the equality
+ANSWER: We believe that there is no need to provide an explicit example. %If the reviewer needs one, it can equip the term graph of Ex.~3.21 with the equality
 
-\item $344$: ``Thus ... right": You meant to say that $S_\Sigma$ makes the diagram on the right commute, right? Moreover, please describe what $S_\Sigma$ does explicitly, and why it would make the diagram commute.
+\item $344$: ``Thus ... right'': You meant to say that $S_\Sigma$ makes the diagram on the right commute, right? Moreover, please describe what $S_\Sigma$ does explicitly, and why it would make the diagram commute.
 
-ANSWER: the action of $S_\Sigma$ is already in the text: it sends $(\mathcal{H},l)$ to $(T(\mathcal{H}),l)$. 
+ANSWER: The action of $S_\Sigma$ is already in the text: it sends $(\mathcal{H},l)$ to $(T(\mathcal{H}),l)$. 
 
 \item $345$: Please provide a proof of this claim.
-ANSWER: we have already provided the proof citing Cor.~4.5 and Prop.~4.18.
+
+ANSWER: We have already provided the proof citing Cor.~4.5 and Prop.~4.18.
 
 \item $351$: Please turn this observation into a lemma and provide a detailed proof of it.
 
-ANSWER: we added a reference to Cor.~4.19  and we believe that this is all that's needed. 
-
+ANSWER: We added a reference to Cor.~4.19  and we believe that this is all that is needed. 
 
 \item $367$: What does it mean concretely to ask for $q^\star \circ t\circ \pi_1= q^\star \circ t \circ \pi_2$? Please add a connection between the intuitive explanation given in lines 364-365 and the mathematical equation given here. 
 
-ANSWER: we do not think that a further explanation is needed because the equation $q^\star \circ t\circ \pi_1= q^\star \circ t \circ \pi_2$ is \emph{exactly} the symbolic translation of ``whenever the relation identifies the source of two hyperedges, it identifies their targets too''.
+ANSWER: We believe that no further explanation is needed because the equation $q^\star \circ t\circ \pi_1= q^\star \circ t \circ \pi_2$ is \emph{exactly} the symbolic translation of ``whenever the relation identifies the source of two hyperedges, it identifies their targets too''.
 
 \item $367$: Also, add a diagram corresponding to the equality, in order to visualise the types of each morphism.
 
-ANSWER: this would be unnecessary and space consuming.
+${\mathbf ANSWER: This would be unnecessary and space consuming.}$
 
-\item $368$: Why does going from ``hypergraph with equivalence" to ``e-hypergraph" result in the category names going ``EqHyp" to ``GEqHyp"? What does the ``G" mean?
+\item $368$: Why does going from ``hypergraph with equivalence'' to ``e-hypergraph'' result in the category names going ``EqHyp'' to ``GEqHyp''? What does the ``G'' mean?
 
-ANSWER: notation changed to $\mathsf{e}-\mathbf{EqHyp}$
+ANSWER: Notation changed to $\mathsf{e}-\mathbf{EqHyp}$
 
 
 \item $369-370$: Please add an example of an e-hypergraph.
-ANSWER: added an example
 
+ANSWER: Added.
 
-\item $374$: "is so" -> "is a regular mono"
+\item $374$: ``is so'' -> ``is a regular mono''.
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
-\item $383$: Does the use of the word ``context" in this sentence refer to its common meaning in graph rewriting?
+\item $383$: Does the use of the word ``context'' in this sentence refer to its common meaning in graph rewriting?
 
-ANSWER: no.
-
+ANSWER: No.
 
 \item $391$: Shouldn't $\mathsf{id}_\mathbb{N}$ be $\mathsf{id}^\star_1$ instead? 
 
-ANSWER: no, see the answers above about the isomorphism between $\mathbb{N}$ and $1^\star$.
+ANSWER: No, see the answers above about the isomorphism between $\mathbb{N}$ and $1^\star$.
 
-\item $405$: Why the name ``EGG"? Why is this short for ``e-term graph"?
+\item $405$: Why the name ``EGG''? Why is this short for ``e-term graph''?
 
-ANSWER: indeed the name ``EGG'', which comes from the already existing literature, is short for ``e-term graph'' or for ``e-graph''.
+ANSWER: Indeed the name ``EGG'', which comes from the already existing literature, is short for ``e-term graph'' or for ``e-graph''.
 
 \item $412$: A detailed explanation and example of what lies precisely in the class $\mathcal{T}_\Sigma$ is necessary to appreciate the next adhesivity result, and figure out its potential applications.
 
-ANSWER: we disagree on the fact that such an explanation is necessary: it is simply the restriction of $\mathcal{T}$ to the subcategory $\mathbf{EGG}$ and $\mathcal{T}$ has been already descripted in elementary terms.
+ANSWER: We disagree that such an explanation is necessary: it is simply the restriction of $\mathcal{T}$ to the subcategory $\mathbf{EGG}$ and $\mathcal{T}$ has been already descripted in elementary terms.
 
 \item $418-448$: The wording in Section 6 could be improved. Many sentences are confusing, use colloquial language, or unprecise wording.
 
-TO DO
+ANSWER: We streamlined and cleaned up the presentation, also adding details.
 
 \item $438$: Why does the depicted DPO rule correspond to $x/x -> 1$?
 
-TO DO
+ANSWER: Added explanation.
 
 \item $440$: What is ``the arriving one"?
 
-TO DO
+ANSWER: Added explanation.
+
 \item $442$: What is ``their nature"?
 
-TO DO
+ANSWER: Added explanation.
+
 \item $443-444$: what do you mean by ``the drawback ... same rewriting step"?
 
-TO DO
+ANSWER: Rephrased sentence.
 
 \item $447-448$: Why is $n$ necessarily the right-hand side itself? Couldn't we consider any $n$?
 
-TO DO
+ANSWER: Not necessarily, But for the EGGs rule, it suffices to forbid that the same rule is applied twice. Rephrased sentence.
 
 \item $448$: What is exactly meant by this last sentence?
 
-TO DO
+ANSWER: We meant rules with negative application conditions. Added.
 
 \item $465-466$: What do you mean by ``Another venue ... EGGs formalism."?
 
-TO DO
+ANSWER: Rephrased sentence.
 
 \item $473$: Why ``In both cases"? Aren't you referring to a single paper? 
 
-TO DO
+ANSWER: Fixed.
 
 \item $571$: The proof of the first claim of Lemma 2.12, i.e., that there exists a unique $k_h$ such that ... , is currently in the proof of item 2, and should be instead at the start of the proof (or in its own item).
 
-ANSWER: fixed.
-
-
+ANSWER: Fixed.
 
 \item $576$: Reasoning goes too fast. Explain why (Universal property of pullbacks) and draw the corresponding diagram.
 
-ANSWER: we disagree with the reviewer and we think that all the details needed for the proof to be followed have been provided. 
+ANSWER: We disagree with the reviewer and we think that all the details needed for the proof to be followed have been provided. 
 
-\item $581$: here and also at multiple other places, the word ``thesis" is used in a way I haven't heard yet. Please check if this is a correct meaning of the word or replace it with something more appropriate like ``claim" or ``statement".
+\item $581$: here and also at multiple other places, the word ``thesis'' is used in a way I haven't heard yet. Please check if this is a correct meaning of the word or replace it with something more appropriate like ``claim" or ``statement".
 
-ANSWER: fixed. 
+ANSWER: Fixed. 
 
-\item $581-582$: ``two rectangles below are pullbacks" Explain why in more details: left square is a pullback by definition of kernel pairs, and right square is a pullback by assumption, thus by Lemma A1 the outer square is also a pullback.
+\item $581-582$: ``two rectangles below are pullbacks''. Explain why in more details: left square is a pullback by definition of kernel pairs, and right square is a pullback by assumption, thus by Lemma A1 the outer square is also a pullback.
 
-ANSWER: all the details cited by the reviewer are already in the text (they are quite literally the hypotheses of Lem.~2.12) and so we do not find necesary to recall them again in the proof.
+ANSWER: All the details cited by the reviewer are already in the text (they are quite literally the hypotheses of Lem.~2.12) and so we do not find necesary to recall them again in the proof.
 
 \item $584$: following ones -> following outer rectangles
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $587-588$: Draw the relevant diagram
 
-ANSWER: we think that such diagram is not needed and a waste of space.
-
+{\color{red} ANSWER: we think that such diagram is not needed and a waste of space.}
 
 \item $589$ : Mention why this holds, namely item 2 and the current assumption.
 
-ANSWER: fixed.
-
+ANSWER: Fixed.
 
 \item $597$: There is a lot of ad hoc reasoning done in order to prove Lemma 2.14. I'm curious if a more elegant and abstract proof could exist.
 
-ANSWER: we didn't find a more abstract proof, even if we suspect that the present proof works in any extensive and distributive monoidal category (see the answer above regarding the Kleene star).
-
+ANSWER: We did not find a more abstract proof, even if we suspect that the present proof works in any extensive and distributive monoidal category (see the answer above regarding the Kleene star).
 
 \item $600$: unique arrow s.t. ...: why? Give the reasoning and add the coproduct diagram to help visualise.
 
-ANSWER: in line $600$ we are using the universal property of a product to \emph{define} the arrow $\phi$, so we do not understand the reviewer's question. Adding a diagram here would be completely uninformative.
+ANSWER: In line $600$ we are using the universal property of a product to \emph{define} the arrow $\phi$, so we do not understand the reviewer's question. Adding a diagram here would be uninformative.
 
 
 \item $602$: By construction -> By the universal property of pushouts
 
-ANSWER : fixed.
+ANSWER : Fixed.
 
 \item $602$: Start a new sentence at ``Thus"
 
-ANSWER: fixed
+ANSWER: Fixed
 
 \item $604$: uniqueness of what? Specify it. Moreover, isn't uniqueness already guaranteed on line 602?
 
-ANSWER: fixed. No, the uniqueness invoked in line $602$ is not the same that we must be proved: we know that $\psi$ is the unique arrow such that $\psi \circ n=k$ and $\psi \circ h =\phi$. A further (even if elementary) step is needed to show that it is the unque arrow such that it is the unique one such that $\psi \circ n=k$ and $\psi \circ h \circ \iota_m=f$. Notice that the uniqueness cited in line $602$ is used in the last line to conclude the proof.
-
+ANSWER: Fixed. No, the uniqueness invoked in line $602$ is not the same that we must be proved: we know that $\psi$ is the unique arrow such that $\psi \circ n=k$ and $\psi \circ h =\phi$. A further (even if elementary) step is needed to show that it is the unque arrow such that it is the unique one such that $\psi \circ n=k$ and $\psi \circ h \circ \iota_m=f$. Notice that the uniqueness cited in line $602$ is used in the last line to conclude the proof.
 
 \item $607$: Say that the first claim is by monotonicity of $m$.
+
 ANSWER: fixed.
 
-\item $607$: Why does $(B,{m,\iota_m})$ being a coproduct implies that $\psi' = \psi$? Explain more
+\item $607$: Why does $(B,{m,\iota_m})$ being a coproduct implies that $\psi' = \psi$? Explain more.
 
-ANSWER: this is an error which we have fixed. What we are using here is that $(D, \{n, h\})$ is a pushout.
-
+ANSWER: This is an error which we have fixed. What we are using here is that $(D, \{n, h\})$ is a pushout.
 
 \item $613$: ``where $j_i$ is a coprojection" -> why not more directly say that $(X, \{j_i\})$ is a coproduct?
 
-ANSWER: we prefer our formulation.
+ANSWER: We prefer our formulation.
 
-\item $631$: ``By Lemma A.2 … coproduct." Draw the diagram or mention explicitly which pushout square we consider (i.e., the one on top)
+\item $631$: ``By Lemma A.2 … coproduct.'' Draw the diagram or mention explicitly which pushout square we consider (i.e., the one on top)
 
-ANSWER: there is no need to draw a diagram since we already mention that we are referring to $(D', \{n', g'\circ \iota\})$ and there is only one pushout in which $D'$ appears.
+ANSWER: There is no need to draw a diagram since we already mention that we are referring to $(D', \{n', g'\circ \iota\})$ and there is only one pushout in which $D'$ appears.
 
 \item $631$: Be careful about naming conventions. In Lemma A2, the pushout square is ABCD, whereas here it is ACBD.
 
-ANSWER: this change, which amounts to a rotation of the cube, has been done for typographical reason and it is completely harmful.
+ANSWER: This change, which amounts to a rotation of the cube, has been done for typographical reason and it is completely harmful.
 
 
-\item $631$: Put the sentence ``We can … the right" in the same paragraph as its explanation.
+\item $631$: Put the sentence ``We can \ldots the right'' in the same paragraph as its explanation.
 
 ANSWER: Fixed.
 
 \item $632$: First define $v_0$ and $v_1$ then introduce $v$.
 
-ANSWER: we prefer the actual formulation.
+ANSWER: We prefer the actual formulation.
 
-\item $632$: ``the dotted arrow": mention its name
+\item $632$: ``the dotted arrow'': mention its name
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
-\item $633$: Draw the corresponding diagram
+\item $633$: Draw the corresponding diagram.
 
-ANSWER: there is no need to do so and it would be simply a waste of space.
+{\color{red} ANSWER: there is no need to do so and it would be simply a waste of space.}
 
 
 \item $634$: Break down this sentence into more steps. Start by defining $l_0$ and $l_1$. Then mention extensivity.
 
-ANSWER: we find this sentence clear as it is.
+ANSWER: We prefer the current formulation.
 
-\item $638$: Draw the corresponding diagram
+\item $638$: Draw the corresponding diagram.
 
-ANSWER: as in many previous answers, such diagram is not needed since the two equations are as informative as that. 
+{\color{red} ANSWER: As in many previous answers, such diagram is not needed since the two equations are as informative as that.}
 
 \item $640$: More explanations are needed. It seems you're using that $c \circ \iota' = \iota \circ w$, but if that's the case it needs to be mentioned. Right now, the two equations above only have the inclusion of the complement of $C'$, whereas we consider the square with $C$
 
-ANSWER: indeed we are using that propery, which hold by the observations before the bullet points. As in the answers before, we do not think that repeating all the hypotheses used every half of a page is needed. 
+ANSWER: Indeed we are using that property, which hold by the observations before the bullet points. As in the answers before, we do not think that repeating all the hypotheses used every half of a page is needed. 
 
-\item $643-644$ Mention more explicitly what "the thesis" is in order to guide the reader and make a stronger case for you proof. You're trying to prove the square $B'D'BD$ is a pullback, i.e., to show there exists a unique morphism/function $k \colon  T \to B'$ such that $b\circ k=t_2$ and $n'\circ k = t_1$. For the existence of such a $k$, mention explicitly that $h_1 \circ l_1^{-1}$ is one such morphism that satisfies the two desired equalities. For the uniqueness of $k$, detail more why it follows from $n'$ being a mono.
+\item $643-644$ Mention more explicitly what ``the thesis'' is in order to guide the reader and make a stronger case for you proof. You're trying to prove the square $B'D'BD$ is a pullback, i.e., to show there exists a unique morphism/function $k \colon  T \to B'$ such that $b\circ k=t_2$ and $n'\circ k = t_1$. For the existence of such a $k$, mention explicitly that $h_1 \circ l_1^{-1}$ is one such morphism that satisfies the two desired equalities. For the uniqueness of $k$, detail more why it follows from $n'$ being a mono.
 
-ANSWER:  we do not believe that such additional observations are needed, especially if they amounts to restating that we are trying to prove the universal property of pullbacks! Similarly, it's a completely trivial observation that then monotonicity of $n'$ entails uniqueness.
+ANSWER:  We do not believe that such additional observations are needed, especially if they amounts to restating that we are trying to prove the universal property of pullbacks! Similarly, it is a trivial observation that the monotonicity of $n'$ entails uniqueness.
 
 \item $645$: Please recall the goal (trying to prove $K_aK_bK_cK_d$ is a pushout) and explain which strategy will be employed (Without warning, I'd expect a standard proof that assumes some morphisms $K_b \to Z \textleftarrow K_c$ and prove the existence and uniqueness of the fitting $K_d \to Z$.) In fact this happens but on line 695, two pages later. This proof is too long and should be splift into multiple sub results.
 
-ANSWER: we agree that this result is very technical and its proof quite involved. That's why it's been deferred to the appendix. However, as in the answer above we do not find the need to restate our claims. We also find the strategy quite natural and a standard application of extensivity and distributivty.
-
+ANSWER: We agree that this result is very technical and its proof quite involved. That is why it has been deferred to the appendix. However, as in the answer above we do not find the need to restate our claims. We also find the strategy quite natural and a standard application of extensivity and distributivty.
 
 \item $645-647$: Break this down into multiple steps.
 
-ANSWER: we prefer to maintain the current formulation.
-
+ANSWER: We prefer to maintain the current formulation.
 
 \item $645-647$: The usage of Lemma A.5 requires to see D' as the coproduct $D' = B' + E'$ which has been said in the text, but never written down mathematically.
 
-ANSWER: we've added a reference to Lem.~A.2
+ANSWER: We have added a reference to Lem.~A.2.
 
 \item $645-647$: What about $j_0$? Is $j_0 = k_{n'}$ up to some unique isomorphism? Please be explicit.
 
-ANSWER: $j_0$ \emph{is} $k_{n'}$, compare the third rectangle of Lem.~2.12. That's why there is a pointer to such lemma.
+ANSWER: $j_0$ \emph{is} $k_{n'}$, compare the third rectangle of Lem.~2.12. That is why there is a pointer to such lemma.
 
 \item $652$: Rewriting those long series of equalities as only one equality per line with, in the margin, an explanation or a reference to the corresponding commuting square would help follow the reasoning. This applies to all other similar long series of equalities in the paper. Here, for instance, I cannot find the reason why $d \circ \pi^1_d \circ j_1 = d \circ \pi^2_d \circ j_1$.
 
-ANSWER: this approach would occupy much more space and, in our opinion, not add much in terms of clarity. The equation mentioned by the reviewer follows from the definition of kernel pair. 
+ANSWER: This approach would occupy much more space and, in our opinion, not add much in terms of clarity. The equation mentioned by the reviewer follows from the definition of kernel pair. 
 
 
-\item $645-705$: The rest of the proof is difficult to follow and could benefit from restructuring and more guiding. What is the prupose of seeing $K_d$ and $K_3$ as coproducts? For $K_d$, this is used on lines $697-698$, but I don't see a similar use for $K_3$ (maybe it's my bad).
+\item $645-705$: The rest of the proof is difficult to follow and could benefit from restructuring and more guiding. What is the purpose of seeing $K_d$ and $K_3$ as coproducts? For $K_d$, this is used on lines $697-698$, but I don't see a similar use for $K_3$ (maybe it's my bad).
 
-ANSWER: we did not decompose $K_3$ as a coproduct. Lines $659-666$ are needed to build $\phi_3$, which is used later. As pointed out by the reviewer, the decomposition of $K_d$ is used in lines $697-698$.
+ANSWER: We did not decompose $K_3$ as a coproduct. Lines $659-666$ are needed to build $\phi_3$, which is used later. As pointed out by the reviewer, the decomposition of $K_d$ is used in lines $697-698$.
 
-\item $715-716$: Please flesh out this last sentence finishing the proof in more details, and provide appopropriate diagrams.
+\item $715-716$: Please flesh out this last sentence finishing the proof in more details, and provide appropriate diagrams.
 
-ANSWER: as in some answers above, we do not find useful to draw the diagram alongide the equation.
+ANSWER: As in some answers above, we do not find useful to draw the diagram alongside the equation.
 
+\item $719-722$: Same comment.
 
-\item $719-722$: Same comment
-
-ANSWER: same as above.
+ANSWER: Same as above.
 
 \item $734$: Please provide the diagram showing the arrow from X to Y induced by $\phi$.
 
-ANSWER: same as above. It is a very well known fact that a natural transformation between two diagrams induces an arrow between the colimits and there is no need to restate it.
-
+ANSWER: Same as above. It is a very well known fact that a natural transformation between two diagrams induces an arrow between the colimits and there is no need to restate it.
 
 \item $737$: Please provide the type of $\kappa$.
 
-ANSWER: they are \emph{defined} as coprojojections, so there is no need to further specify their typings.
+ANSWER: they are \emph{defined} as coprojections, so there is no need to further specify their typings.
 
 
 \item $737$: The objects in $\mathbf{D}$ are denoted $d$, and are denoted $D$ in the proof of Lemma B.3, please choose one notation. Same for $\alpha: D \to  D'$ and $d: D \to  D'$.
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
-\item $737$: ``By Lemma B.3 ...": The use of this lemma is too quick, with important details missing. Which comma category are you considering? The only one considered so far is $\mathbf{Hyp} = \mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. If that's the case, which functor are you considering to play the role of $F$ in Lemma B.3? Is it $T\circ F : \mathbf{D} \to  \mathbf{Hyp}$? The conclusion of your sentence is about the colimit of $U_{\mathsf{eq}}\circ F$, which has type $\mathbf{D} \to \mathbf{EqHyp} \to \mathbf{Set}$, so are you instead considering $\mathbf{Set}$ as a (trivial) comma category? If you want to invoke Lemma B.3, you also need to prove that the functor $L$ preserves colimits along $U_L \circ F$, which you don't mention.
+\item $737$: ``By Lemma B.3 ...'': The use of this lemma is too quick, with important details missing. Which comma category are you considering? The only one considered so far is $\mathbf{Hyp} = \mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. If that's the case, which functor are you considering to play the role of $F$ in Lemma B.3? Is it $T\circ F : \mathbf{D} \to  \mathbf{Hyp}$? The conclusion of your sentence is about the colimit of $U_{\mathsf{eq}}\circ F$, which has type $\mathbf{D} \to \mathbf{EqHyp} \to \mathbf{Set}$, so are you instead considering $\mathbf{Set}$ as a (trivial) comma category? If you want to invoke Lemma B.3, you also need to prove that the functor $L$ preserves colimits along $U_L \circ F$, which you don't mention.
 
-ANSWER: We beg to disagree that the use of this lemma is too quick. The further comments of the reviewer suggest that some misunderstanding is at play here. Indeed we are considering the fact that $\mathbf{Hyp}$ is equivalent to $\mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. By Lem.~B.3 $\{U_L, U_R\}$ jointly creates colimits of $F$, in particular $U_L$ preserves colimits and so $(V, \{\kappa^D_V\})$ is colimiting as claimed. Notice that, In our case $L$  is the identity and so it preserves colimits along any $F$, moreover $U_L$ becomes $U_{\mathsf{eq}}$.
+ANSWER: We beg to disagree that the use of this lemma is too quick. The further comments of the reviewer suggest that some misunderstanding is at play here. Indeed we are considering the fact that $\mathbf{Hyp}$ is equivalent to $\mathsf{id}_{\mathbf{Set}} \downarrow \mathsf{prod}^\star$. By Lem.~B.3 $\{U_L, U_R\}$ jointly creates colimits of $F$, in particular $U_L$ preserves colimits and so $(V, \{\kappa^D_V\})$ is colimiting as claimed. Notice that in our case $L$  is the identity and so it preserves colimits along any $F$, moreover $U_L$ becomes $U_{\mathsf{eq}}$.
 
 \item $738-748$: Please add diagrams everywhere where helpful.
 
-ANSWER: see answers above: we do not find necessary to draw diagrams here. 
+ANSWER: See answers above: we do not find necessary to draw diagrams here. 
 
-\item $742$: ``by construction": Difficult to see without diagrams/equations/etc.
+\item $742$: ``by construction'': Difficult to see without diagrams/equations/etc.
 
-ANSER: see above.
+ANSER: See above.
 
 \item $748$: Please add a summary of what has been just done to check that the two claims of item 1 have indeed be proven.
 
-ANSWER: we believe that such summary is neither needed nor informative.
+ANSWER: We believe that such summary is neither needed nor informative.
 
 \item $753$: Please add a diagram of the limiting cone with$ V,L,KF(d)$, and $KF(d')$.
 
-ANSWER:  see answers above: we do not think that adding such diagram is useful.
+ANSWER:  See answers above: we do not think that adding such diagram is useful.
 
-\item $753$: ``We know ...": it seems you're doing a (regular epi,mono) factorisation of $l$. If that's the case, please be explicit about it.
+\item $753$: ``We know ...'': it seems you're doing a (regular epi,mono) factorisation of $l$. If that's the case, please be explicit about it.
 
-ANSWER: indeed we are doing such a factorization. We have out a reference to Rem.~A.6 
+ANSWER: indeed we are doing such a factorization. We put a reference to Rem.~A.6 
 
-\item $753$: ``Since the identity ...": it seems you're using the property of q being a regular epi. If that's the case, please be explicit about it (and give a reference to Remark A.6)
+\item $753$: ``Since the identity ...'': it seems you're using the property of q being a regular epi. If that's the case, please be explicit about it (and give a reference to Remark A.6)
 
-ANSWER: added.
+ANSWER: Added.
 
 \item $753$: "fitting in the rectangle aside" -> making the rectangle aside commute.
 
-ANSWER: we prefer our original formulation. 
+ANSWER: We prefer our original formulation. 
 
 \item $753$: please use mono notation for $\mathsf{id}_{Q_d}$ in the diagram, i.e., add a tail.
 
-ANSWER: We have sistematically avoided the use the tail for isos as the identities. Moreover adding the tail here is completely not informative.
-
+ANSWER: We have avoided the use the tail for isos as the identities. Moreover adding the tail here is not informative.
 
 \item $756$: There is some confusion in this whole proof about the quotient set being denoted C or Q. Here, $\pi_C$ is a typo for $\pi_Q$. Please use consistent notations.
 
-ANSWER: fixed
-
+ANSWER: Fixed
 
 \item $756$: Why does proving that T(cone diagram) commutes necessarily implies that the cone diagram also commutes? Which property are you using? Please, be explicit.
 
-ANSWER: this is just an application of faithfullness of $T$. Added.
+ANSWER: This is  an application of the faithfulness of $T$. Added.
 
-
-\item $763$: ``Hence": You're using the uniqueness of the function $V_G \to L$ in the universal property of L as the limit of KF. Please be explicit about it.
+\item $763$: ``Hence'': You're using the uniqueness of the function $V_G \to L$ in the universal property of L as the limit of KF. Please be explicit about it.
 
 ANSWER: Indeed we are using that property, and, given the computation which happens just above, there is no need to further remark on it.
 
-
 \item $763$: The morphism $k_Q$ has the wrong target in the diagram.
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $768$: Please go slower and add diagrams. Proposition 3.1.3 says that $(-)^\star$ preserves all connected limits. Where in the sentences here is it question at all of a set where the star operation has been applied? Corollary B.4 requires a diagram in a comma category; which comma category are you considering?
 
-ANSWER:  We are applying Cor.~B.4 to the category of hypergraphs. Since the Kleene stars preserves connected limits then, in particular, equalizers are computed componentwise (another proof is obtained appealing to the presentation of term graphs as presheaves). 
+ANSWER:  We are applying Cor.~B.4 to the category of hypergraphs. Since the Kleene stars preserves connected limits then, in particular, equalizers are computed component-wise (another proof is obtained appealing to the presentation of term graphs as presheaves). 
 
 \item $768$: Regarding the conclusive sentence: be more explicit about having $e,m$ monos and having $h_Q=e\circ m$ entailing that $h_Q$ is mono.
 
-ANSWER: we do not think that it should be mentioned explicitly that the composit of two monos is mono.
+ANSWER: We do not think that it should be mentioned explicitly that the composition of two monos is mono.
 
-\item $769$: What are the ``witnesses"? You're trying to prove that $(h_E,H_V,h_Q)$ is a regular mono. Be more precise.
+\item $769$: What are the ``witnesses''? You're trying to prove that $(h_E,H_V,h_Q)$ is a regular mono. Be more precise.
 
-ANSWER: rephrased.
+ANSWER: Rephrased.
 
 \item $773$: Once again, please be more precise on how yo apply Lemma B.3.
 
@@ -526,54 +514,51 @@ ANSWER: Done.
 
 \item $894$: There could have been a mention of this appendix earlier in the text than line 184. It could benefit from being properly mentioned earlier.
 
-ANSWER: this appendix is entirely technical and contains only very well known results. As such it has been quoted only when needed.
+ANSWER: This appendix is entirely technical and contains only very well known results. As such it has been quoted only when needed.
 
-
-\item $911$: What is the reference [9,10] for? For the statement or proof of Lemma B.3? For the definition of what "jointly creating colimits" means?
+\item $911$: What is the reference [9,10] for? For the statement or proof of Lemma B.3? For the definition of what ``jointly creating colimits'' means?
 
 ANSWER: Precisely.
 
-\item $911$: Can you give a detailed explanation or example of what you mean by ``$\{U_L, U_R\}$ jointly creates colimits of $F$"? The definition is currently diluted in the proof, and the reader could benefit greatly from having it from the get-go.
+\item $911$: Can you give a detailed explanation or example of what you mean by ``$\{U_L, U_R\}$ jointly creates colimits of $F$''? The definition is currently diluted in the proof, and the reader could benefit greatly from having it from the get-go.
 
-ANSWER: see the answers above. Since this is a technical appendix we think that it sufficient to provide a pointer to the relevant literature.
+ANSWER: See the answers above. Since this is a technical appendix we think that it sufficient to provide a pointer to the relevant literature.
 
-\item $914$: The word ``define" does not really fit, as F is already defined. Maybe "denote"?
+\item $914$: The word ``define'' does not really fit, as F is already defined. Maybe ``denote''?
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $916$: Please draw the cocone diagram + the square diagram showing the two components $(LU_LF(d),RU_RF(d))$ of the morphism $F(d):F(D) \to F(D')$. Both would really help visualise the situation.
 
-ANSWER: since this result is entriely known and elementary, we do not think that drawing a diagram is necessary.
-
+ANSWER: Since this result is known and elementary, we do not think that drawing a diagram is necessary.
 
 \item $918$ and $921$: Same comment as line $652$.
 
-ANSWER: same answer as above.
+ANSWER: Same answer as above.
 
-\item $921$: Shouldn't it be $(L(a_D'),R(b_D'))$ everytime? Also, shouldn't $F(d) = (LU_LF(d),RU_RF(d))$?
+\item $921$: Shouldn't it be $(L(a_D'),R(b_D'))$ every time? Also, shouldn't $F(d) = (LU_LF(d),RU_RF(d))$?
 
-
-ANSWER:  no, it's correct in this formulation.
+ANSWER:  No, it is correct in this formulation.
 
 \item $924$: Please draw the cocone diagrams for $(X,Y,g)$, $(X,{x_D})$, and $(Y,{y_D})$.
 
-ANSWER: same answers regardin the diagrams as above.
+ANSWER: Same answers regarding the diagrams as above.
 
 \item $930$: "from which it follows": this uses the universal property of $L(A)$ as the colimit of $LU_LF$, which should be explicitly mentioned (and a diagram wouldn't hurt).
 
-ANSWER: same answer as above.
+ANSWER: Same answer as above.
 
 \item $932$: What is the functor I? Is this a typo for F?
+
 ANSWER: Indeed, fixed.
 
 \item $944$ and $951$: Why the mention of the initial object and terminal object with a plural?
 
-ANSWER: a category can have more than one terminal/inital objects, albeit if they are, obviously, all isomorphic.
+ANSWER: A category can have more than one terminal/initial objects, albeit if they are, obviously, all isomorphic.
 
-\item $948$: The argument for the uniqueness of $(?_A,k)$ could be made clearer. A diagram of the universal morphism would have been helpful
+\item $948$: The argument for the uniqueness of $(?_A,k)$ could be made clearer. A diagram of the universal morphism would have been helpful.
 
-ANSWER: fixed a typo. We do not think that a further clarification is needed.
-
+ANSWER: Fixed a typo. We do not think that a further clarification is needed.
 
  \end{itemize}
 \subsection*{Bibliography}
@@ -591,12 +576,11 @@ ANSWER: fixed a typo. We do not think that a further clarification is needed.
 		\item  Towards M-Adhesive Categories Based on Coalgebras and Comma Categories. Julia Padberg
 	\end{enumerate}
 	
-	ANSWER: we do not believe that citing the suggested works would be helpful or appropriate, as they appear to be unrelated to the topic at hand.
-	
+	ANSWER: We do not believe that citing the suggested works would be helpful or appropriate, as they appear to be unrelated to the topic at hand.
 	
 	507: Should M,N-adhesivity use math notation similarly to line 505?
 	
-	ANSWER: indeed, fixed.
+	ANSWER: Indeed, fixed.
 	
 	
 \end{itemize}
@@ -607,68 +591,64 @@ Please add them (with theorem/definition numbers):
 \begin{itemize}
 	\item $109$: [14,24] (as mentioned earlier)
 	
-	ANSWER: added a pointer to the relevant results.
+	ANSWER: Added a pointer to the relevant results.
 	
 	\item $131$: Proposition 2.6
 
-	ANSWER: added a pointer to the relevant results. We added in appendix the proof of the second point for which, while well known, we were unable to find a source in the literature (likely because it follows at once from the first point).
-
+	ANSWER: Added a pointer to the relevant results. We added in appendix the proof of the second point for which, while well known, we were unable to find a source in the literature (likely because it follows at once from the first point).
 
 \item $137$: Remark 2.8
 
-
-ANSWER: this is a basic and elementary result of basic category theory.
+ANSWER: This is an elementary result of basic category theory.
 
 \item $139$: Remark 2.9
 
 
-ANSWER: this is a basic and elementary result of basic category theory.
+ANSWER: This is an elementary result of basic category theory.
 
 \item $142$: Proposition 2.10
 
-ANSWER: this is a basic and elementary result of basic category theory.
+ANSWER: This is an elementary result of basic category theory.
 
 \item $165$: Proposition 3.1
 
-ANSWER: the only not obvious property of the Kleene star is the first and the reference is provided.
+ANSWER: The only not obvious property of the Kleene star is the first and the reference is provided.
 	
 	\item $436$: Definition/theorem number in [13]
 	
 TO DO	
 	
-	\item  $438$: "introductory example in [32]" -> give example number if it exists, or section/page number.
+	\item  $438$: ``introductory example in [32]'' -> give example number if it exists, or section/page number.
 	
 TO DO	
 
-
 	\item $560$: Give theorem number in [26]. You can moreover mention the name of the lemma (either pullback lemma or pasting law for pullbacks).
 	
-ANSWER: added the reference. 
+ANSWER: Added the reference. 
 	
 	\item $608$: Proofs that Set satisfies both properties
 	
-	ANSWER: this is a well known fact and so we believe that no further reference is needed.
+	ANSWER: This is a well known fact and so we believe that no further reference is needed.
 	
 	\item $609$: Definition of distributivity
 	
-	ANSWER: added the relevant references.
+	ANSWER: Added the relevant references.
 	
 	\item $613$: Definition of extensivity
 	
-	ANSWER: added the relevant references.
+	ANSWER: Added the relevant references.
 	
 	\item $621$: Lemma A.5
 	
-	ANSWER: this is an exercise using the definition of distributivity and extensivity.
+	ANSWER: This is an exercise using the definition of distributivity and extensivity.
 	
 \item 	$169$: Remark 3.2
 
-ANSWER: preservation of pullbacks always entails preservation of monos. This is again an exercise in basic category theory.
+ANSWER: Preservation of pullbacks always entails preservation of monos. This is again an exercise in basic category theory.
 	
 	\item $175$: Definition 3.4: There are various definitions of hypergraphs. Why this one in particular?
 	
-	ANSWER: see answer above.
-
+	ANSWER: See answer above.
 
 	\item $177$: Proposition 3.5
 	
@@ -676,25 +656,23 @@ ANSWER: preservation of pullbacks always entails preservation of monos. This is 
 
 \item $178$: Property of the list monad preserving pullbacks
 
-ANSWER: see above.
+ANSWER: See above.
 
 	\item $178$: Property of prod being continuous + definition of what is a continuous functor.
 	
-ANSWER: we do not believe that there is the need to recall the definition of continuity nor that limits commute with limits.	
-	
+ANSWER: We do not believe that there is the need to recall the definition of continuity nor that limits commute with limits.	
 	
 	\item $240$: Proposition 3.22
 	
-	ANSWER: added references.
+	ANSWER: Added references.
 	
 \item 	$731$: Lemma A.7
 	
-	ANSWER: this is, again, an easy exercise of basic category theory.
-	
+	ANSWER: This is, again, an easy exercise of basic category theory.
 	
 \item $	911$: Theorem numbers
 	
-	ANSWER: added references.
+	ANSWER: Added references.
 	
 	
 \end{itemize}
@@ -708,157 +686,162 @@ ANSWER: fixed.
 
 \item $38$: yet they are -> yet that are
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $110$: Then it holds -> The following holds: (this happens multiple times in the paper)
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $111$: category L -> category, L
-ANSWER: fixed.
 
-\item $114$: forgotten to put the category in bold in the coslice category "$X/ \mathbf{X}$"
-ANSWER: fixed.
+ANSWER: Fixed.
+
+\item $114$: forgotten to put the category in bold in the coslice category ``$X/ \mathbf{X}$''
+
+ANSWER: Fixed.
 
 \item $150$: solid -> non-dotted?
 
-ANSWER: correct as it is.
+ANSWER: Correct as it is.
 
 \item $185$: object -> set
-ANSWER: fixed.
+
+ANSWER: Fixed.
 
 \item $187$: $\Delta_{Set}$ -> $\Delta_{Hyp}$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $190$: interested -> be interested
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $214$: V -> $V_\mathcal{H}$
-ANSWER: fixed.
+
+ANSWER: Fixed.
 
 \item $223$: $h(1$ -> $h_1$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $225$: idetifiers -> identifiers, as -> as follows:
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $251$: $\tau_\mathcal{H}$ -> $\tau_\mathcal{G}$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
-\item $251$: remove "Let"
+\item $251$: remove ``Let''
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $253$: inputs -> input nodes
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $295$: composing -> by composing
 
-ANSWER: fixed.
+ANSWER: Fixed.
+
 \item $301$: limiting cocone -> limiting cone (I think)
 
-ANSWER: fixed.
-
+ANSWER: Fixed.
 
 \item $324$: $T(\mathcal{H})$ -> $T(h)$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $327$: correponds -> corresponds
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $332$: , ,
 
-ANSWER: fixed.
-
+ANSWER: Fixed.
 
 \item $360$: extends -> extend
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $360$: ito -> to
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $424$: , i.e. -> , i.e.,
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $431$: EGGSs -> EGGs
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $451$: EGGS -> EGGs
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $451$: optimisation To -> optimisation. To
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $474$: down-to-Earth -> down-to-earth
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $575$: pi -> $\pi$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $593$: now at once -> now once
-ANSWER: fixed.
+
+ANSWER: Fixed.
+
 \item $607$: $(B,{m, h \circ \iota_m})$ -> $(B,{m,\iota_m})$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $631$: iota -> iota'
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $634$: twice the word "aside"
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $639$: "$b \circ t_2 \circ l_0$" -> "$t_2 \circ l_0$"
 ANSWER: replaced $b$ with $n$.
 
 \item $643$: $\circ \circ$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $743$: ,,
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $750$: $\pi^i_E$ -> $\pi^d_E$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $756$: $\pi^i_C$ -> $\pi^d_C$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $763$: $\pi^dQ$ -> $\pi^d_Q$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $914$: $R(a_i)$ -> $R(b_D)$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $946$: $?_{R(B)}$
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \item $947$: Consider -> Let
 
-ANSWER: fixed.
+ANSWER: Fixed.
 
 \end{itemize} 
 \section*{Reviewer 2}
@@ -866,63 +849,60 @@ ANSWER: fixed.
 \begin{itemize}
 \item l. 37 lift -> left
 
-ANSWER: fixed
+ANSWER: Fixed.
 
-\item l. 40 "the presence of the match ensures that the two pushouts exist,
-hence a rewriting step can be 41 performed." not true, even if l is
-mono. What is true if l is mono is that if the pushout complement C
+\item l. 40 ``the presence of the match ensures that the two pushouts exist, hence a rewriting step can be 41 performed.'' not true, even if l is mono. What is true if l is mono is that if the pushout complement C
 exists then it is unique up to iso.
 
-TO DO 
+ANSWER: Fixed.
 
 \item l. 44 stil -> still
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 114 $X/X$ -> $X/\mathbf{X}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
-\item l. 119 "closed in it" not very clear. "closed under pullback" should be enough.
+\item l. 119 ``closed in it'' not very clear. ``closed under pullback'' should be enough.
 
-ANSWER: fixed
+ANSWER: Fixed
 
-\item l. 122 please define "closed under decomposition"
+\item l. 122 please define ``closed under decomposition''
 
-ANSWER: fixed
+ANSWER: Fixed
 
 \item l. 155 too -> two
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 156 first, last -> leftmost, rightmost (to be consistent)
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 163 Kleen -> Kleene
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 175 and many others: an hypergraph -> a hypergraph
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l.187 $\Delta_Set$ -> $\Delta_Hyp$ (as in Prop 3.8)
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 190 should we -> should we be
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 194 you don't need $v_5$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 195 a pair -> a pair of
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 214 (and elsewhere) arrow -> morphism
 a morphism h -> a function h (this is more precise)
@@ -931,211 +911,197 @@ $V^\star$ -> $V^\star_H$
 in the diagrams, $V_H$ -> $V^*_H$
 in the second diagram, $\mathsf{ar}_\Sigma$ -> $\gamma_1$
 
-ANSWER: we prefer to keep using the term arrow as synonymous to morphism, as standard usage of category theory. We fixed the other observations.
+ANSWER: We prefer to keep using the term arrow as synonymous to morphism, as standard usage of category theory. We fixed the other observations.
 
 \item  l. 215 $\mathbf{X}$ -> $\mathbf{Set}$
-$U_X$ -> $U_Hyp$
+$U_X$ -> $U_{Hyp}$
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 223 $l(h(1)$ -> $l(h_1)$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 228 to represents -> to represent
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 232 is a mono -> is injective
 same thing on l. 236
 
-ANSWER: since monos and injective functions are the same in $\mathbf{Set}$ we have chosen to use both.
+ANSWER: Since monos and injective functions are the same in $\mathbf{Set}$ we have chosen to use both.
 
 \item l. 241 between ... and -> from ... to
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 250 A input -> An input
 
-ANSWER: fixed
+ANSWER: Fixed.
 
-\item l. 259 "then its pushout along (f2,g2), then their pushout ..." remove
-the last part
+\item l. 259 ``then its pushout along (f2,g2), then their pushout ...'' remove the last part
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 268 a analogous -> an analogous
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item 
 l. 277 middle diagram, $V_{G^\star}$ and $V_{H^\star}$ should be $V^\star_G$ and $V^\star_H$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
-\item l. 300 "In order to do so." what?
+\item l. 300 ``In order to do so.'' what?
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 313 are regular mono -> monos
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 324 $T(H)$ -> $T(h)$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 360 extends -> extend
 ito -> to
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 373 arrow -> morphism
 
-ANSWER: see answer above
+ANSWER: See answer above.
 
 \item l. 376 an arrow in Pb -> a mono in Pb
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 397 "-> $\Sigma$" should be GEqHyp
 
-ANSWER: fixed
-
-
+ANSWER: Fixed.
 
 \item l. 404 a e-term -> an e-term
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 421 possibly ambiguity -> possible ambiguity
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 430 can easily seen -> can be easily seen
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 451 optimisation To -> optimisation. To
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 456 fact -> that
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 l. 566 rightmost square, $X\times Z$ -> $Z\times Z$
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 575 pi -> $\pi$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 
 \item l. 579 the the
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 
 \item l. 595 $K_n$ -> $K_b$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 612 $\sum_{i\in I}X_i\times Y$ -> $\sum_{i\in I}(X_i\times Y)$ 
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 613 of squares -> of commuting squares
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 614 coproduct, coproduct injections -> coprojections
 ad -> as
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 627 the cube -> the commuting cube
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 639 b -> n
 
 \item l. 643 $\circ\circ$ -> $\circ$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 652 add = $g \circ c \circ i \circ q_1$ at the end
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 653 similarly
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 654 by Proposition 2.6 -> by hypothesis
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 656 $i' \circ q_1$ -> $c \circ i' \circ q_1$
 $i' \circ q_2 $-> $c \circ i' \circ p_2$
 
-
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 673 pi -> $\pi$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 676 $(\pi^1_b \circ \pi^2_b)$ -> $(\pi^1_b , \pi^2_b)$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item  l. 678 $k'_{m'}$ -> $k_{m'}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 679 $k'_{m'}$ -> $k_{m'}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 l. 686 $(\pi^1_d , \pi^2_d \circ k_{g'})$ -> $(\pi^1_d , \pi^2_d) \circ k_{g'}$
 
-ANSWER: fixed
-
+ANSWER: Fixed.
 
 \item l. 689 $= \phi_3$ -> $= j_3$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 693 $(p_3, q_3 \circ \alpha_3)$ -> $(p_3, q_3) \circ \alpha_3$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 697 $ k'_n$ -> $k_{n'}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 698 $k'_{n'}$ -> $k_{n'}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 703 $k'_{g'}$ -> $k_{g'}$
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 \item l. 704 $x_3$ -> $\phi_3$ (3 occ.)
 
-ANSWER: fixed
+ANSWER: Fixed.
 
 l. 725 a a, This amount to -> amounts to
 
