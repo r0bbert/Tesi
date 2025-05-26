@@ -422,7 +422,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 	\end{enumerate}
 	%
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
-	if $\mathcal{M}$-pushouts are Van Kampen. {\color{red} We write $m\colon X \mto Y$} to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{definition}
 
 
@@ -633,7 +633,8 @@ Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\st
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{proposition}
 
-Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
+Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
+hence by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
 
 
 \begin{corollary}\label[corollary]{cor:monhyper}
@@ -646,7 +647,7 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 	 $\hyp$ is an adhesive category.
 \end{corollary}
 
-{\color{red} \Cref{prop:left,prop:com}} allow us to deduce immediately the following.
+\Cref{prop:left,prop:com} allow us to deduce immediately the following.
 
 \begin{proposition}\label{cor:left}  The forgetful functor $U_{\hyp}$ which sends a hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{proposition}
@@ -988,7 +989,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 \end{tikzpicture}
 \end{minipage}
 
-{\color{red} \Cref{cor:mono}} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
 \begin{proposition}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following hold
 	\begin{enumerate}
@@ -1787,18 +1788,19 @@ and nodes that are targets of edges with the same label and whose source is the 
 and possibly coincide,
 as in the middle and in the left-most image, respectively.
 
-In general, for (acyclic) term graphs, a maximally shared and a minimally shared representation
-exist, and for our toy example are the left-most and the tight-most diagram above, respectively:
+In general, for (acyclic) term graphs, a maximally and a minimally shared representation
+exist, and for our toy example are the left-most and the right-most diagram above, respectively:
 it is a standard result for term graph rewriting, see e.g.~\cite{AriolaKP00}. 
-These two representations can be interpreted as the final and the initial object of a suitable comma category 
-$\mathcal{G}  \downarrow \tg$, respectively.
+These two representations can be interpreted as the final and the initial object of a suitable comma category.
+%$\mathcal{G}  \downarrow \tg$, 
+respectively.
 %
 The same properties carry on 
 %when restricting to the full subcategory of acyclic term graphs.
 %
 for term graphs with equivalence and for EGGs. However, while in the former case the
 two representations are the same of those for ordinary term graphs, in the latter case
-the minimally shared representation is now the middle image.
+the minimally shared representation is now the middle diagram.
 %
 %All the previous considerations can be lifted to the full sub-categories whose objects
 %have underlying hypergraphs that are acyclic.
@@ -1818,10 +1820,11 @@ the minimally shared representation is now the middle image.
 %%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
 
 \emph{Rewriting.} The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
-arrows in $\mathcal{M}$, then we can lift all the standard properties
+arrows in $\mathcal{M}$, then we can lift the standard properties
 of the DPO approach that hold in the category of graphs.
 % to the category at hand. 
-However, as we recalled in the introduction, instead of removing sub-terms, the EGG approach is to
+However, as we recalled in the introduction, instead of removing sub-terms, the EGG approach 
+chooses to
 just add new terms and link them to the older ones via the equivalence relation~\cite{DetlefsNS05}.
 % until an optimal program is 
 %reached and extracted.
@@ -1830,11 +1833,11 @@ are spans $L \leftarrow L \rightarrow R$, where the first component is the ident
 while the second component may not belong to $\pbc_\Sigma$. 
 
 Consider e.g. an EGG rule such $x / x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}.
-Variables in a term graph are represented as nodes that do not belong to the targets of any edge, 
-hence that rule can be modelled as the DPO rule below, concisely represented by the arrow $L \rightarrow R$.
+Variables in a term graph are represented as nodes that do not occur among the targets of an edge, 
+thus the rule can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
 
 \begin{center}
-\hspace{.5cm}
+\hspace{.25cm}
 \xymatrix{        
  \begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
                 \node[style=node](v1) at (-0.9, 0.3){};
@@ -1888,12 +1891,11 @@ hence that rule can be modelled as the DPO rule below, concisely represented by 
 \noindent
 In this case $L$ is the minimally shared EGG corresponding to the term $x / x$,
 thus the rule could be applied to the two EGGs
-depicted above with a match that is injective on equivalence classes 
+depicted above with a match that is injective on equivalence classes.
 %
 In general, if the term graph underlying the EGG to whom the DPO rule is applied is acyclic,
 the same property holds for the EGG obtained as the result of the rule application.
 %
-
 The right-hand side is a regular mono, though, hence it is not an arrow in $\pbc_\Sigma$.
 The asymmetry between left-hand and right-hand sides falls in the current research about left-linear rules for 
 adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
@@ -2029,10 +2031,10 @@ We begin recalling  a well-known fact about composition and decomposition of pul
 \regmono*
 \begin{proof}\label{regmono-proof}
 	\begin{enumerate}
-		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout.
+		\item  Consider the following cube in which the bottom face is an $\mathcal{M}$-pushout
 		\[\xymatrix@C=15pt@R=9pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{f} & & D}\]
 		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono, thus the Van Kampen property yields that the front and the right faces are pullbacks too and the claim follows.
-		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback.
+		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback
 		\[\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}\]
 		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.   \qedhere
 	\end{enumerate}
@@ -2055,11 +2057,11 @@ Since $h$ is mono this entails that
 and thus $a$ must coincide with $b$.
  
  		\item  
-		To prove the second half of the claim, we can notice that, by \Cref{lem:pb1},  two rectangles below are pullbacks.
+		To prove the second half of the claim, we can notice that, by \Cref{lem:pb1},  two rectangles below are pullbacks
 		\[\xymatrix@R=15pt{K_f \ar[r]^{\pi^2_f} \ar[d]_{\pi^1_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g} &  K_f \ar[r]^{\pi^1_f} \ar[d]_{\pi^2_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g}\\
 			X \ar[r]_{f}& Y \ar[r]_{t} & W & X \ar[r]_{f} & Y  \ar[r]_{t}& W}\]
 		
-		But then the outer rectangle in the  following diagrams are pullbacks too.
+		But then the outer rectangle in the  following diagrams are pullbacks too
 		\[\xymatrix@R=15pt{	K_f  \ar@/^.4cm/[rr]^{h\circ\pi^2_f}\ar[r]_{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]_{\pi^1_g}  \ar[r]_{\pi^2_g}& Z \ar[d]_{g} & K_f  \ar@/^.4cm/[rr]^{h\circ\pi^2_f}\ar[r]_{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]_{\pi^1_g}  \ar[r]_{\pi^2_g}& Z \ar[d]_{g} \\
 			X \ar[r]^{h} \ar@/_.4cm/[rr]_{t\circ f}& Y \ar[r]^{g} & W & X \ar[r]^{h} \ar@/_.4cm/[rr]_{t\circ f}& Y \ar[r]^{g} & W}\]
 		
@@ -2069,7 +2071,7 @@ and thus $a$ must coincide with $b$.
 		\item 		For the last square, let $(t_1, t_2)\colon T\to X\times X$ and $s\colon T\to K_g$ be two arrows such that
 		\[(\pi^1_g, \pi^2_g)\circ s=(h\times h)\circ (t_1, t_2)\]
 		
-		Thus, by point $2$, there exist two arrows $x, y\colon T\rightrightarrows K_f$ fitting in the diagrams below.
+		Thus, by point $2$, there exist two arrows $x, y\colon T\rightrightarrows K_f$ fitting in the diagrams below
 		\[\xymatrix@R=15pt{T\ar@{.>}[r]_-{x} \ar@/^.3cm/[rr]^{s} \ar@/_.3cm/[dr]_{t_1}& K_f \ar@{->}[r]_{k_h} \ar[d]_{\pi^1_f} & K_g \ar[d]^{\pi^1_g} & T \ar@{.>}[r]_-{y} \ar@/^.3cm/[rr]^{s} \ar@/_.3cm/[dr]_{t_2} & K_f  \ar@{->}[r]_{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}\\ & X \ar@{>->}[r]_{h} & Y &&X \ar@{>->}[r]_{h}& Y} \]
 		By the first point $k_h$ is mono, thus we can deduce that $x=y$. By construction we have
 		\[(\pi^1_f, \pi^2_f)\circ x=(t_1, t_2) \qquad k_h\circ x=s\] 
@@ -2181,7 +2183,7 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 To prove \Cref{prop:kerset} we need some results about pushouts and coproducts in $\Set$.
 
 \noindent 
-		\parbox{11.7cm}{
+\parbox{11.7cm}{
 \begin{lemma}\label{lem:po_set}
 Suppose that the square aside is a pushout, with $m\colon A\mto B$ an injection. Let $\iota_{m}\colon E\mto B$ be the inclusion of the complement of the image of $m$. Then $(D, \{n, h\circ \iota_m \})$ is a coproduct. In particular, $h\circ \iota_m$ is mono.
 \end{lemma}}\hfill \parbox{2cm}{\vspace{0cm}\xymatrix@R=15pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}}
@@ -2196,9 +2198,7 @@ To conclude we have to show that $\psi$ is the unique arrow $D\to Z$ such that $
 	Since $m$ is mono then $\psi'\circ h=\psi \circ h$,  but $(D, \{n, h\})$ is a pushout and so $\psi'=\psi$. 
 \end{proof}
 
-
-
-The category of $\Set$ enjoys two other remarkable and useful properties; it is \emph{distributive} and \emph{extensive} \cite{carboni1993introduction}. Distributivity amount to the following property: for every family $\{X_i\}_{i}$ and an object $Y$, the unique morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms.
+The category of $\Set$ enjoys two other remarkable properties; it is \emph{distributive} and \emph{extensive} \cite{carboni1993introduction}. Distributivity amount to the following property: for every family $\{X_i\}_{i}$ and an object $Y$, the unique morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms
 \[\xymatrix@C=15pt@R=15pt{&Y\times X_i \ar@{>->}[dl]_{j_i} \ar@{>->}[dr]^{\id{Y}\times h_i} &&& X_i \times Y \ar@{>->}[dl]_{k_i} \ar@{>->}[dr]^{ h_i \times \id{Y}} \\ \Sum_{i\in I} (Y\times X_i) \ar@{.>}[rr]_{\phi}&& Y\times (\Sum_{i\in I}X_i) & \Sum_{i\in I}  (X_i \times Y )\ar@{.>}[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \times Y }\]
 
 \noindent 
@@ -2206,22 +2206,24 @@ The category of $\Set$ enjoys two other remarkable and useful properties; it is 
 \parbox{2cm}{\xymatrix@R=15pt{Z_i \ar[r]_{k_i} \ar[d]_{f_i} & Z\ar[d]^{f} \\ X_i \ar@{>->}[r]^{j_i} & X}}
 
 \noindent
-\parbox{11cm}{
+\parbox{11.5cm}{
 \begin{remark}\label{rem:disj}
-	Notice that extensivity entails that coproducts are \emph{disjoint}, i.e.~that the pullback between two coprojections is given by the initial object (with initial maps as coprojections). To see this, let $\{X, \{j_i\}_{i\in I}\}$ be the coproduct of the family $\{X_i\}_{i\in I}$ and let $k$ be an element of $I$. Then  $(X_k, \{t_i\}_{i\in I})$ with
-	\[t_i=\begin{cases}
-		\id{X_k} & i=k\\?_{X_k} & i\neq k
-	\end{cases}\]
+	Notice that extensivity entails that coproducts are \emph{disjoint}, i.e.~the pullback between two coprojections is given by the initial object (with initial maps as coprojections). To see this, let $\{X, \{j_i\}_{i\in I}\}$ be the coproduct of the family $\{X_i\}_{i\in I}$ and $k$ an element of $I$. Then  $(X_k, \{t_i\}_{i\in I})$ 
+such that $t_i = \id{X_k}$ if $i=k$, and $?_{X_k}$ otherwise,
+	%\end{cases}\]	
+	%with
+	%\[t_i=\begin{cases}
+	%	\id{X_k} & i=k\\?_{X_k} & i\neq k
+	%\end{cases}\]
 	is a coproduct and so the squares on the right are pullbacks.
-\end{remark}}\hfill\parbox{2cm}{\vspace{-1.5cm}\xymatrix@R=15pt{\emptyset \ar@{>->}[d]_{?_{X_i}} \ar@{>->}[r]_{?_{X_k}}& X_k \ar@{>->}[d]^{j_k} \\ X_i \ar@{>->}[r]^{j_i} & X} \xymatrix@R=15pt{X_k \ar[r]_{\id{X}} \ar[d]_{\id{X}}& X_k \ar@{>->}[d]^{j_k}\\X_k \ar@{>->}[r]^{j_k} & X}}
-
+\end{remark}}\hfill\parbox{2cm}{\xymatrix@R=15pt{\emptyset \ar@{>->}[d]_{?_{X_i}} \ar@{>->}[r]_{?_{X_k}}& X_k \ar@{>->}[d]^{j_k} \\ X_i \ar@{>->}[r]^{j_i} & X} \xymatrix@R=15pt{X_k \ar[r]_{\id{X}} \ar[d]_{\id{X}}& X_k \ar@{>->}[d]^{j_k}\\X_k \ar@{>->}[r]^{j_k} & X}}
 
 In particular, the previous remark yields at once the following fact.
 
 \noindent 
 \parbox{11.5cm}{\begin{proposition}\label{prop:isempty}
-	Suppose that the square on the right is a pullback. Let $\iota \colon E\mto Y$ be the inclusion of the complement of the image of $p_1$. If there exist two  arrows $t_1\colon T\to E$ and $t_2\colon T\to X$ such that \[g\circ \iota\circ t_1= f\circ t_2\] then $T$ is empty.
-\end{proposition}}\hfill \parbox{2cm}{\vspace{-1.5cm}\xymatrix@R=15pt{P \ar[r]_{p_1} \ar[d]_{p_2}& Y \ar[d]^{g}\\X \ar[r]^{f}& Z}}
+	Suppose that the square on the right is a pullback. Let $\iota \colon E\mto Y$ be the inclusion of the complement of the image of $p_1$. If there exist two  arrows $t_1\colon T\to E$ and $t_2\colon T\to X$ such that $g\circ \iota\circ t_1= f\circ t_2$ then $T$ is empty.
+\end{proposition}}\hfill \parbox{2cm}{\vspace{-.5cm}\xymatrix@R=15pt{P \ar[r]_{p_1} \ar[d]_{p_2}& Y \ar[d]^{g}\\X \ar[r]^{f}& Z}}
 \begin{proof}
 	By the universal property of pullbacks we get an arrow $t\colon T\to P$ such that 
 	\[p_1\circ t=\iota \circ t_1 \qquad p_2\circ t=t_2\]
@@ -2233,7 +2235,7 @@ Extensivity and distributivity, moreover, yield the following fact.
 
 \begin{lemma}\label{lem:nodim}
 	Let $f,g\colon A\rightrightarrows B+C$ be two arrows with a coproduct as codomain. Then $(A, \{j_i\}_{i=0}^
-	3)$ is a coproduct, where $j_i\colon A_i\mto A $ is defined by the following pullback squares.
+	3)$ is a coproduct, where $j_i\colon A_i\mto A $ is defined by the following pullback squares
 	\[\xymatrix@C=30pt@R=15pt{A_0 \ar@{>->}[r]^{j_0}  \ar[d]_{p_0}& A   \ar[d]^{(f,g)}& A_1 \ar@{>->}[r]^{j_1}  \ar[d]_{p_1} & A \ar[d]^{(f,g)} \\
 		B\times B \ar@{>->}[r]_-{i_B\times i_B} & (B+C)\times (B+C) & B\times C \ar@{>->}[r]_-{i_B\times i_C} & (B+C)\times (B+C)}\]
 	\[ \xymatrix@C=30pt@R=15pt{A_2 \ar@{>->}[r]^{j_2}  \ar[d]_{p_2}& A   \ar[d]^{(f,g)}& A_3 \ar@{>->}[r]^{j_3}  \ar[d]_{p_3} & A \ar[d]^{(f,g)} \\
@@ -2275,7 +2277,7 @@ We are now ready to exploit the previous properties to prove \Cref{prop:kerset}.
 \[n\circ b\circ h_1\circ l^{-1}_1=d\circ n'\circ h_1\circ l^{-1}_1=d\circ t_1=n\circ t_2\]
 And we can conclude that $b\circ h_1\circ l^{-1}_1=t_2$ because $n$ is a mono. The claim now follows from the fact that  also $n'$ is mono.
 		
-		\item 	 By \Cref{lem:po_set,lem:nodim}, the previous point and the third point of \Cref{lemma:kern_pairs_pres_pullbacks}, we can decompose $K_d$ as the coproduct of $K_b$ $K_1$, $K_2$ and $K_3$ with coprojections given by, respectively, $k_{n'}$ and $j_1$, $j_2$ and $j_3$, where these objects and arrows fit in the following four pullbacks.
+		\item 	 By \Cref{lem:po_set,lem:nodim}, the previous point and the third point of \Cref{lemma:kern_pairs_pres_pullbacks}, we can decompose $K_d$ as the coproduct of $K_b$ $K_1$, $K_2$ and $K_3$ with coprojections given by, respectively, $k_{n'}$ and $j_1$, $j_2$ and $j_3$, where these objects and arrows fit in the following four pullbacks
 		\[\xymatrix@C=45pt@R=15pt{K_b \ar@{>->}[r]^{k_{n'}}  \ar[d]_{(\pi^1_b, \pi^2_b)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
 			B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota')} & D'\times D'}\]
 		\[ \xymatrix@C=45pt@R=15pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
@@ -2357,9 +2359,7 @@ As a next step, let us focus on $H_1$ and $H_2$. Two computations yield \small
  (\pi^1_d, \pi^2_d)\circ k_{g'}\circ x_2&=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ x_2\\=&(g'\times g')\circ ( \iota' \times m')\circ (y_2, z_2)\\=&((g'\circ \iota') \times (g'\circ m'))\circ (y_2, z_2)\\=&( (g'\circ \iota') \times (n'\circ f'))\circ (y_2, z_2)\\=&((g'\circ \iota') \times n')\circ (y_2, f'\circ z_2)
  \end{split} \]
 \normalsize
-
- Hence, we have arrows $h_1\colon H_1\to K_1$ and $h_2\colon H_2\to K_2$, showing that $H_1$ and $H_2$ are empty. For $H_3$, let us consider the two diagrams below.
-
+ Hence, we have arrows $h_1\colon H_1\to K_1$ and $h_2\colon H_2\to K_2$, showing that $H_1$ and $H_2$ are empty. For $H_3$, let us consider the two diagrams below
  \[ \xymatrix@C=45pt@R=15pt{ H_3 \ar@{.>}[d]^{\alpha_3} \ar[r]^{x_3} \ar@/_.4cm/[dd]_{(y_3, z_3)} & K_c \ar[d]_{k_{g'}}& K_3 \ar@{.>}[d]^{\beta_3} \ar@/^.3cm$ $/[dr]^{\phi_3} \ar@/_.4cm/[dd]_{(p_3, q_3)}\\K_3 \ar@{>->}[r]^{j_3}  \ar[d]^{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} &  H_3 \ar@{>->}[r]^{x_3}  \ar[d]^{(y_3, z_3)} & K_c \ar[d]^{(\pi^1_c, \pi^2_c)}  \\
    E'\times E' \ar@{>->}[r]_-{(g'\circ \iota')\times (g'\circ \iota')} & D'\times D' & E'\times E' \ar@{>->}[r]_-{ \iota'\times  \iota'} & C'\times C'}\]
  Their solid part commute. Indeed, we have
@@ -2368,7 +2368,6 @@ As a next step, let us focus on $H_1$ and $H_2$. Two computations yield \small
  \end{split}\qquad \begin{split}
  (\pi^1_c, \pi^2_c)\circ \phi_3=&(\iota'\circ p_3, \iota' \circ q_3)\\=&
 (\iota'\times \iota')\circ (p_3, q_3)\\& \end{split}\] 
- 
 Thus we get the dotted arrows $\alpha_3$ and $\beta_3$ which are one the inverse of the other. Indeed, on the one hand we have
 \begin{align*}
 j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=j_3  \qquad 
@@ -2378,9 +2377,7 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  \[(\pi^1_c, \pi^2_c)\circ \phi_3\circ \alpha_3 =(\iota'\times \iota')\circ (p_3, q_3)\circ \alpha_3= (\iota'\times \iota')\circ (y_3, z_3)=(\pi^1_c, \pi^2_c)\circ x_3\]
  Therefore $\phi_3\circ \alpha_3=x_3$ and thus $x_3\circ \beta_3\circ \alpha_3=x_3$. Moreover
  \[(y_3, z_3)\circ \beta_3\circ \alpha_3=(p_3, q_3)\circ \alpha_3=(y_3, z_3)\]
- 
  Summing up, we have just proved that $(K_c, \{x_0, \phi_3\})$ is a coproduct.
- 
  
  Let now $\gamma\colon K_b\to Z$ and $\delta\colon K_c\to Z$ be two arrows such that $\gamma\circ k_{f'}=\delta\circ k_{m'}$. We want to construct an arrow $\theta\colon K_d\to Z$ such that $\theta\circ k_{g'}=\delta$ and $\theta\circ k_{n'}=\gamma$.	
  
@@ -2389,11 +2386,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  \begin{align*}
  	\theta \circ k_{g'}\circ \phi_3=\theta \circ  j_3=\delta\circ \phi_3 
  \end{align*}
- 
  On the other hand, we can conclude that $\theta \circ k_{g'}=\delta$ as wanted, since
  \[\theta \circ k_{g'}\circ x_0=\theta \circ k_{n'}\circ h_0=\gamma \circ h_0=\gamma \circ k_{f'}\circ h'_0=\delta \circ k_{m'}\circ h'_0=\delta \circ x_0 \]
- 
- 
  We are left with uniqueness. If $\theta'$ is another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k_{g'}= \delta$. If we compute we get
  \[\theta'\circ j_3=\theta'\circ k_{g'}\circ \phi_3=\delta \circ \phi_3=\theta \circ j_3 \]
  We already know that $\theta'\circ k_{n'}=\theta \circ k_{n'}$, so the previous identity entails that $\theta =\theta'$.
@@ -2401,9 +2395,7 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 	\end{enumerate}
 \end{proof}
 
-
-
-
+\newpage
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
 \fhyp*
 
@@ -2510,7 +2502,7 @@ $(\Rightarrow)$	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that
 	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
 	
 	$(\Leftarrow)$ Suppose that $h_E$, $h_V$, and $h_Q$  are monos. 
-	We can build the cokernel pair of the three arrows, taking the pushout of $h_E$, $h_V$ and $h_Q$ along itself, obtaining the three diagrams below, which by \Cref{prop:regmono} are also pullbacks.
+	We can build the cokernel pair of the three arrows, taking the pushout of $h_E$, $h_V$ and $h_Q$ along itself, obtaining the three diagrams below, which by \Cref{prop:regmono} are also pullbacks
 	\[     \xymatrix@R=15pt{
 	E_\mathcal{G} \ar@{>->}[d]_{h_E} \ar@{>->}[r]^{h_E}&E_\mathcal{H} \ar@{>->}[d]^{g_E} &	V_\mathcal{G} \ar@{>->}[d]_{h_V} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>->}[d]^{g_V} &Q_\mathcal{G} \ar@{>->}[d]_{h_Q} \ar@{>->}[r]^{h_Q}& Q_\mathcal{H} \ar@{>->}[d]^{g_Q} \\
 		E_\mathcal{H} \ar@{>->}[r]_{f_E} & E_\mathcal{{K}} & V_H \ar@{>->}[r]_{f_V} & V_\mathcal{{K}} & Q_\mathcal{H} \ar@{>->}[r]_{f_Q} & Q_\mathcal{{K}}
@@ -2581,7 +2573,7 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 	
 	Consider the diagrams below, in which the square on the left is a pullback in $\EqHyp$, with $\mathcal{P}=(E_{\mathcal{P}, V_{\mathcal{P}}}, Q_{\mathcal{P}}, s_{\mathcal{P}}, t_{\mathcal{P}}, q_{\mathcal{P}})$, and in which the right half of the right rectangle is a pullback too, so that the existence of $m_\mathcal{P}$ is guaranteed by \Cref{prop:eqhyp_complete}. 
 	
-	Again by \Cref{prop:eqhyp_complete} the two halves of the central rectangle are pullbacks and so by \Cref{lem:pb1} the whole rectangle is a pullback too. This, in turn entails that the whole right rectangle is a pullback and so, also its left half is a pullback (again by \Cref{lem:pb1}).
+	Again by \Cref{prop:eqhyp_complete} the two halves of the central rectangle are pullbacks and so by \Cref{lem:pb1} the whole rectangle is a pullback too. This, in turn entails that the whole right rectangle is a pullback and so, also its left half is a pullback (again by \Cref{lem:pb1})
 	\[
 	\xymatrix@R=15pt{\mathcal{P} \ar[r]^{p} \ar[d]_{r}&  \mathcal{G}_1 \ar[d]^{h} &
 		V_{\mathcal{P}} \ar@/^.4cm/[rr]^{p_Q\circ q_{\mathcal{P}}} \ar[r]_{p_V} \ar@{>->}[d]_{r_V}& V_1  \ar@{>>}[r]_{q_1} \ar@{>->}[d]_{h_V}& Q_1 \ar@{>->}[d]^{h_Q}& V_{\mathcal{P}} \ar@{>>}[r]_{q_{\mathcal{P}}} \ar@{>->}[d]_{r_V} & Q_{\mathcal{P}} \ar@{>->}[dr]_{r_Q} \ar@/^.4cm/[rr]^{p_Q} \ar@{>->}[r]_{m_{\mathcal{P}}}& T \ar[r]_{t_1} \ar@{>->}[d]_{t_2} & Q_1 \ar@{>->}[d]^{h_Q}\\
@@ -2601,7 +2593,7 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 
 \begin{proof}\label{proof:pbstable}
 	Let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, Q'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
-	and  suppose that in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout $h$ is a regular mono and $k_Q\colon Q_1\mto Q_3$ is mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts.
+	and  suppose that in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout $h$ is a regular mono and $k_Q\colon Q_1\mto Q_3$ is mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts
 	\[
 	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{z_V'} \\ 
 		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
@@ -2614,10 +2606,11 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 \parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_Q} \ar@{>->}[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
 
 
-	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below.
+	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below
 	
 	\[\xymatrix@R=15pt{B'_3 \ar@{>>}[d]^{q'_3} \ar@/_.3cm/[dd]_{c_V} \ar@{>->}[r]^{p'_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} & & B'_2 \ar[r]^{z_V} \ar@{>>}[d]^{q'_2} \ar@/_.3cm/[dd]_{b_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4}\\ Q'_3 \ar@{>.>}[r]^{m_3}& Y  \ar@{>->}[r]^{y_1} \ar[d]_{y_2}& Q'_4 \ar[d]_{d_C}& Q'_2 \ar@{>.>}[r]^{m_2} & U \ar[d]_{u_2} \ar[r]^{u_1} & Q'_4 \ar[d]_{d_C} \\ B_3 \ar@{>>}[r]_{q_3} & Q_3 \ar@{>->}[r]_{p_Q} & Q_4 &B_2 \ar@{>>}[r]_{q_3} & Q_2 \ar[r]_{z_Q} & Q_4}\]
 
+\newpage
 	\noindent 
 	\parbox{8.5cm}{\hspace{15pt}
 	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ that makes the diagram aside commutative.}\hfill
@@ -2716,7 +2709,7 @@ And we have done.
 
 \po*
 \begin{proof}\label{proof:tade}
-	Suppose that the square on the left below is a pushout in $\EqHyp_\Sigma$, with $h$ in $\mathcal{T}$. Then, by \Cref{rem:t} the square on the right is a pushout and by the definition of $\mathcal{T}$ and \Cref{rem:obv}, $T_\Sigma(h)$ is a regular mono in $\tg$.
+	Suppose that the square on the left below is a pushout in $\EqHyp_\Sigma$, with $h$ in $\mathcal{T}$. Then, by \Cref{rem:t} the square on the right is a pushout and by the definition of $\mathcal{T}$ and \Cref{rem:obv}, $T_\Sigma(h)$ is a regular mono in $\tg$
 	\[\xymatrix{J_\Sigma(\mathcal{G}_0, l_0) \ar[r]^{k} \ar[d]_{h}& J_\Sigma(\mathcal{G}_1, l_1) \ar[d]^{p} &T_\Sigma (J_\Sigma(\mathcal{G}_0, l_0)) \ar[r]^{T_{\Sigma}(k)} \ar[d]_{T_{\Sigma}(h)}& T_\Sigma (J_\Sigma(\mathcal{G}_1, l_1)) \ar[d]^{T_\Sigma(p)}\\
 J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\Sigma(\mathcal{G}_1, l_1)) \ar[r]_{T_\Sigma(q)}& T_\Sigma(J_\Sigma(\mathcal{H}, l))}\]
 	
@@ -2865,9 +2858,10 @@ We can use \Cref{lim} to characterize monos in comma categories.
 	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monos.
 \end{corollary}
 \begin{proof}
-	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos.
+	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos
 	\[\xymatrix{(A, B, f)  \ar[rr]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}&& (A, B, f)  \ar[d]^{(h,k)}& A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ (A, B, f)  \ar[rr]_{(h,k)}&& (A', B', g) &A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
 	
+\newpage
 	\smallskip\noindent 
 	\parbox{4cm}{ \xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}}\hfill \parbox{8.5cm}{$(\Leftarrow)$ Since $h$ and $k$ are monos then we have the two pullback squares on the left. Thus by \Cref{lim} the pullback of $(h,k)$ along itself has isomorphisms as projections and so $(h,k)$ is mono. \qedhere}
 	
@@ -2922,6 +2916,8 @@ We can realize the slice over and under an object $X\in \X$ as comma categories.
 \begin{proposition}\label[proposition]{prop:commaapp}
 	For every object $X$ in a category $\X$, if $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object $*$, then $\X/X$ and $X/\X$ are isomorphic to, respectively,  $\comma{\id{X}}{\delta_X}$ and $\comma{\delta_X}{\id{X}}$ .
 \end{proposition}
+
+\newpage
 \begin{proof} Define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
 	\[	\begin{split}
 		\functor[l]{(Y, *,  f)}{(h, \id{*} )}{( Y', *,  g)}

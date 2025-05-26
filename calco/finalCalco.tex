@@ -358,7 +358,10 @@ can be rephrased as the application of term graph rewriting rules.
 Finally, in Section~\ref{conclusioni} we draw our conclusions, hint at future endeavours and offer some 
 brief remarks on related works.
 %
-For the sake of space, the proofs appear in the appendices. 
+All the proofs can be found in the full version of the 
+paper~\cite{biondo}
+
+%For the sake of space, the proofs appear in the appendices. 
 %For the sake of completeness, 
 %and in order to fix the notation, we prove all the results 
 %recalled in the background section, besides those that are original 
@@ -422,7 +425,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 	\end{enumerate}
 	%
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
-	if $\mathcal{M}$-pushouts are Van Kampen. {\color{red} We write $m\colon X \mto Y$} to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{definition}
 
 
@@ -487,7 +490,8 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 
 
 We can state some useful properties of $\mathcal{M}$-adhesive category
-(see, for instance, \cite[Thm.~4.26]{ehrig2006fundamentals} or \cite[Fact 2.6]{azzi2019essence}). A proof is provided in \Cref{regmono-proof}.
+(see, for instance, \cite[Thm.~4.26]{ehrig2006fundamentals} or \cite[Fact 2.6]{azzi2019essence}). 
+%A proof is provided in \Cref{regmono-proof}.
 \begin{restatable}{proposition}{regmono}\label{prop:regmono}
 	Let $\X$ be an $\mathcal{M}$-adhesive category. Then the following hold
 	\begin{enumerate}
@@ -548,7 +552,8 @@ From the previous result we deduce that the class of regular epis is closed unde
 %[Proof in \Cref{epicol-proof}]
 }
 We conclude this section exploring some properties of kernel pairs in an $\mathcal{M}$-adhesive category. 
-The results below are simple, yet they appear to be original, and we give their proofs in \Cref{kpp-proof}.
+The results below are simple, yet they appear to be original.
+%and we give their proofs in \Cref{kpp-proof}.
 
 \begin{restatable}{lemma}{kpp}\label{lemma:kern_pairs_pres_pullbacks}
 	Let $f\colon X \to Y$ and $g\colon Z \to W$ be arrows admitting kernel pairs and suppose that the solid part of the four squares below is given. 
@@ -556,6 +561,7 @@ The results below are simple, yet they appear to be original, and we give their 
 	If the leftmost square is commutative, then there is a unique arrow $k_h\colon K_f \to K_g$ making the other three commutative.
 	\[\xymatrix@R=15pt{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}& K_f  \ar@{.>}[r]^{k_h} \ar[d]_{(\pi^1_f,\pi^2_f)} & K_g \ar[d]^{(\pi^1_g, \pi^2_g)}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z & X\times Z \ar[r]_{h\times h}& X\times Z}\]
 	
+\newpage
 		Moreover, the following hold
 		\begin{enumerate}
 			\item if $h$ is a mono then $k_h$ is a mono;
@@ -579,7 +585,7 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 %
 %\input{./fact_sys}
 
-Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for the proof).
+Focusing on $\Set$, we can prove a sharper result. % (see \Cref{proof:kerset} for the proof).
 
 \noindent
 \parbox{7.5cm}{\begin{restatable}{lemma}{mps}\label{prop:kerset}
@@ -633,8 +639,8 @@ Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\st
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{proposition}
 
-Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
-
+Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, hence by \Cref{prop:com} and the characterisation of monos 
+in comma categories we can deduce the following result.
 
 \begin{corollary}\label[corollary]{cor:monhyper}
 	A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
@@ -646,7 +652,7 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 	 $\hyp$ is an adhesive category.
 \end{corollary}
 
-{\color{red} \Cref{prop:left,prop:com}} allow us to deduce immediately the following.
+Again \Cref{prop:com} allow us to deduce immediately the following.
 
 \begin{proposition}\label{cor:left}  The forgetful functor $U_{\hyp}$ which sends a hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{proposition}
@@ -988,7 +994,7 @@ We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} ta
 \end{tikzpicture}
 \end{minipage}
 
-{\color{red} \Cref{cor:mono}} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
 \begin{proposition}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following hold
 	\begin{enumerate}
@@ -1282,7 +1288,7 @@ which is the main focus here, was yet to be presented to the world.
 
 Forgetting the quotient part yields a functor $T\colon \EqHyp \to \hyp$ sending a hypergraph with equivalence $(E_\mathcal{G}, V_{\mathcal{G}}, C_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$ to $(E_{\mathcal{G}}, V_{\mathcal{G}}, s_\mathcal{G}, t_{\mathcal{G}})$.   We now explore some of its properties to deduce information on the structure of $\EqHyp$.  
 %
-A proof is in \Cref{proof:forghyp}.
+%A proof is in \Cref{proof:forghyp}.
 
 
 \begin{restatable}{proposition}{fhyp}\label{prop:forghyp}  Consider the forgetful functor $T\colon \EqHyp \to \hyp$. Then the following hold
@@ -1309,7 +1315,8 @@ Now, we can consider the forgetful functor $U_{\eq}\colon \EqHyp\to \Set$ obtain
 	$U_{\eq}$ has a left adjoint $\Delta_{\eq}\colon \Set \to \EqHyp$.
 \end{corollary}
 
-Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, t, q)$ to $Q$, and a morphism $(h_E, h_V, h_Q)$ to $h_Q$. We  exploit it to compute limits and colimits in $\EqHyp$. A full proof of the following lemma can be found in \Cref{proof:comp}.
+Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, t, q)$ to $Q$, and a morphism $(h_E, h_V, h_Q)$ to $h_Q$. We  exploit it to compute limits and colimits in $\EqHyp$. 
+%A full proof of the following lemma can be found in \Cref{proof:comp}.
 
 \noindent
 \parbox{11.4cm}{
@@ -1358,7 +1365,7 @@ On the one hand, if we apply $\quo$ and compute the pullback of the resulting mo
 \end{example}
 }
 
-A proof is in \Cref{proof:regmono}.
+%A proof is in \Cref{proof:regmono}.
 We have now all the ingredients to study the adhesivity properties of $\EqHyp$.  As a first step we need to introduce a class of monos.
 
 \noindent
@@ -1375,14 +1382,14 @@ We have now all the ingredients to study the adhesivity properties of $\EqHyp$. 
          }   
 
 \vspace{.1cm}
-Now, we show that $\pbc$ is a suitable class for adhesivity. A proof is in \Cref{proof:pbmono}.
+Now, we show that $\pbc$ is a suitable class for adhesivity. %A proof is in \Cref{proof:pbmono}.
 
 \begin{restatable}{lemma}{pbm}\label{lem:pbmono}
 	The class $\pbc$ contains all isomorphisms, it is closed under composition, decomposition and it is stable under pullbacks and pushouts.
 \end{restatable}
 
 \vspace{.1cm}
-Finally, we show the key lemma for $\pbc$-adhesivity of $\EqHyp$. A proof is in \Cref{proof:pbstable}.
+Finally, we show the key lemma for $\pbc$-adhesivity of $\EqHyp$. %A proof is in \Cref{proof:pbstable}.
 
 \begin{restatable}{lemma}{pbs}\label{lemma:stab}
 	In $\EqHyp$, $\pbc$-pushouts are stable.
@@ -1460,7 +1467,7 @@ the top face fails to be a pushout
 
 Having proved stability of $\pbc$-pushouts, we now turn to prove that they are Van Kampen with respect to regular monos.
 %
-A proof is found in \Cref{proof:pbvk}.
+%A proof is found in \Cref{proof:pbvk}.
 
 \begin{restatable}{lemma}{pbvk}\label{lemma:van_kampen}
 	In $\EqHyp$, pushouts along arrows in $\pbc$ are $\reg(\EqHyp)$-Van Kampen.
@@ -1533,7 +1540,7 @@ Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
 	Notice that, by \Cref{cor:limcolim} and \Cref{prop:lim}, the functor $T_\Sigma$ preserves all connected limits and all colimits.
 \end{remark}
 
- The previous remark allows us to prove an analog of \Cref{prop:tlim}. We refer the reader to \Cref{proof:term} for details.
+ The previous remark allows us to prove an analog of \Cref{prop:tlim}. %We refer the reader to \Cref{proof:term} for details.
  
  \begin{restatable}{proposition}{trm}\label{prop:term}
 $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are created by $J_\Sigma$.
@@ -1546,7 +1553,7 @@ $\EqTG_{\Sigma}$ has equalizers, binary products and pullbacks and they are crea
 \smallskip 
 In particular, by \Cref{cor:term} and \Cref{lemma:stab}, $\mathcal{T}$ contains all isomorphisms, is closed under composition and decomposition and stable under pushout and pullbacks.
 
-The following proposition is now an easy corollary of \Cref{prop:push}, \Cref{prop:lim}, and \Cref{rem:obv}. We provide the details in \Cref{proof:tade}.
+The following proposition is now an easy corollary of \Cref{prop:push}, \Cref{prop:lim}, and \Cref{rem:obv}. %We provide the details in \Cref{proof:tade}.
 
 
 \begin{restatable}{proposition}{po}\label{prop:po}
@@ -1580,7 +1587,7 @@ in other words, whenever the relation identifies the source of two hyperedges, i
 \begin{example}
 	Consider the hypergraph $\mathcal{G}$ of \Cref{exa_2} and consider as quotient the identity $\id{V_\mathcal{G}}\colon V_\mathcal{G}\colon \to\mathcal{G}$. Then the kernel pair of $\id{V^\star_\mathcal{G}} \circ s$ concide with the kernel pair of $s$, which is empty. Thus  $\mathcal{G}$ is, trivially, an e-hypergraph
 \end{example}
-A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$. Full proofs are in \Cref{proof:elim}.
+A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$. %Full proofs are in \Cref{proof:elim}.
 
 \begin{restatable}{lemma}{elim}\label{lem:elim}
 	$\egg$ has all limits and $I$ creates them.
@@ -1591,7 +1598,7 @@ A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$
 	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $I(h)$ is a regular mono in $\hyp$. 
 \end{corollary}
 
-We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for the details.
+We can now turn to pushouts. %We refer again the reader to \Cref{proof:epo} for the details.
 
 \noindent
 \parbox{11.5cm}{\begin{restatable}{lemma}{epo}\label{lem:epo}
@@ -1639,7 +1646,8 @@ To prove some adhesivity property of $\egg_\Sigma$, we begin with the following 
 
 \Cref{rem:algegg} now implies at once the following result.
 
-\samepage{\begin{proposition}\label{prop:varie}
+\samepage{
+\begin{proposition}\label{prop:varie}
 	Let $\Sigma$ be an algebraic signature. Then the following hold
 	\begin{enumerate}
 		\item $\egg_\Sigma$ is equivalent to $\egg/R(\mathcal{G}^\Sigma)$;
@@ -1672,13 +1680,13 @@ We turn now to term graphs with equivalence.
 \end{remark}}\hfill \parbox{4cm}{\xymatrix@R=15pt@C=15pt{\eg \ar@{^{(}->}[r]^-{Y_\Sigma} \ar@{^{(}->}[d]_{K_\Sigma} & \egg_\Sigma \ar@{^{(}->}[d]^{Z_\Sigma} \ar[r]^{W_\Sigma}& \egg \ar@{^{(}->}[d]^{I}\\ \EqTG_{\Sigma} \ar@{^{(}->}[r]_{J_\Sigma}\ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[r]_{V_\Sigma} \ar[d]_{T_\Sigma}& \EqHyp \ar[d]_{T}\\ \tg \ar@{^{(}->}[r]_{I_\Sigma}& \hyp_{\Sigma} \ar[r]_{U_\Sigma}  &\hyp}}
 
 
-We can now prove our last three results. The reader can find the proof in \Cref{proof:tlim}.
+We can now prove our last three results. %The reader can find the proof in \Cref{proof:tlim}.
 
 \begin{restatable}{proposition}{limt}\label{prop:limt}
 	$\eg$ has equalizers, binary products and pullbacks and they are created by $K_\Sigma$.
 \end{restatable}
 
-Let now $\mathcal{T}_\Sigma$ be the class of morphisms of $\eg$ which are sent by $K_\Sigma$ to the class $\mathcal{T}$. Then \Cref{colim,lem:epo,prop:po} allow us to deduce the following result.
+Let now $\mathcal{T}_\Sigma$ be the class of morphisms of $\eg$ which are sent by $K_\Sigma$ to the class $\mathcal{T}$. Then \Cref{lem:epo,prop:po} allow us to deduce the following result.
 
 
 \begin{restatable}{proposition}{pot}\label{prop:pot}
@@ -1787,18 +1795,19 @@ and nodes that are targets of edges with the same label and whose source is the 
 and possibly coincide,
 as in the middle and in the left-most image, respectively.
 
-In general, for (acyclic) term graphs, a maximally shared and a minimally shared representation
-exist, and for our toy example are the left-most and the tight-most diagram above, respectively:
+In general, for (acyclic) term graphs, a maximally and a minimally shared representation
+exist, and for our toy example are the left-most and the right-most diagram above, respectively:
 it is a standard result for term graph rewriting, see e.g.~\cite{AriolaKP00}. 
-These two representations can be interpreted as the final and the initial object of a suitable comma category 
-$\mathcal{G}  \downarrow \tg$, respectively.
+These two representations can be interpreted as the final and the initial object of a suitable comma category.
+%$\mathcal{G}  \downarrow \tg$, 
+respectively.
 %
 The same properties carry on 
 %when restricting to the full subcategory of acyclic term graphs.
 %
 for term graphs with equivalence and for EGGs. However, while in the former case the
 two representations are the same of those for ordinary term graphs, in the latter case
-the minimally shared representation is now the middle image.
+the minimally shared representation is now the middle diagram.
 %
 %All the previous considerations can be lifted to the full sub-categories whose objects
 %have underlying hypergraphs that are acyclic.
@@ -1818,10 +1827,11 @@ the minimally shared representation is now the middle image.
 %%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
 
 \emph{Rewriting.} The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
-arrows in $\mathcal{M}$, then we can lift all the standard properties
+arrows in $\mathcal{M}$, then we can lift the standard properties
 of the DPO approach that hold in the category of graphs.
 % to the category at hand. 
-However, as we recalled in the introduction, instead of removing sub-terms, the EGG approach is to
+However, as we recalled in the introduction, instead of removing sub-terms, the EGG approach 
+chooses to
 just add new terms and link them to the older ones via the equivalence relation~\cite{DetlefsNS05}.
 % until an optimal program is 
 %reached and extracted.
@@ -1830,11 +1840,11 @@ are spans $L \leftarrow L \rightarrow R$, where the first component is the ident
 while the second component may not belong to $\pbc_\Sigma$. 
 
 Consider e.g. an EGG rule such $x / x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}.
-Variables in a term graph are represented as nodes that do not belong to the targets of any edge, 
-hence that rule can be modelled as the DPO rule below, concisely represented by the arrow $L \rightarrow R$.
+Variables in a term graph are represented as nodes that do not occur among the targets of an edge, 
+thus the rule can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
 
 \begin{center}
-\hspace{.5cm}
+\hspace{.25cm}
 \xymatrix{        
  \begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
                 \node[style=node](v1) at (-0.9, 0.3){};
@@ -1888,12 +1898,11 @@ hence that rule can be modelled as the DPO rule below, concisely represented by 
 \noindent
 In this case $L$ is the minimally shared EGG corresponding to the term $x / x$,
 thus the rule could be applied to the two EGGs
-depicted above with a match that is injective on equivalence classes 
+depicted above with a match that is injective on equivalence classes.
 %
 In general, if the term graph underlying the EGG to whom the DPO rule is applied is acyclic,
 the same property holds for the EGG obtained as the result of the rule application.
 %
-
 The right-hand side is a regular mono, though, hence it is not an arrow in $\pbc_\Sigma$.
 The asymmetry between left-hand and right-hand sides falls in the current research about left-linear rules for 
 adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
@@ -1973,6 +1982,7 @@ as they hold for DPO graph transformation.
 
 \interlinepenalty 1000
 \bibliography{biblio}
+\end{document}
 
 \newpage
 \appendix
