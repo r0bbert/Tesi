@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{beamer}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 \usepackage[english]{babel}
@@ -91,7 +91,7 @@
 
 \begin{frame}{What are EGGs?} % normal itemize, one frame
     
-    \emph{e-graphs (EGGS)} \cite{DetlefsNS05,WillseyNWFTP21} are a graphical formalism  for program optimisation  via an efficient implementation of equality saturation. 
+    \emph{E-graphs (EGGS)} \cite{DetlefsNS05,WillseyNWFTP21} are a graphical formalism  for program optimisation  via an efficient implementation of equality saturation. 
     
     \pause \medskip 
     
@@ -216,7 +216,7 @@
 
 
 \begin{frame}{$\mathcal{M}$-adhesive categories}
-	The categorical framework for DPO rewriting is given by \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2014adhesive, lack2005adhesive}.
+	A suitable categorical framework for DPO rewriting is given by the notion of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2014adhesive, lack2005adhesive}.
 		
 		\medskip \pause
 		Let $\mathcal{M}$ be a class of monos in a category $\X$, containing all isomorphisms, stable under pullbacks and composition. $\X$ is \emph{$\mathcal{M}$-adhesive} if, given a cube below with the hooked arrows in $\mathcal{M}$, the bottom face a pushout and the back faces pullbacks, we have:
@@ -244,7 +244,7 @@
 				\draw[->](1,1.35)--(A);
 				\draw[>-](A)--(0.05, 0.61);
 				\draw[<-](C)--(-0.05,0.59);
-		\end{tikzpicture}} \quad 	\parbox{4cm}{\centering
+		\end{tikzpicture}} \qquad 	\parbox{4cm}{\centering
 			Top face is a pushout \\ $\iff$ \\ Front faces are pullbacks}
 			
 
@@ -270,7 +270,7 @@ Moreover, a full subcategory closed under the relevant pullbacks and pushouts in
 
 \begin{frame}{Hypergraphs}
 
-A hypergraph is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\emph{edges} and \emph{nodes}) and arrows $s, t\colon E \rightrightarrows V^\star$. \pause A \emph{hypergraph morphism} $(E, V, s, t)\to (F, W, s,' t')$  is a pair of arrow $h\colon E\to E'$ and $k\colon V\to V'$ fitting in the digram below.
+A \emph{hypergraph} is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\emph{edges} and \emph{nodes}) and arrows $s, t\colon E \rightrightarrows V^\star$. \pause A \emph{hypergraph morphism} $(E, V, s, t)\to (F, W, s,' t')$  is a pair of arrow $h\colon E\to E'$ and $k\colon V\to V'$ fitting in the digram below.
 	
 	\[\xymatrix{ E \ar[r]^{h}\ar[d]_{s}& F \ar[d]^{s'} & E \ar[r]^{k} \ar[d]_{t}& F\ar[d]^{t'}\\ V^\star\ar[r]_{k^\star}& W^\star & V^\star \ar[r]_{k^\star}&W^\star}\]
 		
@@ -382,9 +382,9 @@ $\EqHyps$ is actually the slice over $\mathcal{G}_\Sigma$ endowed with the only 
 	Colimits are computed componentwise. If $(E_d, V_d, Q_d, s_d, t_d, q_d )$ is a diagram of hypergraphs with equivalence, then a colimit is given by $(E, V, Q, s, t, q)$, where $E$, $V$, $Q$ are the colimits of $\{E_d\}_{d\in \D}$, $\{V_d\}_{d\in \D}$, $\{Q_d\}_{d\in \D}$ and $s, t, q$ are the natural ones.
 	
 	\pause  \medskip 
-	\begin{minipage}[l]{0.45\linewidth}
+	\begin{minipage}[l]{0.5\linewidth}
 		Limits are more difficult. In the example on the right, the pullback of the underlying hypergraphs gives us the empty one. The pullback of quotients is the singleton.
-	\end{minipage} \qquad 
+	\end{minipage} \qquad \quad 
 \begin{minipage}[r]{0.6\linewidth}
 	\xymatrix{
 		 &
@@ -594,7 +594,7 @@ Exploit features of the DPO paradigma (e.g.~parallelism, causality) in the conte
 
 \medskip How far can we move way from $\catname{Set}$?\pause 
 \begin{itemize}
-	\item Edges and nodes can be taken from a suitable category.   
+	\item Edges and nodes can be taken from another suitable category.   \pause 
 	\item Combine various categorical construction to add features to EGGs (e.g.~hierarchy of edges) while retaining adhesivity.
 \end{itemize}
 \end{frame}
