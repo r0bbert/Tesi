@@ -91,11 +91,11 @@
 
 \begin{frame}{What are EGGs?} % normal itemize, one frame
     
-    \emph{E-graphs (EGGS)} \cite{DetlefsNS05,WillseyNWFTP21} are a graphical formalism  for program optimisation  via an efficient implementation of equality saturation. 
+    \emph{E-graphs (EGGS)} are a graphical formalism  for program optimisation  via an efficient implementation of equality saturation. 
     
     \pause \medskip 
     
-     They can be  defined as (acyclic) term graphs \cite{corradini2005term,Plu:TGR-ENTCS} with an additional notion of  equivalence on nodes that is closed under the operators of the signature.
+     They can be  defined as (acyclic) term graphs with an additional notion of  equivalence on nodes that is closed under the operators of the signature.
      
      \pause \medskip The idea is that nodes representing the same term should be in the same equivalence class. \pause 
      
@@ -134,7 +134,7 @@
 \begin{frame}{Aims of this work} 
     \begin{itemize}
         \item Formalize the definition of EGGs in a categorical setting and study their properties. \pause \medskip 
-        \item Develop the theory of EGGs rewriting using the Double Pushout (DPO) paradigm \cite{ehrig2006fundamentals,ehrig1999handbook}.
+        \item Develop the theory of EGGs rewriting using the Double Pushout (DPO) paradigm.
     \end{itemize}
 \end{frame}
 
@@ -216,8 +216,7 @@
 
 
 \begin{frame}{$\mathcal{M}$-adhesive categories}
-	A suitable categorical framework for DPO rewriting is given by the notion of \emph{$\mathcal{M}$-adhesive categories} \cite{azzi2019essence,ehrig2014adhesive, lack2005adhesive}.
-		
+	A categorical framework for DPO rewriting is given by the notion of \emph{$\mathcal{M}$-adhesive categories}.
 		\medskip \pause
 		Let $\mathcal{M}$ be a class of monos in a category $\X$, containing all isomorphisms, stable under pullbacks and composition. $\X$ is \emph{$\mathcal{M}$-adhesive} if, given a cube below with the hooked arrows in $\mathcal{M}$, the bottom face a pushout and the back faces pullbacks, we have:
 		
@@ -335,7 +334,7 @@ A \emph{hypergraph} is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\em
 \end{frame}
 
 \begin{frame}{Term graphs}
-A \emph{term graph} \cite{corradini2005term,corradini1997algebraic, Plu:TGR-ENTCS} is a labelled hypergraphs with injective target function. $\tg$ is be the full subcategory of $\hyp_{\Sigma}$ given by them.
+A \emph{term graph} is a labelled hypergraphs with injective target function. $\tg$ is be the full subcategory of $\hyp_{\Sigma}$ given by them.
 
 \pause 
 \begin{itemize}
