@@ -1,4 +1,4 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex,amsthm,thm-restate,numberwithinsect]{elsarticle}
+\documentclass[a4paper,UKenglish,cleveref,pdftex,amsthm,thm-restate,numberwithinsect]{cas-sc}
 \usepackage{stmaryrd}
 \usepackage{bbding}
 %\Envelope
@@ -189,41 +189,46 @@
 			postaction={decorate}
 			}}
 
-\title{EGGs are adhesive!}
-%\titlerunning{EGGs are adhesive!} %TODO optional, please use if title is longer than one line
+\title[mode=title]{EGGs are adhesive!}
+\tnotemark[1]
+
+\tnotetext[1]{The research has been partially supported by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 ``Spatio-Temporal Enhancement of Neural nets for Deeply
+Hierarchical Automatised Logic'' (STENDHAL) 
+and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information'' (FM4HD).}
+
 
 % Author with single affiliation.
-\author[1]{Roberto Biondo}
+\author[1]{Roberto Biondo}[type=editor]
 \affiliation[1]{organization={Department of Computer Science, University of Pisa},
-	addressline={},
 	city={Pisa},
-	citysep={},
+%	citysep={},
 	postcode={56127},
-	state={},
 	country={Italy}}
 \ead{r.biondo@studenti.unipi.it}
 
-\author[2]{Davide Castelnovo}
+\author[1]{Davide Castelnovo}[type=editor,orcid=0000-0002-5926-5615]
 \ead{castelnovod@gmail.com}
-\ead[url]{https://orcid.org/0000-0002-5926-5615}
-\affiliation[2]{organization={Department of Computer Science, University of Pisa},
-	addressline={},
-	city={Pisa},
-	citysep={},
-	postcode={56127},
-	state={},
-	country={Italy}}
+%\ead[url]{https://orcid.org/0000-0002-5926-5615}
+%\affiliation[2]{organization={Department of Computer Science, University of Pisa},
+%	addressline={},
+%	city={Pisa},
+%	citysep={},
+%	postcode={56127},
+%	state={},
+%	country={Italy}}
 
-\author[3]{Fabio Gadducci}
+\author[1]{Fabio Gadducci}[type=editor,orcid=0000-0003-0690-3051]
+\cormark[1]
+\fnmark[1]
 \ead{fabio.gadducci@unipi.it}
-\ead[url]{https://orcid.org/0000-0003-0690-3051}
-\affiliation[3]{organization={Department of Computer Science, University of Pisa},
-	addressline={},
-	city={Pisa},
-	citysep={},
-	postcode={56127},
-	state={},
-	country={Italy}}
+%\ead[url]{https://orcid.org/0000-0003-0690-3051}
+%\affiliation[3]{organization={Department of Computer Science, University of Pisa},
+%       addressline={},
+%       city={Pisa},
+%       citysep={},
+%       postcode={56127},
+%       state={},
+%       country={Italy}}
 
 
 %\authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
@@ -274,6 +279,10 @@ of the adhesive framework in modelling, for example, concurrent updates.
 %via the standard tools of graph transformation offers the advantages given by the 
 %adhesive framework in modelling e.g. concurrent updates.
 \end{abstract}
+
+\begin{keywords}
+hypergraphs \sep terms graphs \sep e-graphs \sep adhesive categories
+\end{keywords}
 
 
 \section{Introduction}
