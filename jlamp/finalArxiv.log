@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.18)  3 JUL 2025 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.18)  3 JUL 2025 19:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**finalArxiv.tex
+**finalArxiv
 (./finalArxiv.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
-(/usr/share/texmf-dist/tex/latex/elsarticle/elsarticle.cls
+(./elsarticle.cls
 Document Class: elsarticle 2025/01/11, 3.4c: Elsevier Ltd
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -1705,13 +1705,13 @@ Package rerunfilecheck Info: File `finalArxiv.out' has not changed.
 (rerunfilecheck)             Checksum: 24F9126EC3503383F3BCE96719423A00;4228.
  ) 
 Here is how much of TeX's memory you used:
- 33808 strings out of 475171
- 639121 string characters out of 5767095
+ 33807 strings out of 475171
+ 638994 string characters out of 5767095
  1164878 words of memory out of 5000000
  55859 multiletter control sequences out of 15000+600000
  590434 words of font info for 130 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,29n,126p,3219b,1137s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,29n,126p,3215b,1137s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-dist/fonts/type1/publi
