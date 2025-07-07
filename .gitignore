@@ -20,3 +20,9 @@ Beamer/main.snm
 Beamer/main.toc
 Beamer/main.vrb
 calco/main.vtc
+jlamp/*.aux
+jlamp/*.blg
+jlamp/*.spl
+jlamp/*.out
+jlamp/*.log
+jlamp/textput.log

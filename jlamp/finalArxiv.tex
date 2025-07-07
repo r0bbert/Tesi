@@ -1,4 +1,4 @@
-\documentclass[a4paper,UKenglish,cleveref,pdftex,thm-restate,numberwithinsect]{lipics-v2021}
+\documentclass[a4paper,UKenglish,cleveref,pdftex,amsthm,thm-restate,numberwithinsect]{cas-sc}
 \usepackage{stmaryrd}
 \usepackage{bbding}
 %\Envelope
@@ -7,6 +7,21 @@
 \newcommand{\pbc}{\mathsf{Pb}}
 \newcommand{\pbe}{\mathsf{ePb}}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\usepackage{thmtools} 
+\usepackage{thm-restate}
+
 %\usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
 \usepackage[all, cmtip]{xy}
@@ -147,7 +162,7 @@
 
 
 \newcommand{\upstr}[1] { {#1}^{\uparrow }}
-\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}#2}
+\newcommand{\comm}[2]{#1\hspace{1pt} {\downarrow}#2}
 \newcommand{\cma}[2]{\mathcal{#1}\hspace{1pt} {\downarrow}\hspace{1pt} \mathcal{#2}}
 
 \newcommand{\commentato}[1]{ {} }
@@ -174,43 +189,42 @@
 			postaction={decorate}
 			}}
 
-\title{EGGs are adhesive!}
-\titlerunning{EGGs are adhesive!} %TODO optional, please use if title is longer than one line
+\title[mode=title]{EGGs are adhesive!}
+\tnotemark[1]
 
-% Author with single affiliation.
-\author{Roberto Biondo}
-{Department of Computer Science, University of Pisa, Pisa, IT}
-{r.biondo@studenti.unipi.it}{}{}
-
-\author{Davide Castelnovo}
-{Department of Computer Science, University of Pisa, Pisa, IT}
-{castelnovod@gmail.com}
-{https://orcid.org/0000-0002-5926-5615}{}
-
-\author{Fabio Gadducci}
-{Department of Computer Science, University of Pisa, Pisa, IT}
-{fabio.gadducci@unipi.it}
-{https://orcid.org/0000-0003-0690-3051}{}
-
-\authorrunning{R.~Biondo, D.~Castelnovo, F.~Gadducci}
-
-\Copyright{Roberto Biondo and Davide Castelnovo and Fabio Gadducci} 
-\ccsdesc[500]{Theory of Computation~Models of computation}
-\ccsdesc[500]{Theory of Computation~Semantics and reasoning}
-
-\keywords{Hypergraphs, terms graphs, e-graphs, adhesive categories.} %TODO mandatory; please add comma-separated list of keywords
-
-\funding{The research has been partially supported by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 ``Spatio-Temporal Enhancement of Neural nets for Deeply
+\tnotetext[1]{The research has been partially supported by the Italian MUR - Call PRIN 2022 - Project 20228KXFN2 ``Spatio-Temporal Enhancement of Neural nets for Deeply
 Hierarchical Automatised Logic'' (STENDHAL) 
 and by the University of Pisa - Call PRA 2022 - Project 2022\_99 ``Formal Methods for the Healthcare Domain based on Spatial Information'' (FM4HD).}
 
-\nolinenumbers
+
+% Author with single affiliation.
+\author[1]{Roberto Biondo}
+\affiliation[1]{organization={Department of Computer Science, University of Pisa},
+	city={Pisa},
+%	citysep={},
+	postcode={56127},
+	country={Italy}}
+\ead{r.biondo@studenti.unipi.it}
+
+\author[1]{Davide Castelnovo}[orcid=0000-0002-5926-5615]
+\ead{castelnovod@gmail.com}
+
+\author[1]{Fabio Gadducci}[orcid=0000-0003-0690-3051]
+\ead{fabio.gadducci@unipi.it}
+
+%\Copyright{Roberto Biondo and Davide Castelnovo and Fabio Gadducci} 
+
+\iffalse
+%TODO: questa roba negli argomenti
+\ccsdesc[500]{Theory of Computation~Models of computation}
+\ccsdesc[500]{Theory of Computation~Semantics and reasoning}
+\fi
 
 \begin{document}
 
-\maketitle
+%\maketitle
 
-\begin{abstract}
+\begin{abstract}[S U M M A R Y]
 The use of rewriting-based visual formalisms is on the rise. 
 %
 In the formal methods community, this is due also to the introduction of adhesive
@@ -239,6 +253,11 @@ of the adhesive framework in modelling, for example, concurrent updates.
 %adhesive framework in modelling e.g. concurrent updates.
 \end{abstract}
 
+\begin{keywords}
+hypergraphs \sep terms graphs \sep e-graphs \sep adhesive categories
+\end{keywords}
+
+\maketitle
 
 \section{Introduction}
 The introduction of \emph{adhesive categories} marked a watershed moment for the algebraic approaches 
@@ -382,7 +401,7 @@ and for defining it we need some notions.
 %and to define it we introduce some notions.  
 Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 
-\vspace{-.25cm}
+%\vspace{-.25cm}
 \parbox{11cm}{\begin{itemize}
 	\item		\emph{stable under pushouts (pullbacks)} if for every pushout (pullback) square as the one aside, if $m \in \mathcal{A}$ ($n\in \mathcal{A}$) then $n \in \mathcal{A}$ ($m \in \mathcal{A}$);
 		\item \emph{closed under composition} if $h, k\in \mathcal{A}$ implies $h\circ k\in \mathcal{A}$ whenever $h$ and $k$ are composable;
@@ -394,7 +413,7 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be
 	\begin{definition}
 	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the cube below on the right. 
 	
-\vspace{-.25cm}
+%\vspace{-.25cm}
 \parbox{9.5cm}{We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if
 	\begin{enumerate}
 		\item it is a pushout square;
@@ -441,8 +460,8 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (c
 	\label{thm:slice-functors}
 	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following hold
 	\begin{enumerate}
-		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
-		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comm{L}{R}$ is (strictly) $\comm{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\[\comm{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comm{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
 		the categories $\X/X$  and $X/\X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
 		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
@@ -630,7 +649,7 @@ We open this section with the definition of hypergraphs and we show how to label
 Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\star\times X^\star$.  We can use it to present $\hyp$ as a comma category.
 
 \begin{proposition}\label[proposition]{prop:com}
-	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
+	$\hyp$ is isomorphic to $\comm{\id{\Set}}{\pro^\star}$
 \end{proposition}
 
 Note that by hypothesis $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
@@ -2788,7 +2807,7 @@ Let $F\colon \D\to \eg$ be a diagram of one of the shapes mentioned in the state
 \section{Some properties of comma categories}
 In this section we briefly recall the definition of the comma category \cite{mac2013categories} associated to two functors and some of its properties.
 \begin{definition}\index{category!comma -}
-	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which
+	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comm{L}{R}$ is the category in which
 
 \noindent
 \parbox{10.5cm}{\vspace{-.5cm}\begin{itemize}
@@ -2796,7 +2815,7 @@ In this section we briefly recall the definition of the comma category \cite{mac
 		\item a morphism $(A, B, f)\rightarrow (A', B', g)$ is a pair $(h, k)$ with $h\colon A\rightarrow A'$ in $\A$ and $k\colon B\rightarrow B'$ in $\B$ such that the diagram aside commutes\end{itemize}}\hfill 
 	\parbox{4cm}{\vspace{-.1cm}\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}}
 \end{definition} 
-We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \comma{L}{R} \to \B$ given respectively by
+We have two forgetful functors 	$U_L\colon \comm{L}{R}\to \A$ and $U_R\colon \comm{L}{R} \to \B$ given respectively by
 \[
 \begin{split}
 	\functor[l]{(A,B, f)}{(h,k)}{(A', B', g)}
@@ -2811,27 +2830,27 @@ We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \c
 \]
 
 
-Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same thing as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$. Thus $\comma{L}{R}$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the left square below commutes in $\X$ if and only if the right one commutes in $\X^{op}$.
+Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same thing as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$. Thus $\comm{L}{R}$ and $\comm{R^{op}}{L^{op}}$ have the same objects. Moreover, the left square below commutes in $\X$ if and only if the right one commutes in $\X^{op}$.
 \[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g} & R(B') \ar[d]_{g} \ar[r]^{R(k)}& R(B) \ar[d]^{f}\\ R(B) \ar[r]_{R(k)}& R(B') & L(A') \ar[r]_{L(h)}  & L(A)}\]
 
 Summing up we have just proved the following fact.
 \begin{proposition}\label[proposition]{prop:dual}
-	$(\comma{L}{R})^{op}$ is equal to	$\comma{R^{op}}{L^{op}}$, and $U^{op}_L=U_{L^{op}}$ and $U^{op}_R=U_{R^{op}}$.
+	$(\comm{L}{R})^{op}$ is equal to	$\comm{R^{op}}{L^{op}}$, and $U^{op}_L=U_{L^{op}}$ and $U^{op}_R=U_{R^{op}}$.
 \end{proposition}
 
 
 \begin{lemma}\label[lemma]{colim}
-	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comma{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite[Sec.~5.1.3]{castelnovo2023thesis} or \cite[Sec.~2.3]{CastelnovoGM24}).
+	Let $L\colon \A\to \X$ and $R\colon \B\to \X$ be functors and $F\colon \D\to\comm{L}{R}$ be a diagram such that $L$ preserves colimits along $U_L\circ F$. Then the family $\{U_L, U_R\}$ jointly creates colimits of $F$ (see \cite[Sec.~5.1.3]{castelnovo2023thesis} or \cite[Sec.~2.3]{CastelnovoGM24}).
 \end{lemma}
 \begin{proof}
 	Suppose that $U_L\circ F$ and $U_R\circ F$ have respectively colimiting cocones  $\left(A, \{a_D\}_{D\in \D}\right)$ and $\left(B, \{b_D\}_{D\in \D}\right)$. By hypothesis $\left(L(A), \{L\left(a_D\right)\}_{D\in \D}\right)$ is colimiting for $L\circ U_L\circ F$. Now, let $F(D)$ be $(A_D, B_D, f_D)$,
-	then we have arrows $R(b_D)\circ f_D\colon L(A_D)\to R(B)$ that forms a cocone on $L\circ U_L\circ F$: if $d\colon D\to D'$ is an arrow in $\D$ then $F(d)$ is an arrow in $\comma{L}{R}$ and so
+	then we have arrows $R(b_D)\circ f_D\colon L(A_D)\to R(B)$ that forms a cocone on $L\circ U_L\circ F$: if $d\colon D\to D'$ is an arrow in $\D$ then $F(d)$ is an arrow in $\comm{L}{R}$ and so
 	\begin{align*}
 		&R\left(b_{D'}\right)\circ f_{D'}\circ L(U_L(F(d)))=R\left(b_{D'}\right)\circ R\left(U_R\left(F(d)\right)\right)\circ f_D\\=&R\left(b_{D'}\circ U_R\left(F(d)\right)\right)\circ f_D=R\left(b_D\right)\circ f_D
 	\end{align*}
 	
 	\noindent \parbox{10cm}{
-	\hspace{15pt}Thus there exists $f\colon L(A)\rightarrow R(B)$ fitting in the diagram on the right. Notice that $f$ is the unique arrow in $\X$ wich makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comma{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.}\hfill 
+	\hspace{15pt}Thus there exists $f\colon L(A)\rightarrow R(B)$ fitting in the diagram on the right. Notice that $f$ is the unique arrow in $\X$ wich makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comm{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.}\hfill 
 	\parbox{4cm}{\xymatrix@C=35pt@R=15pt{ L(A_D) \ar[r]^{L(a_D)} \ar[d]_{f_D}& L(A) \ar[d]^{f}\\ R(B_D) \ar[r]_{R(b_D)} &R(B)}}
 	
 	First of all, let us show that it is a cocone. Given $d\colon D\to D'$ in $\D$ we have
@@ -2841,7 +2860,7 @@ Summing up we have just proved the following fact.
 	
 	For the colimiting property, let $\left((X, Y, g), \left\{\left(x_D, y_D\right)\right\}_{D\in \D}\right)$ be another cocone on $F$. In particular, $\left(X, \left\{x_D\right\}_{D\in \D}\right)$ and $\left(Y, \left\{y_D\right\}_{D\in \D}\right)$ are cocones on $U_L\circ F$ and $U_R\circ F$ respectively, so we have uniquely determined arrows $x\colon A\rightarrow X$ and $y\colon B\rightarrow Y$ such that 
 	\[x\circ a_D= x_D \qquad y\circ b_D= y_D\]
-	Let us show that $(x,y)$ is an arrow of $\comma{L}{R}$. Given $D\in \D$ we have
+	Let us show that $(x,y)$ is an arrow of $\comm{L}{R}$. Given $D\in \D$ we have
 	\begin{align*}
 		&R(y)\circ f\circ L(a_D)=R(y)\circ R\left(b_D\right)\circ f_D=R\left(y\circ b_D\right)\circ f_D\\=&R\left(y_D\right)\circ f_D= g\circ L\left(x_D\right)=g\circ L\left(x\circ a_D\right)=g\circ L(x)\circ L\left(a_D\right)
 	\end{align*}
@@ -2850,15 +2869,15 @@ Summing up we have just proved the following fact.
 
 
 \Cref{prop:dual} and \Cref{colim} now yields the following.
-\begin{corollary}\label[corollary]{lim} The family $\{U_L, U_R\}$ jointly creates limits along every diagram $F\colon \D\to \comma{L}{R}$ such that $R$ preserves the limit of $U_R\circ F$.
+\begin{corollary}\label[corollary]{lim} The family $\{U_L, U_R\}$ jointly creates limits along every diagram $F\colon \D\to \comm{L}{R}$ such that $R$ preserves the limit of $U_R\circ F$.
 \end{corollary}
 
 We can use \Cref{lim} to characterize monos in comma categories. 
 \begin{corollary}\label[corollary]{cor:mono}
-	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monos.
+	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comm{L}{R}$ is mono if and only if both $h$ and $k$ are monos.
 \end{corollary}
 \begin{proof}
-	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos
+	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comm{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos
 	\[\xymatrix{(A, B, f)  \ar[rr]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}&& (A, B, f)  \ar[d]^{(h,k)}& A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ (A, B, f)  \ar[rr]_{(h,k)}&& (A', B', g) &A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
 	
 \newpage
@@ -2870,7 +2889,7 @@ We can use \Cref{lim} to characterize monos in comma categories.
 We end this section pointing out another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
 
 \begin{proposition}\label[proposition]{prop:left}
-	If $\A$ has initial objects and $L$ preserves them then the forgetful functor $U_R\colon \comma{L}{R}\to \B$ has a left adjoint $\Delta$.
+	If $\A$ has initial objects and $L$ preserves them then the forgetful functor $U_R\colon \comm{L}{R}\to \B$ has a left adjoint $\Delta$.
 \end{proposition}
 \begin{proof} For an object $B\in \B$ we can define $\Delta(B)$ as $(0, B, ?_{R(B)})$, for $0$ is an initial object in $\A$ and $?_{R(B)}$ is the unique arrow $L(0)\to R(B)$. Let $\id{B}\colon B\to U_R(\Delta(B))$ be the identity,
 	
@@ -2880,7 +2899,7 @@ We end this section pointing out another useful fact,  showing that in some case
 	\parbox{2cm}{\vspace{-.1cm}\xymatrix@C=30pt@R=15pt{L(0) \ar[r]_{L(?_A)} \ar[d]_{?_{R(B)}} & L(A) \ar[d]^{f}\\ R(B) \ar[r]^{R(k)}& R(B')}}  
 \end{proof}
 Dualizing we get immediately the following.
-\begin{corollary}If $\B$ has terminal objects preserved by $R$ then $U_L\colon \comma{L}{R}\to \A$ has a right adjoint.
+\begin{corollary}If $\B$ has terminal objects preserved by $R$ then $U_L\colon \comm{L}{R}\to \A$ has a right adjoint.
 \end{corollary}
 
 \subsection{Slice categories}
@@ -2914,11 +2933,11 @@ This section is devoted to recall some basic facts about the so called \emph{sli
 We can realize the slice over and under an object $X\in \X$ as comma categories.
 
 \begin{proposition}\label[proposition]{prop:commaapp}
-	For every object $X$ in a category $\X$, if $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object $*$, then $\X/X$ and $X/\X$ are isomorphic to, respectively,  $\comma{\id{X}}{\delta_X}$ and $\comma{\delta_X}{\id{X}}$ .
+	For every object $X$ in a category $\X$, if $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object $*$, then $\X/X$ and $X/\X$ are isomorphic to, respectively,  $\comm{\id{X}}{\delta_X}$ and $\comm{\delta_X}{\id{X}}$ .
 \end{proposition}
 
 \newpage
-\begin{proof} Define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
+\begin{proof} Define functors $F_1\colon \comm{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comm{\id{X}}{\delta_X}$ as follows
 	\[	\begin{split}
 		\functor[l]{(Y, *,  f)}{(h, \id{*} )}{( Y', *,  g)}
 		\functormapsto
@@ -2928,7 +2947,7 @@ We can realize the slice over and under an object $X\in \X$ as comma categories.
 		\functormapsto
 		\rfunctor{(\dom(f), *, f)}{(h, \id{*} )}{(\dom(g), *, g)}
 	\end{split}\]
-	Similarly, we have $F_2\colon \comma{\delta_X}{\id{X}}\to X/\X$ and $G_2\colon X/\X\to \comma{\delta_X}{\id{X}}$
+	Similarly, we have $F_2\colon \comm{\delta_X}{\id{X}}\to X/\X$ and $G_2\colon X/\X\to \comm{\delta_X}{\id{X}}$
 	\[	\begin{split}
 		\functor[l]{(*, Y, f)}{(\id{*},h )}{(*, Y', g)}
 		\functormapsto
