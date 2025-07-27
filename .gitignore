@@ -28,3 +28,7 @@ jlamp/*.log
 jlamp/textput.log
 jlamp/jlamp.pdf
 jlamp/jlamp.synctex.gz
+calco/hypergraph.tikzdefs
+calco/hypergraph.tikzstyles
+calco/submission/tikzit.sty
+calco/tikzit.sty
