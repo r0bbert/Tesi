@@ -32,3 +32,6 @@ calco/hypergraph.tikzdefs
 calco/hypergraph.tikzstyles
 calco/submission/tikzit.sty
 calco/tikzit.sty
+jlamp/elsarticle.cls
+jlamp/jlamp.bbl
+jlamp/jlamp.toc
