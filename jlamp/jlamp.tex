@@ -227,27 +227,27 @@
 
 \begin{document}
 
-\author[1]{Roberto Biondo}
+\author{Roberto Biondo}
 \ead{r.biondo@studenti.unipi.it}
 
-\author[1]{Davide Castelnovo\corref{cor1}%
+\author{Davide Castelnovo\corref{cor1}%
 }
 \ead{castelnovod@gmail.com}
 %{https://orcid.org/0000-0002-5926-5615}{}
 
-\author[1]{Fabio Gadducci}
+\author{Fabio Gadducci}
 \ead{fabio.gadducci@unipi.it}
 %{https://orcid.org/0000-0003-0690-3051}{}
 
 
 \cortext[cor1]{Corresponding author}
 
-\affiliation[1]{organization = {Department of Computer Science, University of Pisa},
-	addressline = {Largo B. Pontecorvo, 3},
-	postcode = {56127},
+\affiliation{organization = {Department of Computer Science, University of Pisa},
 	city = {Pisa}, 
 	country = {Italy}}
 
+\fntext[miur]{Research partially supported by the Italian MUR project PRIN
+20228KXFN2 ``STENDHAL''.}
 
 \begin{abstract}
 The use of rewriting-based visual formalisms is on the rise. 
@@ -266,8 +266,8 @@ is performed by adding new components and linking them to
 the existing ones via an equivalence relation, until an optimal program is reached.
 %
 This work describes EGGs via adhesive categories. 
-Besides the benefits in itself of a formal presentation, which renders the 
-properties of the data structure precise, the description of the addition of equivalent 
+Besides the usual benefits of a formal presentation, which makes the 
+properties of a data structure precise, describing the addition of equivalent 
 program components using standard graph transformation tools offers the advantages 
 of the adhesive framework in modelling, for example, concurrent updates.
 %
@@ -295,9 +295,9 @@ over and over again for each different formalism at hand, %let it be either xxx 
 despite the obvious similarity of the procedure.
 %
 Adhesive categories provides such a disparate set of formalisms with a common abstract framework 
-where many of these general results can be recast and uniformly proved once and for all.
+where many general results can be recast and uniformly proved once and for all.
  
-\vspace{.1cm}
+%\vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}
 		\setlength{\parindent}{1.5em}
@@ -343,10 +343,9 @@ However, despite the elegance and effectiveness,
 %to be adhesive, 
 proving that a given category satisfies the conditions 
 for being $\mathcal{M}$-adhesive can be a daunting task. For this reason, sufficient criteria have been provided for the core 
-framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, as well as for the extended one of
-$\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
+framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, and for the $\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
 %
-For some structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
+For structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
 of their $\mathcal{M}$-adhesivity has not yet been settled.
 
 \emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
@@ -360,13 +359,13 @@ the computational costs of its actual execution are improved. Instead of directl
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
-EGGs can be concisely defined as term graphs equipped with a notion of equivalence on nodes
+EGGs can be concisely defined as (acyclic) term graphs equipped with an equivalence on nodes
 that is closed under the operators of a signature~\cite[Section~4.2]{DetlefsNS05}.
 %(i.e., graphs whose components are labelled with the operators of a signature)
 In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees 
 whose edges are labelled by operators and with
-the possibility of sharing subtrees, with an additional equivalence relation $\equiv$ on nodes that 
-is closed under composition. In plain words and using a toy example:
+possibly sharing subtrees, with an equivalence relation $\equiv$ on nodes that 
+is closed under composition. In plain words and with a toy example:
 if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
 
@@ -377,12 +376,12 @@ Building on the criterion developed in~\cite{CastelnovoGM24}, this work proves t
 and EGGs form an 
 $\mathcal{M}$-adhesive category for a suitable choice of $\mathcal{M}$.
 The advantages from this characterisation are two-fold. On the one side, 
-we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
+the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
 On the other side, describing the optimisation steps via the DPO approach
 offers the tools for modelling their parallel and concurrent execution
 and for proving their confluence and termination.
 
-\emph{Synopsis}
+\emph{Synopsis.}
 The paper has the following structure. 
 In Section~\ref{sec:ade} we briefly recall 
 the theory of $\mathcal{M}$-adhesive categories
@@ -408,11 +407,15 @@ For the sake of space, the proofs appear in the appendices.
 %recalled in the background section, besides those that are original 
 %to our work.
 
+\emph{Differenza con la versione da conferenza}
+
 
 \section{Facts about $\mathcal{M}$-adhesive categories and kernel pairs}\label{sec:ade}
 
-We open this background section by fixing some notation. Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
-``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one. We will also use the notation $e\colon X\eto Y$ to denote that an arrow $e\colon X\to Y$ is a regular epi. 
+We open the background section by fixing notation. Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  
+Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one. 
+The notation $e\colon X\eto Y$ denotes that an arrow $e\colon X\to Y$ is a regular epi. 
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive},
@@ -457,7 +460,7 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be:
 
 We can now define $\mathcal{M}$-adhesive categories.
 
-\begin{defi}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}]
+\begin{defi}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,heindel2009category,lack2005adhesive}]
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
 	$\mon(\X)$  including  all isos, closed under composition, decomposition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
@@ -467,7 +470,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 	\end{enumerate}
 	%
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
-	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+	if $\mathcal{M}$-pushouts are Van Kampen squares. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{defi}
 
 
@@ -486,16 +489,16 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (c
 	\label{thm:slice-functors}
 	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following hold
 	\begin{enumerate}
-		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ 
+		a functor preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
 		the categories $\X/X$  and $X/\X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
-		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
-		\mathcal{M}\} \hspace{25pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
+		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in \mathcal{M}\} \hspace{25pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
 		\item for every small category $\Y$, the category $\X^\Y$ of
 		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
-		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
-		\mathcal{M} \text{ for every } Y\in \Y\}$;
+		\[\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
+		\mathcal{M} \text{ for every } Y\in \Y\}\];
 		\item if $\Y$ is a full subcategory of $\X$ closed under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all isos, and is closed under composition and decomposition.
 	\end{enumerate} 
 \end{prop}
@@ -504,7 +507,7 @@ We briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 \begin{exa}
 	\label{ex:adhesive}
-	$\cat{Set}$ is adhesive, and, more generally, every topos is
+	$\cat{Set}$ is adhesive, and in fact every topos is
 	adhesive~\cite{lack2006toposes}. By the closure properties above, every presheaf $[\cat{X},\cat{Set}]$ is adhesive, thus the category
 	$\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is adhesive
 	where $E \rightrightarrows {V}$ is the two objects category with two
@@ -572,7 +575,7 @@ Together with \Cref{lem:pb1}, the previous remarks allow us to prove the followi
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{prop}
 
-Regular epis are particular well-behaved with respect to their kernel pairs.
+Regular epis are particularly well-behaved with respect to their kernel pairs.
 
 \begin{restatable}{prop}{epic}\label{prop:reg_epi_coeq}
     Let $e\colon X \eto Y$ be a regular epi in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
@@ -666,7 +669,8 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathcal{N}\to 1^\star$. In particular, every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside.
+	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathcal{N}\to 1^\star$. 
+	In particular, for every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside.
 	\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
 \xymatrix@R=10pt{1 \ar[r]^{\id{1}} \ar[d]^{u_n}& 1 \ar[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
@@ -700,7 +704,7 @@ Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\st
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{prop}
 
-Note that by, \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
+Note that by \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
 hence by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
 
 
@@ -714,7 +718,7 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 	 $\hyp$ is an adhesive category.
 \end{cor}
 
-\Cref{prop:left,prop:com} allow us to deduce immediately the following.
+\Cref{prop:left} and \Cref{prop:com} allow us to deduce immediately the following.
 
 \begin{prop}\label{cor:left}  The forgetful functor $U_{\hyp}$ which sends a hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{prop}
@@ -729,7 +733,7 @@ We represent hypergraphs visually: dots denote nodes and boxes hyperedges. Shoul
 Sources and targets are represented by lines between dots and squares: the lines from the sources of a hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
 Let us look at the picture below. It represent a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ a pair of nodes
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have a pair of nodes as soruce
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
