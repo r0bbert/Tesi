@@ -669,7 +669,7 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathcal{N}\to 1^\star$. 
+	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. 
 	In particular, for every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside.
 	\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
@@ -729,11 +729,11 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 %\todo{FG ne lascerei uno, ripreso magari dalla intro e presentato come string diagram}
 
 \begin{exa}\label[example]{exa_2}
-We represent hypergraphs visually: dots denote nodes and boxes hyperedges. Should we be interested in their identity, we put a name near the corresponding dot or box. 
+We represent hypergraphs visually: bullets denote nodes and boxes hyperedges. Should we be interested in their identity, we put a name near the corresponding bullet or box. 
 Sources and targets are represented by lines between dots and squares: the lines from the sources of a hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
-Let us look at the picture below. It represent a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have a pair of nodes as soruce
+Let us look at the picture below. It represents a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have a pair of nodes as source
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
@@ -785,7 +785,7 @@ A rich source of example is given by \emph{monoidal signatures}.
 		
 		We say that $\Sigma$ is \emph{algebraic} if $\coar_{\Sigma}$ is the constant function in $1$.
 		
-		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1$ is the isomorphism of \Cref{rem:length}.
+		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1^\star$ is the isomorphism of \Cref{rem:length}.
 	\end{defi}
 	
 	\begin{exa}\label{exa_3} 
@@ -840,7 +840,7 @@ A rich source of example is given by \emph{monoidal signatures}.
 	\end{minipage}
  
  \smallskip 
- We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target function. This suggest the following definition, which will be used in Section \ref{par:tg}. 
+ We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which will be used in Section \ref{par:tg}. 
  
 \begin{defi}
 An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{algebraic} if $t_{\mathcal{G}}(e)$ has length $1$ for every $e\in E_{\mathcal{G}}$.
@@ -852,7 +852,7 @@ An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t
 	%
 	Indeed, consider the category $\catname{H}$ in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
 	%
-	The functors $\catname{H}\to \Set$ corresponds exactly to hypergraphs: nodes correspond to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
+	The functors $\catname{H}\to \Set$ correspond exactly to hypergraphs: the set of nodes corresponds to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
 \end{rem}
 
 In particular, \Cref{rem:functor} entails the following result. 
@@ -861,7 +861,7 @@ In particular, \Cref{rem:functor} entails the following result.
 	$\hyp$ has all limits and colimits.
 \end{prop}
 
-\begin{rem}It is worth mentioning that limits in $\hyp$ are not computed componentwise. By \Cref{prop:fact,prop:com,lim} we know that the two forgetful functors $U_{\hyp}, H_{\hyp}\colon \hyp \to \Set$, sending an hypergraph to, respectively, its set of nodes and that of hyperedges only jointly creates conneted limits. For instance, let $\phi\colon \mathbb{N}\to 1^\star$  $(\mathbb{N}, 1, \phi)$
+\begin{rem}It is worth mentioning that limits in $\hyp$ are not computed componentwise. By \Cref{prop:fact}, \Cref{prop:com}, and \Cref{lim} we know that the two forgetful functors $U_{\hyp}, H_{\hyp}\colon \hyp \to \Set$, sending an hypergraph to, respectively, its set of nodes and its set of hyperedges jointly creates connected limits. For instance, let $\phi\colon \mathbb{N}\to 1^\star$  $(\mathbb{N}, 1, \phi)$ -- TO BE COMPLETED
 \end{rem}
 
 \iffalse
@@ -905,22 +905,27 @@ We are now going to introduce three classes of hypergraphs, and the relative sub
 
 \paragraph{Separated hypergraphs}
 
-Let us begin with the subcategory of $\hyp$ which, in \Cref{sec:sepegg}, will give us the underlying hypergraphs for EGGs with minimally identified tokens.
+Let us begin with the subcategory of $\hyp$, which in \Cref{sec:sepegg} will give us the underlying hypergraphs for EGGs with minimally identified tokens.
 
-\begin{defi} Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if:
+\begin{defi} Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if for every pair of not necessarily distinct hyperedges $e, e'\in E_{\mathcal{G}}$
 	\begin{enumerate}
-		\item for every hyperedge $e$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ do not have repeated letters;
-		\item for every two, not necessarily distinct, hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint;
-		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint;
-		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
+	\item $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;
+	\item $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;	
+	\item $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
+%		\item for every hyperedge $e$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ do not have repeated letters;
+%		\item for every two, not necessarily distinct, hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint;
+%		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint;
+%		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
 	\end{enumerate}
 We will denote by $\shyp$ the full subcategory of $\hyp$ given by separated hypergraphs and by $S$ the inclusion functor.
 \end{defi}
 
+\marginpar{non basta, non ci devono essere ripetizioni}
+
 \begin{defi}
 Given an hypergraph $\mathcal{\mathcal{G}}=(E_{\mathcal{G}}, V_{\mathcal{F}}, s_{\mathcal{G}}, t_{\mathcal{G}})$, for every hyperedge $e\in E_{\mathcal{G}}$ with $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$, we can consider the coproduct $(V_e, \{\iota^e_{i}\}_{i=1}^{n_e+m_e})$ of $n_e+m_e$ copies of $1$.
 
- Moreover, let $\is{(V_{\mathcal{G}})}$ be the set of isolated nodes  of $\mathcal{G}$ i.e.~those which are not in the image of $s_{\mathcal{G}}$ or of $t_{\mathcal{G}}$. Furthermore, let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}} \cup \{\is{(V_{\mathcal{G}})}\}$ and define:
+ Moreover, let $\is{(V_{\mathcal{G}})}$ be the set of isolated nodes  of $\mathcal{G}$ i.e.~those which are not in the image of $s_{\mathcal{G}}$ or of $t_{\mathcal{G}}$. Furthermore, let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}} \cup \{\is{(V_{\mathcal{G}})}\}$ and define
 \[\begin{split}
 	s_{\sp(\mathcal{G})} \colon E_{\mathcal{G}}&\to V_{\sp(\mathcal{G})}^\star\\
 	e &\mapsto \prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0))
