@@ -227,27 +227,27 @@
 
 \begin{document}
 
-\author{Roberto Biondo}
+\author[1]{Roberto Biondo}
 \ead{r.biondo@studenti.unipi.it}
 
-\author{Davide Castelnovo\corref{cor1}%
+\author[1]{Davide Castelnovo\corref{cor1}%
 }
 \ead{castelnovod@gmail.com}
 %{https://orcid.org/0000-0002-5926-5615}{}
 
-\author{Fabio Gadducci}
+\author[1]{Fabio Gadducci}
 \ead{fabio.gadducci@unipi.it}
 %{https://orcid.org/0000-0003-0690-3051}{}
 
 
 \cortext[cor1]{Corresponding author}
 
-\affiliation{organization = {Department of Computer Science, University of Pisa},
+\affiliation[1]{organization = {Department of Computer Science, University of Pisa},
+	addressline = {Largo B. Pontecorvo, 3},
+	postcode = {56127},
 	city = {Pisa}, 
 	country = {Italy}}
 
-\fntext[miur]{Research partially supported by the Italian MUR project PRIN
-20228KXFN2 ``STENDHAL''.}
 
 \begin{abstract}
 The use of rewriting-based visual formalisms is on the rise. 
@@ -266,8 +266,8 @@ is performed by adding new components and linking them to
 the existing ones via an equivalence relation, until an optimal program is reached.
 %
 This work describes EGGs via adhesive categories. 
-Besides the usual benefits of a formal presentation, which makes the 
-properties of a data structure precise, describing the addition of equivalent 
+Besides the benefits in itself of a formal presentation, which renders the 
+properties of the data structure precise, the description of the addition of equivalent 
 program components using standard graph transformation tools offers the advantages 
 of the adhesive framework in modelling, for example, concurrent updates.
 %
@@ -295,9 +295,9 @@ over and over again for each different formalism at hand, %let it be either xxx 
 despite the obvious similarity of the procedure.
 %
 Adhesive categories provides such a disparate set of formalisms with a common abstract framework 
-where many general results can be recast and uniformly proved once and for all.
+where many of these general results can be recast and uniformly proved once and for all.
  
-%\vspace{.1cm}
+\vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}
 		\setlength{\parindent}{1.5em}
@@ -343,9 +343,10 @@ However, despite the elegance and effectiveness,
 %to be adhesive, 
 proving that a given category satisfies the conditions 
 for being $\mathcal{M}$-adhesive can be a daunting task. For this reason, sufficient criteria have been provided for the core 
-framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, and for the $\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
+framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, as well as for the extended one of
+$\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
 %
-For structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
+For some structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
 of their $\mathcal{M}$-adhesivity has not yet been settled.
 
 \emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
@@ -359,13 +360,13 @@ the computational costs of its actual execution are improved. Instead of directl
 new components and link them to the older ones via the equivalence relation, until an optimal program is 
 reached and extracted.
 
-EGGs can be concisely defined as (acyclic) term graphs equipped with an equivalence on nodes
+EGGs can be concisely defined as term graphs equipped with a notion of equivalence on nodes
 that is closed under the operators of a signature~\cite[Section~4.2]{DetlefsNS05}.
 %(i.e., graphs whose components are labelled with the operators of a signature)
 In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EGGs are (hyper)trees 
 whose edges are labelled by operators and with
-possibly sharing subtrees, with an equivalence relation $\equiv$ on nodes that 
-is closed under composition. In plain words and with a toy example:
+the possibility of sharing subtrees, with an additional equivalence relation $\equiv$ on nodes that 
+is closed under composition. In plain words and using a toy example:
 if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
 
 
@@ -376,12 +377,12 @@ Building on the criterion developed in~\cite{CastelnovoGM24}, this work proves t
 and EGGs form an 
 $\mathcal{M}$-adhesive category for a suitable choice of $\mathcal{M}$.
 The advantages from this characterisation are two-fold. On the one side, 
-the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
+we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
 On the other side, describing the optimisation steps via the DPO approach
 offers the tools for modelling their parallel and concurrent execution
 and for proving their confluence and termination.
 
-\emph{Synopsis.}
+\emph{Synopsis}
 The paper has the following structure. 
 In Section~\ref{sec:ade} we briefly recall 
 the theory of $\mathcal{M}$-adhesive categories
@@ -407,15 +408,11 @@ For the sake of space, the proofs appear in the appendices.
 %recalled in the background section, besides those that are original 
 %to our work.
 
-\emph{Differenza con la versione da conferenza}
-
 
 \section{Facts about $\mathcal{M}$-adhesive categories and kernel pairs}\label{sec:ade}
 
-We open the background section by fixing notation. Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
-``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  
-Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one. 
-The notation $e\colon X\eto Y$ denotes that an arrow $e\colon X\to Y$ is a regular epi. 
+We open this background section by fixing some notation. Given a category $\X$ we do not distinguish notationally between $\X$ and its class of objects, so
+``$X\in \X$'' means that $X$ is an object of $\X$. We let $\mor(\X)$, $\mon(\X)$ and $\reg(\X)$ denote the class of all arrows, monos and regular monos of $\X$, respectively.  Given an object $X$, we  denote by $?_X$ the unique arrow from an initial object into $X$ and by $!_X$ that  unique arrow from $X$ into a terminal one. We will also use the notation $e\colon X\eto Y$ to denote that an arrow $e\colon X\to Y$ is a regular epi. 
 
 \subsection{$\mathcal{M}$-adhesivity}\label{subsec:ade}
 The key property of $\mathcal{M}$-adhesive categories is the \emph{Van Kampen condition}~\cite{brown1997van,johnstone2007quasitoposes,lack2005adhesive},
@@ -440,7 +437,6 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be:
 	\begin{defi}
 	Let $\mathcal{A}\subseteq \mor(\X)$ be a class of arrows in a category $\X$ and consider the cube below on the right. 
 	
-	
 	\begin{minipage}[l]{.73\linewidth}
 		We say that the bottom square is an \emph{$\mathcal{A}$-Van Kampen square} if:
 	\begin{enumerate}
@@ -460,7 +456,7 @@ Let  $\X$ be a category. A subclass $\mathcal{A}$ of $\mor(\X)$ is said to be:
 
 We can now define $\mathcal{M}$-adhesive categories.
 
-\begin{defi}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,heindel2009category,lack2005adhesive}]
+\begin{defi}[\cite{azzi2019essence,ehrig2012,ehrig2014adhesive,lack2005adhesive,heindel2009category}]
 	Let $\X$ be a category and $\mathcal{M}$ a subclass of
 	$\mon(\X)$  including  all isos, closed under composition, decomposition,  and stable under pullbacks and pushouts.  The category  $\X$ is said to be \emph{$\mathcal{M}$-adhesive} if
 	\begin{enumerate}
@@ -470,7 +466,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 	\end{enumerate}
 	%
 	A category $\X$ is said to be \emph{strictly $\mathcal{M}$-adhesive}
-	if $\mathcal{M}$-pushouts are Van Kampen squares. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
+	if $\mathcal{M}$-pushouts are Van Kampen. We write $m\colon X \mto Y$ to denote that an arrow $m\colon X\to Y$ belongs to $\mathcal{M}$.
 \end{defi}
 
 
@@ -489,16 +485,16 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (c
 	\label{thm:slice-functors}
 	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following hold
 	\begin{enumerate}
-		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ 
-		a functor preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
+		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
 		\item for every object $X$
 		the categories $\X/X$  and $X/\X$ are, respectively, (strictly) $\mathcal{M}/X$-adhesive and (strictly) $X/\mathcal{M}$-adhesive, where
-		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in \mathcal{M}\} \hspace{25pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
+		\[\mathcal{M}/X:=\{m\in \mor(\X/X) \mid m\in
+		\mathcal{M}\} \hspace{25pt} X/\mathcal{M}:=\{m\in \mor(X/\X) \mid m\in \mathcal{M}\}\]
 		\item for every small category $\Y$, the category $\X^\Y$ of
 		functors $\Y\to \X$ is (strictly) $\mathcal{M}^{\Y}$-adhesive, where
-		\[\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
-		\mathcal{M} \text{ for every } Y\in \Y\}\];
+		$\mathcal{M}^{\Y}:=\{\eta \in \mor(\X^\Y) \mid \eta_Y \in
+		\mathcal{M} \text{ for every } Y\in \Y\}$;
 		\item if $\Y$ is a full subcategory of $\X$ closed under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all isos, and is closed under composition and decomposition.
 	\end{enumerate} 
 \end{prop}
@@ -507,7 +503,7 @@ We briefly list some examples of $\mathcal{M}$-adhesive categories.
 
 \begin{exa}
 	\label{ex:adhesive}
-	$\cat{Set}$ is adhesive, and in fact every topos is
+	$\cat{Set}$ is adhesive, and, more generally, every topos is
 	adhesive~\cite{lack2006toposes}. By the closure properties above, every presheaf $[\cat{X},\cat{Set}]$ is adhesive, thus the category
 	$\cat{Graph} = [ E \rightrightarrows V, \cat{Set}]$ is adhesive
 	where $E \rightrightarrows {V}$ is the two objects category with two
@@ -575,7 +571,7 @@ Together with \Cref{lem:pb1}, the previous remarks allow us to prove the followi
 	$(K_f, \pi_f^1, \pi_f^2)$ is a kernel pair for $f\colon X\to Y$, then it is also a kernel pair for $m\circ f$.
 \end{prop}
 
-Regular epis are particularly well-behaved with respect to their kernel pairs.
+Regular epis are particular well-behaved with respect to their kernel pairs.
 
 \begin{restatable}{prop}{epic}\label{prop:reg_epi_coeq}
     Let $e\colon X \eto Y$ be a regular epi in a category $\X$ with a kernel pair $(K_e, \pi^1_e, \pi^2_e)$. Then, $e$ is the coequalizer of $\pi^1_e$ and $\pi^2_e$.
@@ -636,7 +632,7 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 \begin{minipage}[l]{.6\linewidth}
 	\begin{restatable}{lem}{mps}\label{prop:kerset}
 		Suppose that in $\Set$ the commuting cube in the diagram on the left is given, whose top face is a pushout, the left and bottom faces are pullbacks,  and $n\colon B\mto D$ is an injection. 
-		Then the following hold
+		Then the following hold true:
 		\begin{enumerate}
 			\item the right face of the cube is a pullback;
 			\item the right square, made by the kernel pairs of the vertical arrows, is a pushout.
@@ -657,7 +653,7 @@ We recall some of its proprieties.
 \begin{prop}\label[prop]{prop:fact}
 	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
 	\begin{enumerate}
-		\item there are arrows $v_{n}\colon X^n\to X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
+		\item there are arrows $v_{n}\colon X^n\mto X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
 		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves pullbacks and equalizers.
 	\end{enumerate}
@@ -669,12 +665,27 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathcal{N}\to 1^\star$. 
-	In particular, for every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside.
+	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
 	\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
-\xymatrix@R=10pt{1 \ar[r]^{\id{1}} \ar[d]^{u_n}& 1 \ar[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
-\xymatrix@R=10pt@C=22pt{\mathbb{N} \ar[r]^{\Delta} \ar@{.>}[dr]_{\lgh_{X}}& 1^\star\\ & X^\star \ar[u]_{!^\star_X}}
+\xymatrix@R=8pt@C=30pt{1 \ar[r]^{\id{1}} \ar@{>->}[d]^{\delta_n}& 1 \ar@{>->}[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
+\xymatrix@R=8pt@C=28pt{\mathbb{N} \ar[r]^{\Delta} \ar@{<.}[dr]_{\lgh_{X}}& 1^\star\\ & X^\star \ar[u]_{!^\star_X}}
+\end{minipage}
+
+
+\begin{rem}\label{rem:le} Consider a function $f\colon X\to Y$  and suppose that $(X^\star, \{x_n\}_{n\in \mathbb{N}})$ and $\{Y^\star, \{y_n\}_{n\in \mathbb{N}}\}$ are the coproducts given by the first point of \Cref{prop:fact}, then for every $n\in \mathbb{N}$ we have 
+	\begin{align*}
+&\lgh_{Y}\circ f^\star \circ x_n = \lgh_{Y}\circ y_n \circ f^n= \Delta^{-1}\circ !^\star_{Y} \circ y_n\circ f^n =  \Delta^{-1}\circ v_n \circ !^n_{Y} \circ f^n \\=& \Delta^{-1}\circ v_n \circ (!_{Y} \circ f)^n  = \Delta^{-1}\circ v_n \circ (!_{X})^n = \Delta^{-1}\circ !^\star_{X} \circ x_n = \lgh_{X}\circ x_n
+	\end{align*}
+and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
+\end{rem}
+
+\noindent
+\begin{minipage}[r]{.83\linewidth}
+	\begin{rem}\label{rem:len} Let $X$ be a set.  It is worth noticing that, for every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
+	\end{rem}
+\end{minipage}\hfill \begin{minipage}[l]{.15\linewidth}
+\xymatrix@R=10pt{X^n \ar@{>->}[r]^{v_n} \ar[d]^{!_{X^n}}& X^\star  \ar[d]^{\lgh_{X}}\\ 1 \ar@{>->}[r]^{\delta_n} & \mathbb{N}}
 \end{minipage}
 
 \begin{notaz}
@@ -700,11 +711,11 @@ We define $\hyp$ to be the resulting category.
 
 Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\star\times X^\star$.  We can use it to present $\hyp$ as a comma category.
 
-\begin{prop}[prop]\label{prop:com}
+\begin{prop}\label{prop:com}
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{prop}
 
-Note that by \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
+Note that by, \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
 hence by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
 
 
@@ -718,7 +729,7 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 	 $\hyp$ is an adhesive category.
 \end{cor}
 
-\Cref{prop:left} and \Cref{prop:com} allow us to deduce immediately the following.
+\Cref{prop:left,prop:com} allow us to deduce immediately the following.
 
 \begin{prop}\label{cor:left}  The forgetful functor $U_{\hyp}$ which sends a hypergraph $\mathcal{G}$ to its set of nodes has a left adjoint $\Delta_{\hyp}$.
 \end{prop}
@@ -733,7 +744,7 @@ We represent hypergraphs visually: dots denote nodes and boxes hyperedges. Shoul
 Sources and targets are represented by lines between dots and squares: the lines from the sources of a hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
 Let us look at the picture below. It represent a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have a pair of nodes as soruce
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ a pair of nodes
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
@@ -846,58 +857,46 @@ A rich source of example is given by \emph{monoidal signatures}.
 An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{algebraic} if $t_{\mathcal{G}}(e)$ has length $1$ for every $e\in E_{\mathcal{G}}$.
 \end{defi}
  
- 
-\begin{rem}\label{rem:functor}
-	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of presheaves. 
-	%
-	Indeed, consider the category $\catname{H}$ in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
-	%
-	The functors $\catname{H}\to \Set$ corresponds exactly to hypergraphs: nodes correspond to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
-\end{rem}
+In order to deal with general limits of hypergraphs, it is worth to recall that, as first noted in \cite{bonchi2022string}, $\hyp$ is equivalent to a category of presheaves. 
 
-In particular, \Cref{rem:functor} entails the following result. 
+\begin{defi} We define the category $\catname{H}$  as the one in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) + \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
+\end{defi}
+
+It is possible to show that hypergraphs corresponds to presheaves over $\catname{H}$ (\cite{bonchi2022string,castelnovo2023thesis,CastelnovoGM24}). In \Cref{proof:equi} we report a proof of this claim for the interested reader.
+
+\noindent 
+\begin{minipage}[r]{.75\linewidth}
+	\begin{restatable}{lem}{equi}\label{lem:equi}
+		There is an equivalence of categories $\Set^{\catname{H}}\to \hyp$ sending a functor $F\colon \catname{H}\to \Set$ to $\mathcal{G}_F:=(E_F, F(\bullet), s_{F}, t_F)$, where $(E_F, \{\iota^F_{k,l}\})$ is a coproduct for $\{F(k,l)\}_{k,l\in\mathbb{N}}$
+		and $s_F, t_F\colon E_F\rightrightarrows V^\star_F$ are the unique arrows fitting in the diagrams aside, where $(F(\bullet), \{v^F_n\}_{n\in \mathbb{N}})$ is the coproduct coming from the first point of\Cref{prop:fact} and $s^F_{k,l}, t^F_{k,l}\colon F(k,l)\to F(\bullet)^k$, $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ are the arrows induced by, respectively, $\{F(f_i)\}_{i=0}^{k-1}$ and $\{F(f_i)\}_{i=k}^{k+l-1}$.
+	\end{restatable}
+\end{minipage}\hfill
+\begin{minipage}[l]{.25\linewidth}
+\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s^F} & F(\bullet)^\star}
+\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t^F} & F(\bullet)^\star}
+\end{minipage}
+
+
+
+In particular, \Cref{lem:equi} entails the following result. 
 
 \begin{prop}\label{prop:cocomp}
 	$\hyp$ has all limits and colimits.
 \end{prop}
 
-\begin{rem}It is worth mentioning that limits in $\hyp$ are not computed componentwise. By \Cref{prop:fact,prop:com,lim} we know that the two forgetful functors $U_{\hyp}, H_{\hyp}\colon \hyp \to \Set$, sending an hypergraph to, respectively, its set of nodes and that of hyperedges only jointly creates conneted limits. For instance, let $\phi\colon \mathbb{N}\to 1^\star$  $(\mathbb{N}, 1, \phi)$
-\end{rem}
+It is worth mentioning that limits in $\hyp$ which are not connected  are not computed componentwise. The following lemma shows how to compute products (see \Cref{proof:produ} for the proof).
 
-\iffalse
-\subsubsection{$\hyp$ as a category of functors}
+	\begin{restatable}{lem}{produ}\label{lem:prod}
+		Let $F\colon \D\to \hyp $ be a  discrete diagram. Let $F(D)$ be $(E_D, V_D, s_D,  t_D)$ and suppose that $(V, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
+		\[E^D_{k,l}:=\{e\in E_D \mid \lgh_{V_D}(s_{D}(e)) = k \text{ and } \lgh_{V_D}(t_{D}(e)) = l \}\]
+		with the canonical inclusion $i^D_{k,l}\colon E^D_{k,l}\mto E_D$.	Now, consider the product $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ and take the coproduct $(E_{\mathcal{L}}, \{\iota_{k,l}\}_{k,l \in \mathbb{N}})$ of the family $\{E_{k,l}\}_{k,l \in \mathbb{N}}$. Then there are arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon E_{\mathcal{L}}\rightrightarrows V^\star$ and $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ fitting in the diagram below and making $((E_{\mathcal{L}}, V, s_{\mathcal{L}}, t_{\mathcal{L}}), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ a limit for $F$.
+		\[\xymatrix@R=10pt@C=30pt{E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D & E_{k,l} \ar[r]^{\pi^D_{k,l}} \ar[dd]_{\iota_{k,l}} & E^{D}_{k,l} \ar[dd]^{i^D_{k,l}}\\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & &E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & \\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} & E_{\mathcal{L}} \ar@{.>}[r]_{\pi^D_E} & E_D}
+		\]
+	\end{restatable}
 
-Following \cite{bonchi2022string}, we can present $\hyp$ as a category of functor over a suitable category.
+\begin{exa}\label{ex:term} For instance, a terminal object of $\hyp$ is given by $(\mathbb{N}\times \mathbb{N}, 1, \Delta\circ \pi_1, \Delta\circ \pi_2)$, where $\pi_1, \pi_2\colon \mathbb{N}\times \mathbb{N}\to \mathbb{N}$ are the projections and $\Delta\colon \mathbb{N}\to 1^\star$ the canonical isomorphism introduced in \Cref{rem:length}. 
+\end{exa}
 
-\begin{defi}Let $\catname{H}$ be the category such that
-	\begin{itemize}
-		\item the set of objects is $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$;
-		\item arrows are given by the identities $\id{k,l}$ and $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$;
-		\item composition is defined by putting
-		%\begin{equation*}
-			$f_i=f_i\circ \id{k,l}$ and $f_i = \id{\bullet}\circ f_i$
-		%\end{equation*}
-		for every $f_i\colon (k,l)\rightarrow \bullet$.
-	\end{itemize}
-\end{defi}
-
-The idea is that for every functor $F\colon \catname{H}\to \catname{Set}$ we can define
-\[E_F:=\sum_{k,l\in \mathbb{N}}F(k,l)\]
-%
-Now, for every $k$, $l$, $i$ and $j$ in $\mathbb{N}$ with $i< k$ and $j< l$ we define $s^F_{k,l}\colon F(k,l)\to F(\bullet)^k$ and  $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ as the unique arrows fitting in the diagrams below, where the vertical arrows are the projections
-\[\xymatrix{F(k,l)  \ar@{.>}[r]^{s^F_{k,l}} \ar[dr]_{F(f_i)}& F(\bullet)^{k} \ar[d]^{\pi^F_{k,i}} & F(k,l) \ar@{.>}[r]^{t^F_{k,l}} \ar[dr]_{F(f_{k+j})} & F(\bullet)^{l} \ar[d]^{\pi^F_{l,j}} \\ & F(\bullet) && F(\bullet)}\]
-%
-In turn, these arrows allow us to consider
-$s_F, t_F\colon E_F\rightrightarrows F(\bullet)^{\star}$ as the unique arrows fitting in the diagrams below, where the vertical arrows are coprojections
-\[\xymatrix{F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{s^{F}_{k,l}}& F(\bullet)^{k} \ar[d]^{b^F_{k}} & F(k,l) \ar[d]_{a^F_{k,l}}  \ar[r]^{t^{F}_{k,l}}& F(\bullet)^{l} \ar[d]^{b^F_{l}}\\ E_F \ar@{.>}[r]_-{s_F}& F(\bullet)^\star & E_F \ar@{.>}[r]_-{t_F}& F(\bullet)^\star}\]
-
-Let $\mathcal{G}_F$ be the resulting hypergraph. One can now show that  sending $F$ to $\mathcal{G}_F$ can be extended to an equivalence $\mathcal{G}_{-}\colon \Set^{\catname{H}}\to \hyp$ (see \cite{castelnovo2023thesis,CastelnovoGM24} for details).
-
-
-\begin{prop}
-	$\hyp$ is equivalent to the category $\Set^{\catname{H}}$.
-\end{prop}
-\fi
 
 \subsubsection{Some  subcategories of $\hyp$}
 
@@ -917,10 +916,12 @@ Let us begin with the subcategory of $\hyp$ which, in \Cref{sec:sepegg}, will gi
 We will denote by $\shyp$ the full subcategory of $\hyp$ given by separated hypergraphs and by $S$ the inclusion functor.
 \end{defi}
 
+We begin by introducing a construction which ``split'' a given hypergraph to produce a separated one.
+
 \begin{defi}
 Given an hypergraph $\mathcal{\mathcal{G}}=(E_{\mathcal{G}}, V_{\mathcal{F}}, s_{\mathcal{G}}, t_{\mathcal{G}})$, for every hyperedge $e\in E_{\mathcal{G}}$ with $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$, we can consider the coproduct $(V_e, \{\iota^e_{i}\}_{i=1}^{n_e+m_e})$ of $n_e+m_e$ copies of $1$.
 
- Moreover, let $\is{(V_{\mathcal{G}})}$ be the set of isolated nodes  of $\mathcal{G}$ i.e.~those which are not in the image of $s_{\mathcal{G}}$ or of $t_{\mathcal{G}}$. Furthermore, let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}} \cup \{\is{(V_{\mathcal{G}})}\}$ and define:
+Let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}}$ and define:
 \[\begin{split}
 	s_{\sp(\mathcal{G})} \colon E_{\mathcal{G}}&\to V_{\sp(\mathcal{G})}^\star\\
 	e &\mapsto \prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0))
@@ -935,6 +936,10 @@ We can finally define the \emph{separated graph associated to $\mathcal{G}$}  as
 \begin{rem}\label{rem:ob}
  By construction $\sp(\mathcal{G})$ is an object of $\shyp$. 
 \end{rem}
+
+\begin{exa}\label{ex:empty}
+	If $\mathcal{G}$ has no hyperedges, then $\sp(\mathcal{G})$ is the empty hypergraph.
+\end{exa}
 
 \begin{exa}\label{ex:alg}
 	Let $\Sigma$ be a monoidal signature, then $\sp(\mathcal{G}^\Sigma)$ collects all the operation of $\Sigma$ as edges with disjoint sources and targets. For instance let $\Sigma$ be the algebraic signature of monoids, with $O_\Sigma = (\cdot, e )$ with 
@@ -991,15 +996,16 @@ We can finally define the \emph{separated graph associated to $\mathcal{G}$}  as
 			\end{pgfonlayer}
 		\end{tikzpicture}
 	\end{center}
-	
 \end{exa}
+
+This construction can be extended to a functor.
 
 \begin{prop}There exists a functor $\sp \colon \hyp\to \shyp$ sending $\mathcal{G}$ to $\sp(\mathcal{G})$.
 \end{prop}
 \begin{proof}
-Let $(h_1, h_2)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraph. For every $a$
-
-
+Let $(h_1, h_2)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs.  For every hyperedge $e\in E_{\mathcal{G}}$,
+the universal property of coproducts, there are arrows $V_e\to V_{h_1(e)}$ fitting in the diagram below, on the left. These, in turn, yield the dotted $V_{\sp(\mathcal{G})} \to V_{\sp(\mathcal{G})}$ on the right.
+\[\xymatrix{1 & 1 \\ V_{e} & V_{h_1(e)} }\]
 Preservation of compositions and identities follows at once from the construction.
 Now, for every $e\in \mathcal{E}_\mathcal{G}$ and $i$ between $1$ and $n_e+m_e$  we can define 
 \begin{align*}f_{e, i}\colon 1&\to V_{\mathcal{G}}\\
@@ -1023,42 +1029,6 @@ where $j_{\mathcal{G}}$ is the inclusion of $\is{(V_{\mathcal{G}})}\mto V_{\math
 \end{split}
 \]
 and so we get an arrow $(\id{E_{\mathcal{G}}}, f_{\mathcal{G}})\colon V\to \mathcal{V}_{\mathcal{G}}$. 
-
-Now, let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be another separated hypergraph with an arrow $(h_1, h_2)\colon S(\mathcal{H})\to \mathcal{G}$.  We can define
-\begin{align*}
-\hat{h}\colon V_{\mathcal{H}}&\to V_{\sp(\mathcal{G})} \\
-v & \mapsto \begin{cases}
-	\iota_{is}(h_2(v)) & h_2(v)\in \is{(V_{\mathcal{G}})}\\
-	\iota_e(h_2(v)) & h_2(v) \text{ is a letter of } s_{\mathcal{G}}(e) \text{ for some } e\in E_{\mathcal{G}}\\
-		\iota_e(h_2(v)) & h_2(v) \text{ is a letter of } t_{\mathcal{G}}(e) \text{ for some } e\in E_{\mathcal{G}}\\
-\end{cases}
-\end{align*}
-
-We first have to show that the previous definition gives us a well-defined function.  By definition of isolated node we know that the three cases are exhaustive. Now, suppose that there are $e_1$ and $e_2$, not necessarily distinct, in $E_\mathcal{G}$ such that $h_2(v)$ is a letter of both 
-
-
-\noindent
-\begin{minipage}[l]{.75\linewidth}
-\setlength{\parindent}{1.5em}
-\indent 	Since $\mathcal{H}$ is a separated hypergraph, $\hat{h}$
-	is a well-defined function. Moreover,  by construction $(h_1, \hat{h})$ defines a morphism $\mathcal{H}\to V_{\sp(\mathcal{G})}$ fitting in the diagram aside.
-\end{minipage} \hfill 
-\begin{minipage}[r]{.25\linewidth}
-	\xymatrix@C=40pt@R=10pt{S(\mathcal{H}) \ar[dr]^{(h_1, h_2)} \ar[d]_{S(h_1, \hat{h})}\\ S(\sp(\mathcal{G}))  \ar[r]_-{(\id{E_{\mathcal{G}}}, f_{\mathcal{G}})}& \mathcal{G}}
-\end{minipage}
-
-To prove uniqueness of such an arrow, let $(k_1, k_2)$ be a morphism $(\mathcal{H})\to \sp(\mathcal{G})$ such that 
-\[(h_1, h_2)=(\id{E_{\mathcal{G}}}, f)\circ (k_1, k_2)\]
-Clearly this implies $k_1 = h_2$.   Let now $v$ be an element of $V_\mathcal{H}$. Then we have three cases.
-\begin{itemize}
-	\item $v\in \is{(V_{\mathcal{H}})}$. In this case we have:
-\begin{align*}
-	j(h_2(v))&=f(\iota_{is}(h_2(v)))\\&=f(\hat{h}(v))\\&=h_2(v)\\&=
-\end{align*}
-	\item 
-\end{itemize}
-
-The previous three points allow us to conclude.
 \end{proof} 
 
 \noindent 
@@ -1128,7 +1098,7 @@ The previous three points allow us to conclude.
 \begin{prop}
 	aggiunto dx
 \end{prop}
-\
+
 
 Finally, we conclude our exam of separated hypergraph proving a result regarding connected limits. A proof of it is \Cref{proof:seplim}
 
@@ -1381,6 +1351,12 @@ classe di morfismi
 \paragraph{Acyclic hypergraphs}\label{sub:ac}
 
 
+
+
+
+\begin{rem}\label{rem:map1}
+	diagramma generale dei vari ipergrafi
+\end{rem}
 \subsection{Labelled hypergraphs}\label{sssect:hyp_alg_sign}
 
 Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a signature.
@@ -2629,7 +2605,7 @@ To conclude we have to show that $\psi$ is the unique arrow $D\to Z$ such that $
 	Since $m$ is mono then $\psi'\circ h=\psi \circ h$,  but $(D, \{n, h\})$ is a pushout and so $\psi'=\psi$. 
 \end{proof}
 
-The category of $\Set$ enjoys two other remarkable properties; it is \emph{distributive} and \emph{extensive} \cite{carboni1993introduction}. Distributivity amount to the following property: for every family $\{X_i\}_{i}$ and an object $Y$, the unique morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms
+The category of $\Set$ enjoys two other remarkable properties; it is \emph{distributive} and \emph{extensive} \cite{carboni1993introduction}\label{word:ext}. Distributivity amount to the following property: for every family $\{X_i\}_{i}$ and an object $Y$, the unique morphisms $\phi$ and $\psi $ fitting in the diagrams below, where $j_i$, $k_i$ and $h_i$ are coprojections, are isomorphisms
 \[\xymatrix@C=15pt@R=15pt{&Y\times X_i \ar@{>->}[dl]_{j_i} \ar@{>->}[dr]^{\id{Y}\times h_i} &&& X_i \times Y \ar@{>->}[dl]_{k_i} \ar@{>->}[dr]^{ h_i \times \id{Y}} \\ \Sum_{i\in I} (Y\times X_i) \ar@{.>}[rr]_{\phi}&& Y\times (\Sum_{i\in I}X_i) & \Sum_{i\in I}  (X_i \times Y )\ar@{.>}[rr]_{\psi}&&  (\Sum_{i\in I}X_i) \times Y }\]
 
 \noindent 
@@ -2829,6 +2805,145 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 \end{proof}
 
 \subsection{Proofs for \Cref{sec:hyper}}
+
+\noindent 
+\begin{minipage}[r]{.75\linewidth}
+\equi*
+\end{minipage}\hfill 
+\begin{minipage}[l]{.25\linewidth}
+	\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s^F} & F(\bullet)^\star}
+	\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t^F} & F(\bullet)^\star}
+\end{minipage}
+
+\begin{proof}\label{proof:equi}
+	Let $\eta\colon F\rightarrow G$ be a natural transformation between $F, G\colon \catname{H}\rightrightarrows \Set$.  By the universal property of coproducts there is an arrow $\hat{\eta}\colon E_F\to E_G$ fitting in the diagram aside.
+	
+	\smallskip 
+	\noindent 
+	\begin{minipage}[r]{.8\linewidth}
+		\setlength{\parindent}{1.5em}
+		For every $i, n\in \mathbb{N}$ with $i< n$, let $\pi^G_{n, i}\colon G(\bullet)^n\to G(\bullet)$ be the $i^{\mathrm{th}}$ projections, then:
+		\begin{gather*}
+			\pi^G_{n, i}\circ s^G_{k,l}\circ \eta_{(k,l)} = G(f_i)\circ \eta_{(k,l)} = \eta_\bullet \circ F(f_i) = \eta_\bullet \circ \pi^G_{n, i} \circ s^F_{k,l} = \pi^G_{n, i}\circ \eta^k_\bullet  \circ s^F_{k,l}\\
+			\pi^G_{n, i}\circ t^G_{k,l}\circ \eta_{(k,l)} = G(f_{i+k})\circ \eta_{(k,l)} = \eta_\bullet \circ F(f_{i+k}) = \eta_\bullet \circ \pi^G_{n, i} \circ t^F_{k,l} = \pi^G_{n, i}\circ \eta^k_\bullet \circ  t^F_{k,l}
+		\end{gather*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[l]{.15\linewidth} \vspace{-.5cm}
+	\xymatrix{F(k,l) \ar[r]^{\eta_{(k,l)}} \ar@{>->}[d]_{\iota^F_{k,l}}& G(k,l) \ar@{>->}[d]^{\iota^G_{k,l}}\\E _F \ar@{.>}[r]_{\hat{\eta}}& E_G}
+	\end{minipage}
+	\smallskip 
+	therefore  $s^G_{k,l}\circ \eta_{(k,l)} =  \eta^k_\bullet  \circ s^F_{k,l}$ and $t^G_{k,l}\circ \eta_{(k,l)} =  \eta^k_\bullet \circ t^F_{k,l}$. We can use these identities to show that $(\hat{\eta}, \eta_{\bullet})$ is a morphism of $\hyp$:
+	\begin{gather*}
+		s_G\circ \hat{\eta} \circ \iota^F_{k,l}=s_G\circ \iota^G_{k,l}\circ \eta_{(k,l)}=v^F_k\circ s^F_{k,l}\circ \eta_{(k,l)} = v^F_k \circ \eta^k_\bullet  \circ s^F_{k,l} = \eta^\star_\bullet \circ v^F_k\circ s^{F}_{k,l} =\eta^\star_\bullet \circ s^F\circ \iota^F_{k,l}\\
+		t_G\circ \hat{\eta} \circ \iota^F_{k,l}=t_G\circ \iota^G_{k,l}\circ \eta_{(k,l)}=v^F_k\circ t^F_{k,l}\circ \eta_{(k,l)} = v^F_k \circ \eta^k_\bullet  \circ t^F_{k,l} = \eta^\star_\bullet \circ v^F_k\circ t^{F}_{k,l} =\eta^\star_\bullet \circ t^F\circ \iota^F_{k,l}
+	\end{gather*}
+	
+	Thus for every $\eta\colon F\to G$ we get an arrow $\mathcal{G}_{\eta}\colon \mathcal{G}_F\to \mathcal{G}_G$. By definition $\mathcal{G}_{\id{F}}$ is $\id{\mathcal{G}_F}$. Moreover, if $\psi$ is another natural transformation $G\to H$ we have 
+	\[\hat{\psi\circ \eta}\circ \iota^{F}_{k,l}=\iota^{H}_{k,l}\circ \psi_{(k,l)}\circ \eta_{(k,l)} = \hat{\psi}\circ \iota^G_{k,l}\circ \eta_{(k,l)} = \hat{\psi}\circ \hat{\eta}\circ \iota^{F}_{k,l}\]
+	and so $\hat{\psi\circ \eta}=\hat{\psi}\circ \hat{\eta}$.
+	
+	Summing up we have just define a functor $\mathcal{G}_{-}\colon \catname{Set}^{\catname{H}}\to \hyp$. We have now to show that such functor is full, faithful and essentially surjective.
+	\begin{itemize}
+		\item For faithfulness, suppose that $\eta, \psi\colon F\rightrightarrows G$ are arrows such that $\mathcal{G}_\eta = \mathcal{G}_\psi$. Then, by definition $\eta_{\bullet}=\psi_{\bullet}$ and, for every $(k,l)\in \catname{H}$:
+		\[\iota^G_{k,l}\circ \eta_{(k,l)} = \hat{\eta}\circ \iota^F_{k,l}=\hat{\psi}\circ \iota^F_{k,l} = \iota^G_{k,l}\circ \psi_{(k,l)} \]
+		
+		Since $\iota^G_{k,l}$ is mono we conclude that $\eta_{(k,l)}=\psi_{(k,l)}$ and so $\eta = \psi$.
+		\item To prove that $\mathcal{G}$ is full, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of hypergraphs and define $f_{k,l}$ to be $f\circ \iota^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
+		\[\begin{split}
+			s_H (f_{k,l} (x))&=s_H \left(f \left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt}\left(s_{F} \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)
+		\end{split}\qquad \begin{split}
+			t_H (f_{k,l} (x))&=s_t\hspace{-1pt} \left(f \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt} \left(t_{F}\hspace{-1pt} \left(\iota^F_{k,l} (x)\right)\right)
+		\end{split}\]
+		Therefore there exists $\eta_{k,l}\colon F(k,l)\to H(k,l)$ fitting in the diagram below
+		\[\xymatrix{F(k,l) \ar[r]^-{\iota^{F}_{k,l}} \ar@{.>}[d]_{\eta_{k,l}}& E_F \ar[d]^{f_{k,l}}\\ H(k,l) \ar[r]_-{\iota^{H}_{k,l}}& E_H}\]
+		Define $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ simply as $g^\star$, then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, if $f_i\colon (k,l)\to \bullet$ we have:
+		\[\xymatrix{F(k,l) \ar@/^.4cm/[rr]^{s^F_{k,l}} \ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{s_F}& F(\bullet)^\star \ar[d]^{g^\star}&F(k,l) \ar@/^.4cm/[rr]^{t^F_{k,l}}\ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{t_F}& F(\bullet)^\star \ar[d]^{g^\star}\\ H(k,l) \ar@/_.4cm/[rr]_{s^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{s_H}& H(\bullet)^\star& H(k,l) \ar@/_.4cm/[rr]_{t^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{t_H}& H(\bullet)^\star}\]
+		Thus if $i<k$ then
+		\begin{align*}
+			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(s^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(s^F_{k,l}(x)\right)(i)\\&=s^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
+		\end{align*}
+		while, if $k\leq i < k+l-1$
+		\begin{align*}
+			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(t^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(t^F_{k,l}(x)\right)(i)\\&=t^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
+		\end{align*}
+		Finally, by contruction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
+		\item Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define 
+		\[F_{\mathcal{G}}(k,l):=s_\mathcal{G}^{-1}(V_k)\cap t_\mathcal{G}^{-1}(V_l) \qquad F_{\mathcal{G}}(\bullet):=V_\mathcal{G}\]
+		Given $f_i\colon (k,l)\to \bullet$ we put
+		\[F_{\mathcal{G}}(f_i)\colon F_{\mathcal{G}}(k,l)\to F_{\mathcal{G}}(\bullet) \qquad x\mapsto \begin{cases}
+			s_\mathcal{G}(x)(i) & i<k\\
+			t_\mathcal{G}(x) (i-k) &i\leq k < k+l-1
+		\end{cases}  \]
+		
+		$F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$ and for every $h\in E_\mathcal{G}$ there exists a unique pair $(k,l)$ such that $h\in F_{\mathcal{G}}(k,l) $, namely the pair $(\dom(s_\mathcal{G})(h), \dom(t_\mathcal{G})(h))$thus
+		\[\sum_{k,l\in \mathbb{N}}F_{\mathcal{G}}(k,l)\simeq E\]
+		Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. \qedhere
+	\end{itemize}
+\end{proof}
+
+
+\produ*
+\begin{proof}\label{proof:produ}
+	Let us build the wanted arrows. The existence of  $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ follows at once from the universal property of coproducts. For the other two,  recall that by the first point of \Cref{prop:fact}  we know that $(V^\star, \{v_n\}_{n\in \mathbb{N}})$ and $(V_D^\star, \{v_{D, n}\}_{n\in \mathbb{N}})$ are coproducts for, respectively, $\{V^n\}_{n\in \mathbb{N}}$ and $\{V^n_D\}_{n\in \mathbb{N}}$. 
+		
+		\noindent
+	\begin{minipage}[r]{.6\linewidth}
+		\setlength{\parindent}{1.5em}
+
+		\medskip
+		Now,  by \Cref{rem:len} the bottom halves of the two diagrams aside are pullbacks while their outer boundaries are commutative by the definition of $E^D_{k,l}$. The universal property of pullbacks now yields us the two dotted arrows $s^{k,l}_{D}\colon E_{k,l} \to V^k_D$ and  $t^{k,l}_{D}\colon E_{k,l} \to V^l_D$. Since limits commute with limits  $(V^n, \{\pi^n_D\}_{D\in \D})$ is a product for the family $\{V_D^n\}_{D\in \D}$ and so we also get $s^{k,l}_{\mathcal{L}}\colon E_{k,l} \to V^k_D$ and  $t^{k,l}_{\mathcal{L}}\colon E_{k,l} \to V^l_D$ fitting in the diagrams below.
+	\end{minipage}\hfill 
+	\begin{minipage}[l]{.3\linewidth}
+	\xymatrix@R=15pt{ E^D_{k,l} \ar@{.>}[d]_{s^{k,l}_D}\ar@/^.5cm/[dd]^(.3){!_{E^D_{k,l}}}|(.52)\hole \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[d]^{s_D} &  E^D_{k,l} \ar@{.>}[d]_{t^{k,l}_D} \ar@{>->}[r]^{i^D_{k,l}} \ar@/^.5cm/[dd]^(.3){!_{E^D_{k,l}}}|(.52)\hole& E_D \ar[d]^{t_D}\\ V^k_D \ar@{>->}[r]_(.55){v_{D, k}} \ar[d]_{!_{V^k_D}}&  V_D^\star  \ar[d]^{\lgh_{V_D}}  & V^l_D \ar[d]_{!_{V^l_D}} \ar@{>->}[r]_(.55){v_{D, l}} & V_D^\star \ar[d]^{\lgh_{V_D}}\\ 1 \ar@{>->}[r]_{\delta_k}& \mathbb{N}  &1 \ar@{>->}[r]_{\delta_l} & \mathbb{N}}
+	\end{minipage}
+
+			\[\xymatrix@R=15pt@C=35pt{E^D_{k,l} \ar[drr]^(.6){s^{k,l}_D}\ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar[drr]^(.6){s^{k,l}_D}\ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D \\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}} \ar@{.>}[r]^{s^{k,l}_\mathcal{L}} & V^k \ar@/_.3cm/@{>->}[dr]_(.3){v_k} \ar[r]_{\pi^k_D}& V^k_D \ar@{>->}[u]^{v^D_k}&E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}} \ar@{.>}[r]^{s^{k,l}_\mathcal{L}} & V^l \ar@/_.3cm/@{>->}[dr]_(.3){v_l} \ar[r]_{\pi^l_D}& V^l_D \ar@{>->}[u]^{v^D_l}\\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V^\star \ar@/_.5cm/[uu]_(.35){(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V^\star \ar@/_.5cm/[uu]_(.35){(\pi^D_V)^\star}}
+	\]
+	
+	But then we get the existence of the dotted arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon \rightrightarrows E_{\mathcal{L}}\to V^\star$ in the bottom row of the two previous diagrams.
+	
+	As a next step,  we have to verify that $(\pi^D_E, \pi^D_V)$ is really a morphism of $\hyp$ for every $D\in \D$. To do this it is enough to compute:
+\begin{gather*}
+	(\pi^D_V)^\star \circ s_{\mathcal{L}}\circ \iota_{k,l} = (\pi^D_V)^\star\circ s^{k,l}_{\mathcal{L}} \circ \pi^D_{k,l}=s_D\circ i^D_{k,l}\circ \pi^D_{k,l} = s_D\circ i^D_{k,l}\circ \pi^D_{k,l}
+	=s_D\circ \pi^D_E \circ \iota_{k,l} \\
+		(\pi^D_V)^\star\circ t_{\mathcal{L}}\circ \iota_{k,l} = (\pi^D_V)^\star\circ t^{k,l}_{\mathcal{L}} \circ \pi^D_{k,l}=t_D\circ i^D_{k,l}\circ \pi^D_{k,l} = t_D\circ i^D_{k,l}\circ \pi^D_{k,l}
+	=t_D\circ \pi^D_E \circ \iota_{k,l} 
+\end{gather*}	
+
+Let now $(\mathcal{G}, \{(h_{1,D}, h_{2,D})\}_{D\in \D})$ be a cone over $F$. Since $(V, \{\pi^D_V\}_{D\in \D})$ is limiting we obtain an arrow $h\colon V_{\mathcal{G}}\to V$.  Now, let 
+\[E_{k,l}^{\mathcal{G}}:=\{	E^{\mathcal{G}}_{k,l}:=\{e\in E_{\mathcal{G}} \mid \lgh_{V_{\mathcal{G}}}(s_{{\mathcal{G}}}(e)) = k \text{ and } \lgh_{V_{\mathcal{G}}}(t_{{\mathcal{G}}}(e)) = l \}\]
+
+\noindent 
+\begin{minipage}[l]{.72\linewidth}
+			\setlength{\parindent}{1.5em}
+			
+Let $i^{\mathcal{G}}_{k,l}\colon E^{\mathcal{G}}_{k,l} \mto E_{\mathcal{G}} $ be the inclusion. By definition of $E^{D}_{k,l}$ and $E^{\mathcal{G}}_{k,l}$, the two squares aside are pullback.  By extensivity, this entails that $(E_{\mathcal{G}}, \{i^\mathcal{G}_{k,l}\})$ is the coproduct of the family $\{E_{k,l}^{\mathcal{G}}\}_{k,l \in \mathbb{N}}$, where $i^\mathcal{G}_{k,l}\colon E_{k,l}^{\mathcal{G}}\mto E_{\mathcal{G}}$ is the inclusion. Using \Cref{rem:le}, we have:
+\begin{gather*}\lgh_{V_D} \circ s_{D}\circ h_{1,D}\circ \iota^{\mathcal{G}}_{k,l}=\lgh_{V_D}\circ h^\star_{2,D}\circ s_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l}=\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l} = \delta_{k} \circ !_{E^{\mathcal{G}}_{k,l}}\\
+	\lgh_{V_D} \circ t_{D}\circ h_{1,D}\circ \iota^{\mathcal{G}}_{k,l}=\lgh_{V_D}\circ h^\star_{2,D}\circ t_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l}=\lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l} = \delta_{l} \circ !_{E^{\mathcal{G}}_{k,l}}
+\end{gather*}
+
+By the universal property of the second square, the previous equations give us the dotted $f^D_{k,l} \colon E^{\mathcal{G}}_{k,l}\to E^D_{k,l}$ in the last diagram aside.  Since $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ is the product of the family $\{E^D_{k,l}\}_{D\in \D}$, then $\{f^D_{k,l}\}_{D\in \D}$ gives us the dotted arrow $f_{k,l}\colon E^{\mathcal{G}}_{k,l}\to E_{k,l}$ inthe middle row.  Finally, by the universal property of coproducts,  the family $\{f^D_{k,l}\}_{k,l\in \mathbb{N}}$ induces the morphism $h_1\colon E_{\mathcal{G}}\to E_{\mathcal{L}}$ in the top row.
+\end{minipage} \hfill
+\begin{minipage}[r]{.25\linewidth}
+	\xymatrix@R=10pt@C=55pt{E^{\mathcal{G}}_{k,l} \ar[d]_{!_{E^{\mathcal{G}}_{k,l}}} \ar@{>->}[r]^{i^{\mathcal{G}}_{k,l}}& E_{\mathcal{G}}\ar[d]_{(\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}})}\\ 1 \ar@{>->}[r]_{(\delta_k, \delta_l)}& \mathbb{N}\times \mathbb{N}}
+
+\xymatrix@R=10pt@C=55pt{E^{D}_{k,l} \ar[d]_{!_{E^{D}_{k,l}}} \ar@{>->}[r]^{i^{D}_{k,l}}& E_D\ar[d]_{(\lgh_{V_{D}}\circ s_{D}, \lgh_{V_{D}}\circ t_{D})}\\ 1 \ar@{>->}[r]_{(\delta_k, \delta_l)}& \mathbb{N}\times \mathbb{N}}
+
+	\xymatrix@R=10pt@C=35pt{ E_{\mathcal{G}} \ar@{.>}[r]^{h_1} \ar@/_.5cm/[dd]_(.3){h_{1,D}}& E_{\mathcal{L}} \\ E^{\mathcal{G}}_{k,l} \ar@{>->}[u]_{\iota^{\mathcal{G}}_{k,l}} \ar@{.>}[r]^{f_{k,l}} \ar@{.>}[dr]_{f^D_{k,l}} & E_{k,l} \ar[d]^{\pi^D_{k,l}} \ar@{>->}[u]_{\iota_{k,l}}\\ E_{D}  & E^D_{k,l} \ar@{>->}[l]^{\iota^D_{k,l}}}
+\end{minipage}
+
+
+Now, computing we get:
+\begin{align*}
+	s_{\mathcal{L}}\circ h_1 \circ \iota^{\mathcal{G}}_{k,l} = s_{\mathcal{L}}\circ \iota_{k,l}\circ f_{k,l} =v_k\circ s^{k, l}_{\mathcal{L}} \circ f_{k,l}\\
+	h^\star\circ s_{\mathcal{G}}\circ \iota^{\mathcal{G}}_{k,l}
+\end{align*}
+
+For uniqueness, 
+	
+	\end{proof}	
+
 \seppb*
 \begin{proof}\label{proof:seplim}
 	Let $F\colon \D\to \shyp $ be a diagram with a connected category as domain and let $(\mathcal{L}, \{(p_E^D, p^D_V)\}_{D\in \D})$ be a limit for $S\circ F$. We have to show that $\mathcal{L}$ is separated.
@@ -2847,13 +2962,13 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 		
 		Similarly, suppose that there is $v\in V_{\mathcal{H}}$ such that
 			\[(t_{\mathcal{L}}(e))_i=v \qquad  (t_{\mathcal{L}}(e) )_k= v\]
-			for some $e\in E_{\mathcal{H}}$ and $1\leq i, k \leq \lgh_{V_{\mathcal{L}}}(s_{\mathcal{L}(e)})$ with $i\neq k$ . Then for any $D\in \D$:
+			for some $e\in E_{\mathcal{H}}$ and $1\leq i, k \leq \lgh_{V_{\mathcal{L}}}(s_{\mathcal{L}(e)})$ with $i\neq k$. Then for any $D\in \D$:
 			\begin{align*}
 				&(t_{S(F(D))}( p^D_{E}(e)))_i = ( p^\star_{V,D}(t_{\mathcal{L}}(e)))_i=p^\star_{V, D}((t_{\mathcal{L}}(e))_i)\\=&p_{V,D}(v)=p_{V, D}((t_{\mathcal{L}}(e))_k)=(p^\star_{V,D}(t_{\mathcal{L}}(e)))_k=(t_{S(F(D))}( p_{E,D}(e)))_k  	
 			\end{align*}
 			which yields again a contradiction.
 		\item Suppose that there exist two hyperedges $e, e'\in E_{\mathcal{L}}$ and  a node $v\in V_{\mathcal{L}}$ such that \[(s_{\mathcal{L}}(e))_i=v \qquad  (t_{\mathcal{L}}(e') )_k= v\]
-		for indexes $1\leq i \leq \lgh_{V_{\mathcal{L}}}(s_{\mathcal{L}(e)})$ and $1\leq k \leq \lgh_{V_{\mathcal{L}}}(t_{\mathcal{L}(e)}) $. We have already noticed that$\D$ is non empty. Let $D\in \D$, we have:
+		for indexes $1\leq i \leq \lgh_{V_{\mathcal{L}}}(s_{\mathcal{L}(e)})$ and $1\leq k \leq \lgh_{V_{\mathcal{L}}}(t_{\mathcal{L}(e)}) $. We have already noticed that $\D$ is non empty. Let $D\in \D$, we have:
 		\begin{align*}&(s_{S(F(D))}( p^D_{E}(e)))_i = ( p^\star_{V,D}(s_{\mathcal{L}}(e)))_i=p^\star_{V, D}((s_{\mathcal{L}}(e))_i)\\=&p_{V,D}(v)=p_{V, D}((t_{\mathcal{L}}(e'))_k)=(p^\star_{V,D}(t_{\mathcal{L}}(e')))_k=(t_{S(F(D))}( p_{E,D}(e')))_k  	
 		\end{align*}
 		But this is a contradiction since, by hypothesis, $S(F(D))$ is separated. 
