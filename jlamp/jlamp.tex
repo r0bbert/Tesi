@@ -665,13 +665,8 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-<<<<<<< HEAD
 	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
-=======
-	\begin{rem}\label[remark]{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. 
-	In particular, for every set $X$ the arrow $!_\X\colon X\to 1$ induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside.
->>>>>>> refs/remotes/origin/main
-	\end{rem}
+		\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
 \xymatrix@R=8pt@C=30pt{1 \ar[r]^{\id{1}} \ar@{>->}[d]^{\delta_n}& 1 \ar@{>->}[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
 \xymatrix@R=8pt@C=28pt{\mathbb{N} \ar[r]^{\Delta} \ar@{<.}[dr]_{\lgh_{X}}& 1^\star\\ & X^\star \ar[u]_{!^\star_X}}
@@ -687,14 +682,14 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 
 \noindent
 \begin{minipage}[r]{.83\linewidth}
-	\begin{rem}\label{rem:len} Let $X$ be a set.  It is worth noticing that, for every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
+	\begin{rem}\label{rem:len} Let $X$ be a set, it is worth noticing that, for every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
 	\end{rem}
-\end{minipage}\hfill \begin{minipage}[l]{.15\linewidth}
-\xymatrix@R=10pt{X^n \ar@{>->}[r]^{v_n} \ar[d]^{!_{X^n}}& X^\star  \ar[d]^{\lgh_{X}}\\ 1 \ar@{>->}[r]^{\delta_n} & \mathbb{N}}
+\end{minipage}\hfill \begin{minipage}[l]{.15\linewidth} \vspace{-.2cm}
+\xymatrix@R=13pt{X^n \ar@{>->}[r]^{v_n} \ar[d]^{!_{X^n}}& X^\star  \ar[d]^{\lgh_{X}}\\ 1 \ar@{>->}[r]^{\delta_n} & \mathbb{N}}
 \end{minipage}
 
 \begin{notaz}
-	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we will denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  
+	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we will denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.   More formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, where $\pi_i\colon X^l\to X$ is the $i^\mathrm{th}$-projection.
 \end{notaz}
 
 \subsection{The category of hypergraphs}
@@ -748,13 +743,9 @@ Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fa
 We represent hypergraphs visually: bullets denote nodes and boxes hyperedges. Should we be interested in their identity, we put a name near the corresponding bullet or box. 
 Sources and targets are represented by lines between dots and squares: the lines from the sources of a hyperedge comes from the left of the box, while the lines to the targets 
 exit from the right of the box.
-<<<<<<< HEAD
-Let us look at the picture below. It represent a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ a pair of nodes
-=======
-Let us look at the picture below. It represents a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have a pair of nodes as source
->>>>>>> refs/remotes/origin/main
+
+Consider, for instance, the picture below. It represents a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have, respectively, $v_1v_2$ abd $v_3v_2$  as sources.
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
@@ -867,23 +858,10 @@ A rich source of example is given by \emph{monoidal signatures}.
 An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{algebraic} if $t_{\mathcal{G}}(e)$ has length $1$ for every $e\in E_{\mathcal{G}}$.
 \end{defi}
  
-<<<<<<< HEAD
-In order to deal with general limits of hypergraphs, it is worth to recall that, as first noted in \cite{bonchi2022string}, $\hyp$ is equivalent to a category of presheaves. 
-=======
- 
-\begin{rem}\label{rem:functor}
-	It is worth to point out, as first noted in \cite{bonchi2022string}, that $\hyp$ is equivalent to a category of presheaves. 
-	%
-	Indeed, consider the category $\catname{H}$ in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) \cup \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
-	%
-	The functors $\catname{H}\to \Set$ correspond exactly to hypergraphs: the set of nodes corresponds to the image of $\bullet$ while the set of hyperedges with source of length $k$ and target of length $l$ corresponds to the image of $(k,l)$ (see \cite{CastelnovoGM24}).
-\end{rem}
->>>>>>> refs/remotes/origin/main
+In order to deal with general limits of hypergraphs, it is worth to recall that, as first noted in \cite{bonchi2022string},  we can realize $\hyp$ as a category of presheaves  (\cite{bonchi2022string,castelnovo2023thesis,CastelnovoGM24}). In \Cref{proof:equi} we report a proof of this claim for the interested reader.
 
 \begin{defi} We define the category $\catname{H}$  as the one in which the set of objects is given by $ (\mathbb{N}\times \mathbb{N}) + \{\bullet\}$ and arrows are given by the identities $\id{k,l}$, $\id{\bullet}$ and exactly $k+l$ arrows $f_i\colon (k,l)\rightarrow \bullet$, where $i$ ranges from $0$ to $k+l-1$. 
 \end{defi}
-
-It is possible to show that hypergraphs corresponds to presheaves over $\catname{H}$ (\cite{bonchi2022string,castelnovo2023thesis,CastelnovoGM24}). In \Cref{proof:equi} we report a proof of this claim for the interested reader.
 
 \noindent 
 \begin{minipage}[r]{.75\linewidth}
@@ -893,11 +871,13 @@ It is possible to show that hypergraphs corresponds to presheaves over $\catname
 	\end{restatable}
 \end{minipage}\hfill
 \begin{minipage}[l]{.25\linewidth}
-\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s^F} & F(\bullet)^\star}
-\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t^F} & F(\bullet)^\star}
+\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s_F} & F(\bullet)^\star}
+\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t_F} & F(\bullet)^\star}
 \end{minipage}
 
-
+\begin{rem}\label{rem:inv}
+	contenuto...
+\end{rem}
 
 In particular, \Cref{lem:equi} entails the following result. 
 
@@ -905,12 +885,10 @@ In particular, \Cref{lem:equi} entails the following result.
 	$\hyp$ has all limits and colimits.
 \end{prop}
 
-<<<<<<< HEAD
 It is worth mentioning that limits in $\hyp$ which are not connected  are not computed componentwise. The following lemma shows how to compute products (see \Cref{proof:produ} for the proof).
-=======
+
 \begin{rem}It is worth mentioning that limits in $\hyp$ are not computed componentwise. By \Cref{prop:fact}, \Cref{prop:com}, and \Cref{lim} we know that the two forgetful functors $U_{\hyp}, H_{\hyp}\colon \hyp \to \Set$, sending an hypergraph to, respectively, its set of nodes and its set of hyperedges jointly creates connected limits. For instance, let $\phi\colon \mathbb{N}\to 1^\star$  $(\mathbb{N}, 1, \phi)$ -- TO BE COMPLETED
 \end{rem}
->>>>>>> refs/remotes/origin/main
 
 	\begin{restatable}{lem}{produ}\label{lem:prod}
 		Let $F\colon \D\to \hyp $ be a  discrete diagram. Let $F(D)$ be $(E_D, V_D, s_D,  t_D)$ and suppose that $(V, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
@@ -2848,8 +2826,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 \equi*
 \end{minipage}\hfill 
 \begin{minipage}[l]{.25\linewidth}
-	\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s^F} & F(\bullet)^\star}
-	\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t^F} & F(\bullet)^\star}
+	\xymatrix@R=10pt@C=40pt{F(k,l) \ar@{>->}[d]_{\iota^F_{k,l}}\ar[r]_{s^F_{k,l}} & F(\bullet)^k \ar@{>->}[d]^{v^F_k} \\ E_F \ar@{.>}[r]^{s_F} & F(\bullet)^\star}
+	\xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t_F} & F(\bullet)^\star}
 \end{minipage}
 
 \begin{proof}\label{proof:equi}
@@ -2869,7 +2847,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 	\begin{minipage}[l]{.15\linewidth} \vspace{-.5cm}
 	\xymatrix{F(k,l) \ar[r]^{\eta_{(k,l)}} \ar@{>->}[d]_{\iota^F_{k,l}}& G(k,l) \ar@{>->}[d]^{\iota^G_{k,l}}\\E _F \ar@{.>}[r]_{\hat{\eta}}& E_G}
 	\end{minipage}
-	\smallskip 
+
+	\smallskip \noindent 
 	therefore  $s^G_{k,l}\circ \eta_{(k,l)} =  \eta^k_\bullet  \circ s^F_{k,l}$ and $t^G_{k,l}\circ \eta_{(k,l)} =  \eta^k_\bullet \circ t^F_{k,l}$. We can use these identities to show that $(\hat{\eta}, \eta_{\bullet})$ is a morphism of $\hyp$:
 	\begin{gather*}
 		s_G\circ \hat{\eta} \circ \iota^F_{k,l}=s_G\circ \iota^G_{k,l}\circ \eta_{(k,l)}=v^F_k\circ s^F_{k,l}\circ \eta_{(k,l)} = v^F_k \circ \eta^k_\bullet  \circ s^F_{k,l} = \eta^\star_\bullet \circ v^F_k\circ s^{F}_{k,l} =\eta^\star_\bullet \circ s^F\circ \iota^F_{k,l}\\
@@ -2877,8 +2856,8 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 	\end{gather*}
 	
 	Thus for every $\eta\colon F\to G$ we get an arrow $\mathcal{G}_{\eta}\colon \mathcal{G}_F\to \mathcal{G}_G$. By definition $\mathcal{G}_{\id{F}}$ is $\id{\mathcal{G}_F}$. Moreover, if $\psi$ is another natural transformation $G\to H$ we have 
-	\[\hat{\psi\circ \eta}\circ \iota^{F}_{k,l}=\iota^{H}_{k,l}\circ \psi_{(k,l)}\circ \eta_{(k,l)} = \hat{\psi}\circ \iota^G_{k,l}\circ \eta_{(k,l)} = \hat{\psi}\circ \hat{\eta}\circ \iota^{F}_{k,l}\]
-	and so $\hat{\psi\circ \eta}=\hat{\psi}\circ \hat{\eta}$.
+	\[\widehat{\psi\circ \eta}\circ \iota^{F}_{k,l}=\iota^{H}_{k,l}\circ \psi_{(k,l)}\circ \eta_{(k,l)} = \hat{\psi}\circ \iota^G_{k,l}\circ \eta_{(k,l)} = \hat{\psi}\circ \hat{\eta}\circ \iota^{F}_{k,l}\]
+	and so $\widehat{\psi\circ \eta}=\hat{\psi}\circ \hat{\eta}$.
 	
 	Summing up we have just define a functor $\mathcal{G}_{-}\colon \catname{Set}^{\catname{H}}\to \hyp$. We have now to show that such functor is full, faithful and essentially surjective.
 	\begin{itemize}
@@ -2886,40 +2865,76 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 		\[\iota^G_{k,l}\circ \eta_{(k,l)} = \hat{\eta}\circ \iota^F_{k,l}=\hat{\psi}\circ \iota^F_{k,l} = \iota^G_{k,l}\circ \psi_{(k,l)} \]
 		
 		Since $\iota^G_{k,l}$ is mono we conclude that $\eta_{(k,l)}=\psi_{(k,l)}$ and so $\eta = \psi$.
-		\item To prove that $\mathcal{G}$ is full, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{H}$ be a morphism of hypergraphs and define $f_{k,l}$ to be $f\circ \iota^F_{k,l}$, the composition of $h$ with Now, if $x\in F(k,l)$ then 
-		\[\begin{split}
-			s_H (f_{k,l} (x))&=s_H \left(f \left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt}\left(s_{F} \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)
-		\end{split}\qquad \begin{split}
-			t_H (f_{k,l} (x))&=s_t\hspace{-1pt} \left(f \hspace{-1pt}\left(\iota^F_{k,l} (x)\right)\right)\\&=g^{\star}\hspace{-1pt} \left(t_{F}\hspace{-1pt} \left(\iota^F_{k,l} (x)\right)\right)
-		\end{split}\]
-		Therefore there exists $\eta_{k,l}\colon F(k,l)\to H(k,l)$ fitting in the diagram below
-		\[\xymatrix{F(k,l) \ar[r]^-{\iota^{F}_{k,l}} \ar@{.>}[d]_{\eta_{k,l}}& E_F \ar[d]^{f_{k,l}}\\ H(k,l) \ar[r]_-{\iota^{H}_{k,l}}& E_H}\]
-		Define $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ simply as $g^\star$, then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$. Indeed, if $f_i\colon (k,l)\to \bullet$ we have:
-		\[\xymatrix{F(k,l) \ar@/^.4cm/[rr]^{s^F_{k,l}} \ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{s_F}& F(\bullet)^\star \ar[d]^{g^\star}&F(k,l) \ar@/^.4cm/[rr]^{t^F_{k,l}}\ar[r]_-{\iota^{F}_{k,l}} \ar[d]_{\eta_{k,l}}& E_F \ar[d]_{f_{k,l}} \ar[r]_-{t_F}& F(\bullet)^\star \ar[d]^{g^\star}\\ H(k,l) \ar@/_.4cm/[rr]_{s^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{s_H}& H(\bullet)^\star& H(k,l) \ar@/_.4cm/[rr]_{t^H_{k,l}} \ar[r]^-{\iota^{H}_{k,l}}& E_H \ar[r]^-{t_H}& H(\bullet)^\star}\]
-		Thus if $i<k$ then
-		\begin{align*}
-			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(s^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(s^F_{k,l}(x)\right)(i)\\&=s^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
-		\end{align*}
-		while, if $k\leq i < k+l-1$
-		\begin{align*}
-			\eta_\bullet(F(f_i)(x))&=g(F(f_i)(x))\\&=g\hspace{-1pt}\left(t^F_{k,l}(x)(i)\right)\\&=g^\star\hspace{-1pt}\left(t^F_{k,l}(x)\right)(i)\\&=t^H_{k,l}\hspace{-1pt}\left(\eta_{k,l}(x)\right)(i)\\&=F(f_i)(\eta_{k,l}(x))
-		\end{align*}
-		Finally, by contruction it is clear that $(\hat{\eta}, \eta_{\bullet})=(f,g)$. 
-		\item Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define 
-		\[F_{\mathcal{G}}(k,l):=s_\mathcal{G}^{-1}(V_k)\cap t_\mathcal{G}^{-1}(V_l) \qquad F_{\mathcal{G}}(\bullet):=V_\mathcal{G}\]
-		Given $f_i\colon (k,l)\to \bullet$ we put
-		\[F_{\mathcal{G}}(f_i)\colon F_{\mathcal{G}}(k,l)\to F_{\mathcal{G}}(\bullet) \qquad x\mapsto \begin{cases}
-			s_\mathcal{G}(x)(i) & i<k\\
-			t_\mathcal{G}(x) (i-k) &i\leq k < k+l-1
-		\end{cases}  \]
+		\item To prove that $\mathcal{G}$ is full, let $(f,g)\colon \mathcal{G}_F\to \mathcal{G}_{G}$ be a morphism of hypergraphs and define $f_{k,l}$ to be $f\circ \iota^F_{k,l}$. Now, notice that, by extensivity, the diagram on the right is a pullback.
 		
-		$F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$ and for every $h\in E_\mathcal{G}$ there exists a unique pair $(k,l)$ such that $h\in F_{\mathcal{G}}(k,l) $, namely the pair $(\dom(s_\mathcal{G})(h), \dom(t_\mathcal{G})(h))$thus
-		\[\sum_{k,l\in \mathbb{N}}F_{\mathcal{G}}(k,l)\simeq E\]
-		Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. \qedhere
+		\noindent 
+		\begin{minipage}[l]{.7\linewidth}
+			Now, by \Cref{rem:le} we have
+			\begin{align*}
+			&\lgh_{G(\bullet)}\circ s_G\circ f_{k,l} = \lgh_{G(\bullet)}\circ s_G\circ f\circ \iota^F_{k,l} =  \lgh_{G(\bullet)}\circ g^\star \circ s_F\circ  \iota^F_{k,l}\\ &= \lgh_{F(\bullet)}\circ s_F \circ  \iota^F_{k,l} = \delta_{k}\circ !_{F(k,l)}	
+			\end{align*}
+		\end{minipage}\hfill 
+		\begin{minipage}[r]{.25\linewidth} \vspace{-.5cm}
+		\xymatrix@C=50pt{G(k,l) \ar[d]_{!_{G(k,l)}} \ar@{>->}[r]^{\iota^G_{k,l}}& E_G \ar[d]_{(\lgh_{G(\bullet)}\circ s_{G}, \lgh_{G(\bullet)}\circ t_{G})} \\ 1\ar[r]_{(\delta_{k}, \delta_{l})}&\mathbb{N}\times \mathbb{N}}
+		\end{minipage}
+		\[	\lgh_{G(\bullet)}\circ t_G\circ f_{k,l} = \lgh_{G(\bullet)}\circ t_G\circ f\circ \iota^F_{k,l} =  \lgh_{G(\bullet)}\circ g^\star \circ t_F\circ  \iota^F_{k,l} = \lgh_{F(\bullet)}\circ t_F\circ  \iota^F_{k,l} = \delta_{l}\circ !_{F(k,l)}\]
+		
+		\noindent
+		 	 \begin{minipage}[r]{.5\linewidth}
+		 	Thus there exists an arrow $\eta_{k,l}\colon F(k,l)\to H(k,l)$ fitting in the diagram on the right. Let $\eta_{\bullet}\colon F(\bullet)\to H(\bullet)$ be simply the arrow $g$, then  the collection of all the $\eta_{k,l}$ and of $\eta_\bullet$ defines a natural transformation $\eta\colon F\to H$.  To see this, we can first notice that, for every object $(k, l)\in \catname{H}$ we have:
+		 \end{minipage} \quad \begin{minipage}[l]{.3\linewidth}\vspace{-.1cm}
+		 	\xymatrix@C=50pt@R=13pt{F(k,l) \ar@{.>}[dr]_{\eta_{(k,l)}} \ar@/_.3cm/[ddr]_{!_{F(k,l)}} \ar@{>->}[r]_(.6){\iota^F_{k,l}}& E_F \ar[dr]^{f}\\& G(k,l) \ar[d]_{!_{G(k,l)}} \ar@{>->}[r]^(.4){\iota^G_{k,l}}& E_G \ar[d]_{(\lgh_{G(\bullet)}\circ s_{G}, \lgh_{G(\bullet)}\circ t_{G})} \\ &1\ar[r]_{(\delta_{k}, \delta_{l})}&\mathbb{N}\times \mathbb{N}}
+		 \end{minipage}
+		 \begin{gather*}
+		 	v^{G}_k\circ g^k\circ s^F_{k,l}= g^\star \circ v^{F}_{k}\circ s^F_{k,l} = g^\star \circ s_F\circ \iota^F_{k,l}=s_G\circ f \circ \iota^F_{k,l}= s_G\circ \iota^{G}_{k,l}\circ \eta_{(k,l)}=v^G_k\circ s^G_{k,l}\circ \eta_{(k,l)}\\
+		 	v^{G}_l\circ g^l\circ t^F_{k,l}= g^\star \circ v^{F}_{l}\circ t^F_{k,l} = g^\star \circ t_F\circ \iota^F_{k,l}=t_G\circ f \circ \iota^F_{k,l}= t_G\circ \iota^{G}_{k,l}\circ \eta_{(k,l)}=v^G_l\circ t^G_{k,l}\circ \eta_{(k,l)}
+		 \end{gather*}
+		 so that $g^k\circ s^F_{k,l} =  s^G_{k,l}\circ \eta_{(k,l)}$ and $g^l\circ t^F_{k,l}= t^G_{k,l}\circ \eta_{(k,l)}$.
+		 
+		 Now, let $f_i\colon (k,l)\to \bullet$ be an arrow in $\catname{H}$, we have two cases:
+		 \begin{itemize}
+		 	\item if $i<k$ then 
+		 	\[\eta_{\bullet}\circ F(f_i) = g\circ F(f_i) = g\circ \pi^F_{k, i}\circ s^F_{k,l}= \pi^G_{k,i}\circ g^k\circ s^F_{k,l} = \pi^G_{k,i} \circ s^G_{k,l}\circ \eta_{(k,l)} = G(f_i)\circ \eta_{(k,l)}  \]
+		 	\item while, if $k\leq i < k+l-1$:
+		 	\[\eta_{\bullet} \circ F(f_i) = g\circ F(f_i) = g\circ \pi^F_{l, i-k} \circ t^{F}_{k,l} = \pi^G_{l, i-k}\circ g^l \circ t^F_{k,l}= \pi^G_{k, i-k}\circ t^G_{k,l}\circ \eta_{(k,l)} = G(f_i)\circ \eta_{(k,l)}\]
+		 \end{itemize}
+		 
+	By construction $f_{k,l}= \iota^G_{k,l} \circ \eta_{(k,l)}$ and so $(\hat{\eta}, \eta_{\bullet})=(f,g)$ as wanted. 
+	
+		\item We are left with essential surjectivity of $\mathcal{G}_{(-)}$. Given an hypergraph $\mathcal{G}=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ we can define 
+		\[	F_{\mathcal{G}}(k,l):=\{e\in E_{\mathcal{G}} \mid \lgh_{V_{\mathcal{G}}}(s_{{\mathcal{G}}}(e)) = k \text{ and } \lgh_{V_{\mathcal{G}}}(t_{{\mathcal{G}}}(e)) = l \} \qquad F_{\mathcal{G}}(\bullet):=V_\mathcal{G}\]
+		while, for every arrow $f_i\colon (k,l)\to \bullet$ we put:
+		\[F_{\mathcal{G}}(f_i)\colon F_{\mathcal{G}}(k,l)\to F_{\mathcal{G}}(\bullet) \qquad x\mapsto \begin{cases}
+			s_\mathcal{G}(x)_i& i<k\\
+			t_\mathcal{G}(x)_{i-k} &i\leq k < k+l-1
+		\end{cases}  \]
+		 
+		\begin{minipage}[r]{.7\linewidth}
+			$F_{\mathcal{G}}$ so defined is a functor $\catname{H}\to \catname{Set}$. Let $\iota^{\mathcal{G}}_{k,l}\colon F_{\mathcal{G}}(k,l)\mto E_{\mathcal{G}}$ be the inclusion, by definition the diagram on the right is a pullback and thus, by extensivity, $(E_{\mathcal{G}}, \{\iota^{\mathcal{G}}_{k,l}\}_{k,l\in \mathbb{N}})$ is a coproduct and so we have an isomorphism $\phi \colon E_{\mathcal{G}}\to E_{\mathcal{F}_{\mathcal{G}}}$ such that, for every $k,l\in \mathbb{N}$, $\phi\circ \iota^{\mathcal{G}}_{k,l} = \iota^{F_\mathcal{G}}_{k,l}$.
+		\end{minipage}
+		\hfill 
+		\begin{minipage}[r]{.25\linewidth} \vspace{-.1cm}
+			\xymatrix@C=50pt@R=22pt{F_{\mathcal{G}}(k,l) \ar[d]_{!_{G(k,l)}} \ar@{>->}[r]^{\iota^G_{k,l}}& E_G \ar[d]_{(\lgh_{G(\bullet)}\circ s_{G}, \lgh_{G(\bullet)}\circ t_{G})} \\ 1\ar@{>->}[r]_{(\delta_{k}, \delta_{l})}&\mathbb{N}\times \mathbb{N}}
+		\end{minipage}
+
+Moreover, by definition of $F_{\mathcal{G}}(k,l)$, the solid part of the diagrams commute below and so \Cref{rem:len} gives us the dotted arrows $s_{k,l}^{\mathcal{G}}\colon F_{\mathcal{G}}(k,l)\to V^k_{\mathcal{G}}$. 
+\[	\xymatrix@C=35pt{F_{\mathcal{G}}(k,l) \ar@/_.3cm/[ddr]_{!_{F_\mathcal{G}(k,l)}} \ar@{>->}[r]^-{\iota^{\mathcal{G}}_{k,l}} \ar@{.>}[dr]^{s_{k,l}^{\mathcal{G}}}& E_{\mathcal{G}} \ar[dr]^{s_\mathcal{G}}& &  F_{\mathcal{G}}(k,l)\ar@/_.3cm/[ddr]_{!_{F_\mathcal{G}(k,l)}} \ar@{.>}[dr]^{t_{k,l}^{\mathcal{G}}} \ar@{>->}[r]^-{\iota^{\mathcal{G}}_{k,l}} & E_{\mathcal{G}} \ar[dr]^{t_\mathcal{G}}  \\ & V^k_{\mathcal{G}} \ar[d]_{!_{V^k_{\mathcal{G}}}} \ar@{>->}[r]^{v_k^{F_\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{\lgh_{V_{\mathcal{G}}}}& &V^l_{\mathcal{G}} \ar[d]_{!_{V^l_{\mathcal{G}}}} \ar@{>->}[r]^{v_l^{F_\mathcal{G}}}& V^\star_{\mathcal{G}} \ar[d]^{\lgh_{V_{\mathcal{G}}}} \\ & 1 \ar@{>->}[r]_{\delta_{k}} & \mathbb{N} & & 1  \ar@{>->}[r]_{\delta_{l}}& \mathbb{N}}
+\]
+
+Now for every $i<k$ and $j <l$ we have:
+\begin{gather*}
+	\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_k(s_{k,l}^{\mathcal{G}}(e)))_i = F_{\mathcal{G}}(f_i)(e) =\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{F_\mathcal{G}}(e)) = \pi^{F_\mathcal{G}}_{k,i} ( v^{F_\mathcal{G}}_k(s_{F_\mathcal{G}}(\iota^{F_\mathcal{G}}_{k,l} (e))))   \\
+\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_l(t_{k,l}^{\mathcal{G}}(e)))_j = F_{\mathcal{G}}(f_{j+k})(e) =\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{F_\mathcal{G}}(e)) = \pi^{F_\mathcal{G}}_{l,j} ( v^{F_\mathcal{G}}_l(t_{F_\mathcal{G}}(\iota^{F_\mathcal{G}}_{k,l} (e))))  
+\end{gather*}
+	but this means that
+	\[v^{F_{\mathcal{G}}}_k\circ s^{\mathcal{G}}_{k,l} = v^{F_{\mathcal{G}}}_k\circ s_{F_{\mathcal{G}}}\circ \iota^{F_{\mathcal{G}}}_{k,l}=\] 
+
+
+	Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. \qedhere
 	\end{itemize}
 \end{proof}
 
-
+\iffalse 
 \produ*
 \begin{proof}\label{proof:produ}
 	Let us build the wanted arrows. The existence of  $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ follows at once from the universal property of coproducts. For the other two,  recall that by the first point of \Cref{prop:fact}  we know that $(V^\star, \{v_n\}_{n\in \mathbb{N}})$ and $(V_D^\star, \{v_{D, n}\}_{n\in \mathbb{N}})$ are coproducts for, respectively, $\{V^n\}_{n\in \mathbb{N}}$ and $\{V^n_D\}_{n\in \mathbb{N}}$. 
@@ -2980,6 +2995,7 @@ Now, computing we get:
 For uniqueness, 
 	
 	\end{proof}	
+\fi 
 
 \seppb*
 \begin{proof}\label{proof:seplim}
@@ -2995,7 +3011,6 @@ For uniqueness,
 		&(s_{S(F(D))}( p^D_{E}(e)))_i = ( p^\star_{V,D}(s_{\mathcal{L}}(e)))_i=p^\star_{V, D}((s_{\mathcal{L}}(e))_i)\\=&p_{V,D}(v)=p_{V, D}((s_{\mathcal{L}}(e))_k)=(p^\star_{V,D}(s_{\mathcal{L}}(e)))_k=(s_{S(F(D))}( p_{E,D}(e)))_k  	
 		\end{align*}
 		contradicting the fact that $S(F(D))$ is separated.
-		
 		
 		Similarly, suppose that there is $v\in V_{\mathcal{H}}$ such that
 			\[(t_{\mathcal{L}}(e))_i=v \qquad  (t_{\mathcal{L}}(e) )_k= v\]
