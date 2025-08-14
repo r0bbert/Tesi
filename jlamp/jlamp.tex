@@ -481,7 +481,7 @@ We can now define $\mathcal{M}$-adhesive categories.
 
 $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (co-)slice and functor categories \cite{mac2013categories}, as well with respect to subcategories, as shown by the following properties, taken from~\cite[Thm.~4.15]{ehrig2006fundamentals}, \cite[Prop.~3.5]{lack2005adhesive} and  \cite[Thm.~2.12]{CastelnovoGM24}.
 
-\begin{prop}
+\begin{thm}
 	\label{thm:slice-functors}
 	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following hold
 	\begin{enumerate}
@@ -497,7 +497,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (c
 		\mathcal{M} \text{ for every } Y\in \Y\}$;
 		\item if $\Y$ is a full subcategory of $\X$ closed under pullbacks and $\mathcal{M}$-pushouts, then $\Y$ is (strictly) $\mathcal{N}$-adhesive for every class of arrows $\mathcal{N}$ of $\Y$ contained in $\mathcal{M}$ that is stable under pullbacks and pushouts, contains all isos, and is closed under composition and decomposition.
 	\end{enumerate} 
-\end{prop}
+\end{thm}
 
 We briefly list some examples of $\mathcal{M}$-adhesive categories.
 
@@ -875,28 +875,19 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \xymatrix@R=10pt@C=40pt{F(k,l) \ar[r]_{t^F_{k,l}} \ar@{>->}[d]_{\iota^F_{k,l}} & F(\bullet)^l\ar@{>->}[d]^{v^F_l}  \\ E_F \ar@{.>}[r]^{t_F} & F(\bullet)^\star}
 \end{minipage}
 
-\begin{rem}\label{rem:inv}
-	contenuto...
-\end{rem}
-
-In particular, \Cref{lem:equi} entails the following result. 
-
-\begin{prop}\label{prop:cocomp}
+\begin{cor}\label{prop:cocomp}
 	$\hyp$ has all limits and colimits.
-\end{prop}
+\end{cor}
 
-It is worth mentioning that limits in $\hyp$ which are not connected  are not computed componentwise. The following lemma shows how to compute products (see \Cref{proof:produ} for the proof).
 
-\begin{rem}It is worth mentioning that limits in $\hyp$ are not computed componentwise. By \Cref{prop:fact}, \Cref{prop:com}, and \Cref{lim} we know that the two forgetful functors $U_{\hyp}, H_{\hyp}\colon \hyp \to \Set$, sending an hypergraph to, respectively, its set of nodes and its set of hyperedges jointly creates connected limits. For instance, let $\phi\colon \mathbb{N}\to 1^\star$  $(\mathbb{N}, 1, \phi)$ -- TO BE COMPLETED
-\end{rem}
-
-	\begin{restatable}{lem}{produ}\label{lem:prod}
-		Let $F\colon \D\to \hyp $ be a  discrete diagram. Let $F(D)$ be $(E_D, V_D, s_D,  t_D)$ and suppose that $(V, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
+\Cref{lem:equi} not only entails that $\hyp$ is complete, but it provides us with a recipe to compute limits, even if they are not connected.
+	\begin{cor}\label{lem:prod}
+		Let $F\colon \D\to \hyp $ be a  discrete diagram and let $F(D)$ be $(E_D, V_D, s_D,  t_D)$. Suppose that $(V, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
 		\[E^D_{k,l}:=\{e\in E_D \mid \lgh_{V_D}(s_{D}(e)) = k \text{ and } \lgh_{V_D}(t_{D}(e)) = l \}\]
 		with the canonical inclusion $i^D_{k,l}\colon E^D_{k,l}\mto E_D$.	Now, consider the product $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ and take the coproduct $(E_{\mathcal{L}}, \{\iota_{k,l}\}_{k,l \in \mathbb{N}})$ of the family $\{E_{k,l}\}_{k,l \in \mathbb{N}}$. Then there are arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon E_{\mathcal{L}}\rightrightarrows V^\star$ and $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ fitting in the diagram below and making $((E_{\mathcal{L}}, V, s_{\mathcal{L}}, t_{\mathcal{L}}), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ a limit for $F$.
 		\[\xymatrix@R=10pt@C=30pt{E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D & E_{k,l} \ar[r]^{\pi^D_{k,l}} \ar[dd]_{\iota_{k,l}} & E^{D}_{k,l} \ar[dd]^{i^D_{k,l}}\\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & &E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & \\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} & E_{\mathcal{L}} \ar@{.>}[r]_{\pi^D_E} & E_D}
 		\]
-	\end{restatable}
+	\end{cor}
 
 \begin{exa}\label{ex:term} For instance, a terminal object of $\hyp$ is given by $(\mathbb{N}\times \mathbb{N}, 1, \Delta\circ \pi_1, \Delta\circ \pi_2)$, where $\pi_1, \pi_2\colon \mathbb{N}\times \mathbb{N}\to \mathbb{N}$ are the projections and $\Delta\colon \mathbb{N}\to 1^\star$ the canonical isomorphism introduced in \Cref{rem:length}. 
 \end{exa}
@@ -906,11 +897,180 @@ It is worth mentioning that limits in $\hyp$ which are not connected  are not co
 
 We are now going to introduce three classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
 
+
+\paragraph{Left-monogamous hypergraphs}
+We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{corradini2005term,Plu:TGR-ENTCS}.  
+
+\begin{defi}
+	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be an hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{B}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$. If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$.
+	
+	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, $\outd{H}(v,e)$ is non-zero for only finitely many hyperedges and
+	\[\sum_{e\in E_{\mathcal{H}}} \outd{H}(v, e) = 1 - \chi_{\ino{H}}(v)\]
+	where $\chi_{\ino{H}}\colon V_{\mathcal{H}}\to 2$ is the characteristic function of $\ind{H}$.
+	
+	We will denote by $\lmo$ the full subcategory of $\hyp$ given by left-monogamous hypergraphs. The corresponding inclusion functor will be denoted by $M$.
+\end{defi}
+
+
+\begin{rem}In \cite{fritz2023free} the definition of left-monogamous hypergraphs includes the request of \emph{acyclicity}.  We prefer to deal with acyclicity separately, see Paragraph \ref{sub:ac}.
+\end{rem}
+
+Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. We can exploit this notion to rephrase the previous definition in a more elementary way (see \Cref{proof:elem} for a proof).
+\begin{restatable}{prop}{elem}\label{rem:elem} Given an hypergraph $\mathcal{H}$, the following are equivalent:
+	\begin{enumerate}
+		\item $\mathcal{H}$ is left-monogamous;
+		\item for every $e\in E_{\mathcal{H}}$, $t_{\mathcal{H}}(e)$ has no repeated letter and $t_{\mathcal{H}}(e)$ is disjoint from $t_{\mathcal{H}}(e')$ for every other hyperedge $e'$.
+	\end{enumerate}
+\end{restatable} 
+
+
+\begin{exa} The hypergraph of example \Cref{exa_2} is left-monogamous but not separated.
+\end{exa}
+
+\noindent
+\begin{minipage}[l]{.6\linewidth}
+	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) + \outd{H}(u, e_1)=1+1 = 2\]
+	\end{exa}
+\end{minipage} \hfill 
+\begin{minipage}[r]{.35\linewidth}
+	\begin{tikzpicture}
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=medium box] (div) at (0, 0) {};
+			\node[style=none] (divlab) at (0, .7) {$e$};
+			\node[style=none] (divin1) at (.2, .2) {};
+			\node[style=none] (divin2) at (.2, -.2) {};
+			\node[style=none] (divout) at (-.3, 0){};
+			
+			\node[style=node] (a) at (2, 0){};
+			\node[style=none] (alab) at (2, .3){$v$};
+			\node[style=node] (d) at (-2, 0){};
+			\node[style=none] (dlab) at (-2, .3){$w$};
+			
+			\node[style=node] (e) at (0, -1.5){};
+			\node[style=none] (u) at (0, -1.2){$u$};
+			\node[style=small box] (c1) at (-2, -1.5) {};
+			\node[style=small box] (c2) at (2, -1.5) {};
+			\node[style=none](o) at (-1.7, -1.5){};
+			\node[style=none] (olab) at (-2, -1) {$e_1$};
+			\node[style=none] (olab) at (2, -1) {$e_2$};
+			\node[style=none](i) at (1.8, -1.5){};
+		\end{pgfonlayer}
+		
+		\begin{pgfonlayer}{edgelayer}
+			\draw[style=diredge, in=135, out= 45] (divin1.east) to (a); 
+			\draw[style=diredge, in=-135, out= -45] (divin2.east) to(a) ;
+			\draw[style=diredge] (d) to (divout.center);
+			\draw[style=diredge] (o) to (e);
+			\draw[style=diredge] (i) to (e);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+\end{minipage}
+
+\medskip 	
+The remaining of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs .
+
+
+\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: for instance it lacks a terminal object. Too see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is left-monogamous and that 
+	$\lmo(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\lmo$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$.  We have two possibilities:
+	
+	\medskip 
+	\begin{minipage}[l]{.65\linewidth}
+		\begin{itemize}
+			\item  all the hyperedges of $\mathcal{T}$ have the empty word as target.
+			\item there is a (necessarily unique) $\mathcal{T}$ with a target of length one.
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[r]{.15\linewidth}
+		\begin{tikzpicture}
+			
+			\begin{pgfonlayer}{nodelayer}
+				\node[style=medium box] (div) at (0, 0) {};
+				\node[style=none] (divlab) at (0, .7) {$e$};
+				\node[style=none] (divin1) at (.2, .3) {};
+				\node[style=none] (divin2) at (.2, -.3) {};
+				\node[style=none] (divout) at (-.3, 0){};
+				
+				\node[style=node] (a) at (2, .3){};
+				\node[style=none] (alab) at (2.3, .3){$v$};
+				\node[style=node] (b) at (2, -.3){};
+				\node[style=none] (ulab) at (2.3, -.3){$u$};
+				\node[style=node] (d) at (-2, 0){};
+				\node[style=none] (dlab) at (-2, .3){$w$};
+			\end{pgfonlayer}
+			
+			\begin{pgfonlayer}{edgelayer}
+				\draw[style=diredge] (divin1.east) to (a); 
+				\draw[style=diredge] (divin2.east) to(b) ;
+				\draw[style=diredge] (d) to (divout.center);
+			\end{pgfonlayer}
+		\end{tikzpicture}
+	\end{minipage}
+	
+	\medskip
+	In both cases there are no morphism from the left-monogamous hypergraph depicted on the right and $\mathcal{T}$. 
+\end{rem}
+
+An elementary, but fundamental observation is given by the following (see \Cref{proof:count} for a proof).
+
+
+\begin{restatable}{prop}{cnt}\label{prop:count}
+	$\lmo$ is closed in $\hyp$ under subobject: if $(f,g)\colon \mathcal{G}\to \mathcal{H}$ is a mono in $\hyp$ and $\mathcal{H}$ is left-monogamous, then $\mathcal{G}$ is left-monogamous too.
+\end{restatable}
+
+Since $\lmo$ is a full subcategory of $\hyp$, 
+\Cref{prop:count} provides equalizers of left-monogamous hypergraphs.
+\begin{cor}\label{cor:eq}
+	$\lmo$ is closed in $\hyp$ under equalizers.
+\end{cor}
+
+As shown by \Cref{rem:con}, $\lmo$ does not have all products, nonetheless left-monogamous hypergraphs are closed in $\hyp$ under binary products (a proof can be found in \Cref{proof:pro}).
+
+\begin{restatable}{lem}{lmol}\label{lem:pro}
+	$\lmo$ is closed in $\hyp$ under binary products.
+\end{restatable}
+
+Combining \Cref{cor:eq} with \Cref{lem:pro} we get at once the following result.
+
+\begin{cor}	$\lmo$ is closed in $\hyp$ under pullbacks and equalizers.
+\end{cor}
+
+
+\begin{defi}
+	classe di morfismi
+\end{defi}
+
+\begin{prop}\label{prop:pusho}
+pushout
+\end{prop}
+\begin{proof}
+	contenuto...
+\end{proof}
+
+We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$.
+
+\begin{restatable}{lem}{regmono}\label{lem:regmon}
+	The following are equivalent for a morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ in $\lmo$:
+	\begin{enumerate}
+		\item $(f,g)$ is a regular mono;
+		\item $(f,g)$ is a mono and sends input nodes to input nodes;
+		\item $(f,g)$ is a mono and for every $h\in E_{\mathcal{H}}$, if $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
+	\end{enumerate}
+\end{restatable}
+
+Putting together \Cref{thm:slice-functors} with \Cref{prop:pusho}  and \Cref{lem:regmon}, we get the following.
+
+\begin{cor}$\lmo$ is quasiadhesive.
+\end{cor}
+
+
+
+\paragraph{Acyclic hypergraphs}\label{sub:ac}
+
 \paragraph{Separated hypergraphs}
 
 Let us begin with the subcategory of $\hyp$, which in \Cref{sec:sepegg} will give us the underlying hypergraphs for EGGs with minimally identified tokens.
 
-\begin{defi} Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if for every pair of not necessarily distinct hyperedges $e, e'\in E_{\mathcal{G}}$
+\begin{defi}  An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if for every pair of not necessarily distinct hyperedges $e, e'\in E_{\mathcal{G}}$
 	\begin{enumerate}
 	\item $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;
 	\item $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;	
@@ -922,6 +1082,10 @@ Let us begin with the subcategory of $\hyp$, which in \Cref{sec:sepegg} will giv
 	\end{enumerate}
 We will denote by $\shyp$ the full subcategory of $\hyp$ given by separated hypergraphs and by $S$ the inclusion functor.
 \end{defi}
+
+\begin{rem}
+	Every separated hypergraph is left-monogamous. Indeed if $\mathcal{H}$ is separated then there exists at most one $e\in E_{\mathcal{H}}$ such that $\outd{H}(v, e) \neq 0$. Moreover, in a separated graph the target of an hyperedge cannot have repeated letters and so we have that  $\outd{H}(v, e) = 1$ for at most one $e\in E_{\mathcal{H}}$. Left-monogamy now follows at once.
+\end{rem}
 
 <<<<<<< HEAD
 We begin by introducing a construction which ``split'' a given hypergraph to produce a separated one.
@@ -1214,159 +1378,6 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	\mathcal{G}
 	}
 \end{minipage}
-
-
-\paragraph{Left-monogamous hypergraphs}
-
-We can now turn to the second subcategory of $\hyp$ of interest, that of \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}. 
-
-\begin{defi}
-	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be an hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{B}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$.
-	
- 	If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$
- 	
- 		 	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, $\outd{H}(v,e)$ is nonzero for only finitely many hyperedges and
- 		 	\[\sum_{e\in E_{\mathcal{H}}} \outd{H}(v, e) = 1 - \chi_{\ino{H}}(v)\]
- 		 	where $\chi_{\ino{H}}\colon V_{\mathcal{H}}\to 2$ is the characteristic function of $\ind{H}$.
- 		 	
- 	We will denote by $\lmo$ the full subcategory of $\hyp$ given by left-monogamous hypergraphs. The corresponding inclusion functor will be denoted by $M$.
-\end{defi}
-
-
-\begin{rem}We can rephrase the previous definition in a more elementary way. Let $\mathcal{H}$ be a hypergraph, indeed if $v$ is an input node then there are no edges with $\outd{H}(v, e)\neq 0$ and so the equation above is automatically satisfied. If $v$ does not belong to $\ino{H}$, then the request of left monogamy amount to the existence of precisely one hyperedge $e$ such that $v$ occurs precisely one time in $t_{\mathcal{H}}(e)$.
-\end{rem} 
-\begin{rem}In \cite{fritz2023free} the definition of left-monogamous hypergraphs includes the request of \emph{acyclicity}.  We prefer to deal with acyclicity separately, see Paragraph \ref{sub:ac}.
-\end{rem}
-
-\begin{rem}
-	Every separated hypergraph is left-monogamous. Indeed if $\mathcal{H}$ is separated then there exists at most one $e\in E_{\mathcal{H}}$ such that $\outd{H}(v, e) \neq 0$. Moreover, in a separated graph the target of an hyperedge cannot have repeated letters and so we have that  $\outd{H}(v, e) = 1$ for at most one $e\in E_{\mathcal{H}}$. Left-monogamy now follows at once.
-\end{rem}
-
-\begin{exa} The hypergraph of example \Cref{exa_2} is left-monogamous but not separated.
-\end{exa}
-
-\noindent
-\begin{minipage}[l]{.6\linewidth}
-	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) + \outd{H}(u, e_1)=1+1 = 2\]
-	\end{exa}
-\end{minipage} \hfill 
-\begin{minipage}[r]{.35\linewidth}
-		\begin{tikzpicture}
-		\begin{pgfonlayer}{nodelayer}
-			\node[style=medium box] (div) at (0, 0) {};
-			\node[style=none] (divlab) at (0, .7) {$e$};
-			\node[style=none] (divin1) at (.2, .2) {};
-			\node[style=none] (divin2) at (.2, -.2) {};
-			\node[style=none] (divout) at (-.3, 0){};
-			
-			\node[style=node] (a) at (2, 0){};
-			\node[style=none] (alab) at (2, .3){$v$};
-			\node[style=node] (d) at (-2, 0){};
-			\node[style=none] (dlab) at (-2, .3){$w$};
-		
-			\node[style=node] (e) at (0, -1.5){};
-			\node[style=none] (u) at (0, -1.2){$u$};
-			\node[style=small box] (c1) at (-2, -1.5) {};
-			\node[style=small box] (c2) at (2, -1.5) {};
-			\node[style=none](o) at (-1.7, -1.5){};
-			\node[style=none] (olab) at (-2, -1) {$e_1$};
-			\node[style=none] (olab) at (2, -1) {$e_2$};
-			\node[style=none](i) at (1.8, -1.5){};
-		\end{pgfonlayer}
-		
-		\begin{pgfonlayer}{edgelayer}
-			\draw[style=diredge, in=135, out= 45] (divin1.east) to (a); 
-			\draw[style=diredge, in=-135, out= -45] (divin2.east) to(a) ;
-			\draw[style=diredge] (d) to (divout.center);
-			\draw[style=diredge] (o) to (e);
-			\draw[style=diredge] (i) to (e);
-		\end{pgfonlayer}
-	\end{tikzpicture}
-	\end{minipage}
-
-\medskip 	
-The remaining of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs .
-
-
-\begin{rem}Notice that  $\lmo$ is not complete: for instance it lacks a terminal object. The reasoning is similar to that of \Cref{ex:noterm}: if $\mathcal{T}$ is terminal, since  $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is left-monogamous, we have that $V_{\mathcal{T}}$ must be a singleton. We have two possibilities:
-	
-\medskip 
-\begin{minipage}[l]{.65\linewidth}
-	\begin{itemize}
-		\item  all the hyperedges of $\mathcal{T}$ have the empty word as target.
-		\item there is a (necessarily unique) $\mathcal{T}$ with a target of length one.
-	\end{itemize}
-\end{minipage}
-\begin{minipage}[r]{.15\linewidth}
-	\begin{tikzpicture}
-
-\begin{pgfonlayer}{nodelayer}
-	\node[style=medium box] (div) at (0, 0) {};
-	\node[style=none] (divlab) at (0, .7) {$e$};
-	\node[style=none] (divin1) at (.2, .3) {};
-	\node[style=none] (divin2) at (.2, -.3) {};
-	\node[style=none] (divout) at (-.3, 0){};
-	
-	\node[style=node] (a) at (2, .3){};
-	\node[style=none] (alab) at (2.3, .3){$v$};
-	\node[style=node] (b) at (2, -.3){};
-	\node[style=none] (ulab) at (2.3, -.3){$u$};
-	\node[style=node] (d) at (-2, 0){};
-	\node[style=none] (dlab) at (-2, .3){$w$};
-\end{pgfonlayer}
-
-\begin{pgfonlayer}{edgelayer}
-	\draw[style=diredge] (divin1.east) to (a); 
-	\draw[style=diredge] (divin2.east) to(b) ;
-	\draw[style=diredge] (d) to (divout.center);
-\end{pgfonlayer}
-	\end{tikzpicture}
-\end{minipage}
-
-\medskip
-In both cases there are no morphism from the hypergraph depicted on the right and $\mathcal{T}$. 
-\end{rem}
-
-An elementary, but fundamental observation is given by the following (see \Cref{proof:count} for a proof).
-
-\begin{restatable}{prop}{count}\label{prop:count}
-	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be an arrow in $\hyp$.
-	The following are true:
-	\begin{enumerate}
-		\item for every $v\in V_{\mathcal{H}}$ and $e\in E_\mathcal{G}$ it holds:
-	\begin{align*}\ind{H}(f(e), g(v))&= \ind{G}(e, v)\cdot \abs{g^{-1}(g(v))\cap \mathsf{set}(s_{\mathcal{G}}(e))} \\\outd{H}(f(e), g(v))&= \outd{G}(e, v)\cdot \abs{g^{-1}(g(v))\cap \mathsf{set}(t_{\mathcal{G}}(e))}
-	\end{align*}
-		where, for $w\in V^\star_{\mathcal{G}}$, $\mathsf{set}(w)$ is the set of nodes appearing in $w$;
-		\item $\lmo$ is closed in $\hyp$ under subobject: if $(f, g)$ is mono and $\mathcal{H}$ is left-monogamous, then $\mathcal{G}$ is left-monogamous too.
-	\end{enumerate}
-\end{restatable}
-
-Since $\lmo$ is a full subcategory of $\hyp$, 
-\Cref{prop:count} provides equalizers of left-monogamous hypergraphs.
-\begin{cor}\label{cor:eq}
-	$\lmo$ is closed in $\hyp$ under equalizers.
-\end{cor}
-
-
-\begin{restatable}{lem}{lmol}
-	$\lmo$ is closed in $\hyp$ under pullbacks and equalizers.
-\end{restatable}
-
-\begin{defi}
-classe di morfismi
-\end{defi}
-
-\begin{prop}
-	contenuto...
-\end{prop}
-\begin{proof}
-	contenuto...
-\end{proof}
-
-\paragraph{Acyclic hypergraphs}\label{sub:ac}
-
-
-
 
 
 \begin{rem}\label{rem:map1}
@@ -2914,25 +2925,88 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
 		\end{minipage}
 		\hfill 
 		\begin{minipage}[r]{.25\linewidth} \vspace{-.1cm}
-			\xymatrix@C=50pt@R=22pt{F_{\mathcal{G}}(k,l) \ar[d]_{!_{G(k,l)}} \ar@{>->}[r]^{\iota^G_{k,l}}& E_G \ar[d]_{(\lgh_{G(\bullet)}\circ s_{G}, \lgh_{G(\bullet)}\circ t_{G})} \\ 1\ar@{>->}[r]_{(\delta_{k}, \delta_{l})}&\mathbb{N}\times \mathbb{N}}
+			\xymatrix@C=50pt@R=20pt{F_{\mathcal{G}}(k,l) \ar[d]_{!_{G(k,l)}} \ar@{>->}[r]^{\iota^G_{k,l}}& E_{\mathcal{G}} \ar[d]_{(\lgh_{G(\bullet)}\circ s_{G}, \lgh_{G(\bullet)}\circ t_{G})} \\ 1\ar@{>->}[r]^{(\delta_{k}, \delta_{l})}&\mathbb{N}\times \mathbb{N}}
 		\end{minipage}
-
-Moreover, by definition of $F_{\mathcal{G}}(k,l)$, the solid part of the diagrams commute below and so \Cref{rem:len} gives us the dotted arrows $s_{k,l}^{\mathcal{G}}\colon F_{\mathcal{G}}(k,l)\to V^k_{\mathcal{G}}$. 
-\[	\xymatrix@C=35pt{F_{\mathcal{G}}(k,l) \ar@/_.3cm/[ddr]_{!_{F_\mathcal{G}(k,l)}} \ar@{>->}[r]^-{\iota^{\mathcal{G}}_{k,l}} \ar@{.>}[dr]^{s_{k,l}^{\mathcal{G}}}& E_{\mathcal{G}} \ar[dr]^{s_\mathcal{G}}& &  F_{\mathcal{G}}(k,l)\ar@/_.3cm/[ddr]_{!_{F_\mathcal{G}(k,l)}} \ar@{.>}[dr]^{t_{k,l}^{\mathcal{G}}} \ar@{>->}[r]^-{\iota^{\mathcal{G}}_{k,l}} & E_{\mathcal{G}} \ar[dr]^{t_\mathcal{G}}  \\ & V^k_{\mathcal{G}} \ar[d]_{!_{V^k_{\mathcal{G}}}} \ar@{>->}[r]^{v_k^{F_\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{\lgh_{V_{\mathcal{G}}}}& &V^l_{\mathcal{G}} \ar[d]_{!_{V^l_{\mathcal{G}}}} \ar@{>->}[r]^{v_l^{F_\mathcal{G}}}& V^\star_{\mathcal{G}} \ar[d]^{\lgh_{V_{\mathcal{G}}}} \\ & 1 \ar@{>->}[r]_{\delta_{k}} & \mathbb{N} & & 1  \ar@{>->}[r]_{\delta_{l}}& \mathbb{N}}
-\]
-
-Now for every $i<k$ and $j <l$ we have:
+		\begin{minipage}[l]{.55\linewidth}
+		Moreover, by definition of $F_{\mathcal{G}}(k,l)$, the solid parts of the diagrams aside commute and so \Cref{rem:len} gives us the dotted arrows $s_{k,l}^{\mathcal{G}}\colon F_{\mathcal{G}}(k,l)\to V^k_{\mathcal{G}}$.
+		
+		Now for every $i<k$ and $j <l$ we have:
+		\begin{gather*}
+			\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_k(s_{k,l}^{\mathcal{G}}(e)))_i = F_{\mathcal{G}}(f_i)(e) =\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{F_\mathcal{G}}(e))    \\
+			\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_l(t_{k,l}^{\mathcal{G}}(e)))_j = F_{\mathcal{G}}(f_{j+k})(e) =\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{F_\mathcal{G}}(e))   
+		\end{gather*}
+		\end{minipage}\hfill \begin{minipage}[r]{.5\linewidth}
+	\xymatrix@R=18pt{F_{\mathcal{G}}(k,l) \ar@/^.45cm/[dd]|(.51)\hole^(.7){!_{F_\mathcal{G}(k,l)}} \ar@{>->}[r]_-{\iota^{\mathcal{G}}_{k,l}} \ar@{.>}[d]_{s_{k,l}^{\mathcal{G}}}& E_{\mathcal{G}} \ar[d]^{s_\mathcal{G}}&   F_{\mathcal{G}}(k,l)\ar@/^.45cm/[dd]|(.51)\hole^(.65){!_{F_\mathcal{G}(k,l)}} \ar@{.>}[d]_{t_{k,l}^{\mathcal{G}}} \ar@{>->}[r]_-{\iota^{\mathcal{G}}_{k,l}} & E_{\mathcal{G}} \ar[d]_{t_\mathcal{G}}  \\  V^k_{\mathcal{G}} \ar[d]_{!_{V^k_{\mathcal{G}}}} \ar@{>->}[r]^{v_k^{F_\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{\lgh_{V_{\mathcal{G}}}} &V^l_{\mathcal{G}} \ar[d]_{!_{V^l_{\mathcal{G}}}} \ar@{>->}[r]^{v_l^{F_\mathcal{G}}}& V^\star_{\mathcal{G}} \ar[d]_(.6){\lgh_{V_{\mathcal{G}}}} \\  1 \ar@{>->}[r]^{\delta_{k}} & \mathbb{N} & 1  \ar@{>->}[r]^{\delta_{l}}& \mathbb{N}}
+		\end{minipage}
+		
+	but this means that $s^{\mathcal{G}}_{k,l}= s^{F_{\mathcal{G}}}_{k,l}$ and 
+$t^{\mathcal{G}}_{k,l}= t^{F_{\mathcal{G}}}_{k,l}$ and so
 \begin{gather*}
-	\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_k(s_{k,l}^{\mathcal{G}}(e)))_i = F_{\mathcal{G}}(f_i)(e) =\pi^{F_\mathcal{G}}_{k,i} (s_{k,l}^{F_\mathcal{G}}(e)) = \pi^{F_\mathcal{G}}_{k,i} ( v^{F_\mathcal{G}}_k(s_{F_\mathcal{G}}(\iota^{F_\mathcal{G}}_{k,l} (e))))   \\
-\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{\mathcal{G}}(e)) = (v^{F_\mathcal{G}}_l(t_{k,l}^{\mathcal{G}}(e)))_j = F_{\mathcal{G}}(f_{j+k})(e) =\pi^{F_\mathcal{G}}_{l,j} (t_{k,l}^{F_\mathcal{G}}(e)) = \pi^{F_\mathcal{G}}_{l,j} ( v^{F_\mathcal{G}}_l(t_{F_\mathcal{G}}(\iota^{F_\mathcal{G}}_{k,l} (e))))  
+s_{F_{\mathcal{G}}}\circ \phi \circ \iota^{\mathcal{G}}_{k,l}=  s_{F^{\mathcal{G}}}\circ \iota^{F_{\mathcal{G}}}_{k,l}= v^{F_{\mathcal{G}}}_k \circ s^{F_{\mathcal{G}}}_{k,l} = v^{F_{\mathcal{G}}}_k \circ  s^{\mathcal{G}}_{k,l} = s_{\mathcal{G}}\circ \iota^{\mathcal{G}}_{k,l}\\
+t_{F_{\mathcal{G}}}\circ \phi \circ \iota^{\mathcal{G}}_{k,l}=  t_{F^{\mathcal{G}}}\circ \iota^{F_{\mathcal{G}}}_{k,l}= v^{F_{\mathcal{G}}}_l \circ t^{F_{\mathcal{G}}}_{k,l} = v^{F_{\mathcal{G}}}_l \circ  t^{\mathcal{G}}_{k,l} = t_{\mathcal{G}}\circ \iota^{\mathcal{G}}_{k,l}
 \end{gather*}
-	but this means that
-	\[v^{F_{\mathcal{G}}}_k\circ s^{\mathcal{G}}_{k,l} = v^{F_{\mathcal{G}}}_k\circ s_{F_{\mathcal{G}}}\circ \iota^{F_{\mathcal{G}}}_{k,l}=\] 
-
-
-	Moreover, by construction $s_{F_{\mathcal{G}}}=s$ and $t_{F_{\mathcal{G}}}=t$, from which the thesis follows. \qedhere
+Therefore $(\phi,\id{V_\mathcal{G}})$ is an isomorphism of hypergraphs $\mathcal{G}\to \mathcal{G}_{F_{\mathcal{G}}}$ and the thesis follows. \qedhere
 	\end{itemize}
 \end{proof}
+
+
+\elem*
+\begin{proof}\label{proof:elem}
+	$(1\Rightarrow 2)$ If $t_{\mathcal{H}}(e)$ has a repeated letter $v$, then $\outd{H}(v,e)$ is at least $2$ and $v\notin \ino{H}$. Thus $\mathcal{H}$ is not left-monogamous. Similarly, if $v$ appears in $t_{\mathcal{H}}(e)$ and $t_{\mathcal{H}}(e')$ for two different $e, e'\in E_{\mathcal{H}}$, then $v$ cannot be an input node and
+	\[\sum_{h\in E_{\mathcal{H}}} \outd{H}(v,h) \geq \outd{H}(v,e) + \outd{H}(v,e')=2 \]
+	violating left-monogamy.
+	
+	\smallskip \noindent 	$(2\Rightarrow 1)$ Let $v$ be an element of $V_{\mathcal{H}}$. We have two cases:
+	\begin{itemize}
+		\item $v$ is an input node. Then $\outd{H}(v,e)=0$ for every $e\in E_{\mathcal{H}}$ and $\chi_{\ino{H}}(e)=1$ and so
+		\[\sum_{e\in E_{\mathcal{H}}} \outd{H}(v,e) = 0 = 1 - \chi_{\ino{H}}(e) \]
+		\item $v$ is not an input node. Thus there exists $e\in E_{\mathcal{H}}$ such that $v$ appears in $t_{\mathcal{H}}(e)$. Since $t_{\mathcal{H}}(e)$ is disjoint from $t_{\mathcal{H}}(e')$ for every other $e'\in E_{\mathcal{H}}$, $e$ is the unique hyperedge such that $v$ is a letter of $t_{\mathcal{G}}(e)$. Moreover, $t_{\mathcal{H}}(e)$ has no repeated letter and so:
+		\[\sum_{e'\in E_{\mathcal{H}}} \outd{H}(v, e')= \outd{H}(v,e)=1 =1 - \chi_{\ino{H}}(e) \]
+	\end{itemize}
+	We can therefore conclude that $\mathcal{H}$ is left-monogamous.
+\end{proof}
+
+
+\cnt*
+\begin{proof}\label{proof:count}
+	By \Cref{cor:monhyper} we know that $f\colon E_{\mathcal{G}}\to E_{\mathcal{H}}$ and $g\colon V_{\mathcal{G}}\to V_\mathcal{H}$ are injective. Now, given $v\in V_{\mathcal{G}}$ and $w\in V_{\mathcal{H}}$, we can define :
+	\[E^{\mathcal{G}}_v=\{e\in E_{\mathcal{G}} \mid \outd{G}(v,e) \neq 0\} \qquad E^{\mathcal{H}}_w=\{e\in E_{\mathcal{H}} \mid \outd{G}(w,e) \neq 0\}\]
+	
+	\noindent 
+			\begin{minipage}[r]{.8\linewidth}
+					\setlength{\parindent}{1.5em}
+		Now, if $e\in E^{\mathcal{G}}_v$ then $g(v)$ is a letter of $t_{\mathcal{H}}(f(e))$ and so $f(e)$ belongs to $E^{\mathcal{H}}_{g(v)}$. Thus there exists an arrow $f_v\colon  E^{\mathcal{G}}_v\to E^{\mathcal{H}}_{g(v)} $ as in the diagram aside. Since $f$ is injective then $f_{v}$ is injective too and we know, by left-monogamy of $\mathcal{H}$, that $E^{\mathcal{H}}_{g(v)}$ is finite. Therefore also $E^{\mathcal{G}}_v$ is finite.
+	\end{minipage}
+	\hfill 
+	\begin{minipage}[r]{.2\linewidth} \vspace{-.3cm}
+		\xymatrix@C=40pt@R=18pt{E^{\mathcal{G}}_v \ar@{>->}[d]_{\iota^{\mathcal{G}}_v} \ar@{.>}[r]_{f_v}& E^{\mathcal{H}}_{g(v)} \ar@{>->}[d]^{\iota^{\mathcal{H}}_v} \\ E_{\mathcal{G}}\ar@{>->}[r]^{f} & E_{\mathcal{H}}}
+	\end{minipage}
+
+	Given an hyperedge $e$, if $t_{\mathcal{G}}(e)$ has a repeated letter, then there are indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $(t_{\mathcal{G}}(e))_i=(t_{\mathcal{G}}(e) )_k$ and so
+\[(t_{\mathcal{H}}(f(e)))_k=g^\star(t_{\mathcal{G}}(e))_k=g((t_{\mathcal{G}}(e))_k)=g((t_{\mathcal{G}}(e))_i)=g^\star(t_{\mathcal{G}}(e))_i=(t_{\mathcal{H}}(f(e)))_i \]
+But $\mathcal{H}$ is left-monogamous and thus, by \Cref{rem:elem}, $f(e)$ cannot have a repeated letter.
+
+	Moreover, let $e$ and $e'$ be two non-disjoint hyperedges, i.e.~there are indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $(t_{\mathcal{G}}(e))_i=(t_{\mathcal{G}}(e') )_k$. Then:
+\[(t_{\mathcal{H}}(f(e')))_k=g^\star(t_{\mathcal{G}}(e'))_k=g((t_{\mathcal{G}}(e'))_k)=g((t_{\mathcal{G}}(e))_i)=g^\star(t_{\mathcal{G}}(e))_i=(t_{\mathcal{H}}(f(e)))_i \]
+
+	Since $\mathcal{H}$ is left-monogamous then $f(e)=f(e')$ and so, by injectivity of $f$, $e = e'$. Thus every hyperedge $e$ is disjoint from any other $e'\in E_{\mathcal{G}}$. We can conclude appealing to \Cref{rem:elem}.
+\end{proof}
+
+\lmol*
+\begin{proof}\label{proof:pro}
+	Consider two hypergraphs $\mathcal{G}_0$ and $\mathcal{G}_1$ and their product $(\mathcal{P}, \{(\pi^E_{\mathcal{G}_i}, \pi^V_{\mathcal{G}_i})\}_{i=0}^1)$.  By \Cref{lem:prod} we know that $(V_{\mathcal{P}},  \{ \pi^V_{\mathcal{G}_i}\}_{i=0}^1))$ is a product
+	 and the diagrams below on the right commute for $i\in \{0, 1\}$.
+	 \begin{minipage}[r]{.5\linewidth}
+	 	contenuto...
+	 \end{minipage}\hfill 
+	 \begin{minipage}[l]{.3\linewidth}
+\xymatrix@R=10pt@C=30pt{  E^i_{k,l} \ar@{>->}[r]^{\iota^i_{k,l}} & E_{\mathcal{G}_i} \ar[r]^{t_{\mathcal{G}_i}} & V^\star_{\mathcal{G}_i} & E_{k,l} \ar[r]^{\pi^i_{k,l}} \ar@{>->}[dd]_{\iota_{k,l}} & E^{i}_{k,l} \ar@{>->}[dd]_{\iota^i_{k,l}}\\ E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^i_{k,l}}  & & \\   E_{\mathcal{P}}   \ar@{>}[rr]_{t_\mathcal{P}}& &V^\star \ar[uu]^{(\pi^V_{\mathcal{G}_i})^\star} & E_{\mathcal{P}} \ar@{>}[r]_{\pi^E_{\mathcal{G}_i}} & E_{\mathcal{G}_i}}
+	 \end{minipage}
+	
+	
+	Moreover, we also know that $(E_{\mathcal{P}}, \iota_{}$
+\end{proof}
+
 
 \iffalse 
 \produ*
@@ -3032,30 +3106,16 @@ For uniqueness,
 		Since $S(F(D))$ is an object of $\shyp$ we get that, for every $D\in \D$,  $p_{E,D}(e)$ and $p_{E,D}(e')$ must be equal.  Since $(E_\mathcal{L}, \{p_{E, D}\}_{D\in \D})$ this entails that $e = e'$, which is a contradiction.
 		\item  We proceed as before, supposing that $e$ and $e'$ are distinct elements of $\mathcal{L}$ for which there are $1\leq i \leq \lgh_{V_{\mathcal{L}}}(s_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{L}}}(t_{\mathcal{L}(e)}) $ and a node $v\in V_{\mathcal{L}}$ such that:
 				\[(t_{\mathcal{L}}(e))_i=v \qquad  (t_{\mathcal{L}}(e') )_k= v\]
-		Then, givem $D\in \D$ we have:
+		Then, given $D\in \D$ we have:
 		\begin{align*}&(t_{S(F(D))}( p^D_{E}(e)))_i = ( p^\star_{V,D}(t_{\mathcal{L}}(e)))_i=p^\star_{V, D}((t_{\mathcal{L}}(e))_i)\\=&p_{V,D}(v)=p_{V, D}((t_{\mathcal{L}}(e'))_k)=(p^\star_{V,D}(t_{\mathcal{L}}(e')))_k=(t_{S(F(D))}( p_{E,D}(e')))_k  	
 		\end{align*}
 		Therefore,  $p_{E,D}(e)$ and $p_{E,D}(e')$ coincide for every $D\in \D$. Thus  $e = e'$ and we end up again with a contradiction. \qedhere 
 	\end{itemize}
 \end{proof}
 
-\count*
-\begin{proof}\label{proof:count}
-	\begin{enumerate}
-		\item Let $n$ and $m$ be the lengths of, respectively $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ and suppose that
-		\[s_{\mathcal{G}}(e)=\prod_{i=1}^{n}a_i \qquad t_{\mathcal{G}}(e)=\prod_{i=1}^{n}b_i\]
-	
-		
-		\item \qedhere 
-	\end{enumerate}
-\end{proof}
 
 
 
-
-
-\begin{proof}\label{proof:prod}
-\end{proof}
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
 \fhyp*
 
