@@ -907,7 +907,7 @@ We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic20
 \begin{defi}
 	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be an hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{B}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$. If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$.
 	
-	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, there is at most one hyperedge $e_v$ such that $\outd{H}(v,e_v)$ is non-zero and, moreover, $\outd{H}(v,e_v) = 1$.
+	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, there is at most one hyperedge $e_v$ such that $\outd{H}(v,e_v)$ is non-zero and for such $e_v$ we have $\outd{H}(v,e_v) = 1$.
 	
 	We will denote by $\lmo$ the full subcategory of $\hyp$ given by left-monogamous hypergraphs. The corresponding inclusion functor will be denoted by $M$.
 \end{defi}
@@ -930,7 +930,7 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 
 \noindent
 \begin{minipage}[l]{.6\linewidth}
-	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) + \outd{H}(u, e_2)=1+1 = 2\]
+	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) = \outd{H}(u, e_2)=1\]
 	\end{exa}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.35\linewidth}
