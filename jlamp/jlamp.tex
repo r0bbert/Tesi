@@ -485,7 +485,7 @@ $\mathcal{M}$-adhesivity is well-behaved with respect to  the construction of (c
 
 \begin{thm}
 	\label{thm:slice-functors}
-	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following hold
+	Let $\X$ be an (strict) $\mathcal{M}$-adhesive category. Then the following facts hold
 	\begin{enumerate}
 		\item if $\Y$ is an (strict) $\mathcal{N}$-adhesive category, $L\colon \Y\to \A$ a functor preserving $\mathcal{N}$-pushouts and $R\colon \X\to \A$ one preserving $\mathcal{M}$-pullbacks, then $\comma{L}{R}$ is (strictly) $\comma{\mathcal{N}}{\mathcal{M}}$-adhesive, where
 		\[\comma{\mathcal{N}}{\mathcal{M}}:=\{(h,k) \in \mor(\comma{L}{R}) \mid h\in \mathcal{N}, k\in \mathcal{M}\}\]
@@ -535,7 +535,7 @@ Now, notice that, since the front square is a pullback, then the dotted arrow $u
 We can state some useful properties of $\mathcal{M}$-adhesive category
 (see, for instance, \cite[Thm.~4.26]{ehrig2006fundamentals} or \cite[Fact 2.6]{azzi2019essence}). A proof is provided in \Cref{regmono-proof}.
 \begin{restatable}{prop}{rgmono}\label{prop:regmono}
-	Let $\X$ be an $\mathcal{M}$-adhesive category. Then the following hold
+	Let $\X$ be an $\mathcal{M}$-adhesive category. Then the following facts hold
 	\begin{enumerate}
 		\item every $\mathcal{M}$-pushout square is also a pullback;
 		\item every arrow in $\mathcal{M}$ is a regular mono.
@@ -603,7 +603,7 @@ The results below are simple, yet they appear to be original, and we give their 
 	If the leftmost square is commutative, then there is a unique arrow $k_h\colon K_f \to K_g$ making the other three commutative.
 	\[\xymatrix@R=15pt{X \ar[r]^{h}\ar[d]_{f}& Z \ar[d]^{g} & K_f \ar@{.>}[r]^{k_h} \ar[d]_{\pi^1_f}& K_g \ar[d]^{\pi^1_g} & K_f  \ar@{.>}[r]^{k_h} \ar[d]_{\pi^2_f}& K_g \ar[d]^{\pi^2_g}& K_f  \ar@{.>}[r]^{k_h} \ar[d]_{(\pi^1_f,\pi^2_f)} & K_g \ar[d]^{(\pi^1_g, \pi^2_g)}\\ Y \ar[r]_t& W & X \ar[r]_{h} & Z & X\ar[r]_{h} &Z & X\times Z \ar[r]_{h\times h}& X\times Z}\]
 	
-		Moreover, the following hold
+		Moreover, the following facts hold
 		\begin{enumerate}
 			\item if $h$ is a mono then $k_h$ is a mono;
 			\item if the leftmost square is a pullback then the central two are pullbacks;
@@ -634,7 +634,7 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 \begin{minipage}[l]{.6\linewidth}
 	\begin{restatable}{lem}{mps}\label{prop:kerset}
 		Suppose that in $\Set$ the commuting cube in the diagram on the left is given, whose top face is a pushout, the left and bottom faces are pullbacks,  and $n\colon B\mto D$ is an injection. 
-		Then the following hold
+		Then the following facts hold
 		\begin{enumerate}
 			\item the right face of the cube is a pullback;
 			\item the right square, made by the kernel pairs of the vertical arrows, is a pushout.
@@ -653,7 +653,7 @@ sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
 We recall some of its proprieties.
 
 \begin{prop}\label[prop]{prop:fact}
-	Let $X$ be a set and $n\in \mathbb{N}$. Then the following hold
+	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
 	\begin{enumerate}
 		\item there are arrows $v_{n}\colon X^n\mto X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
@@ -667,7 +667,7 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
+	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal objects induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
 		\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
 \xymatrix@R=8pt@C=30pt{1 \ar[r]^{\id{1}} \ar@{>->}[d]^{\delta_n}& 1 \ar@{>->}[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
@@ -684,14 +684,14 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 
 \noindent
 \begin{minipage}[r]{.83\linewidth}
-	\begin{rem}\label{rem:len} Let $X$ be a set, it is worth noticing that, for every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
+	\begin{rem}\label{rem:len} It is worth noticing that for $X$ a set and every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
 	\end{rem}
 \end{minipage}\hfill \begin{minipage}[l]{.15\linewidth} \vspace{-.2cm}
 \xymatrix@R=13pt{X^n \ar@{>->}[r]^{v_n} \ar[d]^{!_{X^n}}& X^\star  \ar[d]^{\lgh_{X}}\\ 1 \ar@{>->}[r]^{\delta_n} & \mathbb{N}}
 \end{minipage}
 
 \begin{notaz}
-	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we will denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.   More formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, where $\pi_i\colon X^l\to X$ is the $i^\mathrm{th}$-projection.
+	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  Formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, for $\pi_i\colon X^l\to X$ the $i^\mathrm{th}$-projection.
 \end{notaz}
 
 \subsection{The category of hypergraphs}
@@ -703,7 +703,7 @@ Let us begin this section with the definition of hypergraphs.
 	\setlength{\parindent}{1.5em}
 	\begin{defi}An \emph{hypergraph} is a 4-uple $\mathcal{G}:=(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})$ made by two sets $E_\mathcal{G}$ and $V_\mathcal{G}$, called respectively the sets of \emph{hyperedges} and \emph{nodes}, plus a pair of \emph{source} and \emph{target} arrows  $s_\mathcal{G}, t_\mathcal{G}\colon E_\mathcal{G}\rightrightarrows V_\mathcal{G}^\star$. 
 		
-A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the diagrams on the right are commutative.
+A \emph{hypergraph morphism} $(E_\mathcal{G}, V_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G})\to (E_\mathcal{H}, V_\mathcal{H}, s_\mathcal{H}, t_\mathcal{H})$ is a pair $(h,k)$ of functions $h\colon E_\mathcal{G}\to E_\mathcal{H}$, $k\colon V_\mathcal{G}\to V_\mathcal{H}$ such that the diagrams on the right commute.
 
 We define $\hyp$ to be the resulting category.
 \end{defi}\end{minipage} \hfill 
@@ -722,7 +722,7 @@ hence by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
 
 
 \begin{cor}\label[corollary]{cor:monhyper}
-	A morphism $(h,k)$ is a mono in $\hyp$ if and only if both its components are injective functions.
+	A morphism $(h,k)$ is a mono in $\hyp$ if and only if its components are injective functions.
 \end{cor}
 
 Applying \Cref{thm:slice-functors} we also get the next corollary (cfr.~\cite[Fact 4.17]{ehrig2006fundamentals}).
@@ -747,7 +747,7 @@ Sources and targets are represented by lines between dots and squares: the lines
 exit from the right of the box.
 
 Consider, for instance, the picture below. It represents a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
-and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have, respectively, $v_1v_2$ abd $v_3v_2$  as sources.
+and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have the lists $v_1v_2$ and $v_3v_2$  as sources, , respectively.
 	\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
@@ -805,8 +805,8 @@ A rich source of examples is given by \emph{monoidal signatures}.
 	\begin{exa}\label{exa_3} 
 		Given a set $A$, let $\Sigma = (O_\Sigma, \ari_\Sigma, \coar_{\Sigma})$ be the algebraic signature with $O_\Sigma =  \mathbb{N} + A + \{*, /\}$, 
 		and 
-		\[\ari_\Sigma(n)=0 \quad \ari_\Sigma(a) = 0, \quad \ari_\Sigma(*) =2 \quad  \ari_\Sigma(/) = 2\]
-		for every $n\in \mathbb{N}$ and $a\in A$. Then we can depict the hypergraph $\mathcal{G}^\Sigma$  as in the picture aside.
+		\[\ari_\Sigma(n)=0 \quad \ari_\Sigma(a) = 0 \quad \ari_\Sigma(*) =2 \quad  \ari_\Sigma(/) = 2\]
+		for every $n\in \mathbb{N}$ and $a\in A$. We depict the hypergraph $\mathcal{G}^\Sigma$  as in the picture aside.
 	\end{exa}
 	\end{minipage}
 	%\begin{center}
@@ -839,16 +839,17 @@ A rich source of examples is given by \emph{monoidal signatures}.
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer}
-			\draw[style=diredge, in=180, out= 112.5] (v) to (timesin2.center); 
-			\draw[style=diredge,out=135, in= 180] (v) to (timesin1.center);
-			\draw[style=diredge,in=165, out=0] (nattach.center) to (v);
+%			\draw[style=diredge, in=180, out= 112.5] (v) to (timesin2.center); 
+			\draw[in=180, out= 112.5] (v) to (timesin2.center); 
+			\draw[out=135, in= 180] (v) to (timesin1.center);
+			\draw[in=165, out=0] (nattach.center) to (v);
 			
-			\draw[style=diredge,out=0, in=-165] (constattach.center) to (v);
-			\draw[style=diredge,in=180, out= -112.5] (v) to (divin2.center); 
-			\draw[style=diredge,out=-135, in= 180] (v) to (divin1.center);
+			\draw[out=0, in=-165] (constattach.center) to (v);
+			\draw[in=180, out= -112.5] (v) to (divin2.center); 
+			\draw[out=-135, in= 180] (v) to (divin1.center);
 			
-			\draw[style=diredge, in=30, out=0] (timesout.center) to (v);
-			\draw[style=diredge, in=-30, out=0] (divout.center) to (v);
+			\draw[in=30, out=0] (timesout.center) to (v);
+			\draw[in=-30, out=0] (divout.center) to (v);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 	\end{minipage}
@@ -869,7 +870,7 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \begin{minipage}[r]{.75\linewidth}
 	\begin{restatable}{lem}{equi}\label{lem:equi}
 		There is an equivalence of categories $\Set^{\catname{H}}\to \hyp$ sending a functor $F\colon \catname{H}\to \Set$ to $\mathcal{G}_F:=(E_F, F(\bullet), s_{F}, t_F)$, where $(E_F, \{\iota^F_{k,l}\})$ is a coproduct for $\{F(k,l)\}_{k,l\in\mathbb{N}}$
-		and $s_F, t_F\colon E_F\rightrightarrows V^\star_F$ are the unique arrows fitting in the diagrams aside, where $(F(\bullet), \{v^F_n\}_{n\in \mathbb{N}})$ is the coproduct coming from the first point of\Cref{prop:fact} and $s^F_{k,l}, t^F_{k,l}\colon F(k,l)\to F(\bullet)^k$, $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ are the arrows induced by, respectively, $\{F(f_i)\}_{i=0}^{k-1}$ and $\{F(f_i)\}_{i=k}^{k+l-1}$.
+		and $s_F, t_F\colon E_F\rightrightarrows V^\star_F$ are the unique arrows fitting in the diagrams aside, where $(F(\bullet), \{v^F_n\}_{n\in \mathbb{N}})$ is the coproduct coming from the first point of \Cref{prop:fact} and $s^F_{k,l}, t^F_{k,l}\colon F(k,l)\to F(\bullet)^k$, $t^F_{k,l}\colon F(k,l)\to F(\bullet)^l$ are the arrows induced by, respectively, $\{F(f_i)\}_{i=0}^{k-1}$ and $\{F(f_i)\}_{i=k}^{k+l-1}$.
 	\end{restatable}
 \end{minipage}\hfill
 \begin{minipage}[l]{.25\linewidth}
@@ -916,7 +917,7 @@ We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic20
 \end{rem}
 
 Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. We can exploit this notion to rephrase the previous definition in a more elementary way (see \Cref{proof:elem} for a proof).
-\begin{restatable}{prop}{elem}\label{rem:elem} Given an hypergraph $\mathcal{H}$, the following are equivalent:
+\begin{restatable}{prop}{elem}\label{rem:elem} Given an hypergraph $\mathcal{H}$, the following facts are equivalent
 	\begin{enumerate}
 		\item $\mathcal{H}$ is left-monogamous;
 		\item for every $e\in E_{\mathcal{H}}$, $t_{\mathcal{H}}(e)$ has no repeated letter and $t_{\mathcal{H}}(e)$ is disjoint from $t_{\mathcal{H}}(e')$ for every other hyperedge $e'$.
@@ -924,12 +925,12 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 \end{restatable} 
 
 
-\begin{exa} The hypergraph of example \Cref{exa_2} is left-monogamous but not separated.
+\begin{exa} The hypergraph of \Cref{exa_2} is left-monogamous but not separated.
 \end{exa}
 
 \noindent
 \begin{minipage}[l]{.6\linewidth}
-	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) + \outd{H}(u, e_1)=1+1 = 2\]
+	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) + \outd{H}(u, e_2)=1+1 = 2\]
 	\end{exa}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.35\linewidth}
@@ -970,10 +971,11 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 The remaining of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs .
 
 
-\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: for instance it lacks a terminal object. Too see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is left-monogamous and that 
-	$\lmo(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\lmo$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$.  We have two possibilities:
-	
-	\medskip 
+\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: it lacks e.g. a terminal object. To see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is left-monogamous and that 
+	$\lmo(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\lmo$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$.  We have two possibilities	
+
+%	\medskip 
+\vspace{.1cm}
 	\begin{minipage}[l]{.65\linewidth}
 		\begin{itemize}
 			\item  all the hyperedges of $\mathcal{T}$ have the empty word as target.
@@ -1006,18 +1008,19 @@ The remaining of this section is devoted to the proof of quasiadhesivity of $\lm
 		\end{tikzpicture}
 	\end{minipage}
 	
-	\medskip
-	In both cases there are no morphism from the left-monogamous hypergraph depicted on the right and $\mathcal{T}$. 
+%	\medskip
+\vspace{.1cm}
+\noindent
+In both cases there is no morphism from the left-monogamous hypergraph depicted above and $\mathcal{T}$. 
 \end{rem}
 
-An elementary, but fundamental observation is given by the following (see \Cref{proof:count} for a proof).
-
+An elementary, but fundamental observation is stated below (see \Cref{proof:count} for a proof).
 
 \begin{restatable}{prop}{cnt}\label{prop:count}
 	$\lmo$ is closed in $\hyp$ under subobject: if $(f,g)\colon \mathcal{G}\to \mathcal{H}$ is a mono in $\hyp$ and $\mathcal{H}$ is left-monogamous, then $\mathcal{G}$ is left-monogamous too.
 \end{restatable}
 
-Since $\lmo$ is a full subcategory of $\hyp$, 
+Being $\lmo$ a full subcategory of $\hyp$, 
 \Cref{prop:count} provides equalizers of left-monogamous hypergraphs.
 \begin{cor}\label{cor:eq}
 	$\lmo$ is closed in $\hyp$ under equalizers.
@@ -1039,30 +1042,32 @@ Pullbacks are built from products and equalizers, so  \Cref{cor:eq} and \Cref{le
 A morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ of hypergraphs  is \emph{downward-closed} if  $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
 \end{defi}
 
-downward-closedness is closely related to preservation of input nodes, as shown by the following (see \Cref{proof:inp} for the proof).
+Being downward-closed is related to preservation of input nodes, as shown by the following lemma (see \Cref{proof:inp} for the proof).
 
 \begin{restatable}{lem}{inp}\label{lem:inp}
-	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs with $\mathcal{H}$ left-monogamous, then the following are true:
+	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs with $\mathcal{H}$ left-monogamous, then the following facts hold
 	\begin{enumerate}
 		\item if $g$ sends input nodes to input nodes, then $(f,g)$ is downward-closed; 
 		\item if $g$ is mono and $(f,g)$ is downward-closed, then $g$ sends input nodes to input nodes.
 	\end{enumerate}
 \end{restatable}
 
-downward-closedness allows us to guarantee the existence of certains pushout in $\lmo$, as shown by the following proposition, whose proof is postponed to \Cref{proof:pusho}. 
+
+Downward-closedness allows us to guarantee the existence of some pushouts in $\lmo$, as shown by the following proposition, whose proof is postponed to \Cref{proof:pusho}. 
 \begin{restatable}{prop}{pusho}\label{prop:pusho}
-Let $(f_1,g_1)\colon \mathcal{G}\to \mathcal{H}$ and $(f_2, g_2)\colon \mathcal{G}\to \mathcal{K}$ be two morphism in $\lmo$. If $M(f_1,g_1)$ is mono and downward-closed, then the pushout $\mathcal{P}$ of $M(f_1,g_1)$ along $M(f_2, g_2)$ in $\hyp$ is left-monogamous.
+Let $(f_1,g_1)\colon \mathcal{G}\to \mathcal{H}$ and $(f_2, g_2)\colon \mathcal{G}\to \mathcal{K}$ be two morphisms in $\lmo$. If $M(f_1,g_1)$ is mono and downward-closed, then the pushout $\mathcal{P}$ of $M(f_1,g_1)$ along $M(f_2, g_2)$ in $\hyp$ is left-monogamous.
 \end{restatable}
 
 \begin{cor}\label{cor:pusho}
-	$\lmo$ is closed in $\hyp$ under pushout along downward-closed morphisms.
+	$\lmo$ is closed in $\hyp$ under pushouts along downward-closed morphisms.
 \end{cor}
 
-We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$. We refer again the reader to \Cref{proof:regmon} for the proof.
+We can use \Cref{prop:pusho} to completely characterise regular monos in $\lmo$. We refer again the reader to \Cref{proof:regmon} for the proof.
 
 \begin{restatable}{lem}{regmono}\label{lem:regmon}
-	The following are equivalent for a monomorphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ in $\lmo$:
-	\begin{enumerate}
+	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be s monomorphism in $\lmo$.
+Then the following facts are equivalent
+ 	\begin{enumerate}
 		\item $(f,g)$ is a regular mono;
 		\item $(f,g)$ sends input nodes to input nodes;
 		\item $(f,g)$ is downward-closed
@@ -1402,7 +1407,7 @@ Our interest for hypergraphs stems from their use as a graphical representation 
 
 \Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
 
-\begin{prop}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following hold
+\begin{prop}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following facts hold
 	\begin{enumerate}
 		\item an arrow $(h,k)$ in $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective;
 		\item $\hyp_{\Sigma}$ is an adhesive category. 
@@ -1586,7 +1591,7 @@ We can list some other categorical properties of $\tg$ (see \cite[Sec.~5]{Castel
 
 
 \begin{prop}\label{prop:tlim}
-Let $\Sigma$ be an algebraic signature. Then the following hold
+Let $\Sigma$ be an algebraic signature. Then the following facts hold
 \begin{enumerate}
 	\item if  $(i,j)\colon \mathcal{H}\to \mathcal{G}$ is a mono from $(l, !_{V_\mathcal{G}})\colon \mathcal{G}\to \mathcal{G}^{\Sigma}$ to $(l', !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ in $\hyp_\Sigma$ and the latter is in $\tg$, then also the former is in $\tg$
 	\item $\tg$ has equalizers, binary products and pullbacks and they are created by $I_\Sigma$.
@@ -1713,7 +1718,7 @@ Forgetting the quotient part yields a functor $T\colon \EqHyp \to \hyp$ sending 
 A proof is in \Cref{proof:forghyp}.
 
 
-\begin{restatable}{prop}{fhyp}\label{prop:forghyp}  Consider the forgetful functor $T\colon \EqHyp \to \hyp$. Then the following hold
+\begin{restatable}{prop}{fhyp}\label{prop:forghyp}  Consider the forgetful functor $T\colon \EqHyp \to \hyp$. Then the following facts hold
 	\begin{enumerate}
 		\item$T$ is faithful;
 		\item $T$ has a left adjoint;
@@ -1725,7 +1730,7 @@ A proof is in \Cref{proof:forghyp}.
 	The functor $T$ preserves limits and colimits.
 \end{cor}
 
-From the previous results we get the following characterization of monos in $\EqHyp$.
+From the previous results we get the following characterisation of monos in $\EqHyp$.
 
 \begin{cor}\label{cor:mono1}
 	An arrow $(h_E, h_V, h_Q): \mathcal{G \to H}$ in $\EqHyp$ is a mono if and only if $(h_E, h_V)$ is a mono in $\hyp$.
@@ -1742,7 +1747,7 @@ Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
 	\begin{restatable}{lem}{comp}\label{prop:eqhyp_complete}
-		Consider a diagram $F\colon \D \to \EqHyp$ and let $(E_D, V_D, Q_D, s_D, t_D, q_D)$ be the image of an object $D$. Then the following hold
+		Consider a diagram $F\colon \D \to \EqHyp$ and let $(E_D, V_D, Q_D, s_D, t_D, q_D)$ be the image of an object $D$. Then the following facts hold
 		\begin{enumerate}
 			\item $F$ has a colimit, which is preserved by $K$;
 			\item consider a cone $(L, \{l_D\}_{D\in \D})$ limiting  for $K \circ F$ and let $((E, V), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ be one for $T\circ F$, then $F$ has a limit $(E, V, Q, s, t, q)$ and there is a mono $m\colon Q\mto L$ such that the diagram on the right commutes for every $D\in \D$.
@@ -1927,7 +1932,7 @@ $\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
 
 Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors,cor:eqade}, we can deduce the following.
 
-\begin{prop}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then the following hold
+\begin{prop}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then the following facts hold
 	\begin{enumerate}
 		\item $\EqHyp_\Sigma$ has all colimits and all connected limits, which are created by $V_{\Sigma}$;
 		\item $\EqHyp_\Sigma$ is $\pbc_\Sigma$-adhesive.
@@ -1937,7 +1942,7 @@ Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the label
 %In particular, $\EqHyp_\Sigma$ has all equalizers and pullbacks.
 Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following result. 
 
-\begin{cor}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$. Then the following hold
+\begin{cor}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$. Then the following facts hold
 	\begin{enumerate}
 		\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
 		\item $h$ is a regular mono if and only if $h_E$, $h_V$ and $h_Q$ are injective.
@@ -2074,7 +2079,7 @@ To prove some adhesivity property of $\egg_\Sigma$, we begin with the following 
 \Cref{rem:algegg} now implies at once the following result.
 
 \begin{prop}\label{prop:varie}
-	Let $\Sigma$ be an algebraic signature. Then the following hold
+	Let $\Sigma$ be an algebraic signature. Then the following facts hold
 	\begin{enumerate}
 		\item $\egg_\Sigma$ is equivalent to $\egg/R(\mathcal{G}^\Sigma)$;
 		\item there exists a functor $W_\Sigma \colon \egg_\Sigma\to \egg$ forgetting the labeling which creates all colimits, pullbacks and equalizers. 
@@ -2426,12 +2431,15 @@ This section contains the proofs which are omitted from the main body of the pap
 We begin recalling  a well-known fact about composition and decomposition of pullbacks \cite[Lem.~1.1]{lack2005adhesive}.
 
 \noindent
-\parbox{10cm}{
+\begin{minipage}[l]{.75\linewidth}
 \begin{lem}\label{lem:pb1}
 	Let $\X$ be a category, and consider the diagram aside, in which the right square is a pullback. Then the whole rectangle is a pullback if and only if the left square is one.
-\end{lem}} 
-	\parbox{4cm}{
-	\xymatrix@R=15pt{X \ar[d]_{a} \ar[r]_{f}& \ar[r]_{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]^{h}& B \ar[r]^{k}& C}}
+\end{lem}
+\end{minipage} \hfill
+\begin{minipage}[r]{.20\linewidth}
+	\xymatrix@R=15pt{X \ar[d]_{a} \ar[r]_{f}& \ar[r]_{g} Y \ar[d]^{b}& Z \ar[d]^{c}\\ A \ar[r]^{h}& B \ar[r]^{k}& C}
+\end{minipage}
+	
 \commentato{
 \begin{proof}
 	$(\Rightarrow)$ Let $q_1\colon Q\to Y$ and $q_2\colon Q\to A$ be two arrows such that $b\circ q_1=h\circ q_2$, if we compute we get
@@ -2496,7 +2504,7 @@ Since $h$ is mono this entails that
 and thus $a$ must coincide with $b$.
  
  		\item  
-		To prove the second half of the claim, we can notice that, by \Cref{lem:pb1},  two rectangles below are pullbacks
+		To prove the second half of the claim, we notice that, by \Cref{lem:pb1},  two rectangles below are pullbacks
 		\[\xymatrix@R=15pt{K_f \ar[r]^{\pi^2_f} \ar[d]_{\pi^1_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g} &  K_f \ar[r]^{\pi^1_f} \ar[d]_{\pi^2_f} & X \ar[r]^{h} \ar[d]_{f} & Z \ar[d]^{g}\\
 			X \ar[r]_{f}& Y \ar[r]_{t} & W & X \ar[r]_{f} & Y  \ar[r]_{t}& W}\]
 		
@@ -2530,12 +2538,17 @@ and thus $a$ must coincide with $b$.
 \begin{minipage}[r]{.38\linewidth}\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }
 \end{minipage}
 
-\noindent 
-\parbox{4cm}{\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }} \hfill \parbox{9cm}{\begin{proof}\label{mpo-proof}
-	By  \Cref{prop:regmono}  we know that the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the following cube the vertical faces are pullbacks.
+\begin{minipage}[l]{.60\linewidth}
+\begin{proof}\label{mpo-proof}
+	By  \Cref{prop:regmono}  we know that the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the cube aside the vertical faces are pullbacks.
 	The claim now follows from strict $\mathcal{M}$-adhesivity.
-	\end{proof}}
-		
+	\end{proof}
+\end{minipage}
+\hfill 
+\begin{minipage}[r]{.38\linewidth}		
+\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }
+\end{minipage}
+
 
 \commentato{
 \epic*
@@ -2624,17 +2637,20 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 
 To prove \Cref{prop:kerset} we need some results about pushouts and coproducts in $\Set$.
 
-\noindent 
-\parbox{11.7cm}{
+\begin{minipage}[l]{.75\linewidth}
 \begin{lem}\label{lem:po_set}
 Suppose that the square aside is a pushout, with $m\colon A\mto B$ an injection. Let $\iota_{m}\colon E\mto B$ be the inclusion of the complement of the image of $m$. Then $(D, \{n, h\circ \iota_m \})$ is a coproduct. In particular, $h\circ \iota_m$ is mono.
-\end{lem}}\hfill \parbox{2cm}{\vspace{0cm}\xymatrix@R=15pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}}
+\end{lem}
+\end{minipage}
+\hfill 
+\begin{minipage}[r]{.23\linewidth}
+\xymatrix@R=15pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}
+\end{minipage}
 \begin{proof}
-		 Let $f\colon E\to Z$ and $k\colon C\to Z$ be two arrows with the same codomain. By definition of complement and since $m$ is mono we know that $(B, \{m, \iota_m\})$ is a coproduct. Define $\phi\colon B\to Z$ as the unique arrow such that \[\phi\circ m=k\circ g \qquad \phi \circ \iota_m=f\] 
-		By the universal property of pushouts there is a unique arrow $\psi \colon D\to Z$ such that $\psi \circ n=k$ and $\psi \circ h=\phi$, thus 
+		 Let $f\colon E\to Z$ and $k\colon C\to Z$ be two arrows with the same codomain. By definition of complement and since $m$ is mono $(B, \{m, \iota_m\})$ is a coproduct. Let $\phi\colon B\to Z$ be the unique arrow such that \[\phi\circ m=k\circ g \qquad \phi \circ \iota_m=f\] 
+		By the universality of pushouts there is a unique arrow $\psi \colon D\to Z$ such that $\psi \circ n=k$ and $\psi \circ h=\phi$, thus 
 		\[
-		\psi \circ h\circ \iota_m =\phi \circ \iota_m=f\]
-		
+		\psi \circ h\circ \iota_m =\phi \circ \iota_m=f\]	
 To conclude we have to show that $\psi$ is the unique arrow $D\to Z$ such that $\psi \circ n =k$ and $\psi \circ h\circ \iota_m=f$. Let $\psi'\colon D\to Z$ be another arrow such that $\psi' \circ n=k$ and $\psi' \circ h\circ \iota_m=f$. Then we have
 		\[\psi'\circ h\circ m=\psi'\circ n\circ g=k\circ g=\phi \circ m =\psi \circ h\circ m \]
 	Since $m$ is mono then $\psi'\circ h=\psi \circ h$,  but $(D, \{n, h\})$ is a pushout and so $\psi'=\psi$. 
@@ -2686,6 +2702,7 @@ Extensivity and distributivity, moreover, yield the following fact.
 
 We are now ready to exploit the previous properties to prove \Cref{prop:kerset}. % as promised.
 
+\vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.6\linewidth}\mps*
 \end{minipage}
@@ -2714,7 +2731,7 @@ We are now ready to exploit the previous properties to prove \Cref{prop:kerset}.
 		If we compute we get
 		\[g\circ c \circ \iota' \circ h_0=d\circ g'\circ \iota' \circ h_0=d\circ t_1\circ l_0=n\circ t_2\circ l_0\]
 		
-		By hypothesis the bottom face of the given cube is a pullback, therefore there exists an arrow $u\colon T_0\to A$ such that 
+		The bottom face of the given cube is a pullback, thus there is an arrow $u\colon T_0\to A$ such that 
 		\[f\circ u=n\circ t_2\circ l_0 \qquad m\circ u=c\circ \iota'\circ h_0\]
 		
 	By \Cref{prop:isempty} we conclude that $T_0$ is empty. Therefore $l_1$ is an isomorphism and we have $n'\circ h_1\circ l^{-1}_1=t_1$. On the other hand
@@ -2751,7 +2768,7 @@ We focus now on $K_3$. By computing we get
 \[c\circ \iota'\circ p_3=\iota\circ w\circ p_3=\iota \circ w\circ q_3=c\circ \iota'\circ q_3\]
 Thus we get the dotted $\phi_3\colon K_3\to K_c$ in the diagram aside.}
 
-Moreover, $k_{g'}\circ \phi_3=j_3$ as shown by the following computation.
+Moreover, $k_{g'}\circ \phi_3=j_3$ as shown by the following computation
 \begin{align*}
 &(\pi^1_d, \pi^2_d)\circ k_{g'}\circ \phi_3=(g'\times g')\circ (\pi^1_c, \pi^2_c)\circ \phi_3=(g'\times g')\circ (\iota'\circ p_3, \iota'\circ q_3)\\=&((g'\circ \iota') \times (g'\circ \iota'))\circ (p_3, q_3)=(\pi^1_d, \pi^2_d)\circ j_3
 \end{align*}
@@ -2812,7 +2829,7 @@ As a next step, let us focus on $H_1$ and $H_2$. Two computations yield \small
  \end{split}\qquad \begin{split}
  (\pi^1_c, \pi^2_c)\circ \phi_3=&(\iota'\circ p_3, \iota' \circ q_3)\\=&
 (\iota'\times \iota')\circ (p_3, q_3)\\& \end{split}\] 
-Thus we get the dotted arrows $\alpha_3$ and $\beta_3$ which are one the inverse of the other. Indeed, on the one hand we have
+Thus we get the dotted arrows $\alpha_3$ and $\beta_3$, which are mutually inverse. Indeed, on the one hand
 \begin{align*}
 j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=j_3  \qquad 
 (p_3, q_3)\circ \alpha_3\circ \beta_3=(y_3, z_3)\circ \beta_3=(p_3, q_3) 
@@ -2832,7 +2849,7 @@ j_3\circ \alpha_3\circ \beta_3=k_{g'}\circ x_3\circ \beta_3=k_{g'} \circ \phi_3=
  \end{align*}
  On the other hand, we can conclude that $\theta \circ k_{g'}=\delta$ as wanted, since
  \[\theta \circ k_{g'}\circ x_0=\theta \circ k_{n'}\circ h_0=\gamma \circ h_0=\gamma \circ k_{f'}\circ h'_0=\delta \circ k_{m'}\circ h'_0=\delta \circ x_0 \]
- We are left with uniqueness. If $\theta'$ is another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k_{g'}= \delta$. If we compute we get
+ We are left with uniqueness. Let $\theta'$ be another arrow $K_d\to Z$ such that $\theta'\circ k_{n'}=\gamma$ and $\theta'\circ k_{g'}= \delta$. If we compute we get
  \[\theta'\circ j_3=\theta'\circ k_{g'}\circ \phi_3=\delta \circ \phi_3=\theta \circ j_3 \]
  We already know that $\theta'\circ k_{n'}=\theta \circ k_{n'}$, so the previous identity entails that $\theta =\theta'$.
 			 \qedhere 
