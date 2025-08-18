@@ -906,9 +906,7 @@ We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic20
 \begin{defi}
 	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be an hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{B}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$. If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$.
 	
-	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, $\outd{H}(v,e)$ is non-zero for only finitely many hyperedges and
-	\[\sum_{e\in E_{\mathcal{H}}} \outd{H}(v, e) = 1 - \chi_{\ino{H}}(v)\]
-	where $\chi_{\ino{H}}\colon V_{\mathcal{H}}\to 2$ is the characteristic function of $\ind{H}$.
+	A hypergraph $\mathcal{H}$ is \emph{left-monogamous} if for every $v$ in $V_\mathcal{H}$, there is at most one hyperedge $e_v$ such that $\outd{H}(v,e_v)$ is non-zero and, moreover, $\outd{H}(v,e_v) = 1$.
 	
 	We will denote by $\lmo$ the full subcategory of $\hyp$ given by left-monogamous hypergraphs. The corresponding inclusion functor will be denoted by $M$.
 \end{defi}
@@ -1031,33 +1029,33 @@ As shown by \Cref{rem:con}, $\lmo$ does not have all products, nonetheless left-
 	$\lmo$ is closed in $\hyp$ under binary products.
 \end{restatable}
 
-Combining \Cref{cor:eq} with \Cref{lem:pro} we get at once the following result.
+Pullbacks are built from products and equalizers, so  \Cref{cor:eq} and \Cref{lem:pro} give us the following.
 
-\begin{cor}	$\lmo$ is closed in $\hyp$ under pullbacks and equalizers.
+\begin{cor}	$\lmo$ is closed in $\hyp$ under pullbacks.
 \end{cor}
 
 
 \begin{defi}
-A morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ of hypergraphs  is \emph{downward closed} if  $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
+A morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ of hypergraphs  is \emph{downward-closed} if  $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
 \end{defi}
 
-Downward closedness is closely related to preservation of input nodes, as shown by the following (see \Cref{proof:inp} for the proof).
+downward-closedness is closely related to preservation of input nodes, as shown by the following (see \Cref{proof:inp} for the proof).
 
 \begin{restatable}{lem}{inp}\label{lem:inp}
 	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs with $\mathcal{H}$ left-monogamous, then the following are true:
 	\begin{enumerate}
-		\item if $g$ sends input nodes to input nodes, then $(f,g)$ is downward closed; 
-		\item if $g$ is mono and $(f,g)$ is downward closed, then $g$ sends input nodes to input nodes.
+		\item if $g$ sends input nodes to input nodes, then $(f,g)$ is downward-closed; 
+		\item if $g$ is mono and $(f,g)$ is downward-closed, then $g$ sends input nodes to input nodes.
 	\end{enumerate}
 \end{restatable}
 
-Downward closedness allows us to guarantee the existence of certains pushout in $\lmo$, as shown by the following proposition, whose proof is postponed to \Cref{proof:pusho}. 
+downward-closedness allows us to guarantee the existence of certains pushout in $\lmo$, as shown by the following proposition, whose proof is postponed to \Cref{proof:pusho}. 
 \begin{restatable}{prop}{pusho}\label{prop:pusho}
-Let $(f_1,g_1)\colon \mathcal{G}\to \mathcal{H}$ and $(f_2, g_2)\colon \mathcal{G}\to \mathcal{K}$ be two morphism in $\lmo$. If $M(f_1,g_1)$ is mono and downward closed, then the pushout $\mathcal{P}$ of $M(f_1,g_1)$ along $M(f_2, g_2)$ in $\hyp$ is left-monogamous.
+Let $(f_1,g_1)\colon \mathcal{G}\to \mathcal{H}$ and $(f_2, g_2)\colon \mathcal{G}\to \mathcal{K}$ be two morphism in $\lmo$. If $M(f_1,g_1)$ is mono and downward-closed, then the pushout $\mathcal{P}$ of $M(f_1,g_1)$ along $M(f_2, g_2)$ in $\hyp$ is left-monogamous.
 \end{restatable}
 
 \begin{cor}\label{cor:pusho}
-	$\lmo$ is closed in $\hyp$ under pushout along downward closed morphisms.
+	$\lmo$ is closed in $\hyp$ under pushout along downward-closed morphisms.
 \end{cor}
 
 We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$. We refer again the reader to \Cref{proof:regmon} for the proof.
@@ -1067,7 +1065,7 @@ We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$.
 	\begin{enumerate}
 		\item $(f,g)$ is a regular mono;
 		\item $(f,g)$ sends input nodes to input nodes;
-		\item $(f,g)$ is downward closed
+		\item $(f,g)$ is downward-closed
 	\end{enumerate}
 \end{restatable}
 
@@ -2964,18 +2962,10 @@ Therefore $(\phi,\id{V_\mathcal{G}})$ is an isomorphism of hypergraphs $\mathcal
 
 \elem*
 \begin{proof}\label{proof:elem}
-	$(1\Rightarrow 2)$ If $t_{\mathcal{H}}(e)$ has a repeated letter $v$, then $\outd{H}(v,e)$ is at least $2$ and $v\notin \ino{H}$. Thus $\mathcal{H}$ is not left-monogamous. Similarly, if $v$ appears in $t_{\mathcal{H}}(e)$ and $t_{\mathcal{H}}(e')$ for two different $e, e'\in E_{\mathcal{H}}$, then $v$ cannot be an input node and
-	\[\sum_{h\in E_{\mathcal{H}}} \outd{H}(v,h) \geq \outd{H}(v,e) + \outd{H}(v,e')=2 \]
-	violating left-monogamy.
+	$(1\Rightarrow 2)$ If $t_{\mathcal{H}}(e)$ has a repeated letter $v$, then $\outd{H}(v,e)$ is at least $2$, thus $\mathcal{H}$ is not left-monogamous.  By definition, if $v$ appears in $t_{\mathcal{H}}(e)$ and $t_{\mathcal{H}}(e')$ for $e\neq e'$, then $\mathcal{H}$ is not in $\lmo$,
+	\smallskip \noindent 	
 	
-	\smallskip \noindent 	$(2\Rightarrow 1)$ Let $v$ be an element of $V_{\mathcal{H}}$. We have two cases:
-	\begin{itemize}
-		\item $v$ is an input node. Then $\outd{H}(v,e)=0$ for every $e\in E_{\mathcal{H}}$ and $\chi_{\ino{H}}(e)=1$ and so
-		\[\sum_{e\in E_{\mathcal{H}}} \outd{H}(v,e) = 0 = 1 - \chi_{\ino{H}}(e) \]
-		\item $v$ is not an input node. Thus there exists $e\in E_{\mathcal{H}}$ such that $v$ appears in $t_{\mathcal{H}}(e)$. Since $t_{\mathcal{H}}(e)$ is disjoint from $t_{\mathcal{H}}(e')$ for every other $e'\in E_{\mathcal{H}}$, $e$ is the unique hyperedge such that $v$ is a letter of $t_{\mathcal{G}}(e)$. Moreover, $t_{\mathcal{H}}(e)$ has no repeated letter and so:
-		\[\sum_{e'\in E_{\mathcal{H}}} \outd{H}(v, e')= \outd{H}(v,e)=1 =1 - \chi_{\ino{H}}(e) \]
-	\end{itemize}
-	We can therefore conclude that $\mathcal{H}$ is left-monogamous.
+	$(2\Rightarrow 1)$ Let $v$ be an element of $V_{\mathcal{H}}$. Since $t_{\mathcal{H}}(e)$ has no repeated letter then $\outd{H}(v,e)\leq 1$ for every hyperedge $e$. On the other hand, since $t_{\mathcal{H}}(e)$ is disjoint from $t_{\mathcal{H}}(e')$ for every $e$ different from $e$, we also get that there is at most one hyperedge such that  $\outd{H}(v,e) = 1$.
 \end{proof}
 
 
@@ -3080,7 +3070,7 @@ Suppose that there exists $e \in E_{\mathcal{P}}$ such that $\outd{P}(v,e) > 1$ 
 	
 	Since $k_V$ is injective, then $t_{\mathcal{K}}(h)_n=t_{\mathcal{K}}(h)_m$ which contradicts the left monogamy of $\mathcal{K}$.
 	
-	\item $e=h_E(\iota_E(h))$ for some $h$ in the complement $A$ of the image of $f_1$.  Now, suppose that there exists $u \in V_{\mathcal{G}}$ such that $t_{\mathcal{H}}(h)_n = g_1(u) $ or $t_{\mathcal{H}}(h)_m = g_1(u)$. Since $(f_1, g_1)$ is downward closed in both cases we get $h_1\in E_{\mathcal{G}}$ such that $f_1(h_1)=h$, which is absurd. 
+	\item $e=h_E(\iota_E(h))$ for some $h$ in the complement $A$ of the image of $f_1$.  Now, suppose that there exists $u \in V_{\mathcal{G}}$ such that $t_{\mathcal{H}}(h)_n = g_1(u) $ or $t_{\mathcal{H}}(h)_m = g_1(u)$. Since $(f_1, g_1)$ is downward-closed in both cases we get $h_1\in E_{\mathcal{G}}$ such that $f_1(h_1)=h$, which is absurd. 
 	
 	Thus there exist $b_1, b_2\in B$ such that
 	\[t_{\mathcal{H}}(\iota_E(h))_n = \iota_V(b_1) \qquad  t_{\mathcal{H}}(\iota_E(h))_m = \iota_V(b_2)\] 
@@ -3106,13 +3096,13 @@ Suppose that there exists $e \in E_{\mathcal{P}}$ such that $\outd{P}(v,e) > 1$ 
 	\end{align*}
 	By the first point of \Cref{prop:regmono}, there exists $w\in V_{\mathcal{G}}$ such that 
 	\[t_{\mathcal{K}}(k)_n=g_2(w) \qquad t_{\mathcal{H}}(\iota_{E}(h))_m=g_1(w)\]
-Since $(f_1, g_1)$ is downward closed, the second equation above entails that there exist $a\in E_{\mathcal{G}}$ such that $\iota_E(h)=f_1(a)$. But this is absurd since coproducts in $\Set$ are disjoint.
+Since $(f_1, g_1)$ is downward-closed, the second equation above entails that there exist $a\in E_{\mathcal{G}}$ such that $\iota_E(h)=f_1(a)$. But this is absurd since coproducts in $\Set$ are disjoint.
 	
 	\item  $e_1=h_E(\iota_{E}(h))$ and $e_2=k_E(k)$ for some $k\in E_{\mathcal{K}}$ and $h\in A$. This is done as in the previous case swapping the role of $e_1$ and $e_2$.
 	
 	\item $e_1=h_E(\iota_E(h_1))$ and $e_2=h_E(\iota_E(h_1))$ for some $h_1$ and $h_2\in A$.  Suppose that there exist $x_1, x_2\in V_{\mathcal{G}}$ such that
 	\[t_{\mathcal{H}}(\iota_E(h_1))_n = g_1(x_1) \qquad t_{\mathcal{H}}(\iota_E(h_1))_m = g_1(x_2)\]
-	By downward closedness of $(f_1, g_1)$, these identities entails the existence of $a_1, a_2\in E_{\mathcal{G}}$ such that 
+	By downward-closedness of $(f_1, g_1)$, these identities entails the existence of $a_1, a_2\in E_{\mathcal{G}}$ such that 
 	\[\iota_E(h_1)=f_1(a_1) \qquad \iota_E(h_2 = f_1(a_2))\]
 	which is absurd. Thus there there exists $b_1, b_2\in B$ such that
 	\[t_{\mathcal{H}}(\iota_E(h_1))_n=\iota_V(b_1) \qquad t_{\mathcal{H}}(\iota_E(h_2))_m=\iota_V(b_2)\]
@@ -3127,23 +3117,38 @@ Since $(f_1, g_1)$ is downward closed, the second equation above entails that th
 
 \regmono*
 \begin{proof}\label{proof:regmon} $(1\Rightarrow 2)$ Let $(h_1, k_1)$ and $(h_2, k_2): \mathcal{H}\rightrightarrows \mathcal{K}$  be two arrows  equalized by $(f,g)$. Define:
-\[ E_{h_1, h_2}:= \{e\in E_{\mathcal{H}} \mid h_1(e) = h_2(e)\} \qquad E_{k_1, k_2}:= \{v\in V_{\mathcal{H}} \mid k_1(e) = k_2(e)\} \]	
 	
 	\noindent 
  \begin{minipage}[r]{.7\linewidth} 	\setlength{\parindent}{1.5em}
-Let $\iota_E\colon E_{h_1, h_2}\mto E_{\mathcal{H}} $ and $\iota_V\colon V_{k_1, k_2}\mto V_{\mathcal{H}}$ be the corresponding inclusions. Let $\mathcal{E}$ be  $(E_{h_1, h_2}, V_{k_1, k_2}, s_{\mathcal{E}}, t_{\mathcal{E}})$, where $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{k_1, k_2}$ are the unique one fitting in the diagram aside. By Propositions \ref{prop:fact}, \ref{prop:com} and \Cref{lim}, we know that $\mathcal{E}$ is an equalizer of $(h_1, k_1)$ and $(h_2, k_2)$ and so  there is an isomorphism $(\phi, \psi) \colon \mathcal{G}\to \mathcal{E}$ whose components fit in the diagram aside. 
-The thesis now follows since, by definition, $(\iota_E, \iota_V)$ sends input nodes to input nodes.
-		\end{minipage}\hfill 	 \begin{minipage}[r]{.25\linewidth}
-	 	\xymatrix@R=10pt{E_{\mathcal{G}} \ar[d]_{s_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{s_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{s_{\mathcal{H}}}\\V_{\mathcal{G}} \ar@{.>}[r]^-{\psi}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
-	 	\xymatrix@R=10pt{E_{\mathcal{G}} \ar[d]_{t_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}\\V_{\mathcal{G}} \ar@{.>}[r]^-{\psi}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+ \vspace{-.5cm}
+ 	\[ E_{h_1, h_2}:= \{e\in E_{\mathcal{H}} \mid h_1(e) = h_2(e)\} \qquad E_{k_1, k_2}:= \{v\in V_{\mathcal{H}} \mid k_1(v) = k_2(v)\} \]	
+ 	
+Let $\iota_E\colon E_{h_1, h_2}\mto E_{\mathcal{H}} $ and $\iota_V\colon V_{k_1, k_2}\mto V_{\mathcal{H}}$ be the corresponding inclusions. Let 
+$s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{k_1, k_2}$ be the unique arrows fitting in the diagram on the right and define $\mathcal{E}$ as $(E_{h_1, h_2}, V_{k_1, k_2}, s_{\mathcal{E}}, t_{\mathcal{E}})$. We know by  Propositions \ref{prop:fact}, \ref{prop:com} and \Cref{lim}, that  $(\mathcal{E}, (\iota_E, \iota_V))$, is an equalizer  for $(h_1, k_1)$ and $(h_2, k_2)$. Thus there is an isomorphism $(\phi, \psi) \colon \mathcal{G}\to \mathcal{E}$ whose components fit in the diagram aside and such that
+\[\iota_V\circ \psi = g \qquad \iota_E\circ \phi = f\] 
+		\end{minipage}\hfill 	 \begin{minipage}[r]{.3\linewidth}
+	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^{f} \ar[d]_{s_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{s_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{s_{\mathcal{H}}}\\V^\star_{\mathcal{G}} \ar@/_.3cm/@{>->}[rr]_{g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^{f} \ar[d]_{t_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}\\V^\star_{\mathcal{G}}\ar@/_.3cm/@{>->}[rr]_{g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
 	 \end{minipage}
 	
-	
+	Now, let $v\in V_{\mathcal{G}}$ be an input node and suppose that there exists $h\in E_{\mathcal{H}}$ such that $\outd{H}(g(v), h)>0$. For such an hyperedge. For such an hyperedge we have
+	\[\outd{K}(k_1(g(v)), h_1(h)) >0 \qquad \outd{K}(k_2(g(v)), h_2(h)) >0 \]
+	but we also have that 
+	\[k_1(g(v))=k_1(\iota_V(\psi(v))=k_2(\iota_V(\psi(v)))=k_2(g(v))\]
+	and so, by left-monogamy of $\mathcal{K}$, $h$ must belong to $E_{h_1, h_2}$. Thus there exists $e\in E_{\mathcal{G}}$ such that $\iota_E(\phi(e))=h$ and such that $\psi(e)$ is a letter of $t_{\mathcal{E}}(\phi(e))$. But then:
+	\[\outd{G}(v, e) = \outd{E}(\psi(v), \phi(e)) > 0\]
+	contradicting the fact that $v$ is an input node.
+
 	\smallskip \noindent
 	$(2\Rightarrow 3)$ This follows at once from \Cref{lem:inp}.
 	
 	\smallskip \noindent
-	$(3\Rightarrow 1)$
+	$(3\Rightarrow 1)$ Let us consider the pushout of $(f,g)$ along itself in $\hyp$ as depicted by the first square below. By \Cref{prop:com} and \Cref{colim} we know that the other two squares are pushouts too.
+	\[\xymatrix@C=35pt{\mathcal{G} \ar[r]^{(f,g)}  \ar[d]_{(f,g)}& \mathcal{H}\ar[d]^{(p_1, p_2)} & E_{\mathcal{G}} \ar@{>->}[d]_{f}\ar@{>->}[r]^{f} & E_{\mathcal{H}} \ar[d]^{p_1}& V_{\mathcal{G}}\ar@{>->}[r]^{g} \ar@{>->}[d]^{g} & V_{\mathcal{H}} \ar[d]^{p_2}\\\mathcal{H} \ar[r]_{(q_1, q_2)} & \mathcal{P} & E_{\mathcal{H}} \ar[r]_{q_1}& E_{\mathcal{P}} & V_{\mathcal{H}}\ar[r]_{q_2} & V_{\mathcal{P}}}\]
+	
+	 By \Cref{cor:monhyper} we also know that $f$ and $g$ are monos in $\Set$ and so, by the dual of \Cref{prop:reg_epi_coeq} $(E_\mathcal{G}, f)$ and $(V_{\mathcal{G}}, g)$ are equalizers for, respectively, $p_1, q_1\colon E_{\mathcal{H}}\rightrightarrows E_{\mathcal{P}}$ and $p_2, q_2\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{P}}$.
+	
+	By \Cref{prop:com} and \Cref{lim} this entails that $(\mathcal{G}, (f,g))$ is the equalizer in $\hyp$ of $(p_1, p_2)$ and $(q_1, q_2)$. By \Cref{prop:pusho}, $\mathcal{P}$ is left-monogamous, thus by \Cref{cor:eq} $(f,g)$ is regular mono as wanted.
 \end{proof} 
 
 \subsubsection{Separated hypergraphs - proofs}
