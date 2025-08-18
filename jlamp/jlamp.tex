@@ -223,7 +223,7 @@
 \renewtheorem{defi}[thm]{Definition}
 
 
-\title{EGGs are adhesive!}
+\title{EGGs are adhesive!\\ An algebraic account of equality saturation}
 
 \begin{document}
 
@@ -252,17 +252,17 @@
 \begin{abstract}
 The use of rewriting-based visual formalisms is on the rise. 
 %
-In the formal methods community, this is due also to the introduction of adhesive
+In the formal methods community, this is partly due to the introduction of adhesive
 categories, where most properties of classical approaches to graph transformation, 
 such as those on parallelism and confluence, can be rephrased and proved in a general and 
 uniform way.
 %
 E-graphs (EGGs) are a formalism for program optimisation 
 via an efficient implementation of equality saturation. 
-In short, EGGs can be  defined as (acyclic) term graphs with an additional notion of 
+In short, EGGs are (acyclic) term graphs with an additional
 equivalence on nodes that is closed under the operators of the signature.
 Instead of replacing the components of a program, the optimisation step 
-is performed by adding new components and linking them to 
+iadds new components and links them to 
 the existing ones via an equivalence relation, until an optimal program is reached.
 %
 This work describes EGGs via adhesive categories. 
@@ -295,9 +295,9 @@ over and over again for each different formalism at hand, %let it be either xxx 
 despite the obvious similarity of the procedure.
 %
 Adhesive categories provides such a disparate set of formalisms with a common abstract framework 
-where many of these general results can be recast and uniformly proved once and for all.
+where many general results can be recast and uniformly proved once and for all.
  
-\vspace{.1cm}
+%\vspace{.1cm}
 \noindent
 \begin{minipage}[l]{.78\linewidth}
 		\setlength{\parindent}{1.5em}
@@ -322,6 +322,8 @@ to $H$ is then given by the diagram aside, whose halves are pushouts.
  %     & J \ar@{->}[ul] \ar@{->}[u]|{k} \ar@{->}[ur]
  %   }
   \end{minipage}
+  \vspace{.01cm}
+
 
 Thus, $L$ and $R$ are the left- and right-hand side of the rule, respectively, while $K$ witnesses those parts that must 
 be present for the rule to be executed, yet that are not affected by the rule itself.
