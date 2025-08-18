@@ -825,17 +825,17 @@ A rich source of example is given by \emph{monoidal signatures}.
 			\node[style=none] (constlab) at (-1.8, -0.9){$a$};
 			\node[style=none] (constattach) at (-1.6, -0.4){};
 			
-			\node[style=medium box] (times) at (0, 1.8) {};
-			\node[style=none] (timeslab) at (0, 2.6) {$*$};
-			\node[style=none] (timesin1) at (-0.3, 2.1) {};
-			\node[style=none] (timesin2) at (-0.3, 1.5) {};
-			\node[style=none] (timesout) at (0.2, 1.8){};
+			\node[style=medium box] (times) at (0, 1.9) {};
+			\node[style=none] (timeslab) at (0, 2.7) {$*$};
+			\node[style=none] (timesin1) at (-0.3, 2.2) {};
+			\node[style=none] (timesin2) at (-0.3, 1.6) {};
+			\node[style=none] (timesout) at (0.2, 1.9){};
 			
-			\node[style=medium box] (div) at (0, -1.8) {};
-			\node[style=none] (divlab) at (0, -2.6) {$/$};
-			\node[style=none] (divin1) at (-0.3, -2.1) {};
-			\node[style=none] (divin2) at (-0.3, -1.5) {};
-			\node[style=none] (divout) at (0.2, -1.8){};
+			\node[style=medium box] (div) at (0, -1.9) {};
+			\node[style=none] (divlab) at (0, -2.7) {$/$};
+			\node[style=none] (divin1) at (-0.3, -2.2) {};
+			\node[style=none] (divin2) at (-0.3, -1.6) {};
+			\node[style=none] (divout) at (0.2, -1.9){};
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer}
@@ -884,10 +884,10 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 
 \Cref{lem:equi} not only entails that $\hyp$ is complete, but it provides us with a recipe to compute limits, even if they are not connected.
 	\begin{cor}\label{lem:prod}
-		Let $F\colon \D\to \hyp $ be a  discrete diagram and let $F(D)$ be $(E_D, V_D, s_D,  t_D)$. Suppose that $(V, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
+		Let $F\colon \D\to \hyp $ be a  discrete diagram and let $F(D)$ be $(E_D, V_D, s_D,  t_D)$. Suppose that $(V_{\mathcal{L}}, \{\pi^D_V\}_{D\in \D})$ is the product of $\{V_D\}_{D\in \D}$. For every $D\in \D$ and $(k,l)\in \mathbb{N}\times \mathbb{N}$, define
 		\[E^D_{k,l}:=\{e\in E_D \mid \lgh_{V_D}(s_{D}(e)) = k \text{ and } \lgh_{V_D}(t_{D}(e)) = l \}\]
-		with the canonical inclusion $i^D_{k,l}\colon E^D_{k,l}\mto E_D$.	Now, consider the product $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ and take the coproduct $(E_{\mathcal{L}}, \{\iota_{k,l}\}_{k,l \in \mathbb{N}})$ of the family $\{E_{k,l}\}_{k,l \in \mathbb{N}}$. Then there are arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon E_{\mathcal{L}}\rightrightarrows V^\star$ and $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ fitting in the diagram below and making $((E_{\mathcal{L}}, V, s_{\mathcal{L}}, t_{\mathcal{L}}), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ a limit for $F$.
-		\[\xymatrix@R=10pt@C=30pt{E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D & E_{k,l} \ar[r]^{\pi^D_{k,l}} \ar[dd]_{\iota_{k,l}} & E^{D}_{k,l} \ar[dd]^{i^D_{k,l}}\\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & &E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & \\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V^\star \ar[uu]_{(\pi^D_V)^\star} & E_{\mathcal{L}} \ar@{.>}[r]_{\pi^D_E} & E_D}
+		with the canonical inclusion $i^D_{k,l}\colon E^D_{k,l}\mto E_D$.	Now, consider the product $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ and take the coproduct $(E_{\mathcal{L}}, \{\iota_{k,l}\}_{k,l \in \mathbb{N}})$ of the family $\{E_{k,l}\}_{k,l \in \mathbb{N}}$. Then there are arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon E_{\mathcal{L}}\rightrightarrows V_{\mathcal{L}}^\star$ and $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ fitting in the diagram below and making $((E_{\mathcal{L}}, V_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}}), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ a limit for $F$.
+		\[\xymatrix@R=10pt@C=30pt{E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D & E_{k,l} \ar[r]^{\pi^D_{k,l}} \ar[dd]_{\iota_{k,l}} & E^{D}_{k,l} \ar[dd]^{i^D_{k,l}}\\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & &E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}}  & & \\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V_{\mathcal{L}}^\star \ar[uu]_{(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V_{\mathcal{L}}^\star \ar[uu]_{(\pi^D_V)^\star} & E_{\mathcal{L}} \ar@{.>}[r]_{\pi^D_E} & E_D}
 		\]
 	\end{cor}
 
@@ -900,7 +900,7 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 We are now going to introduce three classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
 
 
-\paragraph{Left-monogamous hypergraphs}
+\paragraph{Left-monogamous hypergraphs}\label{par:lm}
 We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{corradini2005term,Plu:TGR-ENTCS}.  
 
 \begin{defi}
@@ -914,7 +914,7 @@ We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic20
 \end{defi}
 
 
-\begin{rem}In \cite{fritz2023free} the definition of left-monogamous hypergraphs includes the request of \emph{acyclicity}.  We prefer to deal with acyclicity separately, see Paragraph \ref{sub:ac}.
+\begin{rem}Notice that our definition, unlike the one of \cite{fritz2023free}, allows for the presence of cycles in left-monogamous hypergraphs.
 \end{rem}
 
 Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do not share any letter. We can exploit this notion to rephrase the previous definition in a more elementary way (see \Cref{proof:elem} for a proof).
@@ -1038,35 +1038,44 @@ Combining \Cref{cor:eq} with \Cref{lem:pro} we get at once the following result.
 
 
 \begin{defi}
-	classe di morfismi
+A morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ of hypergraphs  is \emph{downward closed} if  $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
 \end{defi}
 
-\begin{prop}\label{prop:pusho}
-pushout
-\end{prop}
-\begin{proof}
-	contenuto...
-\end{proof}
+Downward closedness is closely related to preservation of input nodes, as shown by the following (see \Cref{proof:inp} for the proof).
 
-We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$.
-
-\begin{restatable}{lem}{regmono}\label{lem:regmon}
-	The following are equivalent for a morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ in $\lmo$:
+\begin{restatable}{lem}{inp}\label{lem:inp}
+	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs with $\mathcal{H}$ left-monogamous, then the following are true:
 	\begin{enumerate}
-		\item $(f,g)$ is a regular mono;
-		\item $(f,g)$ is a mono and sends input nodes to input nodes;
-		\item $(f,g)$ is a mono and for every $h\in E_{\mathcal{H}}$, if $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
+		\item if $g$ sends input nodes to input nodes, then $(f,g)$ is downward closed; 
+		\item if $g$ is mono and $(f,g)$ is downward closed, then $g$ sends input nodes to input nodes.
 	\end{enumerate}
 \end{restatable}
 
-Putting together \Cref{thm:slice-functors} with \Cref{prop:pusho}  and \Cref{lem:regmon}, we get the following.
+Downward closedness allows us to guarantee the existence of certains pushout in $\lmo$, as shown by the following proposition, whose proof is postponed to \Cref{proof:pusho}. 
+\begin{restatable}{prop}{pusho}\label{prop:pusho}
+Let $(f_1,g_1)\colon \mathcal{G}\to \mathcal{H}$ and $(f_2, g_2)\colon \mathcal{G}\to \mathcal{K}$ be two morphism in $\lmo$. If $M(f_1,g_1)$ is mono and downward closed, then the pushout $\mathcal{P}$ of $M(f_1,g_1)$ along $M(f_2, g_2)$ in $\hyp$ is left-monogamous.
+\end{restatable}
+
+\begin{cor}\label{cor:pusho}
+	$\lmo$ is closed in $\hyp$ under pushout along downward closed morphisms.
+\end{cor}
+
+We can use \Cref{prop:pusho} to completely characterize regular monos in $\lmo$. We refer again the reader to \Cref{proof:regmon} for the proof.
+
+\begin{restatable}{lem}{regmono}\label{lem:regmon}
+	The following are equivalent for a monomorphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ in $\lmo$:
+	\begin{enumerate}
+		\item $(f,g)$ is a regular mono;
+		\item $(f,g)$ sends input nodes to input nodes;
+		\item $(f,g)$ is downward closed
+	\end{enumerate}
+\end{restatable}
+
+Putting together \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:regmon}, we get the following.
 
 \begin{cor}$\lmo$ is quasiadhesive.
 \end{cor}
 
-
-
-\paragraph{Acyclic hypergraphs}\label{sub:ac}
 
 \paragraph{Separated hypergraphs}
 
@@ -2951,6 +2960,7 @@ Therefore $(\phi,\id{V_\mathcal{G}})$ is an isomorphism of hypergraphs $\mathcal
 	\end{itemize}
 \end{proof}
 
+\subsubsection{Left-monogamous hypergraphs - proofs}
 
 \elem*
 \begin{proof}\label{proof:elem}
@@ -2984,12 +2994,12 @@ Therefore $(\phi,\id{V_\mathcal{G}})$ is an isomorphism of hypergraphs $\mathcal
 		\xymatrix@C=40pt@R=18pt{E^{\mathcal{G}}_v \ar@{>->}[d]_{\iota^{\mathcal{G}}_v} \ar@{.>}[r]_{f_v}& E^{\mathcal{H}}_{g(v)} \ar@{>->}[d]^{\iota^{\mathcal{H}}_v} \\ E_{\mathcal{G}}\ar@{>->}[r]^{f} & E_{\mathcal{H}}}
 	\end{minipage}
 
-	Given an hyperedge $e$, if $t_{\mathcal{G}}(e)$ has a repeated letter, then there are indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $(t_{\mathcal{G}}(e))_i=(t_{\mathcal{G}}(e) )_k$ and so
-\[(t_{\mathcal{H}}(f(e)))_k=g^\star(t_{\mathcal{G}}(e))_k=g((t_{\mathcal{G}}(e))_k)=g((t_{\mathcal{G}}(e))_i)=g^\star(t_{\mathcal{G}}(e))_i=(t_{\mathcal{H}}(f(e)))_i \]
+	Given an hyperedge $e$, if $t_{\mathcal{G}}(e)$ has a repeated letter, then there are two different indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $t_{\mathcal{G}}(e)_i=t_{\mathcal{G}}(e)_k$ and so:
+\[t_{\mathcal{H}}(f(e))_k=g^\star(t_{\mathcal{G}}(e))_k=g(t_{\mathcal{G}}(e)_k)=g(t_{\mathcal{G}}(e)_i)=g^\star(t_{\mathcal{G}}(e))_i=t_{\mathcal{H}}(f(e))_i \]
 But $\mathcal{H}$ is left-monogamous and thus, by \Cref{rem:elem}, $f(e)$ cannot have a repeated letter.
 
-	Moreover, let $e$ and $e'$ be two non-disjoint hyperedges, i.e.~there are indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $(t_{\mathcal{G}}(e))_i=(t_{\mathcal{G}}(e') )_k$. Then:
-\[(t_{\mathcal{H}}(f(e')))_k=g^\star(t_{\mathcal{G}}(e'))_k=g((t_{\mathcal{G}}(e'))_k)=g((t_{\mathcal{G}}(e))_i)=g^\star(t_{\mathcal{G}}(e))_i=(t_{\mathcal{H}}(f(e)))_i \]
+	Moreover, let $e$ and $e'$ be two non-disjoint hyperedges, i.e.~there are indexes $1\leq i \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e)})$, $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{L}(e')}) $ such that $t_{\mathcal{G}}(e)_i=t_{\mathcal{G}}(e') _k$. Then:
+\[t_{\mathcal{H}}(f(e'))_k=g^\star(t_{\mathcal{G}}(e'))_k=g(t_{\mathcal{G}}(e')_k)=g(t_{\mathcal{G}}(e)_i)=g^\star(t_{\mathcal{G}}(e))_i=t_{\mathcal{H}}(f(e))_i \]
 
 	Since $\mathcal{H}$ is left-monogamous then $f(e)=f(e')$ and so, by injectivity of $f$, $e = e'$. Thus every hyperedge $e$ is disjoint from any other $e'\in E_{\mathcal{G}}$. We can conclude appealing to \Cref{rem:elem}.
 \end{proof}
@@ -2998,80 +3008,145 @@ But $\mathcal{H}$ is left-monogamous and thus, by \Cref{rem:elem}, $f(e)$ cannot
 \begin{proof}\label{proof:pro}
 	Consider two hypergraphs $\mathcal{G}_0$ and $\mathcal{G}_1$ and their product $(\mathcal{P}, \{(\pi^E_{\mathcal{G}_i}, \pi^V_{\mathcal{G}_i})\}_{i=0}^1)$.  By \Cref{lem:prod} we know that $(V_{\mathcal{P}},  \{ \pi^V_{\mathcal{G}_i}\}_{i=0}^1))$ is a product
 	 and the diagrams below on the right commute for $i\in \{0, 1\}$.
-	 \begin{minipage}[r]{.5\linewidth}
-	 	contenuto...
+	
+	 \noindent 
+	 \begin{minipage}[r]{.57\linewidth}	\setlength{\parindent}{1.5em}
+	 Let $e$ be an element of $E_{\mathcal{P}}$, we know that there exists $h$ in $E_{k,l}$ and $k, l\in \mathbb{N}$ such that $\iota_{k,l }(h)=e$. 
+	 
+	 Suppose that there exists $1\leq n, m\leq l$, with $n\neq m$ such that 
+	 \[t_{\mathcal{P}}(e)_n =t_{\mathcal{P}}(e)_m\]
+	 then, for every $i\in \{0,1\}$, we have:
 	 \end{minipage}\hfill 
-	 \begin{minipage}[l]{.3\linewidth}
-\xymatrix@R=10pt@C=30pt{  E^i_{k,l} \ar@{>->}[r]^{\iota^i_{k,l}} & E_{\mathcal{G}_i} \ar[r]^{t_{\mathcal{G}_i}} & V^\star_{\mathcal{G}_i} & E_{k,l} \ar[r]^{\pi^i_{k,l}} \ar@{>->}[dd]_{\iota_{k,l}} & E^{i}_{k,l} \ar@{>->}[dd]_{\iota^i_{k,l}}\\ E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^i_{k,l}}  & & \\   E_{\mathcal{P}}   \ar@{>}[rr]_{t_\mathcal{P}}& &V^\star \ar[uu]^{(\pi^V_{\mathcal{G}_i})^\star} & E_{\mathcal{P}} \ar@{>}[r]_{\pi^E_{\mathcal{G}_i}} & E_{\mathcal{G}_i}}
+	 \begin{minipage}[l]{.25\linewidth}
+\xymatrix@R=10pt@C=20pt{  E^i_{k,l} \ar@{>->}[r]^{\iota^i_{k,l}} & E_{\mathcal{G}_i} \ar[r]^{t_{\mathcal{G}_i}} & V^\star_{\mathcal{G}_i} & E_{k,l} \ar[r]^{\pi^i_{k,l}} \ar@{>->}[dd]_{\iota_{k,l}} & E^{i}_{k,l} \ar@{>->}[dd]_{\iota^i_{k,l}}\\ E_{k,l} \ar@{>->}[d]^{\iota_{k,l}} \ar[u]_{\pi^i_{k,l}}  & & \\   E_{\mathcal{P}}   \ar@{>}[rr]_{t_\mathcal{P}}& &V_{\mathcal{P}}^\star \ar[uu]^{(\pi^V_{\mathcal{G}_i})^\star} & E_{\mathcal{P}} \ar@{>}[r]_{\pi^E_{\mathcal{G}_i}} & E_{\mathcal{G}_i}}
 	 \end{minipage}
+	 \begin{align*}
+	& t_{\mathcal{G}_i}( \iota^i_{k,l}(\pi^i_{k,l}(h)))_n = ((\pi^V_{\mathcal{G}_i})^\star(t_{\mathcal{P}}(\iota_{k,l }(h))))_n= \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(\iota_{k,l }(h))_n)=  \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(e)_n)\\ =& \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(e)_m)=\pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(\iota_{k,l }(h))_m) =((\pi^V_{\mathcal{G}_i})^\star(t_{\mathcal{P}}(\iota_{k,l }(h))))_m = t_{\mathcal{G}_i}( \iota^i_{k,l}(\pi^i_{k,l}(h)))_m
+	 \end{align*}
+	But this contradicts the the left-monogamy of $\mathcal{G}_0$ and $\mathcal{G}_1$.
 	
-	
-	Moreover, we also know that $(E_{\mathcal{P}}, \iota_{}$
+	Now, let now $e$ and $e'$ be two non-disjoint hyperedges. We know that $e=\iota_{k,l}(h)$ and $e'=\iota_{k',l'}(h')$ for some $h\in E_{k,l}$ and $h'\in E_{k', l'}$ and that there exist $1\leq n \leq l$ and $1\leq m \leq l'$ such that $t_{\mathcal{P}}(e)_n =t_{\mathcal{P}}(e')_m$.
+	Computing we get:
+\begin{align*}
+& t_{\mathcal{G}_i}( \iota^i_{k,l}(\pi^i_{k,l}(h)))_n = ((\pi^V_{\mathcal{G}_i})^\star(t_{\mathcal{P}}(\iota_{k,l }(h))))_n= \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(\iota_{k,l }(h))_n)=  \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(e)_n)\\ =& \pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(e')_m)=\pi^V_{\mathcal{G}_i}(t_{\mathcal{P}}(\iota_{k',l' }(h'))_m) =((\pi^V_{\mathcal{G}_i})^\star(t_{\mathcal{P}}(\iota_{k',l' }(h'))))_m = t_{\mathcal{G}_i}( \iota^i_{k',l'}(\pi^i_{k',l'}(h')))_m
+\end{align*}
+	By left-monogamy this entails that $\iota^i_{k,l}(\pi^i_{k,l}(h)) = \iota^i_{k',l'}(\pi^i_{k',l'}(h'))$. Since coproducts in $\Set$ are disjoint then $k= k'$ and $l=l'$ and since $\iota^i_{k,l}$ is injecitve we get:
+	\[\pi^0_{k,l}(h)= \pi^0_{k,l}(h') \qquad \pi^1_{k,l}(h)= \pi^1_{k,l}(h')\]
+	Thus $h=h'$ and $e =e'$ too. We conclude by \Cref{rem:elem}.
+\end{proof}
+
+\inp*
+\begin{proof}\label{proof:inp}
+	\begin{enumerate}
+		\item Suppose that $v\in V_{\mathcal{G}}$ is a node such that $g(v)$ is a letter of $t_{\mathcal{H}}(h)$ for some hyperedge $h$, hence $g(v)$ is not an input node and so $v$ does not belong to $\ino{G}$. Therefore there is $k\in E_{\mathcal{G}}$ such that $v$ occurs in $t_{\mathcal{G}}(k)$. But then $\outd{H}(g(v), f(k))\neq 0$ and so, by left-monogamy, $f(k)$ must coincide with $h$ as wanted.
+		\item  Let $v$ be an input node and suppose that there is $h\in E_{\mathcal{H}}$ such that $g(v)$ appears in $t_{\mathcal{H}}(h)$. Thus there is $k\in E_{\mathcal{G}}$ such that $f(k)=h$. Now, let $1\leq n\leq \lgh_{V_{\mathcal{H}}}(h)$ be such that $t_{\mathcal{H}}(h)_n=g(v)$, then, by \Cref{rem:le}, $\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(k))=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{H}}(h))$ and:
+		\[g(t_{\mathcal{G}}(k)_n)=g^\star(t_{\mathcal{G}}(k)_n)=(g^\star(t_{\mathcal{G}}(k)))_n=t_{\mathcal{H}}(f(k))_n = t_{\mathcal{H}}(h)_n=g(v)\]
+		By injectivity of $g$ we have $t_{\mathcal{G}}(k)_n=g(v)$, contradicting the assumption that $v$ is an input node.	  \qedhere 
+	\end{enumerate}
 \end{proof}
 
 
-\iffalse 
-\produ*
-\begin{proof}\label{proof:produ}
-	Let us build the wanted arrows. The existence of  $\pi^D_E\colon E_{\mathcal{L}}\to E_D$ follows at once from the universal property of coproducts. For the other two,  recall that by the first point of \Cref{prop:fact}  we know that $(V^\star, \{v_n\}_{n\in \mathbb{N}})$ and $(V_D^\star, \{v_{D, n}\}_{n\in \mathbb{N}})$ are coproducts for, respectively, $\{V^n\}_{n\in \mathbb{N}}$ and $\{V^n_D\}_{n\in \mathbb{N}}$. 
-		
-		\noindent
-	\begin{minipage}[r]{.6\linewidth}
-		\setlength{\parindent}{1.5em}
-
-		\medskip
-		Now,  by \Cref{rem:len} the bottom halves of the two diagrams aside are pullbacks while their outer boundaries are commutative by the definition of $E^D_{k,l}$. The universal property of pullbacks now yields us the two dotted arrows $s^{k,l}_{D}\colon E_{k,l} \to V^k_D$ and  $t^{k,l}_{D}\colon E_{k,l} \to V^l_D$. Since limits commute with limits  $(V^n, \{\pi^n_D\}_{D\in \D})$ is a product for the family $\{V_D^n\}_{D\in \D}$ and so we also get $s^{k,l}_{\mathcal{L}}\colon E_{k,l} \to V^k_D$ and  $t^{k,l}_{\mathcal{L}}\colon E_{k,l} \to V^l_D$ fitting in the diagrams below.
-	\end{minipage}\hfill 
-	\begin{minipage}[l]{.3\linewidth}
-	\xymatrix@R=15pt{ E^D_{k,l} \ar@{.>}[d]_{s^{k,l}_D}\ar@/^.5cm/[dd]^(.3){!_{E^D_{k,l}}}|(.52)\hole \ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[d]^{s_D} &  E^D_{k,l} \ar@{.>}[d]_{t^{k,l}_D} \ar@{>->}[r]^{i^D_{k,l}} \ar@/^.5cm/[dd]^(.3){!_{E^D_{k,l}}}|(.52)\hole& E_D \ar[d]^{t_D}\\ V^k_D \ar@{>->}[r]_(.55){v_{D, k}} \ar[d]_{!_{V^k_D}}&  V_D^\star  \ar[d]^{\lgh_{V_D}}  & V^l_D \ar[d]_{!_{V^l_D}} \ar@{>->}[r]_(.55){v_{D, l}} & V_D^\star \ar[d]^{\lgh_{V_D}}\\ 1 \ar@{>->}[r]_{\delta_k}& \mathbb{N}  &1 \ar@{>->}[r]_{\delta_l} & \mathbb{N}}
-	\end{minipage}
-
-			\[\xymatrix@R=15pt@C=35pt{E^D_{k,l} \ar[drr]^(.6){s^{k,l}_D}\ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{s_D} & V^\star_D  &E^D_{k,l} \ar[drr]^(.6){s^{k,l}_D}\ar@{>->}[r]^{i^D_{k,l}} & E_D \ar[r]^{t_D} & V^\star_D \\  E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}} \ar@{.>}[r]^{s^{k,l}_\mathcal{L}} & V^k \ar@/_.3cm/@{>->}[dr]_(.3){v_k} \ar[r]_{\pi^k_D}& V^k_D \ar@{>->}[u]^{v^D_k}&E_{k,l} \ar@{>->}[d]_{\iota_{k,l}} \ar[u]^{\pi^D_{k,l}} \ar@{.>}[r]^{s^{k,l}_\mathcal{L}} & V^l \ar@/_.3cm/@{>->}[dr]_(.3){v_l} \ar[r]_{\pi^l_D}& V^l_D \ar@{>->}[u]^{v^D_l}\\  E_{\mathcal{L}}   \ar@{.>}[rr]_{s_\mathcal{L}}& &V^\star \ar@/_.5cm/[uu]_(.35){(\pi^D_V)^\star} &  E_{\mathcal{L}}   \ar@{.>}[rr]_{t_\mathcal{L}}& &V^\star \ar@/_.5cm/[uu]_(.35){(\pi^D_V)^\star}}
-	\]
+\pusho*
+\begin{proof}\label{proof:pusho}
+	By \Cref{prop:com} and \Cref{colim}, we know that there pushout squares in $\catname{Set}$ as the ones aside. 
 	
-	But then we get the existence of the dotted arrows $s_{\mathcal{L}}, t_{\mathcal{L}}\colon \rightrightarrows E_{\mathcal{L}}\to V^\star$ in the bottom row of the two previous diagrams.
-	
-	As a next step,  we have to verify that $(\pi^D_E, \pi^D_V)$ is really a morphism of $\hyp$ for every $D\in \D$. To do this it is enough to compute:
-\begin{gather*}
-	(\pi^D_V)^\star \circ s_{\mathcal{L}}\circ \iota_{k,l} = (\pi^D_V)^\star\circ s^{k,l}_{\mathcal{L}} \circ \pi^D_{k,l}=s_D\circ i^D_{k,l}\circ \pi^D_{k,l} = s_D\circ i^D_{k,l}\circ \pi^D_{k,l}
-	=s_D\circ \pi^D_E \circ \iota_{k,l} \\
-		(\pi^D_V)^\star\circ t_{\mathcal{L}}\circ \iota_{k,l} = (\pi^D_V)^\star\circ t^{k,l}_{\mathcal{L}} \circ \pi^D_{k,l}=t_D\circ i^D_{k,l}\circ \pi^D_{k,l} = t_D\circ i^D_{k,l}\circ \pi^D_{k,l}
-	=t_D\circ \pi^D_E \circ \iota_{k,l} 
-\end{gather*}	
-
-Let now $(\mathcal{G}, \{(h_{1,D}, h_{2,D})\}_{D\in \D})$ be a cone over $F$. Since $(V, \{\pi^D_V\}_{D\in \D})$ is limiting we obtain an arrow $h\colon V_{\mathcal{G}}\to V$.  Now, let 
-\[E_{k,l}^{\mathcal{G}}:=\{	E^{\mathcal{G}}_{k,l}:=\{e\in E_{\mathcal{G}} \mid \lgh_{V_{\mathcal{G}}}(s_{{\mathcal{G}}}(e)) = k \text{ and } \lgh_{V_{\mathcal{G}}}(t_{{\mathcal{G}}}(e)) = l \}\]
-
-\noindent 
-\begin{minipage}[l]{.72\linewidth}
+	\noindent\begin{minipage}[l]{.65\linewidth}
 			\setlength{\parindent}{1.5em}
-			
-Let $i^{\mathcal{G}}_{k,l}\colon E^{\mathcal{G}}_{k,l} \mto E_{\mathcal{G}} $ be the inclusion. By definition of $E^{D}_{k,l}$ and $E^{\mathcal{G}}_{k,l}$, the two squares aside are pullback.  By extensivity, this entails that $(E_{\mathcal{G}}, \{i^\mathcal{G}_{k,l}\})$ is the coproduct of the family $\{E_{k,l}^{\mathcal{G}}\}_{k,l \in \mathbb{N}}$, where $i^\mathcal{G}_{k,l}\colon E_{k,l}^{\mathcal{G}}\mto E_{\mathcal{G}}$ is the inclusion. Using \Cref{rem:le}, we have:
-\begin{gather*}\lgh_{V_D} \circ s_{D}\circ h_{1,D}\circ \iota^{\mathcal{G}}_{k,l}=\lgh_{V_D}\circ h^\star_{2,D}\circ s_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l}=\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l} = \delta_{k} \circ !_{E^{\mathcal{G}}_{k,l}}\\
-	\lgh_{V_D} \circ t_{D}\circ h_{1,D}\circ \iota^{\mathcal{G}}_{k,l}=\lgh_{V_D}\circ h^\star_{2,D}\circ t_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l}=\lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}}\circ i^{\mathcal{G}}_{k,l} = \delta_{l} \circ !_{E^{\mathcal{G}}_{k,l}}
-\end{gather*}
-
-By the universal property of the second square, the previous equations give us the dotted $f^D_{k,l} \colon E^{\mathcal{G}}_{k,l}\to E^D_{k,l}$ in the last diagram aside.  Since $(E_{k,l}, \{\pi^D_{k,l}\}_{D\in \D})$ is the product of the family $\{E^D_{k,l}\}_{D\in \D}$, then $\{f^D_{k,l}\}_{D\in \D}$ gives us the dotted arrow $f_{k,l}\colon E^{\mathcal{G}}_{k,l}\to E_{k,l}$ inthe middle row.  Finally, by the universal property of coproducts,  the family $\{f^D_{k,l}\}_{k,l\in \mathbb{N}}$ induces the morphism $h_1\colon E_{\mathcal{G}}\to E_{\mathcal{L}}$ in the top row.
-\end{minipage} \hfill
-\begin{minipage}[r]{.25\linewidth}
-	\xymatrix@R=10pt@C=55pt{E^{\mathcal{G}}_{k,l} \ar[d]_{!_{E^{\mathcal{G}}_{k,l}}} \ar@{>->}[r]^{i^{\mathcal{G}}_{k,l}}& E_{\mathcal{G}}\ar[d]_{(\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}})}\\ 1 \ar@{>->}[r]_{(\delta_k, \delta_l)}& \mathbb{N}\times \mathbb{N}}
-
-\xymatrix@R=10pt@C=55pt{E^{D}_{k,l} \ar[d]_{!_{E^{D}_{k,l}}} \ar@{>->}[r]^{i^{D}_{k,l}}& E_D\ar[d]_{(\lgh_{V_{D}}\circ s_{D}, \lgh_{V_{D}}\circ t_{D})}\\ 1 \ar@{>->}[r]_{(\delta_k, \delta_l)}& \mathbb{N}\times \mathbb{N}}
-
-	\xymatrix@R=10pt@C=35pt{ E_{\mathcal{G}} \ar@{.>}[r]^{h_1} \ar@/_.5cm/[dd]_(.3){h_{1,D}}& E_{\mathcal{L}} \\ E^{\mathcal{G}}_{k,l} \ar@{>->}[u]_{\iota^{\mathcal{G}}_{k,l}} \ar@{.>}[r]^{f_{k,l}} \ar@{.>}[dr]_{f^D_{k,l}} & E_{k,l} \ar[d]^{\pi^D_{k,l}} \ar@{>->}[u]_{\iota_{k,l}}\\ E_{D}  & E^D_{k,l} \ar@{>->}[l]^{\iota^D_{k,l}}}
+	
+	By \Cref{cor:monhyper}, $f_1$ and $g_1$ are monos, thus also $k_V$ and $k_E$ are injective as they are the pushout of injective arrows. By \Cref{rem:mono}, moreover, we know that $k^\star_V$ is injective too.
+	\end{minipage}
+	\hfill\begin{minipage}[r]{.4\linewidth}
+\xymatrix@R=10pt{E_{\mathcal{G}} \ar[r]_{f_2} \ar@{>->}[d]^{f_1} & E_{\mathcal{K}} \ar@{>->}[d]_{k_E} & V_{\mathcal{G}}  \ar[r]_{g_2} \ar@{>->}[d]^{g_1}& V_{\mathcal{K}} \ar@{>->}[d]_{k_V}\\ E_{\mathcal{H}} \ar[r]^{h_E} & E_{\mathcal{P}} & V_{\mathcal{H}}  \ar[r]^{h_V}& V_{\mathcal{P}}}
+	\end{minipage}
+	
+	\noindent 
+	\begin{minipage}[l]{.42\linewidth}
+		\setlength{\parindent}{1.5em}
+		
+	Moreover, the first of the diagrams above fits in other two diagrams as the ones aside. Let $\iota_E\colon A\mto E_{\mathcal{H}}$ and $\iota_V\colon B\mto V_{\mathcal{H}}$ be the inclusions of the images' complements  of, respectively $f_1$ and $g_1$. By \Cref{lem:po_set}, we know that $(E_{\mathcal{P}}, \{k_E, h_E\circ \iota_E\})$ and $(V_{\mathcal{P}}, \{k_V, h_V\circ \iota_V\})$ are coproducts.
+	\end{minipage}
+\hfill 
+\begin{minipage}[r]{.5\linewidth}
+\xymatrix@C=15pt@R=10pt{V^\star_{\mathcal{G}} \ar@{>->}[ddd]^{g^\star_1}\ar[rrr]_{g^\star_2} &&&V^\star_{\mathcal{K}} \ar@{>->}[ddd]_{k^\star_V} & V^\star_{\mathcal{G}} \ar@{>->}[ddd]^{g^\star_1} \ar[rrr]_{g^\star_2}&&& V^\star_{\mathcal{K}}\ar@{>->}[ddd]_{k^\star_V} \\ & E_{\mathcal{G}} \ar[ul]^{s_{\mathcal{G}}} \ar[r]^{f_2} \ar@{>->}[d]_{f_1} & E_{\mathcal{K}} \ar[ur]_{s_{\mathcal{K}}} \ar@{>->}[d]^{k_E}&&& E_{\mathcal{G}} \ar[ul]^{t_{\mathcal{G}}} \ar[r]^{f_2} \ar@{>->}[d]_{f_1} & E_{\mathcal{K}}\ar[ur]_{t_{\mathcal{K}}}\ar@{>->}[d]^{k_E}\\ & E_{\mathcal{H}} \ar[dl]_{s_{\mathcal{H}}} \ar[r]_{h_E} & E_{\mathcal{P}} \ar[dr]^{s_{\mathcal{P}}}&&& E_{\mathcal{H}} \ar[dl]_{t_{\mathcal{H}}}\ar[r]_{h_E} & E_{\mathcal{P}} \ar[dr]^{t_{\mathcal{P}}} \\V^\star_{\mathcal{H}} \ar[rrr]^{h^\star_V} &&&V^\star_{\mathcal{P}} & V^\star_{\mathcal{H}}\ar[rrr]^{h^\star_V} &&& V^\star_{\mathcal{P}} }
 \end{minipage}
 
+We want to use \Cref{rem:elem} to prove that $\mathcal{P}$ is left-monogamous. To do so, we need to show that the target of every element of $E_{\mathcal{P}}$ has not repeated letter and that every two different hyperedges of $\mathcal{P}$ have disjoint targets.
 
-Now, computing we get:
-\begin{align*}
-	s_{\mathcal{L}}\circ h_1 \circ \iota^{\mathcal{G}}_{k,l} = s_{\mathcal{L}}\circ \iota_{k,l}\circ f_{k,l} =v_k\circ s^{k, l}_{\mathcal{L}} \circ f_{k,l}\\
-	h^\star\circ s_{\mathcal{G}}\circ \iota^{\mathcal{G}}_{k,l}
-\end{align*}
-
-For uniqueness, 
+Suppose that there exists $e \in E_{\mathcal{P}}$ such that $\outd{P}(v,e) > 1$ for some $v\in V_{\mathcal{P}}$. So that there are two different  indexes $1\leq n, m \leq \lgh_{V_{\mathcal{P}}}(e)$ such that $t_{\mathcal{P}}(e)_n=t_{\mathcal{P}}(e)_m$. We have two cases.
+\begin{itemize}
+	\item $e= k_E(h)$ for some $h\in E_{\mathcal{K}}$.  Suppose . Then we have:
+	\begin{align*}
+		&k_V(t_{\mathcal{K}}(h)_n)=(k^\star_V(t_{\mathcal{K}}(h)))_n=t_{\mathcal{P}}(k_E(h))_n=t_{\mathcal{P}}(e)_n \\=& t_{\mathcal{P}}(e)_m = t_{\mathcal{P}}(k_E(h))_m=(k^\star_V(t_{\mathcal{K}}(h)))_m = k_V(t_{\mathcal{K}}(h)_m)	\end{align*}
 	
-	\end{proof}	
-\fi 
+	Since $k_V$ is injective, then $t_{\mathcal{K}}(h)_n=t_{\mathcal{K}}(h)_m$ which contradicts the left monogamy of $\mathcal{K}$.
+	
+	\item $e=h_E(\iota_E(h))$ for some $h$ in the complement $A$ of the image of $f_1$.  Now, suppose that there exists $u \in V_{\mathcal{G}}$ such that $t_{\mathcal{H}}(h)_n = g_1(u) $ or $t_{\mathcal{H}}(h)_m = g_1(u)$. Since $(f_1, g_1)$ is downward closed in both cases we get $h_1\in E_{\mathcal{G}}$ such that $f_1(h_1)=h$, which is absurd. 
+	
+	Thus there exist $b_1, b_2\in B$ such that
+	\[t_{\mathcal{H}}(\iota_E(h))_n = \iota_V(b_1) \qquad  t_{\mathcal{H}}(\iota_E(h))_m = \iota_V(b_2)\] 
+	But then we have:
+	\begin{align*}
+		&h_V(\iota_V(b_1))=h_V(t_{\mathcal{H}}(\iota_E(h))_n)=(h^\star_V(t_{\mathcal{H}}(\iota_E(h))))_n=t_{\mathcal{P}}(h_E(\iota_E(h)))_n=t_{\mathcal{P}}(e)_n\\=&t_{\mathcal{P}}(e)_m=t_{\mathcal{P}}(h_E(\iota_E(h)))_m=(h^\star_V(t_{\mathcal{H}}(\iota_E(h))))_m=h_V(t_{\mathcal{H}}(\iota_E(h))_m)=	h_V(\iota_V(b_2))
+	\end{align*}
+	By \Cref{lem:po_set} $h_V\circ \iota_V$ is injective and so $b_1 = b_2$. Hence $t_{\mathcal{H}}(\iota_E(h))_n =t_{\mathcal{H}}(\iota_E(h))_m $, which is absurd since $\mathcal{H}$ is left-monogamous.
+\end{itemize}
+ 
+ Suppose now that there are $e_1, e_2\in E_{\mathcal{P}}$ such that $t_{\mathcal{P}}(e_1)_n=t_{\mathcal{P}}(e_2)_m$ for some indexes $1\leq n \leq \lgh_{V_{\mathcal{P}}}(e_1)$ and $1\leq n \leq \lgh_{V_{\mathcal{P}}}(e_2)$. To conclude, we have to show that $e_1=e_2$. We can again use \Cref{lem:po_set} to split the cases.
+ 
+\begin{itemize}
+	\item $e_1=k_E(k_1)$ and $e_2=k_E(k_2)$ for some $k_1$ and $k_2\in E_{\mathcal{K}}$. Then we have:
+	\begin{align*}
+		&k_V(t_{\mathcal{K}}(k_1)_n)=(k^\star_V(t_{\mathcal{K}}(k_1)))_n=t_{\mathcal{P}}(k_E(k_1))_n=t_{\mathcal{P}}(h_1)_n\\=&t_{\mathcal{P}}(h_2)_m=t_{\mathcal{P}}(k_E(k_2))_m=(k^\star_V(t_{\mathcal{K}}(k_2)))_m=k_V(t_{\mathcal{K}}(k_2)_m)
+	\end{align*}
+	$k_V$ is injective, thus $t_{\mathcal{K}}(k_1)_n=t_{\mathcal{K}}(k_1)_m$. Since  $\mathcal{K}$ is left-monogamous we conclude that $k_1=k_2$ and so also $e_1$ and $e_2$ are equal.
+	\item $e_1=k_E(k)$ and $e_2=h_E(\iota_{E}(h))$ for some $k\in E_{\mathcal{K}}$ and $h\in A$. 
+	then we have
+	\begin{align*}
+		&k_V(t_{\mathcal{K}}(k)_n)= (k^\star_V(t_{\mathcal{K}}(k)))_n=t_{\mathcal{P}}(k_E(k))_n=t_{\mathcal{P}}(e_1)_n\\=&t_{\mathcal{P}}(e_2)_m=t_{\mathcal{P}}(h_E(\iota_E(h)))_m=(h^\star_V(t_{\mathcal{H}}(\iota_E(h))))_m= h_V(t_{\mathcal{H}}(\iota_{E}(h))_m)
+	\end{align*}
+	By the first point of \Cref{prop:regmono}, there exists $w\in V_{\mathcal{G}}$ such that 
+	\[t_{\mathcal{K}}(k)_n=g_2(w) \qquad t_{\mathcal{H}}(\iota_{E}(h))_m=g_1(w)\]
+Since $(f_1, g_1)$ is downward closed, the second equation above entails that there exist $a\in E_{\mathcal{G}}$ such that $\iota_E(h)=f_1(a)$. But this is absurd since coproducts in $\Set$ are disjoint.
+	
+	\item  $e_1=h_E(\iota_{E}(h))$ and $e_2=k_E(k)$ for some $k\in E_{\mathcal{K}}$ and $h\in A$. This is done as in the previous case swapping the role of $e_1$ and $e_2$.
+	
+	\item $e_1=h_E(\iota_E(h_1))$ and $e_2=h_E(\iota_E(h_1))$ for some $h_1$ and $h_2\in A$.  Suppose that there exist $x_1, x_2\in V_{\mathcal{G}}$ such that
+	\[t_{\mathcal{H}}(\iota_E(h_1))_n = g_1(x_1) \qquad t_{\mathcal{H}}(\iota_E(h_1))_m = g_1(x_2)\]
+	By downward closedness of $(f_1, g_1)$, these identities entails the existence of $a_1, a_2\in E_{\mathcal{G}}$ such that 
+	\[\iota_E(h_1)=f_1(a_1) \qquad \iota_E(h_2 = f_1(a_2))\]
+	which is absurd. Thus there there exists $b_1, b_2\in B$ such that
+	\[t_{\mathcal{H}}(\iota_E(h_1))_n=\iota_V(b_1) \qquad t_{\mathcal{H}}(\iota_E(h_2))_m=\iota_V(b_2)\]
+	Then:
+	\begin{align*}
+	&h_V(\iota_V(b_1))=h_V(t_{\mathcal{H}}(\iota_E(h_1))_n)=(h^\star_V(t_{\mathcal{H}}(\iota_E(h_1))))_n=t_{\mathcal{P}}(h_E(\iota_E(h_1)))_n=t_{\mathcal{P}}(e_1)_n\\=&t_{\mathcal{P}}(e_2)_m=t_{\mathcal{P}}(h_E(\iota_E(h_2)))_m=(h^\star_V(t_{\mathcal{H}}(\iota_E(h_2))))_m=h_V(t_{\mathcal{H}}(\iota_E(h_2))_m)=h_V(\iota_V(b_2))
+	\end{align*}
+	But $h_V\circ \iota_V\colon B\mto V_{\mathcal{P}}$ is injective and so $b_1$ and $b_2$ are equal. Hence $t_{\mathcal{H}}(\iota_E(h_1))_n = t_{\mathcal{H}}(\iota_E(h_2))_m$. Since $\mathcal{H}$ is in $\lmo$ we get that $\iota_E(h_1)=\iota_E(h_2)$ and so $e_1$ is equal to $e_2$.
+	\qedhere 
+\end{itemize}
+\end{proof}
+
+\regmono*
+\begin{proof}\label{proof:regmon} $(1\Rightarrow 2)$ Let $(h_1, k_1)$ and $(h_2, k_2): \mathcal{H}\rightrightarrows \mathcal{K}$  be two arrows  equalized by $(f,g)$. Define:
+\[ E_{h_1, h_2}:= \{e\in E_{\mathcal{H}} \mid h_1(e) = h_2(e)\} \qquad E_{k_1, k_2}:= \{v\in V_{\mathcal{H}} \mid k_1(e) = k_2(e)\} \]	
+	
+	\noindent 
+ \begin{minipage}[r]{.7\linewidth} 	\setlength{\parindent}{1.5em}
+Let $\iota_E\colon E_{h_1, h_2}\mto E_{\mathcal{H}} $ and $\iota_V\colon V_{k_1, k_2}\mto V_{\mathcal{H}}$ be the corresponding inclusions. Let $\mathcal{E}$ be  $(E_{h_1, h_2}, V_{k_1, k_2}, s_{\mathcal{E}}, t_{\mathcal{E}})$, where $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{k_1, k_2}$ are the unique one fitting in the diagram aside. By Propositions \ref{prop:fact}, \ref{prop:com} and \Cref{lim}, we know that $\mathcal{E}$ is an equalizer of $(h_1, k_1)$ and $(h_2, k_2)$ and so  there is an isomorphism $(\phi, \psi) \colon \mathcal{G}\to \mathcal{E}$ whose components fit in the diagram aside. 
+The thesis now follows since, by definition, $(\iota_E, \iota_V)$ sends input nodes to input nodes.
+		\end{minipage}\hfill 	 \begin{minipage}[r]{.25\linewidth}
+	 	\xymatrix@R=10pt{E_{\mathcal{G}} \ar[d]_{s_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{s_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{s_{\mathcal{H}}}\\V_{\mathcal{G}} \ar@{.>}[r]^-{\psi}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+	 	\xymatrix@R=10pt{E_{\mathcal{G}} \ar[d]_{t_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}\\V_{\mathcal{G}} \ar@{.>}[r]^-{\psi}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+	 \end{minipage}
+	
+	
+	\smallskip \noindent
+	$(2\Rightarrow 3)$ This follows at once from \Cref{lem:inp}.
+	
+	\smallskip \noindent
+	$(3\Rightarrow 1)$
+\end{proof} 
+
+\subsubsection{Separated hypergraphs - proofs}
 
 \seppb*
 \begin{proof}\label{proof:seplim}
