@@ -113,7 +113,9 @@
 \newcommand{\lab}{\catname{LHyp}}
 \newcommand{\lmo}{\catname{LMH}}
 \newcommand{\hyp}{\catname{Hyp}}
-\newcommand{\shyp}{\catname{SepHyp}}
+\newcommand{\phyp}{\catname{pHyp}}
+\newcommand{\pshyp}{\catname{pSep}}
+\newcommand{\shyp}{\catname{Sep}}
 \newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
 \newcommand{\EqHyp}{\catname{EqHyp}} %equivalence hypergraphs
 \newcommand{\EqHyps}{\catname{EqHyp}_{\Sigma}}
@@ -620,7 +622,7 @@ The previous result allows us to deduce the following lemma in an $\mathcal{M}$-
 	Let $\X$ be a strict $\mathcal{M}$-adhesive category with all pullbacks, and suppose that in the cube aside the top face is an $\mathcal{M}$-pushout and all the vertical faces are pullbacks. Then the right square is a pushout.
 \end{restatable}
 \end{minipage}\hfill 
-\begin{minipage}[r]{.38\linewidth}\xymatrix@C=10pt@R=2pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]_(.3){f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]_{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]_(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]_{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]^{g} & & D }
+\begin{minipage}[r]{.38\linewidth}\xymatrix@C=10pt@R=1pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]_{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]^{k_{g'}}&& K_d\\C \ar[rr]^{g} & & D }
 	\end{minipage}
 
 %[Proof in \Cref{mpo-proof}]
@@ -694,7 +696,7 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  Formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, for $\pi_i\colon X^l\to X$ the $i^\mathrm{th}$-projection.
 \end{notaz}
 
-\subsection{The category of hypergraphs}
+\subsection{The category of hypergraphs}\label{sub:hyp}
 
 Let us begin this section with the definition of hypergraphs.
 
@@ -799,7 +801,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 		
 		We say that $\Sigma$ is \emph{algebraic} if $\coar_{\Sigma}$ is the constant function in $1$.
 		
-		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1^\star$ is the isomorphism of \Cref{rem:length}.
+		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \circ  \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1^\star$ is the isomorphism of \Cref{rem:length}.
 	\end{defi}
 	
 	\begin{exa}\label{exa_3} 
@@ -855,7 +857,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 	\end{minipage}
  
  \smallskip 
- We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which will be used in Section \ref{par:tg}. 
+ We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which will be used in Section \ref{par:tg}\label{sub:hyp_alg}. 
  
 \begin{defi}
 An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{algebraic} if $t_{\mathcal{G}}(e)$ has length $1$ for every $e\in E_{\mathcal{G}}$.
@@ -896,9 +898,9 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \end{exa}
 
 
-\subsubsection{Some  subcategories of $\hyp$}
+\subsubsection{Two  subcategories of $\hyp$}\label{sub:sub}
 
-We are now going to introduce three classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
+We are now going to introduce two classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
 
 
 \paragraph{Left-monogamous hypergraphs}\label{par:lm}
@@ -958,11 +960,11 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer}
-			\draw[style=diredge, in=135, out= 45] (divin1.east) to (a); 
-			\draw[style=diredge, in=-135, out= -45] (divin2.east) to(a) ;
-			\draw[style=diredge] (d) to (divout.center);
-			\draw[style=diredge] (o) to (e);
-			\draw[style=diredge] (i) to (e);
+			\draw[style=none, in=135, out= 45] (divin1.east) to (a); 
+			\draw[style=none, in=-135, out= -45] (divin2.east) to(a) ;
+			\draw[style=none] (d) to (divout.center);
+			\draw[style=none] (o) to (e);
+			\draw[style=none] (i) to (e);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 \end{minipage}
@@ -1001,9 +1003,9 @@ The remaining of this section is devoted to the proof of quasiadhesivity of $\lm
 			\end{pgfonlayer}
 			
 			\begin{pgfonlayer}{edgelayer}
-				\draw[style=diredge] (divin1.east) to (a); 
-				\draw[style=diredge] (divin2.east) to(b) ;
-				\draw[style=diredge] (d) to (divout.center);
+				\draw[style=none] (divin1.east) to (a); 
+				\draw[style=none] (divin2.east) to(b) ;
+				\draw[style=none] (d) to (divout.center);
 			\end{pgfonlayer}
 		\end{tikzpicture}
 	\end{minipage}
@@ -1076,58 +1078,57 @@ Then the following facts are equivalent
 
 Putting together \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:regmon}, we get the following.
 
-\begin{cor}$\lmo$ is quasiadhesive.
+\begin{cor}\label{cor:lmquasi}$\lmo$ is quasiadhesive.
 \end{cor}
 
 
 \paragraph{Separated hypergraphs}
+We can now introduce the second  subcategory of $\hyp$ in which we are interested in and that will be used in \Cref{sec:sepegg} to give us the underlying hypergraphs for EGGs with minimally identified tokens.
 
-Let us begin with the subcategory of $\hyp$, which in \Cref{sec:sepegg} will give us the underlying hypergraphs for EGGs with minimally identified tokens.
-
-\begin{defi}  An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if for every pair of not necessarily distinct hyperedges $e, e'\in E_{\mathcal{G}}$
+\begin{defi}  A left-monogamous hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if
 	\begin{enumerate}
-	\item $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;
-	\item $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint, unless $e = e'$;	
-	\item $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
-%		\item for every hyperedge $e$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ do not have repeated letters;
-%		\item for every two, not necessarily distinct, hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint;
-%		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $s_{\mathcal{G}}(e)$ and $s_{\mathcal{G}}(e')$ are disjoint;
-%		\item  for every two different hyperedges $e, e'\in E_{\mathcal{G}}$, $t_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
+	\item it is \emph{right-monogamous}, i.e.~$(E_{\mathcal{G}}, V_{\mathcal{G}}, t_{\mathcal{G}}, s_{\mathcal{G}})$ is left-monogamous;
+	\item for every pair of, not necessarily distinct, hyperedges $e$ and $e'$,  $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e')$ are disjoint.
 	\end{enumerate}
 We will denote by $\shyp$ the full subcategory of $\hyp$ given by separated hypergraphs and by $S$ the inclusion functor.
 \end{defi}
 
-\begin{rem}
-	Every separated hypergraph is left-monogamous. Indeed if $\mathcal{H}$ is separated then there exists at most one $e\in E_{\mathcal{H}}$ such that $\outd{H}(v, e) \neq 0$. Moreover, in a separated graph the target of an hyperedge cannot have repeated letters and so we have that  $\outd{H}(v, e) = 1$ for at most one $e\in E_{\mathcal{H}}$. Left-monogamy now follows at once.
-\end{rem}
+\begin{rem} Let $\mathcal{G}$ be an hypergraph. By \Cref{rem:elem}, right monogamy amount to the request that for every vertex $v\in V_{\mathcal{G}}$ there exists at most one $e_V\in E_{\mathcal{G}}$ such that $\ind{G}(v, e) \neq 0$ and  for such hyperedge we have $\ind{G}(v,e)=1$.
+ \end{rem}
+ 
+ \begin{rem}\label{rem:elem2}
+ 	Let $\mathcal{G}$ be a separated hypergraph,  
+ 	applying \Cref{rem:elem} we this is equivalent to say that, for every hyperedge $e$:
+ 	\begin{itemize}
+ 		\item $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ do not contain repeated letters;
+ 		\item $s_{\mathcal{G}}(e)$ is disjoint from $t_{\mathcal{G}}(e')$ for every $e'\in E_{\mathcal{G}}$;
+ 		\item for every $e'\in E_{\mathcal{G}}$ different from $e$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ are disjoint from, respectively $s_{\mathcal{G}}(e')$ and $t_{\mathcal{G}}(e')$.
+ 	\end{itemize}
+ \end{rem}
 
-<<<<<<< HEAD
-We begin by introducing a construction which ``split'' a given hypergraph to produce a separated one.
-=======
-\marginpar{non basta, non ci devono essere ripetizioni}
->>>>>>> refs/remotes/origin/main
+We can provide a construction which ``split'' a given hypergraph to produce a separated one.
 
 \begin{defi}
 Given an hypergraph $\mathcal{\mathcal{G}}=(E_{\mathcal{G}}, V_{\mathcal{F}}, s_{\mathcal{G}}, t_{\mathcal{G}})$, for every hyperedge $e\in E_{\mathcal{G}}$ with $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$, we can consider the coproduct $(V_e, \{\iota^e_{i}\}_{i=1}^{n_e+m_e})$ of $n_e+m_e$ copies of $1$.
-
-<<<<<<< HEAD
-Let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}}$ and define:
-=======
- Moreover, let $\is{(V_{\mathcal{G}})}$ be the set of isolated nodes  of $\mathcal{G}$ i.e.~those which are not in the image of $s_{\mathcal{G}}$ or of $t_{\mathcal{G}}$. Furthermore, let $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}} \cup \{\iota_{is}\})$ be the coproduct of the family $\{V_{e}\}_{e\in E_\mathcal{G}} \cup \{\is{(V_{\mathcal{G}})}\}$ and define
->>>>>>> refs/remotes/origin/main
+We can further take the coproduct $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\mathcal{G}}})$ of the family $\{V_{e}\}_{e\in E_\mathcal{G}}$ and define:
 \[\begin{split}
 	s_{\sp(\mathcal{G})} \colon E_{\mathcal{G}}&\to V_{\sp(\mathcal{G})}^\star\\
 	e &\mapsto \prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0))
 \end{split}\qquad \begin{split}
 	t_{\sp(\mathcal{G})} \colon E_{\mathcal{G}}&\to V_{\sp(\mathcal{G})}^\star\\
-	e &\mapsto \prod_{i=n_e+1}^{m_e} \iota_e(\iota^e_{i}(0))
+	e &\mapsto \prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0))
 \end{split} \]
 where $0$ is the unique element of $1$. 
 
-We can finally define the \emph{separated graph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}):= (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
+We define the \emph{separated graph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}):= (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
 \end{defi}
 \begin{rem}\label{rem:ob}
- By construction $\sp(\mathcal{G})$ is an object of $\shyp$. 
+ By construction $\sp(\mathcal{G})$ is an object of $\shyp$. To see this it is enough to apply \Cref{rem:elem2}:
+ \begin{itemize}
+ 	\item every letter of $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ lies in the image of a different coprojection $\iota_e\circ \iota^e_i$, so it cannot appear more than one time;
+ 	\item a letter of $s_{\mathcal{G}}(e)$ are all contained in the image of $\iota_{e}\circ \iota^e_i$  for $i\leq n_e$, while every letter of $t_{\mathcal{G}}(e)$ lies in the image of $\iota_{e}\circ \iota^e_j$  for $n_e < j$, guaranteeing disjointness;
+ 	\item if $e$ is different from $e'$, then all the letters of $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ are contained in the image of $\iota_e$, while those of  $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ are in the image of $\iota_{e'}$ and so, again, we get the wanted disjointness. 
+ \end{itemize}
 \end{rem}
 
 \begin{exa}\label{ex:empty}
@@ -1159,8 +1160,8 @@ We can finally define the \emph{separated graph associated to $\mathcal{G}$}  as
 				
 				\node[style=medium box] (div) at (4, 1.3) {};
 				\node[style=none] (divlab) at (4, 2) {$\cdot$};
-				\node[style=none] (divin1) at (3.7, 1.6) {};
-				\node[style=none] (divin2) at (3.7, 1) {};
+				\node[style=none] (divin1) at (3.72, 1.6) {};
+				\node[style=none] (divin2) at (3.72, 1) {};
 				\node[style=none] (divout) at (4.2, 1.3){};
 				
 				
@@ -1176,53 +1177,25 @@ We can finally define the \emph{separated graph associated to $\mathcal{G}$}  as
 			\end{pgfonlayer}
 			
 			\begin{pgfonlayer}{edgelayer}
-				\draw[style=diredge, in=180, out= 135] (v) to (timesin2.center); 
-				\draw[style=diredge,out=165, in= 180] (v) to (timesin1.center);
-				\draw[style=diredge,in=180, out=0] (nattach.center) to (v);
+				\draw[style=none, in=180, out= 135] (v) to (timesin2.center); 
+				\draw[style=none,out=165, in= 180] (v) to (timesin1.center);
+				\draw[style=none,in=180, out=0] (nattach.center) to (v);
 				
-				\draw[style=diredge,out=0, in=180] (constattach.center) to (c);
-				\draw[style=diredge,in=165, out= -15] (a) to (divin1.west); 
-				\draw[style=diredge,out=15, in=195 ] (b) to (divin2.west);
+				\draw[style=none,out=0, in=180] (constattach.center) to (c);
+				\draw[style=none,in=165, out= -15] (a) to (divin1.west); 
+				\draw[style=none,out=15, in=195 ] (b) to (divin2.west);
 				
-				\draw[style=diredge, in=30, out=0] (timesout.center) to (v);
-				\draw[style=diredge, in=180, out=0] (divout.center) to (d);
+				\draw[style=none, in=30, out=0] (timesout.center) to (v);
+				\draw[style=none, in=180, out=0] (divout.center) to (d);
 			\end{pgfonlayer}
 		\end{tikzpicture}
 	\end{center}
 \end{exa}
 
-This construction can be extended to a functor.
+The construction we have just introduced can be extended to a functor (see \Cref{proof:sep} for a proof).
 
-\begin{prop}There exists a functor $\sp \colon \hyp\to \shyp$ sending $\mathcal{G}$ to $\sp(\mathcal{G})$.
-\end{prop}
-\begin{proof}
-Let $(h_1, h_2)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs.  For every hyperedge $e\in E_{\mathcal{G}}$,
-the universal property of coproducts, there are arrows $V_e\to V_{h_1(e)}$ fitting in the diagram below, on the left. These, in turn, yield the dotted $V_{\sp(\mathcal{G})} \to V_{\sp(\mathcal{G})}$ on the right.
-\[\xymatrix{1 & 1 \\ V_{e} & V_{h_1(e)} }\]
-Preservation of compositions and identities follows at once from the construction.
-Now, for every $e\in \mathcal{E}_\mathcal{G}$ and $i$ between $1$ and $n_e+m_e$  we can define 
-\begin{align*}f_{e, i}\colon 1&\to V_{\mathcal{G}}\\
-	* & \mapsto\begin{cases}
-		(s_{\mathcal{G}}(e))_i & i \leq n_e\\
-		(t_{\mathcal{G}}(e))_i & n_e < i
-	\end{cases}
-\end{align*}
-These arrows, in turn, give us $f_ e\colon V_e\to V_{\mathcal{G}} $ and so an arrow $f_{\mathcal{G}}:V_{\sp(\mathcal{G})}\to V_{\mathcal{G}}$ such that 
-\[f_{\mathcal{G}}\circ \iota_e = f_e \qquad f_{\mathcal{G}}\circ \is{\iota} =  j_{\mathcal{G}}\]
-where $j_{\mathcal{G}}$ is the inclusion of $\is{(V_{\mathcal{G}})}\mto V_{\mathcal{G}}$. Notice that, for every $e\in E_{\mathcal{G}}$, $1\leq i\leq n_e$ and $1\leq k\leq m_e$ we have:
-\[\begin{split}
-	(f_{\mathcal{G}}^\star( s_{\sp(\mathcal{G})}(e)) )_i & = f_{\mathcal{G}}( s_{\sp(\mathcal{G})}(e) _i)\\
-	&=f(\iota_e(\iota^e_i(*)))\\&=f_e(\iota^e_i(*))\\&=f_{e, i}(*)\\&=
-	(s_{\mathcal{G}}(e))_i 
-\end{split} \qquad 
-\begin{split}
-	(f^\star( t_{\sp(\mathcal{G})}(e)) )_k & = f( t_{\sp(\mathcal{G})}(e) _k)\\
-	&=f(\iota_e(\iota^e_{n_e+k}(*)))\\&=f_e(\iota^e_{n_e+k}(*))\\&=f_{e, n_e+k}(*)\\&=
-	(t_{\mathcal{G}}(e))_k
-\end{split}
-\]
-and so we get an arrow $(\id{E_{\mathcal{G}}}, f_{\mathcal{G}})\colon V\to \mathcal{V}_{\mathcal{G}}$. 
-\end{proof} 
+\begin{restatable}{prop}{sep}\label{prop:sep}There exists a functor $\sp \colon \hyp\to \shyp$ sending $\mathcal{G}$ to $\sp(\mathcal{G})$.
+\end{restatable}
 
 \noindent 
 \begin{minipage}[l]{.68\linewidth}
@@ -1272,26 +1245,31 @@ and so we get an arrow $(\id{E_{\mathcal{G}}}, f_{\mathcal{G}})\colon V\to \math
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer} 
-			\draw[style=diredge,out=180, in= 270] (v) to (timesin.center);
-			\draw[style=diredge,out=0, in= 270] (v) to (divin.center);
-			\draw[style=diredge, in=135, out=345] (timesout.center) to (v);
-			\draw[style=diredge, in=45, out=195] (divout.center) to (v);
-			\draw[style=diredge, in=180, out=0] (a.center) to (zeroin.west);
-			\draw[style=diredge, in=180, out=0] (c.center) to (unoin.west);
-			\draw[style=diredge, in=180, out=0] (zeroout.east) to (b.west);
-			\draw[style=diredge, in=180, out=0] (unoout.east) to (d.west);
+			\draw[style=none,out=180, in= 270] (v) to (timesin.center);
+			\draw[style=none,out=0, in= 270] (v) to (divin.center);
+			\draw[style=none, in=135, out=345] (timesout.center) to (v);
+			\draw[style=none, in=45, out=195] (divout.center) to (v);
+			\draw[style=none, in=180, out=0] (a.center) to (zeroin.west);
+			\draw[style=none, in=180, out=0] (c.center) to (unoin.west);
+			\draw[style=none, in=180, out=0] (zeroout.east) to (b.west);
+			\draw[style=none, in=180, out=0] (unoout.east) to (d.west);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 \end{minipage}
 
-\begin{defi} 
-	isolati e connessi
+\smallskip
+If we restrict our attention to separated hypergraph without isolated nodes, then $\sp$ becomes a right adjoint. The interested reader can consult \Cref{proof:dx} for a proof.
+
+\begin{defi} Let $\mathcal{G}$ be an hypergraph. A node $v\in V_{\mathcal{G}}$ is \emph{isolated} if for every $e\in E_{\mathcal{G}}$ $v$ does not occur as a letter in neither $s_{\mathcal{G}}$ nor in $t_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pruned} if it does not have isolated nodes. We denote by $\phyp$ and $\pshyp$ the full subcategories of $\hyp$ given by, respectively, pruned hypergraphs and those which are pruned and separated.
 \end{defi}
 
-\begin{prop}
-	aggiunto dx
-\end{prop}
+\begin{rem}\label{rem:prun}
+	By construction, $\sp{G}$ is pruned for every hypergraph $\mathcal{G}$.
+\end{rem}
 
+\begin{restatable}{prop}{dx}\label{prop:dx}
+	The inclusion functor $P\colon \pshyp\to \phyp$ has a right adjoint $\sp_P$.
+\end{restatable}
 
 Finally, we conclude our exam of separated hypergraph proving a result regarding connected limits. A proof of it is \Cref{proof:seplim}
 
@@ -1331,9 +1309,9 @@ Since $\mathcal{T}$ must be separated, we have two (non disjoint) cases:
 	\end{pgfonlayer}
 	
 	\begin{pgfonlayer}{edgelayer}
-		\draw[style=diredge] (a) to (divin1.west); 
-		\draw[style=diredge] (b) to (divin2.west);
-		\draw[style=diredge] (divout.center) to (d);
+		\draw[style=none] (a) to (divin1.west); 
+		\draw[style=none] (b) to (divin2.west);
+		\draw[style=none] (divout.center) to (d);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{minipage}
@@ -1369,8 +1347,8 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 			\node[style=none] (out) at (0.2, 0){};
 		\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw[style=diredge] (v) to (in.east); 
-		\draw[style=diredge] (out.east) to (u.west);
+		\draw[style=none] (v) to (in.east); 
+		\draw[style=none] (out.east) to (u.west);
 	\end{pgfonlayer}
 	\end{tikzpicture} 
 	\ar@{.>}[d]^{(q_1, q_2)} \\\begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
@@ -1384,8 +1362,8 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 			\node[style=none] (out) at (0.2, 0){};
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{edgelayer}
-			\draw[style=diredge] (v) to (in.east); 
-			\draw[style=diredge] (out.east) to (u.west);
+			\draw[style=none] (v) to (in.east); 
+			\draw[style=none] (out.east) to (u.west);
 		\end{pgfonlayer}
 	\end{tikzpicture} 
 	\ar@{.>}[r]_-{(p_1, p_2)}&
@@ -1393,48 +1371,57 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	}
 \end{minipage}
 
-
-\begin{rem}\label{rem:map1}
-	diagramma generale dei vari ipergrafi
-\end{rem}
 \subsection{Labelled hypergraphs}\label{sssect:hyp_alg_sign}
 
-Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a signature.
+Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. As  noted in \Cref{sub:hyp_alg}, an hypergraph can be thought as a colored monoidal signature. Thus labelling correspnds to the operationn of taking the slice category over a suitable hypergraph. 
+
+\begin{defi}
+	Given an hypergraph $\mathcal{G}$, the category $\hyp_\mathcal{G}$ of hypergraphs \emph{labelled by $\mathcal{G}$}  or of \emph{$\mathcal{G}$-hypergraphs} is $\hyp/\mathcal{G}$.
+\end{defi}
 
 
-\begin{exa}segnature The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
-\end{exa}
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\mathcal{G}}$ and a characterisation of monos in it.
 
-\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
-
-\begin{prop}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following facts hold
+\begin{prop}\label{prop:mono} Let $\mathcal{G}$ be an hypergraph. Then the following facts hold
 	\begin{enumerate}
-		\item an arrow $(h,k)$ in $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective;
-		\item $\hyp_{\Sigma}$ is an adhesive category. 
+		\item an arrow $(h,k)$ in $\hyp_{\mathcal{G}}$ is a mono if and only if $h$ and $k$ are injective;
+		\item $\hyp_{\mathcal{G}}$ is an adhesive category. 
 	\end{enumerate}
 \end{prop}
 
+
+\begin{exa} A useful example is given by an algebraic signature $\Sigma$. Consider the hypregraph of \Cref{exa_3}, the category $\hyps$ of
+	hypergraphs labelled by $\Sigma$ is the slice category $\hyp/\mathcal{G}^\Sigma$.
+\end{exa}
+
 \noindent 
 \begin{minipage}[l]{.8\linewidth}	
-	\begin{rem}\label[remark]{rem:label}	
+	\begin{rem}	\label{rem:label}
 			\setlength{\parindent}{1.5em}
-		Let $\mathcal{H}=(E, V, s, t)$ be a hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a function $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
+			
+			Consider an algebraic signature $\Sigma$ and an hypergraph $\mathcal{H}=(E, V, s, t)$. By definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a function $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
 		
-		Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$.  By the second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V_\mathcal{H}^{\star}$ of words of length $1$, i.e.~all hyperedges must have targets of length $1$, that is $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
+		Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$. Since $\Delta\circ \coar_\Sigma$ is the constant function in $1$,  the second diagram aside entails, together with \Cref{rem:len}, that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V_\mathcal{H}^{\star}$ of words of length $1$, i.e $\mathcal{H}$ must be algebraic.
 	\end{rem}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.15\linewidth}
-	\xymatrix@R=10pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]^{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\ari_\Sigma}& \mathbb{N}} \hspace{1pt}\\ \xymatrix@R=10pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]^{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\gamma_1}& \mathbb{N}}
+	\xymatrix@R=14pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\Delta\circ \ari_\Sigma}& \mathbb{N}} 
+	 \xymatrix@R=14pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\Delta\circ \coar_\Sigma}& \mathbb{N}}
 \end{minipage}
 
-$\hyp_{\Sigma}$ has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\hyp}(\mathcal{H}$). Now, since $U_{\hyp}(\mathcal{G}^{\Sigma})=1$ 
+\iffalse 
+\smallskip 
+$\hyp_{\mathcal{G}}$ has a forgetful functor $U_{\mathcal{G}}\colon \hyp_{\mathcal{G}}\to \Set/V_{\mathcal{G}}$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $k\colon V_\mathcal{H} \to V_{\mathcal{G}}$. Now, since $U_{\hyp}(\mathcal{G}^{\Sigma}=1$ 
 for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \mathcal{G}^{\Sigma}$  as $(?_{O_\Sigma}, !_{X})$. It is straightforward to see that in this way we get a left adjoint to $U_\Sigma$.
 
 
 \begin{prop} $U_\Sigma$
 	has a left adjoint $\Delta_\Sigma$.
 \end{prop}
-\iffalse 
+
+\begin{rem}
+	contenuto...
+\end{rem}
 \begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since, $U_{\Sigma}(\mathcal{H})=U_{\X}(\mathcal{H})$ and the identity is the unit of $\Delta_\hyp \dashv U_{\hyp}$, we get a morphism $(?_{E_{\mathcal{H}}},f)\colon \Delta_{\X}(X)\to \mathcal{H}$ of $\hyp$. And then the thesis follows since we have
 	\[
 	(h, !_{V_{\mathcal{{H}}}})\circ (?_{E_{\mathcal{H}}}, f)=(h\circ ?_{E_{\mathcal{H}}}, !_{V_{\mathcal{{H}}}}\circ f)=(?_{0_{\Sigma}}, !_{X})=\Delta_{\hyp}(X)\]
@@ -1474,7 +1461,9 @@ for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \m
 \todo{Decidere se tenere questo esempio (io direi di no)}
 \fi
 
-We extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+\smallskip
+ 
+We extend our graphical notation of hypergraphs to labelled ones putting the label of an hyperedge $h$ inside its corresponding square.
 
 \begin{exa}\label[example]{lab_2}
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
@@ -1550,14 +1539,45 @@ We extend our graphical notation of hypergraphs to labeled ones putting the labe
 	\end{center}\fi
 \end{exa}
 
-\subsubsection{Labelled left-monogamous hypergraphs}
+\subsubsection{Labelled left-monogamous and separated hypergraphs}
 
-\color{red}
-TO DO - questo comprende anche la sezione successiva (?) come sottosezione + versione etichettata (anche con cose monoidali) dopo
+As we have done in \Cref{sub:sub}, we can restrict our attention to two subcategories of labelled hypergraphs.
 
+\begin{defi}
+	Let $\mathcal{G}$ be an hypergraph and $(h,k)\colon \mathcal{H}\to \mathcal{G}$  a $\mathcal{G}$-hypergraph. We say that $(h,k)$ is a \emph{left-monogamous} (resp.~\emph{separated}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated).
+	
+	We will denote by $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$  the corresponding subcategories of $\hyp_{\mathcal{G}}$.
+\end{defi}
 
-Ipergrafi scoppiati con equivalenza/congruenza -> adesività (spero) + versione etichettata (monoidale boh)
+We can easily realize $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$ as comma categories.
 
+\begin{prop}
+Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Delta_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then:
+\begin{enumerate}
+	\item $\lmo_{\mathcal{G}}$ is equivalent to $\comma{M}{\Delta_\mathcal{G}}$;
+	\item $\shyp_{\mathcal{G}}$ is equivalent to $\comma{S}{\Delta_\mathcal{G}}$; 
+\end{enumerate}
+\end{prop}
+
+\Cref{lim} allows us to easily characterize regular monos in $\hyp_{\mathcal{G}}$.
+\begin{prop}
+	A morphism $(f,g)$ between $(h_1, k_1)\colon \mathcal{H}\to \mathcal{G}$ and  $(h_2, k_2)\colon \mathcal{K}\to \mathcal{G}$ is a regular mono in $\lmo_{\mathcal{G}}$ if and only if $(f,g)\colon \mathcal{H}\to \mathcal{K}$ is a regular mono in $\lmo$.
+\end{prop}
+
+In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following.
+
+\begin{thm} Given an hypergraph $\mathcal{G}$, the following hold true:
+	\begin{enumerate}
+		\item an arrow $(f,g)$  if and only if is so in $\lmo$.
+		\item $\lmo_{\mathcal{G}}$ is quasiadhesive.
+	\end{enumerate}
+\end{thm}
+
+\begin{rem}\label{rem:tg}
+	Let $\Sigma$ be an algebraic signature. Then we know that every hypergraph labelled by $\Sigma$ must be algebraic. By \Cref{rem:elem} this means that an hypergraph $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$ labelled by $\Sigma$ is left-monogamous if and only if $t_{\mathcal{H}}$ is injective. This is precisely the definition of (cyclic) \emph{term graphs} in \cite{Plu:TGR-ENTCS,CorradiniG05,CastelnovoGM24}. 
+\end{rem}
+
+\iffalse 
 \color{black}
 \paragraph{Term Graphs}\label{par:tg}
 Term graphs have been adopted as a convenient way to represent terms over a signature with an explicit sharing of sub-terms,
@@ -1676,9 +1696,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 \begin{cor}\label{cor:term}
 	The category $\tg$ is quasiadhesive.
 \end{cor}
-
-TO DO: aciclici
-
+\fi 
 \section{Adding equivalences to hypergraphical structures}
 \label{hypereq}
 The use of hypergraphs equipped with an equivalence relation over their nodes has been argued as a convenient way to express concurrency in the DPO approach to rewriting~\cite{concur2006}.
@@ -1913,7 +1931,7 @@ A proof is found in \Cref{proof:pbvk}.
 %\input{Hypergraphs_with_equivalences}
 %\input{Labeled_hyp_with_eq}
 
-\subsection{Term graphs with equivalence}
+\subsection{Labelled hypergraphs with equivalence}
 
 
 We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
@@ -2484,16 +2502,18 @@ We begin recalling  a well-known fact about composition and decomposition of pul
 		\item  Consider the cube aside in which the bottom face is an $\mathcal{M}$-pushout.
 		By construction the top face of the cube is a pushout and the back one a pullback. The left face is a pullback because $m$ is mono, 
 		thus the Van Kampen property yields that the front and the right faces are pullbacks too and the claim follows.
-\end{minipage}\hfill
-\begin{minipage}[r]{.30\linewidth}
-\xymatrix@C=15pt@R=9pt{&A\ar[dd]|\hole_(.65){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]_{f} & & D}
-\end{minipage}
-\begin{minipage}[l]{.68\linewidth}
+		
+		
 		\item Let $m\colon X\mto Y$ be an arrow in $\mathcal{M}$, we can then take its pushout along itself, which, by the previous point, is also a pullback.
 		It is now immediate to see that $m$ is the equalizer of $h$ and $k$.   \qedhere
 \end{minipage}\hfill
+\begin{minipage}[r]{.30\linewidth}\vspace{-.3cm}
+\xymatrix@C=15pt@R=2pt{&A\ar[dd]|\hole_(.7){\id{A}}\ar[rr]^{g} \ar[dl]_{\id{A}} && B \ar[dd]^{\id{B}} \ar[dl]_(.6){\id{B}} \\ A  \ar@{>->}[dd]_{m}\ar[rr]^(.65){g} & & B \ar@{>->}[dd]_(.3){n}\\&A\ar[rr]|\hole^(.65){g} \ar@{>->}[dl]^{m} && B \ar@{>->}[dl]^{n} \\C \ar[rr]^(.7){f} & & D\\ X \ar@{>->}[rr]_{m} \ar@{>->}[dd]_{m}&& Y \ar@{>->}[dd]^{h}\\\\ Y \ar@{>->}[rr]^{k} && Z}
+\end{minipage}
+\begin{minipage}[l]{.68\linewidth}
+\end{minipage}\hfill
 \begin{minipage}[r]{.30\linewidth}
-		\xymatrix{X \ar@{>->}[r]^{m} \ar@{>->}[d]_{m}& Y \ar@{>->}[d]^{h}\\ Y \ar@{>->}[r]^{k} & Z}
+		\xymatrix{}
 \end{minipage}
 	\end{enumerate}
 \end{proof}
@@ -2546,11 +2566,11 @@ and thus $a$ must coincide with $b$.
 \begin{minipage}[l]{.6\linewidth}
 \mpo*
 \end{minipage} 
-\begin{minipage}[r]{.38\linewidth}\xymatrix@C=10pt@R=6pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]^{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]_{k_{g'}}&& K_d\\C \ar[rr]_{g} & & D }
+\begin{minipage}[r]{.38\linewidth}\xymatrix@C=10pt@R=1pt{&A'\ar[dd]|\hole_(.65){a}\ar[rr]^{f'} \ar@{>->}[dl]_(.55){m'} && B' \ar[dd]^{b} \ar@{>->}[dl]_(.55){n'} & K_a\ar[rr]^{k_{f'}} \ar[dd]_{k_{m'}}&& K_b \ar[dd]^{k_{n'}} \\ C'  \ar[dd]_{c}\ar[rr]^(.7){g'} & & D' \ar[dd]_(.3){d}\\&A\ar[rr]|\hole^(.65){f} \ar[dl]_{m} && B \ar[dl]^{n}  & K_{c} \ar[rr]^{k_{g'}}&& K_d\\C \ar[rr]^{g} & & D }
 \end{minipage}
 
 \noindent
-\begin{minipage}[l]{.65\linewidth}
+\begin{minipage}[l]{.7\linewidth}
 \begin{proof}\label{mpo-proof}
 	By  \Cref{prop:regmono}  we know that the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the cube aside the vertical faces are pullbacks.
 	The claim now follows from strict $\mathcal{M}$-adhesivity.
@@ -2558,7 +2578,7 @@ and thus $a$ must coincide with $b$.
 \end{minipage}
 \hfill 
 \begin{minipage}[r]{.30\linewidth}		
-\xymatrix@C=10pt@R=6pt{&K_a\ar[dd]|\hole_(.65){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }
+\xymatrix@C=10pt@R=2pt{&K_a\ar[dd]|\hole_(.7){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }
 \end{minipage}
 
 
@@ -2650,14 +2670,14 @@ Thus, by the universal property of pullbacks, $K(\id{d}) = \id{K_d}$.
 To prove \Cref{prop:kerset} we need some results about pushouts and coproducts in $\Set$.
 
 \noindent
-\begin{minipage}[l]{.75\linewidth}
+\begin{minipage}[l]{.8\linewidth}
 \begin{lem}\label{lem:po_set}
 Suppose that the square aside is a pushout, with $m\colon A\mto B$ an injection. Let $\iota_{m}\colon E\mto B$ be the inclusion of the complement of the image of $m$. Then $(D, \{n, h\circ \iota_m \})$ is a coproduct. In particular, $h\circ \iota_m$ is mono.
 \end{lem}
 \end{minipage}
 \hfill 
 \begin{minipage}[r]{.23\linewidth}
-\xymatrix@R=15pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}
+\xymatrix@R=15pt@C=30pt{A \ar@{>->}[r]^{m}  \ar[d]_{g}& B \ar[d]^{h}\\ C \ar@{>->}[r]_{n} & D}
 \end{minipage}
 \begin{proof}
 		 Let $f\colon E\to Z$ and $k\colon C\to Z$ be two arrows with the same codomain. By definition of complement and since $m$ is mono $(B, \{m, \iota_m\})$ is a coproduct. Let $\phi\colon B\to Z$ be the unique arrow such that \[\phi\circ m=k\circ g \qquad \phi \circ \iota_m=f\] 
@@ -2750,7 +2770,7 @@ We are now ready to exploit the previous properties to prove \Cref{prop:kerset}.
 \[n\circ b\circ h_1\circ l^{-1}_1=d\circ n'\circ h_1\circ l^{-1}_1=d\circ t_1=n\circ t_2\]
 and we can conclude that $b\circ h_1\circ l^{-1}_1=t_2$ because $n$ is a mono. The claim now follows from the fact that  also $n'$ is mono.
 		
-		\item By \Cref{lem:po_set,lem:nodim}, the previous point and the third point of \Cref{lemma:kern_pairs_pres_pullbacks}, we can decompose $K_d$ as the coproduct of $K_b$ $K_1$, $K_2$ and $K_3$ with coprojections given by, respectively, $k_{n'}$ and $j_1$, $j_2$ and $j_3$, where these objects and arrows fit in the following four pullbacks
+		\item By \Cref{lem:po_set} and \Cref{lem:nodim}, the previous point and the third point of \Cref{lemma:kern_pairs_pres_pullbacks}, we can decompose $K_d$ as the coproduct of $K_b$ $K_1$, $K_2$ and $K_3$ with coprojections given by, respectively, $k_{n'}$ and $j_1$, $j_2$ and $j_3$, where these objects and arrows fit in the following four pullbacks
 		\[\xymatrix@C=45pt@R=15pt{K_b \ar@{>->}[r]^{k_{n'}}  \ar[d]_{(\pi^1_b, \pi^2_b)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_1 \ar@{>->}[r]^{j_1}  \ar[d]_{(p_1, q_1)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
 			B'\times B' \ar@{>->}[r]_-{n'\times n'} & D'\times D' & B'\times E' \ar@{>->}[r]_-{n'\times (g'\circ \iota')} & D'\times D'}\]
 		\[ \xymatrix@C=45pt@R=15pt{K_2 \ar@{>->}[r]^{j_2}  \ar[d]_{(p_2, q_2)}& K_d   \ar[d]^{(\pi^1_d, \pi^2_d)}& K_3 \ar@{>->}[r]^{j_3}  \ar[d]_{(p_3, q_3)} & K_d \ar[d]^{(\pi^1_d, \pi^2_d)} \\
@@ -3182,6 +3202,100 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 \end{proof} 
 
 \subsubsection{Separated hypergraphs - proofs}
+
+\sep*
+
+\begin{proof}\label{proof:sep}
+	Let $(h_1, h_2)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs. For every hyperedge $e\in E_{\mathcal{G}}$,
+	the universal property of coproducts, there are arrows $f_e\colon V_e\to V_{h_1(e)}$ fitting in the middle of the diagram below. These, in turn, yield the dotted $\hat{h}_1\colon V_{\sp(\mathcal{G})} \to V_{\sp(\mathcal{G})}$ on the bottom.
+	
+	\noindent 
+	\begin{minipage}[l]{.65\linewidth}
+		\setlength{\parindent}{1.5em}
+		Given $e\in E_{\mathcal{G}}$, if $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$, we have :
+		\begin{align*}
+			&\hat{h}_1^\star(s_{\sp(\mathcal{G})}(e)) = \hat{h}_1^\star(\prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \hat{h}_1(\iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \iota_{h_1(e)}(\iota^{h_1(e)}_{i}(0)) =   s_{\sp(\mathcal{G})}(h_1(e))
+		\end{align*}
+		\[\hat{h}_1^\star(t_{\sp(\mathcal{G})}(e)) =\hat{h}_1^\star(\prod_{i=n_e+1}^{m_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=n_e+1}^{m_e} \hat{h}_1(\iota_e(\iota^e_{i}(0)))=\prod_{i=n_e+1}^{m_e} \iota_{h_1(e)}(\iota^{h_1(e)}_{i}(0)) =   t_{\sp(\mathcal{G})}(h_1(e))\]
+		so that $(\id{E_{\mathcal{G}}}, \hat{h}_1)$ is a morphism of hypergraphs.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[r]{.3\linewidth} \vspace{-1.9cm}
+		\xymatrix@R=10pt@C=30pt{1 \ar[r]^{\id{1}} \ar@{>->}[d]^{\iota^e_i}& 1 \ar@{>->}[d]_{\iota^{h_1(e)}_i}\\ V_e  \ar@{.>}[r]^-{f_e} \ar@{>->}[d]^{\iota_{e}}& V_{h_1(e)} \ar@{>->}[d]_{\iota_{h_1(e)}}\\ V_{\sp(\mathcal{G})} \ar@{.>}[r]^-{\hat{h}_1} &  V_{\sp(\mathcal{H})}}
+	\end{minipage}
+	
+	If $h_1$ is the identity, then clearly  $\hat{h}_1=\id{V_{\sp(\mathcal{G})}}$. If $(k_1, k_2)$ is another morphism $\mathcal{H}\to \mathcal{K}$, then we have:
+	\[\hat{k}_1\circ \hat{h}_1\circ \iota_e\circ \iota^e_i=\hat{k}_1\circ \iota_{h_1(e)}\circ \iota^{h_1(e)}_i =\iota_{k_1(h_1(e))}\circ \iota^{k_1(h_1(e))}_i\]
+	which entails preservation of composition.
+\end{proof} 
+
+\dx*
+\begin{proof}\label{proof:dx}
+	Let $\mathcal{G}$ be an hypergraph. For every $e\in E_{\mathcal{G}}$, let $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$. Given $1\leq i\leq n_e+m_e$,  we can define $\delta^e_i\colon \mto V_{\mathcal{G}}$ as
+	\[\delta^e_i(0) =\begin{cases}
+		s_{\mathcal{G}}(e)_i & i\leq n_e\\
+		t_{\mathcal{G}}(e)_{i-n_e} &  n_e < i
+	\end{cases}\]
+	
+In turn,this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_{\mathcal{G}}$ as the unique one fitting in the diagram below.
+	
+	\noindent 
+	\begin{minipage}[l]{.8\linewidth}
+		\setlength{\parindent}{1.5em}
+		Now, for every hyperedge $e\in E_{\mathcal{G}}$ we have :
+		\begin{gather*}
+			\epsilon_{\mathcal{G}}^\star(s_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \delta^e_i(0) =\prod_{i=1}^{n_e} s_{\mathcal{G}}(e)_i=   s_{\mathcal{G}}(e)\\
+		\epsilon_{\mathcal{G}}^\star(t_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=n_e+1}^{n_e + m_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{n_e+i=1}^{n_e + m_e} \delta^e_i(0) = \prod_{n_e+i=1}^{n_e + m_e}  t_{\mathcal{G}}(e)_i  = t_{\mathcal{G}}(e)
+		\end{gather*} 
+	\end{minipage}
+	\hfill
+	\begin{minipage}[r]{.3\linewidth} \vspace{-.9cm}
+		\xymatrix@R=10pt@C=30pt{1 \ar[r]_{\id{1}} \ar@{>->}[d]^{\iota^e_i}& 1 \ar@{>->}[dd]_{\delta^e_i}\\ V_e \ar@{>->}[d]^{\iota_e}  \\ V_{\sp(\mathcal{G})} \ar@{.>}[r]^-{\epsilon_{\mathcal{G}}} &  V_{\mathcal{G}}}
+	\end{minipage}
+	
+	\smallskip 
+	Hence $(\id{E_{\mathcal{G}}}, \epsilon_{G})$ is a morphism $P(\sp(\mathcal{G}))\to \mathcal{G}$. Now, let $(f,g)\colon P(\mathcal{H})\to \mathcal{G}$ be a  morphism of pruned hypergraphs with $\mathcal{H}$ separated. Given a node $v$ in $V_{\mathcal{H}}$ we know that there exists exactly one $e_v$ such that $v$ occurs in $s_{\mathcal{H}}(e_v)$ or in $t_{\mathcal{H}}(e_v)$. Moreover, $v$ occurs exactly once and not in both. Let $i_v$ be the index at which it appears. We define:
+	\[\hat{g}(v):=\begin{cases}
+		\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0)) & v \text{ occurs in } s_{\mathcal{H}}(e)\\
+		\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0)) & v \text{ occurs in } t_{\mathcal{H}}(e)\\
+	\end{cases}\]
+	Computing we get:
+	\begin{gather*}
+		\hat{g}^\star(s_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{n_e} s_{\mathcal{H}}(e)_i)=\prod_{i=1}^{n_e}(\hat{g}(s_{\mathcal{H}}(e)_i))=\prod_{i=1}^{n_e}\iota_{f(e)}( \iota^{f(e)}_i(0))=s_{\sp(\mathcal{G})}(f(e))\\
+		\hat{g}^\star(t_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{m_e} t_{\mathcal{H}}(e)_i)=\prod_{i=1}^{m_e}(\hat{g}(t_{\mathcal{H}}(e)_i))=\prod_{i=1}^{m_e}\iota_{f(e)}( \iota^{f(e)}_{n_e+i}(0))=\prod_{i=n_e + 1}^{n_e + m_e}\iota_{f(e)}( \iota^{f(e)}_{i}(0))=t_{\sp(\mathcal{G})}(f(e))
+	\end{gather*}
+	proving that $(f, \hat{g})\colon \mathcal{H}\to\sp( \mathcal{G})$ is a morphism of $\pshyp$. Notice that	
+	\begin{align*}
+		&\epsilon_\mathcal{G}(\hat{g}(v))=\begin{cases}
+			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0))) & v \text{ occurs in } s_{\mathcal{H}}(e_v)\\
+			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0))) & v \text{ occurs in } t_{\mathcal{H}}(e_v)
+		\end{cases}=	\begin{cases}
+		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } t_{\mathcal{G}}(e)
+		\end{cases}\\ =&
+		\begin{cases}
+			s_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
+			t_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)
+		\end{cases}= \begin{cases}
+		(g^\star(s_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		(g^\star(t_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)\\
+		\end{cases}\\=&\begin{cases}
+		g(s_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		g(t_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } t_{\mathcal{G}}(e)\\
+		\end{cases}=g(v)
+	\end{align*}
+and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
+	 
+	Let now $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(h, k)=(f,g)$. This entails immediately that $h =f$.  Let $v$ be a node $V_{\mathcal{H}}$, since $\mathcal{H}$ is pruned, we have two cases:
+	\begin{itemize}
+		\item $v$ occurs in $s_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have:
+		\[\hat{g}(v)=\hat{g}(s_{\mathcal{H}}(e)_i)=(g^\star(s_{\mathcal{H}}(e)))_i=s_{\sp(\mathcal{G})}(f(e))_i=(k^\star(s_{\mathcal{H}}(e)))_i=k(s_{\mathcal{H}}(e)_i)=k(v)\]
+		\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have:
+		\[\hat{g}(v)=\hat{g}(t_{\mathcal{H}}(e)_i)=(g^\star(t_{\mathcal{H}}(e)))_i=t_{\sp(\mathcal{G})}(f(e))_i=(k^\star(t_{\mathcal{H}}(e)))_i=k(t_{\mathcal{H}}(e)_i)=k(v)\]
+	\end{itemize}
+In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
+\end{proof}
+
 
 \seppb*
 \begin{proof}\label{proof:seplim}
