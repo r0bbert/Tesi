@@ -675,7 +675,7 @@ We recall some of its proprieties.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
-	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}), \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal objects induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
+	\begin{rem}\label{rem:length} It is well known that $(\mathbb{N}, \{\delta_n\}_{n\in \mathbb{N}})$ is a coproduct for $\aleph_0$ copies of $1$, where $\delta_n\colon 1\to \mathbb{N}$ is the function picking the element $n$. Thus by the first point of \Cref{prop:fact} there is a canonical isomorphism $\Delta\colon \mathbb{N}\to 1^\star$. In particular, for every set $X$ the unique arrow $!_\X\colon X\to 1$ into the terminal object induces a \emph{length function} $\lgh_{X}\colon X^\star \to \mathbb{N}$, which sends a word to its length, as in the diagram aside. 
 		\end{rem}
 \end{minipage}\hfill \begin{minipage}[r]{.15\linewidth}\noindent
 \xymatrix@R=8pt@C=30pt{1 \ar[r]^{\id{1}} \ar@{>->}[d]^{\delta_n}& 1 \ar@{>->}[d]^{v_n}\\ \mathbb{N} \ar@{.>}[r]^{\Delta}& 1^\star} \hspace{1pt}\\
@@ -692,7 +692,7 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 
 \noindent
 \begin{minipage}[r]{.83\linewidth}
-	\begin{rem}\label{rem:len} It is worth noticing that for $X$ a set and every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amount to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
+	\begin{rem}\label{rem:len} It is worth noticing that for $X$ a set and every $n\in \mathbb{N}$, $X^n$ is the preimage of $n$ along $\lgh_{X}$. This amounts to say that the square aside is a pullback. This follows at once from the fact that $\Set$ is \emph{extensive} (see \cite{carboni1993introduction} and also \Cref{word:ext}). 
 	\end{rem}
 \end{minipage}\hfill \begin{minipage}[l]{.15\linewidth} \vspace{-.2cm}
 \xymatrix@R=13pt{X^n \ar@{>->}[r]^{v_n} \ar[d]^{!_{X^n}}& X^\star  \ar[d]^{\lgh_{X}}\\ 1 \ar@{>->}[r]^{\delta_n} & \mathbb{N}}
@@ -980,7 +980,7 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 The remaining of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs .
 
 
-\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: it lacks e.g. a terminal object. To see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is left-monogamous and that 
+\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: it lacks e.g. a terminal object. To see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1}, ?_{1} )$ is left-monogamous and that 
 	$\lmo(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\lmo$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$.  We have two possibilities	
 
 %	\medskip 
@@ -1125,7 +1125,7 @@ We can further take the coproduct $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\
 	t_{\sp(\mathcal{G})} \colon E_{\mathcal{G}}&\to V_{\sp(\mathcal{G})}^\star\\
 	e &\mapsto \prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0))
 \end{split} \]
-where $0$ is the unique element of $1$. 
+where $0$ is the unique element of the terminal object $1$. 
 \marginpar{ovvero?}
 
 We define the \emph{separated graph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}) = (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
@@ -1147,7 +1147,7 @@ We define the \emph{separated graph associated to $\mathcal{G}$}  as $\sp(\mathc
 	Let $\Sigma$ be a monoidal signature, then $\sp(\mathcal{G}^\Sigma)$ collects all the operation of $\Sigma$ as edges with disjoint sources and targets. For instance let $\Sigma$ be the algebraic signature of monoids, with $O_\Sigma = (\cdot, e )$ with 
 	\[\ari_\Sigma(\cdot)=2 \qquad \ari_\Sigma(e)=0\]
 	
-	We can then depict $\mathcal{G}^\Sigma $ and $\sp(\mathcal{G}^\Sigma )$ as below\marginpar{e le lettere?}
+	We can then depict $\mathcal{G}^\Sigma $ and $\sp(\mathcal{G}^\Sigma )$ as below
 	\begin{center}	\begin{tikzpicture}
 			\begin{pgfonlayer}{nodelayer}
 				\node[style=node] (v) at (0, 0){};
@@ -1209,10 +1209,10 @@ The construction we have just introduced can be extended to a functor (see \Cref
 \begin{minipage}[l]{.68\linewidth}
 \begin{rem}Notice that $\sp$ is neither right nor left adjoint to $S$.
 	\begin{itemize}
-		\item To see that $\sp$ cannot be a right adjoint to $S$, consider the ``double loop'' $\mathcal{D}=(2, 1, !_2, !_2)$ depicted aside. $\sp(\mathcal{D})$ is then isomorphic to the graph $\mathcal{G}=(2, 4, s_{\mathcal{G}}, t_{\mathcal{G}})$ with
+		\item To see that $\sp$ cannot be a right adjoint to $S$, consider the ``double loop'' $\mathcal{D}=(2, 1, !_2, !_2)$ depicted aside. Then $\sp(\mathcal{D})$ is isomorphic to the graph $\mathcal{G}=(2, 4, s_{\mathcal{G}}, t_{\mathcal{G}})$ with
 		\[s_{\mathcal{G}}(0) = 0 \quad  t_{\mathcal{G}}(0) =  1 \quad  s_{\mathcal{G}}(1) = 2 \quad  t_{\mathcal{G}}(1) = 3 \]
 		
-		Let $\mathcal{H}$ be $(\emptyset, 1, ?_1, ?_1)$, which is clearly a separated hypergraph. Now,  $\shyp(\mathcal{H}, \sp(\mathcal{D}))$ has the same cardinality of  $\shyp(\mathcal{H}, \mathcal{G})$, which is $4$, while $\hyp(S(\mathcal{H}), \mathcal{D})$ is a singleton.
+		Let $\mathcal{H}$ be $(\emptyset, 1, ?_{1^\star}, ?_{1^\star})$, which is clearly a separated hypergraph. Now,  $\shyp(\mathcal{H}, \sp(\mathcal{D}))$ has the same cardinality of  $\shyp(\mathcal{H}, \mathcal{G})$, which is $4$, while $\hyp(S(\mathcal{H}), \mathcal{D})$ is a singleton.
 		\item Consider now the ``single loop'' $\mathcal{L}=(1, 1, \id{1}, \id{1})$. Then $\sp(\mathcal{L})$ is isomorphic to $(1, 2, \id{2}, \id{2})$ and so there are no arrows $\mathcal{L}\to S(\sp(\mathcal{L}))$. In particular, this shows that $\sp$ cannot be left adjoint to $S$. 
 	\end{itemize} 
 \end{rem}
@@ -1289,7 +1289,7 @@ Finally, we conclude our exam of separated hypergraphs proving a result regardin
 
 
 \begin{exa}\label{ex:noterm}
-In general $\shyp$ is not complete. For instance it does not have a terminal object. Too see this notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, 1_{1^\star} )$ is separated and that 
+In general $\shyp$ is not complete. For instance it does not have a terminal object. Too see this notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, ?_{1^\star} )$ is separated and that 
 $\shyp(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\shyp$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$. 
 
 \smallskip
@@ -1576,13 +1576,14 @@ Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functo
 	A morphism $(f,g)$ between $(h_1, k_1)\colon \mathcal{H}\to \mathcal{G}$ and  $(h_2, k_2)\colon \mathcal{K}\to \mathcal{G}$ is a regular mono in $\lmo_{\mathcal{G}}$ if and only if $(f,g)\colon \mathcal{H}\to \mathcal{K}$ is a regular mono in $\lmo$.
 \end{prop}
 
-In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following result
+In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following result.
 
-\begin{thm} Let $\mathcal{G}$ be an hypergraph. Then the following fact hold
-	\begin{enumerate}
-		\item an arrow $(f,g)$  if and only if is so in $\lmo$; \marginpar{ovvero?}
-		\item $\lmo_{\mathcal{G}}$ is quasiadhesive.
-	\end{enumerate}
+\begin{thm} Let $\mathcal{G}$ be an hypergraph. Then %the following fact hold
+%	\begin{enumerate}
+%		\item an arrow $(f,g)$  if and only if is so in $\lmo$; \marginpar{ovvero?}
+		%\item 
+		$\lmo_{\mathcal{G}}$ is quasiadhesive.
+%	\end{enumerate}
 \end{thm}
 
 \begin{rem}\label{rem:tg}
@@ -3820,7 +3821,7 @@ We can use \Cref{lim} to characterize monos in comma categories.
 	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos
 	\[\xymatrix{(A, B, f)  \ar[rr]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}&& (A, B, f)  \ar[d]^{(h,k)}& A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ (A, B, f)  \ar[rr]_{(h,k)}&& (A', B', g) &A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
 	
-\newpage
+%\newpage
 	\smallskip\noindent 
 	\parbox{4cm}{ \xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}}\hfill \parbox{8.5cm}{$(\Leftarrow)$ Since $h$ and $k$ are monos then we have the two pullback squares on the left. Thus by \Cref{lim} the pullback of $(h,k)$ along itself has isomorphisms as projections and so $(h,k)$ is mono. \qedhere}
 	
@@ -3877,27 +3878,26 @@ We can obtain the slice over and under an object $X\in \X$ as comma categories.
 	Let  $X$ be an object in a category $\X$. If $\delta_X\colon \T\to \X$ is  the constant functor of value  $X$ from the category with only one object, then $\X/X$ and $X/\X$ are isomorphic to $\comma{\id{X}}{\delta_X}$ and $\comma{\delta_X}{\id{X}}$, respectively.
 \end{prop}
 
-\newpage
 \begin{proof} 
-Let $*$ be the only object of the category $\T$ and define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
+Let $1$ be the only object of the category $\T$ and define functors $F_1\colon \comma{\id{X}}{\delta_X}\to \X/X$ and $G_1\colon \X/X\to \comma{\id{X}}{\delta_X}$ as follows
 	\[	\begin{split}
-		\functor[l]{(Y, *,  f)}{(h, \id{*} )}{( Y', *,  g)}
+		\functor[l]{(Y, 1,  f)}{(h, \id{1} )}{( Y', 1,  g)}
 		\functormapsto
 		\rfunctor{f }{h}{g}
 	\end{split} \qquad \begin{split}
 		\functor[l]{f }{h}{g}
 		\functormapsto
-		\rfunctor{(\dom(f), *, f)}{(h, \id{*} )}{(\dom(g), *, g)}
+		\rfunctor{(\dom(f), 1, f)}{(h, \id{1} )}{(\dom(g), 1, g)}
 	\end{split}\]
 	Similarly, we have $F_2\colon \comma{\delta_X}{\id{X}}\to X/\X$ and $G_2\colon X/\X\to \comma{\delta_X}{\id{X}}$
 	\[	\begin{split}
-		\functor[l]{(*, Y, f)}{(\id{*},h )}{(*, Y', g)}
+		\functor[l]{(1, Y, f)}{(\id{1},h )}{(1, Y', g)}
 		\functormapsto
 		\rfunctor{f }{h}{g}
 	\end{split} \qquad \begin{split}
 		\functor[l]{f }{h}{g}
 		\functormapsto
-		\rfunctor{(*, \cod(f), f)}{(\id{*}, h )}{(*, \cod(g), g)}
+		\rfunctor{(1, \cod(f), f)}{(\id{1}, h )}{(1, \cod(g), g)}
 	\end{split}\]
 	It is now obvious to see that $F_1,G_1$ and $F_2, G_2$ are pairs of inverses.   
 \end{proof}
@@ -3907,12 +3907,12 @@ A straightforward application of \Cref{lim,colim} now yields the following.
 For every object $\X$, $\X/X$ has all colimits and connected limits that $\X$ has. Moreover such limits and colimits are created by $\dom_X$.
 \end{cor}
 
-In particular, if $\X$ has pullbacks, equalizers or pushouts, then for every object $X$ the slice $\X/X$ has such limits and colimits.
+%In particular, if $\X$ has pullbacks, equalizers or pushouts, then for every object $X$ the slice $\X/X$ has such limits and colimits.
 
 
 \iffalse
 \todo{Tutta la parte qua sotto non mi è chiaro a cosa serva}
-In a category $\cat X$ with pullbacks, each $f: X \to Y$ induces a functor $f^*: \cat X/Y \to \cat X/X$,
+In a category $\cat X$ with pullbacks, each $f: X \to Y$ induces a functor $f^\*: \cat X/Y \to \cat X/X$,
 which sends each morphism $a: A \to Y$ of $\cat X$ onto its pullback along $f$, $p_a$, and each morphism $h: a \to b$ onto the unique arrow from the pullback of $a$ along $f$ to the pullback of $b$ along $f$.
 
 Then, we have the following result.
