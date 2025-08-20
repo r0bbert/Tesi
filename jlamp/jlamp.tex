@@ -696,7 +696,7 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  Formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, for $\pi_i\colon X^l\to X$ the $i^\mathrm{th}$-projection.
 \end{notaz}
 
-\subsection{The category of hypergraphs}
+\subsection{The category of hypergraphs}\label{sub:hyp}
 
 Let us begin this section with the definition of hypergraphs.
 
@@ -801,7 +801,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 		
 		We say that $\Sigma$ is \emph{algebraic} if $\coar_{\Sigma}$ is the constant function in $1$.
 		
-		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1^\star$ is the isomorphism of \Cref{rem:length}.
+		We define the \emph{hypergraph $\mathcal{G}_\Sigma$ associated with $\Sigma$} taking $O_\Sigma$ as set of hyperedges, $1$ as set of nodes and $\Delta \circ \ari_\Sigma$ as the source function and $ \Delta \circ  \coar_{\Sigma}$ as target function, where $\Delta \colon \mathbb{N}\to 1^\star$ is the isomorphism of \Cref{rem:length}.
 	\end{defi}
 	
 	\begin{exa}\label{exa_3} 
@@ -857,7 +857,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 	\end{minipage}
  
  \smallskip 
- We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which will be used in Section \ref{par:tg}. 
+ We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the set of nodes provides the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which will be used in Section \ref{par:tg}\label{sub:hyp_alg}. 
  
 \begin{defi}
 An hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{algebraic} if $t_{\mathcal{G}}(e)$ has length $1$ for every $e\in E_{\mathcal{G}}$.
@@ -898,7 +898,7 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \end{exa}
 
 
-\subsubsection{Two  subcategories of $\hyp$}
+\subsubsection{Two  subcategories of $\hyp$}\label{sub:sub}
 
 We are now going to introduce two classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
 
@@ -1078,7 +1078,7 @@ Then the following facts are equivalent
 
 Putting together \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:regmon}, we get the following.
 
-\begin{cor}$\lmo$ is quasiadhesive.
+\begin{cor}\label{cor:lmquasi}$\lmo$ is quasiadhesive.
 \end{cor}
 
 
@@ -1373,42 +1373,55 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 
 \subsection{Labelled hypergraphs}\label{sssect:hyp_alg_sign}
 
-Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. We thus need a way to label hyperedges with symbols taken from a signature.
+Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. As  noted in \Cref{sub:hyp_alg}, an hypergraph can be thought as a colored monoidal signature. Thus labelling correspnds to the operationn of taking the slice category over a suitable hypergraph. 
+
+\begin{defi}
+	Given an hypergraph $\mathcal{G}$, the category $\hyp_\mathcal{G}$ of hypergraphs \emph{labelled by $\mathcal{G}$}  or of \emph{$\mathcal{G}$-hypergraphs} is $\hyp/\mathcal{G}$.
+\end{defi}
 
 
-\begin{exa}segnature The category $\hyps$ of \emph{algebraically labelled hypergraphs} is the slice category $\hyp/\mathcal{G}^\Sigma$.
-\end{exa}
+\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\mathcal{G}}$ and a characterisation of monos in it.
 
-\Cref{cor:mono} and \Cref{thm:slice-functors} give us immediately an adhesivity result for $\hyp_{\Sigma}$ and a characterisation of monos in it.
-
-\begin{prop}\label[proposition]{prop:mono} Let $\Sigma$ be an algebraic signature. Then the following facts hold
+\begin{prop}\label{prop:mono} Let $\mathcal{G}$ be an hypergraph. Then the following facts hold
 	\begin{enumerate}
-		\item an arrow $(h,k)$ in $\hyp_{\Sigma}$ is a mono if and only if $h$ and $k$ are injective;
-		\item $\hyp_{\Sigma}$ is an adhesive category. 
+		\item an arrow $(h,k)$ in $\hyp_{\mathcal{G}}$ is a mono if and only if $h$ and $k$ are injective;
+		\item $\hyp_{\mathcal{G}}$ is an adhesive category. 
 	\end{enumerate}
 \end{prop}
 
+
+\begin{exa} A useful example is given by an algebraic signature $\Sigma$. Consider the hypregraph of \Cref{exa_3}, the category $\hyps$ of
+	hypergraphs labelled by $\Sigma$ is the slice category $\hyp/\mathcal{G}^\Sigma$.
+\end{exa}
+
 \noindent 
 \begin{minipage}[l]{.8\linewidth}	
-	\begin{rem}\label[remark]{rem:label}	
+	\begin{rem}	\label{rem:label}
 			\setlength{\parindent}{1.5em}
-		Let $\mathcal{H}=(E, V, s, t)$ be a hypergraph, by definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a function $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
+			
+			Consider an algebraic signature $\Sigma$ and an hypergraph $\mathcal{H}=(E, V, s, t)$. By definition we know that $U_{\hyp}(\mathcal{G}^{\Sigma})$ is the terminal object $1$, so an arrow $\mathcal{H}\rightarrow \mathcal{G}^{\Sigma}$, is determined by a function $h\colon E_\mathcal{H}\to O_\Sigma$  making the two squares on the right commutative (cfr.~\Cref{rem:length}).
 		
-		Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$.  By the second diagram above entails that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V_\mathcal{H}^{\star}$ of words of length $1$, i.e.~all hyperedges must have targets of length $1$, that is $t_{\mathcal{H}}=v_1\circ \tau_{\mathcal{H}}$ for some $\tau_{\mathcal{H}}\colon E_{\mathcal{H}}\to V_{\mathcal{H}}$.
+		Now, consider a coprojection $v_n\colon V^n_\mathcal{H}\to  V^\star_{\mathcal{H}}$. Since $\Delta\circ \coar_\Sigma$ is the constant function in $1$,  the second diagram aside entails, together with \Cref{rem:len}, that $t_{\mathcal{H}}$ factors via the inclusion $v_1\colon V_{\mathcal{H}}\to V_\mathcal{H}^{\star}$ of words of length $1$, i.e $\mathcal{H}$ must be algebraic.
 	\end{rem}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.15\linewidth}
-	\xymatrix@R=10pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]^{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\ari_\Sigma}& \mathbb{N}} \hspace{1pt}\\ \xymatrix@R=10pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]^{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\gamma_1}& \mathbb{N}}
+	\xymatrix@R=14pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{s_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\Delta\circ \ari_\Sigma}& \mathbb{N}} 
+	 \xymatrix@R=14pt{E_{\mathcal{H}} \ar[d]_{h}\ar[r]_{t_{\mathcal{H}}} & V^\star_{\mathcal{H}} \ar[d]^{\lgh_{V_{\mathcal{H}}}} \\  O_\Sigma \ar[r]^{\Delta\circ \coar_\Sigma}& \mathbb{N}}
 \end{minipage}
 
-$\hyp_{\Sigma}$ has a forgetful functor $U_{\Sigma}\colon \hyp_{\Sigma}\to \X$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $U_{\hyp}(\mathcal{H}$). Now, since $U_{\hyp}(\mathcal{G}^{\Sigma})=1$ 
+\iffalse 
+\smallskip 
+$\hyp_{\mathcal{G}}$ has a forgetful functor $U_{\mathcal{G}}\colon \hyp_{\mathcal{G}}\to \Set/V_{\mathcal{G}}$ which sends $(h,k)\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ to $k\colon V_\mathcal{H} \to V_{\mathcal{G}}$. Now, since $U_{\hyp}(\mathcal{G}^{\Sigma}=1$ 
 for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \mathcal{G}^{\Sigma}$  as $(?_{O_\Sigma}, !_{X})$. It is straightforward to see that in this way we get a left adjoint to $U_\Sigma$.
 
 
 \begin{prop} $U_\Sigma$
 	has a left adjoint $\Delta_\Sigma$.
 \end{prop}
-\iffalse 
+
+\begin{rem}
+	contenuto...
+\end{rem}
 \begin{proof}Let $(h, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^{\Sigma}$ be an object of $\hyp_{\Sigma}$, and suppose that there exists $f\colon X\to U_{\Sigma}(\mathcal{H})$. Since, $U_{\Sigma}(\mathcal{H})=U_{\X}(\mathcal{H})$ and the identity is the unit of $\Delta_\hyp \dashv U_{\hyp}$, we get a morphism $(?_{E_{\mathcal{H}}},f)\colon \Delta_{\X}(X)\to \mathcal{H}$ of $\hyp$. And then the thesis follows since we have
 	\[
 	(h, !_{V_{\mathcal{{H}}}})\circ (?_{E_{\mathcal{H}}}, f)=(h\circ ?_{E_{\mathcal{H}}}, !_{V_{\mathcal{{H}}}}\circ f)=(?_{0_{\Sigma}}, !_{X})=\Delta_{\hyp}(X)\]
@@ -1448,7 +1461,9 @@ for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \m
 \todo{Decidere se tenere questo esempio (io direi di no)}
 \fi
 
-We extend our graphical notation of hypergraphs to labeled ones putting the label of an hyperedge $h$ inside its corresponding square.
+\smallskip
+ 
+We extend our graphical notation of hypergraphs to labelled ones putting the label of an hyperedge $h$ inside its corresponding square.
 
 \begin{exa}\label[example]{lab_2}
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
@@ -1526,12 +1541,43 @@ We extend our graphical notation of hypergraphs to labeled ones putting the labe
 
 \subsubsection{Labelled left-monogamous and separated hypergraphs}
 
-\color{red}
-TO DO - questo comprende anche la sezione successiva (?) come sottosezione + versione etichettata (anche con cose monoidali) dopo
+As we have done in \Cref{sub:sub}, we can restrict our attention to two subcategories of labelled hypergraphs.
 
+\begin{defi}
+	Let $\mathcal{G}$ be an hypergraph and $(h,k)\colon \mathcal{H}\to \mathcal{G}$  a $\mathcal{G}$-hypergraph. We say that $(h,k)$ is a \emph{left-monogamous} (resp.~\emph{separated}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated).
+	
+	We will denote by $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$  the corresponding subcategories of $\hyp_{\mathcal{G}}$.
+\end{defi}
 
-Ipergrafi scoppiati con equivalenza/congruenza -> adesività (spero) + versione etichettata (monoidale boh)
+We can easily realize $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$ as comma categories.
 
+\begin{prop}
+Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Delta_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then:
+\begin{enumerate}
+	\item $\lmo_{\mathcal{G}}$ is equivalent to $\comma{M}{\Delta_\mathcal{G}}$;
+	\item $\shyp_{\mathcal{G}}$ is equivalent to $\comma{S}{\Delta_\mathcal{G}}$; 
+\end{enumerate}
+\end{prop}
+
+\Cref{lim} allows us to easily characterize regular monos in $\hyp_{\mathcal{G}}$.
+\begin{prop}
+	A morphism $(f,g)$ between $(h_1, k_1)\colon \mathcal{H}\to \mathcal{G}$ and  $(h_2, k_2)\colon \mathcal{K}\to \mathcal{G}$ is a regular mono in $\lmo_{\mathcal{G}}$ if and only if $(f,g)\colon \mathcal{H}\to \mathcal{K}$ is a regular mono in $\lmo$.
+\end{prop}
+
+In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following.
+
+\begin{thm} Given an hypergraph $\mathcal{G}$, the following hold true:
+	\begin{enumerate}
+		\item an arrow $(f,g)$  if and only if is so in $\lmo$.
+		\item $\lmo_{\mathcal{G}}$ is quasiadhesive.
+	\end{enumerate}
+\end{thm}
+
+\begin{rem}\label{rem:tg}
+	Let $\Sigma$ be an algebraic signature. Then we know that every hypergraph labelled by $\Sigma$ must be algebraic. By \Cref{rem:elem} this means that an hypergraph $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$ labelled by $\Sigma$ is left-monogamous if and only if $t_{\mathcal{H}}$ is injective. This is precisely the definition of (cyclic) \emph{term graphs} in \cite{Plu:TGR-ENTCS,CorradiniG05,CastelnovoGM24}. 
+\end{rem}
+
+\iffalse 
 \color{black}
 \paragraph{Term Graphs}\label{par:tg}
 Term graphs have been adopted as a convenient way to represent terms over a signature with an explicit sharing of sub-terms,
@@ -1650,11 +1696,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 \begin{cor}\label{cor:term}
 	The category $\tg$ is quasiadhesive.
 \end{cor}
-
-\begin{rem}\label{rem:map1}
-	diagramma generale dei vari ipergrafi
-\end{rem}
-
+\fi 
 \section{Adding equivalences to hypergraphical structures}
 \label{hypereq}
 The use of hypergraphs equipped with an equivalence relation over their nodes has been argued as a convenient way to express concurrency in the DPO approach to rewriting~\cite{concur2006}.
