@@ -863,7 +863,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 	\end{minipage}
  
  \smallskip 
- We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the nodes provide the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which is used later on.
+ We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the nodes provide the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which is used later on\label{sub:hyp_alg}.
  % in Section \ref{par:tg}\label{sub:hyp_alg}. 
  
 \begin{defi}
@@ -1223,14 +1223,14 @@ The construction we have just introduced can be extended to a functor (see \Cref
 		\begin{pgfonlayer}{nodelayer}
 			\node[style=node] (v) at (0, 0){};
 			\node[style=none] (vlab) at (0, 0.3){$0$};
-			\node[style=small box] (times) at (-1, 1) {};
-			\node[style=none] (timeslab) at (-1, 1.5) {$0$};
-			\node[style=none] (timesin) at (-1, .7) {};
-			\node[style=none] (timesout) at (-.7, 1){};
-			\node[style=small box] (div) at (1, 1) {};
-			\node[style=none] (divlab) at (1, 1.5) {$1$};
-			\node[style=none] (divin) at (1, .7) {};
-			\node[style=none] (divout) at (.7, 1){};
+			\node[style=small box] (times) at (-.8, 1) {};
+			\node[style=none] (timeslab) at (-.8, 1.5) {$0$};
+			\node[style=none] (timesin) at (-1.1, 1) {};
+			\node[style=none] (timesout) at (-.5, 1){};
+			\node[style=small box] (div) at (.8, 1) {};
+			\node[style=none] (divlab) at (.8, 1.5) {$1$};
+			\node[style=none] (divin) at (.5, 1) {};
+			\node[style=none] (divout) at (1.1, 1){};
 			
 			\node[style=node] (a) at (-1, -1.5){};
 			\node[style=none] (alab) at (-1, -1.2){$0$};
@@ -1253,10 +1253,10 @@ The construction we have just introduced can be extended to a functor (see \Cref
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer} 
-			\draw[style=none,out=180, in= 270] (v) to (timesin.center);
-			\draw[style=none,out=0, in= 270] (v) to (divin.center);
+			\draw[style=none,out=200, in= 180] (v) to (timesin.center);
+			\draw[style=none,out=45, in= 200] (v) to (divin.center);
 			\draw[style=none, in=135, out=345] (timesout.center) to (v);
-			\draw[style=none, in=45, out=195] (divout.center) to (v);
+			\draw[style=none, in=345, out=0] (divout.center) to (v);
 			\draw[style=none, in=180, out=0] (a.center) to (zeroin.west);
 			\draw[style=none, in=180, out=0] (c.center) to (unoin.west);
 			\draw[style=none, in=180, out=0] (zeroout.east) to (b.west);
@@ -1272,8 +1272,20 @@ If we restrict our attention to separated hypergraphs without isolated nodes, th
 $t_{\mathcal{G}}(e)$ for every $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pruned} if it has no isolated nodes. We denote by $\phyp$ and $\pshyp$ the full subcategories of $\hyp$ given by, respectively, pruned and pruned and separated hypergraphs.
 \end{defi}
 
+
 \begin{rem}\label{rem:prun}
 	By construction, $\sp(\mathcal{G})$ is pruned for every hypergraph $\mathcal{G}$.
+\end{rem}
+
+\begin{rem}\label{rem:mprun}
+	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\phyp$ and suppose that $f=h$. We can use the absence of isolated nodes to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
+	\begin{itemize}
+		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
+		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
+		\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have
+		\[g(v)=g(t_{\mathcal{G}}(e)_i)=(g^\star(t_{\mathcal{G}}(e)))_i=t_{\mathcal{H}}(f(e))_i=t_{\mathcal{H}}(h(e))_i=(k^\star(t_{\mathcal{G}}(e)))_i=k(t_{\mathcal{G}}(e)_i)=k(v)\]
+	\end{itemize}
+	In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
 \end{rem}
 
 \begin{restatable}{prop}{dx}\label{prop:dx}
@@ -1343,8 +1355,8 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	\[s_{\mathcal{G}}(q_1(e)) = q^\star_2(s_{\mathcal{K}}(e)) = q^\star_2(j^\star_2(v))=p^\star_2(i^\star_2(v)) = p^\star_2(t^\star_{\mathcal{Q}}(e))= t_{\mathcal{G}}(p_2(e))\]
 	and so $\mathcal{G}$ cannot be in $\shyp$, yielding a contradiction.
 \end{exa}
-\end{minipage} \hfill \begin{minipage}[r]{.5\linewidth} \vspace{-2cm}
-\xymatrix@R=6pt@C=30pt{\begin{tikzpicture}
+\end{minipage} \hfill \begin{minipage}[r]{.45\linewidth} \vspace{-2cm}
+\xymatrix@R=6pt@C=25pt{\begin{tikzpicture}
 		\node[style=node](v) at (0, 0){};
 	\node[style=none] at(0, 0.3){$v$};
 	\end{tikzpicture}\ar[d]_{(i_1, i_2)} \ar[r]^-{(j_1, j_2)}  &
@@ -1382,6 +1394,15 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	\mathcal{G}
 	}
 \end{minipage}
+
+If we restrict to pruned separated hypergraph the previous issue disappeares.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
+
+\begin{restatable}{lem}{pruned}\label{lem:pruned}
+$\pshyp$ is equivalent to $\Set/(\mathbb{N}\times \mathbb{N})$.
+\end{restatable}
+\begin{cor}\label{cor:pruned}
+	$\pshyp$ is adhesive.
+\end{cor}
 
 \subsection{Labelled hypergraphs}\label{sssect:hyp_alg_sign}
 
@@ -1578,7 +1599,7 @@ Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functo
 
 In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following result.
 
-\begin{thm} Let $\mathcal{G}$ be an hypergraph. Then %the following fact hold
+\begin{thm} Let $\mathcal{G}$ be an hypergraph, then %the following fact hold
 %	\begin{enumerate}
 %		\item an arrow $(f,g)$  if and only if is so in $\lmo$; \marginpar{ovvero?}
 		%\item 
@@ -1941,6 +1962,9 @@ A proof is found in \Cref{proof:pbvk}.
 	$\EqHyp$ is $\pbc$-adhesive.
 \end{cor}
 
+\subsubsection{title}
+\paragraph{title}
+\paragraph{title}
 %\input{Hypergraphs_with_equivalences}
 %\input{Labeled_hyp_with_eq}
 
@@ -2033,6 +2057,8 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $J_{\Sigma
 \begin{cor}\label{cor:tade}
 	$\EqTG_{\Sigma}$ is $\mathcal{T}$-adhesive.
 \end{cor}
+
+\subsubsection{title}
 
 \section{EGGs}
 \label{eggs}
@@ -3300,14 +3326,7 @@ In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_
 	\end{align*}
 and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 	 
-	Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(h, k)=(f,g)$. This entails immediately that $h =f$.  Let $v$ be a node $V_{\mathcal{H}}$. Since $\mathcal{H}$ is pruned, we have two cases
-	\begin{itemize}
-		\item $v$ occurs in $s_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
-		\[\hat{g}(v)=\hat{g}(s_{\mathcal{H}}(e)_i)=(g^\star(s_{\mathcal{H}}(e)))_i=s_{\sp(\mathcal{G})}(f(e))_i=(k^\star(s_{\mathcal{H}}(e)))_i=k(s_{\mathcal{H}}(e)_i)=k(v)\]
-		\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have
-		\[\hat{g}(v)=\hat{g}(t_{\mathcal{H}}(e)_i)=(g^\star(t_{\mathcal{H}}(e)))_i=t_{\sp(\mathcal{G})}(f(e))_i=(k^\star(t_{\mathcal{H}}(e)))_i=k(t_{\mathcal{H}}(e)_i)=k(v)\]
-	\end{itemize}
-In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
+	Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(h, k)=(f,g)$. This entails immediately that $h =f$ and so uniqueness follows from \Cref{rem:mprun}.	
 \end{proof}
 
 
@@ -3354,7 +3373,58 @@ In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
 \end{proof}
 
 
+\pruned*
 
+\begin{proof}{\label{proof:pruned}}
+	Let $\mathcal{G}$ be a pruned and separated hypergraph. We can define $F(\mathcal{G})$ as $(\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}}) \colon E_{\mathcal{G}}\to \mathbb{N}\times \mathbb{N}$. Given a morphism $(h,k)\colon \mathcal{G}\to \mathcal{H}$ and using \Cref{rem:le} we	have
+	\[(\lgh_{V_{\mathcal{H}}}\circ s_{\mathcal{H}}, \lgh_{V_{\mathcal{H}}}\circ t_{\mathcal{H}})\circ h = (\lgh_{V_{\mathcal{H}}}\circ s_{\mathcal{H}}\circ h, \lgh_{V_{\mathcal{H}}}\circ t_{\mathcal{H}}\circ h)=(\lgh_{V_{\mathcal{H}}}\circ k^\star\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{H}}}\circ k^\star\circ t_{\mathcal{G}})= (\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}})\]
+	Thus we can define $F(h,k)$ simply as $h$ to get a functor $\pshyp\to \Set/(\mathbb{N}\times \mathbb{N})$. Let us show that it is an equivalence.
+	\begin{itemize}
+		\item $F$ is faithful. This follows at once from \Cref{rem:prun}.
+		\item $F$ is full. Let $k\colon E_{\mathcal{G}}\to E_{\mathcal{H}}$ be an arrow such that 
+		\[(\lgh_{V_{\mathcal{H}}}\circ s_{\mathcal{H}}, \lgh_{V_{\mathcal{H}}}\circ t_{\mathcal{H}})\circ f =(\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}})\]
+		
+		Now, for every $e \in E_\mathcal{G}$, let $\iota^s_e\colon V^s_e\mto V_{\mathcal{G}}$ and $\iota^t_e\colon V^t_e\mto V_{\mathcal{G}}$ be the inclusions of
+		\[V^s_e=\{v \in V_{\mathcal{G}} \mid \ind{G}(v,e)=1\} \qquad V^t_e=\{v \in V_{\mathcal{G}} \mid \outd{G}(v,e)=1\}\]
+		
+		
+		\noindent
+		\begin{minipage}[l]{.78\linewidth}
+		Since $\mathcal{G}$ is pruned and separated, $(V_{\mathcal{G}}, \{\iota^s_e\}_{e\in E_{\mathcal{G}}}+\{\iota^t_e\}_{e\in E_{\mathcal{G}}})$ is a coproduct. Given $v\in V^s_e$ and $w\in V^t_e$, let $i_v$ and $k_w$ be the unique indexes such that $\iota^s_e(v)=s_{\mathcal{G}}(e)_{i_v}$ and $\iota^t_e(w)= t_{\mathcal{G}}(e)_{k_w}$ and define:
+			\[\begin{split}
+				g^s_e\colon V^s_{e} &\to V_{\mathcal{H}}\\
+				v&\mapsto  s_{\mathcal{H}}(f(e))_{i_v}
+			\end{split} \qquad \begin{split}
+				g^t_e\colon V^t_{e} &\to V_{\mathcal{H}}\\
+				w&\mapsto  t_{\mathcal{H}}(f(e))_{k_w}
+			\end{split}\]
+			so that there is an arrow $g\colon V_ {\mathcal{G}}\to \mathcal{H}$ fitting in the diagram aside.
+		\end{minipage}\hfill
+		\begin{minipage}[r]{.2\linewidth}
+		\xymatrix@R=14pt@C=14pt{&V^s_{\mathcal{G}} \ar[dr]^{g^s_e} \ar@{>->}[dl]_{\iota^s_e}\\ V_{\mathcal{G}} \ar@{.>}[rr]^-{g} && V_{\mathcal{H}}}		
+		\xymatrix@R=14pt@C=14pt{&V^t_{\mathcal{G}} \ar[dr]^{g^t_e} \ar@{>->}[dl]_{\iota^t_e}\\ V_{\mathcal{G}} \ar@{.>}[rr]^-{g} && V_{\mathcal{H}}}		
+		\end{minipage}
+		
+		Given $e\in E_\mathcal{G}$, for every $1\leq i \leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$ we can compute to get:
+		\begin{align*}
+		(g^\star(s_{\mathcal{G}}(e)))_i&=(g^\star(s_{\mathcal{G}}(e)))_i=g(s_{\mathcal{G}}(e)_i)=s_{\mathcal{H}}(f(e))_i\\
+		(g^\star(t_{\mathcal{G}}(e)))_k&=(g^\star(t_{\mathcal{G}}(e)))_k=g(t_{\mathcal{G}}(e)_k)=t_{\mathcal{H}}(f(e))_k
+		\end{align*}
+		
+		Hence $(f,g)$ is a morphism $\mathcal{G}\to \mathcal{H}$ such that $F(f,g)=f$.
+		\item $F$ is essentially surjective. Consider a function $(f_1, f_2)\colon X\to \mathbb{N}\times \mathbb{N}$. Given $x\in X$,  we can consider $f_1(x)$ and $f_2(x)$ as ordinal sets and take the coproduct $(V, \{\iota^1_x\}_{x\in X}+ \{\iota^2_x\}_{x\in X})$ of the family $\{f_1(x)\}_{x\in X}+\{f_2(x)\}_{x\in X}$. Define:
+		\[\begin{split}  
+			s\colon X&\to V^\star\\
+			x &\mapsto \prod_{n=0}^{f_1(x)-1}\iota^1_x(n)
+		\end{split} \qquad  \begin{split}  
+		t\colon X&\to V^\star\\
+		x &\mapsto \prod_{n=0}^{f_2(x)-1}\iota^2_x(n)
+		\end{split}\]
+		Let $\mathcal{G}$ be $(X, V, s, t)$, by construction $F(\mathcal{G})=(f_1, f_2)$ and we can conclude.
+		 \qedhere 
+	\end{itemize}
+	
+\end{proof}
 
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
 \fhyp*
@@ -3748,13 +3818,17 @@ Let $F\colon \D\to \eg$ be a diagram of one of the shapes mentioned in the state
 \section{Some properties of comma categories}
 In this section we briefly recall the definition of the comma category \cite{mac2013categories} and some of its properties.
 \begin{defi}\index{category!comma -}
-	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which
+	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which:
 
 \noindent
-\parbox{10.5cm}{\vspace{-.1cm}\begin{itemize}
+\begin{minipage}[l]{.8\linewidth}
+	\begin{itemize}
 		\item objects are triples $(A, B, f)$ with $A\in \A$, $B\in \B$, and $f\colon L(A)\rightarrow R(B)$; 
-		\item a morphism $(A, B, f)\rightarrow (A', B', g)$ is a pair $(h, k)$ with $h\colon A\rightarrow A'$ in $\A$ and $k\colon B\rightarrow B'$ in $\B$ such that the diagram aside commutes.\end{itemize}}\hfill 
-	\parbox{4cm}{\vspace{-.1cm}\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]_{R(k)}& R(B')}}
+		\item a morphism $(A, B, f)\rightarrow (A', B', g)$ is a pair $(h, k)$ with $h\colon A\rightarrow A'$ in $\A$ and $k\colon B\rightarrow B'$ in $\B$ such that the diagram aside commutes.\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[r]{.25\linewidth}
+	\xymatrix@R=15pt{L(A) \ar[r]_{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g}\\ R(B) \ar[r]^{R(k)}& R(B')}
+\end{minipage} 
 \end{defi} 
 We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \comma{L}{R} \to \B$ given respectively by
 \[
@@ -3770,9 +3844,8 @@ We have two forgetful functors 	$U_L\colon \comma{L}{R}\to \A$ and $U_R\colon \c
 \end{split}
 \]
 
-
-Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same thing as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$. Thus $\comma{L}{R}$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the left square below commutes in $\X$ if and only if the right one commutes in $\X^{op}$
-\[\xymatrix@C=25pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g} & R(B') \ar[d]_{g} \ar[r]^{R(k)}& R(B) \ar[d]^{f}\\ R(B) \ar[r]_{R(k)}& R(B') & L(A') \ar[r]_{L(h)}  & L(A)}\]
+	Given $L\colon \A\to \X$ and $R\colon \B\to \X$, we can also consider their duals $L^{op}\colon \A^{op}\to \X^{op}$ and $R^{op}\colon \B^{op}\to \X^{op}$.  An arrow $f\colon L(A)\to R(B)$ in $\X$ is the same thing as an arrow $f\colon R^{op}(B)\to L^{op}(A)$ in $\X^{op}$. Thus $\comma{L}{R}$ and $\comma{R^{op}}{L^{op}}$ have the same objects. Moreover, the left square below commutes in $\X$ if and only if the right one commutes in $\X^{op}$.
+\[\xymatrix@R=15pt{L(A) \ar[r]^{L(h)} \ar[d]_{f} & L(A') \ar[d]^{g} & R(B') \ar[d]_{g} \ar[r]^{R(k)}& R(B) \ar[d]^{f}\\ R(B) \ar[r]_{R(k)}& R(B') & L(A') \ar[r]_{L(h)}  & L(A)}\]
 
 Summing up we have just proved the following fact.
 \begin{prop}\label[proposition]{prop:dual}
@@ -3790,9 +3863,13 @@ Summing up we have just proved the following fact.
 		&R\left(b_{D'}\right)\circ f_{D'}\circ L(U_L(F(d)))=R\left(b_{D'}\right)\circ R\left(U_R\left(F(d)\right)\right)\circ f_D\\=&R\left(b_{D'}\circ U_R\left(F(d)\right)\right)\circ f_D=R\left(b_D\right)\circ f_D
 	\end{align*}
 	
-	\noindent \parbox{10cm}{
-	\hspace{15pt}Thus there exists $f\colon L(A)\rightarrow R(B)$ fitting in the diagram on the right. Notice that $f$ is the unique arrow in $\X$ which makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comma{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.}\hfill 
-	\parbox{4cm}{\xymatrix@C=35pt@R=15pt{ L(A_D) \ar[r]^{L(a_D)} \ar[d]_{f_D}& L(A) \ar[d]^{f}\\ R(B_D) \ar[r]_{R(b_D)} &R(B)}}
+	\begin{minipage}[l]{.75\linewidth}
+	Thus there exists $f\colon L(A)\rightarrow R(B)$ fitting in the diagram on the right. Notice that $f$ is the unique arrow in $\X$ which makes $\left(a_D, b_D\right)$ an arrow $\left(A_D, B_D, f_D\right)\to \left(A, B, f\right)$ of $\comma{L}{R}$. If we show that $\left((A, B, f), \left\{(a_D, b_D)\right\}_{D\in \D}\right)$ is colimiting for $F$ we are done.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[r]{.2\linewidth}
+	\xymatrix@R=10pt{ L(A_D) \ar[r]^{L(a_D)} \ar[d]_{f_D}& L(A) \ar[d]^{f}\\ R(B_D) \ar[r]_{R(b_D)} &R(B)}
+	\end{minipage}
 	
 	First of all, let us show that it is a cocone. Given $d\colon D\to D'$ in $\D$ we have
 	\begin{align*}
@@ -3818,13 +3895,16 @@ We can use \Cref{lim} to characterize monos in comma categories.
 	If $R$ preserves pullbacks then an arrow $(h,k)$ in $\comma{L}{R}$ is mono if and only if both $h$ and $k$ are monos.
 \end{cor}
 \begin{proof}
-	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos
-	\[\xymatrix{(A, B, f)  \ar[rr]^{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}&& (A, B, f)  \ar[d]^{(h,k)}& A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ (A, B, f)  \ar[rr]_{(h,k)}&& (A', B', g) &A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}\]
-	
-%\newpage
-	\smallskip\noindent 
-	\parbox{4cm}{ \xymatrix{A \ar[r]^{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]^{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]_{h} & A' & B \ar[r]_{k} & B'}}\hfill \parbox{8.5cm}{$(\Leftarrow)$ Since $h$ and $k$ are monos then we have the two pullback squares on the left. Thus by \Cref{lim} the pullback of $(h,k)$ along itself has isomorphisms as projections and so $(h,k)$ is mono. \qedhere}
-	
+	$(\Rightarrow)$  If $(h,k)\colon (A,B,f)\to (A', B', g)$ is a mono then the first rectangle below is a pullback in $\comma{L}{R}$. By \Cref{lim} then also the other two squares are pullbacks, respectively in $\A$ and $\B$, proving that both $h$ and $k$ are monos.
+	\[\xymatrix@R=15pt{(A, B, f)  \ar[rr]_{\id{(A,B,f)}} \ar[d]_{\id{(A,B,f)}}&& (A, B, f)  \ar[d]^{(h,k)}& A \ar[r]_{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]_{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ (A, B, f)  \ar[rr]^{(h,k)}&& (A', B', g) &A \ar[r]^{h} & A' & B \ar[r]^{k} & B'}\]
+	\smallskip\noindent
+	\begin{minipage}[l]{.3\linewidth}
+		 \xymatrix@R=13pt{A \ar[r]_{\id{A}} \ar[d]_{\id{A}} & A \ar[d]^{h} & B \ar[r]_{\id{B}} \ar[d]_{\id{B}} & B  \ar[d]^{k}\\ A \ar[r]^{h} & A' & B \ar[r]^{k} & B'}
+	\end{minipage} 
+	\hfill
+	\begin{minipage}[r]{.65\linewidth}
+		$(\Leftarrow)$ Since $h$ and $k$ are monos then we have the two pullback squares on the left. Thus by \Cref{lim} the pullback of $(h,k)$ along itself has isomorphisms as projections and so $(h,k)$ is mono. \qedhere
+	\end{minipage}
 \end{proof}
 
 We end this section pointing out another useful fact,  showing that in some cases we can guarantee  the existence of a left adjoint to $U_R$. 
@@ -3832,12 +3912,17 @@ We end this section pointing out another useful fact,  showing that in some case
 \begin{prop}\label[proposition]{prop:left}
 	If $\A$ has initial objects and $L$ preserves them, then the forgetful functor $U_R\colon \comma{L}{R}\to \B$ has a left adjoint $\Delta$.
 \end{prop}
-\begin{proof} For an object $B\in \B$ we can define $\Delta(B)$ as $(0, B, ?_{R(B)})$, for $0$ is an initial object in $\A$ and $?_{R(B)}$ is the unique arrow $L(0)\to R(B)$. Let $\id{B}\colon B\to U_R(\Delta(B))$ be the identity,
+\begin{proof} For an object $B\in \B$ we can define $\Delta(B)$ as $(0, B, ?_{R(B)})$, for $0$ is an initial object in $\A$ and $?_{R(B)}$ is the unique arrow $L(0)\to R(B)$. Let $\id{B}\colon B\to U_R(\Delta(B))$ be the identity, and suppose that a $k\colon B\to U_R(A, B', f)$ in $\B$ is given.
 	
-	\noindent 
-	\parbox{10cm}{and suppose that a $k\colon B\to U_R(A, B', f)$ in $\B$ is given. By initiality of $0$, there is only one arrow $?_A\colon 0\to A $ in $\A$ and, 
-	since $L$ preserves initial objects, the square aside commutes. Thus $(?_A,k)$ is the unique morphism $\Delta(B)\to (A, B', f)$ such that $U_R(?_A,k)=k$. }\hfill 
-	\parbox{2cm}{\vspace{-.1cm}\xymatrix@C=30pt@R=15pt{L(0) \ar[r]_{L(?_A)} \ar[d]_{?_{R(B)}} & L(A) \ar[d]^{f}\\ R(B) \ar[r]^{R(k)}& R(B')}}  
+	\noindent
+\begin{minipage}[l]{.2\linewidth}
+	\xymatrix@C=30pt@R=8pt{L(0) \ar[r]_{L(?_A)} \ar[d]_{?_{R(B)}} & L(A) \ar[d]^{f}\\ R(B) \ar[r]^{R(k)}& R(B')}
+\end{minipage}  \hfill 
+	\begin{minipage}[r]{.75\linewidth}
+		By initiality of $0$, there is only one arrow $?_A\colon 0\to A $ in $\A$ and, 
+		since $L$ preserves initial objects, the square aside commutes. Thus $(?_A,k)$ is the unique morphism $\Delta(B)\to (A, B', f)$ such that $U_R(?_A,k)=k$. \qedhere 
+	\end{minipage}
+
 \end{proof}
 Dualising we get immediately the following.
 \begin{cor}If $\B$ has terminal objects preserved by $R$, then $U_L\colon \comma{L}{R}\to \A$ has a right adjoint.
@@ -3851,10 +3936,26 @@ This section is devoted to recall some basic facts about \emph{slice categories}
 	\smallskip
 	
 	\noindent 
-	\parbox{11cm}{\vspace{-.5cm}\begin{itemize}
-		\item The \emph{ slice category over $X$} is the category $\X/X$ which has as objects arrows $f\colon Y\to X$ and  in which an arrow $h\colon f\to g$ is $h\colon Y\to Y'$ in $\X$ such that the triangle on the right commutes.
-		\item  	 Dually, the \emph{ slice category under $X$} is the category $X/\X$ in which objects are arrows $f\colon X\to Y$  with domain $X$ and a morphism $h\colon  f\to g$ is an arrow of $\X$ fitting in a triangle as the one aside.
-	\end{itemize}} \hfill \parbox{2cm}{\vspace{-0cm}\xymatrix@C=15pt@R=15pt{Y \ar[dr]_{f} \ar[rr]^{h}&& Y' \ar[dl]^{g}\\ & X} \xymatrix@C=15pt@R=15pt{&X \ar[dr]^{g}\ar[dl]_{f}\\ Y  \ar[rr]_{h}&& Y'}}
+	\begin{minipage}[l]{.8\linewidth}
+		\begin{itemize}
+			\item The \emph{ slice category over $X$} is the category $\X/X$ which has as objects arrows $f\colon Y\to X$ and  in which an arrow $h\colon f\to g$ is $h\colon Y\to Y'$ in $\X$ such that the triangle on the right commutes.
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[r]{.2\linewidth}
+		\xymatrix@C=15pt@R=10pt{Y \ar[dr]_{f} \ar[rr]^{h}&& Y' \ar[dl]^{g}\\ & X} 
+	\end{minipage}
+	
+	\noindent 
+	\begin{minipage}[l]{.8\linewidth}
+		\begin{itemize}
+			\item  	 Dually, the \emph{ slice category under $X$} is the category $X/\X$ in which objects are arrows $f\colon X\to Y$  with domain $X$ and a morphism $h\colon  f\to g$ is an arrow of $\X$ fitting in a triangle as the one aside.
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[r]{.2\linewidth}
+	 \xymatrix@C=15pt@R=10pt{&X \ar[dr]^{g}\ar[dl]_{f}\\ Y  \ar[rr]_{h}&& Y'}
+	\end{minipage}
 \end{defi}
 
 \begin{rem} For every $X\in\ X$ we have forgetful functors
