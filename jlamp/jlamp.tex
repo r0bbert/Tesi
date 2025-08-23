@@ -1269,7 +1269,7 @@ The construction we have just introduced can be extended to a functor (see \Cref
 If we restrict our attention to separated hypergraphs without isolated nodes, then $\sp$ becomes a right adjoint. The interested reader can consult \Cref{proof:dx} for a proof.
 
 \begin{defi} Let $\mathcal{G}$ be an hypergraph. A node $v\in V_{\mathcal{G}}$ is \emph{isolated} if it does not occur as a letter in either $s_{\mathcal{G}}(e)$ or in
-$t_{\mathcal{G}}(e)$ for every $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pruned} if it has no isolated nodes. We denote by $\phyp$ and $\pshyp$ the full subcategories of $\hyp$ given by, respectively, pruned and pruned and separated hypergraphs.
+$t_{\mathcal{G}}(e)$ for any $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pruned} if it has no isolated nodes. We denote by $\phyp$ and $\pshyp$ the full subcategories of $\hyp$ given by, respectively, pruned and pruned and separated hypergraphs.
 \end{defi}
 
 
@@ -1278,7 +1278,7 @@ $t_{\mathcal{G}}(e)$ for every $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pr
 \end{rem}
 
 \begin{rem}\label{rem:mprun}
-	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\phyp$ and suppose that $f=h$. We can use the absence of isolated nodes to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
+	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\phyp$ and suppose that $f=h$. We can use the absence of isolated nodes to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$: we have two cases
 	\begin{itemize}
 		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
 		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
@@ -1395,7 +1395,8 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	}
 \end{minipage}
 
-If we restrict to pruned separated hypergraph the previous issue disappeares.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
+\smallskip
+The previous issue disappears if we restrict to pruned separated hypergraphs.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
 
 \begin{restatable}{lem}{pruned}\label{lem:pruned}
 $\pshyp$ is equivalent to $\Set/(\mathbb{N}\times \mathbb{N})$.
@@ -1409,7 +1410,7 @@ $\pshyp$ is equivalent to $\Set/(\mathbb{N}\times \mathbb{N})$.
 Our interest for hypergraphs stems from their use as a graphical representation of algebraic terms. As  noted in \Cref{sub:hyp_alg}, an hypergraph can be thought as a colored monoidal signature. Thus labelling corresponds to the operation of taking the slice category over a suitable hypergraph. 
 
 \begin{defi}
-	Given an hypergraph $\mathcal{G}$, the category $\hyp_\mathcal{G}$ of hypergraphs \emph{labelled by $\mathcal{G}$}  or of \emph{$\mathcal{G}$-hypergraphs} is $\hyp/\mathcal{G}$.
+	Let $\mathcal{G}$ be an hypergraph. The category $\hyp_\mathcal{G}$ of hypergraphs \emph{labelled by $\mathcal{G}$}  or of \emph{$\mathcal{G}$-hypergraphs} is $\hyp/\mathcal{G}$.
 \end{defi}
 
 
@@ -1502,7 +1503,7 @@ We extend our graphical notation of hypergraphs to labelled ones putting the lab
 	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
 	$(l, !_{V_\mathcal{G}}): \mathcal{G} \to \mathcal{G}^\Sigma$ that is characterised by the image of the edges. 
 	If $l(h_1) = a$, $l(h_2) = 2$, $l(h_3) = *$, and $l(h_4) = /$, we represent it visually 
-	by putting the labels of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$.
+	by putting the labels of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$
 		\begin{center}
 		\begin{tikzpicture}
 			\begin{pgfonlayer}{nodelayer}
@@ -1599,7 +1600,7 @@ Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functo
 
 In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho} and \Cref{lem:regmon} we get the following result.
 
-\begin{thm} Let $\mathcal{G}$ be an hypergraph, then %the following fact hold
+\begin{thm} Let $\mathcal{G}$ be an hypergraph. Then %the following fact hold
 %	\begin{enumerate}
 %		\item an arrow $(f,g)$  if and only if is so in $\lmo$; \marginpar{ovvero?}
 		%\item 
@@ -3273,8 +3274,8 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 \begin{proof}\label{proof:dx}
 	Let $\mathcal{G}$ be an hypergraph. For every $e\in E_{\mathcal{G}}$, let $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$. Given $1\leq i\leq n_e+m_e$,  we can define $\delta^e_i\colon \mto V_{\mathcal{G}}$ as
 	\[\delta^e_i(0) =\begin{cases}
-		s_{\mathcal{G}}(e)_i & i\leq n_e\\
-		t_{\mathcal{G}}(e)_{i-n_e} &  n_e < i
+		s_{\mathcal{G}}(e)_i & \mbox{if } i\leq n_e\\
+		t_{\mathcal{G}}(e)_{i-n_e} &  \mbox{otherwise}
 	\end{cases}\]
 	
 In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_{\mathcal{G}}$ as the unique one fitting in the diagram below.
@@ -3296,8 +3297,8 @@ In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_
 	\smallskip 
 	Hence $(\id{E_{\mathcal{G}}}, \epsilon_{G})$ is a morphism $P(\sp(\mathcal{G}))\to \mathcal{G}$. Now, let $(f,g)\colon P(\mathcal{H})\to \mathcal{G}$ be a  morphism of pruned hypergraphs with $\mathcal{H}$ separated. Given a node $v$ in $V_{\mathcal{H}}$ we know that there exists exactly one $e_v$ such that $v$ occurs in $s_{\mathcal{H}}(e_v)$ or in $t_{\mathcal{H}}(e_v)$. Moreover, $v$ occurs exactly once and not in both. Let $i_v$ be the index at which it appears. We define
 	\[\hat{g}(v):=\begin{cases}
-		\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0)) & v \text{ occurs in } s_{\mathcal{H}}(e)\\
-		\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0)) & v \text{ occurs in } t_{\mathcal{H}}(e)\\
+		\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0)) & \text{if } v \text{ occurs in } s_{\mathcal{H}}(e)\\
+		\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0)) & \text{if } v \text{ occurs in } t_{\mathcal{H}}(e)\\
 	\end{cases}\]
 	Computing we get
 	\begin{gather*}
@@ -3307,21 +3308,21 @@ In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_
 	proving that $(f, \hat{g})\colon \mathcal{H}\to\sp( \mathcal{G})$ is a morphism of $\pshyp$. Notice that	
 	\begin{align*}
 		&\epsilon_\mathcal{G}(\hat{g}(v))=\begin{cases}
-			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0))) & v \text{ occurs in } s_{\mathcal{H}}(e_v)\\
-			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0))) & v \text{ occurs in } t_{\mathcal{H}}(e_v)
+			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0))) & \text{if } v \text{ occurs in } s_{\mathcal{H}}(e_v)\\
+			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0))) & \text{if }v \text{ occurs in } t_{\mathcal{H}}(e_v)
 		\end{cases}=	\begin{cases}
-		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } s_{\mathcal{G}}(e)\\
-		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } t_{\mathcal{G}}(e)
+		\delta^{f(e_v)}_{i_v}(0)& \text{if }v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		\delta^{f(e_v)}_{i_v}(0)& \text{if } v \text{ occurs in } t_{\mathcal{G}}(e)
 		\end{cases}\\ =&
 		\begin{cases}
-			s_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
-			t_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)
+			s_{\mathcal{G}}(f(e_v))_{i_v}& \text{if } v \text{ occurs in } s_{\mathcal{G}}(e)\\
+			t_{\mathcal{G}}(f(e_v))_{i_v}& \text{if } v \text{ occurs in } t_{\mathcal{G}}(e)
 		\end{cases}= \begin{cases}
-		(g^\star(s_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
-		(g^\star(t_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)\\
+		(g^\star(s_{\mathcal{H}}(e_v)))_{i_v}& \text{if } v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		(g^\star(t_{\mathcal{H}}(e_v)))_{i_v}& \text{if } v \text{ occurs in } t_{\mathcal{G}}(e)\\
 		\end{cases}\\=&\begin{cases}
-		g(s_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } s_{\mathcal{G}}(e)\\
-		g(t_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } t_{\mathcal{G}}(e)\\
+		g(s_{\mathcal{H}}(e_v)_{i_v})& \text{if } v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		g(t_{\mathcal{H}}(e_v)_{i_v})& \text{if } v \text{ occurs in } t_{\mathcal{G}}(e)\\
 		\end{cases}=g(v)
 	\end{align*}
 and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
@@ -3378,7 +3379,7 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 \begin{proof}{\label{proof:pruned}}
 	Let $\mathcal{G}$ be a pruned and separated hypergraph. We can define $F(\mathcal{G})$ as $(\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}}) \colon E_{\mathcal{G}}\to \mathbb{N}\times \mathbb{N}$. Given a morphism $(h,k)\colon \mathcal{G}\to \mathcal{H}$ and using \Cref{rem:le} we	have
 	\[(\lgh_{V_{\mathcal{H}}}\circ s_{\mathcal{H}}, \lgh_{V_{\mathcal{H}}}\circ t_{\mathcal{H}})\circ h = (\lgh_{V_{\mathcal{H}}}\circ s_{\mathcal{H}}\circ h, \lgh_{V_{\mathcal{H}}}\circ t_{\mathcal{H}}\circ h)=(\lgh_{V_{\mathcal{H}}}\circ k^\star\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{H}}}\circ k^\star\circ t_{\mathcal{G}})= (\lgh_{V_{\mathcal{G}}}\circ s_{\mathcal{G}}, \lgh_{V_{\mathcal{G}}}\circ t_{\mathcal{G}})\]
-	Thus we can define $F(h,k)$ simply as $h$ to get a functor $\pshyp\to \Set/(\mathbb{N}\times \mathbb{N})$. Let us show that it is an equivalence.
+	Thus we can define $F(h,k)$ as $h$ to get a functor $\pshyp\to \Set/(\mathbb{N}\times \mathbb{N})$. Let us show that it is an equivalence.
 	\begin{itemize}
 		\item $F$ is faithful. This follows at once from \Cref{rem:prun}.
 		\item $F$ is full. Let $k\colon E_{\mathcal{G}}\to E_{\mathcal{H}}$ be an arrow such that 
@@ -3390,7 +3391,7 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 		
 		\noindent
 		\begin{minipage}[l]{.78\linewidth}
-		Since $\mathcal{G}$ is pruned and separated, $(V_{\mathcal{G}}, \{\iota^s_e\}_{e\in E_{\mathcal{G}}}+\{\iota^t_e\}_{e\in E_{\mathcal{G}}})$ is a coproduct. Given $v\in V^s_e$ and $w\in V^t_e$, let $i_v$ and $k_w$ be the unique indexes such that $\iota^s_e(v)=s_{\mathcal{G}}(e)_{i_v}$ and $\iota^t_e(w)= t_{\mathcal{G}}(e)_{k_w}$ and define:
+		Since $\mathcal{G}$ is pruned and separated, $(V_{\mathcal{G}}, \{\iota^s_e\}_{e\in E_{\mathcal{G}}}+\{\iota^t_e\}_{e\in E_{\mathcal{G}}})$ is a coproduct. Given $v\in V^s_e$ and $w\in V^t_e$, let $i_v$ and $k_w$ be the unique indexes such that $\iota^s_e(v)=s_{\mathcal{G}}(e)_{i_v}$ and $\iota^t_e(w)= t_{\mathcal{G}}(e)_{k_w}$ and define
 			\[\begin{split}
 				g^s_e\colon V^s_{e} &\to V_{\mathcal{H}}\\
 				v&\mapsto  s_{\mathcal{H}}(f(e))_{i_v}
@@ -3405,14 +3406,14 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 		\xymatrix@R=14pt@C=14pt{&V^t_{\mathcal{G}} \ar[dr]^{g^t_e} \ar@{>->}[dl]_{\iota^t_e}\\ V_{\mathcal{G}} \ar@{.>}[rr]^-{g} && V_{\mathcal{H}}}		
 		\end{minipage}
 		
-		Given $e\in E_\mathcal{G}$, for every $1\leq i \leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$ we can compute to get:
+		Given $e\in E_\mathcal{G}$, for every $1\leq i \leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $1\leq k \leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$ we can compute to get
 		\begin{align*}
 		(g^\star(s_{\mathcal{G}}(e)))_i&=(g^\star(s_{\mathcal{G}}(e)))_i=g(s_{\mathcal{G}}(e)_i)=s_{\mathcal{H}}(f(e))_i\\
 		(g^\star(t_{\mathcal{G}}(e)))_k&=(g^\star(t_{\mathcal{G}}(e)))_k=g(t_{\mathcal{G}}(e)_k)=t_{\mathcal{H}}(f(e))_k
 		\end{align*}
 		
 		Hence $(f,g)$ is a morphism $\mathcal{G}\to \mathcal{H}$ such that $F(f,g)=f$.
-		\item $F$ is essentially surjective. Consider a function $(f_1, f_2)\colon X\to \mathbb{N}\times \mathbb{N}$. Given $x\in X$,  we can consider $f_1(x)$ and $f_2(x)$ as ordinal sets and take the coproduct $(V, \{\iota^1_x\}_{x\in X}+ \{\iota^2_x\}_{x\in X})$ of the family $\{f_1(x)\}_{x\in X}+\{f_2(x)\}_{x\in X}$. Define:
+		\item $F$ is essentially surjective. Consider a function $(f_1, f_2)\colon X\to \mathbb{N}\times \mathbb{N}$. Given $x\in X$,  we can consider $f_1(x)$ and $f_2(x)$ as ordinal sets and take the coproduct $(V, \{\iota^1_x\}_{x\in X}+ \{\iota^2_x\}_{x\in X})$ of the family $\{f_1(x)\}_{x\in X}+\{f_2(x)\}_{x\in X}$. Define
 		\[\begin{split}  
 			s\colon X&\to V^\star\\
 			x &\mapsto \prod_{n=0}^{f_1(x)-1}\iota^1_x(n)
