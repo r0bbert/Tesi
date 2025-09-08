@@ -6,6 +6,10 @@
 
 \newcommand{\pbc}{\mathsf{Pb}}
 \newcommand{\pbe}{\mathsf{ePb}}
+\newcommand{\pbl}{\mathsf{LPb}}
+\newcommand{\pble}{\mathsf{eLPb}}
+\newcommand{\pbs}{\mathsf{SPb}}
+\newcommand{\pbse}{\mathsf{eSPb}}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 %\usepackage{tikz-cd}
 \usepackage{hyperref, cleveref} %simboli matematici
@@ -117,8 +121,12 @@
 \newcommand{\pshyp}{\catname{pSep}}
 \newcommand{\shyp}{\catname{Sep}}
 \newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
-\newcommand{\EqHyp}{\catname{EqHyp}} %equivalence hypergraphs
-\newcommand{\EqHyps}{\catname{EqHyp}_{\Sigma}}
+\newcommand{\EqHyp}{\catname{Hyp}_{\mathsf{eq}}} %equivalence hypergraphs
+\newcommand{\EqsHyp}{\catname{Sep}_{\mathsf{eq}}} 
+\newcommand{\EqpHyp}{\catname{pHyp}_{\mathsf{eq}}}
+\newcommand{\EqpsHyp}{\catname{pSep}_{\mathsf{eq}}}
+\newcommand{\Eqlmo}{\catname{LMH}_{\mathsf{eq}}}
+\newcommand{\EqHyps}{\catname{Hyp}_{\mathsf{eq}, \mathcal{G}}}
 \newcommand{\EqTG}{\catname{EqTG}}
 \newcommand{\EqTGs}{\catname{EqTG}_{\Sigma}}
 \newcommand{\GEqTGs}{\catname{GEqTG}_{\Sigma}}
@@ -142,6 +150,7 @@
 \newcommand{\colim}[0]{\mathrm{colim}}
 \newcommand{\cod}{\mathsf{cod}}
 \renewcommand{\sp}{\mathsf{sp}}
+\newcommand{\pr}{\mathsf{pr}}
 \newcommand{\is}[1]{{#1}_{is}}
 \renewcommand{\sup}{\mathsf{sup}}
 \newcommand{\cow}[1]{\mathsf{cwd}({#1})}
@@ -563,7 +572,7 @@ In this section we recall the definition and some properties of \emph{kernel pai
 \end{defi}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.18\linewidth}
-	\xymatrix@R=15pt{K_f \ar[r]^{\pi^2_f} \ar[d]_{\pi^1_f}& A \ar[d]^f \\ A \ar[r]^{f}& B}
+	\xymatrix@R=15pt{K_f \ar[r]_{\pi^2_f} \ar[d]_{\pi^1_f}& A \ar[d]^f \\ A \ar[r]^{f}& B}
 \end{minipage} 
 
 \begin{rem}\label{prop:pairng_of_kernel_pairs_mono}
@@ -802,7 +811,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 \smallskip 
 \noindent
 \begin{minipage}[l]{.75\linewidth}
-	\begin{defi}
+	\begin{defi}\label{def:alg}
 		A \emph{(single typed) monoidal signature} $\Sigma$ is a triple $(O_\Sigma, \ari_\Sigma, \coar_\Sigma)$ given by a \emph{set of operations} $O_\Sigma$ together with \emph{arity} and \emph{coarity} functions $\ari_\Sigma, \coar_\Sigma\colon O_\Sigma \rightrightarrows \mathbb{N}$.  
 		
 		We say that $\Sigma$ is \emph{algebraic} if $\coar_{\Sigma}$ is the constant function in $1$.
@@ -905,9 +914,9 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \end{exa}
 
 
-\subsubsection{Two  subcategories of $\hyp$}\label{sub:sub}
+\subsubsection{Some subcategories of $\hyp$}\label{sub:sub}
 
-We are now going to introduce two classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
+We are now going to introduce some classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cfr.~\Cref{sec:sepegg,sec:lmegg}). 
 
 
 \paragraph{Left-monogamous hypergraphs}\label{par:lm}
@@ -1043,7 +1052,7 @@ As shown by \Cref{rem:con}, $\lmo$ does not have all products, nonetheless left-
 
 Pullbacks are built from products and equalizers, so  \Cref{cor:eq} and \Cref{lem:pro} give us the following.
 
-\begin{cor}	$\lmo$ is closed in $\hyp$ under pullbacks.
+\begin{cor}\label{cor:pb}	$\lmo$ is closed in $\hyp$ under pullbacks.
 \end{cor}
 
 
@@ -1089,8 +1098,8 @@ Putting together \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:
 \end{cor}
 
 
-\paragraph{Separated hypergraphs}
-We can now introduce the second  subcategory of $\hyp$ in which we are interested in and that is going to be used in \Cref{sec:sepegg} to give the underlying hypergraphs for EGGs with minimally identified tokens.
+\paragraph{Pruned and separated hypergraphs}
+We can now introduce another  subcategory of $\hyp$ in which we are interested in and that is going to be used in \Cref{sec:sepegg} to give the underlying hypergraphs for EGGs with minimally identified tokens.
 
 \begin{defi}  A left-monogamous hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if
 	\begin{enumerate}
@@ -1112,6 +1121,10 @@ We denote by $\shyp$ the full subcategory of $\hyp$ of separated hypergraphs and
  		\item for every $e'\in E_{\mathcal{G}}$ different from $e$, $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ are disjoint from, respectively $s_{\mathcal{G}}(e')$ and $t_{\mathcal{G}}(e')$.
  	\end{itemize}
  \end{rem}
+ 
+ \begin{rem}\label{rem:count}
+ 	By \Cref{rem:elem2} it is clear that separated hypergraphs enjoy a property similar to the one enjoyed by left-monogamous ones (cfr.~\Cref{proof:count}): if $\mathcal{G}$ is separated and $(f,g)\colon \mathcal{H}\to \mathcal{G}$ is a mono, then $\mathcal{H}$ is separated too.
+ \end{rem}
 
 We can provide a construction which ``split'' a given hypergraph to produce a separated one.
 
@@ -1128,7 +1141,7 @@ We can further take the coproduct $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\
 where $0$ is the unique element of the terminal object $1$. 
 \marginpar{ovvero?}
 
-We define the \emph{separated graph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}) = (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
+We define the \emph{separated hypergraph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}) = (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
 \end{defi}
 \begin{rem}\label{rem:ob}
  By construction $\sp(\mathcal{G})$ is an object of $\shyp$. To see this it is enough to apply \Cref{rem:elem2}
@@ -1278,7 +1291,7 @@ $t_{\mathcal{G}}(e)$ for every $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pr
 \end{rem}
 
 \begin{rem}\label{rem:mprun}
-	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\phyp$ and suppose that $f=h$. We can use the absence of isolated nodes to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
+	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
 	\begin{itemize}
 		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
 		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
@@ -1288,8 +1301,11 @@ $t_{\mathcal{G}}(e)$ for every $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{pr
 	In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
 \end{rem}
 
-\begin{restatable}{prop}{dx}\label{prop:dx}
-	The inclusion functor $P\colon \pshyp\to \phyp$ has a right adjoint $\sp_P$.
+\begin{restatable}{prop}{dx}\label{prop:dx}The following hold true:
+	\begin{enumerate}
+		\item the inclusion functor $P\colon \phyp \to \hyp$ has a right adjoint $\pr$;
+		\item The inclusion functor $S_p\colon \pshyp\to \phyp$ has a right adjoint $\sp_P$.
+	\end{enumerate}
 \end{restatable}
 
 Finally, we conclude our exam of separated hypergraphs proving a result regarding connected limits. A proof of it is \Cref{proof:seplim}
@@ -1395,6 +1411,7 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 	}
 \end{minipage}
 
+\smallskip
 If we restrict to pruned separated hypergraph the previous issue disappeares.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
 
 \begin{restatable}{lem}{pruned}\label{lem:pruned}
@@ -1403,6 +1420,14 @@ $\pshyp$ is equivalent to $\Set/(\mathbb{N}\times \mathbb{N})$.
 \begin{cor}\label{cor:pruned}
 	$\pshyp$ is adhesive.
 \end{cor}
+
+
+We can use \Cref{lem:pruned} to say something more about colimits and pullbacks in $\pshyp$. A proof can be found in \Cref{proof:limpsy}
+
+\begin{restatable}{prop}{limps}\label{prop:limpsy}
+	$\pshyp$ is closed in $\hyp$ under colimits and pullbacks.
+\end{restatable}
+
 
 \subsection{Labelled hypergraphs}\label{sssect:hyp_alg_sign}
 
@@ -1577,18 +1602,24 @@ We extend our graphical notation of hypergraphs to labelled ones putting the lab
 As done in \Cref{sub:sub}, we can restrict our attention to two subcategories of labelled hypergraphs.
 
 \begin{defi}
-	Let $\mathcal{G}$ be an hypergraph and $(h,k)\colon \mathcal{H}\to \mathcal{G}$  a $\mathcal{G}$-hypergraph. We say that $(h,k)$ is a \emph{left-monogamous} (resp.~\emph{separated}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated).
+	Let $\mathcal{G}$ be an hypergraph and $(h,k)\colon \mathcal{H}\to \mathcal{G}$  a $\mathcal{G}$-hypergraph. We say that $(h,k)$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
 	
-	We will denote by $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$  the corresponding subcategories of $\hyp_{\mathcal{G}}$.
+	We will denote by $\lmo_{\mathcal{G}}$, $\phyp_{\mathcal{G}}$, $\shyp_{\mathcal{G}}$ and $\pshyp_{\mathcal{G}}$ the corresponding subcategories of $\hyp_{\mathcal{G}}$.
 \end{defi}
 
+\begin{rem}Of the four subcategories  defined above, we are interested only in  $\lmo_{\mathcal{G}}$, $\shyp_{\mathcal{G}}$ and $\pshyp_{\mathcal{G}}$. This is due to the fact that we do not have an adhesivity result for $\phyp$.
+\end{rem}
+
+\begin{rem} The functors $\pr$ and $\sp_P$ induce right adjoints to the inclusions $P_\mathcal{G}\colon \phyp_\mathcal{G} \to \hyp_{\mathcal{G}}$ and $S_{p, \mathcal{G}}\colon \pshyp_\mathcal{G}\to \phyp_{\mathcal{G}}$.
+\end{rem}
 We can easily realize $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$ as comma categories.
 
 \begin{prop}
-Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Delta_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then
+Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Gamma_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then
 \begin{enumerate}
-	\item $\lmo_{\mathcal{G}}$ is equivalent to $\comma{M}{\Delta_\mathcal{G}}$;
-	\item $\shyp_{\mathcal{G}}$ is equivalent to $\comma{S}{\Delta_\mathcal{G}}$; 
+	\item $\lmo_{\mathcal{G}}$ is equivalent to $\comma{M}{\Gamma_\mathcal{G}}$;
+	\item $\shyp_{\mathcal{G}}$ is equivalent to $\comma{S}{\Gamma_\mathcal{G}}$; 
+	\item $\pshyp_{\mathcal{G}}$ is equivalent to $\pshyp/\sp(\pr(\mathcal{G}))$. 
 \end{enumerate}
 \end{prop}
 
@@ -1603,13 +1634,24 @@ In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho}
 %	\begin{enumerate}
 %		\item an arrow $(f,g)$  if and only if is so in $\lmo$; \marginpar{ovvero?}
 		%\item 
-		$\lmo_{\mathcal{G}}$ is quasiadhesive.
+		$\lmo_{\mathcal{G}}$ is quasiadhesive and $\pshyp_{\mathcal{G}}$ is adhesive.
 %	\end{enumerate}
 \end{thm}
 
 \begin{rem}\label{rem:tg}
 	Let $\Sigma$ be an algebraic signature. Then we know that every hypergraph labelled by $\Sigma$ must be algebraic. By \Cref{rem:elem} this means that an hypergraph $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$ labelled by $\Sigma$ is left-monogamous if and only if $t_{\mathcal{H}}$ is injective. This is precisely the definition of \emph{term graphs} in \cite{Plu:TGR-ENTCS,CorradiniG05,CastelnovoGM24}. 
 \end{rem}
+
+\noindent 
+\begin{minipage}[l]{.5\linewidth}
+	\begin{rem}\label{rem:map1}
+		Now that we have introduced all the flavours of hypergraphs we need, it is worthwhile to give a visual map of all the categories that we have discussed/introduced and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions, while the vertical arrows are forgetful functors.
+	\end{rem}
+\end{minipage}\hfill
+\begin{minipage}[r]{.45\linewidth}
+	\xymatrix@R=8pt@C=10pt{& \pshyp_\mathcal{G} \ar[dd]_(.7){W_\mathcal{G}}|\hole \ar@/_.2cm/@{_{(}->}[rr]_{S_{p,\mathcal{G}}} \ar@{_{(}->}[dl]_{I_\mathcal{G}} && \phyp_\mathcal{G} \ar[dd]^(.7){V_\mathcal{G}}|\hole \ar@/_.2cm/[ll]^{\sp_\mathcal{G}}\ar@/_.2cm/@{_{(}->}[dr]_(.35){P_\mathcal{G}}\\\shyp_\mathcal{G} \ar@{^{(}->}[rr]^(.35){S_\mathcal{G}} \ar[dd]_{R_\mathcal{G}}&& \lmo_\mathcal{G}  \ar@{^{(}->}[rr]^(.35){M_\mathcal{G}} \ar[dd]_(.25){O_\mathcal{G}}&& \hyp_\mathcal{G} \ar@/_.2cm/[ul]_{\pr_\mathcal{G}} \ar[dd]^{U_\mathcal{G}}\\& \pshyp \ar@/_.2cm/@{_{(}->}[rr]_(.35){S_p}|\hole \ar@{^{(}->}[dl]_{I} && \phyp \ar@/_.2cm/[ll]^(.35){\sp}|\hole\ar@/_.2cm/@{_{(}->}[dr]_(.3){P}\\\shyp \ar@{_{(}->}[rr]^{S} && \lmo  \ar@{_{(}->}[rr]^(.35){M}&& \hyp \ar@/_.2cm/[ul]_{\pr}}
+\end{minipage}
+
 
 \iffalse 
 \color{black}
@@ -1734,7 +1776,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 \section{Adding equivalences to hypergraphical structures}
 \label{hypereq}
 The use of hypergraphs equipped with an equivalence relation over their nodes has been argued as a convenient way to express concurrency in the DPO approach to rewriting~\cite{concur2006}.
-This section presents the framework by means of adhesive categories, including also its version for term graphs, as a stepping stone towards an analogous characterisation for e-graphs.
+This section presents the framework through adhesive categories, including its extension to the various kinds of hypergraphs introduced in the previous section, as a stepping stone towards an analogous characterization for e-graphs.
 
 \subsection{Hypergraphs with equivalence}
 
@@ -1872,22 +1914,22 @@ Now, we show that $\pbc$ is a suitable class for adhesivity. A proof is in \Cref
 \vspace{.1cm}
 Finally, we show the key lemma for $\pbc$-adhesivity of $\EqHyp$. A proof is in \Cref{proof:pbstable}.
 
-\begin{restatable}{lem}{pbs}\label{lemma:stab}
+\begin{restatable}{lem}{pbsa}\label{lemma:stab}
 	In $\EqHyp$, $\pbc$-pushouts are stable.
 \end{restatable}
 
 \begin{exa}
-It is noteworthy to show that pushouts along regular monos are not stable. 
+It is noteworthy to show that pushouts along regular monos in $\EqHyp$ are not stable. 
 
 \noindent 
 \begin{minipage}[l]{.45\linewidth}
 		\setlength{\parindent}{1.5em}
-		\indent Consider e.g. the cube aside: the vertices are just graphs without edges, and in the graphs themselves the equivalence classes 
+		\indent As a counterexample, let us consider the cube aside, where the morphisms are the inclusions defined by the labels of the nodes.  The vertices are just graphs without edges, and in the graphs themselves the equivalence classes 
 are denoted by encircling nodes with a dotted line. All the arrows are regular monos. It is immediate to see that the bottom face is a pushout and the side faces are pullback. Unfortunately, 
-the top face fails to be a pushout
+the top face fails to be a pushout.
   \end{minipage}\hfill
 \begin{minipage}[r]{.60\linewidth}
-                \xymatrix@C=10pt@R=1pt{
+                \xymatrix@C=10pt@R=.05pt{
                 &\emptyset \ar@{>->}[dd]|\hole \ar@{>->}[rr] \ar@{>->}@(dl,)[dl] &&
                 \begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
                                 \node[style=node](v) at (0, 0){};
@@ -1962,42 +2004,97 @@ A proof is found in \Cref{proof:pbvk}.
 	$\EqHyp$ is $\pbc$-adhesive.
 \end{cor}
 
-\subsubsection{title}
-\paragraph{title}
-\paragraph{title}
-%\input{Hypergraphs_with_equivalences}
-%\input{Labeled_hyp_with_eq}
+\subsubsection{Some subcategories of $\EqHyp$}
+
+We can now focus to the various kind of hypergraphs introduced in \Cref{sub:sub}.
+
+\begin{defi}Given an hypergraph with equivalence $\mathcal{H}:=(E_\mathcal{G}, V_{\mathcal{G}}, Q_\mathcal{G}, s_\mathcal{G}, t_\mathcal{G}, q_\mathcal{G})$, we say that $\mathcal{H}$ is \emph{left-monogamous} (resp.~\emph{separated, pruned}) if $T(\mathcal{H})$ is left-monogamous (resp.~\emph{separated, pruned}). We will denote by $\Eqlmo$, $\EqsHyp$ and $\EqpsHyp$ the  subcategories  given by left-monogamous, separated, pruned and separated hypergraphs with equivalence.
+\end{defi}
+
+\begin{rem}\label{rem:obv1}
+By definition, there exist functors $a$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions.
+\[\xymatrix{\Eqlmo \ar[r]^-{M_{\mathsf{eq}}} \ar[d]_{O_{\mathsf{eq}}}& \EqHyp\ar[d]^{T} & \EqsHyp \ar[r]^-{S_{\mathsf{eq}}} \ar[d]_{R_{\mathsf{eq}}} & \EqHyp \ar[d]^{T} & \EqpsHyp \ar[r]^-{S_{p, \mathsf{eq}}} \ar[d]_{W_{\mathsf{eq}}} & \EqHyp\ar[d]^{T}\\ \lmo \ar[r]_{M} & \hyp & \shyp \ar[r]_{S} & \hyp  & \pshyp \ar[r]_-{S_p}& \hyp}\]
+	
+\end{rem}
+
+Let us start by dealing with some class of limits in these subcategories (see \Cref{proof:equ} for a proof).
+
+\begin{restatable}{lem}{equ}\label{lem:equ} The following are true:
+	\begin{enumerate}
+		\item 	$\Eqlmo$ is closed in $\EqHyp$ under equalizers, binary products and pullbacks.
+		\item $\EqsHyp$ is closed in $\EqHyp$ under connected limits; 
+		\item $\EqpsHyp$ is closed in $\EqHyp$ under pullbacks.
+	\end{enumerate}
+\end{restatable}
+
+We can now turn to colimits, applying the same strategy. A proof is deferred to \Cref{proof:coequ}
+
+\begin{restatable}{lem}{coequ}\label{lem:coequ}
+ The following are true:
+\begin{enumerate}
+	\item 	$\Eqlmo$ is closed in $\EqHyp$ under pushouts along morphism whose image through $T$ is downward-closed.
+	\item $\EqpsHyp$ is closed in $\EqHyp$ under colimits.
+\end{enumerate}
+\end{restatable}
+
+We are now ready to prove two adhesivity results for $\Eqlmo$ and $\EqpsHyp$.
+
+\begin{defi}We define the following two classes of arrows:
+\begin{itemize}
+	\item $\pbl$ is the class of all arrows in $\Eqlmo$ sent by $M_{\eq}$ to $\pbc$;
+	\item $\pbs$ is the class of all arrows in $\EqpsHyp$ sent by $S_{p,\eq}$ to $\pbc$.
+\end{itemize}
+\end{defi}
+
+By definition, \Cref{lem:pbmono} and putting together Lemmas \ref{lem:equ}, \ref{lem:coequ} with \Cref{thm:slice-functors} we get the following.
+
+\begin{cor}$\Eqlmo$ is $\pbl$-adhesive and $\EqpsHyp$ is $\pbs$-adhesive
+\end{cor}
+
+
 
 \subsection{Labelled hypergraphs with equivalence}
-
 
 We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{defi}
-	Let $\Sigma$ be an algebraic signature and $\mathcal{G}^{\Sigma}$ the hypergraph associated to it. A \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, l)$ where $\mathcal{H}$ is an object of $\EqHyp$ and $l$ a morphism $T(\mathcal{H})\to \mathcal{G}^\Sigma$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, l)$ and $(\mathcal{H}', l')$ is an arrow $h\colon \mathcal{H}\to \mathcal{H}'$ such that $l= l'\circ T(h)$.
+	Let $\mathcal{G}$ be an hypergraph, a \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, (f,g))$ where $\mathcal{H}$ is an object of $\EqHyp$ and $(f,g)$ a morphism $T(\mathcal{H})\to \mathcal{G}$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, (f,g))$ and $(\mathcal{H}', (h,k))$ is an arrow $(a,b, c)\colon \mathcal{H}\to \mathcal{H}'$ such that:
+	\[h\circ a = f \qquad k\circ b = g \].
 	
-	We denote the resulting category by $\EqHyp_\Sigma$.
+	We denote the resulting category by $\EqHyps$.
 \end{defi}
 
-Let $(\mathcal{H}, l)$ be an object of $\EqHyp_\Sigma$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(l, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G}^\Sigma)$. It is immediate to see that this correspondence extends to an equivalence with the slice over $R(\mathcal{G}^\Sigma)$.
+\noindent 
+\begin{minipage}[l]{.8\linewidth}
+		\setlength{\parindent}{1.5em}
+		\begin{rem}Let $\Sigma$ be a single typed monoidal signature (cfr~\Cref{def:alg}). Since $\mathcal{G}_{\Sigma}$ has a single node, then to label another hypergraph $\mathcal{H}$ it is enough to provide a function $l\colon E_{\mathcal{H}}\to O_{\Sigma}$ such that the diagrams aside commute.
+			
+			Notice that, if $\Sigma$ is algebraic, than such a function exists only if $\mathcal{H}$ is algebraic too. In that case the second diagram commute by default.
+		\end{rem}
+\end{minipage} \hfill 
+\begin{minipage}[r]{.15\linewidth}
+	\xymatrix{xy code}
+	\end{minipage}
+
+Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $(f,g)\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(f, g, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G})$. It is immediate to see that this correspondence extends to an equivalence with the slice category over $R(\mathcal{G})$.
 
 \begin{prop}\label{prop:slice}
-$\EqHyp_\Sigma$ is equivalent to $\EqHyp/R(\mathcal{G}^\Sigma)$.
+$\EqHyps$ is equivalent to $\EqHyp/R(\mathcal{G})$.
 \end{prop}
 
-Let $V_\Sigma\colon \EqHyp_\Sigma\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyp_\Sigma$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors,cor:eqade}, we can deduce the following.
+Let $V_\Sigma\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors,cor:eqade}, we can deduce the following.
 
-\begin{prop}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyp_\Sigma\to \EqHyp$. Then the following facts hold
+\begin{prop}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyps\to \EqHyp$. Then the following facts hold
 	\begin{enumerate}
-		\item $\EqHyp_\Sigma$ has all colimits and all connected limits, which are created by $V_{\Sigma}$;
-		\item $\EqHyp_\Sigma$ is $\pbc_\Sigma$-adhesive.
+		\item $\EqHyps$ has all colimits and all connected limits, which are created by $V_{\Sigma}$;
+		\item $\EqHyps$ is $\pbc_\Sigma$-adhesive.
 	\end{enumerate}
 \end{prop}
 
-%In particular, $\EqHyp_\Sigma$ has all equalizers and pullbacks.
+%In particular, $\EqHyps$ has all equalizers and pullbacks.
 Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following result. 
 
-\begin{cor}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyp_\Sigma$. Then the following facts hold
+\begin{cor}\label{prop:monos_in_eqhyps} Let $h=(h_{E}, h_V, h_Q)$ be an arrow in $\EqHyps$. Then the following facts hold
 	\begin{enumerate}
 		\item $h$ is mono if and only if $h_E$ and $h_V$ are injective;
 		\item $h$ is a regular mono if and only if $h_E$, $h_V$ and $h_Q$ are injective.
@@ -2008,13 +2105,13 @@ Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following res
 We can now easily define term graphs with equivalence.
 
 \begin{defi}Let $\Sigma$ be an algebraic signature.
-	An object $(\mathcal{H}, l)$ of $\EqHyp_\Sigma$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyp_\Sigma$ so defined and by $J_{\Sigma}$ the corresponding inclusion functor.
+	An object $(\mathcal{H}, l)$ of $\EqHyps$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyps$ so defined and by $J_{\Sigma}$ the corresponding inclusion functor.
  \end{defi}
 
 \noindent 
 \begin{minipage}[l]{.72\linewidth}
 	\begin{rem}\label{rem:obv}
-		Let $T_\Sigma:  \EqHyp_{\Sigma} \to \hyp_{\Sigma}$ the functor sending an object of $\EqHyp_{\Sigma}$ to its underlying  labelled hypergraph.
+		Let $T_\Sigma:  \EqHyps \to \hyp_{\Sigma}$ the functor sending an object of $\EqHyps$ to its underlying  labelled hypergraph.
 		%
 		%$T_\Sigma = T\circ V_\Sigma$.   
 		Notice that, by definition, $(\mathcal{H}, l)$ is in $\EqTG_{\Sigma}$ amounts to say that $(T(\mathcal{H}), l)$ is in $\tg$. 
@@ -2024,7 +2121,7 @@ We can now easily define term graphs with equivalence.
 \end{minipage}
 \hfill 
 \begin{minipage}[r]{.23\linewidth}
-	\xymatrix{\EqTG_{\Sigma} \ar[r]^{J_\Sigma}  \ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[d]^{T_\Sigma} \\ \tg \ar[r]^{I_\Sigma}& \hyp_{\Sigma}}
+	\xymatrix@R=15pt{\EqTG_{\Sigma} \ar[r]_{J_\Sigma}  \ar[d]_{S_\Sigma}& \EqHyps \ar[d]^{T_\Sigma} \\ \tg \ar[r]^{I_\Sigma}& \hyp_{\Sigma}}
 \end{minipage}
 
 \begin{rem}\label{rem:t}
@@ -2058,8 +2155,9 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $J_{\Sigma
 	$\EqTG_{\Sigma}$ is $\mathcal{T}$-adhesive.
 \end{cor}
 
-\subsubsection{title}
-
+\begin{rem}\label{rem:map2}
+	contenuto...
+\end{rem}
 \section{EGGs}
 \label{eggs}
 The previous section proved some adhesivity property for the categories $\EqHyp$ and $\EqTG_{\Sigma}$. We extend these results to
@@ -2118,7 +2216,7 @@ Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $I$. 
 
 We now turn our attention to the labelled context.
 
-\begin{defi} We say that an object $(\mathcal{H}, l)$ of $\EqHyp_\Sigma$ is a \emph{labelled e-hypergraph} if $\mathcal{H}$ is an e-hypergraph. We define the category $\egg_\Sigma$ as the full subcategory of $\EqHyp_\Sigma$ given by labelled e-hypergraphs. We denote by $Z_\Sigma$ the corresponding inclusion functor .
+\begin{defi} We say that an object $(\mathcal{H}, l)$ of $\EqHyps$ is a \emph{labelled e-hypergraph} if $\mathcal{H}$ is an e-hypergraph. We define the category $\egg_\Sigma$ as the full subcategory of $\EqHyps$ given by labelled e-hypergraphs. We denote by $Z_\Sigma$ the corresponding inclusion functor .
 \end{defi}
 
 To prove some adhesivity property of $\egg_\Sigma$, we begin with the following elementary, yet useful observation.
@@ -2168,7 +2266,7 @@ We turn now to term graphs with equivalence.
 	\end{rem}
 \end{minipage}\hfill
 \begin{minipage}[r]{.20\linewidth}
-	\xymatrix@R=10pt@C=20pt{\eg \ar@{^{(}->}[r]^-{Y_\Sigma} \ar@{^{(}->}[d]_{K_\Sigma} & \egg_\Sigma \ar@{^{(}->}[d]^{Z_\Sigma} \ar[r]^{W_\Sigma}& \egg \ar@{^{(}->}[d]^{I}\\ \EqTG_{\Sigma} \ar@{^{(}->}[r]^-{J_\Sigma}\ar[d]_{S_\Sigma}& \EqHyp_\Sigma \ar[r]^-{V_\Sigma} \ar[d]_{T_\Sigma}& \EqHyp \ar[d]^{T}\\ \tg \ar@{^{(}->}[r]^-{I_\Sigma}& \hyp_{\Sigma} \ar[r]^-{U_\Sigma}  &\hyp}
+	\xymatrix@R=10pt@C=20pt{\eg \ar@{^{(}->}[r]^-{Y_\Sigma} \ar@{^{(}->}[d]_{K_\Sigma} & \egg_\Sigma \ar@{^{(}->}[d]^{Z_\Sigma} \ar[r]^{W_\Sigma}& \egg \ar@{^{(}->}[d]^{I}\\ \EqTG_{\Sigma} \ar@{^{(}->}[r]^-{J_\Sigma}\ar[d]_{S_\Sigma}& \EqHyps \ar[r]^-{V_\Sigma} \ar[d]_{T_\Sigma}& \EqHyp \ar[d]^{T}\\ \tg \ar@{^{(}->}[r]^-{I_\Sigma}& \hyp_{\Sigma} \ar[r]^-{U_\Sigma}  &\hyp}
 \end{minipage}
 
 We can now prove our last three results. The reader can find the proof in \Cref{proof:tlim}.
@@ -2609,15 +2707,15 @@ and thus $a$ must coincide with $b$.
 \end{minipage}
 
 \noindent
-\begin{minipage}[l]{.7\linewidth}
+\begin{minipage}[l]{.65\linewidth}
 \begin{proof}\label{mpo-proof}
 	By  \Cref{prop:regmono}  we know that the top face of the original cube is a pullback. Thus \Cref{lemma:kern_pairs_pres_pullbacks} entails that in the cube aside the vertical faces are pullbacks.
 	The claim now follows from strict $\mathcal{M}$-adhesivity.
 	\end{proof}
 \end{minipage}
 \hfill 
-\begin{minipage}[r]{.30\linewidth}		
-\xymatrix@C=10pt@R=2pt{&K_a\ar[dd]|\hole_(.7){\pi^1_a}\ar[rr]^{k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]_(.55){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]^(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]^(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]_{g'} & & D' }
+\begin{minipage}[r]{.40\linewidth}		
+\xymatrix@C=20pt@R=2pt{&K_a\ar[dd]|\hole_(.7){\pi^1_a}\ar[rr]_(.4){k_{f'}} \ar@{>->}[dl]_(.55){k_{m'}} && K_b\ar[dd]^{\pi^1_b} \ar@{>->}[dl]^(.45){k_{n'}} \\ K_c  \ar[dd]_{\pi^1_c}\ar[rr]_(.7){k_{g'}} & & K_d \ar[dd]_(.3){\pi^1_d}\\&A'\ar[rr]|\hole^(.65){f'} \ar@{>->}[dl]_(.4){m'} && B' \ar@{>->}[dl]^{n'}  \\C' \ar[rr]^(.6){g'} & & D' }
 \end{minipage}
 
 
@@ -3216,8 +3314,8 @@ Let $\iota_E\colon E_{h_1, h_2}\mto E_{\mathcal{H}} $ and $\iota_V\colon V_{k_1,
 $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{k_1, k_2}$ be the unique arrows fitting in the diagram aside and define $\mathcal{E}$ as $(E_{h_1, h_2}, V_{k_1, k_2}, s_{\mathcal{E}}, t_{\mathcal{E}})$. We know by  Propositions \ref{prop:fact}, \ref{prop:com} and \Cref{lim}, that  $(\mathcal{E}, (\iota_E, \iota_V))$, is an equalizer  for $(h_1, k_1)$ and $(h_2, k_2)$. Thus there is an isomorphism $(\phi, \psi) \colon \mathcal{G}\to \mathcal{E}$ whose components fit in the diagram aside and such that
 \[\iota_V\circ \psi = g \qquad \iota_E\circ \phi = f\] 
 		\end{minipage}\hfill 	 \begin{minipage}[r]{.3\linewidth}
-	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^{f} \ar[d]_{s_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{s_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{s_{\mathcal{H}}}\\V^\star_{\mathcal{G}} \ar@/_.3cm/@{>->}[rr]_{g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
-	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^{f} \ar[d]_{t_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}\\V^\star_{\mathcal{G}}\ar@/_.3cm/@{>->}[rr]_{g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^(.3){f} \ar[d]_{s_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{s_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{s_{\mathcal{H}}}\\V^\star_{\mathcal{G}} \ar@/_.3cm/@{>->}[rr]_(.3){g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
+	 	\xymatrix@R=8pt{E_{\mathcal{G}} \ar@/^.3cm/@{>->}[rr]^(.3){f} \ar[d]_{t_{\mathcal{G}}}\ar@{.>}[r]_-{\phi}&  E_{h_1, h_2} \ar@{.>}[d]_{t_{\mathcal{E}}} \ar@{>->}[r]_-{\iota_E} & E_{\mathcal{H}} \ar[d]_{t_{\mathcal{H}}}\\V^\star_{\mathcal{G}}\ar@/_.3cm/@{>->}[rr]_(.3){g^\star} \ar@{.>}[r]^-{\psi^\star}& V^\star_{k_1, k_2} \ar@{>->}[r]^-{\iota^\star_V}& V^\star_{\mathcal{H}}}
 	 \end{minipage}
 	
 	Now, let $v\in V_{\mathcal{G}}$ be an input node and suppose that there exists $h\in E_{\mathcal{H}}$ such that $\outd{H}(g(v), h)>0$. For such an hyperedge. For such an hyperedge we have
@@ -3233,7 +3331,7 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 	
 	\smallskip \noindent
 	$(3\Rightarrow 1)$ Let us consider the pushout of $(f,g)$ along itself in $\hyp$ as depicted by the first square below. By \Cref{prop:com} and \Cref{colim} we know that the other two squares are pushouts too
-	\[\xymatrix@C=35pt{\mathcal{G} \ar[r]^{(f,g)}  \ar[d]_{(f,g)}& \mathcal{H}\ar[d]^{(p_1, p_2)} & E_{\mathcal{G}} \ar@{>->}[d]_{f}\ar@{>->}[r]^{f} & E_{\mathcal{H}} \ar[d]^{p_1}& V_{\mathcal{G}}\ar@{>->}[r]^{g} \ar@{>->}[d]^{g} & V_{\mathcal{H}} \ar[d]^{p_2}\\\mathcal{H} \ar[r]_{(q_1, q_2)} & \mathcal{P} & E_{\mathcal{H}} \ar[r]_{q_1}& E_{\mathcal{P}} & V_{\mathcal{H}}\ar[r]_{q_2} & V_{\mathcal{P}}}\]
+	\[\xymatrix@C=35pt@R=15pt{\mathcal{G} \ar[r]^{(f,g)}  \ar[d]_{(f,g)}& \mathcal{H}\ar[d]^{(p_1, p_2)} & E_{\mathcal{G}} \ar@{>->}[d]_{f}\ar@{>->}[r]^{f} & E_{\mathcal{H}} \ar[d]^{p_1}& V_{\mathcal{G}}\ar@{>->}[r]^{g} \ar@{>->}[d]_{g} & V_{\mathcal{H}} \ar[d]^{p_2}\\\mathcal{H} \ar[r]_{(q_1, q_2)} & \mathcal{P} & E_{\mathcal{H}} \ar[r]_{q_1}& E_{\mathcal{P}} & V_{\mathcal{H}}\ar[r]_{q_2} & V_{\mathcal{P}}}\]
 	
 	 By \Cref{cor:monhyper} we also know that $f$ and $g$ are monos in $\Set$ and so, by the dual of \Cref{prop:reg_epi_coeq} $(E_\mathcal{G}, f)$ and $(V_{\mathcal{G}}, g)$ are equalizers for, respectively, $p_1, q_1\colon E_{\mathcal{H}}\rightrightarrows E_{\mathcal{P}}$ and $p_2, q_2\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{P}}$.
 	
@@ -3271,62 +3369,88 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 
 \dx*
 \begin{proof}\label{proof:dx}
-	Let $\mathcal{G}$ be an hypergraph. For every $e\in E_{\mathcal{G}}$, let $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$. Given $1\leq i\leq n_e+m_e$,  we can define $\delta^e_i\colon \mto V_{\mathcal{G}}$ as
-	\[\delta^e_i(0) =\begin{cases}
-		s_{\mathcal{G}}(e)_i & i\leq n_e\\
-		t_{\mathcal{G}}(e)_{i-n_e} &  n_e < i
-	\end{cases}\]
-	
+	\begin{enumerate}
+\item Given an hypergraph $\mathcal{G}$, let $\iota_{\pr(\mathcal{G})}\colon V_{\pr(\mathcal{G})}\mto V_{\mathcal{G}}$ be the inclusion of non isolated nodes. By definition we know that there exists $s_{\pr(\mathcal{G})}, t_{\pr(\mathcal{G})}\colon E_{\mathcal{G}}\rightrightarrows V_{\pr(\mathcal{G})}$ such that
+\[s_{\mathcal{G}}=\iota_{\pr(\mathcal{G})}\circ s_{\pr(\mathcal{G})}\qquad t_{\mathcal{G}}=\iota_{\pr(\mathcal{G})}\circ t_{\pr(\mathcal{G})}\]
+ 
+ Thus we can define $\pr(\mathcal{G})$ as $(E_{\mathcal{G}}, V_{\pr(\mathcal{G})}, s_{\pr(\mathcal{G})}, t_{\pr(\mathcal{G})})$. Clearly $(\id{E_{\mathcal{G}}}, \iota_{\pr(\mathcal{G})})$ is a morphism $P(\pr(\mathcal{G}))\to \mathcal{G}$.
+ 
+ Let $(f,g)\colon P(\mathcal{H})\to \mathcal{G}$ be a morphism with pruned domain. For every $v \in V_{\mathcal{H}}$ we have two cases:
+ \begin{itemize}
+ 	\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
+ 	\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i\]
+ 	\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have
+ 	\[g(v)=g(t_{\mathcal{G}}(e)_i)=(g^\star(t_{\mathcal{G}}(e)))_i=t_{\mathcal{H}}(f(e))_i\]
+ \end{itemize}
+ 
+ Thus $g(v)$ belongs to $V_{\pr(\mathcal{G})}$ for every node $v$ of $\mathcal{H}$ and so there exists $\hat{g}\colon V_{\mathcal{H}}\to V_{\pr(\mathcal{G})}$ such that $g=\iota_{\pr(\mathcal{G})}\circ \hat{g}$. 
+ 
+ Computing we get
+ \begin{align*}
+ 	\iota^\star_{\pr(\mathcal{G})}\circ s_{\pr(\mathcal{G})}\circ f &= s_{\mathcal{G}}\circ f = g^\star \circ s_{\mathcal{H}} = \iota^\star_{\pr(\mathcal{G})} \circ \hat{g}^\star \circ s_{\mathcal{H}} \\
+ 	\iota^\star_{\pr(\mathcal{G})}\circ t_{\pr(\mathcal{G})}\circ f &= t_{\mathcal{G}}\circ f = g^\star \circ t_{\mathcal{H}} = \iota^\star_{\pr(\mathcal{G})} \circ \hat{g}^\star \circ t_{\mathcal{H}}
+ \end{align*}
+ 
+ Since $(-)^\star$ sends monos to mono it follows that $(f, \hat{g})$ is a morphsim $\mathcal{H}\to \pr(\mathcal{G}) $ which, by construction, is such that $(\id{E_{\mathcal{G}}}, \iota_{\pr(\mathcal{G})})\circ (f, \hat{g}) = (f,g)$.
+  Uniqueness follows at once since $\iota_{\pr(\mathcal{G})}$ is mono.
+ 
+\item Let $\mathcal{G}$ be an hypergraph. For every $e\in E_{\mathcal{G}}$, let $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$. Given $1\leq i\leq n_e+m_e$,  we can define $\delta^e_i\colon \mto V_{\mathcal{G}}$ as
+\[\delta^e_i(0) =\begin{cases}
+	s_{\mathcal{G}}(e)_i & i\leq n_e\\
+	t_{\mathcal{G}}(e)_{i-n_e} &  n_e < i
+\end{cases}\]
+
 In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_{\mathcal{G}}$ as the unique one fitting in the diagram below.
-	
-	\noindent 
-	\begin{minipage}[l]{.8\linewidth}
-		\setlength{\parindent}{1.5em}
-		Now, for every hyperedge $e\in E_{\mathcal{G}}$ we have
-		\begin{gather*}
-			\epsilon_{\mathcal{G}}^\star(s_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \delta^e_i(0) =\prod_{i=1}^{n_e} s_{\mathcal{G}}(e)_i=   s_{\mathcal{G}}(e)\\
-		\epsilon_{\mathcal{G}}^\star(t_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=n_e+1}^{n_e + m_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{n_e+i=1}^{n_e + m_e} \delta^e_i(0) = \prod_{n_e+i=1}^{n_e + m_e}  t_{\mathcal{G}}(e)_i  = t_{\mathcal{G}}(e)
-		\end{gather*} 
-	\end{minipage}
-	\hfill
-	\begin{minipage}[r]{.3\linewidth} \vspace{-.9cm}
-		\xymatrix@R=10pt@C=30pt{1 \ar[r]_{\id{1}} \ar@{>->}[d]^{\iota^e_i}& 1 \ar@{>->}[dd]_{\delta^e_i}\\ V_e \ar@{>->}[d]^{\iota_e}  \\ V_{\sp(\mathcal{G})} \ar@{.>}[r]^-{\epsilon_{\mathcal{G}}} &  V_{\mathcal{G}}}
-	\end{minipage}
-	
-	\smallskip 
-	Hence $(\id{E_{\mathcal{G}}}, \epsilon_{G})$ is a morphism $P(\sp(\mathcal{G}))\to \mathcal{G}$. Now, let $(f,g)\colon P(\mathcal{H})\to \mathcal{G}$ be a  morphism of pruned hypergraphs with $\mathcal{H}$ separated. Given a node $v$ in $V_{\mathcal{H}}$ we know that there exists exactly one $e_v$ such that $v$ occurs in $s_{\mathcal{H}}(e_v)$ or in $t_{\mathcal{H}}(e_v)$. Moreover, $v$ occurs exactly once and not in both. Let $i_v$ be the index at which it appears. We define
-	\[\hat{g}(v):=\begin{cases}
-		\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0)) & v \text{ occurs in } s_{\mathcal{H}}(e)\\
-		\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0)) & v \text{ occurs in } t_{\mathcal{H}}(e)\\
-	\end{cases}\]
-	Computing we get
+
+\noindent 
+\begin{minipage}[l]{.8\linewidth}
+	\setlength{\parindent}{1.5em}
+	Now, for every hyperedge $e\in E_{\mathcal{G}}$ we have
 	\begin{gather*}
-		\hat{g}^\star(s_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{n_e} s_{\mathcal{H}}(e)_i)=\prod_{i=1}^{n_e}(\hat{g}(s_{\mathcal{H}}(e)_i))=\prod_{i=1}^{n_e}\iota_{f(e)}( \iota^{f(e)}_i(0))=s_{\sp(\mathcal{G})}(f(e))\\
-		\hat{g}^\star(t_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{m_e} t_{\mathcal{H}}(e)_i)=\prod_{i=1}^{m_e}(\hat{g}(t_{\mathcal{H}}(e)_i))=\prod_{i=1}^{m_e}\iota_{f(e)}( \iota^{f(e)}_{n_e+i}(0))=\prod_{i=n_e + 1}^{n_e + m_e}\iota_{f(e)}( \iota^{f(e)}_{i}(0))=t_{\sp(\mathcal{G})}(f(e))
-	\end{gather*}
-	proving that $(f, \hat{g})\colon \mathcal{H}\to\sp( \mathcal{G})$ is a morphism of $\pshyp$. Notice that	
-	\begin{align*}
-		&\epsilon_\mathcal{G}(\hat{g}(v))=\begin{cases}
-			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0))) & v \text{ occurs in } s_{\mathcal{H}}(e_v)\\
-			\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0))) & v \text{ occurs in } t_{\mathcal{H}}(e_v)
-		\end{cases}=	\begin{cases}
+		\epsilon_{\mathcal{G}}^\star(s_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=1}^{n_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{i=1}^{n_e} \delta^e_i(0) =\prod_{i=1}^{n_e} s_{\mathcal{G}}(e)_i=   s_{\mathcal{G}}(e)\\
+		\epsilon_{\mathcal{G}}^\star(t_{\sp(\mathcal{G})}(e)) = \epsilon_{\mathcal{G}}^\star(\prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0)))=\prod_{i=n_e+1}^{n_e + m_e} \epsilon_{\mathcal{G}}(\iota_e(\iota^e_{i}(0)))=\prod_{n_e+i=1}^{n_e + m_e} \delta^e_i(0) = \prod_{n_e+i=1}^{n_e + m_e}  t_{\mathcal{G}}(e)_i  = t_{\mathcal{G}}(e)
+	\end{gather*} 
+\end{minipage}
+\hfill
+\begin{minipage}[r]{.3\linewidth} \vspace{-.9cm}
+	\xymatrix@R=10pt@C=30pt{1 \ar[r]_{\id{1}} \ar@{>->}[d]^{\iota^e_i}& 1 \ar@{>->}[dd]_{\delta^e_i}\\ V_e \ar@{>->}[d]^{\iota_e}  \\ V_{\sp(\mathcal{G})} \ar@{.>}[r]^-{\epsilon_{\mathcal{G}}} &  V_{\mathcal{G}}}
+\end{minipage}
+
+\smallskip 
+Hence $(\id{E_{\mathcal{G}}}, \epsilon_{G})$ is a morphism $S_p(\sp(\mathcal{G}))\to \mathcal{G}$. Now, let $(f,g)\colon P(\mathcal{H})\to \mathcal{G}$ be a  morphism of pruned hypergraphs with $\mathcal{H}$ separated. Given a node $v$ in $V_{\mathcal{H}}$ we know that there exists exactly one $e_v$ such that $v$ occurs in $s_{\mathcal{H}}(e_v)$ or in $t_{\mathcal{H}}(e_v)$. Moreover, $v$ occurs exactly once and not in both. Let $i_v$ be the index at which it appears. We define
+\[\hat{g}(v):=\begin{cases}
+	\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0)) & v \text{ occurs in } s_{\mathcal{H}}(e)\\
+	\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0)) & v \text{ occurs in } t_{\mathcal{H}}(e)\\
+\end{cases}\]
+Computing we get
+\begin{align*}
+	&\hat{g}^\star(s_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{n_e} s_{\mathcal{H}}(e)_i)=\prod_{i=1}^{n_e}(\hat{g}(s_{\mathcal{H}}(e)_i))=\prod_{i=1}^{n_e}\iota_{f(e)}( \iota^{f(e)}_i(0))=s_{\sp(\mathcal{G})}(f(e))\\
+	&\hat{g}^\star(t_{\mathcal{H}}(e))= \hat{g}^\star(\prod_{i=1}^{m_e} t_{\mathcal{H}}(e)_i)=\prod_{i=1}^{m_e}(\hat{g}(t_{\mathcal{H}}(e)_i))=\prod_{i=1}^{m_e}\iota_{f(e)}( \iota^{f(e)}_{n_e+i}(0))\\=&\prod_{i=n_e + 1}^{n_e + m_e}\iota_{f(e)}( \iota^{f(e)}_{i}(0))=t_{\sp(\mathcal{G})}(f(e))
+\end{align*}
+proving that $(f, \hat{g})\colon \mathcal{H}\to\sp( \mathcal{G})$ is a morphism of $\pshyp$. Notice that	
+\begin{align*}
+	&\epsilon_\mathcal{G}(\hat{g}(v))=\begin{cases}
+		\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{i_v}(0))) & v \text{ occurs in } s_{\mathcal{H}}(e_v)\\
+		\epsilon_\mathcal{G}(\iota_{f(e_v)}(\iota^{f(e_v)}_{n_e + i_v}(0))) & v \text{ occurs in } t_{\mathcal{H}}(e_v)
+	\end{cases}=	\begin{cases}
 		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } s_{\mathcal{G}}(e)\\
 		\delta^{f(e_v)}_{i_v}(0)& v \text{ occurs in } t_{\mathcal{G}}(e)
-		\end{cases}\\ =&
-		\begin{cases}
-			s_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
-			t_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)
-		\end{cases}= \begin{cases}
+	\end{cases}\\ =&
+	\begin{cases}
+		s_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
+		t_{\mathcal{G}}(f(e_v))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)
+	\end{cases}= \begin{cases}
 		(g^\star(s_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } s_{\mathcal{G}}(e)\\
 		(g^\star(t_{\mathcal{H}}(e_v)))_{i_v}& v \text{ occurs in } t_{\mathcal{G}}(e)\\
-		\end{cases}\\=&\begin{cases}
+	\end{cases}\\=&\begin{cases}
 		g(s_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } s_{\mathcal{G}}(e)\\
 		g(t_{\mathcal{H}}(e_v)_{i_v})& v \text{ occurs in } t_{\mathcal{G}}(e)\\
-		\end{cases}=g(v)
-	\end{align*}
-and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
-	 
-	Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(h, k)=(f,g)$. This entails immediately that $h =f$ and so uniqueness follows from \Cref{rem:mprun}.	
+	\end{cases}=g(v)
+\end{align*}
+and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ S_p(f, \hat{g})=(f,g)$.
+
+Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ S_p(h, k)=(f,g)$. This entails immediately that $h =f$ and so uniqueness follows from \Cref{rem:mprun}.	\qedhere 
+	\end{enumerate}	
 \end{proof}
 
 
@@ -3426,6 +3550,65 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 	
 \end{proof}
 
+\limps*
+
+\begin{proof}\label{proof:limpsy}
+	Let  $F\colon \D \to \pshyp$ be a diagram and suppose that $(\mathcal{C}, \{(q^D_E, q^D_V)\}_{D\in \D})$  is a colimiting cocone for $F$.  By \Cref{prop:dx} we know that $P\circ S_p$ preserves colimits, but then the vertex of every colimiting cocone for $P\circ S_p \circ F$ is isomorphic to $\mathcal{C}$ and thus  it must be pruned and separated.
+	
+	\noindent
+	\begin{minipage}[l]{.73\linewidth}\setlength{\parindent}{1.5em}
+	We can now turn to pullbacks. Let us consider a pullback square in $\hyp$ as the one aside in which $\mathcal{G}$, $\mathcal{H}$ and $\mathcal{K}$ are pruned and separated. We already know, by \Cref{lem:seplim} that $\mathcal{P}$ is separated, so it is enough to show that $\mathcal{P}$ is pruned.
+	\end{minipage}\hfill \begin{minipage}[r]{.25\linewidth}\vspace{-.4cm}
+	\xymatrix@R=15pt@C=40pt{\mathcal{P} \ar[r]_{(p_1, p_2)} \ar[d]_{(q_1, q_2)}& \mathcal{G} \ar[d]^{(f_1, f_2)} \\ \mathcal{H} \ar[r]^{(g_1, g_2)} & \mathcal{K}}
+	\end{minipage}
+	
+	Let $v$ be a node in $V_{\mathcal{P}}$. Since $\mathcal{G}$ and $\mathcal{H}$ are pruned we know that $p_2(v)$ and $q_2(v)$ must occur in the source or target of some hyperedge. We have four cases.
+	\begin{itemize}
+		\item There exist $e\in E_{\mathcal{G}}$ and $h\in E_{\mathcal{H}}$ such that $p_2(v)$ occurs in the source of $e$ and $q_2(v)$ in  that of $h$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $1\leq j\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{H}}(h))$ be indexes such that:
+		\[s_{\mathcal{G}}(e)_i = p_2(v) \qquad s_{\mathcal{H}}(h)_j = q_2(v)\]
+		Hence we have:
+		\begin{align*}
+		&s_{\mathcal{K}}(f_1(e))_i=(f^\star_2(s_{\mathcal{G}}(e)))_i=f_2(s_{\mathcal{G}}(e)_i)=f_2(p_2(v))\\=&g_2(q_2(v))=g_2(s_{\mathcal{H}}(h)_j)=(g^\star_2(s_{\mathcal{H}}(h)))_k=s_{\mathcal{H}}(g_1(h))_j
+		\end{align*}
+	Since $\mathcal{K}$ is separated this entails that $i = j$ and  $f_1(e)=g(e)$. So there exists $a\in E_{\mathcal{P}}$ such that $p_1(a)=e$
+ and $q_1(a)=h$. Computing we have:
+ \begin{align*}
+ 	p_2(s_{\mathcal{P}}(a)_i)&=(p^\star_2(s_{\mathcal{P}}(a)))_i=s_{\mathcal{G}}(p_1(a))_i=s_{\mathcal{G}}(e)_i = p_2(v)\\
+ 	q_2(s_{\mathcal{P}}(a)_i)&=(q^\star_2(s_{\mathcal{P}}(a)))_i=s_{\mathcal{G}}(q_1(a))_i=s_{\mathcal{G}}(h)_i = q_2(v)
+ \end{align*}
+ and so $s_{\mathcal{P}}(a)_i=v$.
+ 		\item 	There exist $e\in E_{\mathcal{G}}$ and $h\in E_{\mathcal{H}}$ such that $p_2(v)$ occurs in $t_{\mathcal{G}}(e)$ and $q_2(v)$ in $t_{\mathcal{H}}(h)$. As before, let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$ and $1\leq j\leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{H}}(h))$ be indexes such that:
+ 		\[t_{\mathcal{G}}(e)_i = p_2(v) \qquad t_{\mathcal{H}}(h)_j = q_2(v)\]
+ 		so that
+ 		\begin{align*}
+ 			&t_{\mathcal{K}}(f_1(e))_i=(f^\star_2(t_{\mathcal{G}}(e)))_i=f_2(t_{\mathcal{G}}(e)_i)=f_2(p_2(v))\\=&g_2(q_2(v))=g_2(t_{\mathcal{H}}(h)_j)=(g^\star_2(t_{\mathcal{H}}(h)))_k=t_{\mathcal{H}}(g_1(h))_j
+ 		\end{align*}
+ 		The fact that $\mathcal{K}$ is separated assures that $i = j$ and  $f_1(e)=g(e)$. Let then $a\in E_{\mathcal{P}}$ be such that $p_1(a)=e$
+ 		and $q_1(a)=h$. Computing we have:
+ 		\begin{align*}
+ 			p_2(t_{\mathcal{P}}(a)_i)&=(p^\star_2(t_{\mathcal{P}}(a)))_i=t_{\mathcal{G}}(p_1(a))_i=t_{\mathcal{G}}(e)_i = p_2(v)\\
+ 			q_2(t_{\mathcal{P}}(a)_i)&=(q^\star_2(t_{\mathcal{P}}(a)))_i=t_{\mathcal{G}}(q_1(a))_i=t_{\mathcal{G}}(h)_i = q_2(v)
+ 		\end{align*}
+ 		allowing us to deduce that $t_{\mathcal{P}}(a)_i=v$.
+ 		
+ 		
+		\item Suppose that there are indexes $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $1\leq j\leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{H}}(h))$ such that:
+		\[s_{\mathcal{G}}(e)_i = p_2(v) \qquad t_{\mathcal{H}}(h)_j = q_2(v)\]
+		Computing we get:
+			\begin{align*}
+			&s_{\mathcal{K}}(f_1(e))_i=(f^\star_2(s_{\mathcal{G}}(e)))_i=f_2(s_{\mathcal{G}}(e)_i)=f_2(p_2(v))\\=&g_2(q_2(v))=g_2(t_{\mathcal{H}}(h)_j)=(g^\star_2(t_{\mathcal{H}}(h)))_k=t_{\mathcal{H}}(g_1(h))_j
+		\end{align*}
+		This contradicts the fact that $\mathcal{K}$ is separated.
+		\item Consider now indexes $1\leq i\leq \lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$ and $1\leq j\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{H}}(h))$ such that:
+		\[t_{\mathcal{G}}(e)_i = p_2(v) \qquad s_{\mathcal{H}}(h)_j = q_2(v)\] 
+		Proceeding as in the previous point we have:
+				\begin{align*}
+			&t_{\mathcal{K}}(f_1(e))_i=(f^\star_2(t_{\mathcal{G}}(e)))_i=f_2(t_{\mathcal{G}}(e)_i)=f_2(p_2(v))\\=&g_2(q_2(v))=g_2(s_{\mathcal{H}}(h)_j)=(g^\star_2(s_{\mathcal{H}}(h)))_k=s_{\mathcal{H}}(g_1(h))_j
+		\end{align*}
+		This again stands in contradiction with $\mathcal{K}$ being an object of $\shyp$. \qedhere
+	\end{itemize}
+\end{proof}
+
 \subsection{Proofs for \Cref{hypereq}}\label{app:due}
 \fhyp*
 
@@ -3445,14 +3628,18 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 \end{proof}
 
 \begin{rem}\label{rem:fact}
-	Before proceeding further, let us recall the following result about the classes of regular epis (i.e.~surjections) and of monos in $\Set$. In particular, we need the fact that they form a a \emph{factorization system} \cite{kelly2006note} on $\Set$.  This amounts to ask that
+	Before proceeding further, let us recall the following result about the classes of regular epis (i.e.~surjections) and of monos in $\Set$. In particular, we need the fact that they form a \emph{factorization system} \cite{kelly2006note} on $\Set$.  This amounts to ask that
 	
 	\noindent 
-	\parbox{11.5cm}{
-	\begin{enumerate} 
-		\item every arrow $f\colon X\to Y$ can be factored as $m\circ e$, where $e\colon X\eto Q$ is a regular epi and $m\colon Q\mto Y$ is a mono;
+	\begin{minipage}[l]{.8\linewidth}
+		\begin{enumerate} 
+			\item every arrow $f\colon X\to Y$ can be factored as $m\circ e$, where $e\colon X\eto Q$ is a regular epi and $m\colon Q\mto Y$ is a mono;
 			\item for every commuting square as the one on the right, with $e\colon X\eto E$ a surjection and $m\colon N\mto Y$ a mono, there exists a unique $k\colon E\to N$ making it commutative.
-	\end{enumerate}}\hfill \parbox{2cm}{\xymatrix{X \ar@{>>}[d]_{e}\ar[r]^{f}& N \ar@{>->}[d]^{m} \\ E \ar@{.>}[ur]^{k}\ar[r]_{g} & Y}}
+		\end{enumerate}
+	\end{minipage}\hfill
+	\begin{minipage}[r]{.2\linewidth}
+	\xymatrix@C=45pt{X \ar@{>>}[d]_{e}\ar[r]^{f}& N \ar@{>->}[d]^{m} \\ E \ar@{.>}[ur]^{k}\ar[r]_{g} & Y}
+	\end{minipage}
 	
 	\hspace{1pt}\newline 
 	From these properties, one can deduce that if $f=m\circ e$ and $f=m'\circ e'$ are two factorizations of $f$ then there is a bijection $\phi$ such that $m=m'\circ \phi$ and $\phi \circ e=e'$.
@@ -3464,21 +3651,28 @@ We will also need the following well-known fact about regular epis.
 	Let $F,G\colon \D\rightrightarrows \X$ be two diagrams and suppose that $\X$ has all colimits of shape $\D$. Let $(X, \{x_d\}_{d \in \D})$ and $(Y, \{y_d\}_{d\in D})$ be the colimits of $F$ and $G$, respectively.  If $\phi\colon  F \to G$ is a natural transformation whose components are regular epis, then the arrow induced by $\phi$ from $X$ to $Y$ is a regular epi.
 \end{lem}
 
-\noindent
-\parbox{11.4cm}{
-\comp*}\hfill 
-\parbox{2cm}{\xymatrix{V \ar@{>>}[d]_{q} \ar[r]^{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]_{l_d} & Q_D}}   
 
+\noindent
+\begin{minipage}[l]{.83\linewidth}
+	\comp*
+\end{minipage}\hfill
+\begin{minipage}[r]{.15\linewidth}
+	\xymatrix{V \ar@{>>}[d]_{q} \ar[r]_{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]^{l_d} & Q_D}
+\end{minipage} 
 \begin{proof}\label{proof:comp}
 	\begin{enumerate}
-		\item We know by \Cref{prop:cocomp} that $\hyp$ is cocomplete. Thus, let $(E, V, s, t)$ together with $\{(\kappa_E^D, \kappa_V^D)\}_{D \in \D}$ be a colimit for $T \circ F$. By \Cref{colim} we also know that 
-		 
-		 \noindent 
-		 \parbox{10.5cm}{$(V, \{\kappa^D_V\}_{D\in \D})$ is a colimit for $U_\eq\circ F$. Moreover, since $\Set$ is cocomplete too we can also take a colimit $(C, \{c_d\}_{d\in \D})$ for $K\circ F$. Now,  let $\alpha$ be an arrow $D\to D'$ in $\D$, and suppose that $F(\alpha)$ is $(h_1, h_2, h_3)$. By definition of morphisms in $\EqHyp$, the square on the right commutes.}
-		\hfill 
-		\parbox{2cm}{\xymatrix{V_d \ar[r]_{h_2} \ar@{>>}[d]_{q_D} & V_{D'} \ar@{>>}[d]^{q_{D'}}\\ Q_{D} \ar[r]^{h_3} & Q_{D'}}}
-		\vspace{.05cm}
+		\item We know by \Cref{prop:cocomp} that $\hyp$ is cocomplete. Thus, let $(E, V, s, t)$ together with $\{(\kappa_E^D, \kappa_V^D)\}_{D \in \D}$ be a colimit for $T \circ F$. By \Cref{colim} we also know that $(V, \{\kappa^D_V\}_{D\in \D})$ is a colimit for $U_\eq\circ F$. 
 		
+		\noindent
+		\begin{minipage}[l]{.8\linewidth}
+			Moreover, since $\Set$ is cocomplete too we can also take a colimit $(C, \{c_d\}_{d\in \D})$ for $K\circ F$. Now,  let $\alpha$ be an arrow $D\to D'$ in $\D$, and suppose that $F(\alpha)$ is $(h_1, h_2, h_3)$. By definition of morphisms in $\EqHyp$, the square on the right commutes.
+		\end{minipage}
+		\hfill 
+		\begin{minipage}[r]{.2\linewidth}
+			\xymatrix@R=10pt{V_d \ar[r]_{h_2} \ar@{>>}[d]_{q_D} & V_{D'} \ar@{>>}[d]^{q_{D'}}\\ Q_{D} \ar[r]^{h_3} & Q_{D'}}
+		\end{minipage}
+		
+		\smallskip 
 		Thus the family $\{q_D\}_{D\in \D}$ form a natural transformation $U_\eq\circ F\to K\circ F$.  By \Cref{lemma:nat_trans_reg_epi_canonical_arrow_reg_epi}, the induced arrow $q: V \to C$ between the colimits is a surjection.  We can then consider the object $(E, V, C, s, t, q)$ of $\EqHyp$, together with the family  $\{(\kappa_E^D, \kappa_V^D, c_D)\}_{D\in \D}$, which by construction is a cocone on $F$. Let $((E_\mathcal{G},V_\mathcal{G}, Q_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}}, q_{\mathcal{G}}), \{(h^D_E, h^D_V, h^D_Q)\}_{D\in \D})$ be a cocone, then $((E_\mathcal{G},V_\mathcal{G}, s_{\mathcal{G}}, t_{\mathcal{G}}), \{(h^D_E, h^D_V)\}_{D\in \D})$ and $(Q_{\mathcal{G}}, \{h^D_Q\}_{D\in \D})$ are cocone on, respectively, $T\circ F$ and $K\circ D$, giving arrows $(h_E, h_V)$ in $\hyp$ and $h_Q$ in $\Set$ such that
 		\[(h_E, h_V)\circ (\kappa_E^D, \kappa_V^D)=(h^D_E, h^D_V) \qquad h_Q\circ c_D=h^D_Q\]
 		Now, to show that $(h_E, h_V, h_Q)$ is an arrow of $\EqHyp$ we can compute
@@ -3489,11 +3683,14 @@ We will also need the following well-known fact about regular epis.
 		\item   $\hyp$ is complete, again by \Cref{prop:cocomp}, we can then consider a limiting cone $((E, V, s, t), \{(\pi^D_E, \pi^D_V)\}_{D\in \D})$ over of $T \circ F$. Now, $(V, \{q_D\circ \pi_V^D\}_{D\in \D})$, is a cone for $K \circ F$: indeed, if $\alpha\colon D \to D'$ is an arrow of $\D$, and $F(\alpha)=(h_1, h_2, h_3)$, then we have
 	\[h_3\circ q_D\circ \pi^D_V =q_{D'} \circ h_2\circ \pi^D_{V}=q_{D'}\circ \pi^{D'}_V\]
 
-\noindent 
-\parbox{9.5cm}{Thus there is an arrow $l\colon V\to L$ such that $l_D\circ l=q_D\circ \pi^D_V$. By \Cref{rem:fact}, we know that there exist $m\colon Q\mto L$ and $q\colon X\eto Q $ such that $m\circ q=l$. Since the identity is mono, \Cref{rem:fact} yield a unique arrow $\pi^D_Q$ fitting in the rectangle aside.} 	\hfill \parbox{3cm}{\xymatrix{
-	V\ar[r]^{\pi_V^D}\ar@{>>}[d]_{q}&V_D\ar@{>>}[r]^{q_D}&Q_D\ar[d]^{\id{Q_D}}\\Q\ar@{>->}[r]_{m}\ar@{.>}[urr]_{\pi_Q^D}&L\ar[r]_{l_D}&{Q_D}
-	}}
-	
+\begin{minipage}[l]{.7\linewidth}
+	Thus there is an arrow $l\colon V\to L$ such that $l_D\circ l=q_D\circ \pi^D_V$. By \Cref{rem:fact}, we know that there exist $m\colon Q\mto L$ and $q\colon X\eto Q $ such that $m\circ q=l$. Since the identity is mono, \Cref{rem:fact} yield a unique arrow $\pi^D_Q$ fitting in the rectangle aside.
+\end{minipage}\hfill\begin{minipage}[r]{.3\linewidth}
+\xymatrix@R=20pt{
+	V\ar[r]^{\pi_V^D}\ar@{>>}[d]_{q}&V_D\ar@{>>}[r]^{q_D}&Q_D\ar[d]^{\id{Q_D}}\\Q\ar@{>->}[r]^{m}\ar@{.>}@/^.2cm/[urr]^(.3){\pi_Q^D}&L\ar[r]^{l_D}&{Q_D}
+}
+\end{minipage}
+
 	Let $\alpha$ be an arrow $D\to D'$ in $\D$. Then we have
 		\[T(F\alpha\circ (\pi^D_{E}, \pi^D_V, \pi^D_Q))=T(F(\alpha))\circ (\pi^D_E, \pi^D_V)=(\pi^{D'}_E, \pi^{D'}_V)=T(\pi^{D'}_{E}, \pi^{D'}_V, \pi^{D'}_Q)\]
 	
@@ -3507,9 +3704,17 @@ We will also need the following well-known fact about regular epis.
 		\[l_D\circ h\circ q_\mathcal{G}=h^D_Q\circ q_{\mathcal{G}}=q_{D}\circ h^D_V=q_D\circ \pi^D\circ h_V=l_D\circ l\circ h_V\]
 
 \noindent 
-\parbox{2cm}{\xymatrix@R=15pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]^{m}\\ Q_{\mathcal{G}}  \ar@{.>}[urr]_{k_Q}\ar[rr]_{h} && L }}\hfill \parbox{9.5cm}{Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that
-\[(\pi^D_E, \pi^D_V, \pi^D_Q)\circ (h_E, h_V, k_Q)=(h^D_E, h^D_V, h^D_Q)\]}
+\begin{minipage}[l]{.3\linewidth}
+\xymatrix@R=20pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar[r]^{h_V}& V \ar@{>>}[r]^{q}  & Q \ar@{>->}[d]_{m}\\ Q_{\mathcal{G}}  \ar@{.>}[urr]^(.4){k_Q}\ar[rr]^{h} && L }
+\end{minipage}
+\hfill
+\begin{minipage}[r]{.75\linewidth}
+Hence the  outer boundary of the square on the left commutes, yielding the dotted diagonal arrow $k_Q\colon Q_\mathcal{G}\to Q$.  We have therefore built an arrow $(h_E, h_V, k_Q)$ of $\EqHyp$ such that
+\vspace{-.2cm}
+\[(\pi^D_E, \pi^D_V, \pi^D_Q)\circ (h_E, h_V, k_Q)=(h^D_E, h^D_V, h^D_Q)\]
+\end{minipage}
 
+\smallskip 
 As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref{rem:eqhyp_morphs}.	\qedhere 
 	\end{enumerate}
 \end{proof}
@@ -3521,18 +3726,25 @@ As in the point above, uniqueness is guaranteed by faithfulness of $T$ and \Cref
 $(\Rightarrow)$	If $(h_E, h_V, h_Q)$ is mono, from \Cref{cor:mono1} we have that $h_E$ and $h_V$ are monos.
 
 \noindent
-	\parbox{11cm}{
-		\hspace{15pt}Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
-	$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
-	is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono 
-	$m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that 
-	$e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}$.
-	Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the claim follows.}
+	\begin{minipage}[l]{.82\linewidth}	\setlength{\parindent}{1.5em}
+	Let now $(f_E, f_V, f_Q), (g_E, g_V, g_Q): \mathcal{H\rightrightarrows K}$ be arrows equalized by $(h_E, h_V, h_Q)$. Let $e\colon E_Q\mto Q_{\mathcal{H}}$ be the equalizer in
+$\Set$ of $f_Q, g_Q\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{K}}$. From the third point of \Cref{prop:fact} and \Cref{lim} we know that $h_V\colon V_{\mathcal{G}}\mto V_{\mathcal{H}} $ 
+is the equalizer of $f_V, g_V\colon V_{\mathcal{H}}\rightrightarrows V_{\mathcal{K}}$, thus by the second point of \Cref{prop:eqhyp_complete} we know that there is a mono 
+$m\colon Q_{\mathcal{G}}\mto E_Q$ fitting in the diagram aside. Now, notice that: 
+\vspace{-.2cm}
+\[e\circ m\circ q_{\mathcal{G}}=q_\mathcal{H}\circ h_V=h_{Q}\circ q_{\mathcal{G}}\]
+	\end{minipage}
 	\hfill
-	\parbox{2cm}{\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]_{e} & Q_\mathcal{{H}}}}   
+	\begin{minipage}[r]{.2\linewidth}
+		\xymatrix@R=18pt{V_\mathcal{G} \ar@{>>}[d]_{q_{\mathcal{G}}} \ar@{>->}[r]_{h_V}& V_\mathcal{H} \ar@{>>}[dd]^{q_{\mathcal{H}}}\\Q_\mathcal{G} \ar@{>.>}[d]_{m}&\\ E_Q \ar@{>->}[r]^{e} & Q_\mathcal{{H}}}
+	\end{minipage} 
 	
+	\smallskip  
+Since $q_{\mathcal{G}}$ is epi we conclude that $e\circ m=h_Q$, from which the claim follows.	
+
+
 	$(\Leftarrow)$ Suppose that $h_E$, $h_V$, and $h_Q$  are monos. 
-	We can build the cokernel pair of the three arrows, taking the pushout of $h_E$, $h_V$ and $h_Q$ along itself, obtaining the three diagrams below, which by \Cref{prop:regmono} are also pullbacks
+	We can build the cokernel pair of the three arrows, taking the pushout of $h_E$, $h_V$ and $h_Q$ along itself, obtaining the three diagrams below, which by \Cref{prop:regmono} are also pullbacks.
 	\[     \xymatrix@R=15pt{
 	E_\mathcal{G} \ar@{>->}[d]_{h_E} \ar@{>->}[r]^{h_E}&E_\mathcal{H} \ar@{>->}[d]^{g_E} &	V_\mathcal{G} \ar@{>->}[d]_{h_V} \ar@{>->}[r]^{h_V}& V_\mathcal{H} \ar@{>->}[d]^{g_V} &Q_\mathcal{G} \ar@{>->}[d]_{h_Q} \ar@{>->}[r]^{h_Q}& Q_\mathcal{H} \ar@{>->}[d]^{g_Q} \\
 		E_\mathcal{H} \ar@{>->}[r]_{f_E} & E_\mathcal{{K}} & V_H \ar@{>->}[r]_{f_V} & V_\mathcal{{K}} & Q_\mathcal{H} \ar@{>->}[r]_{f_Q} & Q_\mathcal{{K}}
@@ -3619,13 +3831,13 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 	Uniqueness follows at once since $r_V$, being the pullback of $h_V$ is a mono.
 \end{proof}
 
-\pbs*
+\pbsa*
 
 \begin{proof}\label{proof:pbstable}
 	Let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal{G}'_i=(A'_i, B'_i, Q'_i, s'_i, t'_i, q'_i)$, for $i \in \{1, 2, 3, 4\}$, be hypergraphs with equivalence, 
 	and  suppose that in the first diagram below,  all the vertical faces are pullbacks, the bottom face is a pushout $h$ is a regular mono and $k_Q\colon Q_1\mto Q_3$ is mono. By \Cref{prop:eqhyp_complete} the same is true for the other two cubes, by \Cref{cor:mono2}, $h_E$ and $h_V$ are monos and so the top faces of these cubes are pushouts
 	\[
-	\xymatrix@C=10pt@R=10pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_{z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_{z_V'} \\ 
+	\xymatrix@C=10pt@R=8pt{&\mathcal{G}_1'\ar[dd]|\hole_(.65){a}\ar[rr]^{h'} \ar[dl]_{k'} && \mathcal{G}_2' \ar[dd]^{b} \ar[dl]_{z'} & &A_1'\ar[dd]|\hole_(.65){a_E}\ar@{>->}[rr]^{h_E'} \ar[dl]_{k_E'} && A_2' \ar[dd]_{b_E} \ar[dl]_(.55){z_E'} &&B_1'\ar[dd]|\hole_(.65){a_V}\ar@{>->}[rr]^{h_V'} \ar[dl]_{k_V'} && B_2' \ar[dd]^{b_V} \ar[dl]_(.55){z_V'} \\ 
 		\mathcal{G}_3'  \ar[dd]_{c}\ar[rr]^(.7){p'} & & \mathcal{G}_4' \ar[dd]_(.3){d} &&A_3'  \ar[dd]_{c_E}\ar@{>->}[rr]^(.7){p_E'} & & A_4' \ar[dd]_(.3){d_E}
 		&&B_3'  \ar[dd]_{c_V}\ar@{>->}[rr]^(.7){p_V'} & & B_4' \ar[dd]_(.3){d_V}\\
 		&\mathcal{G}_1\ar[rr]|\hole^(.65){h} \ar[dl]^{k} && \mathcal{G}_2 \ar[dl]^{z} & &A_1\ar@{>->}[rr]|\hole^(.65){h_E} \ar[dl]^{k_E} && A_2 \ar[dl]^{z_E} &&B_1\ar@{>->}[rr]|\hole^(.65){h_V} \ar[dl]^{k_V} && B_2 \ar[dl]^{z_V} \\
@@ -3633,19 +3845,20 @@ By the proof of the first point of \Cref{prop:eqhyp_complete} the . \qedhere }
 	\]
 	
 	\noindent 
-\parbox{10cm}{Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.}\hfill\parbox{3cm}{\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]^{x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_Q} \ar@{>->}[dl]^{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]_{p_C} & & Q_4 }}
+	\begin{minipage}[l]{.73\linewidth}	\setlength{\parindent}{1.5em}
+		Now, if $d=(d_E, d_V, d_Q)$, we can pull back the third component to get the solid part of the cube aside. Notice moreover that the commutativity of the solid diagram yields the existence of the dotted $w\colon T\to Y$. By the usual composition and decomposition properties of pullbacks (cfr.~\Cref{lem:pb1}) the left face is a pullback. By the first point of \Cref{prop:eqhyp_complete} the bottom face is a pushout and $h_Q$ is a mono by \Cref{cor:mono2}, so the top face is a pushout too.
+	\end{minipage}\hfill 
+	\begin{minipage}[r]{.3\linewidth}
+		\xymatrix@C=10pt@R=10pt{&T\ar[dd]|\hole_(.65){x_2}\ar@{>->}[rr]_(.4){x_1} \ar@{>.>}[dl]_{w} && U \ar[dd]^{u_2} \ar[dl]_{u_1} \\ Y  \ar[dd]_{y_2}\ar@{>->}[rr]^(.7){y_1} & & Q_4' \ar[dd]_(.3){d_Q}\\&Q_1\ar@{>->}[rr]|\hole^(.65){h_Q} \ar@{>->}[dl]_{k_Q} && Q_2 \ar[dl]^{z_Q} \\Q_3 \ar@{>->}[rr]^{p_C} & & Q_4 }
+	\end{minipage}
 
 
-	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the diagrams below
+	By the second point of \Cref{prop:eqhyp_complete} we know that there are monos $m_2\colon Q'_2\mto U$ and $m_3\colon Q'_3\mto Y$  fitting in the first two diagrams below:
+	\[\xymatrix@R=15pt{B'_3 \ar@{>>}[d]^{q'_3} \ar@/_.3cm/[dd]_{c_V} \ar@{>->}[r]^{p'_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} & & B'_2 \ar[r]^{z_V} \ar@{>>}[d]^{q'_2} \ar@/_.3cm/[dd]_{b_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} &&B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]^{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\ Q'_3 \ar@{>.>}[r]^{m_3}& Y  \ar@{>->}[r]^{y_1} \ar[d]_{y_2}& Q'_4 \ar[d]_{d_C}& Q'_2 \ar@{>.>}[r]^{m_2} & U \ar[d]_{u_2} \ar[r]^{u_1} & Q'_4 \ar[d]_{d_C} &B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\ B_3 \ar@{>>}[r]_{q_3} & Q_3 \ar@{>->}[r]_{p_Q} & Q_4 &B_2 \ar@{>>}[r]_{q_3} & Q_2 \ar[r]_{z_Q} & Q_4&& Q'_2 \ar@{>->}[r]^{m_2}& U \ar[r]^{u_2}& Q_2 }\]
 	
-	\[\xymatrix@R=15pt{B'_3 \ar@{>>}[d]^{q'_3} \ar@/_.3cm/[dd]_{c_V} \ar@{>->}[r]^{p'_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4} & & B'_2 \ar[r]^{z_V} \ar@{>>}[d]^{q'_2} \ar@/_.3cm/[dd]_{b_V}& B'_4 \ar@/^.2cm/@{>>}[dr]^{q'_4}\\ Q'_3 \ar@{>.>}[r]^{m_3}& Y  \ar@{>->}[r]^{y_1} \ar[d]_{y_2}& Q'_4 \ar[d]_{d_C}& Q'_2 \ar@{>.>}[r]^{m_2} & U \ar[d]_{u_2} \ar[r]^{u_1} & Q'_4 \ar[d]_{d_C} \\ B_3 \ar@{>>}[r]_{q_3} & Q_3 \ar@{>->}[r]_{p_Q} & Q_4 &B_2 \ar@{>>}[r]_{q_3} & Q_2 \ar[r]_{z_Q} & Q_4}\]
-
-\newpage
-	\noindent 
-	\parbox{8.5cm}{\hspace{15pt}
-	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ that makes the diagram aside commutative.}\hfill
-	\parbox{4cm}{\xymatrix@R=15pt{B'_1\ar@{>>}[r]_{q'_1} \ar@{>->}[d]_{h'_V} \ar@/^.3cm/[rr]^{a_V} & Q'_1 \ar@{>.>}[d]_{m_1} & B_1 \ar@{>>}[dr]^{q_1}\\B'_2 \ar@{>>}[dr]_{q'_2} & S \ar@{>->}[r]^{s_2} \ar[d]_{s_1} & T \ar[r]^{x_2} \ar@{>->}[d]_{x_1}  & Q_1 \ar@{>->}[d]^{h_Q}\\& Q'_2 \ar@{>->}[r]_{m_2}& U \ar[r]_{u_2}& Q_2 }}
-
+	
+	For $Q'_1$, we can make a similar argument. Taking $(S, s_1, s_2)$ as the pullback of $m_2$ along $x_1$, we can use again the composition properties of pullbacks and the second point of \Cref{prop:eqhyp_complete} to guarantee the existence of a monomorphism $m_1\colon Q'_1\to S$ that makes the last diagram above commutative.
+		
 We have to show that the top face of the cube with which we have begun is a pushout. Let $\mathcal{H}$ be $(E, V, Q, s, t, q)$ and suppose that there exist  $o\colon  \mathcal{G}_2' \to \mathcal{H}$ and $w\colon  \mathcal{G}_3' \to \mathcal{H}$ such that $o \circ h' = w \circ k'$. Since $T$ preserves colimits by \Cref{prop:forghyp}, we know that there exists a morphism $(v_E, v_V)\colon T(\mathcal{G'}_4)\to T(\mathcal{H})$ such that
 \[v_E\circ p'_E=w_E \quad v_V\circ p'_V=w_V \quad v_E\circ z'_E=o_e \quad v_V\circ z'_V=o_V\]
 
@@ -3656,25 +3869,25 @@ We have to show that the top face of the cube with which we have begun is a push
 		Q'_3 \ar@{>->}[rr]_{p_Q'} & & Q'_4\ar@{.>}[rr]_{v_C} && Q
 }}
 
-\smallskip \noindent 
-\parbox{8cm}{ \hspace{15pt}We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
+\noindent
+\begin{minipage}[l]{.65\linewidth}\setlength{\parindent}{1.5em}
+	We want to extend such a morphism to one of $\EqHyp$ between $\mathcal{G}'_4\to \mathcal{H}$. If we are able to do so we can conclude because uniqueness is guaranteed by \Cref{rem:eqhyp_morphs}. 
 	
-	\hspace{15pt}Now, consider the cube aside, $h$ is in $\pbc$ so by \Cref{lem:pb1} we know that its back face is a pullback. We can then apply the second point of \Cref{prop:kerset} to deduce that the square on the right is a pushout.
+	Now, consider the cube aside, $h$ is in $\pbc$ so by \Cref{lem:pb1} we know that its back face is a pullback. We can then apply the second point of \Cref{prop:kerset} to deduce that the square on the right is a pushout.
 	
-	By construction we have that 
-	\begin{align*}
-		m_3\circ q'_3 \circ \pi_{m_3 \circ q'_3}^1& = m_3\circ q'_3 \circ \pi_{m_3\circ q_3'}^2 \\
-		m_2\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 &= m_2\circ q'_2 \circ \pi_{m_2 \circ q_2'}^2
-		\end{align*} 
-	}\hfill\parbox{4cm}{\xymatrix@C=10pt@R=10pt{
-	&B_1'\ar@{>>}[dd]|(.53)\hole_(.67){s_2\circ m_1\circ q_1'}\ar@{>->}[rr]^{h_V'} \ar[dl]_(.6){k_V'} && B_2' \ar@{>}[dd]^{m_2\circ q_2'} \ar[dl]_(.6){z_V'} & & \\
-	B_3'  \ar[dd]_{m_3\circ q_3'}\ar@{>->}[rr]^(.7){p_V'}  &&B_4' \ar@{>>}[dd]_(.3){q_4'} \\
-	&T\ar@{>->}[rr]_(.3){x_1}|(.5)\hole \ar[dl]_{w} && U\ar[dl]^(.4){u_1} \\
-	Y \ar@{>->}[rr]_{y_1} & &  Q'_4\\K_{s_2\circ m_1\circ q'_1}  \ar@{>->}[rr]_-{k_{h'_V}} \ar[dd]_{k_{k'_V}}&& K_{m_2\circ q'_2} \ar[dd]^{k_{z'_V}}\\ \\ K_{m_3\circ q'_3} \ar@{>->}[rr]^-{k_{p'_V}} && K_{q'_4}}
-}
-	but since $m_3$ and $m_2$ are monos this implies
+	By construction we have that:
+\[	m_3\circ q'_3 \circ \pi_{m_3 \circ q'_3}^1 = m_3\circ q'_3 \circ \pi_{m_3\circ q_3'}^2 \qquad m_2\circ q_2' \circ \pi_{m_2 \circ q_2'}^1 = m_2\circ q'_2 \circ \pi_{m_2 \circ q_2'}^2 \]
+but since $m_3$ and $m_2$ are monos this implies
 \[q'_3 \circ \pi_{m_3 \circ q'_3}^1 = q'_3 \circ \pi_{m_3\circ q_3'}^2 \qquad q_2' \circ \pi_{m_2 \circ q_2'}^1 = q'_2 \circ \pi_{m_2 \circ q_2'}^2\]
-	
+\end{minipage}\quad \hfill
+\begin{minipage}[r]{.35\linewidth}
+\xymatrix@C=10pt@R=8pt{
+	&B_1'\ar@{>>}[dd]|(.53)\hole_(.67){s_2\circ m_1\circ q_1'}\ar@{>->}[rr]^{h_V'} \ar[dl]_(.6){k_V'} && B_2' \ar@{>}[dd]_{m_2\circ q_2'} \ar[dl]_(.6){z_V'} & & \\
+	B_3'  \ar[dd]^{m_3\circ q_3'}\ar@{>->}[rr]^(.7){p_V'}  &&B_4' \ar@{>>}[dd]_(.3){q_4'} \\
+	&T\ar@{>->}[rr]_(.3){x_1}|(.5)\hole \ar[dl]^{w} && U\ar[dl]^(.4){u_1} \\
+	Y \ar@{>->}[rr]_{y_1} & &  Q'_4\\K_{s_2\circ m_1\circ q'_1}  \ar@{>->}[rr]_-{k_{h'_V}} \ar[dd]^{k_{k'_V}}&& K_{m_2\circ q'_2} \ar[dd]_{k_{z'_V}}\\ \\ K_{m_3\circ q'_3} \ar@{>->}[rr]^-{k_{p'_V}} && K_{q'_4}}
+\end{minipage}
+
 By computing, we obtain
 \begin{align*}
 	&q \circ v_V \circ \pi_{q_4'}^1 \circ k_{p_V'} = q \circ v_V \circ p_V' \circ \pi_{m_3 \circ q_3'}^1= q \circ w_V \circ \pi_{m_3 \circ q_3'}^1 = w_Q \circ q_3' \circ \pi_{m_3 \circ q_3'}^1 \\
@@ -3712,16 +3925,20 @@ To fix notation, let $\mathcal{G}_i = (A_i, B_i, Q_i, s_i, t_i, q_i)$, $\mathcal
 Let us now consider the diagrams below, in which the inner squares are pullbacks.	Since the outer diagrams commute, by definition of morphism of $\EqHyp$, then we have the existence of $m_2\colon Q'_2\to U$, $m_3\colon Q'_3\to Y $, $a_3\colon B'_3\to Y$ and $a_2\colon B'_2\to Y$.
 
 \smallskip 
-\noindent 
-\parbox{5.2cm}{\hspace{15pt}Now, notice that  $m_3$ and $m_2$ are monos because $c_Q$ and $b_2$ are injections. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that
+\noindent
+\begin{minipage}[l]{.4\linewidth}\setlength{\parindent}{1.5em}
+	Now,  since $c_Q$ and $b_2$ are injective functions, then $m_3$ and $m_2$ are monomorphisms. By the proof of \Cref{prop:eqhyp_complete}, to conclude it is enough to show that 
 	\[m_3\circ q'_3 = a_3 \qquad m_2\circ q'_2=a_2\]
 	
-		\hspace{15pt}Indeed, if the previous equations hold, then $Q'_3$ and   $Q'_2$ are images for $a_3$ and $a_2$ and the claim follows from \Cref{prop:eqhyp_complete}.
-	}\hfill \parbox{3.5cm}{\xymatrix@R=16pt{Q'_3 \ar@{.>}[r]_{m_3} \ar@{>->}@/^.3cm/[rr]^{p'_Q} \ar@{>->}@/_.3cm/[dr]_{c_Q} &Y \ar@{>->}[d]_{y_2}\ar@{>->}[r]_{y_1}& Q'_4 \ar@{>->}[d]^{d_Q}& Q'_2 \ar@{.>}[r]_{m_2} \ar@/^.3cm/[rr]^{z'_Q} \ar@{>->}@/_.3cm/[dr]_{b_Q}&U \ar[r]_{u_1} \ar@{>->}[d]_{u_2}& Q'_4\ar[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_3}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }
-\xymatrix@R=16pt{B'_3 \ar@{.>}[dr]^{a_3} \ar@{>->}[r]^{p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]^{a_2} \ar[r]^{z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]_{p_Q}& Q_4 &&Q_2 \ar[r]_{z_Q}& Q_4 }}
-	
-	
-By computing we have
+	Now, from the previous two equations we can deduce that $Q'_3$ and   $Q'_2$ are images for $a_3$ and $a_2$ and therefore the claim follows from \Cref{prop:eqhyp_complete}.
+\end{minipage}\hfill 
+\begin{minipage}[r]{.5\linewidth}\vspace{-.5cm}
+	\xymatrix@R=13pt@C=30pt{Q'_3 \ar@{.>}[r]_{m_3} \ar@{>->}@/^.3cm/[rr]^{p'_Q} \ar@{>->}@/_.3cm/[dr]_{c_Q} &Y \ar@{>->}[d]_{y_2}\ar@{>->}[r]_{y_1}& Q'_4 \ar@{>->}[d]^{d_Q}& Q'_2 \ar@{.>}[r]_{m_2} \ar@/^.3cm/[rr]^{z'_Q} \ar@{>->}@/_.3cm/[dr]_{b_Q}&U \ar[r]_{u_1} \ar@{>->}[d]_{u_2}& Q'_4\ar[d]^{d_Q}\\&Q_3 \ar@{>->}[r]^{p_3}& Q_4 &&Q_2 \ar[r]^{z_Q}& Q_4 }
+	\xymatrix@R=13pt@C=30pt{B'_3 \ar@{.>}[dr]_{a_3} \ar@{>->}[r]_(.6){p'_V} \ar@{>>}[d]_{q'_3} &B'_4\ar@{>>}[dr]^{q'_4}&& B'_2\ar@{.>}[dr]_{a_2} \ar[r]_(.6){z'_2} \ar@{>>}[d]_{q'_2} &B'_4\ar@{>>}[dr]^{q'_4}\\Q'_3 \ar@{>->}[dr]_{c_Q} &Y \ar@{>->}[r]_{y_1} \ar@{>->}[d]_{y_2}& Q'_4\ar[d]^{d_Q}&Q_2' \ar@{>->}[dr]_{c_Q}& U \ar@{>->}[d]_{u_2}\ar[r]_{u_1}& Q'_4 \ar@{>->}[d]^{d_Q}\\&Q_3 \ar@{>->}[r]^{p_Q}& Q_4 &&Q_2 \ar[r]^{z_Q}& Q_4 }
+\end{minipage} 	
+
+\smallskip 
+Computing we have:
 \[\begin{split}
 	y_1\circ a_3&= q'_4\circ p'_2=p'_3 \circ q'_3=y_1\circ m_3\circ q'_3\\
 u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2 
@@ -3729,8 +3946,32 @@ u_1\circ a_2&= q'_4\circ t'_2=t'_3 \circ q'_3=u_1\circ m_2\circ q'_2
  	y_2\circ a_3&= d_3\circ q_3'=y_2\circ m_3\circ q'_3\\
 u_2\circ a_2&= d_2\circ q_2'=u_2\circ m_2\circ q'_2
 \end{split}\]	
-And we have done.
+And we are done.
 \end{proof} 
+
+
+\equ*
+\begin{proof}\label{proof:equ}
+	\begin{enumerate}
+		\item Let $F\colon \D\to \Eqlmo$ be a functor with binary product, pullback or equalizer shape. Let $(E_{\mathcal{L}}, V_{\mathcal{L}}, Q_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}}, q_{\mathcal{L}})$ be a vertex for a limiting cone for $M_{\eq}\circ F$. By \Cref{prop:eqhyp_complete} we know that $\mathcal{L}:=(E_{\mathcal{L}}, V_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}})$ is the vertex of a limiting cone for $T\circ M_{\eq}\circ F$ and so by Corollaries \ref{cor:eq} and \ref{cor:pb} and \Cref{lem:pro} it is left-monogamous.
+		
+		\item Let $\D$ be a connected category and $F\colon \D\to \EqsHyp$ a functor. If $(E_{\mathcal{L}}, V_{\mathcal{L}}, Q_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}}, q_{\mathcal{L}})$ is a vertex for a limiting cone for $S_{\eq}\circ F$ then, by Lemmas \ref{lem:seplim} and \ref{prop:eqhyp_complete}, $(E_{\mathcal{L}}, V_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}})$  is separated, proving the claim.
+		
+		\item  This is done as int he previous two points using \Cref{prop:limpsy}. \qedhere 
+	\end{enumerate}
+\end{proof}
+
+\coequ*
+\begin{proof}\label{proof:coequ}
+	\begin{enumerate} 
+		\item Consider two arrows $(f,g)\colon \mathcal{G}\to \mathcal{H}$
+		and $(h,k)\colon \mathcal{G}\to \mathcal{K}$ in $\EqHyp$ with the same domain. Let $\mathcal{P}$ be the vertex of a pushout diagram for them. By \Cref{prop:eqhyp_complete} we know that $T(\mathcal{P})$ is a pushout for $T(f,g)$ along $T(h,k)$. Thus if $T(\mathcal{G})$ and $T(\mathcal{H})$ are left-monogamous and $T(f,g)$ is downward-closed, by \Cref{cor:pusho} we deduce that $T(\mathcal{P})$ is left-monogamous and so $\mathcal{P}$ is in $\Eqlmo$.
+		
+		\item Let $F\colon \D\to \EqpsHyp$ be a functor. Let $\mathcal{C}$ be the vertex of a colimiting cocone for $S_{p, \eq}\circ F$. by the first point of \Cref{prop:eqhyp_complete} we know that $T(\mathcal{C})$ is the vertex of a colimiting cocone for $T\circ S_{p,\eq}\circ F$. By \Cref{prop:limpsy}, thus, $T(\mathcal{C})$  is pruned and separated and we can conclude. \qedhere
+	\end{enumerate}
+\end{proof}
+
+
 
 \trm*
 \begin{proof}\label{proof:term}
@@ -3739,7 +3980,7 @@ And we have done.
 
 \po*
 \begin{proof}\label{proof:tade}
-	Suppose that the square on the left below is a pushout in $\EqHyp_\Sigma$, with $h$ in $\mathcal{T}$. Then, by \Cref{rem:t} the square on the right is a pushout and by the definition of $\mathcal{T}$ and \Cref{rem:obv}, $T_\Sigma(h)$ is a regular mono in $\tg$
+	Suppose that the square on the left below is a pushout in $\EqHyps$, with $h$ in $\mathcal{T}$. Then, by \Cref{rem:t} the square on the right is a pushout and by the definition of $\mathcal{T}$ and \Cref{rem:obv}, $T_\Sigma(h)$ is a regular mono in $\tg$
 	\[\xymatrix{J_\Sigma(\mathcal{G}_0, l_0) \ar[r]^{k} \ar[d]_{h}& J_\Sigma(\mathcal{G}_1, l_1) \ar[d]^{p} &T_\Sigma (J_\Sigma(\mathcal{G}_0, l_0)) \ar[r]^{T_{\Sigma}(k)} \ar[d]_{T_{\Sigma}(h)}& T_\Sigma (J_\Sigma(\mathcal{G}_1, l_1)) \ar[d]^{T_\Sigma(p)}\\
 J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\Sigma(\mathcal{G}_1, l_1)) \ar[r]_{T_\Sigma(q)}& T_\Sigma(J_\Sigma(\mathcal{H}, l))}\]
 	
