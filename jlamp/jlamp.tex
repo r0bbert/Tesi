@@ -916,7 +916,7 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 
 \begin{exa}\label{ex:term} For instance, a terminal object of $\hyp$ is given by $(\mathbb{N}\times \mathbb{N}, 1, \Delta\circ \pi_1, \Delta\circ \pi_2)$, where $\pi_1, \pi_2\colon \mathbb{N}\times \mathbb{N}\to \mathbb{N}$ are the projections and $\Delta\colon \mathbb{N}\to 1^\star$ the canonical isomorphism introduced in \Cref{rem:length}. 
 \end{exa}
-
+ 
 
 \subsubsection{Some subcategories of $\hyp$}\label{sub:sub}
 
@@ -924,7 +924,7 @@ We are now going to introduce some classes of hypergraphs, and the relative subc
 
 
 \paragraph{Left-monogamous hypergraphs}\label{par:lm}
-We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{corradini2005term,Plu:TGR-ENTCS}.  
+We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{CorradiniG05,Plu:TGR-ENTCS}.  
 
 \begin{defi}
 	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be an hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{B}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$. If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$.
@@ -1143,7 +1143,6 @@ We can further take the coproduct $(V_{\sp(\mathcal{G})}, \{\iota_e\}_{e\in E_{\
 	e &\mapsto \prod_{i=n_e+1}^{n_e + m_e} \iota_e(\iota^e_{i}(0))
 \end{split} \]
 where $0$ is the unique element of the terminal object $1$. 
-\marginpar{ovvero?}
 
 We define the \emph{separated hypergraph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}) = (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
 \end{defi}
