@@ -1295,11 +1295,8 @@ $t_{\mathcal{G}}(e)$ for any $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{prun
 \end{rem}
 
 \begin{rem}\label{rem:mprun}
-<<<<<<< HEAD
 	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
-=======
-	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\phyp$ and suppose that $f=h$. We can use the absence of isolated nodes to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$: we have two cases
->>>>>>> refs/remotes/origin/main
+
 	\begin{itemize}
 		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
 		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
@@ -1420,11 +1417,7 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 \end{minipage}
 
 \smallskip
-<<<<<<< HEAD
 If we restrict to pruned separated hypergraph the previous issue disappeares.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
-=======
-The previous issue disappears if we restrict to pruned separated hypergraphs.  The crucial observation is that the a pruned separated hypergraph is characterized by its set of hyperedges and the length of their sources and targets. See \Cref{proof:pruned} for a proof.
->>>>>>> refs/remotes/origin/main
 
 \begin{restatable}{lem}{pruned}\label{lem:pruned}
 $\pshyp$ is equivalent to $\Set/(\mathbb{N}\times \mathbb{N})$.
@@ -1624,7 +1617,7 @@ As done in \Cref{sub:sub}, we can restrict our attention to two subcategories of
 
 \begin{rem} The functors $\pr$ and $\sp_P$ induce right adjoints to the inclusions $P_\mathcal{G}\colon \phyp_\mathcal{G} \to \hyp_{\mathcal{G}}$ and $S_{p, \mathcal{G}}\colon \pshyp_\mathcal{G}\to \phyp_{\mathcal{G}}$.
 \end{rem}
-We can easily realize $\lmo_{\mathcal{G}}$ and $\shyp_{\mathcal{G}}$ as comma categories.
+We can easily realize $\lmo_{\mathcal{G}}$, $\shyp_{\mathcal{G}}$ and $\pshyp_{\mathcal{G}}$ as comma categories.
 
 \begin{prop}
 Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Gamma_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then
@@ -2024,7 +2017,7 @@ We can now focus to the various kind of hypergraphs introduced in \Cref{sub:sub}
 \end{defi}
 
 \begin{rem}\label{rem:obv1}
-By definition, there exist functors $a$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions.
+By definition, there exist functors $O_{\eq}$, $R_{\eq}$ and $W_{\eq}$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions.
 \[\xymatrix{\Eqlmo \ar[r]^-{M_{\mathsf{eq}}} \ar[d]_{O_{\mathsf{eq}}}& \EqHyp\ar[d]^{T} & \EqsHyp \ar[r]^-{S_{\mathsf{eq}}} \ar[d]_{R_{\mathsf{eq}}} & \EqHyp \ar[d]^{T} & \EqpsHyp \ar[r]^-{S_{p, \mathsf{eq}}} \ar[d]_{W_{\mathsf{eq}}} & \EqHyp\ar[d]^{T}\\ \lmo \ar[r]_{M} & \hyp & \shyp \ar[r]_{S} & \hyp  & \pshyp \ar[r]_-{S_p}& \hyp}\]
 	
 \end{rem}
@@ -2081,11 +2074,12 @@ We are now going to generalize the work done in the previous section equipping t
 		\setlength{\parindent}{1.5em}
 		\begin{rem}Let $\Sigma$ be a single typed monoidal signature (cfr~\Cref{def:alg}). Since $\mathcal{G}_{\Sigma}$ has a single node, then to label another hypergraph $\mathcal{H}$ it is enough to provide a function $l\colon E_{\mathcal{H}}\to O_{\Sigma}$ such that the diagrams aside commute.
 			
-			Notice that, if $\Sigma$ is algebraic, than such a function exists only if $\mathcal{H}$ is algebraic too. In that case the second diagram commute by default.
+			Notice that, if $\Sigma$ is algebraic, then such a function exists only if $\mathcal{H}$ is algebraic too. In that case, since the image of $\lg_{V_{\mathcal{H}}}$ is simply the singleton $\{1\}$, the second diagram commutes by default.
 		\end{rem}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.15\linewidth}
-	\xymatrix{xy code}
+	\xymatrix@R=8pt{E_{\mathcal{H}} \ar[r]_{l} \ar[d]_{s_{\mathcal{H}}}& O_{\Sigma} \ar[d]^{\ari_\Sigma}\\ V^\star_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}
+	\xymatrix@R=8pt{E_{\mathcal{H}} \ar[r]_{l} \ar[d]_{t_{\mathcal{H}}}& O_{\Sigma} \ar[d]^{\coar_\Sigma}\\ V^\star_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}
 	\end{minipage}
 
 Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $(f,g)\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(f, g, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G})$. It is immediate to see that this correspondence extends to an equivalence with the slice category over $R(\mathcal{G})$.
@@ -2094,12 +2088,12 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint 
 $\EqHyps$ is equivalent to $\EqHyp/R(\mathcal{G})$.
 \end{prop}
 
-Let $V_\Sigma\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\Sigma$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors,cor:eqade}, we can deduce the following.
+Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
 
-\begin{prop}\label{prop:lim}Consider the forgetful functor $V_{\Sigma}\colon \EqHyps\to \EqHyp$. Then the following facts hold
+\begin{prop}\label{prop:lim}Consider the forgetful functor $V_\mathcal{G}\colon \EqHyps\to \EqHyp$. Then the following facts hold
 	\begin{enumerate}
-		\item $\EqHyps$ has all colimits and all connected limits, which are created by $V_{\Sigma}$;
-		\item $\EqHyps$ is $\pbc_\Sigma$-adhesive.
+		\item $\EqHyps$ has all colimits and all connected limits, which are created by $V_\mathcal{G}$;
+		\item $\EqHyps$ is $\pbc_\mathcal{G}$-adhesive.
 	\end{enumerate}
 \end{prop}
 
@@ -2114,12 +2108,39 @@ Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following res
 \end{cor}
 
 
-We can now easily define term graphs with equivalence.
+We can now easily define left-monogamous, pruned ans separated labelled hypergraphs with equivalence.
 
-\begin{defi}Let $\Sigma$ be an algebraic signature.
-	An object $(\mathcal{H}, l)$ of $\EqHyps$ is a \emph{term graph with equivalence} if $l\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ is a term graph. We denote by $\EqTG_{\Sigma}$ the full subcategory of $\EqHyps$ so defined and by $J_{\Sigma}$ the corresponding inclusion functor.
+\begin{defi}Let$\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
+	
+	We will denote by $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ the subcategories of $\hyp_{\eq, \mathcal{G}}$ given by left-monogamous, separated, pruned  and separated labelled hypergraphs with equivalence.
  \end{defi}
+ 
+ Clearly we can realize $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ as comma categories.
+ 
+ \begin{prop}
+ 	Let $M_{\eq}\colon \Eqlmo\to \EqHyp$ and $S_{\eq}\colon \EqsHyp \to \EqHyp$ be the inclusion functors. Let, moreover, $\Gamma_{R(\mathcal{G})}\colon 1\to \hyp$ be the constant functor in $R(\mathcal{G})$. Then
+ 	\begin{enumerate}
+ 		\item $\lmo_{\eq, \mathcal{G}}$ is equivalent to $\comma{M_\eq}{\Gamma_{R(\mathcal{G})}}$;
+ 		\item $\shyp_{\eq, \mathcal{G}}$ is equivalent to $\comma{S_\eq}{\Gamma_{R(\mathcal{G})}}$; 
+ 		\item $\pshyp_{\mathcal{G}}$ is equivalent to $\pshyp_{\eq}/R(\sp(\pr(\mathcal{G})))$. 
+ 	\end{enumerate}
+ \end{prop}
 
+\begin{defi}We define the following two classes of arrows:
+	\begin{itemize}
+		\item $\pbl_{\mathcal{G}}$ is the class of all arrows in $\lmo_{\eq, \mathcal{G}}$ sent by $M_{\eq, \mathcal{G}}$ to $\pbc_{\mathcal{G}}$;
+		\item $\pbs$ is the class of all arrows in $\pshyp_{\eq, \mathcal{G}}$ sent by the inclusion  to $\pbc_{\mathcal{G}}$.
+	\end{itemize}
+\end{defi}
+
+We can  now use \Cref{thm:slice-functors} to get the following.
+
+\begin{cor}$\lmo_{\eq, \mathcal{G}}$ is $\pbl_{\mathcal{G}}$-adhesive and $\pshyp_{\eq, \mathcal{G}}$ is $\pbs_{\mathcal{G}}$-adhesive
+\end{cor}
+
+\begin{rem}When $\mathcal{G}$ is the hypergraph associated to an algebraic signature $\Sigma$, then left-monogamous labelled hypergraphs with equivalence are exactly the \emph{term graphs with equivalence} of \cite{uovadesive}.
+\end{rem}
+\iffalse 
 \noindent 
 \begin{minipage}[l]{.72\linewidth}
 	\begin{rem}\label{rem:obv}
@@ -2130,6 +2151,8 @@ We can now easily define term graphs with equivalence.
 		Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
 		%Let $T_\Sigma$ be the functor sending $(\mathcal{H}, l)$ to $(T(\mathcal{H}), T(l))$.   Notice that, by definition, $(\mathcal{H}, l)$ is in $\EqTG_{\Sigma}$ if and only if $T(\mathcal{H})$ is in $\tg$. Thus there exists a functor $S_\Sigma$ as in the diagram on the right.
 	\end{rem}
+	
+	\[	\xymatrix@R=8pt@C=10pt{& \pshyp_\mathcal{G} \ar[dd]_(.7){W_\mathcal{G}}|\hole \ar@/_.2cm/@{_{(}->}[rr]_{S_{p,\mathcal{G}}} \ar@{_{(}->}[dl]_{I_\mathcal{G}} && \phyp_\mathcal{G} \ar[dd]^(.7){V_\mathcal{G}}|\hole \ar@/_.2cm/[ll]^{\sp_\mathcal{G}}\ar@/_.2cm/@{_{(}->}[dr]_(.35){P_\mathcal{G}}\\\shyp_\mathcal{G} \ar@{^{(}->}[rr]^(.35){S_\mathcal{G}} \ar[dd]_{R_\mathcal{G}}&& \lmo_\mathcal{G}  \ar@{^{(}->}[rr]^(.35){M_\mathcal{G}} \ar[dd]_(.25){O_\mathcal{G}}&& \hyp_\mathcal{G} \ar@/_.2cm/[ul]_{\pr_\mathcal{G}} \ar[dd]^{U_\mathcal{G}}\\& \pshyp \ar@/_.2cm/@{_{(}->}[rr]_(.35){S_p}|\hole \ar@{^{(}->}[dl]_{I} && \phyp \ar@/_.2cm/[ll]^(.35){\sp}|\hole\ar@/_.2cm/@{_{(}->}[dr]_(.3){P}\\\shyp \ar@{_{(}->}[rr]^{S} && \lmo  \ar@{_{(}->}[rr]^(.35){M}&& \hyp \ar@/_.2cm/[ul]_{\pr}}\]
 \end{minipage}
 \hfill 
 \begin{minipage}[r]{.23\linewidth}
@@ -2167,9 +2190,7 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $J_{\Sigma
 	$\EqTG_{\Sigma}$ is $\mathcal{T}$-adhesive.
 \end{cor}
 
-\begin{rem}\label{rem:map2}
-	contenuto...
-\end{rem}
+\fi 
 \section{EGGs}
 \label{eggs}
 The previous section proved some adhesivity property for the categories $\EqHyp$ and $\EqTG_{\Sigma}$. We extend these results to
@@ -3385,7 +3406,6 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 
 \dx*
 \begin{proof}\label{proof:dx}
-<<<<<<< HEAD
 	\begin{enumerate}
 \item Given an hypergraph $\mathcal{G}$, let $\iota_{\pr(\mathcal{G})}\colon V_{\pr(\mathcal{G})}\mto V_{\mathcal{G}}$ be the inclusion of non isolated nodes. By definition we know that there exists $s_{\pr(\mathcal{G})}, t_{\pr(\mathcal{G})}\colon E_{\mathcal{G}}\rightrightarrows V_{\pr(\mathcal{G})}$ such that
 \[s_{\mathcal{G}}=\iota_{\pr(\mathcal{G})}\circ s_{\pr(\mathcal{G})}\qquad t_{\mathcal{G}}=\iota_{\pr(\mathcal{G})}\circ t_{\pr(\mathcal{G})}\]
@@ -3468,7 +3488,7 @@ and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ S_p(f, \hat{g})=(f,g)$.
 
 Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ S_p(h, k)=(f,g)$. This entails immediately that $h =f$ and so uniqueness follows from \Cref{rem:mprun}.	\qedhere 
 	\end{enumerate}	
-=======
+
 	Let $\mathcal{G}$ be an hypergraph. For every $e\in E_{\mathcal{G}}$, let $n_e=\lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ and $m_e=\lgh_{V_{\mathcal{G}}}(t_{\mathcal{G}}(e))$. Given $1\leq i\leq n_e+m_e$,  we can define $\delta^e_i\colon \mto V_{\mathcal{G}}$ as
 	\[\delta^e_i(0) =\begin{cases}
 		s_{\mathcal{G}}(e)_i & \mbox{if } i\leq n_e\\
@@ -3525,7 +3545,6 @@ In turn, this allows us to define $\epsilon_{G}\colon V_{\sp(\mathcal{G})}\to V_
 and so $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(f, \hat{g})=(f,g)$.
 	 
 	Now let $(h,k)$ be another morphism $\mathcal{H}\to \sp(\mathcal{G})$ such that $(\id{E_{\mathcal{G}}}, \epsilon_{G})\circ P(h, k)=(f,g)$. This entails immediately that $h =f$ and so uniqueness follows from \Cref{rem:mprun}.	
->>>>>>> refs/remotes/origin/main
 \end{proof}
 
 
@@ -4047,7 +4066,7 @@ And we are done.
 \end{proof}
 
 
-
+\iffalse 
 \trm*
 \begin{proof}\label{proof:term}
 	Let $F\colon \D\to \EqTG_{\Sigma}$ be the diagram of an equalizer, a binary product or of a pullback. By \Cref{prop:lim} we can consider a limiting cone $((\mathcal{L}, l), \{\pi_d\}_{d\in \D})$. By \Cref{rem:t} we know that $T_\Sigma$ preserves limits, thus by \Cref{rem:obv}  $(l, \{T_\Sigma(\pi_d)\}_{d\in \D})$ is limiting for $I_\Sigma\circ S_\Sigma$. Then by \Cref{prop:tlim} $l$ is a term graph. We conclude, again by \Cref{rem:obv} that $(\mathcal{L}, l)$ is in $\EqTG_{\Sigma}$ and the claim follows. 
@@ -4061,7 +4080,7 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 	
 	We conclude using \Cref{prop:push,rem:obv}.
 \end{proof}
-
+\fi 
 \subsection{Proofs for \Cref{eggs}}
 \elim*
 \begin{proof}\label{proof:elim}
