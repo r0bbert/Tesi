@@ -1627,7 +1627,7 @@ As done in \Cref{sub:sub}, we can restrict our attention to two subcategories of
 We can easily realize $\lmo_{\mathcal{G}}$, $\shyp_{\mathcal{G}}$ and $\pshyp_{\mathcal{G}}$ as comma categories.
 
 \begin{prop}
-Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Let, moreover, $\Gamma_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then
+Let $M\colon \lmo \to \hyp$ and $S\colon \shyp \to \hyp$ be the inclusion functors. Moreover, let $\Gamma_{\mathcal{G}}\colon 1\to \hyp$ be the constant functor in $\mathcal{G}$. Then
 \begin{enumerate}
 	\item $\lmo_{\mathcal{G}}$ is equivalent to $\comma{M}{\Gamma_\mathcal{G}}$;
 	\item $\shyp_{\mathcal{G}}$ is equivalent to $\comma{S}{\Gamma_\mathcal{G}}$; 
@@ -2091,7 +2091,7 @@ We are now going to generalize the work done in the previous sections equipping 
 Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $(f,g)\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(f, g, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G})$. It is immediate to see that this correspondence extends to an equivalence with the slice category over $R(\mathcal{G})$.
 
 \begin{prop}\label{prop:slice}
-$\EqHyps$ is equivalent to $\EqHyp/R(\mathcal{G})$.
+$\EqHyps$ is equivalent to $\EqHyp \downarrow R(\mathcal{G})$.
 \end{prop}
 
 Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete} and \Cref{cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
@@ -2245,7 +2245,7 @@ We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for t
 	\xymatrix@R=10pt{\mathcal{G}_1 \ar[r]_{h}\ar@{>->}[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]^{z}&\mathcal{P}}
 \end{minipage}
 
-Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $E$. By definition and \Cref{lem:pbmono} we have that such class is closed under composition and decomposition, it contains all isomorphisms and it is stable under pullbacks. Using \Cref{lem:pbmono} and \Cref{lem:epo} we can further deduce that it is stable under pushouts. Then \Cref{thm:slice-functors} and \Cref{cor:eqade} yield the following.
+Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $E$. By definition and \Cref{lem:pbmono}, we have that such class is closed under composition and decomposition, it contains all isomorphisms and it is stable under pullbacks. Using \Cref{lem:pbmono} and \Cref{lem:epo} we can further deduce that it is stable under pushouts. Then \Cref{thm:slice-functors} and \Cref{cor:eqade} yield the following.
 
 \begin{cor}\label{cor:pbe}
 	$\egg$ is $\pbe$-adhesive.
@@ -2256,10 +2256,10 @@ As in the previous section, we can focus ourselves to two subcategories of $\egg
 \begin{defi}We will define $\elm$, $\eps$ as the full subcategories of $\egg$ given by those e-hypergraphs which are, respectively, left-monogamous and pruned and separated. We will denote by $M_{\mathsf{e}}$ and by $S_{\mathsf{e}}$ the corresponding functors.
 \end{defi}
 
-Let $\epbl$ and $\epbs$ be the classes of arrows in  $\elm$, $\eps$ which lies, respectively in $\pbl$ and $\pbs$. By Lemmas \ref{lem:equ}, \ref{lem:coequ} and \Cref{cor:pbe} we obtain immediately the following result.
+Let $\epbl$ and $\epbs$ be the classes of arrows in  $\elm$ and $\eps$ lying in $\pbl$ and $\pbs$, respectively. By Lemmas \ref{lem:equ}, \ref{lem:coequ} and \Cref{cor:pbe} we obtain immediately the following result.
 
 \begin{cor}
-	$\elm$ is $\epbl$-adhesive, while $\eps$ is $\epbs$-adhesive.
+	$\elm$ is $\epbl$-adhesive and $\eps$ is $\epbs$-adhesive.
 \end{cor}
 
 
