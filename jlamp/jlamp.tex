@@ -2004,7 +2004,7 @@ the top face fails to be a pushout.
 \end{exa}
 
 
-Having proved stability of $\pbc$-pushouts, we now turn to prove that they are Van Kampen with respect to regular monos.
+Having proved the stability of $\pbc$-pushouts, we now turn to prove that they are Van Kampen with respect to regular monos.
 %
 A proof is found in \Cref{proof:pbvk}.
 
@@ -2024,14 +2024,14 @@ We can now focus to the various kind of hypergraphs introduced in \Cref{sub:sub}
 \end{defi}
 
 \begin{rem}\label{rem:obv1}
-By definition, there exist functors $O_{\eq}$, $R_{\eq}$ and $W_{\eq}$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions.
+By definition, there exist functors $O_{\eq}$, $R_{\eq}$ and $W_{\eq}$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions
 \[\xymatrix{\Eqlmo \ar[r]^-{M_{\mathsf{eq}}} \ar[d]_{O_{\mathsf{eq}}}& \EqHyp\ar[d]^{T} & \EqsHyp \ar[r]^-{S_{\mathsf{eq}}} \ar[d]_{R_{\mathsf{eq}}} & \EqHyp \ar[d]^{T} & \EqpsHyp \ar[r]^-{S_{p, \mathsf{eq}}} \ar[d]_{W_{\mathsf{eq}}} & \EqHyp\ar[d]^{T}\\ \lmo \ar[r]_{M} & \hyp & \shyp \ar[r]_{S} & \hyp  & \pshyp \ar[r]_-{S_p}& \hyp}\]
 	
 \end{rem}
 
 Let us start by dealing with some class of limits in these subcategories (see \Cref{proof:equ} for a proof).
 
-\begin{restatable}{lem}{equ}\label{lem:equ} The following are true:
+\begin{restatable}{lem}{equ}\label{lem:equ} The following facts hold
 	\begin{enumerate}
 		\item 	$\Eqlmo$ is closed in $\EqHyp$ under equalizers, binary products and pullbacks.
 		\item $\EqsHyp$ is closed in $\EqHyp$ under connected limits; 
@@ -2042,16 +2042,16 @@ Let us start by dealing with some class of limits in these subcategories (see \C
 We can now turn to colimits, applying the same strategy. A proof is deferred to \Cref{proof:coequ}
 
 \begin{restatable}{lem}{coequ}\label{lem:coequ}
- The following are true:
+ The following facts hold
 \begin{enumerate}
-	\item 	$\Eqlmo$ is closed in $\EqHyp$ under pushouts along morphism whose image through $T$ is downward-closed.
+	\item 	$\Eqlmo$ is closed in $\EqHyp$ under pushouts along morphisms whose image through $T$ is downward-closed.
 	\item $\EqpsHyp$ is closed in $\EqHyp$ under colimits.
 \end{enumerate}
 \end{restatable}
 
 We are now ready to prove two adhesivity results for $\Eqlmo$ and $\EqpsHyp$.
 
-\begin{defi}We define the following two classes of arrows:
+\begin{defi}We define two classes of arrows
 \begin{itemize}
 	\item $\pbl$ is the class of all arrows in $\Eqlmo$ sent by $M_{\eq}$ to $\pbc$;
 	\item $\pbs$ is the class of all arrows in $\EqpsHyp$ sent by $S_{p,\eq}$ to $\pbc$.
@@ -2067,12 +2067,11 @@ By definition, \Cref{lem:pbmono} and putting together Lemmas \ref{lem:equ}, \ref
 
 \subsection{Labelled hypergraphs with equivalence}
 
-We are now going to generalize the work done in the previous section equipping term graphs with equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
+We are now going to generalize the work done in the previous sections equipping term graphs with an equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{defi}
-	Let $\mathcal{G}$ be an hypergraph, a \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, (f,g))$ where $\mathcal{H}$ is an object of $\EqHyp$ and $(f,g)$ a morphism $T(\mathcal{H})\to \mathcal{G}$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, (f,g))$ and $(\mathcal{H}', (h,k))$ is an arrow $(a,b, c)\colon \mathcal{H}\to \mathcal{H}'$ such that:
-	\[h\circ a = f \qquad k\circ b = g \].
-	
+	Let $\mathcal{G}$ be an hypergraph, a \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, (f,g))$ where $\mathcal{H}$ is an object of $\EqHyp$ and $(f,g)$ a morphism $T(\mathcal{H})\to \mathcal{G}$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, (f,g))$ and $(\mathcal{H}', (h,k))$ is an arrow $(a,b, c)\colon \mathcal{H}\to \mathcal{H}'$ such that $h\circ a = f$ and $k\circ b = g$.
+%
 	We denote the resulting category by $\EqHyps$.
 \end{defi}
 
@@ -2095,7 +2094,7 @@ Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint 
 $\EqHyps$ is equivalent to $\EqHyp/R(\mathcal{G})$.
 \end{prop}
 
-Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete,cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
+Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete} and \Cref{cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
 
 \begin{prop}\label{prop:lim}Consider the forgetful functor $V_\mathcal{G}\colon \EqHyps\to \EqHyp$. Then the following facts hold
 	\begin{enumerate}
@@ -2117,7 +2116,7 @@ Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following res
 
 We can now easily define left-monogamous, pruned ans separated labelled hypergraphs with equivalence.
 
-\begin{defi}Let$\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
+\begin{defi}Let$\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ a labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
 	
 	We will denote by $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ the subcategories of $\hyp_{\eq, \mathcal{G}}$ given by left-monogamous, separated, pruned  and separated labelled hypergraphs with equivalence.
  \end{defi}
@@ -2125,7 +2124,7 @@ We can now easily define left-monogamous, pruned ans separated labelled hypergra
  Clearly we can realize $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ as comma categories.
  
  \begin{prop}
- 	Let $M_{\eq}\colon \Eqlmo\to \EqHyp$ and $S_{\eq}\colon \EqsHyp \to \EqHyp$ be the inclusion functors. Let, moreover, $\Gamma_{R(\mathcal{G})}\colon 1\to \EqHyp$ be the constant functor in $R(\mathcal{G})$. Then
+ 	Let $M_{\eq}\colon \Eqlmo\to \EqHyp$ and $S_{\eq}\colon \EqsHyp \to \EqHyp$ be the inclusion functors. Moreover, let $\Gamma_{R(\mathcal{G})}\colon 1\to \EqHyp$ be the constant functor in $R(\mathcal{G})$. Then
  	\begin{enumerate}
  		\item $\lmo_{\eq, \mathcal{G}}$ is equivalent to $\comma{M_\eq}{\Gamma_{R(\mathcal{G})}}$;
  		\item $\shyp_{\eq, \mathcal{G}}$ is equivalent to $\comma{S_\eq}{\Gamma_{R(\mathcal{G})}}$; 
@@ -2133,7 +2132,7 @@ We can now easily define left-monogamous, pruned ans separated labelled hypergra
  	\end{enumerate}
  \end{prop}
 
-\begin{defi}We define the following two classes of arrows:
+\begin{defi}We define two classes of arrows
 	\begin{itemize}
 		\item $\pbl_{\mathcal{G}}$ is the class of all arrows in $\lmo_{\eq, \mathcal{G}}$ sent by $M_{\eq, \mathcal{G}}$ to $\pbc_{\mathcal{G}}$;
 		\item $\pbs_{\mathcal{G}}$ is the class of all arrows in $\pshyp_{\eq, \mathcal{G}}$ sent by the inclusion  to $\pbc_{\mathcal{G}}$.
