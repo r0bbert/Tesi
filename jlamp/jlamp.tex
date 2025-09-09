@@ -2091,7 +2091,7 @@ We are now going to generalize the work done in the previous sections equipping 
 Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $(f,g)\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(f, g, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G})$. It is immediate to see that this correspondence extends to an equivalence with the slice category over $R(\mathcal{G})$.
 
 \begin{prop}\label{prop:slice}
-$\EqHyps$ is equivalent to $\EqHyp \downarrow R(\mathcal{G})$.
+$\EqHyps$ is equivalent to $\EqHyp / R(\mathcal{G})$.
 \end{prop}
 
 Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete} and \Cref{cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
@@ -2275,8 +2275,8 @@ From the definitions, we get at once the follosing result.
 \begin{prop}\label{prop:varie}
 	Let $\mathcal{G}$ be an hypergraph and $\Gamma_{R(\mathcal{G})}$ the costant functor in $R(\mathcal{G})$. Then the following facts hold
 	\begin{enumerate}
-		\item $\eggl$ is equivalent to $\comma{E}/\Gamma_{R(\mathcal{G})}$;
-		\item there exists a functor $W_\mathcal{G}\colon \eggl\to \egg$ forgetting the labeling which creates all colimits, pullbacks and equalizers. 
+		\item $\eggl$ is equivalent to $\comma{E}\Gamma_{R(\mathcal{G})}$;
+		\item the functor $W_\mathcal{G}\colon \eggl\to \egg$ forgetting the labeling creates all colimits, pullbacks and equalizers. 
 	\end{enumerate}
 \end{prop}
 
@@ -2305,7 +2305,7 @@ When $\mathcal{G}$ is the hypergraph associated to an algebraic signature, the o
 Define $\epbl_{\mathcal{G}}$ and $\epbs_{\mathcal{G}}$ as the classes of arrows whose underlying morphisms are in $\epbl$ or in $\epbs$. The following result now follows at once.
 
 \begin{cor}
-	$\lelm$ is $\epbl_{\mathcal{G}}$-adhesive, while $\leps$ is $\epbs_{\mathcal{G}}$-adhesive.
+	$\lelm$ is $\epbl_{\mathcal{G}}$-adhesive and $\leps$ is $\epbs_{\mathcal{G}}$-adhesive.
 \end{cor}
 
 
@@ -4152,8 +4152,8 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 
 	\noindent 
 	\begin{minipage}[l]{.7\linewidth}
-	Thus for each $d$ in $\D$, there exists an arrow $a_d:U\to U_i$ making the diagram on the right commutative.
-	Then we have:
+	Thus for each $d$ in $\D$ there exists an arrow $a_d:U\to U_i$ making the diagram on the right commutative.
+	Then we have
 	\begin{align*}
 		&l_d^\star\circ m^\star \circ q^\star \circ t \circ u_1    = q_d^\star\circ (\pi_V^d)^\star \circ t \circ u_1 \\
 		= &q_d^\star \circ t_d \circ \pi_E^d \circ u_1
@@ -4171,13 +4171,13 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 }
 \end{minipage}
 
-	By universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$. Since $m$ is mono we deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the claim.
+	By the universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$. Since $m$ is mono we deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the claim.
 \end{proof}
 
 \noindent
 \begin{minipage}[l]{.7\linewidth}
 \begin{rem}\label{rem:kleene}
-	Let $\delta_1\colon 1\to \mathbb{N}$ be the arrow which picks $1\in \mathbb{N}$. Let $f\colon X\to Y$ be an arrow and consider theinclusion $v_1\colon X\to X^\star $  defined by the first point of \Cref{prop:fact}. Then we can build the cube aside which, by extensivity, has pullbacks as back, front and right faces. Thus, by \Cref{lem:pb1} its left face is a pullback too.
+	Let $\delta_1\colon 1\to \mathbb{N}$ be the arrow which picks $1\in \mathbb{N}$. Let $f\colon X\to Y$ be an arrow and consider the inclusion $v_1\colon X\to X^\star $  defined by the first point of \Cref{prop:fact}. Then we can build the cube aside which, by extensivity, has pullbacks as back, front and right faces. Thus, by \Cref{lem:pb1} its left face is a pullback too.
 	\end{rem}
 \end{minipage}
 \hfill
@@ -4194,13 +4194,13 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 	\xymatrix@R=10pt{\mathcal{G}_1 \ar[r]_{h}\ar@{>->}[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]^{z}&\mathcal{P}}
 \end{minipage}
 \begin{proof}\label{proof:epo}
-	Let $\mathcal{P} $ be $(A, B, C, s, t, q)$ and consider the kernel pair $(K_i, \pi_i^1, \pi_i^2)$ the kernel pair of $q_i^\star \circ s_i$, for $i\in \{1, 2, 3\}$. Let also $(U, u_1, u_2)$ be the kernel pair of $q^\star \circ s$. 
+	Let $\mathcal{P} $ be $(A, B, C, s, t, q)$ and let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $q_i^\star \circ s_i$, for $i\in \{1, 2, 3\}$. Let also $(U, u_1, u_2)$ be the kernel pair of $q^\star \circ s$. 
 	
 	\vspace{-.3cm}
 	\noindent
 	\begin{minipage}[l]{.7\linewidth}
 			\setlength{\parindent}{1.5em}
-		Consider now the cube on the right. By hypothesis and \Cref{rem:kleene} its left face is a pullback, moreover its bottom face, while not a pushout it is still a pullback by the first point of \Cref{prop:regmono} and the third one of \Cref{prop:fact}.
+		Consider now the cube on the right. By hypothesis and \Cref{rem:kleene} its left face is a pullback. Moreover its bottom face is not a pushout but it is still a pullback by the first point of \Cref{prop:regmono} and the third one of \Cref{prop:fact}.
 	\end{minipage}\hfill 
 	\begin{minipage}[r]{.4\linewidth}
 	\xymatrix@C=10pt@R=2pt{&A_1\ar[dd]|\hole_(.65){q_1^\star \circ s_1}\ar[rr]^{h_E} \ar@{>->}[dl]_{m_E} && A_2 \ar[dd]^{q_2^\star \circ s_2} \ar@{>.>}[dl]_(.6){n_E} \\ A_3 \ar[dd]_{q_3^\star \circ s_3}\ar[rr]^(.7){z_E} & & A \ar[dd]_(.3){q^\star \circ s}\\&{Q_1^\star}\ar[rr]|\hole^(.65){h_Q^\star}\ar@{>->}[dl]_{m_Q^\star} && {Q_2^\star} \ar@{>->}[dl]^{n_Q^\star} \\{Q_3^\star} \ar[rr]^(.65){z_Q^\star} & & Q^\star}	\end{minipage}
@@ -4212,7 +4212,7 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 	\begin{minipage}[r]{.8\linewidth}
 			\setlength{\parindent}{1.5em}
 			By hypothesis and the first point of \Cref{prop:eqhyp_complete} the top face is a pushout. Thus we can apply \Cref{prop:kerset} to deduce that the square on the left is a pushout. 
-			By computing we obtain:
+			By computing we obtain
 	\end{minipage}
 \vspace{-.3cm}
 	\begin{align*}
