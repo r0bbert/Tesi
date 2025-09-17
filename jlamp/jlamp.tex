@@ -4,6 +4,8 @@
 %\Envelope
 \newcommand{\cat}[1]{\ensuremath{\mathbf{#1}}}
 
+\newcommand{\comment}[1]{ }
+
 \newcommand{\pbc}{\mathsf{Pb}}
 \newcommand{\pbe}{\mathsf{ePb}}
 \newcommand{\pbl}{\mathsf{LPb}}
@@ -130,6 +132,7 @@
 \newcommand{\EqpsHyp}{\catname{pSep}_{\mathsf{eq}}}
 \newcommand{\Eqlmo}{\catname{LMH}_{\mathsf{eq}}}
 \newcommand{\EqHyps}{\catname{Hyp}_{\mathsf{eq}, \mathcal{G}}}
+\newcommand{\Eqhyps}{\catname{Hyp}_{\mathsf{eq}, \Sigma}}
 \newcommand{\EqTG}{\catname{EqTG}}
 \newcommand{\EqTGs}{\catname{EqTG}_{\Sigma}}
 \newcommand{\GEqTGs}{\catname{GEqTG}_{\Sigma}}
@@ -163,10 +166,13 @@
 \newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
 \newcommand{\egg}{\mathsf{e}\text{-}\catname{Hyp}_\eq}
 \newcommand{\eggl}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \mathcal{G}}}
+\newcommand{\eggll}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \Sigma}}
 \newcommand{\elm}{\mathsf{e}\text{-}\catname{LMO}_\eq}
 \newcommand{\eps}{\mathsf{e}\text{-}\catname{pSep}_\eq}
 \newcommand{\lelm}{\mathsf{e}\text{-}\catname{LMO}_{\eq, \mathcal{G}}}
 \newcommand{\leps}{\mathsf{e}\text{-}\catname{pSep}_{\eq, \mathcal{G}}}
+\newcommand{\lelmBis}{\mathsf{e}\text{-}\catname{LMO}_{\eq, \Sigma}}
+\newcommand{\lepsBis}{\mathsf{e}\text{-}\catname{pSep}_{\eq, \Sigma}}
 
 \newcommand{\ari}{\mathsf{ar}}
 \newcommand{\coar}{\mathsf{co}}
@@ -1460,7 +1466,7 @@ Our interest for hypergraphs stems from their use as a graphical representation 
 \end{prop}
 
 
-\begin{exa} A useful example is given by an algebraic signature $\Sigma$. Consider the hypregraph of \Cref{exa_3}, the category $\hyps$ of
+\begin{exa} A useful example is given by an algebraic signature $\Sigma$. Consider the hypergraph of \Cref{exa_3}, the category $\hyps$ of
 	hypergraphs labelled by $\Sigma$ is the slice category $\hyp/\mathcal{G}^\Sigma$.
 \end{exa}
 
@@ -2116,7 +2122,7 @@ Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following res
 
 We can now easily define left-monogamous, pruned ans separated labelled hypergraphs with equivalence.
 
-\begin{defi}Let$\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ a labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
+\begin{defi}Let $\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ a labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
 	
 	We will denote by $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ the subcategories of $\hyp_{\eq, \mathcal{G}}$ given by left-monogamous, separated, pruned  and separated labelled hypergraphs with equivalence.
  \end{defi}
@@ -2349,18 +2355,34 @@ $\eg$ is $\mathcal{T}_\Sigma$-adhesive.
 \end{cor}
 \fi 
 
-\section{Pros and cons of adhesive rewriting}
+\section{On term representations, and their adhesive rewriting}
 \label{rewriting}
-The previous sections have shown how hypergraphs and term graphs with equivalence
-can be described as suitable $\mathcal{M}$-adhesive categories. 
-The same fact holds for their sub-categories where the equivalence is
- closed with respect to operator composition, and this allows to
- model EGGs, as originally presented in~\cite{WillseyNWFTP21}. 
+The previous sections offered a tour on various categories of hypergraphs,
+with and without an equivalence. 
+%and term graphs. 
+In particular, we have shown how they 
+can be described as suitable $\mathcal{M}$-adhesive categories.
+%
+%
+%The fact holds for various classes of hypergraphs, and 
+Most importantly, the fact holds for the class of e-hypergraphs, the one 
+where the equivalence is closed with respect to operator composition.
+%
+The overall trajectory aimed at recasting the EGGs formalism, 
+as originally presented in~\cite{WillseyNWFTP21}, in the adhesive mold.
+%
+However, when confronted with the many graphical presentations discussed 
+in the previous chapters, the reader may feel overwhelmed.
 
-\emph{Sharing.} 
-Terms are trees, thus different term graphs may represent the same term, up-to the sharing of sub-terms.
-Consider e.g. a constant $a$ and a binary operator $/$: the term $a / a$ admits a few different 
-representations as a term graph with equivalence, as shown below
+\subsection{Sharing} 
+The classical view of term graphs is that they represent terms as labelled hypergraphs, instead of trees, in order to
+exploit the sharing of sub-terms for efficiency reasons. The introduction of equivalence adds another layer of
+expressiveness.
+%
+%Terms are trees, thus different term graphs may represent the same term, up-to the sharing of sub-terms.
+%
+Consider e.g. a signature $\Sigma$ with a constant $a$ and a binary operator $/$: the term $a / a$ admits a few different 
+representations as a term graph with equivalence, such as those below
 
 %Being a purely graphical representation, EGGs allows for redundancy and possible ambiguity,
 %so that e.g. a term such as $a / a$ admits a few different representations as a term graph, as shown below
@@ -2435,7 +2457,34 @@ representations as a term graph with equivalence, as shown below
         \end{pgfonlayer}
 \end{tikzpicture}
 \end{center}
+
+Consider the pictures above.
+They depict left-monogamous hypergraphs with equivalence, labelled over 
+$\Sigma$: hence, term graphs.
 %
+As for the picture indicated by (1), it is the standard representation of $a / a$ as a tree. 
+%
+The picture indicated by (2) represents the same term, but as a term graph with a non-trivial equivalence on nodes.
+However, neither of them is an e-term graph:
+constants have no input, and nodes that are targets of edges with the same label and whose source is the empty word 
+must belong to the same equivalence class. Intuitively, picture (1) is the representation of $a / a$ 
+among labelled hypergraphs, i.e. objects of $\hyps$, which has the minimal amount of sharing between nodes.
+%Instead, picture (2) is the minimally-shared representation 
+%among labelled hypergraphs with equivalence, i.e. objects of $\Eqhyps$.
+%
+Consider instead the pictures indicated by (3) and (4). They are both e-term graphs. Pictures (3) is the classical representation 
+of $a / a$ as a maximally-shared term graph; while picture (4) is 
+% the minimally-shared representation among 
+a labelled e-hypergraph that is pruned and separated.
+
+In the original paper~\cite{DetlefsNS05} EGGs were simply defined as term graphs with an equivalence relation on nodes that is composition-closed, 
+resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we decided to introduce two different categories,
+namely $\lelmBis$ and $\lepsBis$.
+In particular, e-term graphs offer a representation that directly recalls the original definition; while the sub-category of pruned, separated 
+e-term graphs guarantees a unique representation for a term, and it seems more in touch with recent implementations~\cite{eggs}.
+
+
+\comment{
 The left-most and the right-most images represent just ordinary term graphs, the middle one is a term graph with equivalence.
 As such, they are all objects of $\EqTGs$.
 However, note that the right-most image is not an object of $\eg$:
@@ -2475,9 +2524,9 @@ the minimally shared representation is now the middle diagram.
 %underlying term graph is \emph{acyclic}.
 %%and in this case if $\mathcal{G}$ has no empty nodes, then the unique arrow 
 %%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
+}
 
-
-\emph{Rewriting.} The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
+\subsection{Rewriting} The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
 arrows in $\mathcal{M}$, then we can lift the standard properties
 of the DPO approach that hold in the category of graphs.
 % to the category at hand. 
@@ -2487,12 +2536,14 @@ just add new terms and link them to the older ones via the equivalence relation~
 % until an optimal program is 
 %reached and extracted.
 So, the corresponding DPO rules 
-are spans $L \leftarrow L \rightarrow R$, where the first component is the identity, thus in $\pbc_\Sigma$,
-while the second component may not belong to $\pbc_\Sigma$. 
+are spans $L \leftarrow L \rightarrow R$, where the left-hand side is the identity.
+% thus in $\pbc_\Sigma$, while the second component may not belong to $\pbc_\Sigma$. 
 
-Consider e.g. an EGG rule such $x / x \to 1$, from the introductory example in~\cite{WillseyNWFTP21}.
-Variables in a term graph are represented as nodes that do not occur among the targets of an edge, 
-thus the rule can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
+Consider the term rewriting rule such $x / x \to 1$, from the key example in~\cite{WillseyNWFTP21}.
+This is a problematic rule to be simulates using classical term graph rewriting, since it is not left-linear
+(that is, $x$ occurs twice in the left-hand side)~\cite{xxx}.
+Using e-term graphs (variables are represented as nodes that do not occur among the targets of an edge),
+ it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
 \[
 	\hspace{.25cm}
 	\xymatrix{        
@@ -2545,26 +2596,56 @@ thus the rule can be modelled as the DPO rule below, concisely given by the arro
 	}
 \]
 
-In this case $L$ is the minimally shared EGG corresponding to the term $x / x$,
-thus the rule could be applied to the two EGGs
-depicted above with a match that is injective on equivalence classes.
-%
-In general, if the term graph underlying the EGG to whom the DPO rule is applied is acyclic,
-the same property holds for the EGG obtained as the result of the rule application.
-%
-The right-hand side is a regular mono, though, hence it is not an arrow in $\pbc_\Sigma$.
-The asymmetry between left-hand and right-hand sides falls in the current research about left-linear rules for 
-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
+In this case $L$ is the minimally-shared e-term graph corresponding to the term $x / x$.
+%thus the rule could be applied to any of the term graph with equivalence
+%depicted above with a match that is injective on equivalence classes.
+The rule cannot be applied to the term graphs with equivalence
+ in the pictures (1) and (2) above, while the result of the application of the rule 
+to the e-term graphs in the pictures (3) and (4) is shown below
 
-\emph{Application conditions.} 
-As argued above, the DPO rules that are suitable for the EGG approach have identities as left-hand side,
-thus they belong to any choice of $\mathcal{M}$.
+\[xxx\]
+
+As noted above, the DPO rules have the shape
+$L \leftarrow L \rightarrow R$: the left-hand side component is the identity,
+hence it belongs to any possible choice of $\mathcal{M}$. 
+However, the situation is different for the right-hand side.
+Since the rule must preserve the $L$ component, that is nodes and edges of 
+the e-hypergraph to which $L$ is mapped must not be deleted, 
+the arrow $L \rightarrow R$ is an injection, and more precisely it is 
+a regular mono.
 %
-However, this would allow for the repeated application of the same rule, hence the 
+However, the arrow $L \rightarrow R$ does not necessarily belong to $\pbc_\Sigma$,
+hence it is not currently possible to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesive framework.
+The asymmetry between left- and right-hand sides falls in the research about left-linear rules for 
+$\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
+
+\subsection{Issues: Cycles and application conditions}
+We just remarked that the DPO rules under consideration have the shape
+$L \leftarrow L \rightarrow R$, where the left-hand side is the identity 
+and the right-hand side arrow is  a regular mono.
+%
+Despite their simplicity, though, such rules may raise some expressiveness issues.
+
+The fact that the right-hand side is a regular mono ensures that if the e-hypergraph to whom a rule is applied is acyclic,
+the same property holds for the e-hypergraph obtained as the result.
+%
+Note however that cycles may implicitly occur due to the presence of the equivalence 
+on nodes for what are called collapsing rules, i.e. where the right-hand side is a single variable. 
+%
+Looking again at the key example of~\cite{xxx}, consider the rule $1 \times x = x$,
+which can be modelled as the DPO rule below
+%
+\[xxx\]
+%
+Intuitively, the e-term graph obtained after the application of the rule represents a recursive term such 
+as $rec_x. 1 \times x$, thus highlighting the difficulty of extracting a term representation out of an e-term graph.
+
+The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
 possibility to keep on performing the same rewriting step.
 This is forbidden by using rules \emph{with negative application conditions}, given as the usual span 
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
-be factorised through $n$~\cite{HabelHT96}. For EGGs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ as the right-hand side itself.
+be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
+as the right-hand side itself.
 %
 The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
 
