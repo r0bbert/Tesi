@@ -31,6 +31,7 @@
 
 %String Diagrams
 \usepackage{tikz}
+\usetikzlibrary{fit}
 \usepackage[draft]{tikzit}
 \input{hypergraph.tikzdefs}
 \input{hypergraph.tikzstyles}
@@ -2382,32 +2383,14 @@ expressiveness.
 %Terms are trees, thus different term graphs may represent the same term, up-to the sharing of sub-terms.
 %
 Consider e.g. a signature $\Sigma$ with a constant $a$ and a binary operator $/$: the term $a / a$ admits a few different 
-representations as a term graph with equivalence, such as those below
+representations as a term graph with equivalence, such as those below.
 
 %Being a purely graphical representation, EGGs allows for redundancy and possible ambiguity,
 %so that e.g. a term such as $a / a$ admits a few different representations as a term graph, as shown below
 %
 %\[a \div a \mbox{ con 2 a sharate, con 2 a nella stessa classe di equivalenze, e con 2 a separate}\]
 
-\begin{center}\begin{tikzpicture}[baseline=(w)]
-        \begin{pgfonlayer}{nodelayer}
-                \node[style=small box](a) at (-1.8, 0){$a$};
-                \node[style=none] (aatt) at (-1.5, 0){};
-                \node[style=node](v) at (-0.9, 0){};
-                \node[style=medium box](div) at (0, 0){$/$};
-                \node[style=none](divfst) at (-0.3, -0.3){};
-                \node[style=none] (divsnd) at (-0.3, 0.3){};
-                \node[style=none] (divout) at (0.3, 0){};
-                \node[style=node] (w) at (0.9, 0){};
-        \end{pgfonlayer}
-        \begin{pgfonlayer}{edgelayer}
-                \draw(aatt.center) to (v);
-                \draw[out=-60, in=-180] (v) to (divfst.center);
-                \draw[out=60, in=-180](v) to (divsnd.center);
-                \draw(divout.center) to (w);
-        \end{pgfonlayer}
-\end{tikzpicture}
-\qquad
+\begin{center}
 \begin{tikzpicture}[baseline=(w)]
         \begin{pgfonlayer}{nodelayer}
                 \node[style=small box](a1) at (-1.8, -0.5){$a$};
@@ -2421,6 +2404,11 @@ representations as a term graph with equivalence, such as those below
                 \node[style=none] (divsnd) at (-0.3, 0.3){};
                 \node[style=none] (divout) at (0.3, 0){};
                 \node[style=node] (w) at (0.9, 0){};
+                
+                 \node [below=.5cm, align=flush center,text width=2cm] at (v1)
+                {
+                	Figure $(1)$.
+                };
         \end{pgfonlayer}
         \begin{pgfonlayer}{edgelayer}
                 \draw(a1att.center) to (v1);
@@ -2428,33 +2416,92 @@ representations as a term graph with equivalence, such as those below
                 \draw[out=0, in=-120] (v1) to (divfst.center);
                 \draw[out=0, in=120](v2) to (divsnd.center);
                 \draw(divout.center) to (w);
-        \end{pgfonlayer}
-        \begin{pgfonlayer}{eqlayer}
-                \draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-0.6, 0.8);
         \end{pgfonlayer}
 \end{tikzpicture}
-\qquad
+\quad 
 \begin{tikzpicture}[baseline=(w)]
-        \begin{pgfonlayer}{nodelayer}
-                \node[style=small box](a1) at (-1.8, -0.5){$a$};
-                \node[style=none] (a1att) at (-1.5, -0.5){};
-                \node[style=node](v1) at (-0.9, -0.5){};
-                \node[style=small box](a2) at (-1.8, 0.5){$a$};
-                \node[style=none] (a2att) at (-1.5, 0.5){};
-                \node[style=node](v2) at (-0.9, 0.5){};
-                \node[style=medium box](div) at (0, 0){$/$};
-                \node[style=none](divfst) at (-0.3, -0.3){};
-                \node[style=none] (divsnd) at (-0.3, 0.3){};
-                \node[style=none] (divout) at (0.3, 0){};
-                \node[style=node] (w) at (0.9, 0){};
-        \end{pgfonlayer}
-        \begin{pgfonlayer}{edgelayer}
-                \draw(a1att.center) to (v1);
-                \draw(a2att.center) to (v2);
-                \draw[out=0, in=-120] (v1) to (divfst.center);
-                \draw[out=0, in=120](v2) to (divsnd.center);
-                \draw(divout.center) to (w);
-        \end{pgfonlayer}
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a1) at (-2.3, -0.5){$a$};
+		\node[style=none] (a1att) at (-2.3, -0.5){};
+		\node[style=node](v1) at (-1.4, -0.5){};
+		\node[style=node](w1) at (-0.9, -0.5){};
+		\node[style=small box](a2) at (-2.3, 0.5){$a$};
+		\node[style=none] (a2att) at (-2.3, 0.5){};
+		\node[style=node](v2) at (-1.4, 0.5){};
+		\node[style=node](w2) at (-0.9, 0.5){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-1.15,-0.5)
+		{
+			Figure $(2)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a1att.center) to (v1);
+		\draw(a2att.center) to (v2);
+		\draw[out=0, in=-120] (w1) to (divfst.center);
+		\draw[out=0, in=120](w2) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\quad 
+\begin{tikzpicture}[baseline=(w)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a) at (-1.8, 0){$a$};
+		\node[style=none] (aatt) at (-1.5, 0){};
+		\node[style=node](v) at (-0.9, 0){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-0.9,-0.5)
+		{
+			Figure $(3)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(aatt.center) to (v);
+		\draw[out=-60, in=-180] (v) to (divfst.center);
+		\draw[out=60, in=-180](v) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\quad 
+\begin{tikzpicture}[baseline=(w)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=node](w1) at (-0.9, -0.5){};
+		\node[style=small box](a2) at (-2.3, 0){$a$};
+		\node[style=none] (a2att) at (-2.3, 0){};
+		\node[style=node](v) at (-1.4, 0){};
+		\node[style=node](w2) at (-0.9, 0.5){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-1.15, -0.5)
+		{
+			Figure $(4)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a2att.center) to (v);
+		\draw[out=0, in=-120] (w1) to (divfst.center);
+		\draw[out=0, in=120](w2) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+	\end{pgfonlayer}
 \end{tikzpicture}
 \end{center}
 
@@ -2543,7 +2590,7 @@ Consider the term rewriting rule such $x / x \to 1$, from the key example in~\ci
 This is a problematic rule to be simulates using classical term graph rewriting, since it is not left-linear
 (that is, $x$ occurs twice in the left-hand side)~\cite{AriolaKP00}.
 Using e-term graphs (variables are represented as nodes that do not occur among the targets of an edge),
- it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
+ it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$.
 \[
 	\hspace{.25cm}
 	\xymatrix{        
@@ -2601,9 +2648,63 @@ In this case $L$ is the minimally-shared e-term graph corresponding to the term 
 %depicted above with a match that is injective on equivalence classes.
 The rule cannot be applied to the term graphs with equivalence
  in the pictures (1) and (2) above, while the result of the application of the rule 
-to the e-term graphs in the pictures (3) and (4) is shown below
-
-\[xxx\]
+to the e-term graphs in the pictures (3) and (4) is shown below.
+\[
+	\begin{tikzpicture}[baseline=(w)]
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=small box](a) at (-1.8, 0){$a$};
+			\node[style=none] (aatt) at (-1.5, 0){};
+			\node[style=node](v) at (-0.9, 0){};
+			\node[style=medium box](div) at (0, 0){$/$};
+			\node[style=none](divfst) at (-0.3, -0.3){};
+			\node[style=none] (divsnd) at (-0.3, 0.3){};
+			\node[style=none] (divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+				\node[style=small box] at (0, -1){$1$};
+			\node[style=none](one) at (0.3, -1){};
+			\node[style=node](z) at (0.9, -1){};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw(aatt.center) to (v);
+			\draw[out=-60, in=-180] (v) to (divfst.center);
+			\draw[out=60, in=-180](v) to (divsnd.center);
+			\draw(divout.center) to (w);
+			\draw(one.center) to (z);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+	\qquad \qquad 
+	\begin{tikzpicture}[baseline=(w)]
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=node](w1) at (-0.9, -0.5){};
+			\node[style=small box](a2) at (-2.3, 0){$a$};
+			\node[style=none] (a2att) at (-2.3, 0){};
+			\node[style=node](v) at (-1.4, 0){};
+			\node[style=node](w2) at (-0.9, 0.5){};
+			\node[style=medium box](div) at (0, 0){$/$};
+			\node[style=none](divfst) at (-0.3, -0.3){};
+			\node[style=none] (divsnd) at (-0.3, 0.3){};
+			\node[style=none] (divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+			\node[style=small box] at (0, -1){$1$};
+			\node[style=none](one) at (0.3, -1){};
+			\node[style=node](z) at (0.9, -1){};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw(a2att.center) to (v);
+			\draw[out=0, in=-120] (w1) to (divfst.center);
+			\draw[out=0, in=120](w2) to (divsnd.center);
+			\draw(divout.center) to (w);
+			\draw(one.center) to (z);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+			\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+\]
 
 As noted above, the DPO rules have the shape
 $L \leftarrow L \rightarrow R$: the left-hand side component is the identity,
@@ -2633,10 +2734,70 @@ Note however that cycles may implicitly occur due to the presence of the equival
 on nodes for what are called collapsing rules, i.e. where the right-hand side is a single variable. 
 %
 Looking again at the key example of~\cite{WillseyNWFTP21}, consider the rule $1 \times x = x$,
-which can be modelled as the DPO rule below
-%
-\[xxx\]
-%
+which can be modelled as the DPO rule below.
+\[
+\hspace{.25cm}
+\xymatrix{        
+	\begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
+			\node[style=node](v1) at (-0.9, 0.3){};
+			\node[style=node](v2) at (-0.9, -0.3){};
+			\node[style=medium box] at (0, 0){$\times$};
+			\node[style=none](divfst) at (-0.3, 0.3){};
+			\node[style=none](divsnd) at (-0.3, -0.3){};
+			\node[style=none](divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+			\node[style=small box] at (-2.3, 0.3){$1$};
+			\node[style=none](one) at (-2, 0.3){};
+			\node[style=node](z) at (-1.4, 0.3){};
+		\end{pgfonlayer}        
+		\begin{pgfonlayer}{edgelayer}
+			\draw(v1) to (divfst.center);
+			\draw(v2) to (divsnd.center);
+			\draw(divout.center) to (w);
+			\draw(one.center) to (z);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners](-1.7, 0.6) rectangle (-0.6, -0);
+		\end{pgfonlayer}\begin{pgfonlayer}{background}
+			\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+	\ar@{=>}[r] &	\hspace{10pt}
+	\begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
+			\node[style=node](v1) at (-0.9, 0.3){};
+			\node[style=node](v2) at (-0.9, -0.3){};
+			\node[style=medium box] at (0, 0){$\times$};
+			\node[style=none](divfst) at (-0.3, 0.3){};
+			\node[style=none](divsnd) at (-0.3, -0.3){};
+			\node[style=none](divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+			\node[style=small box] at (-2.3, 0.3){$1$};
+			\node[style=none](one) at (-2, 0.3){};
+			\node[style=node](z) at (-1.4, 0.3){};
+		\end{pgfonlayer}        
+		\begin{pgfonlayer}{edgelayer}
+			\draw(v1) to (divfst.center);
+			\draw(v2) to (divsnd.center);
+			\draw(divout.center) to (w);
+			\draw(one.center) to (z);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners](-1.7, 0.6) rectangle (-0.6, -0);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{background}
+			\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+		\end{pgfonlayer}
+		\draw[dashed,rounded corners]
+		([shift={(0,0.2)}]v2.north) --
+		([shift={(-0.2,0)}]v2.west) --
+		(-.9,-1.2)--(.9,-1.2)--([shift={(0.2,0)}]w.east)--
+		([shift={(0,0.2)}]w.north)  -- ([shift={(-0.2,0)}]w.west)-- (0.7,-0.8)--(-0.7,-0.8)--([shift={(0.2,0)}]v2.east)-- cycle;
+	\end{tikzpicture}
+}
+\]
+
+
+
 Intuitively, the e-term graph obtained after the application of the rule represents a recursive term such 
 as $rec_x. 1 \times x$, thus highlighting the difficulty of extracting a term representation out of an e-term graph.
 
@@ -2699,15 +2860,13 @@ among the two proposals, which appear to be related yet quite different.
 In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. We adopted a
 more down-to-earth approach by equipping
 concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories.
+at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories. 
 The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
 and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
 Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
 $\Set$. At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
 is actually $\mathcal{M}$-adhesive, thus allowing to exploit all the features of the framework
-as they hold for DPO graph transformation.
-
-
+as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which not only facilitates its practical application and theoretical analysis, but also aligns with the traditional methodology of endowing certain (hyper)graphs with an additional \emph{structure}.
 %\section*{Acknowledgments}
 %Hypergraphs, terms graphs, e-graphs, adhesive categories.
 
