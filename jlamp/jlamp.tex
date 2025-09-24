@@ -2383,7 +2383,7 @@ expressiveness.
 %Terms are trees, thus different term graphs may represent the same term, up-to the sharing of sub-terms.
 %
 Consider e.g. a signature $\Sigma$ with a constant $a$ and a binary operator $/$: the term $a / a$ admits a few different 
-representations as a term graph with equivalence, such as those below.
+representations as a term graph with equivalence, such as those below
 
 %Being a purely graphical representation, EGGs allows for redundancy and possible ambiguity,
 %so that e.g. a term such as $a / a$ admits a few different representations as a term graph, as shown below
@@ -2591,7 +2591,7 @@ Consider the term rewriting rule such $x / x \to 1$, from the key example in~\ci
 This is a problematic rule to be simulates using classical term graph rewriting, since it is not left-linear
 (that is, $x$ occurs twice in the left-hand side)~\cite{AriolaKP00}.
 Using e-term graphs (variables are represented as nodes that do not occur among the targets of an edge),
- it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$.
+ it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
 \[
 	\hspace{.25cm}
 	\xymatrix{        
@@ -2649,7 +2649,7 @@ In this case $L$ is the minimally-shared e-term graph corresponding to the term 
 %depicted above with a match that is injective on equivalence classes.
 The rule cannot be applied to the term graphs with equivalence
  in the pictures (1) and (2) above, while the result of the application of the rule 
-to the e-term graphs in the pictures (3) and (4) is shown below.
+to the e-term graphs in the pictures (3) and (4) is shown below
 \[
 	\begin{tikzpicture}[baseline=(w)]
 		\begin{pgfonlayer}{nodelayer}
@@ -2735,7 +2735,7 @@ Note however that cycles may implicitly occur due to the presence of the equival
 on nodes for what are called collapsing rules, i.e. where the right-hand side is a single variable. 
 %
 Looking again at the key example of~\cite{WillseyNWFTP21}, consider the rule $1 \times x = x$,
-which can be modelled as the DPO rule below.
+which can be modelled as the DPO rule below
 \[
 \hspace{.25cm}
 \xymatrix{        
@@ -2796,11 +2796,9 @@ which can be modelled as the DPO rule below.
 	\end{tikzpicture}
 }
 \]
-
-
-
-Intuitively, the e-term graph obtained after the application of the rule represents a recursive term such 
-as $rec_x. 1 \times x$, thus highlighting the difficulty of extracting a term representation out of an e-term graph.
+%
+Intuitively, the e-term graph obtained after the application of the rule seem to represent a recursive term such 
+as $rec_x. 1 \times x$, highlighting the difficulty of extracting a term representation out of an e-term graph.
 
 The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
 possibility to keep on performing the same rewriting step.
@@ -2808,6 +2806,8 @@ This is forbidden by using rules \emph{with negative application conditions}, gi
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
 be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
 as the right-hand side itself.
+Indeed, consider again the rule $x / x \to 1$: once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
+
 %
 The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
 
@@ -2818,9 +2818,9 @@ a formalism for program optimisation.
 %via a compact representation and 
 %efficient implementation of equality saturation.
 %
-To do so, we revisited the notions of hyper-graphs and term graphs with equivalence, 
+To do so, we revisited the notions of hypergraphs and term graphs with equivalence, 
 proving that they are $\mathcal{M}$-adhesive categories, and we extended these results in order to
-prove the same property for e-hyper-graphs and e-term graphs , i.e. where the equivalence satisfies 
+prove the same property for e-hypergraphs and e-term graphs , i.e. where the equivalence satisfies 
 a suitable closure constraint.
 Summing up, we proved that EGGs are objects of an $\mathcal{M}$-adhesive category
 and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
@@ -2867,7 +2867,9 @@ and equipping them with an enrichment over semi-lattices, the resulting formalis
 Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
 $\Set$. At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
 is actually $\mathcal{M}$-adhesive, thus allowing to exploit all the features of the framework
-as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which not only facilitates its practical application and theoretical analysis, but also aligns with the traditional methodology of endowing certain (hyper)graphs with an additional \emph{structure}.
+as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which facilitates its practical application 
+and theoretical analysis, and aligns with the traditional methodology adopted in the graph transformation community 
+of explicitly endowing (hyper)graphs with additional structure.
 %\section*{Acknowledgments}
 %Hypergraphs, terms graphs, e-graphs, adhesive categories.
 
