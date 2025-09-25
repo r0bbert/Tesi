@@ -405,11 +405,12 @@ if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$
 %EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
 %a fast way to recover equality saturation. 
 
-Building on the criterion developed in~\cite{CastelnovoGM24}, this work proves that both hypergraphs with equivalence
-and EGGs form an 
+Building on the criterion developed in~\cite{CastelnovoGM24}, this work considers a family of categories of hypergraphs
+with equivalence, including EGGs, and prove that they form an 
 $\mathcal{M}$-adhesive category for a suitable choice of $\mathcal{M}$.
 The advantages from this characterisation are two-fold. On the one side, 
-we put the benefits \emph{per se} of a formal presentation, making precise the properties of the data structure. 
+we put the benefits \emph{per se} of a formal presentation, making precise 
+the properties of the data structures and the correspondence between them.
 On the other side, describing the optimisation steps via the DPO approach
 offers the tools for modelling  parallel and concurrent execution
 and for proving  confluence and termination.
@@ -425,16 +426,27 @@ functorial characterisation, which allows for proving their adhesivity propertie
 This is expanded in Section~\ref{hypereq} for proving the $\mathcal{M}$-adhesivity
 of hypergraphs 
 and term graphs with equivalence and in Section~\ref{eggs} of
-their variants where equivalences are closed with respect to operator application,
+a few variants where equivalences are closed with respect to operator application,
 thus subsuming EGGs.
 %
 In Section~\ref{rewriting} we put the machinery at work, showing how the optimisation steps
-can be rephrased as the application of term graph rewriting rules.
+can be rephrased as the application of DPO rewriting rules, at the same time
+highlighting the issues linked to the format of such rules.
 %
 Finally, in Section~\ref{conclusioni} we draw our conclusions, hint at future endeavours and offer some 
 brief remarks on related works.
+
+For the sake of readability, all the proofs appear in the appendices. 
+This work is an extended version of~\cite{uovadesive}.
+With respect to the conference paper, the way term graphs
+are described is completely changed: they are now presented 
+as an instance of the newly introduced category of 
+left-monogamous hypergraphs. Also the notion of separated 
+hypergraphs is original, so that Sections 3.1.1 and 3.2.1 are largely new,
+and consequently so Section 4.1.1, 4.2 and 5. 
 %
-For the sake of space, the proofs appear in the appendices. 
+Finally, also Section~6 on the applications of DPO rewriting has been rewritten 
+and expanded, trying to highlight the nuances of its use.
 %For the sake of completeness, 
 %and in order to fix the notation, we prove all the results 
 %recalled in the background section, besides those that are original 
@@ -2807,7 +2819,8 @@ $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, suc
 be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
 as the right-hand side itself.
 Indeed, consider again the rule $x / x \to 1$: once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
-
+keep on adding it, since e.g. the two pictures below represent the same EGG
+\[xxx\]
 %
 The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
 
