@@ -1763,9 +1763,7 @@ Let $\Sigma$ be an algebraic signature. Then the following facts hold
 	\end{center}
 	There are no morphisms in $\tg$ between the last two and from the last two to the first one, therefore none of them can be terminal.
 \end{rem}
-
-\begin{rem}
-	$\tg$ is not an adhesive category. In particular it does not have pushouts along all monos. For instance, if we take the three term graphs of the previous remark, then have two arrows
+In particular it does not have pushouts along all monos. For instance, if we take the three term graphs of the previous remark, then have two arrows
 	$(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_a, !_{V_{\mathcal{G}_a}})$ and $(?_{\{h\}}, \id{\{v\}})\colon \Delta_{\tg}(\{v\})\to (l_b, !_{V_{\mathcal{G}_a}})$ which cannot be completed to a square. Indeed if $(q, !_{V_\mathcal{H}})\colon \mathcal{H}\to \mathcal{G}^\Sigma$ is another term graph with $(g_E, g_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$ and $(k_E, k_V)\colon (l_a, !_{V_{\mathcal{G}}})\to (q, !_{V_\mathcal{H}})$  such that 
 	\[(g_E, g_V)\circ (?_{\{h\}}, \id{\{v\}}) = (k_E, k_V)\circ (?_{\{h\}}, \id{\{v\}})\]
 	then $g_V=k_V$ and
@@ -1880,7 +1878,7 @@ Notice that there is another functor $K: \EqHyp \to \Set$ sending $(E, V, Q, s, 
 	\end{restatable}
 \end{minipage}\hfill
 \begin{minipage}[r]{.15\linewidth}
-\xymatrix{V \ar@{>>}[d]_{q} \ar[r]_{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]^{l_d} & Q_D}
+\xymatrix{V \ar@{>>}[d]_{q} \ar[r]_{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]^{l_D} & Q_D}
 \end{minipage} 
   
 \begin{restatable}{cor}{mn}\label{cor:mono2}
@@ -2089,29 +2087,85 @@ By definition, \Cref{lem:pbmono} and putting together Lemmas \ref{lem:equ}, \ref
 We are now going to generalize the work done in the previous sections equipping term graphs with an equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{defi}
-	Let $\mathcal{G}$ be an hypergraph, a \emph{labelled hypergraph with equivalence} is a pair $(\mathcal{H}, (f,g))$ where $\mathcal{H}$ is an object of $\EqHyp$ and $(f,g)$ a morphism $T(\mathcal{H})\to \mathcal{G}$ of $\hyp$. A \emph{morphism of labelled hypergraphs with equivalence} between $(\mathcal{H}, (f,g))$ and $(\mathcal{H}', (h,k))$ is an arrow $(a,b, c)\colon \mathcal{H}\to \mathcal{H}'$ such that $h\circ a = f$ and $k\circ b = g$.
-%
-	We denote the resulting category by $\EqHyps$.
+	Let $\mathcal{G}$ be an hypergraph with equivalence, the category $\EqHyps$ of \emph{labelled hypergraph with equivalence}  is $\EqHyp/\mathcal{G}$.
 \end{defi}
+
+\begin{rem} The equivalence relation on the  nodes of the labelling hypergraph put constraints on the possible relations on the labelled hypergraphs. Indeed, consider the following hypergraphs with equivalences $\mathcal{G}$ and $\mathcal{H}$.
+
+\noindent
+\begin{minipage}[l]{.6\linewidth}
+	\setlength{\parindent}{1.5em}
+	Notice that there is no morphism $\mathcal{H}\to \mathcal{G}$. Indeed $\id{T(\mathcal{G})}$ is the unique morphism $T(\mathcal{G})\to T(\mathcal{H})$ while there are only two morphisms $f, g\colon Q_{\mathcal{H}}\rightrightarrows Q_{\mathcal{G}}$: the first one is constant in $v$, while the second one is constant in $w$.
+\end{minipage}\hfill \qquad 
+\begin{minipage}[r]{.4\linewidth}
+\begin{tikzpicture}[baseline=(v1)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a1) at (-.5, 1){};
+		\node[style=none] (a1att) at (-.5, 1){};
+		\node[style=node](v1) at (-.5, 0){};
+		\node[style=small box](a2) at (.5, 1){};
+		\node[style=none] (a2in) at (.22, 1){};
+		\node[style=none] (a2out) at (.78, 1){};
+		\node[style=node](v2) at (.5, 0){};
+		\node[style=none] (l1) at (-.5, 1.5){$a$};
+		\node[style=none](l2) at (.5, 1.5){$b$};
+		\node[style=none] (l1) at (-1, 0){$v$};
+		\node[style=none](l2) at (1, 0){$w$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a1att.south) to (v1);
+		\draw[style=none, out=180, in=180](v2) to (a2in.west);
+		\draw[style=none, out=0, in=0](v2) to (a2out.east);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-.8, -0.3) rectangle (-.2, 0.3);
+		\draw[dashed, rounded corners] (.2, -0.3) rectangle (.8, 0.3);
+	\end{pgfonlayer}
+\end{tikzpicture}\qquad  
+\begin{tikzpicture}[baseline=(v1)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a1) at (-.5, 1){};
+		\node[style=none] (a1att) at (-.5, 1){};
+		\node[style=node](v1) at (-.5, 0){};
+		\node[style=small box](a2) at (.5, 1){};
+		\node[style=none] (a2in) at (.22, 1){};
+		\node[style=none] (a2out) at (.78, 1){};
+		\node[style=node](v2) at (.5, 0){};
+		\node[style=none] (l1) at (-.5, 1.5){$a$};
+		\node[style=none](l2) at (.5, 1.5){$b$};
+		\node[style=none] (l1) at (-1, 0){$v$};
+		\node[style=none](l2) at (1, 0){$w$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a1att.south) to (v1);
+		\draw[style=none, out=180, in=180](v2) to (a2in.west);
+		\draw[style=none, out=0, in=0](v2) to (a2out.east);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-.8, -0.3) rectangle (.8, 0.3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{minipage}
+
+ For both cases we have:
+\[ f(q_{\mathcal{H}}(w))=v \neq w =q_{\mathcal{G}}(w)=q_\mathcal{G}(\id{V_{\mathcal{G}}}(w)) \qquad  g(q_{\mathcal{H}}(v))=w \neq v =q_{\mathcal{G}}(v)=q_\mathcal{G}(\id{V_{\mathcal{G}}}(v))  \]
+	
+	Intuitively, labelling with $\mathcal{G}$ force us to keep all the sorts (i.e.~the labellings of the nodes) distinguished, while labelling with $\mathcal{H}$ allows us to merge different sorts.
+\end{rem}
 
 \noindent 
 \begin{minipage}[l]{.8\linewidth}
-		\setlength{\parindent}{1.5em}
-		\begin{rem}Let $\Sigma$ be a single typed monoidal signature (cfr~\Cref{def:alg}). Since $\mathcal{G}_{\Sigma}$ has a single node, then to label another hypergraph $\mathcal{H}$ it is enough to provide a function $l\colon E_{\mathcal{H}}\to O_{\Sigma}$ such that the diagrams aside commute.
-			
-			Notice that, if $\Sigma$ is algebraic, then such a function exists only if $\mathcal{H}$ is algebraic too. In that case, since the image of $\lg_{V_{\mathcal{H}}}$ is simply the singleton $\{1\}$, the second diagram commutes by default.
-		\end{rem}
+	\setlength{\parindent}{1.5em}
+\begin{exa}
+	Let $\Sigma$ be a single typed monoidal signature (cfr~\Cref{def:alg}). Since $\mathcal{G}_{\Sigma}$ has a single node, then to label another hypergraph $\mathcal{H}$ it is enough to provide a function $l\colon E_{\mathcal{H}}\to O_{\Sigma}$ such that the diagrams aside commute.
+	
+	Notice that, if $\Sigma$ is algebraic, then such a function exists only if $\mathcal{H}$ is algebraic too. In that case, since the image of $\lg_{V_{\mathcal{H}}}$ is simply the singleton $\{1\}$, the second diagram commutes by default.
+\end{exa}	
 \end{minipage} \hfill 
 \begin{minipage}[r]{.15\linewidth}
 	\xymatrix@R=8pt{E_{\mathcal{H}} \ar[r]_{l} \ar[d]_{s_{\mathcal{H}}}& O_{\Sigma} \ar[d]^{\ari_\Sigma}\\ V^\star_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}
 	\xymatrix@R=8pt{E_{\mathcal{H}} \ar[r]_{l} \ar[d]_{t_{\mathcal{H}}}& O_{\Sigma} \ar[d]^{\coar_\Sigma}\\ V^\star_{\mathcal{H}} \ar[r]^{\lgh_{V_{\mathcal{H}}}} & \mathbb{N}}
-	\end{minipage}
-
-Let $(\mathcal{H}, l)$ be an object of $\EqHyps$: since $T$ has a right adjoint $R$ by \Cref{prop:forghyp}, $(f,g)\colon T(\mathcal{H})\to \mathcal{G}^\Sigma$ corresponds to the arrow $(f, g, !_{Q_{\mathcal{H}}})\colon \mathcal{H}\to R(\mathcal{G})$. It is immediate to see that this correspondence extends to an equivalence with the slice category over $R(\mathcal{G})$.
-
-\begin{prop}\label{prop:slice}
-$\EqHyps$ is equivalent to $\EqHyp / R(\mathcal{G})$.
-\end{prop}
+\end{minipage}
 
 Let $V_\mathcal{G}\colon \EqHyps\to \EqHyp$ be the functor forgetting the labelling and $\pbc_\mathcal{G}$ the class of morphisms in $\EqHyps$ whose image in $\EqHyp$ is in $\pbc$. From \Cref{prop:eqhyp_complete} and \Cref{cor:pbapp}, the second point of \Cref{thm:slice-functors} and from \Cref{cor:eqade}, we can deduce the following.
 
@@ -2142,14 +2196,20 @@ We can now easily define left-monogamous, pruned ans separated labelled hypergra
  
  Clearly we can realize $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ as comma categories.
  
- \begin{prop}
- 	Let $M_{\eq}\colon \Eqlmo\to \EqHyp$ and $S_{\eq}\colon \EqsHyp \to \EqHyp$ be the inclusion functors. Moreover, let $\Gamma_{R(\mathcal{G})}\colon 1\to \EqHyp$ be the constant functor in $R(\mathcal{G})$. Then
+ \begin{prop}\label{prop:eti}
+ 	Let $\mathcal{G}$ be an hypegraph with equivalence and consider the inclusion functors $M_{\eq}\colon \Eqlmo\to \EqHyp$, $S_{\eq}\colon \EqsHyp \to \EqHyp$ and $S_{p, \eq}\colon \pshyp_{\eq}\to \EqHyp$. Let $\Gamma_{\mathcal{G}}\colon 1\to \EqHyp$ be the constant functor in $\mathcal{G}$. Then
  	\begin{enumerate}
- 		\item $\lmo_{\eq, \mathcal{G}}$ is equivalent to $\comma{M_\eq}{\Gamma_{R(\mathcal{G})}}$;
- 		\item $\shyp_{\eq, \mathcal{G}}$ is equivalent to $\comma{S_\eq}{\Gamma_{R(\mathcal{G})}}$; 
- 		\item $\pshyp_{\mathcal{G}}$ is equivalent to $\pshyp_{\eq}/R(\sp(\pr(\mathcal{G})))$. 
+ 		\item $\lmo_{\eq, \mathcal{G}}$ is equivalent to $\comma{M_\eq}{\Gamma_{\mathcal{G}}}$;
+ 		\item $\shyp_{\eq, \mathcal{G}}$ is equivalent to $\comma{S_\eq}{\Gamma_{\mathcal{G}}}$; 
+ 		\item $\pshyp_{\mathcal{G}}$ is equivalent to $\comma{S_{p, \eq}}{\Gamma_{\mathcal{G}}}$. 
  	\end{enumerate}
  \end{prop}
+ 
+ In particular, the previous  proposition, together with Lemmas \ref{lem:equ}, \ref{lem:coequ}, \ref{colim} and \Cref{lim}, yields the following
+ 
+ \begin{cor}\label{cor:eti}
+ $\lmo_{\eq, \mathcal{G}}$ is closed in $\hyp_{\eq, \mathcal{G}}$ under equalizers, binary product and pullbacks. $\pshyp_{\eq, \mathcal{G}}$ is closed in $\hyp_{\eq, \mathcal{G}}$ under pullbacks. Both are closed in  $\hyp_{\eq, \mathcal{G}}$ under pushouts along arrows in $\pbc_{\mathcal{G}}$.
+ \end{cor}
 
 \begin{defi}We define two classes of arrows
 	\begin{itemize}
@@ -2158,7 +2218,7 @@ We can now easily define left-monogamous, pruned ans separated labelled hypergra
 	\end{itemize}
 \end{defi}
 
-We can  now use \Cref{thm:slice-functors} to get the following.
+We can  now use \Cref{thm:slice-functors} together with Lemmas \ref{lem:equ} and \ref{lem:coequ} to get the following.
 
 \begin{cor}$\lmo_{\eq, \mathcal{G}}$ is $\pbl_{\mathcal{G}}$-adhesive and $\pshyp_{\eq, \mathcal{G}}$ is $\pbs_{\mathcal{G}}$-adhesive
 \end{cor}
@@ -2227,23 +2287,38 @@ We start introducing the notion of \emph{e-hypergraphs}, hypergraphs equipped wi
 in other words, whenever the relation identifies the source of two hyperedges, it identifies their targets too.
 
 \begin{defi}
-	Let $\mathcal{G} = (E, V, Q, s, t, q)$ be a hypergraph with equivalence and $(S, \pi_1, \pi_2)$ a kernel pair for $q^\star \circ s$.
-	We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \circ \pi_1 = q^\star \circ t \circ \pi_2$.
-	
-	We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and by $E\colon \egg \to \EqHyp$ the associated inclusion functor.
+Let $\mathcal{G} = (E, V, Q, s, t, q)$ be a hypergraph with equivalence, two  hyperedges $e, e'\in E$ are \emph{$q$-joined} if $q^\star(t(e'))=q^\star(t(e))$.
+ 
+We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if every two  hyperedges $e,e'$ such that
+$q^\star(s(e'))=q^\star(s(e))$ are $q$-joined.
+We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hypergraphs, and by $E\colon \egg \to \EqHyp$ the associated inclusion functor. 
 \end{defi}
+
+We can reformulate the definition of e-hypergraphs in two other ways. See \Cref{proof:eh} for a proof
+
+\begin{restatable}{prop}{eh}\label{prop:eh}
+Consider an hypergraph with equivalence $\mathcal{G} = (E, V, Q, s, t, q)$ and let $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ be kernel pairs for, respectively, $q^\star\circ s$ and $q^\star\circ t$. Then the following are equivalent:
+\begin{enumerate}
+	\item $\mathcal{G}$ is an e-hypergraph;
+	\item $q^\star\circ t\circ \pi^A_1=q^\star\circ t\circ \pi^A_2$;
+	\item there exists a unique arrow $k\colon A\to B$ such that 
+	\[\pi^B_1\circ k = \pi^A_1 \qquad \pi^B_2\circ k = \pi^A_2 \]
+	\end{enumerate}\end{restatable}
 
 
 \begin{exa}
 	Consider the hypergraph $\mathcal{G}$ of \Cref{exa_2} and take as quotient the identity $\id{V_\mathcal{G}}\colon V_\mathcal{G}\colon \to\mathcal{G}$. Then the kernel pair of $\id{V^\star_\mathcal{G}} \circ s$ concide with the kernel pair of $s$, which is empty. Thus  $\mathcal{G}$ is, trivially, an e-hypergraph
 \end{exa}
 
-A first result that we need is that limits in $\egg$ are computed as in $\EqHyp$. Full proofs are in \Cref{proof:elim}.
+As a next step, we we need to prove that connected limits in $\egg$ are computed as in $\EqHyp$. Full proofs are in \Cref{proof:elim}.
 
-\begin{restatable}{lem}{elim}\label{lem:elim}
-	$\egg$ has all limits and $E$ creates them.
+\begin{restatable}{lem}{elim}\label{lem:elimc}
+Let $F\colon \D\to \hyp_{\eq}$ be a connected diagram and let $F(D)$ be $(E_D, V_D, Q_D, s_D, t_D, q_D)$. Suppose that $(\mathcal{L}, \{(a_D, b_D, c_D)\}_{D\in \D})$ is a limiting cone for $F$, then for every hyperedges $e,e'\in E_{\mathcal{L}}$, if $a_D(e)$ and $a_D(e')$ are $q_D$-joined for every $D\in \D$, then $e$ and $e'$ are $q_{\mathcal{L}}$-joined.
 \end{restatable}
 
+\begin{restatable}{cor}{ecim}\label{lem:elim}
+	$\egg$ has all connected limits and $E$ creates them.
+\end{restatable}
 
 \begin{cor}\label{cor:ereg}
 	If an arrow $h: \mathcal{G \to H}$ in $\egg$ is a regular mono in $\egg$ then $E(h)$ is a regular mono in $\hyp$. 
@@ -2284,22 +2359,65 @@ Let $\epbl$ and $\epbs$ be the classes of arrows in  $\elm$ and $\eps$ lying in 
 
 \subsection{Labelled e-hypergraphs}\label{sec:sepegg}
 
-Finally, we can turn our attention to the labelled context.
+Finally, we can turn our attention to the labelled context. In such an environment, we want the equivalence relation to identify the target of two hyperedges whenever their sources are related \emph{and} their labels are the same. This justifies the following definition.
 
-\begin{defi} Let $\mathcal{G}$ be an hypergraph. We say that an object $(\mathcal{H}, (f,g))$ of $\EqHyps$ is a \emph{labelled e-hypergraph} if $\mathcal{H}$ is an e-hypergraph. We define the category $\eggl$ as the full subcategory of $\EqHyps$ given by labelled e-hypergraphs. We denote by $E_\mathcal{G}$ the corresponding inclusion functor .
+\begin{defi} Let $\mathcal{G}$ be an hypergraph with equivalence. We say that an object $(a,b,c)\colon \mathcal{H}\to \mathcal{G}$ of $\EqHyps$ is a \emph{labelled e-hypergraph} if every two hyperedges $e,e'\in E_{\mathcal{H}}$ such that
+	\[q^\star_{\mathcal{H}}(s(e))=q^\star_{\mathcal{H}}(s(e')) \qquad a(e) = a(e')\]
+	are $q_\mathcal{H}$-joined.
+	
+ We define the category $\eggl$ as the full subcategory of $\EqHyps$ given by labelled e-hypergraphs. We denote by $E_\mathcal{G}$ the corresponding inclusion functor .
 \end{defi}
 
-From the definitions, we get at once the follosing result.
+\noindent
+\begin{minipage}[l]{.75\linewidth}
+	\begin{exa}
+		Let $\mathcal{G}$ be the graph aside. Notice that $\id{\mathcal{G}}$ is a labelled e-hypergraph even if its underlying hypergraphs with equivalence $\mathcal{G}$ is not in $\egg$.
+	\end{exa}
+\end{minipage} \hfill \begin{minipage}[r]{.21\linewidth}
+	\begin{tikzpicture}[baseline=(v1)]
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=small box](a1) at (-1.4, 0){};
+			\node[style=none] (a1att) at (-1.4, 0){};
+			\node[style=node](v1) at (-.5, 0){};
+			\node[style=small box](a2) at (1.4, 0){};
+			\node[style=none] (a2in) at (1.4, 0){};
+			\node[style=node](v2) at (.5, 0){};
+			\node[style=none] (l1) at (-1.4, .5){$a$};
+			\node[style=none](l2) at (1.4, .5){$b$};
+			\node[style=none] (l1) at (-.5, -.5){$v$};
+			\node[style=none](l2) at (.5, -.5){$w$};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw(a1att) to (v1);
+			\draw[style=none](v2) to (a2in.south);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (-.8, -0.3) rectangle (-.2, 0.3);
+			\draw[dashed, rounded corners] (.2, -0.3) rectangle (.8, 0.3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+\end{minipage}
 
-\begin{prop}\label{prop:varie}
-	Let $\mathcal{G}$ be an hypergraph and $\Gamma_{R(\mathcal{G})}$ the costant functor in $R(\mathcal{G})$. Then the following facts hold
-	\begin{enumerate}
-		\item $\eggl$ is equivalent to $\comma{E}\Gamma_{R(\mathcal{G})}$;
-		\item the functor $W_\mathcal{G}\colon \eggl\to \egg$ forgetting the labeling creates all colimits, pullbacks and equalizers. 
-	\end{enumerate}
-\end{prop}
+We begin by providing an equivalent characterization to labelled e-hypergraphs (see \Cref{proof:fh} for details).
 
-Let $\pbe_\mathcal{G}$ be the class of morphisms in $\eggl$ whose image in $\egg$ lies in $\pbe$. Notice that $\pbe_\mathcal{G}$ is also the class of arrows whose image through $E_\mathcal{G}$ is in $\pbc_\mathcal{G}$.
+\begin{restatable}{lem}{fh}\label{lem:fh}
+Let $(a,b,c)\colon \mathcal{H}\to \mathcal{G}$ be an object of $\hyp_{\eq, \mathcal{G}}$ and let $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ be kernel pairs for, respectively, $(q^\star\circ s_{\mathcal{H}}, a),(q^\star\circ t_{\mathcal{H}}, a)\colon E_{\mathcal{H}}\to Q_{\mathcal{H}}\times E_{\mathcal{G}}$. Then the following are equivalent:
+\begin{enumerate}
+	\item $(a,b,c)$ is a labelled e-hypergraph;
+	\item $q^\star\circ t_{\mathcal{H}}\circ \pi^A_1=q^\star\circ t_{\mathcal{H}}\circ \pi^A_2$;
+	\item there exists a unique arrow $k\colon A\to B$ such that 
+	\[\pi^B_1\circ k = \pi^A_1 \qquad \pi^B_2\circ k = \pi^A_2 \]
+\end{enumerate}
+\end{restatable}
+
+
+We want now to show that pullbacks and pushout in $\eggl$ are computed as in $\hyp_{\eq, \mathcal{G}}$. See \Cref{proof:varie} for a proof.
+
+
+\begin{restatable}{lem}{varie}\label{prop:varie}
+	Let $\mathcal{G}$ be an hypergraph with equivalence, then $\eggl$ is closed in $\hyp_{\eq, \mathcal{G}}$ under connected limits and pushouts alongs arrows in $\pbe_\mathcal{G}$, where $\pbe_\mathcal{G}$ is the class of morphisms in $\eggl$ whose image through $E_\mathcal{G}$ is in $\pbc_\mathcal{G}$. 
+\end{restatable}
+
 %
 By \Cref{thm:slice-functors} we get the following result.
 
@@ -2311,17 +2429,15 @@ Now, let $\lelm$ and $\leps$ be the full subcategories of $\eggl$ given by the o
 
 
 \begin{rem}
-When $\mathcal{G}$ is the hypergraph associated to an algebraic signature, the object of  $\lelm$ coincides with what in \cite{uovadesive} are called \emph{e-termgraphs with equivalence}. 
+When $\mathcal{G}$ is the hypergraph associated to an algebraic signature, the object of  $\lelm$ coincides with what in \cite{uovadesive} are called \emph{e-term graphs with equivalence}. 
 \end{rem}
 
-\begin{lem}Let $\mathcal{G}$ be an hypergraph and $\Gamma_{R(\mathcal{G})}$ the costant functor in $R(\mathcal{G})$. 
-	\begin{enumerate}
-		\item $\lelm$ is equivalent to $\comma{E\circ M_{\mathsf{e}}}{\Gamma_{R(\mathcal{G})}}$
-		\item $\leps$ is equivalent to $\comma{E\circ S_{\mathsf{e}}}{\Gamma_{R(\mathcal{G})}}$
-	\end{enumerate}
+Putting together \Cref{cor:eti} with \Cref{prop:varie} we get the following.
+
+\begin{lem}Let $\mathcal{G}$ be an hypergraph with equivalence, then $\lelm$ and $\leps$ are closed in $\hyp_{\eq, \mathcal{G}}$ under pullbacks and pushouts along arrows in $\pbc_{\mathcal{G}}$.
 \end{lem}
 
-Define $\epbl_{\mathcal{G}}$ and $\epbs_{\mathcal{G}}$ as the classes of arrows whose underlying morphisms are in $\epbl$ or in $\epbs$. The following result now follows at once.
+Define $\epbl_{\mathcal{G}}$ and $\epbs_{\mathcal{G}}$ as the classes of arrows whose underlying morphisms are in $\pbc_{\mathcal{G}}$ or in $\pbc_{\mathcal{G}}$. The following result now follows at once.
 
 \begin{cor}
 	$\lelm$ is $\epbl_{\mathcal{G}}$-adhesive and $\leps$ is $\epbs_{\mathcal{G}}$-adhesive.
@@ -2429,6 +2545,11 @@ representations as a term graph with equivalence, such as those below
                 \draw[out=0, in=120](v2) to (divsnd.center);
                 \draw(divout.center) to (w);
         \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+        	\draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-.6, -0.2);
+        	\draw[dashed, rounded corners] (-1.2, 0.2) rectangle (-.6, 0.8);
+        	\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+        \end{pgfonlayer}
 \end{tikzpicture}
 \quad 
 \begin{tikzpicture}[baseline=(w)]
@@ -2462,6 +2583,7 @@ representations as a term graph with equivalence, such as those below
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-1.7, 0.2) rectangle (-0.6, 0.8);
 		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, -0.2);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \quad 
@@ -2485,6 +2607,10 @@ representations as a term graph with equivalence, such as those below
 		\draw[out=-60, in=-180] (v) to (divfst.center);
 		\draw[out=60, in=-180](v) to (divsnd.center);
 		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+				\draw[dashed, rounded corners] (-1.2, -0.3) rectangle (-.6, 0.3);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \quad 
@@ -2514,6 +2640,7 @@ representations as a term graph with equivalence, such as those below
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{center}
@@ -2623,6 +2750,7 @@ Using e-term graphs (variables are represented as nodes that do not occur among 
 			\end{pgfonlayer}
 			\begin{pgfonlayer}{eqlayer}
 				\draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
+					\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
 			\end{pgfonlayer}\begin{pgfonlayer}{background}
 				\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
 			\end{pgfonlayer}
@@ -2686,6 +2814,7 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+				\draw[dashed, rounded corners] (-1.2, -0.3) rectangle (-.6, 0.3);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 	\qquad \qquad 
@@ -2752,8 +2881,8 @@ which can be modelled as the DPO rule below
 \hspace{.25cm}
 \xymatrix{        
 	\begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
-			\node[style=node](v1) at (-0.9, 0.3){};
-			\node[style=node](v2) at (-0.9, -0.3){};
+			\node[style=node](v1) at (-0.9, 0.4){};
+			\node[style=node](v2) at (-0.9, -0.4){};
 			\node[style=medium box] at (0, 0){$\times$};
 			\node[style=none](divfst) at (-0.3, 0.3){};
 			\node[style=none](divsnd) at (-0.3, -0.3){};
@@ -2761,7 +2890,7 @@ which can be modelled as the DPO rule below
 			\node[style=node] (w) at (0.9, 0){};
 			\node[style=small box] at (-2.3, 0.3){$1$};
 			\node[style=none](one) at (-2, 0.3){};
-			\node[style=node](z) at (-1.4, 0.3){};
+			\node[style=node](z) at (-1.4, 0.4){};
 		\end{pgfonlayer}        
 		\begin{pgfonlayer}{edgelayer}
 			\draw(v1) to (divfst.center);
@@ -2770,9 +2899,11 @@ which can be modelled as the DPO rule below
 			\draw(one.center) to (z);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
-			\draw[dashed, rounded corners](-1.7, 0.6) rectangle (-0.6, -0);
+			\draw[dashed, rounded corners](-1.7, 0.1) rectangle (-0.6, 0.7);
+			\draw[dashed, rounded corners](1.2, -0.3) rectangle (0.6, 0.3);
+			\draw[dashed, rounded corners] (-1.2, -0.7) rectangle (-.6, -0.1);
 		\end{pgfonlayer}\begin{pgfonlayer}{background}
-			\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
+			\draw[color=white] (-1.5, 0.1) rectangle (1.5, -0.3);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 	\ar@{=>}[r] &	\hspace{12pt}
@@ -4065,7 +4196,7 @@ We will also need the following well-known fact about regular epis.
 	\comp*
 \end{minipage}\hfill
 \begin{minipage}[r]{.15\linewidth}
-	\xymatrix{V \ar@{>>}[d]_{q} \ar[r]_{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]^{l_d} & Q_D}
+	\xymatrix{V \ar@{>>}[d]_{q} \ar[r]_{\pi^D_V}& V_D \ar@{>>}[dd]^{q_D}\\Q \ar@{>.>}[d]_{m}&\\ L \ar[r]^{l_D} & Q_D}
 \end{minipage} 
 \begin{proof}\label{proof:comp}
 	\begin{enumerate}
@@ -4396,39 +4527,43 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 \end{proof}
 \fi 
 \subsection{Proofs for \Cref{eggs}}
+
+\eh*
+\begin{proof}\label{proof:eh}  Define
+	\[A_E:=\{(e,e')\in E \mid q^\star(s(e))=q^\star(s(e'))\}\] 
+	If $p_1, p_2\colon A_E\rightrightarrows E$ are the two projections, we know that $(A_E, p_1, p_1)$ is a kernel pair for $q^\star \circ s$. Thus there exists an isomorphism $\phi \colon A_E\to A$ such that 
+	\[\pi^A_1\circ \phi =p_1 \qquad \pi^A_2\circ \phi = p_2\]
+	
+	\smallskip \noindent
+	$(1\Rightarrow 2)$ By hypothesis $\mathcal{G}$ is an e-hypergraph, then the components of $\phi^{-1}(a)$ are $q$-joined for every $a\in A$ and so:
+	\[q^\star(t(\pi^A_1(a)))=q^\star(t(p_1(\phi^{-1}(a))))=q^\star(t(p_2(\phi^{-1}(a))))=q^\star(t(\pi^A_2(a)))\]
+	\smallskip \noindent $(2\Rightarrow 3)$ This follows at once from the definition of kernel pairs.
+	
+	\smallskip \noindent $(3\Rightarrow 1)$ Let $e, e'$ be hyperedges such that $q^\star(s(e))=q^\star(s(e'))$. Then $(e,e')$ belongs to $A_E$ and thus we have:
+	\begin{align*}
+		&q^\star(t(e))=q^\star(t(p_1(e, e')))=q^\star(t(\pi^A_1(\phi(e,e'))))=q^\star(t(\pi^B_1(k(\phi(e,e')))))\\=&q^\star(t(\pi^B_2(k(\phi(e,e')))))=q^\star(t(\pi^A_2(\phi(e,e'))))=q^\star(t(p_2(e, e')))=q^\star(t(e'))
+	\end{align*}
+	and we can conclude. \qedhere 
+	
+\end{proof}
+
+
 \elim*
 \begin{proof}\label{proof:elim}
-	Let $F: \D \to \egg$ be a diagram, with $F(d) = (A_d, B_d, Q_d, s_d, t_d, q_d)$.  Let $(U_d, u_1^d, u_2^d)$ be a kernel pair for $q_d\circ s_d$.
-	Now let $(A, B, Q, s, t, q)$, together with projections $(\pi_E^d, \pi_V^d, \pi_Q^d)_{d\in \D}$, be the limit of $I \circ F$. Suppose that $(U, u_1, u_2)$ is the kernel pair of $q^\star\circ s$ and let $(L, (l_i)_{i \in \cat I})$ be the limit of $K \circ I \circ F$. If we show that it lies in $\egg$ we are done.
-	
-	By \Cref{prop:eqhyp_complete} there exists a mono $m\colon Q \mto L$ such that $\pi_Q^d = l_d \circ m$. Notice that
+	Let $\mathcal{L}$ be $(E_{\mathcal{L}}, V_{\mathcal{L}}, Q_{\mathcal{L}}, s_{\mathcal{L}}, t_{\mathcal{L}}, q_{\mathcal{L}})$ and consider $e, e'\in E_{\mathcal{L}}$.
+	Take a limit $(L, (l_i)_{i \in \cat I})$ for $K \circ F$. By \Cref{prop:eqhyp_complete} there exists a mono $m\colon Q_{\mathcal{L}} \mto L$ such that $c_D = l_D \circ m$. Since $\D$ is connected then by \Cref{prop:fact} we know that $(L^\star, \{l^\star_D\}_{D\in \D})$ is a limiting cone. Computing we get
 	\begin{align*}
-		&q_d^\star \circ s_d\circ \pi^d_E\circ u_1  = q_d^\star\circ (\pi^d_V)^\star \circ s\circ u_1= (\pi_Q^d)^\star\circ q^\star\circ s\circ u_1\\=&(\pi_Q^d)^\star\circ q^\star\circ s\circ u_2= q_d^\star\circ (\pi^d_V)^\star\circ s\circ u_2=q_d^\star \circ s_d \circ \pi_E^d \circ u_2\\
-	\end{align*}
-\vspace{-1cm}
+		&l^\star_D(m^\star(q_{\mathcal{L}}^\star(t_{\mathcal{L}}(e))))=c^\star_D(q_{\mathcal{L}}^\star(t_\mathcal{L}(e)))=q^\star_D(b^\star_D(t_\mathcal{L}(e)))=q^\star_D(t_D(a_D(e)))\\=&q^\star_D(t_D(a_D(e')))=q^\star_D(b^\star_D(t_\mathcal{L}(e')))=c^\star_D(q_{\mathcal{L}}^\star(t_\mathcal{L}(e')))=l^\star_D(m^\star(q_{\mathcal{L}}^\star(t_{\mathcal{L}}(e'))))
+	\end{align*} 
+	Thus we deduce that $m^\star(q_{\mathcal{L}}^\star(t_{\mathcal{L}}(e)))=m^\star(q_{\mathcal{L}}^\star(t_{\mathcal{L}}(e')))$. But by \Cref{prop:fact}, $(-)^\star$ sends monos to monos and so we can conclude.
+\end{proof}
 
-	\noindent 
-	\begin{minipage}[l]{.7\linewidth}
-	Thus for each $d$ in $\D$ there exists an arrow $a_d:U\to U_i$ making the diagram on the right commutative.
-	Then we have
+\ecim*
+\begin{proof}\label{proof:ecim} Let $F\colon \D\to \egg$ be a connected diagram. Let $F(D)$ be $(E_D, V_D, Q_D, s_D, t_D, q_D)$ and suppose that $(\mathcal{L}, \{(a_D, b_D, c_D)\}_{D\in \D})$ is a limiting cone for $E\circ F$. If we show that $\mathcal{L}$ is an e-hypergraph we are done. Let $e, e'\in E_{\mathcal{L}}$ be such that $q^\star_{\mathcal{L}}(s_{\mathcal{L}}(e))=q^\star_{\mathcal{L}}(s_{\mathcal{L}}(e'))$. Thus for every $D\in \D$ we have:
 	\begin{align*}
-		&l_d^\star\circ m^\star \circ q^\star \circ t \circ u_1    = q_d^\star\circ (\pi_V^d)^\star \circ t \circ u_1 \\
-		= &q_d^\star \circ t_d \circ \pi_E^d \circ u_1
-		= q_d^\star \circ t_d \circ u_1^d \circ a_d 
-		= q_d^\star \circ t_d \circ u_2^d \circ a_d\\ 
-		=& q_d^\star \circ t_d \circ \pi_E^d \circ u_2 = q_d^\star \circ (\pi_V^d)^\star \circ t \circ u_2 = l_d^\star \circ m^\star \circ q^\star \circ t \circ u_2
+		&q^\star_D(s_D(a_D(e)))=q^\star(b^\star_D(s_{\mathcal{L}}(e)))=c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e)))\\=&c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e')))=c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e')))=q^\star(b^\star_D(s_{\mathcal{L}}(e')))=q^\star_D(s_D(a_D(e')))
 	\end{align*}
-	\end{minipage}
-\hfill
-\begin{minipage}[r]{.3\linewidth}
-\xymatrix@R=20pt{
-	U \ar[r]^{u_1} \ar[d]_{u_2} \ar@{.>}[dr]_{a_d} & A \ar[dr]^{\pi_E^d} & \\
-	A \ar[dr]_{\pi_E^d} & U_d \ar[r]^{u_1^d} \ar[d]_{u_2^d}& A_d \ar[d]^{q_d^\star \circ s_d} \\
-	& A_i  \ar[r]_{q_d^\star \circ s_d}& Q_d^\star
-}
-\end{minipage}
-
-	By the universal property of limits, we have that \- $m^\star\circ q^\star \circ t \circ u_1 = m^\star \circ q^\star \circ t \circ u_2$. Since $m$ is mono we deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, hence the claim.
+	and so we conclude that $q^\star_D(t_D(a_D(e)))=q^\star_D(t_D(a_D(e')))$. Thus $a_D(e)$ and $a_D(e')$ are $q_D$-joined and we can conclude by \Cref{lem:elimc}.
 \end{proof}
 
 \noindent
@@ -4450,42 +4585,117 @@ J_\Sigma(\mathcal{G}_1, l_1) \ar[r]_{q}& J_\Sigma(\mathcal{H}, l) & T_\Sigma(J_\
 \begin{minipage}[r]{.15\linewidth}
 	\xymatrix@R=10pt{\mathcal{G}_1 \ar[r]_{h}\ar@{>->}[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]^{z}&\mathcal{P}}
 \end{minipage}
-\begin{proof}\label{proof:epo}
-	Let $\mathcal{P} $ be $(A, B, C, s, t, q)$ and let $(K_i, \pi_i^1, \pi_i^2)$ be the kernel pair of $q_i^\star \circ s_i$, for $i\in \{1, 2, 3\}$. Let also $(U, u_1, u_2)$ be the kernel pair of $q^\star \circ s$. 
+\begin{proof}\label{proof:epo} To fix the notation, let $\mathcal{P} $ be $(E, V, Q, s, t, q)$ and, for $i\in \{1, 2, 3\}$ let $\mathcal{G}_i$ be $(E_{i}, V_i, Q_i, s_i, t_i, q_i)$.  Let, moreover, $(K_i, \pi_i^1, \pi_i^2)$
+	be a kernel pair of $q_i^\star \circ s_i$, again for $i\in \{1, 2, 3\}$. Finally, let $(U, u_1, u_2)$ be the kernel pair of $q^\star \circ s$. 
 	
-	\vspace{-.3cm}
 	\noindent
 	\begin{minipage}[l]{.7\linewidth}
 			\setlength{\parindent}{1.5em}
-		Consider now the cube on the right. By hypothesis and \Cref{rem:kleene} its left face is a pullback. Moreover its bottom face is not a pushout but it is still a pullback by the first point of \Cref{prop:regmono} and the third one of \Cref{prop:fact}.
+		Consider now the cube on the right. By hypothesis and \Cref{rem:kleene} its left face is a pullback. Its bottom face is not a pushout but it is still a pullback by the first point of \Cref{prop:regmono} and the third one of \Cref{prop:fact}.
+		
+		\noindent 
+		\begin{minipage}[l]{.2\linewidth}
+			\xymatrix@R=15pt{K_1\ar[r]_{k_{h_E}}\ar@{>->}[d]_{k_{m_E}}&K_2\ar@{>->}[d]^{k_{n_E}}\\K_3\ar[r]^{k_{z_E}}&U}
+		\end{minipage} \hfill \begin{minipage}[r]{.7\linewidth}
+		\setlength{\parindent}{1.5em}
+			By hypothesis and the first point of \Cref{prop:eqhyp_complete} the top face is a pushout. Thus we can apply \Cref{prop:kerset} to deduce that the square on the left is a pushout.
+		\end{minipage}
 	\end{minipage}\hfill 
 	\begin{minipage}[r]{.4\linewidth}
-	\xymatrix@C=10pt@R=2pt{&A_1\ar[dd]|\hole_(.65){q_1^\star \circ s_1}\ar[rr]^{h_E} \ar@{>->}[dl]_{m_E} && A_2 \ar[dd]^{q_2^\star \circ s_2} \ar@{>.>}[dl]_(.6){n_E} \\ A_3 \ar[dd]_{q_3^\star \circ s_3}\ar[rr]^(.7){z_E} & & A \ar[dd]_(.3){q^\star \circ s}\\&{Q_1^\star}\ar[rr]|\hole^(.65){h_Q^\star}\ar@{>->}[dl]_{m_Q^\star} && {Q_2^\star} \ar@{>->}[dl]^{n_Q^\star} \\{Q_3^\star} \ar[rr]^(.65){z_Q^\star} & & Q^\star}	\end{minipage}
+	\xymatrix@C=10pt@R=10pt{&E_1\ar[dd]|\hole_(.65){q_1^\star \circ s_1}\ar[rr]^{h_E} \ar@{>->}[dl]_{m_E} && E_2 \ar[dd]^{q_2^\star \circ s_2} \ar@{>->}[dl]_(.6){n_E} \\ E_3 \ar[dd]_{q_3^\star \circ s_3}\ar[rr]^(.7){z_E} & & E \ar[dd]_(.3){q^\star \circ s}\\&{Q_1^\star}\ar[rr]|\hole^(.65){h_Q^\star}\ar@{>->}[dl]_(.4){m_Q^\star} && {Q_2^\star} \ar@{>->}[dl]^{n_Q^\star} \\{Q_3^\star} \ar[rr]^(.65){z_Q^\star} & & Q^\star}	\end{minipage}
 	
-	\noindent
-	\begin{minipage}[l]{.2\linewidth}
-		\xymatrix@R=15pt{K_1\ar[r]_{k_{h_E}}\ar@{>->}[d]_{k_{m_E}}&K_2\ar@{>->}[d]^{k_{n_E}}\\K_3\ar[r]^{k_{z_E}}&U}
-	\end{minipage}\hfill
-	\begin{minipage}[r]{.8\linewidth}
-			\setlength{\parindent}{1.5em}
-			By hypothesis and the first point of \Cref{prop:eqhyp_complete} the top face is a pushout. Thus we can apply \Cref{prop:kerset} to deduce that the square on the left is a pushout. 
-			By computing we obtain
-	\end{minipage}
+			
+		 	By computing we obtain
 \vspace{-.3cm}
 	\begin{align*}
-		q^\star \circ t \circ u_1 \circ f_n &= q^\star \circ t \circ n_E \circ \pi_2^1 = n_C^\star \circ q_2^\star \circ s_2 \circ \pi_2^1 = n_C^\star \circ q_2^\star \circ s_2 \circ \pi_2^2 =q^\star \circ t \circ u_2 \circ f_n \\
-		q^\star \circ t \circ u_1 \circ f_k &= q^\star \circ t \circ k_E \circ \pi_3^1 = k_C^\star \circ q_3^\star \circ s_3 \circ \pi_3^1 = k_C^\star \circ q_3^\star \circ s_3 \circ \pi_3^2 =q^\star \circ t \circ u_2 \circ f_k
+		&q^\star \circ t \circ u_1 \circ k_{n_E} = q^\star \circ t \circ n_E \circ \pi_2^1 =q^\star \circ n_V\circ t_2\circ \pi^1_2=
+		 n_Q^\star \circ q_2^\star \circ t_2 \circ \pi_2^1 \\= &n_Q^\star \circ q_2^\star \circ t_2 \circ \pi_2^2 =q^\star \circ n_V\circ t_2\circ \pi^2_2= q^\star \circ t \circ n_E \circ \pi_2^2 = q^\star \circ t \circ u_1 \circ k_{n_E}\\
+		 &q^\star \circ t \circ u_1 \circ k_{z_E} = q^\star \circ t \circ z_E \circ \pi_3^1 =q^\star \circ n_V\circ t_3\circ \pi^1_3=
+		 z_Q^\star \circ q_3^\star \circ t_3 \circ \pi_3^1 \\= &z_Q^\star \circ q_3^\star \circ t_3 \circ \pi_3^2 =q^\star \circ z_V\circ t_3\circ \pi^3_2= q^\star \circ t \circ z_E \circ \pi_3^2 = q^\star \circ t \circ u_1 \circ k_{z_E}
 	\end{align*}
-	We can therefore deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, and the claim follows.
+	
+	We can therefore deduce that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, and the claim now follows from \Cref{prop:eh}.
+\end{proof}
+
+\fh*
+\begin{proof}\label{proof:fh} We proceed more or less as in the proof of \Cref{prop:eh}. Define
+	\[A_E:=\{(e,e')\in E \mid q^\star(s(e))=q^\star(s(e')) \text{ and } a(e)=a(e')\}\] 
+	If $p_1, p_2\colon A_E\rightrightarrows E$ are the two projections, we know that $(A_E, p_1, p_1)$ is a kernel pair for $(q^\star \circ s, a)$. Thus there exists an isomorphism $\phi \colon A_E\to A$ such that 
+	\[\pi^A_1\circ \phi =p_1 \qquad \pi^A_2\circ \phi = p_2\]
+	
+	\smallskip \noindent
+	$(1\Rightarrow 2)$ By hypothesis $(a,b,c)$ is an e-hypergraph, then the components of $\phi^{-1}(x)$ are $q$-joined for every $x\in A$ and so:
+	\[q^\star(t_{\mathcal{H}}(\pi^A_1(x)))=q^\star(t_{\mathcal{H}}(p_1(\phi^{-1}(x))))=q^\star(t_{\mathcal{H}}(p_2(\phi^{-1}(x))))=q^\star(t_{\mathcal{H}}(\pi^A_2(x)))\]
+	\smallskip \noindent $(2\Rightarrow 3)$ This follows at once from the definition of kernel pairs.
+	
+	\smallskip \noindent $(3\Rightarrow 1)$ Let $e, e'$ be hyperedges such that $q^\star(s(e))=q^\star(s(e'))$ and $a(e)=a(e0)$. Then $(e,e')$ belongs to $A_E$ and thus we have:
+	\begin{align*}
+		&q^\star(t(e))=q^\star(t(p_1(e, e')))=q^\star(t(\pi^A_1(\phi(e,e'))))=q^\star(t(\pi^B_1(k(\phi(e,e')))))\\=&q^\star(t(\pi^B_2(k(\phi(e,e')))))=q^\star(t(\pi^A_2(\phi(e,e'))))=q^\star(t(p_2(e, e')))=q^\star(t(e'))
+	\end{align*}
+allowing us to conclude. \qedhere 
 \end{proof}
 
 
-\iffalse 
-\limt*
-\begin{proof}\label{proof:tlim}
-Let $F\colon \D\to \eg$ be a diagram of one of the shapes mentioned in the statement. Let $((\mathcal{L}, l), \{\pi_d\}_{d\in \D})$ be a limiting cone for $k_\Sigma \circ F$. By \Cref{lim}, \Cref{prop:term}, and \Cref{proof:elim} we know that $\mathcal{L}$ is an e-termgraph and we can conclude.
+\varie*
+
+
+\begin{proof}\label{proof:varie}
+	Let us examine connected limits and pushouts separately.
+	\begin{enumerate}
+		\item Let $F\colon \D\to \eggl$ be a connected diagram. Let $F(D)$ be $(f_D,g_D,h_D)\colon \mathcal{H}_D\to \mathcal{G}$, with $ \mathcal{H}_D:=(E_D, V_D, Q_D, s_D, t_D, q_D)$. Suppose that $((f,g,h), \{(a_D, b_D, c_D)\}_{D\in \D})$ is a limiting cone for $E_{\mathcal{G}}\circ F$ with $(f,g,h)\colon \mathcal{L}\to \mathcal{G}$. If we show that $(f,g,h)$ is a labelled e-hypergraph we are done. Let $e, e'\in E_{\mathcal{L}}$ be such that
+		\[q^\star_{\mathcal{L}}(s_{\mathcal{L}}(e))=q^\star_{\mathcal{L}}(s_{\mathcal{L}}(e')) \qquad f(e)=f(e')\]
+		
+		 Thus for every $D\in \D$ we have:
+		\begin{align*}
+			&q^\star_D(s_D(a_D(e)))=q^\star(b^\star_D(s_{\mathcal{L}}(e)))=c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e)))\\=&c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e')))=c^\star_D(q_{\mathcal{L}}(s_{\mathcal{L}}(e')))=q^\star(b^\star_D(s_{\mathcal{L}}(e')))=q^\star_D(s_D(a_D(e')))\\
+			&f_D(a_D(e)) = f(e)=f(e')= f_D(a_D(e'))
+		\end{align*}
+		
+		Thus $a_D(e)$ and $a_D(e')$ are $q_D$-joined and we can conclude by \Cref{lem:elimc}.
+		\item We are going to adapt the argument exploited in the proof of \Cref{lem:epo}.
+		
+		\noindent 
+		\begin{minipage}[l]{.73\linewidth}
+				Suppose that the square on the right is a pushout in $\hyp_{\eq, \mathcal{G}}$ and that $m$ is a mono in $\pbe_{\mathcal{G}}$ and, for $i\in \{1,2,3\}$, $(a_i,b_i,c_i)\colon \mathcal{G}_i\to \mathcal{G}$ is a labelled e-hypergraph. We want to show that $(a,b,c)\colon \mathcal{P}\to \mathcal{G}$ is in $\eggl$ too.
+		\end{minipage}\hfill 
+		\begin{minipage}[r]{.15\linewidth}
+			\xymatrix@R=10pt@C=15pt{(a_1, b_1, c_1) \ar[r]_{h}\ar@{>->}[d]_{m}&(a_2, b_2, c_2)\ar[d]^{n}\\(a_3, b_3, c_3)\ar[r]^{z}&(a,b, c)}
+		\end{minipage}
+		
+
+		To fix the notation, let $\mathcal{P} $ be $(E, V, Q, s, t, q)$ and, for $i\in \{1, 2, 3\}$ let $\mathcal{G}_i$ be $(E_{i}, V_i, Q_i, s_i, t_i, q_i)$.  Let, moreover, $(K_i, \pi_i^1, \pi_i^2)$
+		be a kernel pair of $(q_i^\star \circ s_i, a_i)$, again for $i\in \{1, 2, 3\}$. Finally, let $(U, u_1, u_2)$ be a kernel pair of $(q^\star \circ s, a)$. 
+		
+		\noindent
+		\begin{minipage}[l]{.4\linewidth}
+			\setlength{\parindent}{1.5em}
+			Consider the cube on the right. By hypothesis and \Cref{rem:kleene} its left face is a pullback. Moreover its bottom face is not a pushout but it is still a pullback by the first point of \Cref{prop:regmono} and the third one of \Cref{prop:fact} and by the fact that, since limits commute with limits,  $(-)\times E_{\mathcal{G}}$  preserves pullbacks.
+		\end{minipage}\hfill 
+		\begin{minipage}[r]{.5\linewidth}
+			\xymatrix@C=20pt@R=10pt{&E_1\ar[dd]|\hole_(.65){(q_1^\star \circ s_1, a_1)}\ar[rr]^{h_E} \ar@{>->}[dl]_{m_E} && E_2 \ar[dd]_{(q_2^\star \circ s_2, a_2)} \ar@{>->}[dl]_(.6){n_E} \\ E_3 \ar[dd]_{(q_3^\star \circ s_3, a_3)}\ar[rr]^(.7){z_E} & & E \ar[dd]_(.3){(q^\star \circ s, a)}\\&{Q_1^\star}\times E_{\mathcal{G}}\ar[rr]|\hole^(.66){h_Q^\star\times \id{E_{\mathcal{G}}}}\ar@{>->}[dl]_(.55){m_Q^\star\times \id{E_{\mathcal{G}}}} && {Q_2^\star\times E_{\mathcal{G}}} \ar@{>->}[dl]^{n_Q^\star\times \id{E_{\mathcal{G}}}} \\{Q_3^\star}\times E_{\mathcal{G}} \ar[rr]^(.5){z_Q^\star\times \id{E_{\mathcal{G}}}} & & Q^\star\times E_{\mathcal{G}}}	\end{minipage}
+		
+		
+		
+		\noindent 
+		\begin{minipage}[l]{.2\linewidth}
+			\xymatrix@R=15pt@C=30pt{K_1\ar[r]_{k_{h_E}}\ar@{>->}[d]_{k_{m_E}}&K_2\ar@{>->}[d]^{k_{n_E}}\\K_3\ar[r]^{k_{z_E}}&U}
+		\end{minipage} \hfill \begin{minipage}[r]{.7\linewidth}
+			\setlength{\parindent}{1.5em}
+			By hypothesis and the first point of \Cref{prop:eqhyp_complete} the top face is a pushout. Thus we can apply \Cref{prop:kerset} to deduce again that the square on the left is a pushout.
+		\end{minipage}
+		
+		By computing we obtain
+		\vspace{-.3cm}
+		\begin{align*}
+		&q^\star \circ t \circ u_1 \circ k_{n_E} = q^\star \circ t \circ n_E \circ \pi_2^1 =q^\star \circ n_V\circ t_2\circ \pi^1_2=
+		n_Q^\star \circ q_2^\star \circ t_2 \circ \pi_2^1 \\= &n_Q^\star \circ q_2^\star \circ t_2 \circ \pi_2^2 =q^\star \circ n_V\circ t_2\circ \pi^2_2= q^\star \circ t \circ n_E \circ \pi_2^2 = q^\star \circ t \circ u_1 \circ k_{n_E}\\
+		&q^\star \circ t \circ u_1 \circ k_{z_E} = q^\star \circ t \circ z_E \circ \pi_3^1 =q^\star \circ n_V\circ t_3\circ \pi^1_3=
+		z_Q^\star \circ q_3^\star \circ t_3 \circ \pi_3^1 \\= &z_Q^\star \circ q_3^\star \circ t_3 \circ \pi_3^2 =q^\star \circ z_V\circ t_3\circ \pi^3_2= q^\star \circ t \circ z_E \circ \pi_3^2 = q^\star \circ t \circ u_1 \circ k_{z_E}
+	\end{align*}
+	
+		From these identities we get that $q^\star \circ t \circ u_1 = q^\star \circ t \circ u_2$, and the claim follows from \Cref{prop:eh}. \qedhere 
+	\end{enumerate}
 \end{proof}
-\fi 
 
 \section{Some properties of comma categories}
 In this section we briefly recall the definition of the comma category \cite{mac2013categories} and some of its properties.
