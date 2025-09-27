@@ -1809,7 +1809,7 @@ This section presents the framework through adhesive categories, including its e
 
 \subsection{Hypergraphs with equivalence}
 
-Let us start with the case of general hypergraphs. These were introduced in~\cite{concur2006}, even if no general consideration about their structure as a category was proved, and adhesivity, 
+Let us start with the case of general hypergraphs. These were introduced in~\cite{concur2006}, even if no general consideration about their structure as a category was provided, and adhesivity, 
 which is the main focus here, was yet to be presented to the world.
 
 \begin{defi}
@@ -2087,11 +2087,12 @@ By definition, \Cref{lem:pbmono} and putting together Lemmas \ref{lem:equ}, \ref
 We are now going to generalize the work done in the previous sections equipping term graphs with an equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{defi}
-	Let $\mathcal{G}$ be an hypergraph with equivalence, the category $\EqHyps$ of \emph{labelled hypergraph with equivalence}  is $\EqHyp/\mathcal{G}$.
+	Let $\mathcal{G}$ be an hypergraph with equivalence. The category $\EqHyps$ of hypergraph with equivalence \emph{labelled by $\mathcal{G}$}  is $\EqHyp/\mathcal{G}$.
 \end{defi}
 
-\begin{rem} The equivalence relation on the  nodes of the labelling hypergraph put constraints on the possible relations on the labelled hypergraphs. Indeed, consider the following hypergraphs with equivalences $\mathcal{G}$ and $\mathcal{H}$.
+\begin{rem} The equivalence relation on the  nodes of the labelling hypergraph put constraints on the relations between the labelled hypergraphs. Consider the following hypergraphs with equivalences $\mathcal{G}$ and $\mathcal{H}$.
 
+\smallskip
 \noindent
 \begin{minipage}[l]{.6\linewidth}
 	\setlength{\parindent}{1.5em}
@@ -2147,10 +2148,10 @@ We are now going to generalize the work done in the previous sections equipping 
 \end{tikzpicture}
 \end{minipage}
 
- For both cases we have:
+ For both cases we have
 \[ f(q_{\mathcal{H}}(w))=v \neq w =q_{\mathcal{G}}(w)=q_\mathcal{G}(\id{V_{\mathcal{G}}}(w)) \qquad  g(q_{\mathcal{H}}(v))=w \neq v =q_{\mathcal{G}}(v)=q_\mathcal{G}(\id{V_{\mathcal{G}}}(v))  \]
 	
-	Intuitively, labelling with $\mathcal{G}$ force us to keep all the sorts (i.e.~the labellings of the nodes) distinguished, while labelling with $\mathcal{H}$ allows us to merge different sorts.
+	Intuitively, labelling with $\mathcal{G}$ force us to keep all the sorts (i.e.~the labelling of the nodes) distinguished, while labelling with $\mathcal{H}$ allows us to merge different sorts.
 \end{rem}
 
 \noindent 
@@ -2189,7 +2190,7 @@ Using \Cref{cor:mono1} and \Cref{cor:mono2} we immediately get the following res
 
 We can now easily define left-monogamous, pruned ans separated labelled hypergraphs with equivalence.
 
-\begin{defi}Let $\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ a labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
+\begin{defi}Let $\mathcal{G}$ be an hypergraph and $(\mathcal{H},(f,g))$ a labelled hypergraph with equivalence.  We say that $(\mathcal{H},(f,g))$ is a \emph{left-monogamous} (resp.~\emph{separated, pruned}) $\mathcal{G}$-hypergraph with equivalence if $\mathcal{H}$ is left-monogamous (resp.~separated, pruned).
 	
 	We will denote by $\lmo_{\eq, \mathcal{G}}$, $\shyp_{\eq, \mathcal{G}}$, $\pshyp_{\eq, \mathcal{G}}$ the subcategories of $\hyp_{\eq, \mathcal{G}}$ given by left-monogamous, separated, pruned  and separated labelled hypergraphs with equivalence.
  \end{defi}
@@ -2205,7 +2206,7 @@ We can now easily define left-monogamous, pruned ans separated labelled hypergra
  	\end{enumerate}
  \end{prop}
  
- In particular, the previous  proposition, together with Lemmas \ref{lem:equ}, \ref{lem:coequ}, \ref{colim} and \Cref{lim}, yields the following
+ In particular, the previous proposition, together with Lemmas \ref{lem:equ}, \ref{lem:coequ}, \ref{colim} and \Cref{lim}, yields the following result.
  
  \begin{cor}\label{cor:eti}
  $\lmo_{\eq, \mathcal{G}}$ is closed in $\hyp_{\eq, \mathcal{G}}$ under equalizers, binary product and pullbacks. $\pshyp_{\eq, \mathcal{G}}$ is closed in $\hyp_{\eq, \mathcal{G}}$ under pullbacks. Both are closed in  $\hyp_{\eq, \mathcal{G}}$ under pushouts along arrows in $\pbc_{\mathcal{G}}$.
@@ -2297,7 +2298,7 @@ We will denote by $\egg$ the full subcategory of $\EqHyp$ whose objects are e-hy
 We can reformulate the definition of e-hypergraphs in two other ways. See \Cref{proof:eh} for a proof
 
 \begin{restatable}{prop}{eh}\label{prop:eh}
-Consider an hypergraph with equivalence $\mathcal{G} = (E, V, Q, s, t, q)$ and let $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ be kernel pairs for, respectively, $q^\star\circ s$ and $q^\star\circ t$. Then the following are equivalent:
+Let $\mathcal{G} = (E, V, Q, s, t, q)$ be an hypergraph with equivalence and $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ kernel pairs for, respectively, $q^\star\circ s$ and $q^\star\circ t$. Then the following facts are equivalent
 \begin{enumerate}
 	\item $\mathcal{G}$ is an e-hypergraph;
 	\item $q^\star\circ t\circ \pi^A_1=q^\star\circ t\circ \pi^A_2$;
@@ -2339,7 +2340,7 @@ We can now turn to pushouts. We refer again the reader to \Cref{proof:epo} for t
 	\xymatrix@R=10pt{\mathcal{G}_1 \ar[r]_{h}\ar@{>->}[d]_{m}&\mathcal{G}_2\ar[d]^{n}\\\mathcal{G}_3\ar[r]^{z}&\mathcal{P}}
 \end{minipage}
 
-Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $E$. By definition and \Cref{lem:pbmono}, we have that such class is closed under composition and decomposition, it contains all isomorphisms and it is stable under pullbacks. Using \Cref{lem:pbmono} and \Cref{lem:epo} we can further deduce that it is stable under pushouts. Then \Cref{thm:slice-functors} and \Cref{cor:eqade} yield the following.
+Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $E$. By definition and \Cref{lem:pbmono}, we have that such class is closed under composition and decomposition, it contains all isomorphisms and it is stable under pullbacks. Using \Cref{lem:pbmono} and \Cref{lem:epo} we can further deduce that it is stable under pushouts. Then \Cref{thm:slice-functors} and \Cref{cor:eqade} yield the following result.
 
 \begin{cor}\label{cor:pbe}
 	$\egg$ is $\pbe$-adhesive.
@@ -2347,7 +2348,7 @@ Let now $\pbe$ be the class of arrows in $\egg$ that are sent to $\pbc$ by $E$. 
 
 As in the previous section, we can focus ourselves to two subcategories of $\egg$.
 
-\begin{defi}We will define $\elm$, $\eps$ as the full subcategories of $\egg$ given by those e-hypergraphs which are, respectively, left-monogamous and pruned and separated. We will denote by $M_{\mathsf{e}}$ and by $S_{\mathsf{e}}$ the corresponding functors.
+\begin{defi}We will define $\elm$ and $\eps$ as the full subcategories of $\egg$ given by those e-hypergraphs that are, respectively, left-monogamous and pruned and separated. We will denote by $M_{\mathsf{e}}$ and by $S_{\mathsf{e}}$ the corresponding functors.
 \end{defi}
 
 Let $\epbl$ and $\epbs$ be the classes of arrows in  $\elm$ and $\eps$ lying in $\pbl$ and $\pbs$, respectively. By Lemmas \ref{lem:equ}, \ref{lem:coequ} and \Cref{cor:pbe} we obtain immediately the following result.
@@ -2398,10 +2399,11 @@ Finally, we can turn our attention to the labelled context. In such an environme
 	\end{tikzpicture}
 \end{minipage}
 
-We begin by providing an equivalent characterization to labelled e-hypergraphs (see \Cref{proof:fh} for details).
+\smallskip
+We now provide an equivalent characterisation to labelled e-hypergraphs (see \Cref{proof:fh} for details).
 
 \begin{restatable}{lem}{fh}\label{lem:fh}
-Let $(a,b,c)\colon \mathcal{H}\to \mathcal{G}$ be an object of $\hyp_{\eq, \mathcal{G}}$ and let $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ be kernel pairs for, respectively, $(q^\star\circ s_{\mathcal{H}}, a),(q^\star\circ t_{\mathcal{H}}, a)\colon E_{\mathcal{H}}\to Q_{\mathcal{H}}\times E_{\mathcal{G}}$. Then the following are equivalent:
+Let $(a,b,c)\colon \mathcal{H}\to \mathcal{G}$ be an object of $\hyp_{\eq, \mathcal{G}}$ and $(A, \pi^A_1, \pi^A_2)$, $(B, \pi^B_1, \pi^B_2)$ kernel pairs for, respectively, $(q^\star\circ s_{\mathcal{H}}, a),(q^\star\circ t_{\mathcal{H}}, a)\colon E_{\mathcal{H}}\to Q_{\mathcal{H}}\times E_{\mathcal{G}}$. Then the following are equivalent
 \begin{enumerate}
 	\item $(a,b,c)$ is a labelled e-hypergraph;
 	\item $q^\star\circ t_{\mathcal{H}}\circ \pi^A_1=q^\star\circ t_{\mathcal{H}}\circ \pi^A_2$;
@@ -2415,7 +2417,7 @@ We want now to show that pullbacks and pushout in $\eggl$ are computed as in $\h
 
 
 \begin{restatable}{lem}{varie}\label{prop:varie}
-	Let $\mathcal{G}$ be an hypergraph with equivalence, then $\eggl$ is closed in $\hyp_{\eq, \mathcal{G}}$ under connected limits and pushouts alongs arrows in $\pbe_\mathcal{G}$, where $\pbe_\mathcal{G}$ is the class of morphisms in $\eggl$ whose image through $E_\mathcal{G}$ is in $\pbc_\mathcal{G}$. 
+	Let $\mathcal{G}$ be an hypergraph with equivalence. Then $\eggl$ is closed in $\hyp_{\eq, \mathcal{G}}$ under connected limits and pushouts alongs arrows in $\pbe_\mathcal{G}$, where $\pbe_\mathcal{G}$ is the class of morphisms in $\eggl$ whose image through $E_\mathcal{G}$ is in $\pbc_\mathcal{G}$. 
 \end{restatable}
 
 %
@@ -2432,7 +2434,7 @@ Now, let $\lelm$ and $\leps$ be the full subcategories of $\eggl$ given by the o
 When $\mathcal{G}$ is the hypergraph associated to an algebraic signature, the object of  $\lelm$ coincides with what in \cite{uovadesive} are called \emph{e-term graphs with equivalence}. 
 \end{rem}
 
-Putting together \Cref{cor:eti} with \Cref{prop:varie} we get the following.
+Putting together \Cref{cor:eti} with \Cref{prop:varie} we get the following result.
 
 \begin{lem}Let $\mathcal{G}$ be an hypergraph with equivalence, then $\lelm$ and $\leps$ are closed in $\hyp_{\eq, \mathcal{G}}$ under pullbacks and pushouts along arrows in $\pbc_{\mathcal{G}}$.
 \end{lem}
@@ -2940,7 +2942,7 @@ which can be modelled as the DPO rule below
 }
 \]
 %
-Intuitively, the e-term graph obtained after the application of the rule seem to represent a recursive term such 
+Intuitively, the e-term graph obtained after the application of the rule seems to represent a recursive term such 
 as $rec_x. 1 \times x$, highlighting the difficulty of extracting a term representation out of an e-term graph.
 
 The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
@@ -2949,9 +2951,10 @@ This is forbidden by using rules \emph{with negative application conditions}, gi
 $L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
 be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
 as the right-hand side itself.
-Indeed, consider again the rule $x / x \to 1$: once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
-keep on adding it, since e.g. the two pictures below intuitively represent the same EGG
-\[xxx\]
+If you consider e.g. the rule $x / x \to 1$, once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
+keep on adding it.
+% since e.g. the two pictures below intuitively represent the same EGG
+%\[xxx\]
 %
 The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
 
@@ -3002,15 +3005,15 @@ Despite the interest they have ben raising as an efficient data structure, we ar
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
 among the two proposals, which appear to be related yet quite different.
 %
-In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. We adopted a
-more down-to-earth approach by equipping
+%In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. 
+We adopted a more down-to-earth approach by equipping
 concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
 at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories. 
 The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
 and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
 Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
 $\Set$. At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
-is actually $\mathcal{M}$-adhesive, thus allowing to exploit all the features of the framework
+is $\mathcal{M}$-adhesive, thus allowing to exploit the features of the framework
 as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which facilitates its practical application 
 and theoretical analysis, and aligns with the traditional methodology adopted in the graph transformation community 
 of explicitly endowing (hyper)graphs with additional structure.
