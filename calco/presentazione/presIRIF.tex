@@ -183,14 +183,16 @@
      				\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
      		\end{pgfonlayer}\end{tikzpicture}
      \end{center}
-     
+     \begin{center}
+       The equation $x / x = 1$, graphically.
+     \end{center}     
 \end{frame}
 
 \begin{frame}{Why EGGs?}
      
      Equations are interpreted as (possibly bidirectionl) rules.
      
-     \pause \medskip However, rewriting does not remove the left-hand side of the rule.
+     \pause \medskip However, rewriting does not imply removing the left-hand side of the rule.
      
      \pause \medskip Instead, a rewriting step adds nodes, edges and equivalence classes to a source graph.
     
@@ -243,18 +245,17 @@
 				\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
 			\end{pgfonlayer}\begin{pgfonlayer}{background}
 				\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
-                \node [below=2cm, align=flush center,text width=5cm] at (v1)
-                {
-                	The rule $x / x \Rightarrow 1$, graphically.
-                };
 		\end{pgfonlayer}
 \end{tikzpicture}
 	}
 \end{center}
+\begin{center}
+The rule $x / x \Rightarrow 1$, graphically.
+\end{center}
       \pause \medskip At the end, an ``optimal'' term is extracted.
 \end{frame}
 
-\begin{frame}{Aims of this work} 
+\begin{frame}{What we want to do} 
     \begin{itemize}
         \item Formalise the definition of EGGs in a categorical setting and study their properties. \pause \medskip 
         \item Develop the theory of EGGs rewriting using the Double Pushout (DPO) paradigm.
@@ -342,7 +343,10 @@
 	A categorical framework for DPO rewriting are \emph{$\mathcal{M}$-adhesive categories}.
 	
 		\medskip \pause
-		Let $\mathcal{M}$ be a class of monos in a category $\X$, containing all isomorphisms, stable under pullbacks and composition. $\X$ is \emph{$\mathcal{M}$-adhesive} if, given a cube below with the hooked arrows in $\mathcal{M}$, the bottom face a pushout and the back faces pullbacks, we have:
+		Let $\mathcal{M}$ be a class of monomorphisms in a category $\X$, which contains all isomorphisms and is stable under pullbacks and composition. 
+		
+		\medskip \pause
+		$\X$ is \emph{$\mathcal{M}$-adhesive} if, given a cube below with the hooked arrows in $\mathcal{M}$, the bottom face a pushout and the back faces pullbacks, we have
 		
 		\parbox{5cm}{\centering \begin{tikzpicture}
 				\node(C)at(-1,0.4){$C$};
@@ -368,25 +372,26 @@
 				\draw[>-](A)--(0.05, 0.61);
 				\draw[<-](C)--(-0.05,0.59);
 		\end{tikzpicture}} \qquad 	\parbox{4cm}{\centering
-			Top face is a pushout \\ $\iff$ \\ Front faces are pullbacks}
+			top face is a pushout \\ $\iff$ \\ front faces are pullbacks}
 			
 
 \end{frame}
 
 \begin{frame}
 
-If a category is $\mathcal{M}$-adhesive, many properties for DPO rewriting can be proved once and for all: Church-Rosser, termination, concurrent semantics...
+If a category is $\mathcal{M}$-adhesive, many properties for DPO rewriting can be proved once and for all: Church-Rosser, termination, concurrent semantics\ldots
 
 \pause \medskip
-Also, $\mathcal{M}$-adhesivity is preserved by common categorical constructions:\pause
+Also, $\mathcal{M}$-adhesivity is preserved by common categorical constructions, such as 
+\pause
 \begin{itemize}
 	\item products\pause 
 	\item functor categories \pause
 	\item slices and coslices
 \end{itemize}
 
-\pause 
-Moreover, a full subcategory closed under the relevant pullbacks and pushouts inherits the adhesivity properties of the bigger one.
+\pause  \medskip
+Moreover, a full subcategory closed under the relevant pullbacks and pushouts inherits the adhesivity properties of the larger one.
 
 \pause \medskip
 Yet, proving that a category is $\mathcal{M}$-adhesive can be ``tricky'' \ldots
@@ -409,11 +414,67 @@ A \emph{hypergraph} is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\em
 
 \end{frame}
 
+\begin{frame}{Labelling  hypergraphs}
+	
+	\parbox{.5\linewidth}{Given an algebraic signature $\Sigma$ one can build an hypergraph $\mathcal{G}_\Sigma$ with a single node and edges corresponding with operations of $\Sigma$.} \hfill
+		\begin{minipage}[r]{.4\linewidth}
+			\begin{tikzpicture}
+				\begin{pgfonlayer}{nodelayer}
+					\node[style=node] (v) at (0, 0){};
+					\node[style=none] (vlab) at (0, -0.4){$v$};
+					
+					\node[style=small box] (n) at (1.8, 0) {};
+					\node[style=none] (nlab) at (2.4, 0.0) {$1$};
+					\node[style=none] (nattach) at (1.6, 0) {};
+					
+					
+					\node[style=medium box] (times) at (-1, 1.8) {};
+					\node[style=none] (timeslab) at (-1, 2.6) {$\cdot$};
+					\node[style=none] (timesin1) at (-1.2, 1.25) {};
+					\node[style=none] (timesin2) at (-0.8, 1.25) {};
+					\node[style=none] (timesout) at (-0.8, 1.8){};
+					
+					\node[style=medium box] (div) at (1, 1.8) {};
+					\node[style=none] (divlab) at (1, 2.6) {$(-)^{-1}$};
+					\node[style=none] (divin1) at (0.8, 1.25) {};
+					\node[style=none] (divin2) at (1.2, 1.25) {};
+					\node[style=none] (divout) at (0.8, 1.8){};
+				\end{pgfonlayer}
+				
+				
+				\begin{pgfonlayer}{edgelayer}
+					\draw[style=diredge, in=270, out= 160] (v) to (timesin2.center); 
+					\draw[style=diredge,out=200, in= 270] (v) to (timesin1.center);
+					\draw[style=diredge,in=0, out=0] (nattach.center) to (v);
+					
+					\draw[style=diredge,in=270, out=20] (v) to (divin2.center); 
+					\draw[style=diredge,out=60, in= 270] (v) to (divin1.center);
+					
+					\draw[style=diredge, in=120, out=0] (timesout.center) to (v);
+					\draw[style=diredge, in=90, out=180] (divout.center) to (v);
+				\end{pgfonlayer}
+				
+			\end{tikzpicture}
+		\end{minipage}
+	\pause 
+	
+	\medskip 
+	The category $\hyp_{\Sigma}$ of \emph{labelled hypergraphs} is the slice $\hyp/\mathcal{G}_\Sigma$.
+	
+	\pause 
+	\begin{theorem}
+		 \hspace{1pt}$\hyp_\Sigma$ is adhesive.
+	\end{theorem}	
+\end{frame}
+
 \begin{frame}{Why labelling}
 
-DPO rewriting relates isomorphic classes of objects
-
-\begin{center}
+\begin{minipage}[l]{.3\linewidth}
+DPO rewriting relates isomorphic classes of objects.
+\end{minipage}
+\qquad 
+\begin{minipage}[l]{.7\linewidth}
+%\begin{center}
         \begin{tikzpicture}
                 \begin{pgfonlayer}{nodelayer}
                         \node[style=none] (lab1) at (-1.8, 0.8);
@@ -451,10 +512,14 @@ DPO rewriting relates isomorphic classes of objects
                         \draw[in=180, out=-30](v2) to (bh3);
                 \end{pgfonlayer}
         \end{tikzpicture}
-\end{center}
+%\end{center}
+\end{minipage}
 \pause
-In the slice, ``labels'' must be preserved.
-\begin{center}
+\begin{minipage}[l]{.3\linewidth}
+In a slice category, morphisms preserve ``labels''.
+\end{minipage}\qquad 
+\begin{minipage}[l]{.2\linewidth}
+%\begin{center}
 	\begin{tikzpicture}
 		\begin{pgfonlayer}{nodelayer}
 			\node[style=node] (v) at (0, 0){};
@@ -494,7 +559,8 @@ In the slice, ``labels'' must be preserved.
 			\draw[in=-30, out=0] (divout.center) to (v);
 		\end{pgfonlayer}
 	\end{tikzpicture}
-\qquad
+	\end{minipage} \qquad \pause
+	\begin{minipage}{.5\linewidth}
 		\begin{tikzpicture}
 			\begin{pgfonlayer}{nodelayer}
 				\node[style=none] (lab1) at (-1.8, 0.8) {};
@@ -532,7 +598,8 @@ In the slice, ``labels'' must be preserved.
 				\draw[in=180, out=-30](v2) to (bh3);
 			\end{pgfonlayer}
         	\end{tikzpicture}
-\end{center}
+%\end{center}
+	\end{minipage}
 
 \end{frame}
 
@@ -540,7 +607,7 @@ In the slice, ``labels'' must be preserved.
 
 \begin{frame}{Hypergraphs with equivalence}
 
-A \emph{(labelled) hypergraph with equivalence} is a (labelled) hypergraph equipped with a surjection $q\colon V\eto Q$ from the set of nodes. \pause 
+A \emph{(labelled) hypergraph with equivalence} is a (labelled) hypergraph equipped with a surjection $q\colon V\eto Q$ from the set of nodes.
 
 \pause \medskip
 We get categories $\EqHyp$ and $\EqHyps$ asking that the nodes part of a morphism induces a morphism between the quotients. 
@@ -725,8 +792,8 @@ $\EqHyps$ is actually the slice over $\mathcal{G}_\Sigma$ endowed with the quoti
 
 Luckily in $\catname{Set}$ we can factor any arrow as a surjection followed by an injection. 
 
-\pause 
-General recipe for limits: \pause 
+\pause \medskip
+General recipe for limits \pause 
 
 \begin{enumerate}
 	\item compute the limit $(E, V, s,t)$ of the underlying hypergraphs; \pause 
@@ -809,7 +876,7 @@ Pushouts along regular monos in $\EqHyp$ are not stable.
 
 \begin{frame}{Hypergraphs with equivalence - adhesivity}
 	\begin{minipage}[l]{.6\linewidth}
-		We can find another class to test for adhesivity. Let $\pbc$ be the class of monos of $\EqHyp$ such that the square aside is a pullback.
+		We must find another class to test for adhesivity. Let $\pbc$ be the class of monos of $\EqHyp$ such that the square aside is a pullback.
 	\end{minipage}\qquad 
 	\begin{minipage}{.3\linewidth}
 	\xymatrix{V \ar@{>>}[d]_{q} \ar@{>->}[r]^{k}& W \ar@{>>}[d]^p\\ Q \ar@{>->}[r]_{u} & P }
@@ -833,8 +900,39 @@ Pushouts along regular monos in $\EqHyp$ are not stable.
 
 \begin{frame}{Congruences}
 
-General equivalence relations are not enough. We want to restrict to \emph{congruences}: whenever the relation identifies the source of two hyperedges, it identifies their targets too. 
-	
+\begin{minipage}[l]{.6\linewidth}
+General equivalence relations are not enough. We want \emph{congruences}: 
+if a relation identifies the sources of two hyperedges, it must identify their targets too. 
+\end{minipage}\qquad 
+\begin{minipage}[r]{.3\linewidth}
+	\begin{tikzpicture}
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=small box](a1) at (-1.8, -0.5){$a$};
+                \node[style=none] (a1att) at (-1.5, -0.5){};
+                \node[style=node](v1) at (-0.9, -0.5){};
+                \node[style=small box](a2) at (-1.8, 0.5){$a$};
+                \node[style=none] (a2att) at (-1.5, 0.5){};
+                \node[style=node](v2) at (-0.9, 0.5){};
+                \node[style=medium box](div) at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, -0.3){};
+                \node[style=none] (divsnd) at (-0.3, 0.3){};
+                \node[style=none] (divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{edgelayer}
+                \draw(a1att.center) to (v1);
+                \draw(a2att.center) to (v2);
+                \draw[out=0, in=-120] (v1) to (divfst.center);
+                \draw[out=0, in=120](v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+        	\draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-.6, -0.2);
+        	\draw[dashed, rounded corners] (-1.2, 0.2) rectangle (-.6, 0.8);
+        	\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+        \end{pgfonlayer}
+\end{tikzpicture}
+\end{minipage}
 \pause 
 
 \begin{definition}\justifying 
@@ -843,18 +941,149 @@ We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \ci
 \end{definition}	
 	
 	\pause 
-	Restricting to e-hypergraphs we get: \pause 
+	Restricting to e-hypergraphs we get \pause 
 \begin{itemize}\justifying
-	\item $\egg$: full subcategory of e-hypergraphs; \pause 
+	\item $\egg$: the category of e-hypergraphs is a full subcategory of $\EqHyp$; \pause 
 	\item $\egg_\Sigma$: the subcategory of $\EqHyp_\Sigma$ whose underlying hypergraph is in $\egg$, it is actually a slice of $\egg$.
 \end{itemize}	
 	
 \end{frame}
 
+\begin{frame}{The key example}
+
+\begin{center}
+\begin{tikzpicture}[baseline=(w)]
+        \begin{pgfonlayer}{nodelayer}
+                \node[style=small box](a1) at (-1.8, -0.5){$a$};
+                \node[style=none] (a1att) at (-1.5, -0.5){};
+                \node[style=node](v1) at (-0.9, -0.5){};
+                \node[style=small box](a2) at (-1.8, 0.5){$a$};
+                \node[style=none] (a2att) at (-1.5, 0.5){};
+                \node[style=node](v2) at (-0.9, 0.5){};
+                \node[style=medium box](div) at (0, 0){$/$};
+                \node[style=none](divfst) at (-0.3, -0.3){};
+                \node[style=none] (divsnd) at (-0.3, 0.3){};
+                \node[style=none] (divout) at (0.3, 0){};
+                \node[style=node] (w) at (0.9, 0){};
+                
+                 \node [below=.5cm, align=flush center,text width=2cm] at (v1)
+                {
+                	Figure $(1)$.
+                };
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{edgelayer}
+                \draw(a1att.center) to (v1);
+                \draw(a2att.center) to (v2);
+                \draw[out=0, in=-120] (v1) to (divfst.center);
+                \draw[out=0, in=120](v2) to (divsnd.center);
+                \draw(divout.center) to (w);
+        \end{pgfonlayer}
+        \begin{pgfonlayer}{eqlayer}
+        	\draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-.6, -0.2);
+        	\draw[dashed, rounded corners] (-1.2, 0.2) rectangle (-.6, 0.8);
+        	\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+        \end{pgfonlayer}
+\end{tikzpicture}
+\qquad \qquad 
+\begin{tikzpicture}[baseline=(w)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a1) at (-2.3, -0.5){$a$};
+		\node[style=none] (a1att) at (-2.3, -0.5){};
+		\node[style=node](v1) at (-1.4, -0.5){};
+		\node[style=node](w1) at (-0.9, -0.5){};
+		\node[style=small box](a2) at (-2.3, 0.5){$a$};
+		\node[style=none] (a2att) at (-2.3, 0.5){};
+		\node[style=node](v2) at (-1.4, 0.5){};
+		\node[style=node](w2) at (-0.9, 0.5){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-1.15,-0.5)
+		{
+			Figure $(2)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a1att.center) to (v1);
+		\draw(a2att.center) to (v2);
+		\draw[out=0, in=-120] (w1) to (divfst.center);
+		\draw[out=0, in=120](w2) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-1.7, 0.2) rectangle (-0.6, 0.8);
+		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, -0.2);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[baseline=(w)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=small box](a) at (-1.8, 0){$a$};
+		\node[style=none] (aatt) at (-1.5, 0){};
+		\node[style=node](v) at (-0.9, 0){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-0.9,-0.5)
+		{
+			Figure $(3)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(aatt.center) to (v);
+		\draw[out=-60, in=-180] (v) to (divfst.center);
+		\draw[out=60, in=-180](v) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+				\draw[dashed, rounded corners] (-1.2, -0.3) rectangle (-.6, 0.3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\qquad \qquad 
+\begin{tikzpicture}[baseline=(w)]
+	\begin{pgfonlayer}{nodelayer}
+		\node[style=node](w1) at (-0.9, -0.5){};
+		\node[style=small box](a2) at (-2.3, 0){$a$};
+		\node[style=none] (a2att) at (-2.3, 0){};
+		\node[style=node](v) at (-1.4, 0){};
+		\node[style=node](w2) at (-0.9, 0.5){};
+		\node[style=medium box](div) at (0, 0){$/$};
+		\node[style=none](divfst) at (-0.3, -0.3){};
+		\node[style=none] (divsnd) at (-0.3, 0.3){};
+		\node[style=none] (divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		
+		      \node [below=.5cm, align=flush center,text width=2cm] at (-1.15, -0.5)
+		{
+			Figure $(4)$.
+		};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw(a2att.center) to (v);
+		\draw[out=0, in=-120] (w1) to (divfst.center);
+		\draw[out=0, in=120](w2) to (divsnd.center);
+		\draw(divout.center) to (w);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
 
 
 \begin{frame}{(labelled) e-hypergraphs}
-	Let $\pbe$ and $\pbe_\Sigma$ be the restriction of $\pbc$ and $\pbc_\Sigma$  to the suitable subcategories of e-hypergraphs. 
+	Let $\pbe$ and $\pbe_\Sigma$ be the restriction of $\pbc$ and $\pbc_\Sigma$  to the subcategories of e-hypergraphs. 
 	
 	\pause 
 	\begin{theorem}
@@ -862,7 +1091,7 @@ We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \ci
 	\end{theorem}
 \end{frame}
 
-\begin{frame}{The same key example}
+\begin{frame}{The key example}
 
 \begin{center}
 \begin{tikzpicture}[baseline=(w)]
@@ -1044,15 +1273,13 @@ We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \ci
 				\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
 			\end{pgfonlayer}\begin{pgfonlayer}{background}
 				\draw[color=white] (-1.5, 0.2) rectangle (1.5, -0.2);
-                \node [below=2cm, align=flush center,text width=5cm] at (v1)
-                {
-                	The rule $x / x \Rightarrow 1$, graphically.
-                };
 		\end{pgfonlayer}
 \end{tikzpicture}
 	}
 \]
-
+\begin{center}
+                	The rule $x / x \Rightarrow 1$, graphically.
+\end{center}
 \[
 	\pause
 	\begin{tikzpicture}[baseline=(w)]
@@ -1174,13 +1401,13 @@ We will say that $\mathcal{G}$ is an \emph{e-hypergraph} if $q^\star \circ t \ci
 		([shift={(-0.2,0)}]v2.west) --
 		(-.9,-1.2)--(.9,-1.2)--([shift={(0.2,0)}]w.east)--
 		([shift={(0,0.2)}]w.north)  -- ([shift={(-0.2,0)}]w.west)-- (0.7,-0.8)--(-0.7,-0.8)--([shift={(0.2,0)}]v2.east)-- cycle;
-		                \node [below=2cm, align=flush center,text width=5cm] at (v1)
-                {
-                	The rule $1 \ast x \Rightarrow x$, graphically.
-                };
 	\end{tikzpicture}
 }
 \]
+\begin{center}
+               	The rule $1 \ast x \Rightarrow x$, graphically.
+\end{center}
+
 \end{frame}
 
 \begin{frame}{The whole picture}
@@ -1216,8 +1443,9 @@ Exploit features of the DPO paradigm (ie~parallelism, causality) for EGGs update
 
 \medskip How far can we move way from $\catname{Set}$?\pause 
 \begin{itemize}
-	\item Edges and nodes can be taken from another suitable category.   \pause 
-	\item Combine various categorical construction to add features to EGGs (e.g.~hierarchy of edges) while retaining adhesivity.
+	\item Edges and nodes taken from a different category (hypergraphs are presheaves\ldots)
+		 \pause 
+	\item Combine categorical constructions to add features to EGGs (ie hierarchy of edges) %while retaining adhesivity.
 \end{itemize}
 \end{frame}
 
