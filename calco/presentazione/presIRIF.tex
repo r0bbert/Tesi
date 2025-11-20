@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
-%\usepackage{beamer}
+\usepackage{beamer}
 \usepackage{amsthm,amsmath,amssymb,mathrsfs, dsfont}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -79,23 +79,21 @@
 	\end{frame}
 }
 
-\newcommand{\catname}[1]{\textbf{\textup{#1}}}
 \newcommand{\lab}{\catname{LHyp}}
 \newcommand{\lmo}{\catname{LMH}}
-\newcommand{\hyp}{\catname{Hyp}}
 \newcommand{\phyp}{\catname{pHyp}}
 \newcommand{\pshyp}{\catname{pSep}}
 \newcommand{\shyp}{\catname{Sep}}
-\newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
-\newcommand{\EqHyp}{\catname{Hyp}_{\mathsf{eq}}} %equivalence hypergraphs
+%\newcommand{\hyps}{\catname{Hyp}_{\Sigma}}
+%\newcommand{\EqHyp}{\catname{Hyp}_{\mathsf{eq}}} %equivalence hypergraphs
 \newcommand{\EqsHyp}{\catname{Sep}_{\mathsf{eq}}} 
 \newcommand{\EqpHyp}{\catname{pHyp}_{\mathsf{eq}}}
 \newcommand{\EqpsHyp}{\catname{pSep}_{\mathsf{eq}}}
 \newcommand{\Eqlmo}{\catname{LMH}_{\mathsf{eq}}}
-\newcommand{\EqHyps}{\catname{Hyp}_{\mathsf{eq}, \mathcal{G}}}
+%\newcommand{\EqHyps}{\catname{Hyp}_{\mathsf{eq}, \mathcal{G}}}
 \newcommand{\Eqhyps}{\catname{Hyp}_{\mathsf{eq}, \Sigma}}
-\newcommand{\EqTG}{\catname{EqTG}}
-\newcommand{\EqTGs}{\catname{EqTG}_{\Sigma}}
+%\newcommand{\EqTG}{\catname{EqTG}}
+%\newcommand{\EqTGs}{\catname{EqTG}_{\Sigma}}
 \newcommand{\GEqTGs}{\catname{GEqTG}_{\Sigma}}
 \newcommand{\GEqATGs}{\catname{GEqATG}_{\Sigma}}
 \newcommand{\gr}{\textbf{\textup{Graph}}}
@@ -105,7 +103,7 @@
 \newcommand{\rta}{\mathsf{dcl}}
 \newcommand{\rtd}{\mathsf{dcl_{d}}}
 \newcommand{\slice}[2]{(\catname{#1}\downarrow{#2})}
-\newcommand{\tg}[0]{\catname{TG}_{\Sigma}}
+%\newcommand{\tg}[0]{\catname{TG}_{\Sigma}}
 \newcommand{\teg}[0]{\catname{TeGr}_{\Sigma}}
 \newcommand{\sv}[0]{\mathsf{Sieves}}
 \newcommand{\mono}[1]{\mathsf{Mon}(\catname{#1})}
@@ -125,7 +123,7 @@
 \newcommand{\dom}{\mathsf{dom}}
 \newcommand{\dwnarrow}{\downarrow \hspace{-2pt}}
 \newcommand{\Dwnarrow}{\Downarrow \hspace{-2pt}}
-\newcommand{\egg}{\mathsf{e}\text{-}\catname{Hyp}_\eq}
+%\newcommand{\egg}{\mathsf{e}\text{-}\catname{Hyp}_\eq}
 \newcommand{\eggl}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \mathcal{G}}}
 \newcommand{\eggll}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \Sigma}}
 \newcommand{\elm}{\mathsf{e}\text{-}\catname{LMO}_\eq}
@@ -417,7 +415,8 @@ A \emph{hypergraph} is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\em
 \begin{frame}{Labelling  hypergraphs}
 	
 	\parbox{.5\linewidth}{Given an algebraic signature $\Sigma$ one can build an hypergraph $\mathcal{G}_\Sigma$ with a single node and edges corresponding with operations of $\Sigma$.} \hfill
-		\begin{minipage}[r]{.4\linewidth}
+	
+			\begin{minipage}[r]{.4\linewidth}
 			\begin{tikzpicture}
 				\begin{pgfonlayer}{nodelayer}
 					\node[style=node] (v) at (0, 0){};
@@ -456,6 +455,7 @@ A \emph{hypergraph} is a 4-uple $(E, V, s, t)$ made by two sets $E$ and $V$ (\em
 				
 			\end{tikzpicture}
 		\end{minipage}
+	 
 	\pause 
 	
 	\medskip 
@@ -474,46 +474,47 @@ DPO rewriting relates isomorphic classes of objects.
 \end{minipage}
 \qquad 
 \begin{minipage}[l]{.7\linewidth}
-%\begin{center}
-        \begin{tikzpicture}
-                \begin{pgfonlayer}{nodelayer}
-                        \node[style=none] (lab1) at (-1.8, 0.8);
-                        \node[style=small box] (h1) at (-1.8, 0.3) {};
-                        \node[style=small box] (2) at (-1.8, -0.5) {};
-                        \node[style=none] (lab2) at (-1.8, -1.0);
-                        \node[style=none] (h1b) at (-1.8, 0.3) {};
-                        \node[style=none] (th2) at (0, 0.3) {};
-                        \node[style=none] (bh2) at (0, -0.3) {};
-                        \node[style=none] (h2b) at (0, 0) {};
-                        \node[style=none] (th3) at (1.8, 0){};
-                        \node[style=none] (bh3) at (1.8, -0.6){};
-                        \node[style=none] (h3c) at (1.8, -0.3){};
-                        \node[style=none] (2c) at (-1.8, -0.5){};
-                        \node[style=none] (lab3) at (0, 0.8);
-                        \node[style=medium box] (h2) at (0, 0) {};
-                        \node[style=none] (lab4) at (1.8, 0.5);
-                        \node[style=medium box] (h3) at (1.8, -0.3) {};
-                        \node[style=none](labv2) at (-0.9, -0.9);
-                        \node[style=node] (v2) at (-0.9, -0.5) {};
-                        \node[style=none] (labv1) at (-0.9, 0.7);
-                        \node[style=node] (v1) at (-0.9, 0.3) {};
-                        \node[style=none] (labv3) at (0.9, 0.4);
-                        \node[style=node] (v3) at (0.9, 0) {};
-                        \node[style=none] (labv4) at (2.7, 0.1);
-                        \node[style=node] (v4) at (2.7, -0.3) {};
-                \end{pgfonlayer}
-                \begin{pgfonlayer}{edgelayer}
-                        \draw (h1b.center) to (th2.center);
-                        \draw (2c.center) to (v2);
-                        \draw[in=180, out=30] (v2) to (bh2.center);
-                        \draw (h2b.center) to (th3.center);
-                        \draw (v4) to (h3c.center);
-                        %\draw (h3c) to (v4);
-                        \draw[in=180, out=-30](v2) to (bh3);
-                \end{pgfonlayer}
-        \end{tikzpicture}
-%\end{center}
+	%\begin{center}
+	\begin{tikzpicture}
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=none] (lab1) at (-1.8, 0.8){};
+			\node[style=small box] (h1) at (-1.8, 0.3) {};
+			\node[style=small box] (2) at (-1.8, -0.5) {};
+			\node[style=none] (lab2) at (-1.8, -1.0){};
+			\node[style=none] (h1b) at (-1.8, 0.3) {};
+			\node[style=none] (th2) at (0, 0.3) {};
+			\node[style=none] (bh2) at (0, -0.3) {};
+			\node[style=none] (h2b) at (0, 0) {};
+			\node[style=none] (th3) at (1.8, 0){};
+			\node[style=none] (bh3) at (1.8, -0.6){};
+			\node[style=none] (h3c) at (1.8, -0.3){};
+			\node[style=none] (2c) at (-1.8, -0.5){};
+			\node[style=none] (lab3) at (0, 0.8){};
+			\node[style=medium box] (h2) at (0, 0) {};
+			\node[style=none] (lab4) at (1.8, 0.5){};
+			\node[style=medium box] (h3) at (1.8, -0.3) {};
+			\node[style=none](labv2) at (-0.9, -0.9){};
+			\node[style=node] (v2) at (-0.9, -0.5) {};
+			\node[style=none] (labv1) at (-0.9, 0.7){};
+			\node[style=node] (v1) at (-0.9, 0.3) {};
+			\node[style=none] (labv3) at (0.9, 0.4){};
+			\node[style=node] (v3) at (0.9, 0) {};
+			\node[style=none] (labv4) at (2.7, 0.1){};
+			\node[style=node] (v4) at (2.7, -0.3) {};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw (h1b.center) to (th2.center);
+			\draw (2c.center) to (v2);
+			\draw[in=180, out=30] (v2) to (bh2.center);
+			\draw (h2b.center) to (th3.center);
+			\draw (v4) to (h3c.center);
+			%\draw (h3c) to (v4);
+			\draw[in=180, out=-30](v2) to (bh3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+	%\end{center}
 \end{minipage}
+
 \pause
 \begin{minipage}[l]{.3\linewidth}
 In a slice category, morphisms preserve ``labels''.
@@ -600,7 +601,6 @@ In a slice category, morphisms preserve ``labels''.
         	\end{tikzpicture}
 %\end{center}
 	\end{minipage}
-
 \end{frame}
 
 \section{Adding equivalences}
