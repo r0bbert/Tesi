@@ -371,8 +371,10 @@ of the rules are in a suitable class $\mathcal{M}$ of monomorphisms
 then the benefits of adhesivity
 %the classical results from the theory of graph transformation 
 can be recovered~\cite{ehrig2012,ehrig2014adhesive}. 
-If only the left-hand side belongs to $\mathcal{M}$, the theory is still under development, as witnessed e.g.
-by~\cite{BaldanC0G24}.
+If only the left-hand side belongs to $\mathcal{M}$, the theory is still under development:
+It has been addressed for the 
+as witnessed e.g.
+by~\cite{BaldanC0G24,BehrHK23}.
 %
 However, despite the elegance and effectiveness,
 % and the immediate advantages, 
@@ -382,11 +384,11 @@ for being $\mathcal{M}$-adhesive can be a daunting task. For this reason, suffic
 framework, e.g. that every elementary topos is adhesive \cite{lack2006toposes}, as well as for %the extended one of
 $\mathcal{M}$-adhesivity~\cite{CastelnovoGM24}.
 %
-For some structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
+For structures such as \emph{hypergraphs with equivalence} in~\cite{concur2006}, the question 
 of their $\mathcal{M}$-adhesivity has not yet been settled.
 
 \emph{E-graphs} (shortly, EGGs) are an up-and-coming formalism for program optimisation and synthesis via a compact 
-representation and efficient implementation of equality saturation. Albeit a classical data structure \cite{DetlefsNS05}, EGGs received 
+representation and efficient implementation of equality saturation. Albeit being a classical data structure \cite{DetlefsNS05}, EGGs received 
 new impulse after the seminal \cite{WillseyNWFTP21} and
 developed a thriving community, as witnessed by the official website \cite{eggs}.
 %
@@ -403,18 +405,22 @@ In the presentation of term graphs via string diagrams~\cite{CastelnovoGM24}, EG
 whose edges are labelled by operators and with
 the possibility of sharing subtrees, with an equivalence relation $\equiv$ on nodes that 
 is closed under composition. In plain words and using a toy example:
-if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for any unary operator $f$.
+if $a$ and $b$ are two constants such that $a \equiv b$, then $f(a) \equiv f(b)$ for every unary operator $f$.
 
 
 %EGGs received a lot of attention in the implementation  side, as it is natural, since they have been introduced precisely as
 %a fast way to recover equality saturation. 
 
-Building on the criterion developed in~\cite{CastelnovoGM24}, this work considers a family of categories of hypergraphs
-with equivalence, including EGGs, and prove that they form an 
-$\mathcal{M}$-adhesive category for a suitable choice of $\mathcal{M}$.
-The advantages from this characterisation are two-fold. On the one side, 
+Building on the criterion developed in~\cite{CastelnovoGM24}, this work 
+investigate $\mathcal{M}$-adhesivity for EGGs. The path proceeds by 
+specialisation, starting from standard hypergraphs and exploring a family of 
+categories of hypergraphs with equivalence, proving along the way that 
+they form an $\mathcal{M}$-adhesive category for suitable choices of $\mathcal{M}$.
+The advantages from this approach are two-fold. On the one side, 
 we put the benefits \emph{per se} of a formal presentation, making precise 
 the properties of the data structures and the correspondence between them.
+Given the interest in hypergraphical structures, the intermediate
+results seems of independent interest beyond the core proofs for EGGs.
 On the other side, describing the optimisation steps via the DPO approach
 offers the tools for modelling  parallel and concurrent execution
 and for proving  confluence and termination.
@@ -442,12 +448,11 @@ brief remarks on related works.
 For the sake of readability, all the proofs appear in the appendices. 
 This work is an extended version of~\cite{uovadesive}.
 Its overall structure reflects the one of the conference paper, 
-but the way term graphs
-are described is completely changed: They are now presented 
-as an instance of the newly introduced category of 
-left-monogamous hypergraphs. Also the notion of separated 
+even if we found technically convenient to present term graphs
+in a different, yet equivalent way as an instance of the newly 
+introduced category of  left-monogamous hypergraphs. Also the notion of separated 
 hypergraphs is original, so that Sections 3.1.1 and 3.2.1 are largely new,
-and consequently so are Sections 4.1.1, 4.2, and 5. 
+and consequently so Sections 4.1.1, 4.2, and 5. 
 %
 Finally, also Section~6 on the use of DPO rewriting has been rewritten 
 and expanded, trying to highlight the nuances concerning its application.
@@ -698,11 +703,28 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 \end{minipage}
 
 \section{Hypergraphical structures}\label{sec:hyper}
+In this  section we introduce a family of categories of hypergraphs, which will play a key role in our modelling of EGGs.
+Given the many different flavours of hypergraphs we need, it is worthwhile to give a visual map of all the categories that 
+we are going to discuss and of the relationships between them. 
+We use the curved arrows to denote full and faithful inclusions, while the vertical arrows are forgetful functors.
 
-In this section we briefly recall the notion of \emph{hypergraph}. In order to do so, a pivotal role is played by the \emph{Kleene star monad} $(-)^\star\colon \Set\to \Set$, also known as 
+\[
+\xymatrix@R=8pt@C=10pt{& \pshyp_\mathcal{G} \ar[dd]_(.7){W_\mathcal{G}}|\hole \ar@/_.2cm/@{_{(}->}[rr]_{S_{p,\mathcal{G}}} \ar@{_{(}->}[dl]_{I_\mathcal{G}} && \phyp_\mathcal{G} \ar[dd]^(.7){V_\mathcal{G}}|\hole \ar@/_.2cm/[ll]^{\sp_\mathcal{G}}\ar@/_.2cm/@{_{(}->}[dr]_(.35){P_\mathcal{G}}\\\shyp_\mathcal{G} \ar@{^{(}->}[rr]^(.35){S_\mathcal{G}} \ar[dd]_{R_\mathcal{G}}&& \lmo_\mathcal{G}  \ar@{^{(}->}[rr]^(.35){M_\mathcal{G}} \ar[dd]_(.25){O_\mathcal{G}}&& \hyp_\mathcal{G} \ar@/_.2cm/[ul]_{\pr_\mathcal{G}} \ar[dd]^{U_\mathcal{G}}\\& \pshyp \ar@/_.2cm/@{_{(}->}[rr]_(.35){S_p}|\hole \ar@{^{(}->}[dl]_{I} && \phyp \ar@/_.2cm/[ll]^(.35){\sp}|\hole\ar@/_.2cm/@{_{(}->}[dr]_(.3){P}\\ \shyp \ar@{_{(}->}[rr]^{S} && \lmo  \ar@{_{(}->}[rr]^(.35){M}&& \hyp \ar@/_.2cm/[ul]_{\pr}}
+\]
+
+The two rows on the top refer to categories of labelled hypergraphs, the bottom two to their unlabelled variants.
+$\hyp$ is the standard category of hypergraphs; Sep is the subcategory of \emph{separated} hypergraphs 
+(i.e., where xxx); and LMH is the category of 
+
+Finally, the prefix \emph{p} stands for \emph{pruned}, meaning hypergraphs with no isolated nodes. 
+
+FINIRE MINI-SPIEGA DELLA MAPPA
+
+\subsection{Kleene star}
+To present the notion of \emph{hypergraph}, a pivotal role is played by the \emph{Kleene star monad} $(-)^\star\colon \Set\to \Set$, also known as 
 \emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
-We recall some of its proprieties.
+We recall some of its properties.
 
 \begin{prop}\label[prop]{prop:fact}
 	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
@@ -1353,7 +1375,7 @@ Finally, we conclude our study of separated hypergraphs proving a result regardi
 
 
 \begin{exa}\label{ex:noterm}
-In general $\shyp$ is not complete. For instance it does not have a terminal object. Too see this notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, ?_{1^\star} )$ is separated and that 
+In general $\shyp$ is not complete. For instance it does not have a terminal object. To see this notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1^\star}, ?_{1^\star} )$ is separated and that 
 $\shyp(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\shyp$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$. 
 
 \smallskip
@@ -1677,16 +1699,6 @@ In turn, by \Cref{thm:slice-functors}, Corollaries \ref{cor:eq}, \ref{cor:pusho}
 \begin{rem}\label{rem:tg}
 	Let $\Sigma$ be an algebraic signature. Then we know that every hypergraph labelled by $\Sigma$ must be algebraic. By \Cref{rem:elem} this means that a hypergraph $(h,k)\colon \mathcal{H}\to \mathcal{G}^\Sigma$ labelled by $\Sigma$ is left-monogamous if and only if $t_{\mathcal{H}}$ is injective. This is precisely the definition of \emph{term graphs} in \cite{Plu:TGR-ENTCS,CorradiniG05,CastelnovoGM24}. 
 \end{rem}
-
-\noindent 
-\begin{minipage}[l]{.5\linewidth}
-	\begin{rem}\label{rem:map1}
-		Now that we have introduced all the flavours of hypergraphs we need, it is worthwhile to give a visual map of all the categories that we have discussed/introduced and of the relationships between them. We will use the curved arrows to denote full and faithful inclusions, while the vertical arrows are forgetful functors.
-	\end{rem}
-\end{minipage}\hfill
-\begin{minipage}[r]{.45\linewidth}
-	\xymatrix@R=8pt@C=10pt{& \pshyp_\mathcal{G} \ar[dd]_(.7){W_\mathcal{G}}|\hole \ar@/_.2cm/@{_{(}->}[rr]_{S_{p,\mathcal{G}}} \ar@{_{(}->}[dl]_{I_\mathcal{G}} && \phyp_\mathcal{G} \ar[dd]^(.7){V_\mathcal{G}}|\hole \ar@/_.2cm/[ll]^{\sp_\mathcal{G}}\ar@/_.2cm/@{_{(}->}[dr]_(.35){P_\mathcal{G}}\\\shyp_\mathcal{G} \ar@{^{(}->}[rr]^(.35){S_\mathcal{G}} \ar[dd]_{R_\mathcal{G}}&& \lmo_\mathcal{G}  \ar@{^{(}->}[rr]^(.35){M_\mathcal{G}} \ar[dd]_(.25){O_\mathcal{G}}&& \hyp_\mathcal{G} \ar@/_.2cm/[ul]_{\pr_\mathcal{G}} \ar[dd]^{U_\mathcal{G}}\\& \pshyp \ar@/_.2cm/@{_{(}->}[rr]_(.35){S_p}|\hole \ar@{^{(}->}[dl]_{I} && \phyp \ar@/_.2cm/[ll]^(.35){\sp}|\hole\ar@/_.2cm/@{_{(}->}[dr]_(.3){P}\\\shyp \ar@{_{(}->}[rr]^{S} && \lmo  \ar@{_{(}->}[rr]^(.35){M}&& \hyp \ar@/_.2cm/[ul]_{\pr}}
-\end{minipage}
 
 
 \iffalse 
