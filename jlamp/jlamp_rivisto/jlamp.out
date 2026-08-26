@@ -3,29 +3,31 @@
 \BOOKMARK [2][-]{subsection.2.1}{M-adhesivity}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Some properties of kernel pairs and regular epimorphisms}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Hypergraphical structures}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Kleene star}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{The category of hypergraphs}{section.3}% 7
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Some subcategories of Hyp}{subsection.3.2}% 8
-\BOOKMARK [2][-]{subsection.3.3}{Labelled hypergraphs}{section.3}% 9
-\BOOKMARK [3][-]{subsubsection.3.3.1}{Labelled left-monogamous and separated hypergraphs}{subsection.3.3}% 10
-\BOOKMARK [1][-]{section.4}{Adding equivalences to hypergraphical structures}{}% 11
-\BOOKMARK [2][-]{subsection.4.1}{Hypergraphs with equivalence}{section.4}% 12
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Some subcategories of Hypeq}{subsection.4.1}% 13
-\BOOKMARK [2][-]{subsection.4.2}{Labelled hypergraphs with equivalence}{section.4}% 14
-\BOOKMARK [1][-]{section.5}{EGGs}{}% 15
-\BOOKMARK [2][-]{subsection.5.1}{E-hypergraphs}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.2}{Labelled e-hypergraphs}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{On term representations, and their adhesive rewriting}{}% 18
-\BOOKMARK [2][-]{subsection.6.1}{Sharing}{section.6}% 19
-\BOOKMARK [2][-]{subsection.6.2}{Rewriting}{section.6}% 20
-\BOOKMARK [2][-]{subsection.6.3}{Issues: Cycles and application conditions}{section.6}% 21
-\BOOKMARK [1][-]{section.7}{Conclusions and further and related works}{}% 22
-\BOOKMARK [1][-]{appendix.A}{Omitted proofs}{}% 23
-\BOOKMARK [2][-]{subsection.A.1}{Proofs for sec:ade}{appendix.A}% 24
-\BOOKMARK [2][-]{subsection.A.2}{Proofs for sec:hyper}{appendix.A}% 25
-\BOOKMARK [3][-]{subsubsection.A.2.1}{Left-monogamous hypergraphs - proofs}{subsection.A.2}% 26
-\BOOKMARK [3][-]{subsubsection.A.2.2}{Separated hypergraphs - proofs}{subsection.A.2}% 27
-\BOOKMARK [2][-]{subsection.A.3}{Proofs for hypereq}{appendix.A}% 28
-\BOOKMARK [2][-]{subsection.A.4}{Proofs for eggs}{appendix.A}% 29
-\BOOKMARK [1][-]{appendix.B}{Some properties of comma categories}{}% 30
-\BOOKMARK [2][-]{subsection.B.1}{Slice categories}{appendix.B}% 31
+\BOOKMARK [2][-]{subsection.3.1}{Background: Kleene star}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Background: The category of hypergraphs}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Some subcategories of Hyp}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Left-monogamous hypergraphs}{subsection.3.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Pruned and separated hypergraphs}{subsection.3.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Labelled hypergraphs}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Labelled left-monogamous and separated hypergraphs}{subsection.3.4}% 12
+\BOOKMARK [1][-]{section.4}{Adding equivalences to hypergraphical structures}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Hypergraphs with equivalence}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Some subcategories of Hypeq}{subsection.4.1}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Labelled hypergraphs with equivalence}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{EGGs}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{E-hypergraphs}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{Labelled e-hypergraphs}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{On term representations, and their adhesive rewriting}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Sharing}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{Rewriting}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.3}{Issues: Cycles and application conditions}{section.6}% 23
+\BOOKMARK [1][-]{section.7}{Conclusions and further and related works}{}% 24
+\BOOKMARK [1][-]{appendix.A}{Omitted proofs}{}% 25
+\BOOKMARK [2][-]{subsection.A.1}{Proofs for sec:ade}{appendix.A}% 26
+\BOOKMARK [2][-]{subsection.A.2}{Proofs for sec:hyper}{appendix.A}% 27
+\BOOKMARK [3][-]{subsubsection.A.2.1}{Left-monogamous hypergraphs - proofs}{subsection.A.2}% 28
+\BOOKMARK [3][-]{subsubsection.A.2.2}{Separated hypergraphs - proofs}{subsection.A.2}% 29
+\BOOKMARK [2][-]{subsection.A.3}{Proofs for hypereq}{appendix.A}% 30
+\BOOKMARK [2][-]{subsection.A.4}{Proofs for eggs}{appendix.A}% 31
+\BOOKMARK [1][-]{appendix.B}{Some properties of comma categories}{}% 32
+\BOOKMARK [2][-]{subsection.B.1}{Slice categories}{appendix.B}% 33

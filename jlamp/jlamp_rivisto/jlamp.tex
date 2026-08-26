@@ -712,15 +712,17 @@ We use the curved arrows to denote full and faithful inclusions, while the verti
 \xymatrix@R=8pt@C=10pt{& \pshyp_\mathcal{G} \ar[dd]_(.7){W_\mathcal{G}}|\hole \ar@/_.2cm/@{_{(}->}[rr]_{S_{p,\mathcal{G}}} \ar@{_{(}->}[dl]_{I_\mathcal{G}} && \phyp_\mathcal{G} \ar[dd]^(.7){V_\mathcal{G}}|\hole \ar@/_.2cm/[ll]^{\sp_\mathcal{G}}\ar@/_.2cm/@{_{(}->}[dr]_(.35){P_\mathcal{G}}\\\shyp_\mathcal{G} \ar@{^{(}->}[rr]^(.35){S_\mathcal{G}} \ar[dd]_{R_\mathcal{G}}&& \lmo_\mathcal{G}  \ar@{^{(}->}[rr]^(.35){M_\mathcal{G}} \ar[dd]_(.25){O_\mathcal{G}}&& \hyp_\mathcal{G} \ar@/_.2cm/[ul]_{\pr_\mathcal{G}} \ar[dd]^{U_\mathcal{G}}\\& \pshyp \ar@/_.2cm/@{_{(}->}[rr]_(.35){S_p}|\hole \ar@{^{(}->}[dl]_{I} && \phyp \ar@/_.2cm/[ll]^(.35){\sp}|\hole\ar@/_.2cm/@{_{(}->}[dr]_(.3){P}\\ \shyp \ar@{_{(}->}[rr]^{S} && \lmo  \ar@{_{(}->}[rr]^(.35){M}&& \hyp \ar@/_.2cm/[ul]_{\pr}}
 \]
 
-The two rows on the top refer to categories of labelled hypergraphs, the bottom two to their unlabelled variants.
-$\hyp$ is the standard category of hypergraphs; Sep is the subcategory of \emph{separated} hypergraphs 
-(i.e., where xxx); and LMH is the category of 
-
+The two bottom rows refer to categories of unlabelled structures.
+$\hyp$ is the standard category of hypergraphs; $\lmo$ is the subcategory of left-monogamous hypergraph,
+ie. satisfying suitable constraints on the number of edges entering a node, and which are used here to present 
+an alternative characterisation for term graphs;
+and  $\shyp$ is the subcategory of \emph{separated} hypergraphs, which are both 
+left- and right-monogamous.
 Finally, the prefix \emph{p} stands for \emph{pruned}, meaning hypergraphs with no isolated nodes. 
+%
+The two top rows concern labelled hypergraphs, which are as usual obtained via the comma category construction.
 
-FINIRE MINI-SPIEGA DELLA MAPPA
-
-\subsection{Kleene star}
+\subsection{Background: Kleene star}
 To present the notion of \emph{hypergraph}, a pivotal role is played by the \emph{Kleene star monad} $(-)^\star\colon \Set\to \Set$, also known as 
 \emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
@@ -768,7 +770,7 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  Formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, for $\pi_i\colon X^l\to X$ the $i^\mathrm{th}$-projection.
 \end{notaz}
 
-\subsection{The category of hypergraphs}\label{sub:hyp}
+\subsection{Background: The category of hypergraphs}\label{sub:hyp}
 
 Let us begin this section with the definition of hypergraphs.
 
@@ -971,12 +973,12 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 \end{exa}
  
 
-\subsubsection{Some subcategories of $\hyp$}\label{sub:sub}
+\subsection{Some subcategories of $\hyp$}\label{sub:sub}
 
 We are now going to introduce some classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cf.~\Cref{egg}). 
 
 
-\paragraph{Left-monogamous hypergraphs}\label{par:lm}
+\subsubsection{Left-monogamous hypergraphs}\label{par:lm}
 We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{CorradiniG05,Plu:TGR-ENTCS}.  
 
 \begin{defi}
@@ -1152,7 +1154,7 @@ Combining \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:regmon}
 \end{cor}
 
 
-\paragraph{Pruned and separated hypergraphs}
+\subsubsection{Pruned and separated hypergraphs}
 We can now introduce another  subcategory of $\hyp$ that we are interested in and that is going to be used in \Cref{sec:sepegg} to give the underlying hypergraphs for EGGs with minimally identified tokens.
 
 \begin{defi}  A left-monogamous hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if
@@ -1167,7 +1169,7 @@ We denote by $\shyp$ the full subcategory of $\hyp$ of separated hypergraphs and
 \end{exa}
 
 
-\begin{rem} Let $\mathcal{G}$ be a hypergraph. By \Cref{rem:elem}, right monogamy amounts to the request that for every vertex $v\in V_{\mathcal{G}}$ there exists at most one $e_V\in E_{\mathcal{G}}$ such that $\ind{G}(v, e) \neq 0$ and  for such hyperedge we have $\ind{G}(v,e)=1$.
+\begin{rem} Let $\mathcal{G}$ be a hypergraph. By \Cref{rem:elem}, being right-monogamous amounts to the request that for every vertex $v\in V_{\mathcal{G}}$ there exists at most one $e_V\in E_{\mathcal{G}}$ such that $\ind{G}(v, e) \neq 0$ and  for such hyperedge we have $\ind{G}(v,e)=1$.
  \end{rem}
  
  \begin{rem}\label{rem:elem2}
