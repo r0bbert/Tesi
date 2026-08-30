@@ -427,23 +427,22 @@ and for proving  confluence and termination.
 
 \emph{Synopsis}
 The paper has the following structure. 
-In Section~\ref{sec:ade} we briefly recall 
+In Section~\ref{sec:ade} we recall 
 the theory of $\mathcal{M}$-adhesive categories
 and of kernel pairs.
 In Section~\ref{sec:hyper} we present the graphical structures of our interest, 
- (labelled) hypergraphs and term graphs, and we provide a
+ namely various categories of (labelled) hypergraphs, and we provide a
 functorial characterisation, which allows for proving their adhesivity properties.
 This is expanded in Section~\ref{hypereq} for proving the $\mathcal{M}$-adhesivity
-of hypergraphs and term graphs with equivalence, as well as their separated variants,
-and in Section~\ref{eggs}, where equivalences are closed with respect to operator application,
-thus subsuming EGGs.
+of hypergraphs with equivalence and in Section~\ref{eggs}, where equivalences are 
+closed with respect to operator application, thus subsuming EGGs.
 %
 In Section~\ref{rewriting} we put the machinery to work, showing how the optimisation steps
 can be rephrased as the application of DPO rewriting rules, at the same time
 highlighting the issues linked to the format of such rules.
 %
 Finally, in Section~\ref{conclusioni} we draw our conclusions, hint at future endeavours and offer some 
-brief remarks on related works.
+ remarks on related works.
 
 For the sake of readability, all the proofs appear in the appendices. 
 This work is an extended version of~\cite{uovadesive}.
@@ -451,8 +450,9 @@ Its overall structure reflects the one of the conference paper,
 even if we found technically convenient to present term graphs
 in a different, yet equivalent way as an instance of the newly 
 introduced category of  left-monogamous hypergraphs. Also the notion of separated 
-hypergraphs is original, so that Sections 3.1.1 and 3.2.1 are largely new,
-and consequently so Sections 4.1.1, 4.2, and 5. 
+hypergraphs is original, thus Section~\ref{sub:sub} and Section~\ref{sssect:hyp_alg_sign}
+are largely new, and consequently so Section~\ref{hypereq}
+and Section~\ref{eggs}.
 %
 Finally, also Section~6 on the use of DPO rewriting has been rewritten 
 and expanded, trying to highlight the nuances concerning its application.
@@ -703,9 +703,16 @@ Focusing on $\Set$, we can prove a sharper result (see \Cref{proof:kerset} for t
 \end{minipage}
 
 \section{Hypergraphical structures}\label{sec:hyper}
-In this  section we introduce a family of categories of hypergraphs, which will play a key role in our modelling of EGGs.
-Given the many different flavours of hypergraphs we need, it is worthwhile to give a visual map of all the categories that 
-we are going to discuss and of the relationships between them. 
+In this  section we introduce a family of categories of hypergraphs, 
+Most of them have been already considered in the literature, and we
+add the relevant references inline. Our approach offers a uniform treatment,
+though, and proves original results concerning their adhesivity..
+Most importantly, the presentation is tailored for introducing the novel categories 
+of hypergraphs with equivalence and
+EGGs in Section~\ref{hypereq} and Section~\ref{eggs}, respectively.
+%
+However, given the many different flavours of hypergraphs we need, it is worthwhile to give a visual map of the categories that 
+we are going to discuss and of their relationships. 
 We use the curved arrows to denote full and faithful inclusions, while the vertical arrows are forgetful functors.
 
 \[
@@ -713,16 +720,17 @@ We use the curved arrows to denote full and faithful inclusions, while the verti
 \]
 
 The two bottom rows refer to categories of unlabelled structures.
-$\hyp$ is the standard category of hypergraphs; $\lmo$ is the subcategory of left-monogamous hypergraph,
-ie. satisfying suitable constraints on the number of edges entering a node, and which are used here to present 
+$\hyp$ is the standard category of hypergraphs; $\lmo$ is the subcategory of left-monogamous hypergraphs,
+satisfying suitable constraints on the number of edges entering a node, and which are used here to present 
 an alternative characterisation for term graphs;
 and  $\shyp$ is the subcategory of \emph{separated} hypergraphs, which are both 
 left- and right-monogamous.
 Finally, the prefix \emph{p} stands for \emph{pruned}, meaning hypergraphs with no isolated nodes. 
 %
 The two top rows concern labelled hypergraphs, which are as usual obtained via the comma category construction.
+%
 
-\subsection{Background: Kleene star}
+\subsection{Kleene star}
 To present the notion of \emph{hypergraph}, a pivotal role is played by the \emph{Kleene star monad} $(-)^\star\colon \Set\to \Set$, also known as 
 \emph{list monad},
 sending a set to the free monoid on it \cite{sakarovitch2009elements,Wadler95}.
@@ -733,7 +741,7 @@ We recall some of its properties.
 	\begin{enumerate}
 		\item there are arrows $v_{n}\colon X^n\mto X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
 		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
-		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular it preserves pullbacks and equalizers.
+		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular pullbacks and equalizers.
 	\end{enumerate}
 \end{prop}
 
@@ -751,7 +759,8 @@ We recall some of its properties.
 \end{minipage}
 
 
-\begin{rem}\label{rem:le} Consider a function $f\colon X\to Y$  and suppose that $(X^\star, \{x_n\}_{n\in \mathbb{N}})$ and $\{Y^\star, \{y_n\}_{n\in \mathbb{N}}\}$ are the coproducts given by the first point of \Cref{prop:fact}, then for every $n\in \mathbb{N}$ we have 
+\begin{rem}\label{rem:le} Consider a function $f\colon X\to Y$  and suppose that $(X^\star, \{x_n\}_{n\in \mathbb{N}})$ and $\{Y^\star, \{y_n\}_{n\in \mathbb{N}}\}$ are the coproducts given by the first point of \Cref{prop:fact}.
+Then for every $n\in \mathbb{N}$ we have 
 	\begin{align*}
 &\lgh_{Y}\circ f^\star \circ x_n = \lgh_{Y}\circ y_n \circ f^n= \Delta^{-1}\circ !^\star_{Y} \circ y_n\circ f^n =  \Delta^{-1}\circ v_n \circ !^n_{Y} \circ f^n \\=& \Delta^{-1}\circ v_n \circ (!_{Y} \circ f)^n  = \Delta^{-1}\circ v_n \circ (!_{X})^n = \Delta^{-1}\circ !^\star_{X} \circ x_n = \lgh_{X}\circ x_n
 	\end{align*}
@@ -770,9 +779,9 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 	Given a word $w\in X^\star$ of length $l$, for every $1\leq i \leq l$, we denote by $w_i$ the $i^\mathrm{th}$ letter of $w$.  Formally, if $\lgh_X(w)=l$, then $w=v_l(w')$ for some $w'\in X^l$ and $w_i$ is $\pi_i(w')$, for $\pi_i\colon X^l\to X$ the $i^\mathrm{th}$-projection.
 \end{notaz}
 
-\subsection{Background: The category of hypergraphs}\label{sub:hyp}
+\subsection{The category of hypergraphs}\label{sub:hyp}
 
-Let us begin this section with the definition of hypergraphs.
+Let us begin this section with the definition of hypergraphs~\cite{xxx}.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
@@ -793,7 +802,7 @@ Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\st
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
 \end{prop}
 
-Note that by, \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
+Note that by \Cref{prop:fact}, $(-)^\star$ preserves pullbacks, while $\pro$ is continuous by definition, 
 hence by \Cref{prop:com} and \Cref{cor:mono} we can deduce the following result.
 
 
@@ -975,11 +984,12 @@ In order to deal with general limits of hypergraphs, it is worth to recall that,
 
 \subsection{Some subcategories of $\hyp$}\label{sub:sub}
 
-We are now going to introduce some classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs  (cf.~\Cref{egg}). 
+We are now going to introduce some classes of hypergraphs, and the relative subcategories, which will provide the base for our definitions of EGGs.
+%  (cf.~\Cref{egg}). 
 
 
 \subsubsection{Left-monogamous hypergraphs}\label{par:lm}
-We start by introducing \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, which are the generalization of \emph{term graphs} \cite{CorradiniG05,Plu:TGR-ENTCS}.  
+We first introduce \emph{left-monogamous} hypergraphs \cite{milosavljevic2023string,fritz2023free}, a generalization of \emph{term graphs} \cite{CorradiniG05,Plu:TGR-ENTCS}.  
 
 \begin{defi}
 	Let $\mathcal{H}=(E_{\mathcal{H}}, V_{\mathcal{H}}, s_{\mathcal{H}}, t_{\mathcal{H}})$ be a hypergraph. We define two functions $\ind{H}, \outd{H}\colon V_{\mathcal{H}}\times E_{\mathcal{H}}\rightrightarrows \mathbb{N}$ where $\ind{H}(v,e)$ is the number of occurences of $v$ in $s_{\mathcal{H}}(e)$ and $\outd{H}(v,e)$ that of $v$ in $t_{\mathcal{H}}(e)$. If $v$ is such that $\outd{H}(v,e)=0$ for every hyperedge $e$ we say that $v$ is an \emph{input} node. We will denote the set of input nodes by $\ino{H}$.
@@ -1004,7 +1014,8 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 
 \noindent
 \begin{minipage}[l]{.6\linewidth}
-	\begin{exa}The hypergraphs $\mathcal{G}$ and $\mathcal{H}$ below are examples of non left-monogamous hypergraph.  In the first the left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, while in the second we have \[\outd{H}(u, e_1) = \outd{H}(u, e_2)=1\]
+	\begin{exa}The two hypergraphs aside are examples of non left-monogamous hypergraph.  In the top hypergraphs, left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, 
+	while in the hypergraph in the bottom we have \[\outd{H}(u, e_1) = \outd{H}(u, e_2)=1\]
 	\end{exa}
 \end{minipage} \hfill 
 \begin{minipage}[r]{.35\linewidth}
@@ -1042,17 +1053,17 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 \end{minipage}
 
 \medskip 	
-The remainder of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs .
+The remainder of this section is devoted to the proof of quasiadhesivity of $\lmo$. We begin by computing pullbacks and equalizers of left-monogamous hypergraphs.
 
 
-\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: it lacks e.g. a terminal object. To see this, notice that the $\mathcal{H}:=(\emptyset, 1, ?_{1}, ?_{1} )$ is left-monogamous and that 
+\begin{rem}\label{rem:con}Notice that  $\lmo$ is not complete: it lacks e.g. a terminal object. To see this, notice that $\mathcal{H}:=(\emptyset, 1, ?_{1}, ?_{1} )$ is left-monogamous and that 
 	$\lmo(\mathcal{H}, \mathcal{G})$ is in bijection with $V_{\mathcal{G}}$ for every hypergraph $\mathcal{G}$. Thus if  $\mathcal{T}$ is terminal in $\lmo$, then its set of vertices $V_{\mathcal{T}}$ must have cardinality $1$.  We have two possibilities	
 
 %	\medskip 
 \vspace{.1cm}
 	\begin{minipage}[l]{.65\linewidth}
 		\begin{itemize}
-			\item  all the hyperedges of $\mathcal{T}$ have the empty word as target.
+			\item  all the hyperedges of $\mathcal{T}$ have the empty word as target; or
 			\item there is a (necessarily unique) $\mathcal{T}$ with a target of length one.
 		\end{itemize}
 	\end{minipage}
@@ -1116,7 +1127,7 @@ Pullbacks are built from products and equalizers, so  \Cref{cor:eq} and \Cref{le
 A morphism $(f,g)\colon \mathcal{G}\to \mathcal{H}$ of hypergraphs  is \emph{downward-closed} if  $t_{\mathcal{H}}(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$. 
 \end{defi}
 
-Being downward-closed is related to preservation of input nodes, as shown by the following lemma (see \Cref{proof:inp} for the proof).
+Being downward-closed is related to the preservation of input nodes, as shown by the following lemma (see \Cref{proof:inp} for the proof).
 
 \begin{restatable}{lem}{inp}\label{lem:inp}
 	Let $(f,g)\colon \mathcal{G}\to \mathcal{H}$ be a morphism of hypergraphs with $\mathcal{H}$ left-monogamous, then the following facts hold
@@ -1144,7 +1155,7 @@ Then the following facts are equivalent
  	\begin{enumerate}
 		\item $(f,g)$ is a regular mono;
 		\item $(f,g)$ sends input nodes to input nodes;
-		\item $(f,g)$ is downward-closed
+		\item $(f,g)$ is downward-closed.
 	\end{enumerate}
 \end{restatable}
 
@@ -1155,7 +1166,7 @@ Combining \Cref{thm:slice-functors} with \Cref{cor:pusho}  and \Cref{lem:regmon}
 
 
 \subsubsection{Pruned and separated hypergraphs}
-We can now introduce another  subcategory of $\hyp$ that we are interested in and that is going to be used in \Cref{sec:sepegg} to give the underlying hypergraphs for EGGs with minimally identified tokens.
+We can now introduce a novel  subcategory of $\hyp$ that is going to be used in \Cref{sec:sepegg} to give the underlying hypergraphs for EGGs with minimally identified tokens.
 
 \begin{defi}  A left-monogamous hypergraph $\mathcal{G}=(E_{\mathcal{G}}, V_{\mathcal{G}}, s_{\mathcal{G}}, t_{\mathcal{G}})$ is \emph{separated} if
 	\begin{enumerate}
@@ -1350,7 +1361,7 @@ $t_{\mathcal{G}}(e)$ for any $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{prun
 \end{rem}
 
 \begin{rem}\label{rem:mprun}
-	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases:
+	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases
 
 	\begin{itemize}
 		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
@@ -1361,10 +1372,10 @@ $t_{\mathcal{G}}(e)$ for any $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{prun
 	In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
 \end{rem}
 
-\begin{restatable}{prop}{dx}\label{prop:dx}The following hold true:
+\begin{restatable}{prop}{dx}\label{prop:dx}The following properties hold
 	\begin{enumerate}
 		\item the inclusion functor $P\colon \phyp \to \hyp$ has a right adjoint $\pr$;
-		\item The inclusion functor $S_p\colon \pshyp\to \phyp$ has a right adjoint $\sp_P$.
+		\item the inclusion functor $S_p\colon \pshyp\to \phyp$ has a right adjoint $\sp_P$.
 	\end{enumerate}
 \end{restatable}
 
@@ -1584,7 +1595,7 @@ for every set $X$ we can define $\Delta_{\Sigma}(X)\colon \Delta_{\hyp}(X)\to \m
 We extend our graphical notation of hypergraphs to labelled ones putting the label of an hyperedge $h$ inside its corresponding square.
 
 \begin{exa}\label[example]{lab_2}
-	Consider again $\Sigma$ the signature of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
+	Consider again the signature $\Sigma$ of \Cref{exa_3}, then the hypergraph $\mathcal{G}$ of \Cref{exa_2} can be labeled by a morphism
 	$(l, !_{V_\mathcal{G}}): \mathcal{G} \to \mathcal{G}^\Sigma$ that is characterised by the image of the edges. 
 	If $l(h_1) = a$, $l(h_2) = 2$, $l(h_3) = *$, and $l(h_4) = /$, we represent it visually 
 	by putting the labels of the edges in  $\mathcal{G}^\Sigma$ inside the boxes representing the edges of $\mathcal{G}$
@@ -1824,7 +1835,7 @@ This characterization, in turn, provides us with the following result \cite{Cast
 \section{Adding equivalences to hypergraphical structures}
 \label{hypereq}
 The use of hypergraphs equipped with an equivalence relation over their nodes has been argued as a convenient way to express concurrency in the DPO approach to rewriting~\cite{concur2006}.
-This section presents the framework through adhesive categories, including its extension to the various kinds of hypergraphs introduced in the previous section, as a stepping stone towards an analogous characterization for e-graphs.
+This section presents the framework through adhesive categories, including its extension to the various kinds of hypergraphs introduced in the previous section, as a stepping stone towards an analogous characterization for EGGs.
 
 \subsection{Hypergraphs with equivalence}
 
@@ -2052,7 +2063,8 @@ A proof is found in \Cref{proof:pbvk}.
 	$\EqHyp$ is $\pbc$-adhesive.
 \end{cor}
 
-\subsubsection{Some subcategories of $\EqHyp$}
+\subsection{Some subcategories of $\EqHyp$}
+\label{labelledSubs}
 
 We can now focus to the various kind of hypergraphs introduced in \Cref{sub:sub}.
 
@@ -2060,7 +2072,7 @@ We can now focus to the various kind of hypergraphs introduced in \Cref{sub:sub}
 \end{defi}
 
 \begin{rem}\label{rem:obv1}
-By definition, there exist functors $O_{\eq}$, $R_{\eq}$ and $W_{\eq}$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions
+By definition, there exist (forgetful???) functors $O_{\eq}$, $R_{\eq}$ and $W_{\eq}$ as in the diagrams below, where the horizontal arrows are full and faithful inclusions
 \[\xymatrix{\Eqlmo \ar[r]^-{M_{\mathsf{eq}}} \ar[d]_{O_{\mathsf{eq}}}& \EqHyp\ar[d]^{T} & \EqsHyp \ar[r]^-{S_{\mathsf{eq}}} \ar[d]_{R_{\mathsf{eq}}} & \EqHyp \ar[d]^{T} & \EqpsHyp \ar[r]^-{S_{p, \mathsf{eq}}} \ar[d]_{W_{\mathsf{eq}}} & \EqHyp\ar[d]^{T}\\ \lmo \ar[r]_{M} & \hyp & \shyp \ar[r]_{S} & \hyp  & \pshyp \ar[r]_-{S_p}& \hyp}\]
 	
 \end{rem}
@@ -2103,7 +2115,7 @@ By definition, \Cref{lem:pbmono} and putting together Lemmas \ref{lem:equ}, \ref
 
 \subsection{Labelled hypergraphs with equivalence}
 
-We are now going to generalize the work done in the previous sections equipping term graphs with an equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
+We are now going to generalize the work done in the previous sections equipping hypergraphs with an equivalence relation. First of all we need a notion of labelling for $\EqHyp$. 
 
 \begin{defi}
 	Let $\mathcal{G}$ be a hypergraph with equivalence. The category $\EqHyps$ of hypergraphs with equivalence \emph{labelled by $\mathcal{G}$}  is $\EqHyp/\mathcal{G}$.
@@ -2299,7 +2311,7 @@ $\EqTG_{\Sigma}$ has all $\mathcal{T}$-pushouts, which are created by $J_{\Sigma
 \section{EGGs}
 \label{eggs}
 The previous section proved some adhesivity property for the categories $\EqHyp$, $\Eqlmo$,  $\EqpsHyp$ and for their labelled variants. We extend these results to
-encompass equivalence classes which are closed under the target arrow, i.e.~under operator composition for term graphs, thus precisely capturing EGGs.
+encompass equivalence classes which are closed under the target arrow, i.e.~under operator composition, thus precisely capturing EGGs.
 
 \subsection{E-hypergraphs}
 
@@ -2360,7 +2372,7 @@ In order to provide conditions under which pushouts in $\egg$ are computed as in
 \end{minipage}
 
 \vspace{.1cm}
-As we have done for $\pbc$, we must now show that $\pbp$ is a suitable class for adhesivity. A proof is in \Cref{proof:pbmonoplus}.
+As for $\pbc$, we must now show that $\pbp$ is a suitable class for adhesivity. A proof is in \Cref{proof:pbmonoplus}.
 
 \begin{restatable}{lem}{pbsuit}\label{lem:pbmonoplus}
 The class $\pbp$ contains all isomorphisms, it is closed under composition, decomposition and it is stable under pullbacks and pushouts.
@@ -2422,7 +2434,7 @@ Finally, we can turn our attention to the labelled context. In such an environme
 \noindent
 \begin{minipage}[l]{.75\linewidth}
 	\begin{exa}
-		Let $\mathcal{G}$ be the graph aside. Notice that $\id{\mathcal{G}}$ is a labelled e-hypergraph even if its underlying hypergraphs with equivalence $\mathcal{G}$ is not in $\egg$.
+		Let $\mathcal{G}$ be the graph aside. Note that $\id{\mathcal{G}}$ is a labelled e-hypergraph even if its underlying hypergraphs with equivalence $\mathcal{G}$ is not in $\egg$.
 	\end{exa}
 \end{minipage} \hfill \begin{minipage}[r]{.21\linewidth}
 	\begin{tikzpicture}[baseline=(v1)]
@@ -2542,15 +2554,20 @@ $\eg$ is $\mathcal{T}_\Sigma$-adhesive.
 
 \section{On term representations, and their adhesive rewriting}
 \label{rewriting}
+\[\mbox{Qua ci vorrebbe una tabella riassuntiva}\]
+
 The previous sections offered a tour on various categories of hypergraphs,
 with and without an equivalence. 
 %and term graphs. 
 In particular, we have shown how they 
-can be described as suitable $\mathcal{M}$-adhesive categories.
+can be described as suitable $\mathcal{M}$-adhesive categories, 
+as summarised by the table below
 %
-%
-%The fact holds for various classes of hypergraphs, and 
-Most importantly, the fact holds for the class of e-hypergraphs, the one 
+\[\mbox{Qua ci vorrebbe una tabella riassuntiva}\]
+
+
+The fact holds for various classes of hypergraphs, and 
+most importantly, for the class of e-hypergraphs,
 where the equivalence is closed with respect to operator composition.
 %
 The overall trajectory aimed at recasting the EGGs formalism, 
@@ -2560,14 +2577,21 @@ However, when confronted with the many graphical presentations discussed
 in the previous chapters, the reader may feel overwhelmed.
 
 \subsection{Sharing} 
-The classical view of term graphs is that they represent terms as labelled hypergraphs, instead of trees, in order to
-exploit the sharing of sub-terms for efficiency reasons. The introduction of equivalence adds another layer of
-expressiveness.
+Classically, the introduction of term graphs (that is, left-monogamous algebraic hypergraphs) was motivated
+by the desire to provide an alternative representation of terms, based on graphs 
+instead of trees,  to exploit the sharing of sub-terms for efficiency reasons. Consider e.g. a signature $\Sigma$ 
+with a constant $a$ and a binary operator $/$: the term $a / a$ admits two different representations 
+as a term graph in $\lmo_{\Sigma}$. The image on the left below is the usual representation of the term as a tree, the 
+image on the right is an hypergraph where the occurrence of the constant $a$ is shared
+
+\[\mbox{figure 1 e 3 sotto senza le classi di equivalenza}\]
+
+
+The introduction of an equivalence relation on nodes adds another layer of expressiveness, so that e.g.
+the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of them are represented below
 %
 %Terms are trees, thus different term graphs may represent the same term, up-to the sharing of sub-terms.
 %
-Consider e.g. a signature $\Sigma$ with a constant $a$ and a binary operator $/$: the term $a / a$ admits a few different 
-representations as a term graph with equivalence, such as those below
 
 %Being a purely graphical representation, EGGs allows for redundancy and possible ambiguity,
 %so that e.g. a term such as $a / a$ admits a few different representations as a term graph, as shown below
@@ -2701,24 +2725,29 @@ representations as a term graph with equivalence, such as those below
 \end{tikzpicture}
 \end{center}
 
-Consider the pictures above.
-They depict left-monogamous hypergraphs with equivalence, labelled over 
-$\Sigma$: hence, term graphs.
+The pictures above depict four left-monogamous (i.e. term graphs) hypergraphs with equivalence
+labelled over  $\Sigma$, thus living in $\lmo_{\eq, \Sigma}$.
+%all of them pruned.
 %
-As for the picture indicated by (1), it is the standard representation of $a / a$ as a tree. 
+In the picture (1) each equivalence class contains only one node, and its
+image along the forgetful functor $O_{\eq,\Sigma}: \lmo_{\eq, \Sigma} \to \lmo_\Sigma$ 
+(the labeled extension of the functor $O_{\eq}$ in Remark~\ref{rem:obv1}) 
+is the standard representation of $a / a$ as a tree.
 %
-The picture indicated by (2) represents the same term, but as a term graph with a non-trivial equivalence on nodes.
-However, neither of them is an e-term graph:
+The picture (2) represents a separated term graph with two occurrences of the constant $a$ 
+and a non-trivial equivalence on nodes.
+However, they do not live in $\lelmBis$, that is, neither of them is an e-term graph:
 constants have no input, and nodes that are targets of edges with the same label and whose source is the empty word 
-must belong to the same equivalence class. Intuitively, picture (1) is the representation of $a / a$ 
-among labelled hypergraphs, i.e. objects of $\hyps$, which has the minimal amounts of sharing between nodes.
+must belong to the same equivalence class. 
+%Intuitively, picture (1) is the representation of $a / a$ 
+%among labelled hypergraphs, i.e. objects of $\hyps$, which has the minimal amounts of sharing between nodes.
 %Instead, picture (2) is the minimally-shared representation 
 %among labelled hypergraphs with equivalence, i.e. objects of $\Eqhyps$.
 %
-Consider instead the pictures indicated by (3) and (4). They are both e-term graphs. Pictures (3) is the classical representation 
-of $a / a$ as a maximally-shared term graph; while picture (4) is 
+Consider now the pictures indicated by (3) and (4). They are both e-term graphs. Picture (3) is 
+the representation in $\lelmBis$ of $a / a$ as a term graph with a shared constant; while picture (4) is 
 % the minimally-shared representation among 
-a labelled e-hypergraph that is pruned and separated.
+a separated term graph which is the unique representation of $a / a$ n  $\lepsBis$.
 
 In the original paper~\cite{DetlefsNS05} EGGs were simply defined as term graphs with an equivalence relation on nodes that is composition-closed, 
 resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we decided to introduce two different categories,
@@ -2769,22 +2798,35 @@ the minimally shared representation is now the middle diagram.
 %%from $\mathcal{G}$ to the terminal object is easily shown to be injective on equivalence classes.
 }
 
-\subsection{Rewriting} The theory of $\mathcal{M}$-adhesivity ensures that if the rules are spans of 
-arrows in $\mathcal{M}$, then we can lift the standard properties
-of the DPO approach that hold in the category of graphs.
+\subsection{DPO rewriting on e-term graphs}
+%\vspace{.1cm}
+\noindent
+According to the double-pushout (DPO) approach to rewriting in $\mathcal{M}$-adhesive
+categories~\cite{xxx},
+a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
+and its application requires a match $m: L \to G$: the rewriting step from $G$
+to $H$ is then given by the diagram below, whose halves are pushouts
+
+    \xymatrix@C=.5cm@R=.5cm{
+      L \ar[d]_{m}
+      & K \ar[r]^r \ar[l]_{l} \ar[d]_{k} & R \ar [d]^h \\
+      G & C \ar[r]_{g} \ar[l]^{f}                    & H
+    }
+
 % to the category at hand. 
-However, as we recalled in the introduction, instead of removing sub-terms, the EGG approach 
-chooses to
-just add new terms and link them to the older ones via the equivalence relation~\cite{DetlefsNS05}.
+
+The situation is simpler in the EGGs approach since, as we recalled in the introduction, it chooses to
+just add new terms and link them to the older ones via the equivalence relation,
+instead of removing sub-terms~\cite{DetlefsNS05}.
 % until an optimal program is 
 %reached and extracted.
 So, the corresponding DPO rules 
-are spans $L \leftarrow L \rightarrow R$, where the left-hand side is the identity.
+are spans $L \leftarrow L \rightarrow R$ whose left-hand side is the identity.
 % thus in $\pbc_\Sigma$, while the second component may not belong to $\pbc_\Sigma$. 
 
 Consider the term rewriting rule such $x / x \to 1$, from the key example in~\cite{WillseyNWFTP21}.
-This is a problematic rule to be simulated using classical term graph rewriting, since it is not left-linear
-(that is, $x$ occurs twice in the left-hand side)~\cite{AriolaKP00}.
+%This is a problematic rule to be simulated using classical term graph rewriting, since it is not left-linear
+%(that is, $x$ occurs twice in the left-hand side)~\cite{AriolaKP00}.
 Using e-term graphs (variables are represented as nodes that do not occur among the targets of an edge),
  it can be modelled as the DPO rule below, concisely given by the arrow $L \rightarrow R$
 \[
@@ -2840,11 +2882,22 @@ Using e-term graphs (variables are represented as nodes that do not occur among 
 	}
 \]
 
-In this case $L$ is the minimally-shared e-term graph corresponding to the term $x / x$.
+The rule lives in the category $\lepsBis$, since the intermediate and the right-hand side labelled e-term graphs 
+are separated and pruned. As such, the same rule can be used also for DPO rewriting in $\lelmBis$ and $\eggll$,
+since these categories are related by inclusion.
+%
+%\begin{defi}We will define $\elm$ and $\eps$ as the full subcategories of $\egg$ given by those e-hypergraphs that are, respectively, left-monogamous and pruned and separated. We will denote by $M_{\mathsf{e}}$ and by $S_{\mathsf{e}}$ the corresponding functors.
+%\end{defi}
+%
+%
+%In this case $L$ is the minimally-shared e-term graph corresponding to the term $x / x$.
 %thus the rule could be applied to any of the term graph with equivalence
 %depicted above with a match that is injective on equivalence classes.
-The rule cannot be applied to the term graphs with equivalence
- in the pictures (1) and (2) above, while the result of the application of the rule 
+%
+However, the rule cannot be applied to the term graphs with equivalence
+ in the pictures (1) and (2) above: there is no match $m: L\to G$ due to the 
+ constraints on the equivalence classes.
+ Instead, the result of the application of the rule 
 to the e-term graphs in the pictures (3) and (4) is shown below
 \[
 	\begin{tikzpicture}[baseline=(w)]
@@ -2904,21 +2957,54 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 	\end{tikzpicture}
 \]
 
-As noted above, the DPO rules have the shape
+An EGGs rewriting system is thus a family of rules in $\lepsBis$ of the shape
+$L \leftarrow L \rightarrow R$: the left-hand side is the identity,
+while the right-hand side is a regular mono. The format precisely 
+captures EGGs approach: since it requires that a rule must preserve the $L$ component, 
+that is nodes and edges of the e-hypergraph to which $L$ is mapped must not be deleted, 
+the left-hand side must be the identity, while the arrow $L \rightarrow R$ must be an injection, 
+that is a regular mono in $\lepsBis$ (hence, also in $\lelmBis$). 
+
+%The underlying category coud be 
+%either $\lepsBis$ or $\lepsBis$ 
+
+\subsubsection{Issue 1: $\mathcal{M}$-adhesivity}
+
+The properties of $\mathcal{M}$-adhesivity ensure that if the rules are spans of 
+arrows in $\mathcal{M}$, then we can lift the standard properties
+of the DPO approach that hold in the category of graphs.
+
+As noted above, the rules of an EGGs rewriting system have the shape
 $L \leftarrow L \rightarrow R$: the left-hand side component is the identity,
 hence it belongs to any possible choice of $\mathcal{M}$. 
 However, the situation is different for the right-hand side.
-Since the rule must preserve the $L$ component, that is nodes and edges of 
-the e-hypergraph to which $L$ is mapped must not be deleted, 
-the arrow $L \rightarrow R$ is an injection, and more precisely it is 
-a regular mono.
-%
-However, the arrow $L \rightarrow R$ does not necessarily belong to $\pbc_\Sigma$,
-hence it is not currently possible to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesive framework.
-The asymmetry between left- and right-hand sides falls in the research about left-linear rules for 
-$\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}.
+The arrow $L \rightarrow R$ does not  belong to $\epbl_{\Sigma}$ 
+(hence,  neither in $\epbs_{\Sigma}$), thus it is not currently possible 
+to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesive framework.
 
-\subsection{Issues: Cycles and application conditions}
+The asymmetry between left- and right-hand sides falls in the research about left-linear rules for 
+$\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}. The solution
+advanced in~\cite{xx} is not completely satisfactory for our purposes. Indeed, while rules can 
+be spans of any kind od morphisms, the match is required to belong to $\mathcal{M}$, which is 
+quite restrictive. As an example, the e-term graph below states that the constant $a$ is actually 
+identified 
+\[\mbox{da finire e aggiungere esempio grafico}\]
+
+\subsubsection{Issue 2: Application conditions}
+The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
+possibility to keep on performing the same rewriting step.
+This is forbidden by using rules \emph{with negative application conditions}, given as the usual span 
+$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
+be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
+as the right-hand side itself.
+If you consider e.g. the rule $x / x \to 1$, once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
+keep on adding it.
+% since e.g. the two pictures below intuitively represent the same EGG
+%\[xxx\]
+%
+The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
+
+\subsubsection{Issue 3: Cycles}
 We just remarked that the DPO rules under consideration have the shape
 $L \leftarrow L \rightarrow R$, where the left-hand side is the identity 
 and the right-hand side arrow is  a regular mono.
@@ -2999,18 +3085,6 @@ which can be modelled as the DPO rule below
 Intuitively, the e-term graph obtained after the application of the rule seems to represent a recursive term such 
 as $rec_x. 1 \times x$, highlighting the difficulty of extracting a term representation out of an e-term graph.
 
-The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
-possibility to keep on performing the same rewriting step.
-This is forbidden by using rules \emph{with negative application conditions}, given as the usual span 
-$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
-be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
-as the right-hand side itself.
-If you consider e.g. the rule $x / x \to 1$, once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
-keep on adding it.
-% since e.g. the two pictures below intuitively represent the same EGG
-%\[xxx\]
-%
-The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
 
 \section{Conclusions and further and related works}
 \label{conclusioni}
