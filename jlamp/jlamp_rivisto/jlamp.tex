@@ -172,11 +172,11 @@
 \newcommand{\egg}{\mathsf{e}\text{-}\catname{Hyp}_\eq}
 \newcommand{\eggl}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \mathcal{G}}}
 \newcommand{\eggll}{\mathsf{e}\text{-}\catname{Hyp}_{\eq, \Sigma}}
-\newcommand{\elm}{\mathsf{e}\text{-}\catname{LMO}_\eq}
+\newcommand{\elm}{\mathsf{e}\text{-}\catname{LMH}_\eq}
 \newcommand{\eps}{\mathsf{e}\text{-}\catname{pSep}_\eq}
-\newcommand{\lelm}{\mathsf{e}\text{-}\catname{LMO}_{\eq, \mathcal{G}}}
+\newcommand{\lelm}{\mathsf{e}\text{-}\catname{LMH}_{\eq, \mathcal{G}}}
 \newcommand{\leps}{\mathsf{e}\text{-}\catname{pSep}_{\eq, \mathcal{G}}}
-\newcommand{\lelmBis}{\mathsf{e}\text{-}\catname{LMO}_{\eq, \Sigma}}
+\newcommand{\lelmBis}{\mathsf{e}\text{-}\catname{LMH}_{\eq, \Sigma}}
 \newcommand{\lepsBis}{\mathsf{e}\text{-}\catname{pSep}_{\eq, \Sigma}}
 
 \newcommand{\ari}{\mathsf{ar}}
@@ -2576,7 +2576,7 @@ as originally presented in~\cite{WillseyNWFTP21}, in the adhesive mold.
 However, when confronted with the many graphical presentations discussed 
 in the previous chapters, the reader may feel overwhelmed.
 
-\subsection{Sharing} 
+\subsection{Representing terms} 
 Classically, the introduction of term graphs (that is, left-monogamous algebraic hypergraphs) was motivated
 by the desire to provide an alternative representation of terms, based on graphs 
 instead of trees,  to exploit the sharing of sub-terms for efficiency reasons. Consider e.g. a signature $\Sigma$ 
@@ -2725,12 +2725,12 @@ the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of
 \end{tikzpicture}
 \end{center}
 
-The pictures above depict four left-monogamous (i.e. term graphs) hypergraphs with equivalence
+The pictures above depict four left-monogamous hypergraphs (i.e. term graphs) with equivalence
 labelled over  $\Sigma$, thus living in $\lmo_{\eq, \Sigma}$.
 %all of them pruned.
 %
 In the picture (1) each equivalence class contains only one node, and its
-image along the forgetful functor $O_{\eq,\Sigma}: \lmo_{\eq, \Sigma} \to \lmo_\Sigma$ 
+image along the forgetful functor $\lmo_{\eq, \Sigma} \to \lmo_\Sigma$ 
 (the labeled extension of the functor $O_{\eq}$ in Remark~\ref{rem:obv1}) 
 is the standard representation of $a / a$ as a tree.
 %
@@ -2968,7 +2968,7 @@ that is a regular mono in $\lepsBis$ (hence, also in $\lelmBis$).
 %The underlying category coud be 
 %either $\lepsBis$ or $\lepsBis$ 
 
-\subsubsection{Issue 1: $\mathcal{M}$-adhesivity}
+\subsubsection{Issue 1: Left-linear rules}
 
 The properties of $\mathcal{M}$-adhesivity ensure that if the rules are spans of 
 arrows in $\mathcal{M}$, then we can lift the standard properties
@@ -2984,11 +2984,23 @@ to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesi
 
 The asymmetry between left- and right-hand sides falls in the research about left-linear rules for 
 $\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}. The solution
-advanced in~\cite{xx} is not completely satisfactory for our purposes. Indeed, while rules can 
+advanced in~\cite{BehrHK23} is not adequate for our purposes. Indeed, while 
+in their double-categorical framework the rules of a rewriting system can 
 be spans of any kind od morphisms, the match is required to belong to $\mathcal{M}$, which is 
-quite restrictive. As an example, the e-term graph below states that the constant $a$ is actually 
-identified 
+restrictive in our context. As an example, consider again the e-term graph on picture (4) above, and look 
+again at the application of the rule above
+
 \[\mbox{da finire e aggiungere esempio grafico}\]
+
+The match is regular mono, since it is an inclusion on the
+underlying (pruned and separated) term graphs and an isomorphism 
+on the equivalence classes, yet it does not belong to $\epbs_{\Sigma}$,
+due to the occurrence of the constant $a$.
+In fact, all the arrows of the diagram above are regular monos but none
+is in $\epbs_{\Sigma}$.
+%
+%In fact, the restriction to regular mono matches seems
+%adequate for rewriting in $\lepsBis$, since 
 
 \subsubsection{Issue 2: Application conditions}
 The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 

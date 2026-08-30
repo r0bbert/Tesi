@@ -18,9 +18,9 @@
 \BOOKMARK [2][-]{subsection.5.1}{E-hypergraphs}{section.5}% 18
 \BOOKMARK [2][-]{subsection.5.2}{Labelled e-hypergraphs}{section.5}% 19
 \BOOKMARK [1][-]{section.6}{On term representations, and their adhesive rewriting}{}% 20
-\BOOKMARK [2][-]{subsection.6.1}{Sharing}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.1}{Representing terms}{section.6}% 21
 \BOOKMARK [2][-]{subsection.6.2}{DPO rewriting on e-term graphs}{section.6}% 22
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Issue 1: M-adhesivity}{subsection.6.2}% 23
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Issue 1: Left-linear rules}{subsection.6.2}% 23
 \BOOKMARK [3][-]{subsubsection.6.2.2}{Issue 2: Application conditions}{subsection.6.2}% 24
 \BOOKMARK [3][-]{subsubsection.6.2.3}{Issue 3: Cycles}{subsection.6.2}% 25
 \BOOKMARK [1][-]{section.7}{Conclusions and further and related works}{}% 26
