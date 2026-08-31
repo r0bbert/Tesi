@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.26)  31 AUG 2026 22:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.26)  31 AUG 2026 22:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1625,18 +1625,24 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 5124.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5124.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5124.
 
-Package rerunfilecheck Info: File `jlamp.out' has not changed.
-(rerunfilecheck)             Checksum: 11CC31E5D2C9980DAEF5D566788984E0;2656.
 
+
+Package rerunfilecheck Warning: File `jlamp.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `jlamp.out':
+(rerunfilecheck)             Before: 92BAB7D7B86FFD7DABA848628B5DD25E;2689
+(rerunfilecheck)             After:  5DC9A3834DA0A794FE985CDD2BA78BDA;2689.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 40258 strings out of 492616
- 774550 string characters out of 6129481
+ 40259 strings out of 492616
+ 774558 string characters out of 6129481
  972281 words of memory out of 5000000
- 42925 multiletter control sequences out of 15000+600000
+ 42926 multiletter control sequences out of 15000+600000
  553657 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,29n,81p,3240b,1162s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1677,7 +1683,7 @@ type1/public/xypic/xyatip10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 ic/xypic/xybtip10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/xy
 pic/xycmat10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/xypic/x
 ycmbt10.pfb>
-Output written on jlamp.pdf (54 pages, 715835 bytes).
+Output written on jlamp.pdf (54 pages, 716376 bytes).
 PDF statistics:
  1569 PDF objects out of 1728 (max. 8388607)
  1445 compressed objects within 15 object streams
