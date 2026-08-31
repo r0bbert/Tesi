@@ -2562,29 +2562,29 @@ $\eg$ is $\mathcal{T}_\Sigma$-adhesive.
 \end{cor}
 \fi 
 
-\section{On term representations, and their adhesive rewriting}
+\section{On term representations, and $\mathcal{M}$-adhesive rewriting}
 \label{rewriting}
-\[\mbox{Qua ci vorrebbe una tabella riassuntiva}\]
-
 The previous sections offered a tour on various categories of hypergraphs,
 with and without an equivalence. 
 %and term graphs. 
 In particular, we have shown how they 
 can be described as suitable $\mathcal{M}$-adhesive categories, 
-as summarised by the table below
+and we summarise below for some relevant categories
 %
 \[\mbox{Qua ci vorrebbe una tabella riassuntiva}\]
 
 
-The fact holds for various classes of hypergraphs, and 
-most importantly, for the class of e-hypergraphs,
+$\mathcal{M}$-adhesivity holds for various classes of hypergraphs, 
+most importantly for the class of e-hypergraphs,
 where the equivalence is closed with respect to operator composition.
 %
 The overall trajectory aimed at recasting the EGGs formalism, 
 as originally presented in~\cite{WillseyNWFTP21}, in the adhesive mold.
+To this end, we now discuss which categories are adequate for 
+simulating EGG rewriting via the DPO approach.
 %
-However, when confronted with the many graphical presentations discussed 
-in the previous chapters, the reader may feel overwhelmed.
+%However, when confronted with the many graphical presentations discussed 
+%in the previous chapters, the reader may feel overwhelmed.
 
 \subsection{Representing terms} 
 Classically, the introduction of term graphs (that is, left-monogamous algebraic hypergraphs) was motivated
@@ -2760,9 +2760,8 @@ the representation in $\lelmBis$ of $a / a$ as a term graph with a shared consta
 a separated term graph which is the unique representation of $a / a$ n  $\lepsBis$.
 
 In the original paper~\cite{DetlefsNS05} EGGs were simply defined as term graphs with an equivalence relation on nodes that is composition-closed, 
-resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we decided to introduce two different categories,
-namely $\lelmBis$ and $\lepsBis$.
-In particular, e-term graphs offer a representation that directly recalls the original definition; while the sub-category of pruned, separated 
+resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we consider adequate both $\lelmBis$ and $\lepsBis$.
+In particular, e-term graphs are the counterpart of the original definition; while the sub-category of pruned, separated 
 e-term graphs guarantees a unique representation for a term, and it seems more in touch with recent implementations~\cite{eggs}.
 
 
@@ -2831,7 +2830,8 @@ instead of removing sub-terms~\cite{DetlefsNS05}.
 % until an optimal program is 
 %reached and extracted.
 So, the corresponding DPO rules 
-are spans $L \leftarrow L \rightarrow R$ whose left-hand side is the identity.
+are spans $L \leftarrow L \rightarrow R$ whose left-hand side is the identity,
+and the DPO diagram can be suitably described by just a single pushout.
 % thus in $\pbc_\Sigma$, while the second component may not belong to $\pbc_\Sigma$. 
 
 Consider the term rewriting rule such $x / x \to 1$, from the key example in~\cite{WillseyNWFTP21}.
@@ -2892,8 +2892,8 @@ Using e-term graphs (variables are represented as nodes that do not occur among 
 	}
 \]
 
-The rule lives in the category $\lepsBis$, since the intermediate and the right-hand side labelled e-term graphs 
-are separated and pruned. As such, the same rule can be used also for DPO rewriting in $\lelmBis$ and $\eggll$,
+The rule lives in the category $\lepsBis$, since the left-hand and right-hand sides are labelled e-term graphs 
+that are separated and pruned. As such, the same rule can be used also for DPO rewriting in $\lelmBis$ and $\eggll$,
 since these categories are related by inclusion.
 %
 %\begin{defi}We will define $\elm$ and $\eps$ as the full subcategories of $\egg$ given by those e-hypergraphs that are, respectively, left-monogamous and pruned and separated. We will denote by $M_{\mathsf{e}}$ and by $S_{\mathsf{e}}$ the corresponding functors.
@@ -2970,7 +2970,7 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 An EGGs rewriting system is thus a family of rules in $\lepsBis$ of the shape
 $L \leftarrow L \rightarrow R$: the left-hand side is the identity,
 while the right-hand side is a regular mono. The format precisely 
-captures EGGs approach: since it requires that a rule must preserve the $L$ component, 
+captures the EGGs approach: since it requires that a rule must preserve the $L$ component, 
 that is nodes and edges of the e-hypergraph to which $L$ is mapped must not be deleted, 
 the left-hand side must be the identity, while the arrow $L \rightarrow R$ must be an injection, 
 that is a regular mono in $\lepsBis$ (hence, also in $\lelmBis$). 
@@ -2992,7 +2992,7 @@ The arrow $L \rightarrow R$ does not  belong to $\epbl_{\Sigma}$
 (hence,  neither in $\epbs_{\Sigma}$), thus it is not currently possible 
 to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesive framework.
 
-The asymmetry between left- and right-hand sides falls in the research about left-linear rules for 
+The asymmetry between left-hand and right-hand sides falls in the research about left-linear rules for 
 $\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}. The solution
 advanced in~\cite{BehrHK23} is not adequate for our purposes. Indeed, while 
 in their double-categorical framework the rules of a rewriting system can 
@@ -3012,28 +3012,40 @@ is in $\epbs_{\Sigma}$.
 %In fact, the restriction to regular mono matches seems
 %adequate for rewriting in $\lepsBis$, since 
 
-\subsubsection{Issue 2: Application conditions [DA AGGIUSTARE]}
-The fact that the left-hand side of a rule is the identity allows for the repeated application of such rule, hence the 
-possibility to keep on performing the same rewriting step.
-This is forbidden by using rules \emph{with negative application conditions}, given as the usual span 
-$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$, such that a match $m: L \to G$ is admissible if it cannot
+\subsubsection{Issue 2: Application conditions}
+The fact that the left-hand side of a rule is the identity allows for its repeated application, hence the 
+possibility to keep on performing the same rewriting step. 
+This is problematic: If you consider e.g. the rule $x / x \to 1$, once $1$ has been added once to the equivalence class of 
+$x / x$, it is not necessary to keep on adding it.
+The issue is solved in the EGGs approach by suitable 
+heuristics in the updating procedure. In the DPO approach, this is modelled by rules 
+\emph{with negative application conditions}. Formally, an application condition is obtained 
+by enriching the usual span 
+$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$: A match $m: L \to G$ is admissible if it cannot
 be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
 as the right-hand side itself.
-If you consider e.g. the rule $x / x \to 1$, once $1$ has been added once to the equivalence class of $x / x$, it is not necessary to
-keep on adding it.
 % since e.g. the two pictures below intuitively represent the same EGG
 %\[xxx\]
 %
-The theory of $\mathcal{M}$-adhesivity carries on for rules with negative application conditions, see~\cite{ehrig2012,ehrig2014adhesive}.
+The theory of $\mathcal{M}$-adhesivity carries on for linear rules with negative application conditions, as long as
+the arrows of the span as well as the additional arrow $n: L\rightarrow N$ are in $\mathcal{M}$,
+see e.g.~\cite{ehrig2014adhesive}.
+%
+In our context, we can still adopt the same approach with application condition, yet the same considerations
+about $\mathcal{M}$-adhesivity with left-linear rules apply.
 
 \subsubsection{Issue 3: Cycles [DA AGGIUSTARE]}
-We just remarked that the DPO rules under consideration have the shape
+Recall that DPO rules under consideration have the shape
 $L \leftarrow L \rightarrow R$, where the left-hand side is the identity 
-and the right-hand side arrow is  a regular mono.
+and the right-hand side arrow is a regular mono.
 %
-Despite their simplicity, though, such rules may raise some expressiveness issues.
+%Despite their simplicity, though, such rules may raise some expressiveness issues.
+%
+The underlying term graphs of the rules are obviously acyclic, and since the right-hand side 
+is a regular mono, if it is 
 
-The fact that the right-hand side is a regular mono ensures that if the e-hypergraph to whom a rule is applied is acyclic,
+
+ensures that if the e-hypergraph to whom a rule is applied is acyclic,
 the same property holds for the e-hypergraph obtained as the result.
 %
 Note however that cycles may implicitly occur due to the presence of the equivalence 
