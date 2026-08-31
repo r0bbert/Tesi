@@ -828,8 +828,7 @@ Propositons \ref{prop:left} and \ref{prop:com} allow us to deduce immediately th
 
 \begin{exa}\label[example]{exa_2}
 We represent hypergraphs visually: bullets denote nodes and boxes hyperedges. Should we be interested in their identity, we put a name near the corresponding bullet or box. 
-Sources and targets are represented by lines between dots and squares: the lines from the sources of a hyperedge comes from the left of the box, while the lines to the targets 
-exit from the right of the box.
+Sources and targets are represented by lines between dots and squares, respectively; arrowheads denote the targets.
 
 Consider, for instance, the picture below. It represents a hypergraph $\mathcal{G}$ with sets $V_\mathcal{G} = \{v_1, v_2, v_3, v_4\}$ and $E_\mathcal{G} = \{h_1, h_2, h_3, h_4\}$ of nodes 
 and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ have the lists $v_1v_2$ and $v_3v_2$  as sources, respectively.
@@ -862,12 +861,13 @@ and edges, respectively, such that  $h_1, h_2$ have no source and $h_3, h_4$ hav
                         \node[style=node] (v4) at (2.7, -0.3) {};
                 \end{pgfonlayer}
                 \begin{pgfonlayer}{edgelayer}
-                        \draw (h1b.center) to (th2.center);
-                        \draw (2c.center) to (v2);
+                        \draw[->] (h1b.center) to (v1);
+                        \draw (v1) to (th2.center);
+                        \draw[->] (2c.center) to (v2);
                         \draw[in=180, out=30] (v2) to (bh2.center);
-                        \draw (h2b.center) to (th3.center);
-                        \draw (v4) to (h3c.center);
-                        %\draw (h3c) to (v4);
+                        \draw[->] (h2b.center) to (v3);
+                        \draw (v3) to (th3.center);
+                        \draw[<-] (v4) to (h3c.center);
                         \draw[in=180, out=-30](v2) to (bh3);
                 \end{pgfonlayer}
         \end{tikzpicture}
@@ -900,7 +900,7 @@ A rich source of examples is given by \emph{monoidal signatures}.
 	\begin{tikzpicture}
 		\begin{pgfonlayer}{nodelayer}
 			\node[style=node] (v) at (0, 0){};
-			\node[style=none] (vlab) at (0, -0.4){$v$};
+			\node[style=none] (vlab) at (0.4, 0){$v$};
 			
 			\node[style=small box] (n) at (-1.8, 0.4) {};
 			\node[style=none] (nlab) at (-1.8, 0.9) {$n$};
@@ -910,35 +910,35 @@ A rich source of examples is given by \emph{monoidal signatures}.
 			\node[style=none] (constlab) at (-1.8, -0.9){$a$};
 			\node[style=none] (constattach) at (-1.6, -0.4){};
 			
-			\node[style=medium box] (times) at (0, 1.9) {};
-			\node[style=none] (timeslab) at (0, 2.7) {$*$};
-			\node[style=none] (timesin1) at (-0.3, 2.2) {};
-			\node[style=none] (timesin2) at (-0.3, 1.6) {};
-			\node[style=none] (timesout) at (0.2, 1.9){};
+			\node[style=medium box] (times) at (0.4, 1.9) {};
+			\node[style=none] (timeslab) at (0.4, 2.7) {$*$};
+			\node[style=none] (timesin1) at (0.3, 2.2) {};
+			\node[style=none] (timesin2) at (0.3, 1.6) {};
+			\node[style=none] (timesout) at (0.6, 1.9){};
 			
-			\node[style=medium box] (div) at (0, -1.9) {};
-			\node[style=none] (divlab) at (0, -2.7) {$/$};
-			\node[style=none] (divin1) at (-0.3, -2.2) {};
-			\node[style=none] (divin2) at (-0.3, -1.6) {};
-			\node[style=none] (divout) at (0.2, -1.9){};
+			\node[style=medium box] (div) at (0.4, -1.9) {};
+			\node[style=none] (divlab) at (0.4, -2.7) {$/$};
+			\node[style=none] (divin1) at (0.3, -2.2) {};
+			\node[style=none] (divin2) at (0.3, -1.6) {};
+			\node[style=none] (divout) at (0.6, -1.9){};
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer}
 %			\draw[style=diredge, in=180, out= 112.5] (v) to (timesin2.center); 
-			\draw[in=180, out= 112.5] (v) to (timesin2.center); 
-			\draw[out=135, in= 180] (v) to (timesin1.center);
-			\draw[in=165, out=0] (nattach.center) to (v);
+			\draw[in=180, out= 90] (v) to (timesin2.center); 
+			\draw[out=110, in= 180] (v) to (timesin1.center);
+			\draw[->, in=150, out=0] (nattach.center) to (v);
 			
-			\draw[out=0, in=-165] (constattach.center) to (v);
-			\draw[in=180, out= -112.5] (v) to (divin2.center); 
-			\draw[out=-135, in= 180] (v) to (divin1.center);
+			\draw[->, out=0, in=-150] (constattach.center) to (v);
+			\draw[in=180, out= -90] (v) to (divin2.center); 
+			\draw[out=-110, in= 180] (v) to (divin1.center);
 			
-			\draw[in=30, out=0] (timesout.center) to (v);
-			\draw[in=-30, out=0] (divout.center) to (v);
+			\draw[->, in=35, out=0] (timesout.center) to (v);
+			\draw[->, in=-35, out=0] (divout.center) to (v);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 	\end{minipage}
- 
+	
  \smallskip 
  We can interpret an arbitrary hypergaph as a \emph{typed} or \emph{colored} monoidal signature: the nodes provide the \emph{types} or \emph{colors}, while hyperedges can be thought of as operations, with arity and coarity provided by the source and target functions, respectively. This suggests the following definition, which is used later on\label{sub:hyp_alg}.
  % in Section \ref{par:tg}\label{sub:hyp_alg}. 
@@ -1014,7 +1014,7 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 
 \noindent
 \begin{minipage}[l]{.6\linewidth}
-	\begin{exa}The two hypergraphs aside are examples of non left-monogamous hypergraph.  In the top hypergraphs, left-monogamy fails because $\outd{\mathcal{G}}(a, e) = 2$, 
+	\begin{exa}The two hypergraphs aside are examples of non left-monogamous hypergraph.  In the top hypergraphs, left-monogamy fails because $\outd{\mathcal{G}}(v, e) = 2$, 
 	while in the hypergraph in the bottom we have \[\outd{H}(u, e_1) = \outd{H}(u, e_2)=1\]
 	\end{exa}
 \end{minipage} \hfill 
@@ -1043,11 +1043,11 @@ Given a set $X$, we say that two words $X^\star$ are \emph{disjoint} is they do 
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer}
-			\draw[style=none, in=135, out= 45] (divin1.east) to (a); 
-			\draw[style=none, in=-135, out= -45] (divin2.east) to(a) ;
+			\draw[->, style=none, in=135, out= 45] (divin1.east) to (a); 
+			\draw[->, style=none, in=-135, out= -45] (divin2.east) to(a) ;
 			\draw[style=none] (d) to (divout.center);
-			\draw[style=none] (o) to (e);
-			\draw[style=none] (i) to (e);
+			\draw[->, style=none] (o) to (e);
+			\draw[->, style=none] (i) to (e);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 \end{minipage}
@@ -1078,7 +1078,7 @@ The remainder of this section is devoted to the proof of quasiadhesivity of $\lm
 				\node[style=none] (divout) at (-.3, 0){};
 				
 				\node[style=node] (a) at (2, .3){};
-				\node[style=none] (alab) at (2.3, .3){$v$};
+				\node[ style=none] (alab) at (2.3, .3){$v$};
 				\node[style=node] (b) at (2, -.3){};
 				\node[style=none] (ulab) at (2.3, -.3){$u$};
 				\node[style=node] (d) at (-2, 0){};
@@ -1086,8 +1086,8 @@ The remainder of this section is devoted to the proof of quasiadhesivity of $\lm
 			\end{pgfonlayer}
 			
 			\begin{pgfonlayer}{edgelayer}
-				\draw[style=none] (divin1.east) to (a); 
-				\draw[style=none] (divin2.east) to(b) ;
+				\draw[->, style=none] (divin1.east) to (a); 
+				\draw[->, style=none] (divin2.east) to(b) ;
 				\draw[style=none] (d) to (divout.center);
 			\end{pgfonlayer}
 		\end{tikzpicture}
@@ -1243,11 +1243,11 @@ We define the \emph{separated hypergraph associated to $\mathcal{G}$}  as $\sp(\
 				\node[style=none] (constlab) at (2.5, 0){$e$};
 				\node[style=none] (constattach) at (3.3, -0){};
 				
-				\node[style=medium box] (times) at (0, 1.5) {};
-				\node[style=none] (timeslab) at (0, 2.2) {$\cdot$};
-				\node[style=none] (timesin1) at (-0.3, 1.8) {};
-				\node[style=none] (timesin2) at (-0.3, 1.2) {};
-				\node[style=none] (timesout) at (0.2, 1.5){};
+				\node[style=medium box] (times) at (0.3, 1.5) {};
+				\node[style=none] (timeslab) at (0.3, 2.2) {$\cdot$};
+				\node[style=none] (timesin1) at (0, 1.8) {};
+				\node[style=none] (timesin2) at (0, 1.2) {};
+				\node[style=none] (timesout) at (0.5, 1.5){};
 				
 				\node[style=medium box] (div) at (4, 1.3) {};
 				\node[style=none] (divlab) at (4, 2) {$\cdot$};
@@ -1268,16 +1268,16 @@ We define the \emph{separated hypergraph associated to $\mathcal{G}$}  as $\sp(\
 			\end{pgfonlayer}
 			
 			\begin{pgfonlayer}{edgelayer}
-				\draw[style=none, in=180, out= 135] (v) to (timesin2.center); 
-				\draw[style=none,out=165, in= 180] (v) to (timesin1.center);
-				\draw[style=none,in=180, out=0] (nattach.center) to (v);
+				\draw[style=none, in=180, out= 100] (v) to (timesin2.center); 
+				\draw[style=none,out=130, in= 180] (v) to (timesin1.center);
+				\draw[->, style=none,in=180, out=0] (nattach.center) to (v);
 				
-				\draw[style=none,out=0, in=180] (constattach.center) to (c);
+				\draw[->, style=none,out=0, in=180] (constattach.center) to (c);
 				\draw[style=none,in=165, out= -15] (a) to (divin1.west); 
 				\draw[style=none,out=15, in=195 ] (b) to (divin2.west);
 				
-				\draw[style=none, in=30, out=0] (timesout.center) to (v);
-				\draw[style=none, in=180, out=0] (divout.center) to (d);
+				\draw[->, style=none, in=30, out=0] (timesout.center) to (v);
+				\draw[->, style=none, in=180, out=0] (divout.center) to (d);
 			\end{pgfonlayer}
 		\end{tikzpicture}
 	\end{center}
@@ -1289,19 +1289,28 @@ The construction we have just introduced can be extended to a functor (see \Cref
 \end{restatable}
 
 \noindent 
-\begin{minipage}[l]{.68\linewidth}
+\begin{minipage}[l]{.8\linewidth}
 \begin{rem}Notice that $\sp$ is neither right nor left adjoint to $S$.
 	\begin{itemize}
 		\item To see that $\sp$ cannot be a right adjoint to $S$, consider the ``double loop'' $\mathcal{D}=(2, 1, !_2, !_2)$ depicted aside. Then $\sp(\mathcal{D})$ is isomorphic to the graph $\mathcal{G}=(2, 4, s_{\mathcal{G}}, t_{\mathcal{G}})$ with
 		\[s_{\mathcal{G}}(0) = 0 \quad  t_{\mathcal{G}}(0) =  1 \quad  s_{\mathcal{G}}(1) = 2 \quad  t_{\mathcal{G}}(1) = 3 \]
 		
 		Let $\mathcal{H}$ be $(\emptyset, 1, ?_{1^\star}, ?_{1^\star})$, which is clearly a separated hypergraph. Now,  $\shyp(\mathcal{H}, \sp(\mathcal{D}))$ has the same cardinality as  $\shyp(\mathcal{H}, \mathcal{G})$, which is $4$, while $\hyp(S(\mathcal{H}), \mathcal{D})$ is a singleton.
-		\item Consider now the ``single loop'' $\mathcal{L}=(1, 1, \id{1}, \id{1})$. Then $\sp(\mathcal{L})$ is isomorphic to $(1, 2, \id{2}, \id{2})$ and so there are no arrows $\mathcal{L}\to S(\sp(\mathcal{L}))$. In particular, this shows that $\sp$ cannot be left adjoint to $S$. 
+		\item Consider now the ``single loop'' $\mathcal{L}=(1, 1, \id{1}, \id{1})$. Then $\sp(\mathcal{L})$ is isomorphic to the graph $(2, 4, i_{even}, i_{odd})$, where
+		\[i_even(x) = \begin{cases}
+			0 & x= 0\\
+			2 & x = 1
+		\end{cases} \qquad i_odd(x) = \begin{cases}
+		1 & x= 0\\
+		3 & x = 1
+		\end{cases} \]
+		
+		The graph $\sp(\mathcal{L})$ consists of the two ``pieces'' depicted alongside. By construction there are no arrows $\mathcal{L}\to S(\sp(\mathcal{L}))$. In particular, this shows that $\sp$ cannot be left adjoint to $S$. 
 	\end{itemize} 
 \end{rem}
 \end{minipage}
 \hfill
-\begin{minipage}[r]{.27\linewidth}
+\begin{minipage}[r]{.2\linewidth}
 	\begin{tikzpicture}
 		\begin{pgfonlayer}{nodelayer}
 			\node[style=node] (v) at (0, 0){};
@@ -1336,14 +1345,14 @@ The construction we have just introduced can be extended to a functor (see \Cref
 		\end{pgfonlayer}
 		
 		\begin{pgfonlayer}{edgelayer} 
-			\draw[style=none,out=200, in= 180] (v) to (timesin.center);
+			\draw[<-, style=none,out=200, in= 180] (v) to (timesin.center);
 			\draw[style=none,out=45, in= 200] (v) to (divin.center);
 			\draw[style=none, in=135, out=345] (timesout.center) to (v);
-			\draw[style=none, in=345, out=0] (divout.center) to (v);
+			\draw[->, style=none, in=345, out=0] (divout.center) to (v);
 			\draw[style=none, in=180, out=0] (a.center) to (zeroin.west);
 			\draw[style=none, in=180, out=0] (c.center) to (unoin.west);
-			\draw[style=none, in=180, out=0] (zeroout.east) to (b.west);
-			\draw[style=none, in=180, out=0] (unoout.east) to (d.west);
+			\draw[->, style=none, in=180, out=0] (zeroout.east) to (b.west);
+			\draw[->, style=none, in=180, out=0] (unoout.east) to (d.west);
 		\end{pgfonlayer}
 	\end{tikzpicture}
 \end{minipage}
@@ -1422,7 +1431,7 @@ Since $\mathcal{T}$ must be separated, we have two (non disjoint) cases
 	\begin{pgfonlayer}{edgelayer}
 		\draw[style=none] (a) to (divin1.west); 
 		\draw[style=none] (b) to (divin2.west);
-		\draw[style=none] (divout.center) to (d);
+		\draw[->,  style=none] (divout.center) to (d);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{minipage}
@@ -1459,7 +1468,7 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 		\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw[style=none] (v) to (in.east); 
-		\draw[style=none] (out.east) to (u.west);
+		\draw[->, style=none] (out.east) to (u.west);
 	\end{pgfonlayer}
 	\end{tikzpicture} 
 	\ar@{.>}[d]^{(q_1, q_2)} \\\begin{tikzpicture}[baseline=(v.base)]\begin{pgfonlayer}{nodelayer}
@@ -1474,7 +1483,7 @@ In both cases there are no morphism from the hypergraph depicted on the right an
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{edgelayer}
 			\draw[style=none] (v) to (in.east); 
-			\draw[style=none] (out.east) to (u.west);
+			\draw[->,  style=none] (out.east) to (u.west);
 		\end{pgfonlayer}
 	\end{tikzpicture} 
 	\ar@{.>}[r]_-{(p_1, p_2)}&
@@ -1627,16 +1636,17 @@ We extend our graphical notation of hypergraphs to labelled ones putting the lab
 				\node[style=none] (labv4) at (2.7, 0.1) {};
 				\node[style=node] (v4) at (2.7, -0.3) {};
 			\end{pgfonlayer}
-			\begin{pgfonlayer}{edgelayer}
-				\draw (h1b.center) to (th2.center);
-				\draw (2c.center) to (v2);
+	     	\begin{pgfonlayer}{edgelayer}
+				\draw[->] (h1b.center) to (v1);
+				\draw (v1) to (th2.center);
+				\draw[->] (2c.center) to (v2);
 				\draw[in=180, out=30] (v2) to (bh2.center);
-				\draw (h2b.center) to (th3.center);
-				\draw (v4) to (h3c.center);
-				%\draw (h3c) to (v4);
+				\draw[->] (h2b.center) to (v3);
+				\draw (v3) to (th3.center);
+				\draw[<-] (v4) to (h3c.center);
 				\draw[in=180, out=-30](v2) to (bh3);
 			\end{pgfonlayer}
-        	\end{tikzpicture}
+        \end{tikzpicture}
 	\end{center}
 %
 	\iffalse
@@ -2145,9 +2155,9 @@ We are now going to generalize the work done in the previous sections equipping 
 		\node[style=none](l2) at (1, 0){$w$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw(a1att.south) to (v1);
+		\draw[->] (a1att.south) to (v1);
 		\draw[style=none, out=180, in=180](v2) to (a2in.west);
-		\draw[style=none, out=0, in=0](v2) to (a2out.east);
+		\draw[<-, style=none, out=0, in=0](v2) to (a2out.east);
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-.8, -0.3) rectangle (-.2, 0.3);
@@ -2169,9 +2179,9 @@ We are now going to generalize the work done in the previous sections equipping 
 		\node[style=none](l2) at (1, 0){$w$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw(a1att.south) to (v1);
+		\draw[->] (a1att.south) to (v1);
 		\draw[style=none, out=180, in=180](v2) to (a2in.west);
-		\draw[style=none, out=0, in=0](v2) to (a2out.east);
+		\draw[<-, out=0, in=0](v2) to (a2out.east);
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-.8, -0.3) rectangle (.8, 0.3);
@@ -2451,8 +2461,8 @@ Finally, we can turn our attention to the labelled context. In such an environme
 			\node[style=none](l2) at (.5, -.5){$w$};
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{edgelayer}
-			\draw(a1att) to (v1);
-			\draw[style=none](v2) to (a2in.south);
+			\draw[->] (a1att) to (v1);
+			\draw[<-, style=none](v2) to (a2in.south);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners] (-.8, -0.3) rectangle (-.2, 0.3);
@@ -2619,11 +2629,11 @@ the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of
                 };
         \end{pgfonlayer}
         \begin{pgfonlayer}{edgelayer}
-                \draw(a1att.center) to (v1);
-                \draw(a2att.center) to (v2);
+                \draw[->](a1att.center) to (v1);
+                \draw[->](a2att.center) to (v2);
                 \draw[out=0, in=-120] (v1) to (divfst.center);
                 \draw[out=0, in=120](v2) to (divsnd.center);
-                \draw(divout.center) to (w);
+                \draw[->](divout.center) to (w);
         \end{pgfonlayer}
         \begin{pgfonlayer}{eqlayer}
         	\draw[dashed, rounded corners] (-1.2, -0.8) rectangle (-.6, -0.2);
@@ -2654,11 +2664,11 @@ the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of
 		};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw(a1att.center) to (v1);
-		\draw(a2att.center) to (v2);
+		\draw[->](a1att.center) to (v1);
+		\draw[->](a2att.center) to (v2);
 		\draw[out=0, in=-120] (w1) to (divfst.center);
 		\draw[out=0, in=120](w2) to (divsnd.center);
-		\draw(divout.center) to (w);
+		\draw[->](divout.center) to (w);
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-1.7, 0.2) rectangle (-0.6, 0.8);
@@ -2683,10 +2693,10 @@ the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of
 		};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw(aatt.center) to (v);
+		\draw[->](aatt.center) to (v);
 		\draw[out=-60, in=-180] (v) to (divfst.center);
 		\draw[out=60, in=-180](v) to (divsnd.center);
-		\draw(divout.center) to (w);
+		\draw[->](divout.center) to (w);
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
@@ -2713,10 +2723,10 @@ the term $a / a$ actually has many different presentations in $\Eqhyps$. Four of
 		};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw(a2att.center) to (v);
+		\draw[->](a2att.center) to (v);
 		\draw[out=0, in=-120] (w1) to (divfst.center);
 		\draw[out=0, in=120](w2) to (divsnd.center);
-		\draw(divout.center) to (w);
+		\draw[->](divout.center) to (w);
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{eqlayer}
 		\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
@@ -2844,7 +2854,7 @@ Using e-term graphs (variables are represented as nodes that do not occur among 
 			\begin{pgfonlayer}{edgelayer}
 				\draw(v1) to (divfst.center);
 				\draw(v2) to (divsnd.center);
-				\draw(divout.center) to (w);
+				\draw[->](divout.center) to (w);
 			\end{pgfonlayer}
 			\begin{pgfonlayer}{eqlayer}
 				\draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
@@ -2870,8 +2880,8 @@ Using e-term graphs (variables are represented as nodes that do not occur among 
 			\begin{pgfonlayer}{edgelayer}
 				\draw(v1) to (divfst.center);
 				\draw(v2) to (divsnd.center);
-				\draw(divout.center) to (w);
-				\draw(one.center) to (z);
+				\draw[->](divout.center) to (w);
+				\draw[->](one.center) to (z);
 			\end{pgfonlayer}
 			\begin{pgfonlayer}{eqlayer}
 				\draw[dashed, rounded corners](-1.2, 0.6) rectangle (-0.6, -0.6);
@@ -2915,11 +2925,11 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 			\node[style=node](z) at (0.9, -1){};
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{edgelayer}
-			\draw(aatt.center) to (v);
+			\draw[->](aatt.center) to (v);
 			\draw[out=-60, in=-180] (v) to (divfst.center);
 			\draw[out=60, in=-180](v) to (divsnd.center);
-			\draw(divout.center) to (w);
-			\draw(one.center) to (z);
+			\draw[->](divout.center) to (w);
+			\draw[->](one.center) to (z);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
@@ -2944,11 +2954,11 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 			\node[style=node](z) at (0.9, -1){};
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{edgelayer}
-			\draw(a2att.center) to (v);
+			\draw[->](a2att.center) to (v);
 			\draw[out=0, in=-120] (w1) to (divfst.center);
 			\draw[out=0, in=120](w2) to (divsnd.center);
-			\draw(divout.center) to (w);
-			\draw(one.center) to (z);
+			\draw[->](divout.center) to (w);
+			\draw[->](one.center) to (z);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
@@ -3030,7 +3040,7 @@ Note however that cycles may implicitly occur due to the presence of the equival
 on nodes for what are called collapsing rules, i.e. where the right-hand side is a single variable. 
 %
 Looking again at the key example of~\cite{WillseyNWFTP21}, consider the rule $1 \times x = x$,
-which can be modelled as the DPO rule below
+which can be modelled as the DPO rule below:
 \[
 \hspace{.25cm}
 \xymatrix{        
@@ -3049,8 +3059,8 @@ which can be modelled as the DPO rule below
 		\begin{pgfonlayer}{edgelayer}
 			\draw(v1) to (divfst.center);
 			\draw(v2) to (divsnd.center);
-			\draw(divout.center) to (w);
-			\draw(one.center) to (z);
+			\draw[->](divout.center) to (w);
+			\draw[->](one.center) to (z);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners](-1.7, 0.1) rectangle (-0.6, 0.7);
@@ -3076,8 +3086,8 @@ which can be modelled as the DPO rule below
 		\begin{pgfonlayer}{edgelayer}
 			\draw(v1) to (divfst.center);
 			\draw(v2) to (divsnd.center);
-			\draw(divout.center) to (w);
-			\draw(one.center) to (z);
+			\draw[->](divout.center) to (w);
+			\draw[->](one.center) to (z);
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{eqlayer}
 			\draw[dashed, rounded corners](-1.7, 0.6) rectangle (-0.6, -0);
