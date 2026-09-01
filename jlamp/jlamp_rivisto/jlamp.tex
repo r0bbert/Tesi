@@ -2969,11 +2969,11 @@ to the e-term graphs in the pictures (3) and (4) is shown below
 
 An EGGs rewriting system is thus a family of rules in $\lepsBis$ of the shape
 $L \leftarrow L \rightarrow R$: the left-hand side is the identity,
-while the right-hand side is a regular mono. The format precisely 
+while the right-hand side is a mono. The format precisely 
 captures the EGGs approach: since it requires that a rule must preserve the $L$ component, 
 that is nodes and edges of the e-hypergraph to which $L$ is mapped must not be deleted, 
-the left-hand side must be the identity, while the arrow $L \rightarrow R$ must be an injection, 
-that is a regular mono in $\lepsBis$ (hence, also in $\lelmBis$). 
+the left-hand side must be the identity, while the arrow $L \rightarrow R$ must be an injection
+on the underlying term graph, hence a mono in $\lepsBis$ (thus, also in $\lelmBis$). 
 
 %The underlying category coud be 
 %either $\lepsBis$ or $\lepsBis$ 
@@ -2996,7 +2996,7 @@ The asymmetry between left-hand and right-hand sides falls in the research about
 $\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}. The solution
 advanced in~\cite{BehrHK23} is not adequate for our purposes. Indeed, while 
 in their double-categorical framework the rules of a rewriting system can 
-be spans of morphisms with no restriction, the match is required to belong to $\mathcal{M}$, which is 
+be spans of morphisms with no constraints, the match is required to belong to $\mathcal{M}$, which is 
 restrictive in our context. As an example, consider again the e-term graph on picture (4) above, and look 
 again at the application of the rule above
 
@@ -3021,7 +3021,7 @@ The issue is solved in the EGGs approach by suitable
 heuristics in the updating procedure. In the DPO approach, this is modelled by rules 
 \emph{with negative application conditions}. Formally, an application condition is obtained 
 by enriching the usual span 
-$L \leftarrow K \rightarrow R$ plus an additional arrow $n: L\rightarrow N$: A match $m: L \to G$ is admissible if it cannot
+$L \leftarrow K \rightarrow R$ with an additional arrow $n: L\rightarrow N$: A match $m: L \to G$ is admissible if it cannot
 be factorised through $n$~\cite{HabelHT96}. For e-term graphs and rules $L \leftarrow L \rightarrow R$, it suffices to choose $n$ 
 as the right-hand side itself.
 % since e.g. the two pictures below intuitively represent the same EGG
@@ -3031,28 +3031,25 @@ The theory of $\mathcal{M}$-adhesivity carries on for linear rules with negative
 the arrows of the span as well as the additional arrow $n: L\rightarrow N$ are in $\mathcal{M}$,
 see e.g.~\cite{ehrig2014adhesive}.
 %
-In our context, we can still adopt the same approach with application condition, yet the same considerations
-about $\mathcal{M}$-adhesivity with left-linear rules apply.
+In our context, we can still adopt the same approach with application condition, using them to forbid rewrites, 
+yet the same considerations about $\mathcal{M}$-adhesivity with left-linear rules apply.
 
-\subsubsection{Issue 3: Cycles [DA AGGIUSTARE! Ma la regola \`e regular mono?]}
+\subsubsection{Issue 3: Cycles}
 Recall that DPO rules under consideration have the shape
 $L \leftarrow L \rightarrow R$, where the left-hand side is the identity 
-and the right-hand side arrow is a regular mono.
+and the right-hand side arrow is a mono in $\lepsBis$.
 %
 %Despite their simplicity, though, such rules may raise some expressiveness issues.
 %
-The underlying term graphs of the rules are obviously acyclic, and since the right-hand side 
-is a regular mono, if it is 
-
-
-ensures that if the e-hypergraph to whom a rule is applied is acyclic,
-the same property holds for the e-hypergraph obtained as the result.
+Note that the the underlying term graphs underling the objects in $\lepsBis$
+are by definition acyclic, so that for any match $m: L \to G$ either in $\lelmBis$ 
+or $\lepsBis$, if $G$ is acyclic then also the result $H$ in acyclic.
 %
-Note however that cycles may implicitly occur due to the presence of the equivalence 
-on nodes for what are called collapsing rules, i.e. where the right-hand side is a single variable. 
+Nevertheless, cycles may implicitly occur due to the presence of the equivalence 
+on nodes, for example in what are called collapsing rules, i.e. where the right-hand side is a single variable. 
 %
 Looking again at the key example of~\cite{WillseyNWFTP21}, consider the rule $1 \times x = x$,
-which can be modelled as the DPO rule below:
+which can be modelled as the DPO rule below
 \[
 \hspace{.25cm}
 \xymatrix{        

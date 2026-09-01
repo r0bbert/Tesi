@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.26)  31 AUG 2026 22:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.26)  1 SEP 2026 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1508,7 +1508,7 @@ Package natbib Warning: Citation `xxx' on page 21 undefined on input line 2814.
 [23]) <xymatrix 3x2 313> [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 3240.
+(hyperref)                removing `\new@ifnextchar' on input line 3237.
 
 <xymatrix 4x7 762> <xymatrix 3x0 2> <xymatrix 8x2 722> <xymatrix 6x2 624>
 <xymatrix 6x2 816> [25] <xymatrix 6x2 658> <xymatrix 7x4 758> <xymatrix 4x4
@@ -1516,50 +1516,50 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 2x2 182> <xymatrix 2x2 182> <xymatrix 2x2 182> <xymatrix 3x2 320> <xymatrix
 4x2 368> <xymatrix 4x2 368> [27] <xymatrix 7x4 758> <xymatrix 2x2 182>
 <xymatrix 3x2 320> <xymatrix 3x2 313>
-Overfull \hbox (2.83197pt too wide) in paragraph at lines 3534--3541
+Overfull \hbox (2.83197pt too wide) in paragraph at lines 3531--3538
 []$[]$  $[]$ 
  []
 
 <xymatrix 4x2 368> <xymatrix 4x2 368> [28] <xymatrix 3x3 403> <xymatrix 4x2
 368> <xymatrix 4x2 368>
-Overfull \hbox (20.02809pt too wide) detected at line 3620
+Overfull \hbox (20.02809pt too wide) detected at line 3617
 []
  []
 
 <xymatrix 3x3 413> [29] <xymatrix 4x3 688> [30]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 3675.
+(hyperref)                removing `\new@ifnextchar' on input line 3672.
 
 <xymatrix 2x2 182> <xymatrix 2x2 182> <xymatrix 2x2 182>
-Overfull \hbox (3.43706pt too wide) in paragraph at lines 3690--3703
+Overfull \hbox (3.43706pt too wide) in paragraph at lines 3687--3700
 $[]$  $[]$ 
  []
 
 <xymatrix 2x2 182> [31] <xymatrix 3x3 371> <xymatrix 2x2 182>
-Overfull \hbox (11.23842pt too wide) detected at line 3779
+Overfull \hbox (11.23842pt too wide) detected at line 3776
 []
  []
 
 <xymatrix 4x3 745> [32] <xymatrix 2x2 182>
-Overfull \hbox (2.1359pt too wide) in paragraph at lines 3810--3819
+Overfull \hbox (2.1359pt too wide) in paragraph at lines 3807--3816
 $[]$  $[]$ 
  []
 
 <xymatrix 5x3 464> [33] <xymatrix 4x2 362>
-Underfull \hbox (badness 1515) in paragraph at lines 3889--3890
+Underfull \hbox (badness 1515) in paragraph at lines 3886--3887
 \OT1/cmr/m/n/10 im-ages of, re-spec-tively $\OML/cmm/m/it/10 f[]$ \OT1/cmr/m/n/
 10 and $\OML/cmm/m/it/10 g[]$\OT1/cmr/m/n/10 . By
  []
 
 <xymatrix 8x4 1106> [34] [35] <xymatrix 3x2 423> <xymatrix 3x2 423> <xymatrix
 6x2 542> [36]
-Overfull \hbox (75.21606pt too wide) detected at line 4003
+Overfull \hbox (75.21606pt too wide) detected at line 4000
 []
  []
 
 
-Overfull \hbox (117.96529pt too wide) detected at line 4004
+Overfull \hbox (117.96529pt too wide) detected at line 4001
 []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e\OT1/
 cmr/m/n/10 )) = []([] \OML/cmm/m/it/10 ^^S[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^
 ^S[]\OT1/cmr/m/n/10 (0))) = [] [](\OML/cmm/m/it/10 ^^S[]\OT1/cmr/m/n/10 (\OML/c
@@ -1570,17 +1570,17 @@ n/10 (\OML/cmm/m/it/10 h[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e\OT1/cmr/m/n/10 ))
  []
 
 <xymatrix 2x3 319>
-Overfull \hbox (6.25055pt too wide) in paragraph at lines 3997--4011
+Overfull \hbox (6.25055pt too wide) in paragraph at lines 3994--4008
 $[]$  $[]$ 
  []
 
 [37]
-Overfull \hbox (59.1655pt too wide) detected at line 4059
+Overfull \hbox (59.1655pt too wide) detected at line 4056
 []
  []
 
 <xymatrix 2x3 230> [38]
-Overfull \hbox (39.16539pt too wide) detected at line 4117
+Overfull \hbox (39.16539pt too wide) detected at line 4114
 []
  []
 
@@ -1588,10 +1588,10 @@ Overfull \hbox (39.16539pt too wide) detected at line 4117
 2x2 182> [41]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 4316.
+(hyperref)                removing `\new@ifnextchar' on input line 4313.
 
 [42] <xymatrix 2x2 223> <xymatrix 2x3 231> <xymatrix 2x2 182> [43]
-Overfull \hbox (17.90755pt too wide) in paragraph at lines 4387--4388
+Overfull \hbox (17.90755pt too wide) in paragraph at lines 4384--4385
 []$[]$ \OT1/cmr/m/n/10 is com-plete, again by Corol-lary []3.18[], we can then 
 con-sider a lim-it-ing cone $((\OML/cmm/m/it/10 E; V; s; t\OT1/cmr/m/n/10 )\OML
 /cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^Y[]; ^^Y[]
@@ -1601,14 +1601,14 @@ con-sider a lim-it-ing cone $((\OML/cmm/m/it/10 E; V; s; t\OT1/cmr/m/n/10 )\OML
 <xymatrix 3x2 321> <xymatrix 3x2 273> <xymatrix 2x3 231> <xymatrix 6x2 542>
 [44] <xymatrix 9x2 1038> [45] <xymatrix 12x4 1718> <xymatrix 4x4 569>
 <xymatrix 10x3 1506> <xymatrix 6x7 779>
-Overfull \hbox (31.42839pt too wide) in paragraph at lines 4576--4594
+Overfull \hbox (31.42839pt too wide) in paragraph at lines 4573--4591
 $[]$  $[]$ 
  []
 
 [46] <xymatrix 12x4 1716> <xymatrix 6x2 652> <xymatrix 6x3 810> [47]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 4694.
+(hyperref)                removing `\new@ifnextchar' on input line 4691.
 
 [48] <xymatrix 6x2 816> [49] <xymatrix 4x4 570> <xymatrix 2x2 182> <xymatrix
 4x2 362> <xymatrix 4x4 571> <xymatrix 2x2 182> [50] <xymatrix 2x2 182>
@@ -1619,30 +1619,24 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package natbib Warning: There were undefined citations.
 
 [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5124.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5124.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5121.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5121.
  (./jlamp.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5124.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5124.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5121.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5121.
 
+Package rerunfilecheck Info: File `jlamp.out' has not changed.
+(rerunfilecheck)             Checksum: 639E6891F22FDEF40EA0FF063374CAE0;2640.
 
-
-Package rerunfilecheck Warning: File `jlamp.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `jlamp.out':
-(rerunfilecheck)             Before: 92BAB7D7B86FFD7DABA848628B5DD25E;2689
-(rerunfilecheck)             After:  5DC9A3834DA0A794FE985CDD2BA78BDA;2689.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 40259 strings out of 492616
- 774558 string characters out of 6129481
+ 40258 strings out of 492616
+ 774550 string characters out of 6129481
  972281 words of memory out of 5000000
- 42926 multiletter control sequences out of 15000+600000
+ 42925 multiletter control sequences out of 15000+600000
  553657 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,29n,81p,3240b,1162s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1683,7 +1677,7 @@ type1/public/xypic/xyatip10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 ic/xypic/xybtip10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/xy
 pic/xycmat10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/xypic/x
 ycmbt10.pfb>
-Output written on jlamp.pdf (54 pages, 716376 bytes).
+Output written on jlamp.pdf (54 pages, 715680 bytes).
 PDF statistics:
  1569 PDF objects out of 1728 (max. 8388607)
  1445 compressed objects within 15 object streams
