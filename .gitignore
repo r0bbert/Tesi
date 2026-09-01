@@ -35,4 +35,16 @@ calco/tikzit.sty
 jlamp/elsarticle.cls
 jlamp/jlamp.bbl
 jlamp/jlamp.toc
+jlamp/jlamp_rivisto/*.aux
+jlamp/jlamp_rivisto/*.blg
+jlamp/jlamp_rivisto/*.spl
+jlamp/jlamp_rivisto/*.out
+jlamp/jlamp_rivisto/*.log
+jlamp/jlamp_rivisto/textput.log
+jlamp/jlamp_rivisto/jlamp.pdf
+jlamp/jlamp_rivisto/jlamp.synctex.gz
+jlamp/jlamp_rivisto/elsarticle.cls
+jlamp/jlamp_rivisto/jlamp.bbl
+jlamp/jlamp_rivisto/jlamp.toc
+
 icfpws17haskell-haskellmainid20.pdf
