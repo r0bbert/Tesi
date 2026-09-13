@@ -740,7 +740,7 @@ We recall some of its properties.
 	Let $X$ be a set and $n\in \mathbb{N}$. Then the following facts hold
 	\begin{enumerate}
 		\item there are arrows $v_{n}\colon X^n\mto X^\star $ such that $(X^\star, \{v_{n}\}_{n\in \mathbb{N}})$ is a coproduct;
-		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$;
+		\item for every arrow $f\colon X\to Y$, $f^\star\colon X^\star \to Y^\star$ is the coproduct of the family $\{f^n\}_{n\in \mathbb{N}}$, where $f^n$ is the image of $f$ under the functor $(-)^n$;
 		\item $(-)^\star$ preserves all \emph{connected limits} \cite{carboni1995connected}, in particular pullbacks and equalizers.
 	\end{enumerate}
 \end{prop}
@@ -796,7 +796,7 @@ We define $\hyp$ to be the resulting category.
 \xymatrix@R=8pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{s_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{s_{\mathcal{H}}} & V^\star_{\mathcal{H}}} \hspace{1pt}\\ \xymatrix@R=8pt{E_{\mathcal{G}} \ar[d]_{h} \ar[r]^{t_{\mathcal{G}}}& V^\star_{\mathcal{G}}  \ar[d]^{k^\star}\\E_{\mathcal{G}} \ar[r]^{t_{\mathcal{H}}} & V^\star_{\mathcal{H}}} 
 \end{minipage}
 
-Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\star\times X^\star$.  We can use it to present $\hyp$ as a comma category.
+Let $\pro^\star$ be the functor $\Set\to \Set$ sending $X$ to the product $X^\star\times X^\star$.  We can use it to present $\hyp$ as a comma category \cite[Prop.~$6.2.2$]{castelnovo2023thesis}.
 
 \begin{prop}\label{prop:com}
 	$\hyp$ is isomorphic to $\comma{\id{\Set}}{\pro^\star}$
@@ -1185,7 +1185,7 @@ We denote by $\shyp$ the full subcategory of $\hyp$ of separated hypergraphs and
  
  \begin{rem}\label{rem:elem2}
  	Let $\mathcal{G}$ be a separated hypergraph.
- 	By applying \Cref{rem:elem}, this fact is equivalent to say that for every hyperedge $e$
+ 	By applying \Cref{rem:elem}, this fact is equivalent to say that for every hyperedge $e$:
  	\begin{itemize}
  		\item $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ do not contain repeated letters;
  		\item $s_{\mathcal{G}}(e)$ is disjoint from $t_{\mathcal{G}}(e')$ for every $e'\in E_{\mathcal{G}}$;
@@ -1214,7 +1214,7 @@ where $0$ is the unique element of the terminal object $1$.
 We define the \emph{separated hypergraph associated to $\mathcal{G}$}  as $\sp(\mathcal{G}) = (E_{\mathcal{G}}, V_{\sp(\mathcal{G})}, s_{\sp(\mathcal{G})}, t_{\sp(\mathcal{G})})$.
 \end{defi}
 \begin{rem}\label{rem:ob}
- By construction $\sp(\mathcal{G})$ is an object of $\shyp$. To see this it is enough to apply \Cref{rem:elem2}
+ By construction $\sp(\mathcal{G})$ is an object of $\shyp$. To see this it is enough to apply \Cref{rem:elem2}:
  \begin{itemize}
  	\item every letter of $s_{\mathcal{G}}(e)$ and $t_{\mathcal{G}}(e)$ lies in the image of a different coprojection $\iota_e\circ \iota^e_i$, so it cannot appear more than one time;
  	\item every letter of $s_{\mathcal{G}}(e)$ lies in the image of $\iota_{e}\circ \iota^e_i$  for $i\leq n_e$, while every letter of $t_{\mathcal{G}}(e)$ lies in the image of $\iota_{e}\circ \iota^e_j$  for $n_e < j$, guaranteeing disjointness;
@@ -1369,17 +1369,6 @@ $t_{\mathcal{G}}(e)$ for any $e\in E_{\mathcal{G}}$. $\mathcal{G}$ is \emph{prun
 	By construction, $\sp(\mathcal{G})$ is pruned for every hypergraph $\mathcal{G}$.
 \end{rem}
 
-\begin{rem}\label{rem:mprun}
-	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases
-
-	\begin{itemize}
-		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
-		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
-		\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have
-		\[g(v)=g(t_{\mathcal{G}}(e)_i)=(g^\star(t_{\mathcal{G}}(e)))_i=t_{\mathcal{H}}(f(e))_i=t_{\mathcal{H}}(h(e))_i=(k^\star(t_{\mathcal{G}}(e)))_i=k(t_{\mathcal{G}}(e)_i)=k(v)\]
-	\end{itemize}
-	In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
-\end{rem}
 
 \begin{restatable}{prop}{dx}\label{prop:dx}The following properties hold
 	\begin{enumerate}
@@ -3325,24 +3314,21 @@ presented here for hypergraphs can be generalised to hierarchical hypergraphs, t
 hypergraphs with a hierarchy (a partial order) among 
 edges~\cite{ghicaZan,CastelnovoGM24}.
 The additional structure is useful for modelling properties such as encapsulation and sandboxing,
-and it seems worthwhile to check the expressiveness and applications of hierarchical EGGS.
+and it seems worthwhile to check the expressiveness and applications of hierarchical EGGs.
 
 \emph{Related works.}
 %\todo{espandere un poco}
 Despite the interest they have ben raising as an efficient data structure, we are not aware of any attempt to provide an 
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
-among the two proposals, which appear to be related yet quite different.
+among the two proposals, which appear to be related yet quite different. In~\cite{ghica}, equivalence of nodes is captured by a special kind of \emph{hierarchical} edges together with a partial order a consistency relation, using a formalism which is reminiscent of hierarchical hypergraphs. Moreover, by considering term graphs as arrows of a symmetric monoidal category enriched over semi-lattices,~\cite{ghica} connects e-hypergraphs with the theory of PROPs. While~\cite{ghica}, as us, exploits DPO rewriting, it lacks an examination of the adhesivity properties of the category of e-hypergraphs studied.
 %
 %In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. 
+
 We adopted a more down-to-earth approach by equipping
 concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories. 
-The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
-and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
-Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
-$\Set$. At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
-is $\mathcal{M}$-adhesive, thus allowing to exploit the features of the framework
-as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which facilitates its practical application 
+at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories  allowing us to exploit the features of the framework
+as they hold for DPO graph transformation.
+ Moreover, our construction is technically simpler and more easily related to the concrete operational model of EGGs, thus facilitating its practical application 
 and theoretical analysis, and aligns with the traditional methodology adopted in the graph transformation community 
 of explicitly endowing (hyper)graphs with additional structure.
 %\section*{Acknowledgments}
@@ -4179,6 +4165,19 @@ $s_{\mathcal{E}}, t_{\mathcal{E}} \colon E_{h_1, k_1}\rightrightarrows V^\star_{
 	\[\hat{k}_1\circ \hat{h}_1\circ \iota_e\circ \iota^e_i=\hat{k}_1\circ \iota_{h_1(e)}\circ \iota^{h_1(e)}_i =\iota_{k_1(h_1(e))}\circ \iota^{k_1(h_1(e))}_i\]
 	which entails the preservation of composition.
 \end{proof} 
+
+\begin{rem}\label{rem:mprun}
+	Let $(f,g)$ and $(h, k)$ be two morphisms $\mathcal{G}\rightrightarrows \mathcal{H}$ of $\hyp$ with $\mathcal{G}$ pruned and suppose that $f=h$. We can use the absence of isolated nodes in $\mathcal{G}$ to show that $g=k$ too. Let $v\in V_{\mathcal{G}}$, we have two cases
+	
+	\begin{itemize}
+		\item $v$ occurs in $s_{\mathcal{G}}(e)$ for some $e\in E_{\mathcal{G}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{G}}}(s_{\mathcal{G}}(e))$ be such that $v=s_{\mathcal{G}}(e)_i$, then we have
+		\[g(v)=g(s_{\mathcal{G}}(e)_i)=(g^\star(s_{\mathcal{G}}(e)))_i=s_{\mathcal{H}}(f(e))_i=s_{\mathcal{H}}(h(e))_i=(k^\star(s_{\mathcal{G}}(e)))_i=k(s_{\mathcal{G}}(e)_i)=k(v)\]
+		\item $v$ occurs in $t_{\mathcal{H}}(e)$ for some $e\in E_{\mathcal{H}}$. Let $1\leq i\leq \lgh_{V_{\mathcal{H}}}(t_{\mathcal{G}}(e))$ be such that $v=t_{\mathcal{G}}(e)_i$, then we have
+		\[g(v)=g(t_{\mathcal{G}}(e)_i)=(g^\star(t_{\mathcal{G}}(e)))_i=t_{\mathcal{H}}(f(e))_i=t_{\mathcal{H}}(h(e))_i=(k^\star(t_{\mathcal{G}}(e)))_i=k(t_{\mathcal{G}}(e)_i)=k(v)\]
+	\end{itemize}
+	In both cases $\hat{g}(v)=k(v)$ and so $\hat{g}= k$ as wanted.
+\end{rem}
+
 
 \dx*
 \begin{proof}\label{proof:dx}
