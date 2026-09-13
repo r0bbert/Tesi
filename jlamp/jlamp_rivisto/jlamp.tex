@@ -2565,18 +2565,18 @@ $\eg$ is $\mathcal{T}_\Sigma$-adhesive.
 \section{On term representations, and $\mathcal{M}$-adhesive rewriting}
 \label{rewriting}
 The previous sections offered a tour on various categories of hypergraphs,
-with and without an equivalence. 
+with and without equivalence. 
 %and term graphs. 
 In particular, we have shown how they 
 can be described as suitable $\mathcal{M}$-adhesive categories, 
-and we summarise below for some relevant categories:
+as summarised below for some relevant categories
 
 \begin{table}[ht]
 	\centering
 	\label{tab:riassunto}
 	\begin{tabular}{|l|c|r|}
 		\hline 
-		Category & Adhesivity property & Result\\
+		Category & Adhesivity property & Proof\\
 		\hline 
 			$\hyp_{\mathcal{G}}$ & adhesive & \Cref{prop:mono} \\
 		\hline 
@@ -2824,12 +2824,12 @@ must belong to the same equivalence class.
 Consider now the pictures indicated by (3) and (4). They are both e-term graphs. Picture (3) is 
 the representation in $\lelmBis$ of $a / a$ as a term graph with a shared constant; while picture (4) is 
 % the minimally-shared representation among 
-a separated term graph which is the unique representation of $a / a$ n  $\lepsBis$.
+a separated term graph which is the minimal representation of $a / a$ in  $\lepsBis$.
 
 In the original paper~\cite{DetlefsNS05} EGGs were simply defined as term graphs with an equivalence relation on nodes that is composition-closed, 
 resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we consider adequate both $\lelmBis$ and $\lepsBis$.
 In particular, e-term graphs are the counterpart of the original definition; while the sub-category of pruned, separated 
-e-term graphs guarantees a unique representation for a term, and it seems more in touch with recent implementations~\cite{eggs}.
+e-term graphs guarantees a minimal representation for a term, and it seems more in touch with recent implementations~\cite{eggs}.
 
 
 \comment{
@@ -2901,7 +2901,7 @@ are spans $L \leftarrow L \rightarrow R$ whose left-hand side is the identity,
 and the DPO diagram can be suitably described by just a single pushout.
 % thus in $\pbc_\Sigma$, while the second component may not belong to $\pbc_\Sigma$. 
 
-Consider the term rewriting rule such $x / x \to 1$, from the key example in~\cite{WillseyNWFTP21}.
+Consider the term rewriting rule $x / x \to 1$, from the key example in~\cite{WillseyNWFTP21}.
 %This is a problematic rule to be simulated using classical term graph rewriting, since it is not left-linear
 %(that is, $x$ occurs twice in the left-hand side)~\cite{AriolaKP00}.
 Using e-term graphs (variables are represented as nodes that do not occur among the targets of an edge),
@@ -3060,13 +3060,17 @@ The arrow $L \rightarrow R$ does not  belong to $\epbl_{\Sigma}$
 to lift to the categories at hand all the properties of the $\mathcal{M}$-adhesive framework.
 
 The asymmetry between left-hand and right-hand sides falls in the research about left-linear rules for 
-$\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24}. The solution
-advanced in~\cite{BehrHK23} is not adequate for our purposes. Indeed, while 
-in their double-categorical framework the rules of a rewriting system can 
+$\mathcal{M}$-adhesive categories, as pursued e.g. in~\cite{BaldanC0G24,BehrHK23}. 
+The proposal in~\cite{BaldanC0G24} identify conditions on the rules such that a rewriting system 
+satisfies the Church-Rosser property, which is a preliminary step on the way of 
+addressing the key properties of sequential and parallel independence.
+%
+The solution advanced in~\cite{BehrHK23} rely on a more general framework based on
+double categories, yet it does not seem to be directly applicable for our purposes. Indeed, while 
+in their double-categorical framework the rules can 
 be spans of morphisms with no constraints, the match is required to belong to $\mathcal{M}$, which is 
-restrictive in our context. As an example, consider again the e-term graph on picture (4) above, and look 
-again at the application of the rule above
-
+restrictive in our context. Consider again the e-term graph on picture (4) above, and look 
+once more at the application of the rule above
 \[
 	\xymatrix@R=6pt@C=25pt{\begin{tikzpicture}[baseline=(w.base)]\begin{pgfonlayer}{nodelayer}
 				\node[style=node](v1) at (-0.9, 0.3){};
@@ -3170,7 +3174,6 @@ again at the application of the rule above
 		\end{tikzpicture}
 	}
 \]
-
 The match is regular mono, since it is an inclusion on the
 underlying (pruned and separated) term graphs and an isomorphism 
 on the equivalence classes, yet it does not belong to $\epbs_{\Sigma}$,
@@ -3201,9 +3204,38 @@ the arrows of the span as well as the additional arrow $n: L\rightarrow N$ are i
 see e.g.~\cite{ehrig2014adhesive}.
 %
 In our context, we can still adopt the same approach with application condition, using them to forbid rewrites, 
-yet the same considerations about $\mathcal{M}$-adhesivity with left-linear rules apply.
+yet the same considerations about $\mathcal{M}$-adhesivity with left-linear rules apply:
+the framework of negative application conditions for left-linear rules is still an ongoing
+venue of research.
 
-\subsubsection{Issue 3: Cycles}
+\subsubsection{Issue 3: Removing duplicates}
+The heuristics developed for the EGG framework ensures that
+the chosen representation of a term graph 
+is minimal: after each step, an housekeeping procedure 
+is applied so that e.g. among the two pruned and separated 
+e-term graphs below encoding the term $a/a$,  
+the one on the left (again, picture (4) above)
+is chosen
+\[
+xxx
+\]
+While it would be possible to obtain 
+such a representation by suitable quotients on $\lelmBis$ 
+and $\lepsBis$, we favour a solution which recalls of the 
+actual heuristcs of the EGG framework by relying on the 
+classical solution adopted in the term graph literature, that is, the 
+introduction of specific collapsing rules~\cite{AriolaKP00}.
+For example, for the simple algebraic signature containing only 
+the constants $a$ and $1$ and the binary oprator $/$, it suffices to introduces 
+the three collapsing rules below
+\[
+xxx
+\]
+These rules can be performed in parallel with the 
+rules of any rewriting system without interfering with them,
+and ensures that a minimal representation can always be reached.
+
+\subsubsection{Issue 4: Cycles}
 Recall that DPO rules under consideration have the shape
 $L \leftarrow L \rightarrow R$, where the left-hand side is the identity 
 and the right-hand side arrow is a mono in $\lepsBis$.
@@ -3218,7 +3250,7 @@ Nevertheless, cycles may implicitly occur due to the presence of the equivalence
 on nodes, for example in what are called collapsing rules, i.e. where the right-hand side is a single variable. 
 %
 Looking again at the key example of~\cite{WillseyNWFTP21}, consider the rule $1 \times x = x$,
-which can be modelled as the DPO rule below
+which can be modelled as the DPO rule below (whose right-hand side is a mono)
 \[
 \hspace{.25cm}
 \xymatrix{        
@@ -3308,9 +3340,9 @@ of the $\mathcal{M}$-adhesive framework.
 
 \emph{Future works.}
 Our results open a few threads of research. The first is to check how the $\mathcal{M}$-adhesivity 
-of EGGs can be pushed to model their rewriting via the double-pushout (DPO) approach. We have seen that 
+of EGGs can be pushed to model their rewriting via the DPO approach. We have seen that 
 the rules adopted in the literature of EGGs appears to be spans whose left-hand side is an identity and 
-right-hand side is a regular mono (possibly with negative application 
+right-hand side is a mono (possibly with negative application 
 conditions), and as such they fit the mould of rewriting on left-linear rewriting in $\mathcal{M}$-adhesive categories. 
 %The consequences for usability on the restriction of the matches to arrows that are injective on equivalence classes
 %though need to be further investigated.
@@ -3336,15 +3368,16 @@ among the two proposals, which appear to be related yet quite different.
 %In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. 
 We adopted a more down-to-earth approach by equipping
 concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising it~\cite{concur2006} in the contemporary jargon of adhesive categories. 
-The route chosen in~\cite{ghica} is to consider term graphs as arrows of a symmetric monoidal category,
-and equipping them with an enrichment over semi-lattices, the resulting formalism being reminiscent of hierarchical hypergraphs.
-Thus, the solution in~\cite{ghica}  is  more general than ours since it can be lifted to term graphs defined over categories other than
-$\Set$. At the same time, we both consider the DPO approach for rewriting, even if only our solution guarantees that the resulting category
-is $\mathcal{M}$-adhesive, thus allowing to exploit the features of the framework
-as they hold for DPO graph transformation.  Moreover, our construction is technically simpler, which facilitates its practical application 
-and theoretical analysis, and aligns with the traditional methodology adopted in the graph transformation community 
-of explicitly endowing (hyper)graphs with additional structure.
+at the same time extending and generalising~\cite{concur2006} in the contemporary jargon of adhesive categories. 
+The route chosen in~\cite{ghica} is to consider a variant of hierarchical hypergraphs, with suitable conditions that 
+intuitively ensure the correspondence between hierarchies and equivalence classes. They do not explore
+$\mathcal{M}$-adhesivity, embedding instead their hypergraphs into categories of string diagrams with an enrichment 
+over semi-lattices, along the lines of~\cite{bonchi2022string}, and proving a soundness and  completeness result.
+Even if we both consider the DPO approach for rewriting, our constructions are technically simpler, more in tune with
+the set-theoretical approach of EGG, which facilitates its practical application 
+and theoretical analysis, and aligns with the focus on $\mathcal{M}$-adhesivity
+currently pusued by the graph transformation community.
+
 %\section*{Acknowledgments}
 %Hypergraphs, terms graphs, e-graphs, adhesive categories.
 
