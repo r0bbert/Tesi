@@ -5,6 +5,11 @@
 \usepackage{amssymb}
 \usepackage{fullpage}
 
+\newcommand{\comma}[2]{#1\hspace{1pt} {\downarrow}#2}
+\newcommand{\id}[1]{\mathsf{id}_{#1}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\pro}{\mathsf{prod}}
+
 \title{``EGGs are adhesive!''\\
 	Answer to reviewers}
 \author{R. Biondo, D. Castelnovo, F. Gadducci}
@@ -16,9 +21,16 @@
 	
 We wish to thank the reviewers for the time they have dedicated to our paper, and for the many useful suggestions. We corrected all typos indicated; below we explain how we have addressed the issues raised by the reviewers.
 
-\section*{Reviewer 1}
+We have rewritten and expanded Section 6 in response to the reviewer’s request. In particular, we have made explicit which kinds of DPO rules we are interested in and which issues may arise in this setting.
 
-qui mettere risposte a osservazioni maggiori
+Regarding Sections 3 and 4, we have chosen not to alter their structure. The order of presentation has been chosen with the following rationale: we first introduce plain hypergraphical structures, then add equivalences and finally study EGGs. We believe this provides the most straightforward way of presenting the material.
+
+We also consider a low-level, set-theoretic presentation of most of the structures under study to be necessary. Indees, the notion of separated and pruned hypergraph, which provides a possible hypergraphical basis for the notion of EGGs, is inherently formulated in terms of elements and cannot be easily treated entirely at the categorical level.
+
+Besides these changes, Reviewer 2 raised a serious technical issue with our previous Lemma 5.7 (now Lemma 5.9).  Indeed, the lemma was false in its previous form. The issue is that there is no reason for the left face of the cube used in the proof to be a pullback. We resolved this issue by imposing an additional condition on the class $\mathsf{Pb}$ (see new Definition 5.7).
+
+
+\section*{Reviewer 1}
 
 \begin{itemize}
 	\item \emph{* "an hypergraph" -> "a hypergraph"}
@@ -61,11 +73,11 @@ qui mettere risposte a osservazioni maggiori
 	Fixed.
 	
 	
-
-\item \emph{ "is left-monogamous but not separated" => you have not yet defined the notion of a hypergraph being "separated" at this point}
-
-We moved the example after  def $3.37$.
-
+	
+	\item \emph{ "is left-monogamous but not separated" => you have not yet defined the notion of a hypergraph being "separated" at this point}
+	
+	We moved the example after  def $3.37$.
+	
 	\item \emph{ p. 8, Example 3.25: you have multiple notational errors in this near trivial example, which are confusing to the attentive readers: (1) you speak of "hypergraphs G and H below" but seem to refer to the diagram set to the right of the paragraph, where hypergraphs are not named; (2) "$out_G(a, e) = 2$" -> "$out_G(v, e) = 2$" (there is no node called "a" in the diagram), (3) for the hypergraph $H$, you speak of "$out_H(u, e_1)=out_H(u, e_2)=1$", yet as per your notational conventions, only right-pointing links between hyperedge boxes and nodes count for the out-degree function (i.e., the way you drew the diagram for $H$ you would need to read off "$out_H(u, e_1)$", "$out_H(u, e_2)=0$", "$in_H(u,e_1)=0$", and "$in_H(u,e_2)=1"$}
 	
 	We fixed the notational errors and changed the graphical notation adding an arrowhead to denote the targets.
@@ -125,14 +137,14 @@ We moved the example after  def $3.37$.
 	Fixed.
 	
 	\item \emph{ p. 11: "If we restrict to pruned separated hypergraph" -> "If we re
-	strict to pruned separated hypergraphs"}
+		strict to pruned separated hypergraphs"}
 	
 	
 	Fixed.
 	
 	\item \emph{p. 11: "Lemma 3.54. $pSep$ is equivalent to $Set/(\mathbb{N}\times \mathbb{N})$." => you never clarified explicitly in your manuscript in which concrete mathematical sense you consider $\mathbb{N}$ a category, even though the proof in the appendix provides some hints at what kind of construction you mean to denote; there are also some related imprecisions in your proof, so this result must be more carefully and more precisely presented}
 	
-	 $Set/(\mathbb{N}\times \mathbb{N})$ is the comma category over the set $\mathbb{N}\times \mathbb{N}$.
+	$Set/(\mathbb{N}\times \mathbb{N})$ is the comma category over the set $\mathbb{N}\times \mathbb{N}$.
 	
 	\item \emph{ p. 13, Remark 3.69 => This kind of overview of materials is presented much too late in the manuscript, and should, in fact, be the main introduction to the technical materials section.}
 	
@@ -143,35 +155,136 @@ We moved the example after  def $3.37$.
 	
 	Fixed.
 	
-		\item \emph{ p. 16: "pruned ans separated" -> "pruned and separated"}
-		
-			Fixed.
+	\item \emph{ p. 16: "pruned ans separated" -> "pruned and separated"}
+	
+	Fixed.
 	
 	
-		\item \emph{ p. 18: "we have that such class" -> "we have that this class"}
-		
-			Fixed.
+	\item \emph{ p. 18: "we have that such class" -> "we have that this class"}
+	
+	Fixed.
 	
 	
-		\item \emph{ p. 19: "pushouts alongs arrows" -> "pushouts along arrows"}
-		
-			Fixed.
+	\item \emph{ p. 19: "pushouts alongs arrows" -> "pushouts along arrows"}
+	
+	Fixed.
 	
 	
-		\item \emph{ p. 20: "to be simulates" -> "to be simulated"}
-		
-			Fixed.
+	\item \emph{ p. 20: "to be simulates" -> "to be simulated"}
+	
+	Fixed.
 \end{itemize}
-
-
 
 
 \section*{Reviewer 2}
 
-qui mettere risposte a osservazioni maggiori
 \begin{itemize}
-	\item
-	qui fare elenco risposte a osservazioni minori
-\end{itemize}
+	
+	\item \emph {p.5, Lem.2.12. Is there a unique arrow $k_h$ making all three
+		diagrams commute or is there a unique arrow for each diagram
+		separately?
+		$h\times h$ goes from $X\times X$ to $Z \times Z$, this has to be fixed.}
+	
+	We fixed the typing of $h \times h$. The statement of the lemma is that there exists a unique arrow making all three diagrams commute. Notice, however, that commutativity of the third diagram is equivalent to that of the other two.
+	
+	\item \emph{ p.6, Prop.3.1: What are the $f^n$?
+		I think that the introduction of the star operator is a bit overly
+		complicated. Do you lose anything if you just define $X^\star$
+		via the standard Kleene star (all finite words over $X$)?}
+	
+	The explicit construction of the Kleene star is precisely the formalization of  ``(all finite words over $X$''). We made explicit what $f^n$ are.
+	
+	\item \emph{p.7, Prop.3.7: As far as I can parse the definition the 
+		objects ``$\comma{\id{\Set}}{\pro^\star}$''  are maps $X\rightarrow X^\star \times X^\star$.
+		But are these really hypergraphs? Shouldn't you distinguish
+		between nodes and edges? Where is the proof of this proposition?}
+	
+	This is well known. An hypergraph is a pair of arrows $E \to V^\star$, or equivalently, an arrow $E \to V^\star \times V^\star$, that is an object of the comma category. We have added a reference.
+	
+	
+	\item \emph{ p.8, Lem.3.17 is a bit hard to parse and digest. Can you make
+		it more accessible?}
+	
+	Due to the technical nature of the lemma we have decided to keep it in the current form. 
+	
+	\item \emph{ p.8, Def.3.21: What is $\mathbb{B}?$}
+	
+	Fixed.
+	
+	
+	\item \emph{ p.9: You should make a graphical distinction of the source
+		and target nodes of a hyperedge.}
+	
+	Fixed.
+	
+	\item \emph{ p.10, Rem.3.39: doesn't the third item subsume the second one?}
+	
+	No, the second one exclude the presence of cycles, the third one assure us that every edge is not connected to other edges. 
+	
+	\item \emph{ p.11, Rem.3.42 and Rem.3.49: In my opinion theses remark, as well as
+		this entire section of the paper, is somewhat too detailed, spelling
+		out relative obvious observations. It would be better to remove them
+		or move them to the appendix and instead spend more time on
+		e-hypergraphs and rewriting.}
+	
+	We moved Rem 3.49 to the appendix (now is Rem. A.6). However we prefer to leave Rem 3.42 in the main body.
+	
+	\item \emph{ p.12: Sep and pSep are rather degenerated categories. It would be
+		helpful for the reader if you could explain in more detail what you
+		are doing here and what the motivation for considering those categories
+		is.}
+	
+	The idea here is to provide different hypergraphical bases for EGGs. Since we have equivalences at our disposal, hyperedges need not actually share a node.
+	
+	\item \emph{ p.12. Prop.3.50: What do $Pr$ and $sp_P$ do? (pr=pruning?)}
+		
+		Indeed pr stands for pruning. The definition of the two functors is contained in the proof of $3.49$.
+		
+		\item \emph{ p.13, Rem.3.60: What is $U_{Hyp}$?}
+		
+		$U_{Hyp}$ is the forgetful functor sending an hypergraph to is set of nodes. It is defined in  Proposition 3.10
+		
+		\item \emph{ p.14: The addition of equivalence - a central concept - comes fairly
+			late in the paper. As said above, I believe that the sections
+			before can be shortened. The same holds to some extent for the
+			results on hypergraphs with equivalences, which are somehow just
+			hypergraphs with an explicit surjective labelling. It is e-graphs
+			that are actually interesting.}
+		
+		The preceding sections contain results needed for this section. Similarly, Sec. 5 builds upon the results established in Sec. 4.
+		
+		
+		\item \emph{ p.15: I would give concrete constructions for the pushouts in Hyp.}
+		
+		Pushouts for Hyp are constructed componentwise, as for Lemma B.3.
+		
+		\item \emph{ p.18, Prop.5.2: At this point kernel pairs are finally used (after
+			having been introduced long before). It would be good to explain
+			their role on a more intuitive level.}
+		
+		Kernel pairs are quite a standard tool in the categorical study of relations. We introduced them in Sec. 2, alongside the other general categorical preliminaries.
+		
+		\item \emph{ p.21: The last paragraph of Sct.6.1 is a bit cryptic and should be
+			explained in more detail. This should actually be the motivation for
+			considering the various variants of hypergraphs, so this should be
+			carefully explained to the reader.}
+		
+		Rewrote Sec. 6.
+		
+		\item \emph{ p.21 ff.: As stated above, it is not so clear to me which rules
+			you are actually interested in. Do you want rules that can delete
+			items or only rule that add something?}
+		
+		Rewrote Sec. 6.
+		
+		\item \emph{ p. 23: The comparison to [21] (a paper by Ghica, Barrett and Tiurin)
+			is a bit weak. If [21] is in some sense more general than your
+			paper, there should be a way to make a deeper comparison.}
+		
+		Rewrote paragraph on comparison between the two works.
+		
+	\end{itemize}
+
+
 	
 \end{document}
