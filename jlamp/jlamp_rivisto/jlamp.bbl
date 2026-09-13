@@ -33,7 +33,7 @@ Nicolas Behr, Russ Harmer, and Jean Krivine.
 
 \bibitem{uovadesive}
 Roberto Biondo, Davide Castelnovo, and Gadducci Fabio.
-\newblock Eggs are adhesive!
+\newblock {EGG}s are adhesive!
 \newblock In Corina C\^{i}rstea~Alexander Knapp, editor, {\em CALCO 2025},
   volume 342 of {\em LIPIcs}, pages 10:1--10:18. Schloss Dagstuhl --
   Leibniz-Zentrum f{\"u}r Informatik, 2025.
@@ -200,7 +200,7 @@ Jacques Sakarovitch.
 
 \bibitem{eggs}
 VV.AA.
-\newblock Egg: e-graphs good.
+\newblock {EGG}: e-graphs good.
 \newblock https://egraphs-good.github.io/.
 
 \bibitem{Wadler95}
@@ -212,7 +212,7 @@ Philip Wadler.
 \bibitem{WillseyNWFTP21}
 Max Willsey, Chandrakana Nandi, Yisu~Remy Wang, Oliver Flatt, Zachary Tatlock,
   and Pavel Panchekha.
-\newblock Egg: Fast and extensible equality saturation.
+\newblock {EGG}: Fast and extensible equality saturation.
 \newblock In {\em POPL 2021}, volume~5 of {\em PACMPL}, pages 1--29. ACM, 2021.
 
 \end{thebibliography}
