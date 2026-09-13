@@ -19,15 +19,16 @@
 	\maketitle
 	
 	
-We wish to thank the reviewers for the time they have dedicated to our paper, and for the many useful suggestions. We corrected all typos indicated; below we explain how we have addressed the issues raised by the reviewers.
+We wish to thank the reviewers for the time they have dedicated to our paper, and for the many useful suggestions. We corrected all typos indicated; below we explain how we have addressed the issues they raised.
 
-We have rewritten and expanded Section 6 in response to the reviewer’s request. In particular, we have made explicit which kinds of DPO rules we are interested in and which issues may arise in this setting.
+We have rewritten and expanded Section 6 in response to the reviewer's request. In particular, we have made explicit which kinds of DPO rules we are interested in and which issues may arise in this setting.
 
 Regarding Sections 3 and 4, we have chosen not to alter their structure. The order of presentation has been chosen with the following rationale: we first introduce plain hypergraphical structures, then add equivalences and finally study EGGs. We believe this provides the most straightforward way of presenting the material.
 
 We also consider a low-level, set-theoretic presentation of most of the structures under study to be necessary. Indees, the notion of separated and pruned hypergraph, which provides a possible hypergraphical basis for the notion of EGGs, is inherently formulated in terms of elements and cannot be easily treated entirely at the categorical level.
 
-Besides these changes, Reviewer 2 raised a serious technical issue with our previous Lemma 5.7 (now Lemma 5.9).  Indeed, the lemma was false in its previous form. The issue is that there is no reason for the left face of the cube used in the proof to be a pullback. We resolved this issue by imposing an additional condition on the class $\mathsf{Pb}$ (see new Definition 5.7).
+Besides these changes, Reviewer 2 raised a serious technical issue with our previous Lemma 5.7 (now Lemma 5.9).  Indeed, the lemma was incorrect in its previous form. The issue is that there is no reason for the left face of the cube used in the proof to be a pullback. We resolved this issue by imposing an additional condition on the class $\mathsf{Pb}$ (see new Definition 5.7). Luckily, this does not affect the core of our results, now summarised 
+at the beginning of Section~6.
 
 
 \section*{Reviewer 1}
@@ -92,7 +93,7 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 	
 	\item \emph{ p. 8: "Definition 3.31. A morphism $(f, g) : G \to H$ of hypergraphs is downward-closed if $t_H(h)$ has a letter belonging to the image of $g$, then $h$ is in the image of $f$." => this is rather ill-formulated - please clarify this definition (you presumably intended to express that a downwards-closed morphism is one such that, whenever a letter $l$ occurring in $t_H(h)$ for some hyperedge $h$ in $H$ is in the image of $g$, then the hyperedge $h$ itself must be in the image of $f$; coincidentally, perhaps it would be best to use different notations for morphisms of hypergraphs and elements of sets of hyperedges, since clearly $f,g,h$ notations does not make sufficiently explicit that $f$ is the mapping of hyperedges, $g$ the mapping of nodes, and $h$ a hyperedge in $H$)}
 	
-	Rewrote the definition.
+	We rewrote the definition.
 	
 	
 	
@@ -144,11 +145,11 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 	
 	\item \emph{p. 11: "Lemma 3.54. $pSep$ is equivalent to $Set/(\mathbb{N}\times \mathbb{N})$." => you never clarified explicitly in your manuscript in which concrete mathematical sense you consider $\mathbb{N}$ a category, even though the proof in the appendix provides some hints at what kind of construction you mean to denote; there are also some related imprecisions in your proof, so this result must be more carefully and more precisely presented}
 	
-	$Set/(\mathbb{N}\times \mathbb{N})$ is the comma category over the set $\mathbb{N}\times \mathbb{N}$.
+	$\mathbb{N}$ is just a set, and $Set/(\mathbb{N}\times \mathbb{N})$ is the comma category over the set $\mathbb{N}\times \mathbb{N}$.
 	
 	\item \emph{ p. 13, Remark 3.69 => This kind of overview of materials is presented much too late in the manuscript, and should, in fact, be the main introduction to the technical materials section.}
 	
-	We moved the remark at the beginning of the section, with an introduction.
+	We moved the remark at the beginning of the section, with some explanatory remarks.
 	
 	
 	\item \emph{ p. 16: "The category $Hyp_{eq,G}$ of hypergraph" -> "The category $Hyp_{eq,G}$ of hypergraphs"}
@@ -199,13 +200,13 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 		But are these really hypergraphs? Shouldn't you distinguish
 		between nodes and edges? Where is the proof of this proposition?}
 	
-	This is well known. An hypergraph is a pair of arrows $E \to V^\star$, or equivalently, an arrow $E \to V^\star \times V^\star$, that is an object of the comma category. We have added a reference.
+	This is considered kind of folklore. An hypergraph is a pair of arrows $E \to V^\star$, or equivalently, an arrow $E \to V^\star \times V^\star$, that is an object of the comma category. We have added a reference.
 	
 	
 	\item \emph{ p.8, Lem.3.17 is a bit hard to parse and digest. Can you make
 		it more accessible?}
 	
-	Due to the technical nature of the lemma we have decided to keep it in the current form. 
+	We agree on the difficulties, but at the same time the lemma has a rather technical nature, and we preferred to preserve its current formulation. 
 	
 	\item \emph{ p.8, Def.3.21: What is $\mathbb{B}?$}
 	
@@ -227,7 +228,7 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 		or move them to the appendix and instead spend more time on
 		e-hypergraphs and rewriting.}
 	
-	We moved Rem 3.49 to the appendix (now is Rem. A.6). However we prefer to leave Rem 3.42 in the main body.
+	We moved Rem 3.49 to the appendix (now is Rem. A.6). However, we consider Rem 3.42 helpful for the intuition and we left it in the main body.
 	
 	\item \emph{ p.12: Sep and pSep are rather degenerated categories. It would be
 		helpful for the reader if you could explain in more detail what you
@@ -251,8 +252,9 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 			hypergraphs with an explicit surjective labelling. It is e-graphs
 			that are actually interesting.}
 		
-		The preceding sections contain results needed for this section. Similarly, Sec. 5 builds upon the results established in Sec. 4.
-		
+		Technically, the preceding sections contain results which are needed for that section, and we were at loss in identifying possible
+		shortenings. We also believe that the kind of story we are presenting, as now summed up at the beginning of Section 6, may be 
+		of some value for the community working of Adhesive rewriting syetems,
 		
 		\item \emph{ p.15: I would give concrete constructions for the pushouts in Hyp.}
 		
@@ -262,26 +264,26 @@ Besides these changes, Reviewer 2 raised a serious technical issue with our prev
 			having been introduced long before). It would be good to explain
 			their role on a more intuitive level.}
 		
-		Kernel pairs are quite a standard tool in the categorical study of relations. We introduced them in Sec. 2, alongside the other general categorical preliminaries.
+		Kernel pairs are nowadays a standard tool in the categorical study of relations, thus we prefer to introduce them in Sec. 2, alongside the other general categorical preliminaries.
 		
 		\item \emph{ p.21: The last paragraph of Sct.6.1 is a bit cryptic and should be
 			explained in more detail. This should actually be the motivation for
 			considering the various variants of hypergraphs, so this should be
 			carefully explained to the reader.}
 		
-		Rewrote Sec. 6.
+		We rewrote Sec. 6.
 		
 		\item \emph{ p.21 ff.: As stated above, it is not so clear to me which rules
 			you are actually interested in. Do you want rules that can delete
 			items or only rule that add something?}
 		
-		Rewrote Sec. 6.
+		We rewrote Sec. 6.
 		
 		\item \emph{ p. 23: The comparison to [21] (a paper by Ghica, Barrett and Tiurin)
 			is a bit weak. If [21] is in some sense more general than your
 			paper, there should be a way to make a deeper comparison.}
 		
-		Rewrote paragraph on comparison between the two works.
+		We rewrote the paragraph comparing the two works.
 		
 	\end{itemize}
 
