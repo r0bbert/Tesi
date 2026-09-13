@@ -3352,19 +3352,23 @@ and it seems worthwhile to check the expressiveness and applications of hierarch
 %\todo{espandere un poco}
 Despite the interest they have ben raising as an efficient data structure, we are not aware of any attempt to provide an 
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
-among the two proposals, which appear to be related yet quite different. In~\cite{ghica}, equivalence of nodes is captured by a special kind of \emph{hierarchical} edges together with a partial order a consistency relation, using a formalism which is reminiscent of hierarchical hypergraphs. Moreover, by considering term graphs as arrows of a symmetric monoidal category enriched over semi-lattices,~\cite{ghica} connects e-hypergraphs with the theory of PROPs. While~\cite{ghica}, as us, exploits DPO rewriting, it lacks an examination of the adhesivity properties of the category of e-hypergraphs studied.
+among the two proposals, which appear to be related yet quite different. 
+%In~\cite{ghica}, equivalence of nodes is captured by a special kind of \emph{hierarchical} edges together with a partial order 
+%a consistency relation, using a formalism which is reminiscent of hierarchical hypergraphs. Moreover, by considering term graphs 
+%as arrows of a symmetric monoidal category enriched over semi-lattices,~\cite{ghica} connects e-hypergraphs with the theory 
+%of PROPs. While~\cite{ghica}, as us, exploits DPO rewriting, it lacks an examination of the adhesivity properties of the category of e-hypergraphs studied.
 %
 %In fact, for both proposals the key intuition is  to use string diagrams to represents term graphs. 
-
-We adopted a more down-to-earth approach by equipping
-concretely the nodes of a term graph with an equivalence relation, thus directly corresponding to the original presentation~\cite{DetlefsNS05},
-at the same time extending and generalising~\cite{concur2006} in the contemporary jargon of adhesive categories. 
+%
+We adopted a down-to-earth approach by directly equipping
+the nodes of a term graph with an equivalence relation, thus mimicking the original presentation~\cite{DetlefsNS05},
+at the same time extending and generalising~\cite{concur2006} to the contemporary jargon of adhesive categories. 
 The route chosen in~\cite{ghica} is to consider a variant of hierarchical hypergraphs, with suitable conditions that 
-intuitively ensure the correspondence between hierarchies and equivalence classes. They do not explore
+intuitively ensure a correspondence between hierarchical edges and equivalence classes. They do not explore
 $\mathcal{M}$-adhesivity, embedding instead their hypergraphs into categories of string diagrams with an enrichment 
-over semi-lattices, along the lines of~\cite{bonchi2022string}, and proving a soundness and  completeness result.
-Even if we both consider the DPO approach for rewriting, our constructions are technically simpler, more in tune with
-the set-theoretical approach of EGG, which facilitates its practical application 
+over semi-lattices and proving a soundness and  completeness result, along the lines of~\cite{bonchi2022string}.
+Even if we both consider the DPO approach for rewriting, our constructions are technically simpler, and we believe
+more in tune with the set-theoretical approach of EGG, which facilitates its practical application 
 and theoretical analysis, and aligns with the focus on $\mathcal{M}$-adhesivity
 currently pursued by the graph transformation community.
 %\section*{Acknowledgments}
