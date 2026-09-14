@@ -34,7 +34,7 @@ Nicolas Behr, Russ Harmer, and Jean Krivine.
 \bibitem{uovadesive}
 Roberto Biondo, Davide Castelnovo, and Gadducci Fabio.
 \newblock {EGG}s are adhesive!
-\newblock In Corina C\^{i}rstea~Alexander Knapp, editor, {\em CALCO 2025},
+\newblock In Corina C\^{i}rstea and Alexander Knapp, editors, {\em CALCO 2025},
   volume 342 of {\em LIPIcs}, pages 10:1--10:18. Schloss Dagstuhl --
   Leibniz-Zentrum f{\"u}r Informatik, 2025.
 
@@ -88,6 +88,15 @@ Andrea Corradini, Ugo Montanari, Francesca Rossi, Hartmut Ehrig, Reiko Heckel,
   Computing by Graph Transformations, Volume 1: Foundations}, pages 163--246.
   World Scientific, 1997.
 
+\bibitem{corradini1997algebraic}
+Andrea Corradini, Ugo Montanari, Francesca Rossi, Hartmut Ehrig, Reiko Heckel,
+  and Michael L{\"o}we.
+\newblock Algebraic approaches to graph transformation--part i: Basic concepts
+  and double pushout approach.
+\newblock In {\em Handbook Of Graph Grammars And Computing By Graph
+  Transformation: Volume 1: Foundations}, pages 163--245. World Scientific,
+  1997.
+
 \bibitem{DetlefsNS05}
 David Detlefs, Greg Nelson, and James~B. Saxe.
 \newblock Simplify: A theorem prover for program checking.
@@ -110,6 +119,12 @@ Hartmut Ehrig, Ulrike Golas, Annegret Habel, Leen Lambers, and Fernando Orejas.
   conditions. {P}art 1: Parallelism, concurrency and amalgamation.
 \newblock {\em Mathematical Structures in Computer Science}, 24(4):240406,
   2014.
+
+\bibitem{ehrig1999handbook}
+Hartmut Ehrig, Grzegorz Rozenberg, Ugo Montanari, and Hans-Jorg Kreowski.
+\newblock {\em Handbook of graph grammars and computing by graph
+  transformation}, volume~3.
+\newblock world Scientific, 1999.
 
 \bibitem{fritz2023free}
 Tobias Fritz and Wendong Liang.
@@ -212,7 +227,7 @@ Philip Wadler.
 \bibitem{WillseyNWFTP21}
 Max Willsey, Chandrakana Nandi, Yisu~Remy Wang, Oliver Flatt, Zachary Tatlock,
   and Pavel Panchekha.
-\newblock {EGG}: Fast and extensible equality saturation.
+\newblock egg: Fast and extensible equality saturation.
 \newblock In {\em POPL 2021}, volume~5 of {\em PACMPL}, pages 1--29. ACM, 2021.
 
 \end{thebibliography}

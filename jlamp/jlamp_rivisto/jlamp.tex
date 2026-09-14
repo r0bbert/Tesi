@@ -2559,7 +2559,7 @@ with and without equivalence.
 In particular, we have shown how they 
 can be described as suitable $\mathcal{M}$-adhesive categories, 
 as summarised below for some relevant categories
-
+\[ \vspace{-1cm}\]
 \begin{table}[ht]
 	\centering
 	\label{tab:riassunto}
@@ -2607,7 +2607,7 @@ by the desire to provide an alternative representation of terms, based on graphs
 instead of trees,  to exploit the sharing of sub-terms for efficiency reasons. Consider e.g. a signature $\Sigma$ 
 with a constant $a$ and a binary operator $/$: the term $a / a$ admits two different representations 
 as a term graph in $\lmo_{\Sigma}$. The image on the left below is the usual representation of the term as a tree, the 
-image on the right is an hypergraph where the occurrence of the constant $a$ is shared:
+image on the right is an hypergraph where the occurrence of the constant $a$ is shared
 
 \begin{center}
 	\begin{tikzpicture}[baseline=(w)]
@@ -2813,7 +2813,7 @@ must belong to the same equivalence class.
 Consider now the pictures indicated by (3) and (4). They are both e-term graphs. Picture (3) is 
 the representation in $\lelmBis$ of $a / a$ as a term graph with a shared constant; while picture (4) is 
 % the minimally-shared representation among 
-a separated term graph which is the minimal representation of $a / a$ in  $\lepsBis$.
+a separated and pruned term graph which is the minimal representation of $a / a$ in  $\lepsBis$.
 
 In the original paper~\cite{DetlefsNS05} EGGs were simply defined as term graphs with an equivalence relation on nodes that is composition-closed, 
 resulting in some ambiguity in which is the canonical EGG associated to a term. To this end, we consider adequate both $\lelmBis$ and $\lepsBis$.
@@ -3264,13 +3264,13 @@ is chosen
 
 While it would be possible to obtain 
 such a representation by suitable quotients on $\lelmBis$ 
-and $\lepsBis$, we favour a solution which recalls of the 
-actual heuristcs of the EGG framework by relying on the 
+and $\lepsBis$, we favour a solution which recalls the 
+actual heuristics of the EGG formalism by relying on the 
 classical solution adopted in the term graph literature, that is, the 
-introduction of specific collapsing rules~\cite{AriolaKP00}.
+introduction of specific contraction rules~\cite{AriolaKP00}.
 For example, for the simple algebraic signature containing only 
-the constants $a$ and $1$ and the binary oprator $/$, it suffices to introduces 
-the three collapsing rules below:
+the constants $a$ and $1$ and the binary operator $/$, it suffices to introduces 
+the three contraction rules below
 \begin{gather*}
 \hspace{.25cm}
 \xymatrix{        
@@ -3498,17 +3498,17 @@ proving that they are $\mathcal{M}$-adhesive categories, and we extended these r
 prove the same property for e-hypergraphs and e-term graphs, i.e. where the equivalence satisfies 
 a suitable closure constraint.
 Summing up, we proved that EGGs are objects of an $\mathcal{M}$-adhesive category
-and that optimisation steps are obtained via DPO rules (possibly with negative application conditions) whose 
+and that update steps are obtained via DPO rules (possibly with negative application conditions) whose 
 left-hand side is in $\mathcal{M}$,
 %, and in fact an identity. 
 %and via a match that is in $\mathcal{N}$. 
-and that allows for exploiting the properties 
+and that paves the ways for exploiting the properties 
 of the $\mathcal{M}$-adhesive framework.
 % when discussing about the optimisation process.
 
 \emph{Future works.}
-Our results open a few threads of research. The first is to check how the $\mathcal{M}$-adhesivity 
-of EGGs can be pushed to model their rewriting via the DPO approach. We have seen that 
+Our results open a few threads of research. The first is to check how far the $\mathcal{M}$-adhesivity 
+of EGGs can be pushed to model their updating via the DPO approach. We have seen that 
 the rules adopted in the literature of EGGs appears to be spans whose left-hand side is an identity and 
 right-hand side is a mono (possibly with negative application 
 conditions), and as such they fit the mould of rewriting on left-linear rewriting in $\mathcal{M}$-adhesive categories. 
@@ -3531,7 +3531,7 @@ and it seems worthwhile to check the expressiveness and applications of hierarch
 %\todo{espandere un poco}
 Despite the interest they have ben raising as an efficient data structure, we are not aware of any attempt to provide an 
 algebraic characterisation of EGGs, the only exception being~\cite{ghica}. We leave for future work an in-depth comparison 
-among the two proposals, which appear to be related yet quite different. 
+between the two proposals, which appear to be related yet quite different. 
 %In~\cite{ghica}, equivalence of nodes is captured by a special kind of \emph{hierarchical} edges together with a partial order 
 %a consistency relation, using a formalism which is reminiscent of hierarchical hypergraphs. Moreover, by considering term graphs 
 %as arrows of a symmetric monoidal category enriched over semi-lattices,~\cite{ghica} connects e-hypergraphs with the theory 
