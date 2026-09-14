@@ -781,7 +781,7 @@ and so $\lgh_{Y}\circ f^\star= \lgh_{X}$.
 
 \subsection{The category of hypergraphs}\label{sub:hyp}
 
-Let us begin this section with the definition of hypergraphs~\cite{xxx}.
+Let us begin this section with the definition of hypergraphs~\cite[Sec.~3]{bonchi2022string}.
 
 \noindent
 \begin{minipage}[l]{.83\linewidth}
@@ -2866,17 +2866,16 @@ the minimally shared representation is now the middle diagram.
 \subsection{DPO rewriting on e-term graphs}
 %\vspace{.1cm}
 \noindent
-According to the double-pushout (DPO) approach to rewriting in $\mathcal{M}$-adhesive
-categories~\cite{xxx},
+\begin{minipage}[l]{.80\linewidth} According to the double-pushout (DPO) approach to rewriting in $\mathcal{M}$-adhesive
+categories~\cite{corradini1997algebraic,ehrig1999handbook,heindel2009category},
 a rule is given by two arrows $l: K \to L$ and $r: K \rightarrow R$
 and its application requires a match $m: L \to G$: the rewriting step from $G$
-to $H$ is then given by the diagram below, whose halves are pushouts
-
+to $H$ is then given by the diagram aside, whose halves are pushouts. \end{minipage} \hfill \begin{minipage}[r]{.20\linewidth}
     \xymatrix@C=.5cm@R=.5cm{
       L \ar[d]_{m}
       & K \ar[r]^r \ar[l]_{l} \ar[d]_{k} & R \ar [d]^h \\
       G & C \ar[r]_{g} \ar[l]^{f}                    & H
-    }
+    } \end{minipage}
 
 % to the category at hand. 
 
@@ -3205,9 +3204,64 @@ is applied so that e.g. among the two pruned and separated
 e-term graphs below encoding the term $a/a$,  
 the one on the left (again, picture (4) above)
 is chosen
-\[
-xxx
-\]
+
+\begin{center}
+	\begin{tikzpicture}[baseline=(w)]
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=small box](a1) at (-2.3, -0.5){$a$};
+			\node[style=none] (a1att) at (-2.3, -0.5){};
+			\node[style=node](v1) at (-1.4, -0.5){};
+			\node[style=node](w1) at (-0.9, -0.5){};
+			\node[style=small box](a2) at (-2.3, 0.5){$a$};
+			\node[style=none] (a2att) at (-2.3, 0.5){};
+			\node[style=node](v2) at (-1.4, 0.5){};
+			\node[style=node](w2) at (-0.9, 0.5){};
+			\node[style=medium box](div) at (0, 0){$/$};
+			\node[style=none](divfst) at (-0.3, -0.3){};
+			\node[style=none] (divsnd) at (-0.3, 0.3){};
+			\node[style=none] (divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+			
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw[->](a1att.center) to (v1);
+			\draw[->](a2att.center) to (v2);
+			\draw[out=0, in=-120] (w1) to (divfst.center);
+			\draw[out=0, in=120](w2) to (divsnd.center);
+			\draw[->](divout.center) to (w);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}[baseline=(w)]
+		\begin{pgfonlayer}{nodelayer}
+			\node[style=node](w1) at (-0.9, -0.5){};
+			\node[style=small box](a2) at (-2.3, 0){$a$};
+			\node[style=none] (a2att) at (-2.3, 0){};
+			\node[style=node](v) at (-1.4, 0){};
+			\node[style=node](w2) at (-0.9, 0.5){};
+			\node[style=medium box](div) at (0, 0){$/$};
+			\node[style=none](divfst) at (-0.3, -0.3){};
+			\node[style=none] (divsnd) at (-0.3, 0.3){};
+			\node[style=none] (divout) at (0.3, 0){};
+			\node[style=node] (w) at (0.9, 0){};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{edgelayer}
+			\draw[->](a2att.center) to (v);
+			\draw[out=0, in=-120] (w1) to (divfst.center);
+			\draw[out=0, in=120](w2) to (divsnd.center);
+			\draw[->](divout.center) to (w);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners] (-1.7, -0.8) rectangle (-0.6, 0.8);
+			\draw[dashed, rounded corners] (.6, -0.3) rectangle (1.2, 0.3);
+		\end{pgfonlayer}
+	\end{tikzpicture}
+\end{center}
+
 While it would be possible to obtain 
 such a representation by suitable quotients on $\lelmBis$ 
 and $\lepsBis$, we favour a solution which recalls of the 
@@ -3216,10 +3270,135 @@ classical solution adopted in the term graph literature, that is, the
 introduction of specific collapsing rules~\cite{AriolaKP00}.
 For example, for the simple algebraic signature containing only 
 the constants $a$ and $1$ and the binary oprator $/$, it suffices to introduces 
-the three collapsing rules below
-\[
-xxx
-\]
+the three collapsing rules below:
+\begin{gather*}
+\hspace{.25cm}
+\xymatrix{        
+\begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
+		\node[style=small box] at (0, 0){$1$};
+		\node[style=none](divfst) at (-0.3, 0.3){};
+		\node[style=none](divsnd) at (-0.3, -0.3){};
+		\node[style=none](divout) at (0.3, 0){};
+		\node[style=node] (w) at (0.9, 0){};
+		\node[style=small box] at (0, -1){$1$};
+		\node[style=none](one) at (0.3, -1){};
+		\node[style=node](z) at (0.9, -1){};
+		\node[style=none](nil) at (0, -0.5){};
+	\end{pgfonlayer}        
+	\begin{pgfonlayer}{edgelayer}
+		\draw[->](divout.center) to (w);
+		\draw[->](one.center) to (z);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+		\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+	\end{pgfonlayer}\begin{pgfonlayer}{background}
+		\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+\end{pgfonlayer}\end{tikzpicture}
+	\ar@{=>}[r] &
+	\begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
+			\node[style=small box] at (-1, -.4){$1$};
+			\node[style=none](divout) at (-0.7, -.4){};
+			\node[style=node] (w) at (-.1, -.4){};
+		\end{pgfonlayer}        
+		\begin{pgfonlayer}{edgelayer}
+			\draw[->](divout.center) to (w);
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{eqlayer}
+			\draw[dashed, rounded corners](-0.4, -0.1) rectangle (0.2, -.7);
+		\end{pgfonlayer}\begin{pgfonlayer}{background}
+			\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+	\end{pgfonlayer}\end{tikzpicture}} \quad \xymatrix{ \begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
+	\node[style=small box] at (0, 0){$a$};
+	\node[style=none](divfst) at (-0.3, 0.3){};
+	\node[style=none](divsnd) at (-0.3, -0.3){};
+	\node[style=none](divout) at (0.3, 0){};
+	\node[style=node] (w) at (0.9, 0){};
+	\node[style=small box] at (0, -1){$a$};
+	\node[style=none](one) at (0.3, -1){};
+	\node[style=node](z) at (0.9, -1){};
+	\node[style=none](nil) at (0, -0.5){};
+	\end{pgfonlayer}        
+	\begin{pgfonlayer}{edgelayer}
+	\draw[->](divout.center) to (w);
+	\draw[->](one.center) to (z);
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{eqlayer}
+	\draw[dashed, rounded corners](0.6, 0.3) rectangle (1.2, -1.3);
+	\end{pgfonlayer}\begin{pgfonlayer}{background}
+	\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+\end{pgfonlayer}\end{tikzpicture}
+\ar@{=>}[r] &
+\begin{tikzpicture}[baseline=(nil.center)]\begin{pgfonlayer}{nodelayer}
+\node[style=small box] at (-1, -.4){$a$};
+\node[style=none](divout) at (-0.7, -.4){};
+\node[style=node] (w) at (-.1, -.4){};
+\end{pgfonlayer}        
+\begin{pgfonlayer}{edgelayer}
+\draw[->](divout.center) to (w);
+\end{pgfonlayer}
+\begin{pgfonlayer}{eqlayer}
+\draw[dashed, rounded corners](-0.4, -0.1) rectangle (0.2, -.7);
+\end{pgfonlayer}\begin{pgfonlayer}{background}
+\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+\end{pgfonlayer}\end{tikzpicture}}\\ 
+\xymatrix{	\begin{tikzpicture}[baseline=(divout)]
+\begin{pgfonlayer}{nodelayer}
+\node[style=node](w1) at (-0.9, -0.5){};
+\node[style=medium box](a2) at (-2.3, 0){$/$};
+\node[style=none] (a2att) at (-2.3, 0.5){};
+\node[style=node](v1) at (-1.4, 0.5){};
+\node[style=node](v2) at (-1.4, -0.5){};
+\node[style=node](w2) at (-0.9, 0.5){};
+\node[style=medium box](div) at (0, 0){$/$};
+\node[style=none](divfst) at (-0.3, -0.3){};
+\node[style=none] (divsnd) at (-0.3, 0.3){};
+\node[style=none] (divout) at (0, -0.5){};
+\node[style=none] (divout2) at (-2.3, -0.5){};
+\node[style=none](a2fst) at (-2, 0.3){};
+\node[style=none] (a2snd) at (-2, -0.3){};
+\node[style=node] (w) at (-0.9, -1.5){};
+\node[style=node] (z) at (-1.4, -1.5){};
+\end{pgfonlayer}
+\begin{pgfonlayer}{edgelayer}
+\draw[out=180, in=60] (v1) to (a2fst.center);
+\draw[out=180, in=-60](v2) to (a2snd.center);
+\draw[out=0, in=-120] (w1) to (divfst.center);
+\draw[out=0, in=120](w2) to (divsnd.center);
+\draw[->, out = -90, in = 0](divout.center) to (w);
+\draw[->, out = -90, in = 180](divout2.center) to (z);
+\end{pgfonlayer}
+\begin{pgfonlayer}{eqlayer}
+\draw[dashed, rounded corners] (-1.7, 0.2) rectangle (-0.6, 0.8);
+\draw[dashed, rounded corners] (-1.7,-0.8) rectangle (-0.6, -.2);
+\draw[dashed, rounded corners] (-1.7,-1.8) rectangle (-0.6, -1.2);
+\end{pgfonlayer}\begin{pgfonlayer}{background}
+\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+\end{pgfonlayer}
+\end{tikzpicture} \ar@{=>}[r] & \begin{tikzpicture}[baseline=(w)]
+\begin{pgfonlayer}{nodelayer}
+	\node[style=node](w1) at (-1.9, -0.5){};
+	\node[style=node](w2) at (-1.9, 0.5){};
+	\node[style=medium box](div) at (-1, 0){$/$};
+	\node[style=none](divfst) at (-1.3, -0.3){};
+	\node[style=none] (divsnd) at (-1.3, 0.3){};
+	\node[style=none] (divout) at (-0.7, 0){};
+	\node[style=node] (w) at (-0.1, 0){};
+\end{pgfonlayer}
+\begin{pgfonlayer}{edgelayer}
+	\draw[out=0, in=-120] (w1) to (divfst.center);
+	\draw[out=0, in=120](w2) to (divsnd.center);
+	\draw[->](divout.center) to (w);
+\end{pgfonlayer}
+\begin{pgfonlayer}{eqlayer}
+	\draw[dashed, rounded corners] (-2.2, 0.2) rectangle (-1.6, 0.8);
+	\draw[dashed, rounded corners] (-2.2, -0.8) rectangle (-1.6, -0.2);
+	\draw[dashed, rounded corners] (-.4, -0.3) rectangle (0.2, 0.3);
+\end{pgfonlayer}\begin{pgfonlayer}{background}
+\draw[color=white] (-.5, 0.2) rectangle (.5, -0.2);
+\end{pgfonlayer}
+\end{tikzpicture}}
+\end{gather*}
+
 These rules can be performed in parallel with the 
 rules of any rewriting system without interfering with them,
 and ensures that a minimal representation can always be reached.
@@ -5088,7 +5267,7 @@ allowing us to conclude. \qedhere
 \end{proof}
 
 \section{Some properties of comma categories}
-In this section we briefly recall the definition of the comma category \cite{mac2013categories} and some of its properties.
+In this section we briefly recall the definition of the comma category \cite[Sec.~II.6]{mac2013categories} and some of its properties.
 \begin{defi}\index{category!comma -}
 	Let $L\colon \A\to \X$ and  $R\colon \B\rightarrow \X$ be two functors with the same codomain, the \emph{comma category} $\comma{L}{R}$ is the category in which:
 
